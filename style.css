@@ -198,7 +198,7 @@ a {
 }
 
 .diagram-img {
-  width: 30%;
+    width: 200px;  /* fixed width */
   display: block;
   margin: 0 auto;
   border-radius: 5px;
