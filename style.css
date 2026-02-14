@@ -189,18 +189,24 @@ a {
   margin-bottom: 34px;
   max-width: 850px;
 }
-
 .diagram-wrap {
-  background: rgba(120, 44, 246, 0.06);
-  border-radius: 20px;
-  padding: 20px;
-  overflow: hidden;
+  background: transparent; /* or just remove background line */
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+}
+.diagram-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
 }
 
+
 .diagram-img {
-    width: 600px;  /* fixed width */
+  width: 600px;
   display: block;
-  margin: 0 auto;
+  margin: 0; /* no centering */
   border-radius: 5px;
 }
 
