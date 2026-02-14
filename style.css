@@ -14,7 +14,7 @@ html {
 
 body {
  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  background: #782CF6;
+  background: #200748;
   color: white;
 }
 
@@ -125,7 +125,7 @@ a {
   padding: 14px 22px;
   border-radius: 999px;
   background: white;
-  color: #782CF6;
+  color: #200748;
   font-weight: 900;
   font-size: 14px;
   transition: 0.2s ease;
@@ -195,12 +195,15 @@ a {
   padding: 0;
   overflow: visible;
 }
+
 .diagram-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 50px;
+  flex-wrap: nowrap;   /* 👈 important */
 }
+
 
 
 .diagram-img {
