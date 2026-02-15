@@ -173,7 +173,7 @@ a {
 }
 
 .diagram-title {
-  color: #200748;
+  color: #481993;
   font-size: 36px;
   font-weight: 900;
   letter-spacing: -0.5px;
@@ -181,7 +181,7 @@ a {
 }
 
 .diagram-text {
-  color: #200748;
+  color: #481993;
   font-size: 18px;
   font-weight: 800;
   opacity: 0.9;
@@ -222,7 +222,7 @@ a {
 }
 
 .section.purple {
-  background: #782CF6;
+  background: #200749;
   color: white;
 }
 
@@ -262,7 +262,7 @@ a {
 ========================= */
 
 .footer {
-  background: #782CF6;
+  background: #200748;
   padding: 40px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
