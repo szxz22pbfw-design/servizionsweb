@@ -14,7 +14,7 @@ html {
 
 body {
  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  background: #200748;
+  background: #421687;
   color: white;
 }
 
@@ -43,7 +43,7 @@ a {
 ========================= */
 
 .navbar {
-  background: #200748;
+  background: #421687;
   padding: 18px 0;
   position: sticky;
   top: 0;
@@ -84,7 +84,7 @@ a {
 ========================= */
 
 .hero {
-  background: #220748;
+  background: #421687;
   padding: 110px 0 90px;
 }
 
@@ -155,7 +155,7 @@ a {
 }
 
 .quote-text {
-  color: #200748;
+  color: #421687;
   font-size: 44px;
   font-weight: 900;
   line-height: 1.2;
@@ -173,7 +173,7 @@ a {
 }
 
 .diagram-title {
-  color: #481993;
+  color: #421687;
   font-size: 36px;
   font-weight: 900;
   letter-spacing: -0.5px;
@@ -181,7 +181,7 @@ a {
 }
 
 .diagram-text {
-  color: #481993;
+  color: #421687;
   font-size: 18px;
   font-weight: 800;
   opacity: 0.9;
@@ -262,7 +262,7 @@ a {
 ========================= */
 
 .footer {
-  background: #200748;
+  background: #421687;
   padding: 40px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
