@@ -155,7 +155,7 @@ a {
 }
 
 .quote-text {
-  color: #782CF6;
+  color: #200748;
   font-size: 44px;
   font-weight: 900;
   line-height: 1.2;
@@ -173,7 +173,7 @@ a {
 }
 
 .diagram-title {
-  color: #782CF6;
+  color: #200748;
   font-size: 36px;
   font-weight: 900;
   letter-spacing: -0.5px;
@@ -181,7 +181,7 @@ a {
 }
 
 .diagram-text {
-  color: #782CF6;
+  color: #200748;
   font-size: 18px;
   font-weight: 800;
   opacity: 0.9;
