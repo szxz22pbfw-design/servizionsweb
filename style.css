@@ -318,6 +318,10 @@ a {
   font-weight: 700;
   max-width: 760px;
 }
+.tag {
+  color: #421687;
+  background: rgba(66, 22, 135, 0.08);
+}
 
 /* =========================
    INSIGHTS GRID (3 SMALLER CARDS)
