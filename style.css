@@ -269,16 +269,20 @@ a {
   transform: translateY(-4px);
   border: 1px solid rgba(66, 22, 135, 0.5);
 }
-
+.insight-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
 
 /* =========================
    INSIGHTS SECTION
 ========================= */
 
 .insights-section {
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  background: #ffffff;
+  padding: 90px 0 110px;
 }
 
 .insights-header {
@@ -287,54 +291,59 @@ a {
 }
 
 .insights-eyebrow {
-  font-size: 14px;
+  color: #421687;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.8;
   margin-bottom: 12px;
+  font-weight: 900;
 }
 
 .insights-title {
+  color: #421687;
   font-size: 42px;
   line-height: 1.1;
   margin: 0 0 14px 0;
+  font-weight: 900;
+  letter-spacing: -0.6px;
 }
 
 .insights-subtitle {
+  color: #421687;
   font-size: 18px;
   line-height: 1.6;
-  opacity: 0.8;
+  opacity: 0.85;
   margin: 0;
+  font-weight: 700;
+  max-width: 760px;
 }
 
-
 /* =========================
-   INSIGHTS GRID (SMALLER + MORE SPACE)
+   INSIGHTS GRID (3 CARDS)
 ========================= */
 
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  padding-left: 60px;   /* left space */
-  padding-right: 60px;  /* right space */
+  margin-top: 40px;
 }
 
+/* Card */
 .insight-card {
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 18px;
   overflow: hidden;
-  background: #fff;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
-
-  min-height: 460px;   /* smaller than before */
+  min-height: 520px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .insight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rg
+  transform: translateY(-4p
 
 
 /* =========================
