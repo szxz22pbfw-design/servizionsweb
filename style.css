@@ -248,25 +248,26 @@ a {
   padding-left: 60px;
   padding-right: 60px;
 }
-
 .card {
-  max-width: 280px;     /* smaller card */
-  padding: 18px;        /* less padding */
+  max-width: 280px;
+  padding: 18px;
   border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  background: transparent; /* ✅ no white */
+  border: 1px solid rgba(66, 22, 135, 0.25); /* subtle purple border */
+
+  box-shadow: none; /* remove shadow */
+  transition: transform 0.2s ease, border 0.2s ease;
 }
 
 .card h3,
 .card p {
-  color: #421687;       /* purple */
+  color: #421687; /* purple */
 }
 
 .card:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  border: 1px solid rgba(66, 22, 135, 0.5);
 }
 
 
