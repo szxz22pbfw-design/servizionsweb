@@ -364,6 +364,31 @@ a {
 }
 
 /* =========================
+   INSIGHT CARD TEXT = PURPLE
+========================= */
+
+.insight-card,
+.insight-card h3,
+.insight-card p,
+.insight-card a,
+.insight-card span {
+  color: #421687;
+}
+
+/* Tags (nice purple tint) */
+.insight-card .tag {
+  background: rgba(66, 22, 135, 0.08);
+  color: #421687;
+}
+
+/* Link stays purple */
+.insight-card .insight-link:visited {
+  color: #421687;
+}
+
+
+
+/* =========================
    RESPONSIVE (INSIGHTS)
 ========================= */
 
