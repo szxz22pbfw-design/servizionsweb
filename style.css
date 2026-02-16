@@ -235,21 +235,25 @@ a {
 }
 
 /* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+.cards-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 30px;
-  border-radius: 22px;
-  font-weight: 900;
-  font-size: 18px;
-  text-align: center;
-  transition: 0.2s ease;
+  max-width: 280px;   /* smaller card */
+  padding: 18px;      /* less padding */
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card h3,
+.card p {
+  color: #421687; /* purple */
 }
 
 .card:hover {
