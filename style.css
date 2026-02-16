@@ -269,17 +269,6 @@ a {
 }
 
 /* =========================
-   INSIGHT IMAGE
-========================= */
-
-.insight-image img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-/* =========================
    INSIGHTS SECTION
 ========================= */
 
@@ -288,6 +277,14 @@ a {
   padding: 90px 0 110px;
 }
 
+/* IMPORTANT: gives left + right spacing */
+.insights-section .container {
+  max-width: 1180px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* Header */
 .insights-header {
   max-width: 720px;
   margin-bottom: 40px;
@@ -323,17 +320,18 @@ a {
 }
 
 /* =========================
-   INSIGHTS GRID (3 CARDS)
+   INSIGHTS GRID (3 SMALLER CARDS)
 ========================= */
 
 .insights-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
   margin-top: 40px;
+  justify-content: center;
 }
 
-/* Card */
+/* Smaller cards */
 .insight-card {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 18px;
@@ -341,13 +339,48 @@ a {
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  min-height: 520px;
+  width: 100%;
+  max-width: 340px;  /* ✅ makes cards smaller */
+  margin: 0 auto;    /* ✅ centers them */
+  min-height: 460px; /* ✅ smaller than 520 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .insight-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Image */
+.insight-image img {
+  width: 100%;
+  height: 200px; /* slightly smaller */
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   RESPONSIVE (INSIGHTS)
+========================= */
+
+@media (max-width: 980px) {
+  .insights-section .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-title {
+    font-size: 34px;
+  }
+
+  .insight-card {
+    max-width: 520px;
+    min-height: auto;
+  }
 }
 
 /* =========================
