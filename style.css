@@ -381,14 +381,10 @@ a {
   gap: 14px;
 }
 
-
-.insight-card .insight-heading {
-  margin-bottom: 10px;
+.insight-content {
+  padding: 18px 18px 22px;
 }
 
-.insight-card .insight-text {
-  margin-bottom: 14px;
-}
 
 
 
