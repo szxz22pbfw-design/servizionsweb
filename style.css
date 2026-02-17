@@ -312,7 +312,7 @@ a {
 
 .insights-subtitle {
   color: #421687;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.6;
   opacity: 0.85;
   margin: 0;
@@ -334,6 +334,7 @@ a {
   gap: 6px;
   margin-top: 40px;
   margin-left: 100px;
+  margin-right: 100px;
   
 }
 
