@@ -345,14 +345,13 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 340px;  /* ✅ makes cards smaller */
-  margin: 0 auto;    /* ✅ centers them */
-  min-height: 460px; /* ✅ smaller than 520 */
-  margin-left: 100px;
-  
+  max-width: 340px;
+  margin: 0 auto;
+  min-height: 460px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
- 
-  
+}
+.insights-grid {
+  gap: 14px;
 }
 
 
