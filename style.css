@@ -331,7 +331,7 @@ a {
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: 6px;
   margin-top: 40px;
 }
 
