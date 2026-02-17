@@ -354,6 +354,29 @@ a {
  
   
 }
+
+
+
+
+/* Smaller text inside insight cards */
+.insight-card .insight-heading {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.insight-card .insight-text {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.insight-card .tag {
+  font-size: 11px;
+}
+
+.insight-card .insight-link {
+  font-size: 12px;
+}
+
 .insights-grid {
   gap: 14px;
 }
