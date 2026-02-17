@@ -350,10 +350,15 @@ a {
   min-height: 460px; /* ✅ smaller than 520 */
   margin-left: 100px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: #421687;
-  
+ 
   
 }
+
+
+.insight-heading {
+  color: #421687;
+}
+
 .insight-text {
 .insight-card:hover
   transform: translateY(-4px);
