@@ -333,8 +333,8 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
   margin-top: 40px;
-  margin-left: 100px;
-  margin-right: 100px;
+  
+  
 }
 
 
@@ -348,8 +348,8 @@ a {
   flex-direction: column;
   width: 100%;
   max-width: none;
-  margin: 0;
-
+  
+margin-left: 100px;
   min-height: 460px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
