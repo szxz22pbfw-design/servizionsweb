@@ -331,10 +331,10 @@ a {
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 26px;
+  gap: 14px;
   margin-top: 40px;
-  justify-content: center;
 }
+
 
 /* Smaller cards */
 .insight-card {
@@ -345,14 +345,13 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 340px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
+
   min-height: 460px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.insights-grid {
-  gap: 14px;
-}
+
 
 
 
@@ -376,9 +375,6 @@ a {
   font-size: 10px;
 }
 
-.insights-grid {
-  gap: 14px;
-}
 
 .insight-content {
   padding: 18px 18px 22px;
