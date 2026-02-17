@@ -348,14 +348,16 @@ a {
   max-width: 340px;  /* ✅ makes cards smaller */
   margin: 0 auto;    /* ✅ centers them */
   min-height: 460px; /* ✅ smaller than 520 */
+  margin-left: 100px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
   
 }
 .insight-text {
-  color: #421687;
 .insight-card:hover
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  color: #421687;
 }
 
 /* Image */
