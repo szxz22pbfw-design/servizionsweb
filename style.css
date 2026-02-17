@@ -382,6 +382,16 @@ a {
 }
 
 
+.insight-card .insight-heading {
+  margin-bottom: 10px;
+}
+
+.insight-card .insight-text {
+  margin-bottom: 14px;
+}
+
+
+
 .insight-heading {
   color: #421687;
 }
