@@ -349,9 +349,11 @@ a {
   margin: 0 auto;    /* ✅ centers them */
   min-height: 460px; /* ✅ smaller than 520 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
 }
-
-.insight-card:hover {
+.insight-text {
+  color: #421687;
+.insight-card:hover
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
