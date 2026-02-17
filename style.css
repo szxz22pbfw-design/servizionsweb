@@ -275,12 +275,14 @@ a {
 .insights-section {
   background: #ffffff;
   padding: 90px 0 110px;
+  margin-left: 20px;
+
 }
 
 /* IMPORTANT: gives left + right spacing */
 .insights-section .container {
   max-width: 1180px;
-  padding-left: 60px;
+  padding-left: 100px;
   padding-right: 60px;
 }
 
@@ -363,28 +365,6 @@ a {
   display: block;
 }
 
-/* =========================
-   INSIGHT CARD TEXT = PURPLE
-========================= */
-
-.insight-card,
-.insight-card h3,
-.insight-card p,
-.insight-card a,
-.insight-card span {
-  color: #421687;
-}
-
-/* Tags (nice purple tint) */
-.insight-card .tag {
-  background: rgba(66, 22, 135, 0.08);
-  color: #421687;
-}
-
-/* Link stays purple */
-.insight-card .insight-link:visited {
-  color: #421687;
-}
 
 
 
