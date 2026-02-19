@@ -208,6 +208,26 @@ a {
   max-width: 1050px;
 }
 
+
+
+.quote-images {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.quote-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+}
+
+
+
+
 /* =========================
    DIAGRAM SECTION (WHITE BACKGROUND)
 ========================= */
