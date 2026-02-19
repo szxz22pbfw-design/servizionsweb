@@ -217,7 +217,7 @@ a {
 }
 
 .quote-images img {
-  width: 250px;     /* 👈 smaller size */
+  width: 400px;     /* 👈 smaller size */
   max-width: 45%;
   height: auto;
   border-radius: 14px;
