@@ -327,11 +327,7 @@ a {
 }
 
 /* Header */
-.insights-header {
-  max-width: 720px;
-  margin-bottom: 40px;
-  margin-left: 0; /* ✅ remove margin-left */
-}
+
 
 
 .insights-eyebrow {
@@ -372,13 +368,7 @@ a {
    INSIGHTS GRID (3 SMALLER CARDS)
 ========================= */
 
-.insights-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 40px;
-  margin-left: 0; /* ✅ remove margin-left */
-}
+
 
 
 /* Smaller cards */
