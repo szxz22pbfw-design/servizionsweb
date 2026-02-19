@@ -394,6 +394,22 @@ a {
   color: #421687;
 }
 
+.insight-list {
+  margin-top: 12px;
+  padding-left: 18px;
+  color: #421687;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.insight-list li {
+  margin-bottom: 6px;
+}
+
+
+
 /* Hover effect */
 .insight-card:hover {
   transform: translateY(-4px);
