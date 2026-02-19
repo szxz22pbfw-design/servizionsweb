@@ -391,10 +391,13 @@ a {
 }
 
 .insight-text {
-.insight-card:hover
+  color: #421687;
+}
+
+/* Hover effect */
+.insight-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-  color: #421687;
 }
 
 /* Image */
