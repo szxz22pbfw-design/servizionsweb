@@ -362,12 +362,12 @@ a {
 /* Smaller text inside insight cards */
 .insight-card .insight-heading {
   font-size: 20px;
-  line-height: 3;
+  line-height: 2;
 }
 
 .insight-card .insight-text {
   font-size: 15px;
-  line-height: 2;
+  line-height: 1.6;
 }
 
 .insight-card .tag {
