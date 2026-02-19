@@ -560,3 +560,6 @@ a {
     display: none;
   }
 }
+.quote-images {
+  grid-template-columns: 1fr;
+}
