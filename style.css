@@ -378,11 +378,8 @@ a {
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
+  gap: 16px;
   margin-top: 40px;
-  margin-left: 100px;
-  margin-right: 100px;
-  
 }
 
 
