@@ -368,6 +368,12 @@ a {
    INSIGHTS GRID (3 SMALLER CARDS)
 ========================= */
 
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
 
 
 
@@ -385,6 +391,16 @@ a {
   min-height: 460px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+
+
+.insights-header {
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+
+
 
 /* Smaller text inside insight cards */
 .insight-card .insight-heading {
