@@ -209,20 +209,19 @@ a {
 }
 
 
-
 .quote-images {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 18px;
-  align-items: center;
+  margin-top: 30px;
+  justify-content: center;
 }
 
 .quote-images img {
-  width: 100%;
+  width: 320px;     /* 👈 smaller size */
+  max-width: 45%;
   height: auto;
   border-radius: 14px;
-  display: block;
+  object-fit: cover;
 }
 
 
