@@ -264,7 +264,7 @@ a {
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-10px);
   border: 1px solid rgba(66, 22, 135, 0.5);
 }
 
@@ -362,12 +362,12 @@ a {
 /* Smaller text inside insight cards */
 .insight-card .insight-heading {
   font-size: 20px;
-  line-height: 2;
+  line-height: 1.5;
 }
 
 .insight-card .insight-text {
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.3;
 }
 
 .insight-card .tag {
