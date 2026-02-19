@@ -24,9 +24,10 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 /* =========================
@@ -319,12 +320,7 @@ a {
   padding: 90px 0 110px;
 }
 
-/* IMPORTANT: gives left + right spacing */
-.insights-section .container {
-  max-width: 1180px;
-  padding-left: 60px;
-  padding-right: 60px;
-}
+
 
 /* Header */
 
