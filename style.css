@@ -603,3 +603,8 @@ a {
 .quote-images {
   grid-template-columns: 1fr;
 }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
