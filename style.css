@@ -310,6 +310,34 @@ a {
   letter-spacing: -0.5px;
 }
 
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px 60px;
+  margin-top: 50px;
+}
+
+.why-item h3 {
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.why-item p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
 /* =========================
    CARDS (SMALLER + PURPLE)
 ========================= */
