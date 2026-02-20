@@ -289,6 +289,19 @@ a {
   color: white;
 }
 
+
+.section.purple h1,
+.section.purple h2,
+.section.purple h3,
+.section.purple h4,
+.section.purple p,
+.section.purple li {
+  color: #ffffff;
+}
+
+
+
+
 .section h2 {
   font-size: 25px;
   font-weight: 900;
