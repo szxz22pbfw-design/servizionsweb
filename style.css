@@ -558,6 +558,36 @@ a {
     min-height: auto;
   }
 }
+
+
+/* =========================
+   SOLUTIONS PAGE
+========================= */
+
+.solutions-diagram {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.solutions-diagram img {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  border-radius: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================
    ABOUT PAGE
 ========================= */
