@@ -285,8 +285,9 @@ a {
 }
 
 .section.purple {
-  background: 
-  color: #421687; 
+  background: #421687;
+  color: white;
+}
 
 
 .section.purple h1,
@@ -613,7 +614,7 @@ a {
 
 .footer {
   background: #421687;
-  padding: 40px 0;
+  padding: 22px 0;   /* smaller */
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
