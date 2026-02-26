@@ -611,22 +611,14 @@ a {
 
 .hero-video {
   position: relative;
-  height: 100vh;
+  height: 100vh;      /* Full screen height */
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
 }
 
 .video-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;  /* Makes video fill screen nicely */
 }
 
 .overlay {
