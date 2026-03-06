@@ -423,6 +423,70 @@ a {
   background: rgba(66, 22, 135, 0.08);
 }
 
+
+
+/* =========================
+   KEYWORDS SECTION
+========================= */
+
+.keywords-section {
+  background: #ffffff;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.keywords-title {
+  color: #421687;
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 35px;
+  letter-spacing: -0.4px;
+}
+
+.keywords-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+}
+
+/* TAG STYLE */
+
+.keyword-tag {
+  border: 1.5px solid #421687;
+  color: #421687;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+/* HOVER EFFECT */
+
+.keyword-tag:hover {
+  background: rgba(66, 22, 135, 0.12);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================
    INSIGHTS GRID (3 SMALLER CARDS)
 ========================= */
