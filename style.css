@@ -44,7 +44,7 @@ a {
 ========================= */
 
 .navbar {
-  background: white;
+  background: #421687;
   padding: 18px 0;
   position: sticky;
   top: 0;
@@ -701,7 +701,102 @@ a {
 }
 
 
+/* CONTACT SECTION */
 
+.contact-section{
+  background:#ffffff;
+  padding:110px 0;
+}
+
+.contact-title{
+  text-align:center;
+  color:#421687;
+  font-size:32px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.contact-subtitle{
+  text-align:center;
+  margin-bottom:50px;
+  color:#666;
+  font-size:16px;
+}
+
+.contact-form{
+  max-width:900px;
+  margin:0 auto;
+}
+
+.form-row{
+  display:flex;
+  gap:25px;
+  margin-bottom:22px;
+}
+
+.form-group{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group label{
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
+  color:#333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:14px;
+  font-family:inherit;
+}
+
+.form-group textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  outline:none;
+  border-color:#421687;
+}
+
+.form-consent{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  margin:20px 0;
+}
+
+.contact-button{
+  background:#421687;
+  color:white;
+  border:none;
+  padding:14px 30px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.contact-button:hover{
+  background:#5a2bd6;
+}
+
+/* hidden spam field */
+
+.hidden-field{
+  display:none;
+}
 
 /* =========================
    FOOTER
