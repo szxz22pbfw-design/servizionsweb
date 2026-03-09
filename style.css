@@ -542,8 +542,8 @@ img { max-width: 100%; height: auto; display: block; }
 ========================= */
 .section {
   padding: 110px 0;
-  background: var(--purple-dark);
-  color: white;
+  background: var(--white);
+  color: var(--text-dark);
 }
 
 .section h2 {
@@ -552,12 +552,12 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 400;
   letter-spacing: -0.4px;
   margin-bottom: 16px;
-  color: white;
+  color: var(--ink);
   line-height: 1.05;
 }
 
 .section .section-eyebrow {
-  color: rgba(255,255,255,0.40);
+  color: var(--purple-soft);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -570,7 +570,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 16px;
   font-weight: 300;
   line-height: 1.8;
-  color: rgba(255,255,255,0.70);
+  color: var(--text-mid);
   max-width: 680px;
   margin-bottom: 60px;
 }
@@ -586,26 +586,26 @@ img { max-width: 100%; height: auto; display: block; }
 .why-item {
   padding: 30px 32px;
   border-radius: var(--radius-md);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--purple-pale);
+  border: 1px solid var(--border);
   transition: background var(--transition), border-color var(--transition);
 }
 
 .why-item:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(255,255,255,0.16);
+  background: var(--purple-light);
+  border-color: var(--border-strong);
 }
 
 .why-item h3 {
   font-family: var(--font-display);
-  color: white;
+  color: var(--ink);
   font-size: 21px;
   font-weight: 400;
   margin-bottom: 8px;
 }
 
 .why-item p {
-  color: rgba(255,255,255,0.62);
+  color: var(--text-mid);
   font-size: 14px;
   line-height: 1.75;
   margin-bottom: 0;
@@ -910,7 +910,7 @@ a.contact-info-value:hover { color: var(--purple-mid); }
    FOOTER
 ========================= */
 .footer {
-  background: var(--ink);
+  background: var(--purple-dark);
   padding: 32px 0;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
