@@ -132,7 +132,7 @@ img { max-width: 100%; height: auto; display: block; }
     to bottom,
     rgba(14,6,50,0.00) 0%,
     rgba(14,6,50,0.00) 50%,
-    rgba(14,6,50,0.25) 100%
+    rgba(14,6,50,0.05) 100%
   );
   z-index: 1;
 }
