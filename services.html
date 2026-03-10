@@ -5,9 +5,553 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Services – Value Proposition Design & Service Innovation | Servizions</title>
-  <meta name="description" content="Servizions builds the value proposition, service system, and innovation layer that transforms a healthcare technology into something genuinely needed. Three packages for different stages of innovation.">
+  <meta name="description" content="Servizions builds the value proposition, service system, and innovation layer that transforms a healthcare technology into something genuinely needed.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://szxz22pbfw-design.github.io/servizionsweb/services.html">
+  <style>
+
+    /* ── SERVICES HERO ─────────────────────────────── */
+    .services-hero {
+      background: var(--ink);
+      padding: 0;
+      min-height: 520px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .services-hero .container {
+      display: flex;
+      align-items: stretch;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .services-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+    }
+
+    .services-hero-left {
+      padding: 100px 80px 100px 0;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .services-hero-left .eyebrow {
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 28px;
+    }
+
+    .services-hero-left h1 {
+      font-family: var(--font-display);
+      font-size: 58px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+    }
+
+    .services-hero-right {
+      padding: 100px 0 100px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .services-hero-right p {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.9;
+      max-width: 460px;
+    }
+
+    .services-hero-right .contact-button {
+      display: inline-block;
+      align-self: flex-start;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.70);
+      padding: 14px 36px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .services-hero-right .contact-button:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.40);
+      color: white;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ── QUOTE STRIP ───────────────────────────────── */
+    .services-quote-strip {
+      background: var(--purple-dark);
+      padding: 72px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .services-quote-text {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+      max-width: 800px;
+      letter-spacing: -0.1px;
+      padding-left: 28px;
+      border-left: 2px solid rgba(255,255,255,0.18);
+    }
+
+    /* ── DELIVERS SECTION ──────────────────────────── */
+    .delivers-section {
+      background: var(--ink);
+      padding: 110px 0 120px;
+    }
+
+    .delivers-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 80px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .delivers-intro-left .eyebrow {
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 24px;
+    }
+
+    .delivers-intro-left h2 {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 400;
+      letter-spacing: -0.4px;
+      color: var(--white);
+      line-height: 1.05;
+    }
+
+    .delivers-intro-right p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.42);
+      max-width: 440px;
+    }
+
+    .delivers-grid {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .deliver-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background var(--transition);
+      padding: 44px 0;
+      align-items: start;
+    }
+
+    .deliver-row:first-child {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .deliver-row:hover {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .deliver-row-num {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.18);
+      letter-spacing: 0.06em;
+      padding-top: 4px;
+    }
+
+    .deliver-row-title {
+      padding-right: 60px;
+    }
+
+    .deliver-row-title h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .deliver-row-badge {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.28);
+    }
+
+    .deliver-row-badge--gold {
+      color: #C9A96E;
+      border-color: rgba(201,169,110,0.30);
+    }
+
+    .deliver-row-badge--bright {
+      color: rgba(255,255,255,0.50);
+      border-color: rgba(255,255,255,0.20);
+    }
+
+    .deliver-row-body p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .deliver-row-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .deliver-row-tag {
+      font-size: 10.5px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.04em;
+      padding: 5px 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-sm);
+    }
+
+    /* ── PACKAGES ──────────────────────────────────── */
+    .packages-section {
+      background: var(--white);
+      padding: 120px 0;
+    }
+
+    .packages-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+
+    .packages-header-left .eyebrow { margin-bottom: 24px; }
+
+    .packages-header-left h2 {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 400;
+      letter-spacing: -0.4px;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+
+    .packages-header-right p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-mid);
+      max-width: 440px;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .package-card {
+      background: var(--white);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: background var(--transition);
+    }
+
+    .package-card:last-child { border-right: none; }
+    .package-card:hover { background: var(--purple-pale); }
+
+    .package-card.featured {
+      background: var(--ink);
+    }
+
+    .package-card.featured:hover {
+      background: #160C38;
+    }
+
+    .package-header {
+      padding: 40px 40px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .package-card.featured .package-header {
+      border-bottom-color: rgba(255,255,255,0.07);
+    }
+
+    .package-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .package-card.featured .package-label {
+      color: rgba(255,255,255,0.30);
+    }
+
+    .package-featured-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.70);
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .package-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .package-card.featured .package-name { color: var(--white); }
+
+    .package-duration {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+    }
+
+    .package-card.featured .package-duration {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .package-body {
+      padding: 36px 40px 44px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-desc {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+
+    .package-card.featured .package-desc {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .package-deliverables {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .package-deliverables li {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-mid);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .package-deliverables li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border-strong);
+      font-size: 11px;
+    }
+
+    .package-card.featured .package-deliverables li {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .package-card.featured .package-deliverables li::before {
+      color: rgba(255,255,255,0.18);
+    }
+
+    /* ── WHY SECTION ───────────────────────────────── */
+    .why-section {
+      background: var(--stone);
+      padding: 120px 0;
+    }
+
+    .why-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+
+    .why-header-left .eyebrow { margin-bottom: 24px; }
+
+    .why-header-left h2 {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 400;
+      letter-spacing: -0.4px;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+
+    .why-header-right p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-mid);
+      max-width: 440px;
+    }
+
+    .why-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .why-list-item {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      background: var(--white);
+      transition: background var(--transition);
+    }
+
+    .why-list-item:hover { background: var(--purple-pale); }
+
+    .why-list-left {
+      padding: 36px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .why-list-left h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .why-list-right {
+      padding: 36px 48px;
+    }
+
+    .why-list-right p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    /* ── CTA ───────────────────────────────────────── */
+    .services-cta {
+      background: var(--ink);
+      padding: 110px 0;
+      text-align: center;
+    }
+
+    .services-cta-eyebrow {
+      color: rgba(255,255,255,0.25);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .services-cta h2 {
+      font-family: var(--font-display);
+      font-size: 54px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      letter-spacing: -0.4px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .services-cta p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.40);
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .services-cta .contact-button {
+      display: inline-block;
+      padding: 18px 52px;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .services-hero-inner,
+      .delivers-intro,
+      .packages-header,
+      .why-header { grid-template-columns: 1fr; gap: 40px; }
+      .services-hero-left { padding: 80px 0 0; border-right: none; }
+      .services-hero-right { padding: 32px 0 80px; }
+      .services-hero-left h1,
+      .delivers-intro-left h2,
+      .packages-header-left h2,
+      .why-header-left h2 { font-size: 40px; }
+      .deliver-row { grid-template-columns: 1fr; padding: 32px 0; }
+      .deliver-row-num { display: none; }
+      .deliver-row-title { padding-right: 0; margin-bottom: 16px; }
+      .packages-grid { grid-template-columns: 1fr; border-radius: 0; }
+      .package-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .package-card:last-child { border-bottom: none; }
+      .why-list-item { grid-template-columns: 1fr; }
+      .why-list-left { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 28px 20px; }
+      .why-list-right { padding: 20px 28px 28px; }
+      .services-cta h2 { font-size: 38px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -23,163 +567,157 @@
     </div>
   </header>
 
-<!-- PAGE HEADER -->
-<section class="services-hero">
-  <div class="container">
-    <div class="services-hero-inner">
-      <div class="services-hero-left">
-        <span class="eyebrow">Services</span>
-        <h1>The innovation layer most companies never build.</h1>
-      </div>
-      <div class="services-hero-right">
-        <p>We design the value proposition, service system, and future-ready concept that transforms a healthcare technology into something genuinely needed — before it gets built the wrong way.</p>
-        <a href="contact.html" class="contact-button" style="display:inline-block; margin-top:32px;">Start a Conversation</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE STRIP -->
-<section class="services-quote-strip">
-  <div class="container">
-    <p class="services-quote-text">The gap between a technology that works and a technology that is genuinely used is a service design problem. We solve it.</p>
-  </div>
-</section>
-
-<!-- WHAT WE DELIVER -->
-<section class="delivers-section">
-  <div class="container">
-    <div class="delivers-intro">
-      <span class="eyebrow">What We Deliver</span>
-      <h2>Six capabilities. One integrated system.</h2>
-      <p>Every capability is applied as part of a connected engagement — not as isolated deliverables. We use service design, human-centered design, and innovation value proposition methods to shape what a healthcare innovation becomes.</p>
-    </div>
-
-    <div class="delivers-grid">
-
-      <div class="deliver-card">
-        <div class="deliver-card-left">
-          <div class="deliver-num">01</div>
+  <!-- HERO -->
+  <section class="services-hero">
+    <div class="container">
+      <div class="services-hero-inner">
+        <div class="services-hero-left">
+          <span class="eyebrow">Services</span>
+          <h1>The innovation layer most companies never build.</h1>
         </div>
-        <div class="deliver-card-body">
-          <div class="deliver-card-top">
+        <div class="services-hero-right">
+          <p>We design the value proposition, service system, and adoption architecture that transforms a healthcare technology into something genuinely needed — before it is built the wrong way.</p>
+          <a href="contact.html" class="contact-button">Start a Conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="services-quote-strip">
+    <div class="container">
+      <p class="services-quote-text">The gap between a technology that works and a technology that is genuinely used is a service design problem. We solve it.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DELIVER -->
+  <section class="delivers-section">
+    <div class="container">
+
+      <div class="delivers-intro">
+        <div class="delivers-intro-left">
+          <span class="eyebrow">What We Deliver</span>
+          <h2>Six capabilities.<br>One integrated system.</h2>
+        </div>
+        <div class="delivers-intro-right">
+          <p>Every capability is part of a connected engagement — not isolated deliverables. We use service design, human-centered design, and innovation value proposition methods to shape what a healthcare innovation becomes.</p>
+        </div>
+      </div>
+
+      <div class="delivers-grid">
+
+        <div class="deliver-row">
+          <div class="deliver-row-num">01</div>
+          <div class="deliver-row-title">
             <h3>System Diagnosis</h3>
-            <span class="deliver-tag">Foundation</span>
+            <span class="deliver-row-badge">Foundation</span>
           </div>
-          <p>A structured assessment of where your innovation stands — the value proposition gaps, service system weaknesses, workflow misalignments, and adoption risks that must be addressed before launch.</p>
-          <div class="deliver-card-footer">
-            <span>Gap analysis</span><span>·</span>
-            <span>Risk mapping</span><span>·</span>
-            <span>Opportunity framing</span>
+          <div class="deliver-row-body">
+            <p>A structured assessment of where your innovation stands — the value proposition gaps, service system weaknesses, workflow misalignments, and adoption risks that must be addressed before launch.</p>
+            <div class="deliver-row-tags">
+              <span class="deliver-row-tag">Gap analysis</span>
+              <span class="deliver-row-tag">Risk mapping</span>
+              <span class="deliver-row-tag">Opportunity framing</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="deliver-card deliver-card--highlight">
-        <div class="deliver-card-left">
-          <div class="deliver-num">02</div>
-        </div>
-        <div class="deliver-card-body">
-          <div class="deliver-card-top">
+        <div class="deliver-row">
+          <div class="deliver-row-num">02</div>
+          <div class="deliver-row-title">
             <h3>Innovation Value Proposition</h3>
-            <span class="deliver-tag deliver-tag--light">Core Offering</span>
+            <span class="deliver-row-badge deliver-row-badge--bright">Core Offering</span>
           </div>
-          <p>We design a clear, evidence-backed value proposition that aligns clinical outcomes, operational ROI, and stakeholder needs into one statement that hospital decision-makers and clinical teams trust.</p>
-          <div class="deliver-card-footer deliver-card-footer--light">
-            <span>Value mapping</span><span>·</span>
-            <span>Stakeholder alignment</span><span>·</span>
-            <span>Evidence framing</span>
+          <div class="deliver-row-body">
+            <p>We design a clear, evidence-backed value proposition that aligns clinical outcomes, operational ROI, and stakeholder needs into one statement that hospital decision-makers and clinical teams trust.</p>
+            <div class="deliver-row-tags">
+              <span class="deliver-row-tag">Value mapping</span>
+              <span class="deliver-row-tag">Stakeholder alignment</span>
+              <span class="deliver-row-tag">Evidence framing</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="deliver-card">
-        <div class="deliver-card-left">
-          <div class="deliver-num">03</div>
-        </div>
-        <div class="deliver-card-body">
-          <div class="deliver-card-top">
+        <div class="deliver-row">
+          <div class="deliver-row-num">03</div>
+          <div class="deliver-row-title">
             <h3>Service System Architecture</h3>
-            <span class="deliver-tag">System Design</span>
+            <span class="deliver-row-badge">System Design</span>
           </div>
-          <p>We design the complete service system around your technology — the workflows, touchpoints, governance, training logic, and adoption architecture that makes clinical integration sustainable.</p>
-          <div class="deliver-card-footer">
-            <span>Service blueprint</span><span>·</span>
-            <span>Workflow design</span><span>·</span>
-            <span>Governance model</span>
+          <div class="deliver-row-body">
+            <p>We design the complete service system around your technology — the workflows, touchpoints, governance, training logic, and adoption architecture that makes clinical integration sustainable.</p>
+            <div class="deliver-row-tags">
+              <span class="deliver-row-tag">Service blueprint</span>
+              <span class="deliver-row-tag">Workflow design</span>
+              <span class="deliver-row-tag">Governance model</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="deliver-card deliver-card--highlight">
-        <div class="deliver-card-left">
-          <div class="deliver-num">04</div>
-        </div>
-        <div class="deliver-card-body">
-          <div class="deliver-card-top">
+        <div class="deliver-row">
+          <div class="deliver-row-num">04</div>
+          <div class="deliver-row-title">
             <h3>Impact Analysis</h3>
-            <span class="deliver-tag deliver-tag--gold">Proprietary</span>
+            <span class="deliver-row-badge deliver-row-badge--gold">Proprietary</span>
           </div>
-          <p>We design structured impact measurement frameworks that capture clinical outcomes, operational value, and adoption metrics — giving your innovation the evidence base it needs to scale across clinical sites.</p>
-          <div class="deliver-card-footer deliver-card-footer--light">
-            <span>Outcome mapping</span><span>·</span>
-            <span>Impact metrics</span><span>·</span>
-            
+          <div class="deliver-row-body">
+            <p>We design structured impact measurement frameworks that capture clinical outcomes, operational value, and adoption metrics — giving your innovation the evidence base it needs to scale across clinical sites.</p>
+            <div class="deliver-row-tags">
+              <span class="deliver-row-tag">Outcome mapping</span>
+              <span class="deliver-row-tag">Impact metrics</span>
+              <span class="deliver-row-tag">Evidence building</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="deliver-card">
-        <div class="deliver-card-left">
-          <div class="deliver-num">05</div>
-        </div>
-        <div class="deliver-card-body">
-          <div class="deliver-card-top">
+        <div class="deliver-row">
+          <div class="deliver-row-num">05</div>
+          <div class="deliver-row-title">
             <h3>Implementation Coordination</h3>
-            <span class="deliver-tag">Execution</span>
+            <span class="deliver-row-badge">Execution</span>
           </div>
-          <p>We support the translation of service design into clinical reality — coordinating between technology teams, clinical departments, and operational stakeholders to ensure the system holds.</p>
-          <div class="deliver-card-footer">
-            <span>Rollout planning</span><span>·</span>
-            <span>Site coordination</span><span>·</span>
-            <span>Adoption support</span>
+          <div class="deliver-row-body">
+            <p>We support the translation of service design into clinical reality — coordinating between technology teams, clinical departments, and operational stakeholders to ensure the system holds.</p>
+            <div class="deliver-row-tags">
+              <span class="deliver-row-tag">Rollout planning</span>
+              <span class="deliver-row-tag">Site coordination</span>
+              <span class="deliver-row-tag">Adoption support</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="deliver-card deliver-card--highlight">
-        <div class="deliver-card-left">
-          <div class="deliver-num">06</div>
-        </div>
-        <div class="deliver-card-body">
-          <div class="deliver-card-top">
+        <div class="deliver-row">
+          <div class="deliver-row-num">06</div>
+          <div class="deliver-row-title">
             <h3>Innovation Workshops</h3>
-            <span class="deliver-tag deliver-tag--light">Workshop</span>
+            <span class="deliver-row-badge">Workshop</span>
           </div>
-          <p>Structured sessions using service design and human-centered design methods — run with your internal teams, clinical partners, or both — to accelerate innovation and build internal capability.</p>
-          <div class="deliver-card-footer deliver-card-footer--light">
-            <span>Facilitation</span><span>·</span>
-            <span>Insight synthesis</span><span>·</span>
-            <span>Concept development</span>
+          <div class="deliver-row-body">
+            <p>Structured sessions using service design and human-centered design methods — run with your internal teams, clinical partners, or both — to accelerate innovation and build internal capability.</p>
+            <div class="deliver-row-tags">
+              <span class="deliver-row-tag">Facilitation</span>
+              <span class="deliver-row-tag">Insight synthesis</span>
+              <span class="deliver-row-tag">Concept development</span>
+            </div>
           </div>
         </div>
+
       </div>
-
     </div>
-  </div>
-</section>
-
-
-
-
+  </section>
 
   <!-- PACKAGES -->
   <section class="packages-section">
     <div class="container">
-      <div class="packages-intro">
-        <span class="eyebrow">Service Packages</span>
-        <h2>Three packages. Clear scope.</h2>
-        <p>Designed for different stages of healthcare innovation — from early concept shaping to full service system design. Every package is a fixed-scope engagement with defined deliverables.</p>
+
+      <div class="packages-header">
+        <div class="packages-header-left">
+          <span class="eyebrow">Service Packages</span>
+          <h2>Three packages.<br>Clear scope.</h2>
+        </div>
+        <div class="packages-header-right">
+          <p>Designed for different stages of healthcare innovation — from early concept shaping to full service system design. Every package is a fixed-scope engagement with defined deliverables.</p>
+        </div>
       </div>
 
       <div class="packages-grid">
@@ -209,14 +747,14 @@
             <div class="package-duration">4 – 6 weeks · Full engagement</div>
           </div>
           <div class="package-body">
-            <p class="package-desc">The complete Servizions engagement. We design the full innovation layer — value proposition, service architecture, clinical workflow integration, and future scenario planning — so your technology is built to be genuinely needed.</p>
+            <p class="package-desc">The complete Servizions engagement. We design the full innovation layer — value proposition, service architecture, clinical workflow integration, and impact analysis — so your technology is built to be genuinely needed.</p>
             <ul class="package-deliverables">
               <li>System diagnosis and opportunity mapping</li>
               <li>Innovation value proposition design</li>
               <li>Full service system blueprint</li>
               <li>Clinical workflow design and integration map</li>
-              <li>Future scenario planning report</li>
-              <li>Adoption architecture and rollout framework</li>
+              <li>Impact analysis and evidence framework</li>
+              <li>Adoption architecture and rollout plan</li>
               <li>Impact measurement framework</li>
             </ul>
           </div>
@@ -245,87 +783,68 @@
   </section>
 
   <!-- WHY SERVIZIONS -->
-  <section class="methodology-section" style="background: var(--white);">
+  <section class="why-section">
     <div class="container">
-      <div class="methodology-intro">
-        <span class="eyebrow">Why Servizions</span>
-        <h2>The innovation layer most companies skip</h2>
-        <p>Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in designing the service system and value proposition that determines whether a technology is genuinely adopted.</p>
+
+      <div class="why-header">
+        <div class="why-header-left">
+          <span class="eyebrow">Why Servizions</span>
+          <h2>The innovation layer most companies skip</h2>
+        </div>
+        <div class="why-header-right">
+          <p>Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in designing the service system and value proposition that determines whether a technology is genuinely adopted.</p>
+        </div>
       </div>
 
-      <div class="methodology-grid" style="grid-template-columns: repeat(2,1fr);">
+      <div class="why-list">
 
-        <div class="method-card">
-          <div class="method-card-top">
-            <div class="method-number" style="font-size:28px;">✦</div>
+        <div class="why-list-item">
+          <div class="why-list-left">
+            <h3>We build systems, not strategies</h3>
           </div>
-          <h3>We build systems, not strategies</h3>
-          <p>Servizions does not produce slide decks or advisory reports. We design and deliver structured innovation systems — service blueprints, value propositions, adoption architectures — that translate into real clinical outcomes.</p>
-          <div class="method-card-footer">
-            <span class="method-footer-item">Structured deliverables</span>
-            <span class="method-footer-dot">·</span>
-            <span class="method-footer-item">Real clinical outcomes</span>
+          <div class="why-list-right">
+            <p>Servizions does not produce slide decks or advisory reports. We design and deliver structured innovation systems — service blueprints, value propositions, adoption architectures — that translate into real clinical outcomes.</p>
           </div>
         </div>
 
-        <div class="method-card method-card--dark">
-          <div class="method-card-top">
-            <div class="method-number" style="font-size:28px; color:rgba(255,255,255,0.15);">✦</div>
+        <div class="why-list-item">
+          <div class="why-list-left">
+            <h3>Innovation value proposition is our core</h3>
           </div>
-          <h3>Proprietary future scenario planning</h3>
-          <p>No other studio offers our future scenario planning methodology. We build structured visions of the healthcare environment that is coming — so your innovation is designed for the system that will exist, not only the one today.</p>
-          <div class="method-card-footer method-card-footer--light">
-            <span class="method-footer-item">Genuine differentiator</span>
-            <span class="method-footer-dot">·</span>
-            <span class="method-footer-item">Future-ready innovation</span>
+          <div class="why-list-right">
+            <p>No other studio places innovation value proposition at the centre of every engagement. We build the evidence-backed statement that aligns every stakeholder — clinicians, administrators, and decision-makers — around a technology that is genuinely needed.</p>
           </div>
         </div>
 
-        <div class="method-card method-card--dark">
-          <div class="method-card-top">
-            <div class="method-number" style="font-size:28px; color:rgba(255,255,255,0.15);">✦</div>
+        <div class="why-list-item">
+          <div class="why-list-left">
+            <h3>Pre-product is our specialty</h3>
           </div>
-          <h3>Pre-product is our specialty</h3>
-          <p>The pre-product phase — before a technology is finalised — is where adoption is won or lost. Servizions specialises in this critical window, shaping the value proposition and service concept when change is still possible.</p>
-          <div class="method-card-footer method-card-footer--light">
-            <span class="method-footer-item">Critical window</span>
-            <span class="method-footer-dot">·</span>
-            <span class="method-footer-item">Adoption shaped early</span>
+          <div class="why-list-right">
+            <p>The pre-product phase — before a technology is finalised — is where adoption is won or lost. Servizions specialises in this critical window, shaping the value proposition and service concept when change is still possible.</p>
           </div>
         </div>
 
-        <div class="method-card">
-          <div class="method-card-top">
-            <div class="method-number" style="font-size:28px;">✦</div>
+        <div class="why-list-item">
+          <div class="why-list-left">
+            <h3>Intellectual honesty, always</h3>
           </div>
-          <h3>Intellectual honesty, always</h3>
-          <p>We tell clients what they need to hear, not what they want to hear. If your value proposition is unclear, your service system is missing, or your technology is solving the wrong problem — we will tell you, clearly and constructively.</p>
-          <div class="method-card-footer">
-            <span class="method-footer-item">Honest partnership</span>
-            <span class="method-footer-dot">·</span>
-            <span class="method-footer-item">Constructive challenge</span>
+          <div class="why-list-right">
+            <p>We tell clients what they need to hear, not what they want to hear. If your value proposition is unclear, your service system is missing, or your technology is solving the wrong problem — we will tell you, clearly and constructively.</p>
           </div>
         </div>
 
       </div>
-
-      <div class="methodology-connector">
-        <div class="methodology-connector-line"></div>
-        <div class="methodology-connector-text">A studio built on rigour, honesty, and genuine innovation</div>
-        <div class="methodology-connector-line"></div>
-      </div>
-
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="contact-section">
+  <section class="services-cta">
     <div class="container">
-      <h2 class="contact-title">Ready to build the innovation layer?</h2>
-      <p class="contact-subtitle">Tell us about your healthcare technology challenge — we respond within two business days</p>
-      <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block; padding: 18px 48px;">Start a Conversation</a>
-      </div>
+      <span class="services-cta-eyebrow">Get Started</span>
+      <h2>Ready to build the innovation layer?</h2>
+      <p>Tell us about your healthcare technology challenge — we respond within two business days.</p>
+      <a href="contact.html" class="contact-button">Start a Conversation</a>
     </div>
   </section>
 
@@ -338,29 +857,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- PACKAGES CSS not in base style.css — add inline -->
-  <style>
-    .packages-section { background: var(--stone); padding: 110px 0; }
-    .packages-intro { max-width: 680px; margin-bottom: 72px; }
-    .packages-intro h2 { font-family: var(--font-display); font-size: 50px; font-weight: 400; letter-spacing: -0.4px; color: var(--ink); line-height: 1.05; margin-bottom: 16px; }
-    .packages-intro p { font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--text-mid); }
-    .packages-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; align-items: start; }
-    .package-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: box-shadow var(--transition), transform var(--transition); }
-    .package-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
-    .package-card.featured { border-color: var(--purple); box-shadow: 0 0 0 1px var(--purple), var(--shadow-md); }
-    .package-header { padding: 32px 36px 28px; border-bottom: 1px solid var(--border); }
-    .package-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple-soft); margin-bottom: 10px; display: block; }
-    .package-featured-badge { display: inline-block; background: var(--purple); color: white; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
-    .package-name { font-family: var(--font-display); font-size: 30px; font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 8px; }
-    .package-duration { font-size: 13px; font-weight: 300; color: var(--text-light); }
-    .package-body { padding: 32px 36px; }
-    .package-desc { font-size: 14px; font-weight: 300; color: var(--text-mid); line-height: 1.8; margin-bottom: 24px; }
-    .package-deliverables { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .package-deliverables li { font-size: 13.5px; font-weight: 300; color: var(--text-mid); padding-left: 18px; position: relative; line-height: 1.6; }
-    .package-deliverables li::before { content: '—'; position: absolute; left: 0; color: var(--purple-soft); font-size: 12px; }
-    @media (max-width: 900px) { .packages-grid { grid-template-columns: 1fr; } }
-  </style>
 
 </body>
 </html>
