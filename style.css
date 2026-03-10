@@ -339,11 +339,12 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: 780px;
 }
 
-.diagram-wrap { margin-top: 24px; }
 .diagram-wrap img {
-  width: 100%;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  width: 60%;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  margin: 0 auto;
 }
 
 .diagram-left {
