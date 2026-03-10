@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css">
   <title>Servizions – Healthcare Service Innovation Studio</title>
-  <meta name="description" content="Servizions is a healthcare service innovation studio based in Munich, Germany. We design clinical workflows, healthcare technology adoption strategies, and innovation systems for medical technology.">
-  <meta name="keywords" content="healthcare innovation, clinical workflow design, service design healthcare, healthcare technology adoption, pre-product innovation, healthcare robotics integration, digital health workflow, patient journey mapping, healthcare system design, clinical implementation strategy">
+  <meta name="description" content="Servizions is a healthcare service innovation studio based in Munich, Germany. We build the service systems, clinical workflows, and adoption architectures that enable medical technologies to succeed.">
+  <meta name="keywords" content="healthcare innovation, clinical workflow design, service design healthcare, healthcare technology adoption, pre-product innovation, healthcare robotics integration, digital health workflow, patient journey mapping, healthcare system design">
   <meta name="author" content="Servizions">
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +29,7 @@
       <source src="video/servizions-3.mp4" type="video/mp4">
     </video>
     <p class="hero-description">
-      Servizions is a healthcare innovation studio designing the service systems, clinical workflows, and adoption architectures that enable medical technologies to succeed in real healthcare environments.
+      Servizions is a healthcare service innovation studio — we build the systems, clinical workflows, and adoption architectures that enable medical technologies to succeed in real healthcare environments.
     </p>
   </section>
 
@@ -44,17 +44,26 @@
   <section class="keywords-section">
     <div class="container">
       <h2 class="keywords-title">Healthcare Innovation Expertise</h2>
+      <p class="keywords-intro">Select an area to learn more</p>
+
       <div class="keywords-grid">
-        <span class="keyword-tag">Healthcare Innovation</span>
-        <span class="keyword-tag">Clinical Workflow Design</span>
-        <span class="keyword-tag">Service Design Healthcare</span>
-        <span class="keyword-tag">Technology Adoption</span>
-        <span class="keyword-tag">Pre-Product Innovation</span>
-        <span class="keyword-tag">Robotics Integration</span>
-        <span class="keyword-tag">Digital Health Workflow</span>
-        <span class="keyword-tag">Patient Journey Mapping</span>
-        <span class="keyword-tag">Healthcare System Design</span>
+        <button class="keyword-tag" data-key="healthcare-innovation">Healthcare Innovation</button>
+        <button class="keyword-tag" data-key="clinical-workflow">Clinical Workflow Design</button>
+        <button class="keyword-tag" data-key="service-design">Service Design Healthcare</button>
+        <button class="keyword-tag" data-key="technology-adoption">Technology Adoption</button>
+        <button class="keyword-tag" data-key="pre-product">Pre-Product Innovation</button>
+        <button class="keyword-tag" data-key="robotics">Robotics Integration</button>
+        <button class="keyword-tag" data-key="digital-health">Digital Health Workflow</button>
+        <button class="keyword-tag" data-key="patient-journey">Patient Journey Mapping</button>
+        <button class="keyword-tag" data-key="system-design">Healthcare System Design</button>
       </div>
+
+      <div class="keyword-panel" id="keyword-panel">
+        <div class="keyword-panel-inner">
+          <p class="keyword-panel-text" id="keyword-panel-text"></p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -69,7 +78,7 @@
         with the clinical teams who use their innovations every day.
       </p>
       <div class="diagram-wrap">
-        <img src="image/20260206-diagram01.png" alt="Healthcare service innovation system connecting technology, workflows and patient journeys">
+        <img src="image/20260206-diagram01.png" alt="Healthcare service innovation system">
         <div class="diagram-left">
           <h2 class="diagram-title">Healthcare Technology</h2>
           <p class="diagram-text">Into validated value propositions.</p>
@@ -141,7 +150,7 @@
   <section class="contact-section" id="contact">
     <div class="container">
       <h2 class="contact-title">What type of support are you looking for?</h2>
-      <p class="contact-subtitle">Discuss your healthcare innovation challenge with us</p>
+      <p class="contact-subtitle">Bring your healthcare technology challenge to a system studio</p>
 
       <form class="contact-form" action="https://formspree.io/f/mjgakblb" method="POST">
         <div class="form-row">
@@ -154,7 +163,6 @@
             <input type="text" name="last-name" required>
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group">
             <label>Business Email *</label>
@@ -165,7 +173,6 @@
             <input type="text" name="company">
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group">
             <label>Job Title</label>
@@ -176,7 +183,6 @@
             <input type="text" name="country">
           </div>
         </div>
-
         <div class="form-group" style="margin-bottom:20px;">
           <label>What type of support are you looking for?</label>
           <select name="support-type">
@@ -185,17 +191,14 @@
             <option>General Inquiry</option>
           </select>
         </div>
-
         <div class="form-group" style="margin-bottom:20px;">
           <label>Please tell us how we can help</label>
           <textarea name="message" maxlength="500" placeholder="Describe your challenge or project..."></textarea>
         </div>
-
         <div class="form-consent">
           <input type="checkbox" required>
           <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
         </div>
-
         <button type="submit" class="contact-button">Submit Request</button>
       </form>
     </div>
@@ -209,6 +212,42 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const descriptions = {
+      "healthcare-innovation": "Healthcare innovation is the process of designing and building new systems, services, and technologies that improve how care is delivered. At Servizions, we focus on the adoption layer — ensuring innovations actually reach patients and clinicians, not just prototypes and pilots.",
+      "clinical-workflow": "Clinical workflow design maps the step-by-step processes that healthcare professionals follow when delivering care. By understanding these workflows, we identify exactly where new technologies fit, where friction exists, and how adoption can be made seamless and sustainable.",
+      "service-design": "Service design in healthcare means building the entire experience around a clinical service — not just the technology, but the people, processes, environments, and touchpoints that together determine whether care is effective and innovation is genuinely adopted.",
+      "technology-adoption": "Technology adoption in healthcare requires far more than installing a device or deploying software. It needs governance, training, stakeholder alignment, and workflow integration. Servizions builds the complete adoption architecture so technologies succeed in real clinical environments.",
+      "pre-product": "Pre-product innovation focuses on the critical phase before a product is finalised — understanding clinical needs, testing concepts with real users, and designing the service systems that will support the technology at launch. This is where adoption is won or lost.",
+      "robotics": "Robotics integration in healthcare means building the entire service ecosystem around a robotic system — clinical training, workflow redesign, governance frameworks, and value measurement. We specialise in making robotics adoption sustainable, scalable, and clinically meaningful.",
+      "digital-health": "Digital health workflow design ensures that digital tools — from software platforms to AI diagnostics — fit naturally into how clinical teams actually work. Poor workflow integration is the leading reason digital health investments fail to deliver real impact.",
+      "patient-journey": "Patient journey mapping visualises the full experience a patient moves through — from referral to treatment to follow-up. Understanding this journey allows us to identify gaps, design better service touchpoints, and align technology deployment with real patient needs.",
+      "system-design": "Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system. Servizions builds innovation architectures that work within this complexity, creating lasting structural change."
+    };
+
+    const tags = document.querySelectorAll('.keyword-tag');
+    const panel = document.getElementById('keyword-panel');
+    const panelText = document.getElementById('keyword-panel-text');
+    let activeKey = null;
+
+    tags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const key = tag.dataset.key;
+        if (activeKey === key) {
+          panel.classList.remove('open');
+          tag.classList.remove('active');
+          activeKey = null;
+          return;
+        }
+        tags.forEach(t => t.classList.remove('active'));
+        panelText.textContent = descriptions[key];
+        tag.classList.add('active');
+        panel.classList.add('open');
+        activeKey = key;
+      });
+    });
+  </script>
 
 </body>
 </html>
