@@ -349,6 +349,11 @@
       .why-card { border-right: none; padding: 36px 28px; }
       .why-card:nth-child(3) { border-bottom: 1px solid var(--border); }
     }
+      /* FOOTER OVERRIDE */
+    .footer { background: var(--purple-dark) !important; }
+    .footer, .footer-inner > div { color: rgba(255,255,255,0.40); }
+    .footer-links a { color: rgba(255,255,255,0.55); }
+    .footer-links a:hover { color: white; }
   </style>
 </head>
 <body>
@@ -608,13 +613,13 @@
     <div class="container footer-inner">
       <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
       <div class="footer-links">
-        <a href="mailto:info@servizions.com">info@servizions.com</a>
+        <a href="/cdn-cgi/l/email-protection#b3daddd5dcf3c0d6c1c5dac9dadcddc09dd0dcde"><span class="__cf_email__" data-cfemail="d4bdbab2bb94a7b1a6a2bdaebdbbbaa7fab7bbb9">[email&#160;protected]</span></a>
         <a href="contact.html">Start a conversation</a>
       </div>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const track = document.getElementById('deliversTrack');
     const dotsWrap = document.getElementById('deliversDots');
     const counter = document.getElementById('deliversCounter');
@@ -645,13 +650,4 @@
     prevBtn.addEventListener('click', function() { if (current > 0) { current--; update(); } });
     nextBtn.addEventListener('click', function() { if (current < total - 1) { current++; update(); } });
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowLeft') { if (current > 0) { current--; update(); } }
-      if (e.key === 'ArrowRight') { if (current < total - 1) { current++; update(); } }
-    });
-
-    update();
-  </script>
-
-</body>
-</html>
+    document.addEventListener('
