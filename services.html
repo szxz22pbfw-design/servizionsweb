@@ -10,47 +10,41 @@
   <link rel="canonical" href="https://szxz22pbfw-design.github.io/servizionsweb/services.html">
   <style>
 
-    /* ── SERVICES HERO ─────────────────────────────────────── */
-    .services-hero {
-      background: var(--ink);
-      padding: 130px 0 120px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* ── PAGE HEADER ────────────────────────────────────────── */
+    .services-page-header {
+      background: var(--white);
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--border);
     }
-    .services-hero-inner {
+    .services-page-header-inner {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 120px;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
       align-items: end;
     }
-    .services-hero-left .eyebrow {
-      color: rgba(255,255,255,0.28);
-      margin-bottom: 28px;
-    }
-    .services-hero-left h1 {
+    .services-page-header h1 {
       font-family: var(--font-display);
       font-size: 72px;
       font-weight: 400;
       font-style: italic;
-      color: var(--white);
+      color: var(--ink);
       line-height: 1.0;
       letter-spacing: -0.5px;
+      margin-top: 20px;
     }
-    .services-hero-right {
-      padding-bottom: 6px;
-    }
-    .services-hero-right p {
+    .services-page-header-right p {
       font-size: 16px;
       font-weight: 300;
-      color: rgba(255,255,255,0.50);
+      color: var(--text-mid);
       line-height: 1.9;
-      border-left: 1px solid rgba(255,255,255,0.12);
+      border-left: 2px solid var(--border-strong);
       padding-left: 28px;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
-    .hero-cta {
+    .services-page-header-right .header-cta {
       display: inline-block;
-      border: 1px solid rgba(255,255,255,0.20);
-      color: rgba(255,255,255,0.75);
+      background: var(--purple);
+      color: white;
       padding: 14px 36px;
       border-radius: var(--radius-sm);
       font-size: 11px;
@@ -60,41 +54,41 @@
       font-family: var(--font-body);
       transition: all var(--transition);
     }
-    .hero-cta:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.40);
-      color: white;
+    .services-page-header-right .header-cta:hover {
+      background: var(--purple-mid);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(59,15,160,0.25);
     }
 
-    /* ── QUOTE STRIP ───────────────────────────────────────── */
+    /* ── QUOTE STRIP ────────────────────────────────────────── */
     .services-quote-strip {
-      background: var(--purple-dark);
+      background: var(--stone);
       padding: 72px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid var(--border);
     }
     .services-quote-text {
       font-family: var(--font-display);
-      font-size: 34px;
+      font-size: 36px;
       font-weight: 400;
       font-style: italic;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.45;
-      max-width: 820px;
-      letter-spacing: -0.2px;
+      color: var(--ink);
+      line-height: 1.4;
+      max-width: 860px;
+      letter-spacing: -0.3px;
     }
     .services-quote-text::before {
       content: '\201C';
-      font-size: 64px;
+      font-size: 72px;
       line-height: 0;
       vertical-align: -0.34em;
-      color: rgba(255,255,255,0.12);
+      color: rgba(59,15,160,0.10);
       margin-right: 2px;
       font-family: var(--font-display);
     }
 
-    /* ── DELIVERS SECTION ──────────────────────────────────── */
+    /* ── DELIVERS SECTION ───────────────────────────────────── */
     .delivers-section {
-      background: var(--ink);
+      background: var(--white);
       padding: 120px 0;
     }
     .delivers-header {
@@ -102,16 +96,15 @@
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: end;
-      margin-bottom: 80px;
-      padding-bottom: 64px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 72px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
     }
-    .delivers-header-left .eyebrow { color: rgba(255,255,255,0.28); }
     .delivers-header-left h2 {
       font-family: var(--font-display);
       font-size: 54px;
       font-weight: 400;
-      color: var(--white);
+      color: var(--ink);
       line-height: 1.05;
       letter-spacing: -0.4px;
       margin-top: 16px;
@@ -119,45 +112,49 @@
     .delivers-header-right p {
       font-size: 15px;
       font-weight: 300;
-      color: rgba(255,255,255,0.42);
+      color: var(--text-mid);
       line-height: 1.9;
     }
 
     .delivers-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.06);
+      gap: 0;
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
 
     .deliver-card {
-      background: #0B0820;
+      background: var(--white);
       padding: 48px 40px 44px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       transition: background var(--transition);
     }
-    .deliver-card:hover { background: #130D2E; }
-    .deliver-card--mid { background: #0E0A1F; }
-    .deliver-card--mid:hover { background: #160C35; }
+    .deliver-card:nth-child(3n) { border-right: none; }
+    .deliver-card:nth-child(4),
+    .deliver-card:nth-child(5),
+    .deliver-card:nth-child(6) { border-bottom: none; }
+    .deliver-card:hover { background: var(--purple-pale); }
 
     .deliver-card-num {
+      font-family: var(--font-display);
       font-size: 11px;
       font-weight: 400;
-      color: rgba(255,255,255,0.18);
+      color: var(--text-light);
       letter-spacing: 0.14em;
-      font-family: var(--font-display);
     }
 
     .deliver-card h3 {
       font-family: var(--font-display);
       font-size: 26px;
       font-weight: 500;
-      color: var(--white);
+      color: var(--ink);
       line-height: 1.2;
       margin: 0;
     }
@@ -165,7 +162,7 @@
     .deliver-card p {
       font-size: 13.5px;
       font-weight: 300;
-      color: rgba(255,255,255,0.42);
+      color: var(--text-mid);
       line-height: 1.85;
       margin: 0;
       flex: 1;
@@ -176,13 +173,13 @@
       align-items: center;
       gap: 8px;
       padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid var(--border);
       flex-wrap: wrap;
     }
     .deliver-card-footer span {
       font-size: 10.5px;
       font-weight: 400;
-      color: rgba(255,255,255,0.18);
+      color: var(--text-light);
     }
 
     .deliver-card-tag {
@@ -191,19 +188,22 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--purple-soft);
+      border: 1px solid var(--border-strong);
       padding: 4px 12px;
       border-radius: 999px;
       width: fit-content;
     }
-    .deliver-card-tag--gold { color: #C9A96E; border-color: rgba(201,169,110,0.28); }
-    .deliver-card-tag--bright { color: rgba(255,255,255,0.48); border-color: rgba(255,255,255,0.16); }
+    .deliver-card-tag--gold {
+      color: #9B6F2F;
+      border-color: rgba(155,111,47,0.30);
+      background: rgba(155,111,47,0.06);
+    }
 
-    /* ── PACKAGES ──────────────────────────────────────────── */
+    /* ── PACKAGES ───────────────────────────────────────────── */
     .packages-section {
-      background: var(--white);
-      padding: 130px 0;
+      background: var(--stone);
+      padding: 120px 0;
     }
     .packages-header {
       display: grid;
@@ -231,9 +231,11 @@
     .packages-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 0;
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: var(--shadow-md);
     }
 
     .package-card {
@@ -245,14 +247,14 @@
     }
     .package-card:last-child { border-right: none; }
     .package-card:hover { background: var(--purple-pale); }
-    .package-card.featured { background: var(--ink); }
-    .package-card.featured:hover { background: #130D2E; }
+    .package-card.featured { background: var(--purple-dark); }
+    .package-card.featured:hover { background: #250870; }
 
     .package-header {
       padding: 44px 40px 36px;
       border-bottom: 1px solid var(--border);
     }
-    .package-card.featured .package-header { border-bottom-color: rgba(255,255,255,0.07); }
+    .package-card.featured .package-header { border-bottom-color: rgba(255,255,255,0.08); }
 
     .package-label {
       font-size: 10px;
@@ -263,7 +265,7 @@
       margin-bottom: 16px;
       display: block;
     }
-    .package-card.featured .package-label { color: rgba(255,255,255,0.28); }
+    .package-card.featured .package-label { color: rgba(255,255,255,0.30); }
 
     .package-badge {
       display: inline-block;
@@ -293,7 +295,7 @@
       font-weight: 300;
       color: var(--text-light);
     }
-    .package-card.featured .package-duration { color: rgba(255,255,255,0.28); }
+    .package-card.featured .package-duration { color: rgba(255,255,255,0.30); }
 
     .package-body {
       padding: 36px 40px 44px;
@@ -309,7 +311,7 @@
       line-height: 1.85;
       margin-bottom: 28px;
     }
-    .package-card.featured .package-desc { color: rgba(255,255,255,0.40); }
+    .package-card.featured .package-desc { color: rgba(255,255,255,0.45); }
 
     .package-deliverables {
       list-style: none;
@@ -326,7 +328,7 @@
       position: relative;
       line-height: 1.6;
     }
-    .package-card.featured .package-deliverables li { color: rgba(255,255,255,0.40); }
+    .package-card.featured .package-deliverables li { color: rgba(255,255,255,0.45); }
     .package-deliverables li::before {
       content: '—';
       position: absolute;
@@ -334,12 +336,12 @@
       color: var(--text-light);
       font-size: 11px;
     }
-    .package-card.featured .package-deliverables li::before { color: rgba(255,255,255,0.18); }
+    .package-card.featured .package-deliverables li::before { color: rgba(255,255,255,0.20); }
 
-    /* ── WHY SECTION ───────────────────────────────────────── */
+    /* ── WHY SECTION ────────────────────────────────────────── */
     .why-section {
-      background: var(--stone);
-      padding: 130px 0;
+      background: var(--white);
+      padding: 120px 0;
     }
     .why-header {
       max-width: 680px;
@@ -365,22 +367,27 @@
     .why-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border);
+      gap: 0;
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
 
     .why-card {
-      background: var(--white);
+      background: var(--purple-pale);
       padding: 52px 48px;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       transition: background var(--transition);
     }
-    .why-card:hover { background: var(--purple-pale); }
+    .why-card:nth-child(2n) { border-right: none; }
+    .why-card:nth-child(3),
+    .why-card:nth-child(4) { border-bottom: none; }
+    .why-card:hover { background: var(--purple-light); }
 
     .why-card-num {
       font-family: var(--font-display);
@@ -421,71 +428,28 @@
       color: var(--text-light);
     }
 
-    /* ── CTA ───────────────────────────────────────────────── */
-    .services-cta {
-      background: var(--ink);
-      padding: 130px 0;
-    }
-    .services-cta-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
-    }
-    .services-cta h2 {
-      font-family: var(--font-display);
-      font-size: 54px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--white);
-      line-height: 1.05;
-      letter-spacing: -0.4px;
-    }
-    .services-cta-right p {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.42);
-      line-height: 1.9;
-      margin-bottom: 36px;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: var(--purple);
-      color: white;
-      padding: 16px 40px;
-      border-radius: var(--radius-sm);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-family: var(--font-body);
-      transition: all var(--transition);
-    }
-    .cta-btn:hover {
-      background: var(--purple-mid);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(59,15,160,0.35);
-    }
-
-    /* ── RESPONSIVE ────────────────────────────────────────── */
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .services-hero-inner,
+      .services-page-header-inner,
       .delivers-header,
-      .packages-header,
-      .services-cta-inner { grid-template-columns: 1fr; gap: 40px; }
-      .services-hero-left h1 { font-size: 48px; }
+      .packages-header { grid-template-columns: 1fr; gap: 40px; }
+      .services-page-header h1 { font-size: 48px; }
       .services-quote-text { font-size: 26px; }
       .delivers-header-left h2,
       .packages-header h2,
-      .why-header h2,
-      .services-cta h2 { font-size: 38px; }
-      .delivers-grid { grid-template-columns: 1fr; }
+      .why-header h2 { font-size: 38px; }
+      .delivers-grid,
       .packages-grid { grid-template-columns: 1fr; }
+      .deliver-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .deliver-card:last-child { border-bottom: none; }
       .package-card { border-right: none; border-bottom: 1px solid var(--border); }
       .package-card:last-child { border-bottom: none; }
       .why-grid { grid-template-columns: 1fr; }
-      .deliver-card { padding: 36px 28px 32px; }
-      .why-card { padding: 40px 32px; }
+      .why-card { border-right: none; }
+      .deliver-card,
+      .why-card { padding: 36px 28px; }
+      .package-header,
+      .package-body { padding-left: 28px; padding-right: 28px; }
     }
   </style>
 </head>
@@ -503,17 +467,17 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="services-hero">
+  <!-- PAGE HEADER -->
+  <section class="services-page-header">
     <div class="container">
-      <div class="services-hero-inner">
-        <div class="services-hero-left">
+      <div class="services-page-header-inner">
+        <div class="services-page-header-left">
           <span class="eyebrow">Services</span>
           <h1>The innovation layer most companies never build.</h1>
         </div>
-        <div class="services-hero-right">
+        <div class="services-page-header-right">
           <p>We design the value proposition, service system, and adoption architecture that transforms a healthcare technology into something genuinely needed — before it is built the wrong way.</p>
-          <a href="contact.html" class="hero-cta">Start a Conversation</a>
+          <a href="contact.html" class="header-cta">Start a Conversation</a>
         </div>
       </div>
     </div>
@@ -551,14 +515,14 @@
           <span class="deliver-card-tag">Foundation</span>
         </div>
 
-        <div class="deliver-card deliver-card--mid">
+        <div class="deliver-card">
           <div class="deliver-card-num">02</div>
           <h3>Innovation Value Proposition</h3>
           <p>We design a clear, evidence-backed value proposition that aligns clinical outcomes, operational ROI, and stakeholder needs into one statement that hospital decision-makers trust.</p>
           <div class="deliver-card-footer">
             <span>Value mapping</span><span>·</span><span>Stakeholder alignment</span><span>·</span><span>Evidence framing</span>
           </div>
-          <span class="deliver-card-tag deliver-card-tag--bright">Core Offering</span>
+          <span class="deliver-card-tag">Core Offering</span>
         </div>
 
         <div class="deliver-card">
@@ -571,7 +535,7 @@
           <span class="deliver-card-tag">System Design</span>
         </div>
 
-        <div class="deliver-card deliver-card--mid">
+        <div class="deliver-card">
           <div class="deliver-card-num">04</div>
           <h3>Impact Analysis</h3>
           <p>We design structured impact measurement frameworks capturing clinical outcomes, operational value, and adoption metrics — giving your innovation the evidence base it needs to scale.</p>
@@ -591,14 +555,14 @@
           <span class="deliver-card-tag">Execution</span>
         </div>
 
-        <div class="deliver-card deliver-card--mid">
+        <div class="deliver-card">
           <div class="deliver-card-num">06</div>
           <h3>Innovation Workshops</h3>
           <p>Structured facilitated sessions using service design and human-centered design methods — run with your internal teams, clinical partners, or both — to accelerate innovation capability.</p>
           <div class="deliver-card-footer">
             <span>Facilitation</span><span>·</span><span>Insight synthesis</span><span>·</span><span>Concept development</span>
           </div>
-          <span class="deliver-card-tag deliver-card-tag--bright">Workshop</span>
+          <span class="deliver-card-tag">Workshop</span>
         </div>
 
       </div>
@@ -690,7 +654,6 @@
       </div>
 
       <div class="why-grid">
-
         <div class="why-card">
           <div class="why-card-num">01</div>
           <h3>We build systems, not strategies</h3>
@@ -726,20 +689,17 @@
             <span>Honest partnership</span><span>·</span><span>Constructive challenge</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="services-cta">
+  <section class="contact-section">
     <div class="container">
-      <div class="services-cta-inner">
-        <h2>Ready to build the innovation layer?</h2>
-        <div class="services-cta-right">
-          <p>Tell us about your healthcare technology challenge. We work with medical robotics companies, healthtech ventures, and hospital innovation teams at every stage of the innovation process.</p>
-          <a href="contact.html" class="cta-btn">Start a Conversation</a>
-        </div>
+      <h2 class="contact-title">Ready to build the innovation layer?</h2>
+      <p class="contact-subtitle">Tell us about your healthcare technology challenge — we respond within two business days</p>
+      <div style="text-align:center;">
+        <a href="contact.html" class="contact-button" style="display:inline-block; padding:18px 48px;">Start a Conversation</a>
       </div>
     </div>
   </section>
