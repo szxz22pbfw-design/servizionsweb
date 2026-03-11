@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Services – Value Proposition Design & Service Innovation | Servizions</title>
+  <title>Services – Value Proposition Design &amp; Service Innovation | Servizions</title>
   <meta name="description" content="Servizions builds the value proposition, service system, and innovation layer that transforms a healthcare technology into something genuinely needed.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://szxz22pbfw-design.github.io/servizionsweb/services.html">
   <style>
 
-    /* ── PAGE HEADER ────────────────────────────────────────── */
+    /* PAGE HEADER */
     .services-page-header {
       background: var(--white);
-      padding: 100px 0 80px;
+      padding: 100px 0 90px;
       border-bottom: 1px solid var(--border);
     }
     .services-page-header-inner {
@@ -24,7 +24,7 @@
     }
     .services-page-header h1 {
       font-family: var(--font-display);
-      font-size: 72px;
+      font-size: 68px;
       font-weight: 400;
       font-style: italic;
       color: var(--ink);
@@ -41,7 +41,7 @@
       padding-left: 28px;
       margin-bottom: 36px;
     }
-    .services-page-header-right .header-cta {
+    .header-cta {
       display: inline-block;
       background: var(--purple);
       color: white;
@@ -54,21 +54,21 @@
       font-family: var(--font-body);
       transition: all var(--transition);
     }
-    .services-page-header-right .header-cta:hover {
+    .header-cta:hover {
       background: var(--purple-mid);
       transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(59,15,160,0.25);
     }
 
-    /* ── QUOTE STRIP ────────────────────────────────────────── */
+    /* QUOTE */
     .services-quote-strip {
-      background: var(--stone);
-      padding: 72px 0;
+      background: var(--white);
+      padding: 80px 0;
       border-bottom: 1px solid var(--border);
     }
     .services-quote-text {
       font-family: var(--font-display);
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 400;
       font-style: italic;
       color: var(--ink);
@@ -86,23 +86,23 @@
       font-family: var(--font-display);
     }
 
-    /* ── DELIVERS SECTION ───────────────────────────────────── */
+    /* DELIVERS SECTION */
     .delivers-section {
       background: var(--white);
-      padding: 120px 0;
+      padding: 110px 0;
     }
     .delivers-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: end;
-      margin-bottom: 72px;
-      padding-bottom: 60px;
+      margin-bottom: 64px;
+      padding-bottom: 56px;
       border-bottom: 1px solid var(--border);
     }
     .delivers-header-left h2 {
       font-family: var(--font-display);
-      font-size: 54px;
+      font-size: 50px;
       font-weight: 400;
       color: var(--ink);
       line-height: 1.05;
@@ -116,32 +116,85 @@
       line-height: 1.9;
     }
 
-    .delivers-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+    /* SLIDER */
+    .delivers-slider-wrap { position: relative; }
+    .delivers-slider {
+      overflow: hidden;
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      overflow: hidden;
       box-shadow: var(--shadow-sm);
     }
-
+    .delivers-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
     .deliver-card {
       background: var(--white);
-      padding: 48px 40px 44px;
+      padding: 64px 72px 60px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transition: background var(--transition);
+      gap: 20px;
+      flex: 0 0 100%;
+      min-width: 0;
     }
-    .deliver-card:nth-child(3n) { border-right: none; }
-    .deliver-card:nth-child(4),
-    .deliver-card:nth-child(5),
-    .deliver-card:nth-child(6) { border-bottom: none; }
-    .deliver-card:hover { background: var(--purple-pale); }
+    .delivers-slider-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+    .delivers-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .delivers-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--border-strong);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .delivers-dot.active {
+      background: var(--purple);
+      width: 20px;
+      border-radius: 3px;
+    }
+    .delivers-slider-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .delivers-counter {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+    }
+    .delivers-arrows { display: flex; gap: 10px; }
+    .slider-arrow {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-strong);
+      background: var(--white);
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-size: 16px;
+      line-height: 1;
+      font-family: inherit;
+    }
+    .slider-arrow:hover {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: white;
+    }
+    .slider-arrow:disabled { opacity: 0.25; pointer-events: none; }
 
+    /* CARD INTERNALS */
     .deliver-card-num {
       font-family: var(--font-display);
       font-size: 11px;
@@ -149,39 +202,31 @@
       color: var(--text-light);
       letter-spacing: 0.14em;
     }
-
     .deliver-card h3 {
       font-family: var(--font-display);
-      font-size: 26px;
+      font-size: 36px;
       font-weight: 500;
       color: var(--ink);
-      line-height: 1.2;
+      line-height: 1.15;
       margin: 0;
     }
-
     .deliver-card p {
-      font-size: 13.5px;
+      font-size: 15px;
       font-weight: 300;
       color: var(--text-mid);
       line-height: 1.85;
       margin: 0;
-      flex: 1;
+      max-width: 720px;
     }
-
     .deliver-card-footer {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding-top: 18px;
+      gap: 10px;
+      padding-top: 20px;
       border-top: 1px solid var(--border);
       flex-wrap: wrap;
     }
-    .deliver-card-footer span {
-      font-size: 10.5px;
-      font-weight: 400;
-      color: var(--text-light);
-    }
-
+    .deliver-card-footer span { font-size: 11px; color: var(--text-light); }
     .deliver-card-tag {
       display: inline-block;
       font-size: 9.5px;
@@ -190,54 +235,43 @@
       text-transform: uppercase;
       color: var(--purple-soft);
       border: 1px solid var(--border-strong);
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 999px;
       width: fit-content;
     }
     .deliver-card-tag--gold {
       color: #9B6F2F;
-      border-color: rgba(155,111,47,0.30);
-      background: rgba(155,111,47,0.06);
+      border-color: rgba(155,111,47,0.28);
+      background: rgba(155,111,47,0.05);
     }
 
-    /* ── PACKAGES ───────────────────────────────────────────── */
-    .packages-section {
-      background: var(--stone);
-      padding: 120px 0;
-    }
+    /* PACKAGES */
+    .packages-section { background: var(--stone); padding: 110px 0; }
     .packages-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: end;
-      margin-bottom: 72px;
+      margin-bottom: 64px;
     }
     .packages-header h2 {
       font-family: var(--font-display);
-      font-size: 54px;
+      font-size: 50px;
       font-weight: 400;
       letter-spacing: -0.4px;
       color: var(--ink);
       line-height: 1.05;
       margin-top: 16px;
     }
-    .packages-header p {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.9;
-      color: var(--text-mid);
-    }
-
+    .packages-header p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--text-mid); }
     .packages-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-md);
     }
-
     .package-card {
       background: var(--white);
       display: flex;
@@ -249,134 +283,40 @@
     .package-card:hover { background: var(--purple-pale); }
     .package-card.featured { background: var(--purple-dark); }
     .package-card.featured:hover { background: #250870; }
-
-    .package-header {
-      padding: 44px 40px 36px;
-      border-bottom: 1px solid var(--border);
-    }
+    .package-header { padding: 40px 36px 32px; border-bottom: 1px solid var(--border); }
     .package-card.featured .package-header { border-bottom-color: rgba(255,255,255,0.08); }
-
-    .package-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 16px;
-      display: block;
-    }
+    .package-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); margin-bottom: 14px; display: block; }
     .package-card.featured .package-label { color: rgba(255,255,255,0.30); }
-
-    .package-badge {
-      display: inline-block;
-      background: var(--purple);
-      color: white;
-      font-size: 9.5px;
-      font-weight: 600;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-    }
-
-    .package-name {
-      font-family: var(--font-display);
-      font-size: 32px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
+    .package-badge { display: inline-block; background: var(--purple); color: white; font-size: 9.5px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; }
+    .package-name { font-family: var(--font-display); font-size: 30px; font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 8px; }
     .package-card.featured .package-name { color: var(--white); }
-
-    .package-duration {
-      font-size: 12.5px;
-      font-weight: 300;
-      color: var(--text-light);
-    }
+    .package-duration { font-size: 12.5px; font-weight: 300; color: var(--text-light); }
     .package-card.featured .package-duration { color: rgba(255,255,255,0.30); }
-
-    .package-body {
-      padding: 36px 40px 44px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .package-desc {
-      font-size: 13.5px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin-bottom: 28px;
-    }
+    .package-body { padding: 32px 36px 40px; flex: 1; display: flex; flex-direction: column; }
+    .package-desc { font-size: 13.5px; font-weight: 300; color: var(--text-mid); line-height: 1.85; margin-bottom: 26px; }
     .package-card.featured .package-desc { color: rgba(255,255,255,0.45); }
-
-    .package-deliverables {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      margin-top: auto;
-    }
-    .package-deliverables li {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--text-mid);
-      padding-left: 20px;
-      position: relative;
-      line-height: 1.6;
-    }
+    .package-deliverables { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-top: auto; }
+    .package-deliverables li { font-size: 13px; font-weight: 300; color: var(--text-mid); padding-left: 20px; position: relative; line-height: 1.6; }
     .package-card.featured .package-deliverables li { color: rgba(255,255,255,0.45); }
-    .package-deliverables li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--text-light);
-      font-size: 11px;
-    }
+    .package-deliverables li::before { content: '—'; position: absolute; left: 0; color: var(--text-light); font-size: 11px; }
     .package-card.featured .package-deliverables li::before { color: rgba(255,255,255,0.20); }
 
-    /* ── WHY SECTION ────────────────────────────────────────── */
-    .why-section {
-      background: var(--white);
-      padding: 120px 0;
-    }
-    .why-header {
-      max-width: 680px;
-      margin-bottom: 72px;
-    }
-    .why-header h2 {
-      font-family: var(--font-display);
-      font-size: 54px;
-      font-weight: 400;
-      letter-spacing: -0.4px;
-      color: var(--ink);
-      line-height: 1.05;
-      margin-top: 16px;
-    }
-    .why-header p {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.9;
-      color: var(--text-mid);
-      margin-top: 18px;
-    }
-
-    .why-grid {
+    /* WHY SECTION */
+    .why-section { background: var(--white); padding: 110px 0; }
+    .why-header { max-width: 680px; margin-bottom: 64px; }
+    .why-header h2 { font-family: var(--font-display); font-size: 50px; font-weight: 400; letter-spacing: -0.4px; color: var(--ink); line-height: 1.05; margin-top: 16px; }
+    .why-header p { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--text-mid); margin-top: 18px; }
+    .why-cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0;
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-sm);
     }
-
     .why-card {
-      background: var(--purple-pale);
-      padding: 52px 48px;
+      background: var(--white);
+      padding: 48px 44px;
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -385,71 +325,29 @@
       transition: background var(--transition);
     }
     .why-card:nth-child(2n) { border-right: none; }
-    .why-card:nth-child(3),
-    .why-card:nth-child(4) { border-bottom: none; }
-    .why-card:hover { background: var(--purple-light); }
+    .why-card:nth-child(3), .why-card:nth-child(4) { border-bottom: none; }
+    .why-card:hover { background: var(--purple-pale); }
+    .why-card-num { font-family: var(--font-display); font-size: 44px; font-weight: 300; color: rgba(59,15,160,0.08); line-height: 1; }
+    .why-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 500; color: var(--ink); line-height: 1.2; margin: 0; }
+    .why-card p { font-size: 14px; font-weight: 300; color: var(--text-mid); line-height: 1.85; margin: 0; flex: 1; }
+    .why-card-footer { display: flex; align-items: center; gap: 8px; padding-top: 18px; border-top: 1px solid var(--border); margin-top: auto; }
+    .why-card-footer span { font-size: 10.5px; color: var(--text-light); }
 
-    .why-card-num {
-      font-family: var(--font-display);
-      font-size: 44px;
-      font-weight: 300;
-      color: rgba(59,15,160,0.08);
-      line-height: 1;
-    }
-
-    .why-card h3 {
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.2;
-      margin: 0;
-    }
-
-    .why-card p {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin: 0;
-      flex: 1;
-    }
-
-    .why-card-footer {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-    }
-    .why-card-footer span {
-      font-size: 10.5px;
-      color: var(--text-light);
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .services-page-header-inner,
       .delivers-header,
       .packages-header { grid-template-columns: 1fr; gap: 40px; }
-      .services-page-header h1 { font-size: 48px; }
+      .services-page-header h1 { font-size: 46px; }
       .services-quote-text { font-size: 26px; }
-      .delivers-header-left h2,
-      .packages-header h2,
-      .why-header h2 { font-size: 38px; }
-      .delivers-grid,
-      .packages-grid { grid-template-columns: 1fr; }
-      .deliver-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .deliver-card:last-child { border-bottom: none; }
+      .delivers-header-left h2, .packages-header h2, .why-header h2 { font-size: 36px; }
+      .deliver-card { padding: 40px 28px 36px; }
+      .deliver-card h3 { font-size: 28px; }
+      .packages-grid, .why-cards-grid { grid-template-columns: 1fr; }
       .package-card { border-right: none; border-bottom: 1px solid var(--border); }
       .package-card:last-child { border-bottom: none; }
-      .why-grid { grid-template-columns: 1fr; }
-      .why-card { border-right: none; }
-      .deliver-card,
-      .why-card { padding: 36px 28px; }
-      .package-header,
-      .package-body { padding-left: 28px; padding-right: 28px; }
+      .why-card { border-right: none; padding: 36px 28px; }
+      .why-card:nth-child(3) { border-bottom: 1px solid var(--border); }
     }
   </style>
 </head>
@@ -471,7 +369,7 @@
   <section class="services-page-header">
     <div class="container">
       <div class="services-page-header-inner">
-        <div class="services-page-header-left">
+        <div>
           <span class="eyebrow">Services</span>
           <h1>The innovation layer most companies never build.</h1>
         </div>
@@ -483,7 +381,7 @@
     </div>
   </section>
 
-  <!-- QUOTE STRIP -->
+  <!-- QUOTE -->
   <section class="services-quote-strip">
     <div class="container">
       <p class="services-quote-text">The gap between a technology that works and a technology that is genuinely used is a service design problem. We solve it.</p>
@@ -503,69 +401,85 @@
         </div>
       </div>
 
-      <div class="delivers-grid">
+      <div class="delivers-slider-wrap">
+        <div class="delivers-slider">
+          <div class="delivers-track" id="deliversTrack">
 
-        <div class="deliver-card">
-          <div class="deliver-card-num">01</div>
-          <h3>System Diagnosis</h3>
-          <p>A structured assessment of where your innovation stands — the value proposition gaps, service system weaknesses, workflow misalignments, and adoption risks that must be addressed before launch.</p>
-          <div class="deliver-card-footer">
-            <span>Gap analysis</span><span>·</span><span>Risk mapping</span><span>·</span><span>Opportunity framing</span>
+            <div class="deliver-card">
+              <div class="deliver-card-num">01 / 06</div>
+              <h3>System Diagnosis</h3>
+              <p>A structured assessment of where your innovation stands — the value proposition gaps, service system weaknesses, workflow misalignments, and adoption risks that must be addressed before launch.</p>
+              <div class="deliver-card-footer">
+                <span>Gap analysis</span><span>·</span><span>Risk mapping</span><span>·</span><span>Opportunity framing</span>
+              </div>
+              <span class="deliver-card-tag">Foundation</span>
+            </div>
+
+            <div class="deliver-card">
+              <div class="deliver-card-num">02 / 06</div>
+              <h3>Innovation Value Proposition</h3>
+              <p>We design a clear, evidence-backed value proposition that aligns clinical outcomes, operational ROI, and stakeholder needs into one statement that hospital decision-makers trust.</p>
+              <div class="deliver-card-footer">
+                <span>Value mapping</span><span>·</span><span>Stakeholder alignment</span><span>·</span><span>Evidence framing</span>
+              </div>
+              <span class="deliver-card-tag">Core Offering</span>
+            </div>
+
+            <div class="deliver-card">
+              <div class="deliver-card-num">03 / 06</div>
+              <h3>Service System Architecture</h3>
+              <p>We design the complete service system — workflows, touchpoints, governance, training logic, and adoption architecture that makes clinical integration sustainable and scalable.</p>
+              <div class="deliver-card-footer">
+                <span>Service blueprint</span><span>·</span><span>Workflow design</span><span>·</span><span>Governance model</span>
+              </div>
+              <span class="deliver-card-tag">System Design</span>
+            </div>
+
+            <div class="deliver-card">
+              <div class="deliver-card-num">04 / 06</div>
+              <h3>Impact Analysis</h3>
+              <p>We design structured impact measurement frameworks capturing clinical outcomes, operational value, and adoption metrics — giving your innovation the evidence base it needs to scale.</p>
+              <div class="deliver-card-footer">
+                <span>Outcome mapping</span><span>·</span><span>Impact metrics</span><span>·</span><span>Evidence building</span>
+              </div>
+              <span class="deliver-card-tag deliver-card-tag--gold">Proprietary</span>
+            </div>
+
+            <div class="deliver-card">
+              <div class="deliver-card-num">05 / 06</div>
+              <h3>Implementation Coordination</h3>
+              <p>We support the translation of service design into clinical reality — coordinating between technology teams, clinical departments, and operational stakeholders to ensure the system holds.</p>
+              <div class="deliver-card-footer">
+                <span>Rollout planning</span><span>·</span><span>Site coordination</span><span>·</span><span>Adoption support</span>
+              </div>
+              <span class="deliver-card-tag">Execution</span>
+            </div>
+
+            <div class="deliver-card">
+              <div class="deliver-card-num">06 / 06</div>
+              <h3>Innovation Workshops</h3>
+              <p>Structured facilitated sessions using service design and human-centered design methods — run with your internal teams, clinical partners, or both — to accelerate innovation capability.</p>
+              <div class="deliver-card-footer">
+                <span>Facilitation</span><span>·</span><span>Insight synthesis</span><span>·</span><span>Concept development</span>
+              </div>
+              <span class="deliver-card-tag">Workshop</span>
+            </div>
+
           </div>
-          <span class="deliver-card-tag">Foundation</span>
         </div>
 
-        <div class="deliver-card">
-          <div class="deliver-card-num">02</div>
-          <h3>Innovation Value Proposition</h3>
-          <p>We design a clear, evidence-backed value proposition that aligns clinical outcomes, operational ROI, and stakeholder needs into one statement that hospital decision-makers trust.</p>
-          <div class="deliver-card-footer">
-            <span>Value mapping</span><span>·</span><span>Stakeholder alignment</span><span>·</span><span>Evidence framing</span>
+        <div class="delivers-slider-nav">
+          <div class="delivers-dots" id="deliversDots"></div>
+          <div class="delivers-slider-right">
+            <span class="delivers-counter" id="deliversCounter">1 / 6</span>
+            <div class="delivers-arrows">
+              <button class="slider-arrow" id="prevBtn">&#8592;</button>
+              <button class="slider-arrow" id="nextBtn">&#8594;</button>
+            </div>
           </div>
-          <span class="deliver-card-tag">Core Offering</span>
         </div>
-
-        <div class="deliver-card">
-          <div class="deliver-card-num">03</div>
-          <h3>Service System Architecture</h3>
-          <p>We design the complete service system — workflows, touchpoints, governance, training logic, and adoption architecture that makes clinical integration sustainable and scalable.</p>
-          <div class="deliver-card-footer">
-            <span>Service blueprint</span><span>·</span><span>Workflow design</span><span>·</span><span>Governance model</span>
-          </div>
-          <span class="deliver-card-tag">System Design</span>
-        </div>
-
-        <div class="deliver-card">
-          <div class="deliver-card-num">04</div>
-          <h3>Impact Analysis</h3>
-          <p>We design structured impact measurement frameworks capturing clinical outcomes, operational value, and adoption metrics — giving your innovation the evidence base it needs to scale.</p>
-          <div class="deliver-card-footer">
-            <span>Outcome mapping</span><span>·</span><span>Impact metrics</span><span>·</span><span>Evidence building</span>
-          </div>
-          <span class="deliver-card-tag deliver-card-tag--gold">Proprietary</span>
-        </div>
-
-        <div class="deliver-card">
-          <div class="deliver-card-num">05</div>
-          <h3>Implementation Coordination</h3>
-          <p>We support the translation of service design into clinical reality — coordinating between technology teams, clinical departments, and operational stakeholders to ensure the system holds.</p>
-          <div class="deliver-card-footer">
-            <span>Rollout planning</span><span>·</span><span>Site coordination</span><span>·</span><span>Adoption support</span>
-          </div>
-          <span class="deliver-card-tag">Execution</span>
-        </div>
-
-        <div class="deliver-card">
-          <div class="deliver-card-num">06</div>
-          <h3>Innovation Workshops</h3>
-          <p>Structured facilitated sessions using service design and human-centered design methods — run with your internal teams, clinical partners, or both — to accelerate innovation capability.</p>
-          <div class="deliver-card-footer">
-            <span>Facilitation</span><span>·</span><span>Insight synthesis</span><span>·</span><span>Concept development</span>
-          </div>
-          <span class="deliver-card-tag">Workshop</span>
-        </div>
-
       </div>
+
     </div>
   </section>
 
@@ -583,7 +497,6 @@
       </div>
 
       <div class="packages-grid">
-
         <div class="package-card">
           <div class="package-header">
             <span class="package-label">Package 01</span>
@@ -639,7 +552,6 @@
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -652,42 +564,30 @@
         <h2>The innovation layer most companies skip</h2>
         <p>Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in the service system and value proposition that determines whether a technology is genuinely adopted.</p>
       </div>
-
-      <div class="why-grid">
+      <div class="why-cards-grid">
         <div class="why-card">
           <div class="why-card-num">01</div>
           <h3>We build systems, not strategies</h3>
           <p>Servizions does not produce slide decks or advisory reports. We design and deliver structured innovation systems — service blueprints, value propositions, adoption architectures — that translate into real clinical outcomes.</p>
-          <div class="why-card-footer">
-            <span>Structured deliverables</span><span>·</span><span>Defined outcomes</span>
-          </div>
+          <div class="why-card-footer"><span>Structured deliverables</span><span>·</span><span>Defined outcomes</span></div>
         </div>
-
         <div class="why-card">
           <div class="why-card-num">02</div>
           <h3>Pre-product is our specialty</h3>
           <p>The pre-product phase — before a technology is finalised — is where adoption is won or lost. Servizions specialises in this critical window, shaping the value proposition and service concept when change is still possible.</p>
-          <div class="why-card-footer">
-            <span>Critical window</span><span>·</span><span>Adoption shaped early</span>
-          </div>
+          <div class="why-card-footer"><span>Critical window</span><span>·</span><span>Adoption shaped early</span></div>
         </div>
-
         <div class="why-card">
           <div class="why-card-num">03</div>
           <h3>Human-centered, always</h3>
           <p>Every engagement starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators. We surface real needs and real friction before a product is locked.</p>
-          <div class="why-card-footer">
-            <span>User research</span><span>·</span><span>Clinical insight</span>
-          </div>
+          <div class="why-card-footer"><span>User research</span><span>·</span><span>Clinical insight</span></div>
         </div>
-
         <div class="why-card">
           <div class="why-card-num">04</div>
           <h3>Intellectual honesty, always</h3>
           <p>We tell clients what they need to hear, not what they want to hear. If your value proposition is unclear or your technology is solving the wrong problem — we will tell you, clearly and constructively.</p>
-          <div class="why-card-footer">
-            <span>Honest partnership</span><span>·</span><span>Constructive challenge</span>
-          </div>
+          <div class="why-card-footer"><span>Honest partnership</span><span>·</span><span>Constructive challenge</span></div>
         </div>
       </div>
     </div>
@@ -713,6 +613,45 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const track = document.getElementById('deliversTrack');
+    const dotsWrap = document.getElementById('deliversDots');
+    const counter = document.getElementById('deliversCounter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const total = 6;
+    let current = 0;
+
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'delivers-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    }
+
+    function update() {
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      counter.textContent = (current + 1) + ' / ' + total;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+      document.querySelectorAll('.delivers-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function goTo(index) { current = index; update(); }
+
+    prevBtn.addEventListener('click', function() { if (current > 0) { current--; update(); } });
+    nextBtn.addEventListener('click', function() { if (current < total - 1) { current++; update(); } });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') { if (current > 0) { current--; update(); } }
+      if (e.key === 'ArrowRight') { if (current < total - 1) { current++; update(); } }
+    });
+
+    update();
+  </script>
 
 </body>
 </html>
