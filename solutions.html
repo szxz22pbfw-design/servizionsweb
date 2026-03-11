@@ -2,10 +2,435 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Solutions | Servizions</title>
-  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Servizions solutions — structured innovation frameworks that bridge medical robotics companies with healthcare clinicians for real-world adoption.">
+  <link rel="stylesheet" href="style.css">
+  <title>Services – Value Proposition Design & Service Innovation | Servizions</title>
+  <meta name="description" content="Servizions builds the value proposition, service system, and innovation layer that transforms a healthcare technology into something genuinely needed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://szxz22pbfw-design.github.io/servizionsweb/services.html">
+  <style>
+
+    /* PAGE HEADER */
+    .services-page-header {
+      background: var(--white);
+      padding: 100px 0 90px;
+      border-bottom: 1px solid var(--border);
+    }
+    .services-page-header-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: end;
+    }
+    .services-page-header h1 {
+      font-family: var(--font-display);
+      font-size: 68px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.0;
+      letter-spacing: -0.5px;
+      margin-top: 20px;
+    }
+    .services-page-header-right p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.9;
+      border-left: 2px solid var(--border-strong);
+      padding-left: 28px;
+      margin-bottom: 36px;
+    }
+    .header-cta {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      padding: 14px 36px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      transition: all var(--transition);
+    }
+    .header-cta:hover {
+      background: var(--purple-mid);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(59,15,160,0.25);
+    }
+
+    /* QUOTE STRIP */
+    .services-quote-strip {
+      background: var(--white);
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .services-quote-text {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.4;
+      max-width: 860px;
+      letter-spacing: -0.3px;
+    }
+    .services-quote-text::before {
+      content: '\201C';
+      font-size: 72px;
+      line-height: 0;
+      vertical-align: -0.34em;
+      color: rgba(59,15,160,0.10);
+      margin-right: 2px;
+      font-family: var(--font-display);
+    }
+
+    /* DELIVERS SECTION */
+    .delivers-section {
+      background: var(--white);
+      padding: 110px 0;
+    }
+    .delivers-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .delivers-header-left h2 {
+      font-family: var(--font-display);
+      font-size: 50px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.05;
+      letter-spacing: -0.4px;
+      margin-top: 16px;
+    }
+    .delivers-header-right p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.9;
+    }
+
+    .delivers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .deliver-card {
+      background: var(--white);
+      padding: 48px 40px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .deliver-card:nth-child(3n) { border-right: none; }
+    .deliver-card:nth-child(4),
+    .deliver-card:nth-child(5),
+    .deliver-card:nth-child(6) { border-bottom: none; }
+    .deliver-card:hover { background: var(--purple-pale); }
+
+    .deliver-card-num {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.14em;
+    }
+    .deliver-card h3 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .deliver-card p {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin: 0;
+      flex: 1;
+    }
+    .deliver-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .deliver-card-footer span {
+      font-size: 10.5px;
+      color: var(--text-light);
+    }
+    .deliver-card-tag {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple-soft);
+      border: 1px solid var(--border-strong);
+      padding: 4px 12px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .deliver-card-tag--gold {
+      color: #9B6F2F;
+      border-color: rgba(155,111,47,0.28);
+      background: rgba(155,111,47,0.05);
+    }
+
+    /* PACKAGES */
+    .packages-section {
+      background: var(--stone);
+      padding: 110px 0;
+    }
+    .packages-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .packages-header h2 {
+      font-family: var(--font-display);
+      font-size: 50px;
+      font-weight: 400;
+      letter-spacing: -0.4px;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-top: 16px;
+    }
+    .packages-header p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-mid);
+    }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .package-card {
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .package-card:last-child { border-right: none; }
+    .package-card:hover { background: var(--purple-pale); }
+    .package-card.featured { background: var(--purple-dark); }
+    .package-card.featured:hover { background: #250870; }
+
+    .package-header {
+      padding: 40px 36px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .package-card.featured .package-header { border-bottom-color: rgba(255,255,255,0.08); }
+
+    .package-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .package-card.featured .package-label { color: rgba(255,255,255,0.30); }
+
+    .package-badge {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .package-name {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .package-card.featured .package-name { color: var(--white); }
+
+    .package-duration {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--text-light);
+    }
+    .package-card.featured .package-duration { color: rgba(255,255,255,0.30); }
+
+    .package-body {
+      padding: 32px 36px 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .package-desc {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin-bottom: 26px;
+    }
+    .package-card.featured .package-desc { color: rgba(255,255,255,0.45); }
+
+    .package-deliverables {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-top: auto;
+    }
+    .package-deliverables li {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-mid);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .package-card.featured .package-deliverables li { color: rgba(255,255,255,0.45); }
+    .package-deliverables li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-light);
+      font-size: 11px;
+    }
+    .package-card.featured .package-deliverables li::before { color: rgba(255,255,255,0.20); }
+
+    /* WHY SECTION */
+    .why-section {
+      background: var(--white);
+      padding: 110px 0;
+    }
+    .why-header {
+      max-width: 680px;
+      margin-bottom: 64px;
+    }
+    .why-header h2 {
+      font-family: var(--font-display);
+      font-size: 50px;
+      font-weight: 400;
+      letter-spacing: -0.4px;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-top: 16px;
+    }
+    .why-header p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-mid);
+      margin-top: 18px;
+    }
+    .why-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .why-card {
+      background: var(--white);
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .why-card:nth-child(2n) { border-right: none; }
+    .why-card:nth-child(3),
+    .why-card:nth-child(4) { border-bottom: none; }
+    .why-card:hover { background: var(--purple-pale); }
+
+    .why-card-num {
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 300;
+      color: rgba(59,15,160,0.08);
+      line-height: 1;
+    }
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .why-card p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin: 0;
+      flex: 1;
+    }
+    .why-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .why-card-footer span { font-size: 10.5px; color: var(--text-light); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .services-page-header-inner,
+      .delivers-header,
+      .packages-header { grid-template-columns: 1fr; gap: 40px; }
+      .services-page-header h1 { font-size: 46px; }
+      .services-quote-text { font-size: 26px; }
+      .delivers-header-left h2,
+      .packages-header h2,
+      .why-header h2 { font-size: 36px; }
+      .delivers-grid,
+      .packages-grid,
+      .why-cards-grid { grid-template-columns: 1fr; }
+      .deliver-card,
+      .package-card,
+      .why-card { border-right: none; }
+      .deliver-card:nth-child(4),
+      .deliver-card:nth-child(5) { border-bottom: 1px solid var(--border); }
+      .deliver-card { padding: 36px 28px; }
+      .why-card:nth-child(3) { border-bottom: 1px solid var(--border); }
+      .why-card { padding: 36px 28px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,188 +447,241 @@
   </header>
 
   <!-- PAGE HEADER -->
-  <section class="page-header">
+  <section class="services-page-header">
     <div class="container">
-      <div class="page-header-inner">
-        <h1>Solutions</h1>
-        <p>
-          Our systemic innovation framework identifies adoption risks early, maps clinical workflows,
-          and delivers actionable service strategies — bridging medical robotics companies
-          with the clinicians who determine real-world adoption.
-        </p>
+      <div class="services-page-header-inner">
+        <div>
+          <span class="eyebrow">Services</span>
+          <h1>The innovation layer most companies never build.</h1>
+        </div>
+        <div class="services-page-header-right">
+          <p>We design the value proposition, service system, and adoption architecture that transforms a healthcare technology into something genuinely needed — before it is built the wrong way.</p>
+          <a href="contact.html" class="header-cta">Start a Conversation</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- QUOTE -->
-  <section class="quote-section">
+  <section class="services-quote-strip">
     <div class="container">
-      <p class="quote-text">
-        Servizions transforms medical technologies into structured innovation systems — generating scalable value propositions, adoption architectures, and service-driven market differentiation.
-      </p>
-      <div class="solutions-diagram">
-        <img src="image/20260223-customerjourney.png" alt="Servizions Innovation System Diagram">
+      <p class="services-quote-text">The gap between a technology that works and a technology that is genuinely used is a service design problem. We solve it.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DELIVER -->
+  <section class="delivers-section">
+    <div class="container">
+      <div class="delivers-header">
+        <div class="delivers-header-left">
+          <span class="eyebrow">What We Deliver</span>
+          <h2>Six capabilities. One integrated system.</h2>
+        </div>
+        <div class="delivers-header-right">
+          <p>Every capability is part of a connected engagement — not an isolated deliverable. We use service design, human-centered design, and innovation value proposition methods to shape what a healthcare innovation becomes.</p>
+        </div>
+      </div>
+
+      <div class="delivers-grid">
+        <div class="deliver-card">
+          <div class="deliver-card-num">01</div>
+          <h3>System Diagnosis</h3>
+          <p>A structured assessment of where your innovation stands — the value proposition gaps, service system weaknesses, workflow misalignments, and adoption risks that must be addressed before launch.</p>
+          <div class="deliver-card-footer">
+            <span>Gap analysis</span><span>·</span><span>Risk mapping</span><span>·</span><span>Opportunity framing</span>
+          </div>
+          <span class="deliver-card-tag">Foundation</span>
+        </div>
+
+        <div class="deliver-card">
+          <div class="deliver-card-num">02</div>
+          <h3>Innovation Value Proposition</h3>
+          <p>We design a clear, evidence-backed value proposition that aligns clinical outcomes, operational ROI, and stakeholder needs into one statement that hospital decision-makers trust.</p>
+          <div class="deliver-card-footer">
+            <span>Value mapping</span><span>·</span><span>Stakeholder alignment</span><span>·</span><span>Evidence framing</span>
+          </div>
+          <span class="deliver-card-tag">Core Offering</span>
+        </div>
+
+        <div class="deliver-card">
+          <div class="deliver-card-num">03</div>
+          <h3>Service System Architecture</h3>
+          <p>We design the complete service system — workflows, touchpoints, governance, training logic, and adoption architecture that makes clinical integration sustainable and scalable.</p>
+          <div class="deliver-card-footer">
+            <span>Service blueprint</span><span>·</span><span>Workflow design</span><span>·</span><span>Governance model</span>
+          </div>
+          <span class="deliver-card-tag">System Design</span>
+        </div>
+
+        <div class="deliver-card">
+          <div class="deliver-card-num">04</div>
+          <h3>Impact Analysis</h3>
+          <p>We design structured impact measurement frameworks capturing clinical outcomes, operational value, and adoption metrics — giving your innovation the evidence base it needs to scale.</p>
+          <div class="deliver-card-footer">
+            <span>Outcome mapping</span><span>·</span><span>Impact metrics</span><span>·</span><span>Evidence building</span>
+          </div>
+          <span class="deliver-card-tag deliver-card-tag--gold">Proprietary</span>
+        </div>
+
+        <div class="deliver-card">
+          <div class="deliver-card-num">05</div>
+          <h3>Implementation Coordination</h3>
+          <p>We support the translation of service design into clinical reality — coordinating between technology teams, clinical departments, and operational stakeholders to ensure the system holds.</p>
+          <div class="deliver-card-footer">
+            <span>Rollout planning</span><span>·</span><span>Site coordination</span><span>·</span><span>Adoption support</span>
+          </div>
+          <span class="deliver-card-tag">Execution</span>
+        </div>
+
+        <div class="deliver-card">
+          <div class="deliver-card-num">06</div>
+          <h3>Innovation Workshops</h3>
+          <p>Structured facilitated sessions using service design and human-centered design methods — run with your internal teams, clinical partners, or both — to accelerate innovation capability.</p>
+          <div class="deliver-card-footer">
+            <span>Facilitation</span><span>·</span><span>Insight synthesis</span><span>·</span><span>Concept development</span>
+          </div>
+          <span class="deliver-card-tag">Workshop</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- BRIDGE SECTION -->
-  <section class="bridge-section">
+  <!-- PACKAGES -->
+  <section class="packages-section">
     <div class="container">
-      <div class="bridge-inner">
-
-        <div class="bridge-left">
-          <span class="bridge-label">The gap we close</span>
-          <h2 class="bridge-title">Between innovation and clinical reality</h2>
-          <p class="bridge-text">
-            Medical robotics companies build exceptional technology. Clinicians deliver exceptional care.
-            But between these two worlds sits a complex gap — one of workflows, procurement, training,
-            governance, and human adoption. Servizions works precisely in this space.
-          </p>
-          <p class="bridge-text">
-            We act as the innovation manager between both sides: designing the service architecture,
-            value propositions, and adoption systems that make technology succeed in real clinical environments.
-          </p>
+      <div class="packages-header">
+        <div>
+          <span class="eyebrow">Service Packages</span>
+          <h2>Three packages. Clear scope.</h2>
         </div>
+        <div>
+          <p>Designed for different stages of healthcare innovation — from early concept shaping to full service system design. Every package is a fixed-scope engagement with defined deliverables and no ambiguity.</p>
+        </div>
+      </div>
 
-        <div class="bridge-right">
-          <div class="bridge-card">
-            <div class="bridge-icon">1</div>
-            <div class="bridge-card-text">
-              <h4>Understand the clinical context</h4>
-              <p>We map how clinicians actually work — their workflows, constraints, decision processes, and adoption barriers.</p>
-            </div>
+      <div class="packages-grid">
+        <div class="package-card">
+          <div class="package-header">
+            <span class="package-label">Package 01</span>
+            <div class="package-name">Innovation Sprint</div>
+            <div class="package-duration">2 – 3 weeks · Focused engagement</div>
           </div>
-          <div class="bridge-card">
-            <div class="bridge-icon">2</div>
-            <div class="bridge-card-text">
-              <h4>Design the adoption system</h4>
-              <p>We create the service blueprint, governance model, and training architecture that makes technology deployable.</p>
-            </div>
-          </div>
-          <div class="bridge-card">
-            <div class="bridge-icon">3</div>
-            <div class="bridge-card-text">
-              <h4>Build the value proposition</h4>
-              <p>We create evidence-based propositions that speak to clinical, operational, and economic decision-makers.</p>
-            </div>
-          </div>
-          <div class="bridge-card">
-            <div class="bridge-icon">4</div>
-            <div class="bridge-card-text">
-              <h4>Support real-world rollout</h4>
-              <p>We coordinate implementation across sites, teams, and stakeholders — from pilot to scale.</p>
-            </div>
+          <div class="package-body">
+            <p class="package-desc">For healthcare technology companies that need rapid clarity on their value proposition and service concept. A focused sprint delivering a positioned innovation framework ready for stakeholder conversations.</p>
+            <ul class="package-deliverables">
+              <li>Value proposition audit and gap analysis</li>
+              <li>Stakeholder and clinical user mapping</li>
+              <li>Repositioned value proposition framework</li>
+              <li>Service concept outline</li>
+              <li>Presentation-ready innovation brief</li>
+            </ul>
           </div>
         </div>
 
+        <div class="package-card featured">
+          <div class="package-header">
+            <span class="package-badge">Most Popular</span>
+            <div class="package-name">Service System Design</div>
+            <div class="package-duration">4 – 6 weeks · Full engagement</div>
+          </div>
+          <div class="package-body">
+            <p class="package-desc">The complete Servizions engagement. We design the full innovation layer — value proposition, service architecture, clinical workflow integration, and impact measurement — so your technology is built to be genuinely needed.</p>
+            <ul class="package-deliverables">
+              <li>System diagnosis and opportunity mapping</li>
+              <li>Innovation value proposition design</li>
+              <li>Full service system blueprint</li>
+              <li>Clinical workflow design and integration map</li>
+              <li>Adoption architecture and rollout framework</li>
+              <li>Impact measurement framework</li>
+              <li>Stakeholder presentation package</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="package-card">
+          <div class="package-header">
+            <span class="package-label">Package 03</span>
+            <div class="package-name">Innovation Workshop</div>
+            <div class="package-duration">1 – 2 days · Facilitated session</div>
+          </div>
+          <div class="package-body">
+            <p class="package-desc">A structured facilitated session using service design and human-centered design methods — run with your internal team, clinical partners, or both — to unlock new thinking and build internal innovation capability.</p>
+            <ul class="package-deliverables">
+              <li>Pre-workshop discovery session</li>
+              <li>Custom workshop design and facilitation</li>
+              <li>Insight synthesis and opportunity map</li>
+              <li>Innovation concepts and next steps</li>
+              <li>Workshop documentation and summary report</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT THIS ENABLES — WHITE BACKGROUND -->
-  <section class="enables-section">
+  <!-- WHY SERVIZIONS -->
+  <section class="why-section">
     <div class="container">
+      <div class="why-header">
+        <span class="eyebrow">Why Servizions</span>
+        <h2>The innovation layer most companies skip</h2>
+        <p>Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in the service system and value proposition that determines whether a technology is genuinely adopted.</p>
+      </div>
 
-      <span class="section-eyebrow">What this enables</span>
-      <h2>From technology to clinical adoption</h2>
-      <p class="section-intro">
-        Servizions builds the foundations that turn innovative medical technology into
-        sustainable, scalable clinical practice. Every engagement is designed to generate
-        lasting value — for the technology company and for the healthcare system.
-      </p>
-
-      <div class="enables-grid">
-
-        <div class="enables-card">
-          <div class="enables-card-number">01</div>
-          <h3>Structured Value Creation</h3>
-          <p>From competitive products to differentiated service-based propositions that hospitals and procurement teams trust.</p>
+      <div class="why-cards-grid">
+        <div class="why-card">
+          <div class="why-card-num">01</div>
+          <h3>We build systems, not strategies</h3>
+          <p>Servizions does not produce slide decks or advisory reports. We design and deliver structured innovation systems — service blueprints, value propositions, adoption architectures — that translate into real clinical outcomes.</p>
+          <div class="why-card-footer">
+            <span>Structured deliverables</span><span>·</span><span>Defined outcomes</span>
+          </div>
         </div>
-
-        <div class="enables-card">
-          <div class="enables-card-number">02</div>
-          <h3>Adoption Architecture</h3>
-          <p>Clear clinical, operational, and economic integration pathways that reduce friction and accelerate deployment.</p>
+        <div class="why-card">
+          <div class="why-card-num">02</div>
+          <h3>Pre-product is our specialty</h3>
+          <p>The pre-product phase — before a technology is finalised — is where adoption is won or lost. Servizions specialises in this critical window, shaping the value proposition and service concept when change is still possible.</p>
+          <div class="why-card-footer">
+            <span>Critical window</span><span>·</span><span>Adoption shaped early</span>
+          </div>
         </div>
-
-        <div class="enables-card">
-          <div class="enables-card-number">03</div>
-          <h3>System-Level Positioning</h3>
-          <p>Market positioning beyond technical specifications — built around outcomes, workflows, and real clinical value.</p>
+        <div class="why-card">
+          <div class="why-card-num">03</div>
+          <h3>Human-centered, always</h3>
+          <p>Every engagement starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators. We surface real needs and real friction before a product is locked.</p>
+          <div class="why-card-footer">
+            <span>User research</span><span>·</span><span>Clinical insight</span>
+          </div>
         </div>
-
-        <div class="enables-card">
-          <div class="enables-card-number">04</div>
-          <h3>Scalable Innovation Models</h3>
-          <p>Frameworks that grow with hospitals, providers, and ecosystems — designed for replication, not just pilots.</p>
+        <div class="why-card">
+          <div class="why-card-num">04</div>
+          <h3>Intellectual honesty, always</h3>
+          <p>We tell clients what they need to hear, not what they want to hear. If your value proposition is unclear or your technology is solving the wrong problem — we will tell you, clearly and constructively.</p>
+          <div class="why-card-footer">
+            <span>Honest partnership</span><span>·</span><span>Constructive challenge</span>
+          </div>
         </div>
-
-        <div class="enables-card">
-          <div class="enables-card-number">05</div>
-          <h3>Service Differentiation</h3>
-          <p>Turning products into long-term strategic platforms with sustainable service logic and measurable ROI.</p>
-        </div>
-
-        <div class="enables-card">
-          <div class="enables-card-number">06</div>
-          <h3>Competitive Advantage</h3>
-          <p>Building innovation systems that competitors cannot easily replicate — grounded in deep clinical and service expertise.</p>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- WHY SERVIZIONS (dark) -->
-  <section class="section">
+  <!-- CTA -->
+  <section class="contact-section">
     <div class="container">
-      <span class="section-eyebrow">Our difference</span>
-      <h2>Why Servizions?</h2>
-      <p>
-        We sit at the intersection of healthcare service design, clinical workflow expertise,
-        and medical technology adoption. This unique position allows us to build solutions
-        that are both strategically sound and operationally real.
-      </p>
-
-      <div class="why-grid">
-        <div class="why-column">
-          <div class="why-item">
-            <h3>Deep medical robotics expertise</h3>
-            <p>Over 15 years of hands-on experience in surgical robotic systems and clinical environments.</p>
-          </div>
-          <div class="why-item">
-            <h3>System-level adoption thinking</h3>
-            <p>We design the full ecosystem required for sustainable implementation — not just the product strategy.</p>
-          </div>
-          <div class="why-item">
-            <h3>Clinical workflow integration</h3>
-            <p>Bridging technology companies and frontline medical professionals with clarity and precision.</p>
-          </div>
-        </div>
-        <div class="why-column">
-          <div class="why-item">
-            <h3>Strategic execution frameworks</h3>
-            <p>Clear transformation models from innovation concept to clinical reality and scale.</p>
-          </div>
-          <div class="why-item">
-            <h3>Hospital-ready implementation</h3>
-            <p>Practical integration into workflows, governance structures, and procurement systems.</p>
-          </div>
-          <div class="why-item">
-            <h3>Outcome-driven partnerships</h3>
-            <p>Focused on measurable clinical, operational, and economic results that create long-term impact.</p>
-          </div>
-        </div>
+      <h2 class="contact-title">Ready to build the innovation layer?</h2>
+      <p class="contact-subtitle">Tell us about your healthcare technology challenge — we respond within two business days</p>
+      <div style="text-align:center;">
+        <a href="contact.html" class="contact-button" style="display:inline-block; padding:18px 48px;">Start a Conversation</a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© 2026 Servizions. All rights reserved.</div>
+      <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
       <div class="footer-links">
         <a href="mailto:info@servizions.com">info@servizions.com</a>
+        <a href="contact.html">Start a conversation</a>
       </div>
     </div>
   </footer>
