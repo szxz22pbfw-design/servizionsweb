@@ -613,41 +613,59 @@
     <div class="container footer-inner">
       <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
       <div class="footer-links">
-        <a href="mailto:info@servizions.com">info@servizions.com</a>
+        <a href="mailto&#58;info&#64;servizions&#46;com">info&#64;servizions&#46;com</a>
         <a href="contact.html">Start a conversation</a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const track = document.getElementById('deliversTrack');
-    const dotsWrap = document.getElementById('deliversDots');
-    const counter = document.getElementById('deliversCounter');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const total = 6;
-    let current = 0;
+  <script data-cfasync="false">
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.getElementById('deliversTrack');
+    var dotsWrap = document.getElementById('deliversDots');
+    var counter = document.getElementById('deliversCounter');
+    var prevBtn = document.getElementById('prevBtn');
+    var nextBtn = document.getElementById('nextBtn');
+    var total = 6;
+    var current = 0;
 
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('div');
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('div');
       dot.className = 'delivers-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => goTo(i));
+      (function(idx) {
+        dot.addEventListener('click', function() { goTo(idx); });
+      })(i);
       dotsWrap.appendChild(dot);
     }
 
     function update() {
       track.style.transform = 'translateX(-' + (current * 100) + '%)';
       counter.textContent = (current + 1) + ' / ' + total;
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === total - 1;
-      document.querySelectorAll('.delivers-dot').forEach(function(d, i) {
-        d.classList.toggle('active', i === current);
-      });
+      prevBtn.disabled = (current === 0);
+      nextBtn.disabled = (current === total - 1);
+      var dots = document.querySelectorAll('.delivers-dot');
+      for (var j = 0; j < dots.length; j++) {
+        dots[j].classList.toggle('active', j === current);
+      }
     }
 
     function goTo(index) { current = index; update(); }
 
-    prevBtn.addEventListener('click', function() { if (current > 0) { current--; update(); } });
-    nextBtn.addEventListener('click', function() { if (current < total - 1) { current++; update(); } });
+    prevBtn.addEventListener('click', function() {
+      if (current > 0) { current--; update(); }
+    });
+    nextBtn.addEventListener('click', function() {
+      if (current < total - 1) { current++; update(); }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft' && current > 0) { current--; update(); }
+      if (e.key === 'ArrowRight' && current < total - 1) { current++; update(); }
+    });
 
-    document.addEventListener('
+    update();
+  });
+  </script>
+
+</body>
+</html>
