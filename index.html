@@ -74,7 +74,262 @@
       </div>
     </div>
   </section>
+<!-- DISCOVERY CALL BOOKING -->
+<section class="booking-section">
+  <div class="container">
+    <div class="booking-intro">
+      <span class="eyebrow">Free Discovery Call</span>
+      <h2>Book a 15-Minute Design Thinking Discovery Call</h2>
+      <p>Choose a morning slot that works for you — Monday to Wednesday, German time (CET). We will confirm your booking and send you the meeting details by email within one business day.</p>
+    </div>
 
+    <div class="booking-grid">
+
+      <!-- LEFT: Calendar -->
+      <div class="booking-calendar-wrap">
+        <div class="booking-cal-header">
+          <button class="booking-nav" id="bookingPrev">&#8592;</button>
+          <span class="booking-month-label" id="bookingMonthLabel"></span>
+          <button class="booking-nav" id="bookingNext">&#8594;</button>
+        </div>
+        <div class="booking-cal-days-header">
+          <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+        </div>
+        <div class="booking-cal-grid" id="bookingCalGrid"></div>
+        <p class="booking-cal-note">Verfügbar: Montag – Mittwoch · 9:00 – 12:00 Uhr (CET)</p>
+      </div>
+
+      <!-- RIGHT: Slots + Form -->
+      <div class="booking-right">
+
+        <div class="booking-slots-wrap">
+          <p class="booking-slots-placeholder" id="bookingSlotsPlaceholder">← Datum auswählen, um verfügbare Zeiten zu sehen</p>
+          <div id="bookingSlotsBlock" style="display:none;">
+            <p class="booking-slots-date" id="bookingSlotsDate"></p>
+            <div class="booking-slots-grid" id="bookingSlotsGrid"></div>
+          </div>
+        </div>
+
+        <form class="booking-form" id="bookingForm" action="https://formspree.io/f/mjgakblb" method="POST" style="display:none;">
+          <input type="hidden" name="form-type" value="15-Min Discovery Call Booking">
+          <input type="hidden" name="selected-slot" id="bookingSlotHidden">
+
+          <div class="booking-form-summary" id="bookingFormSummary"></div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" name="first-name" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" name="last-name" required>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:20px;">
+            <label>Business Email *</label>
+            <input type="email" name="email" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom:20px;">
+            <label>Message <span class="booking-label-note">(max. 100 characters)</span></label>
+            <input type="text" name="message" maxlength="100"
+              placeholder="Briefly describe your challenge or topic...">
+          </div>
+
+          <div class="form-group hidden-field">
+            <label>Leave blank</label>
+            <input type="text" name="_gotcha">
+          </div>
+
+          <div class="form-consent">
+            <input type="checkbox" required>
+            <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
+          </div>
+
+          <div class="booking-form-actions">
+            <button type="submit" class="contact-button">Confirm Booking</button>
+            <button type="button" class="booking-back-btn" id="bookingBackBtn">← Change time</button>
+          </div>
+        </form>
+
+        <div class="booking-success" id="bookingSuccess" style="display:none;">
+          <div class="booking-success-inner">
+            <span class="booking-success-icon">✓</span>
+            <h3>Booking request sent.</h3>
+            <p>You will receive a confirmation email with all meeting details within one business day. We look forward to speaking with you.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var MONTHS_DE = ['Januar','Februar','März','April','Mai','Juni',
+                   'Juli','August','September','Oktober','November','Dezember'];
+  var DAYS_DE   = ['Sonntag','Montag','Dienstag','Mittwoch',
+                   'Donnerstag','Freitag','Samstag'];
+
+  var today = new Date();
+  today.setHours(0,0,0,0);
+  var viewYear  = today.getFullYear();
+  var viewMonth = today.getMonth();
+  var selectedDate = null;
+
+  /* 9:00 – 12:00, every 30 min */
+  var ALL_SLOTS = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00'];
+
+  function isAvailable(date) {
+    var d = date.getDay(); /* 1=Mon 2=Tue 3=Wed */
+    return d >= 1 && d <= 3 && date >= today;
+  }
+
+  function formatDateLabel(date) {
+    return DAYS_DE[date.getDay()] + ', ' +
+           date.getDate() + '. ' +
+           MONTHS_DE[date.getMonth()] + ' ' +
+           date.getFullYear();
+  }
+
+  /* ── RENDER CALENDAR ── */
+  function renderCalendar() {
+    document.getElementById('bookingMonthLabel').textContent =
+      MONTHS_DE[viewMonth] + ' ' + viewYear;
+
+    var grid = document.getElementById('bookingCalGrid');
+    grid.innerHTML = '';
+
+    var firstDay = new Date(viewYear, viewMonth, 1).getDay();
+    firstDay = firstDay === 0 ? 6 : firstDay - 1; /* Monday-first */
+
+    var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+    for (var i = 0; i < firstDay; i++) {
+      var blank = document.createElement('div');
+      blank.className = 'booking-cal-cell booking-cal-empty';
+      grid.appendChild(blank);
+    }
+
+    for (var d = 1; d <= daysInMonth; d++) {
+      var cellDate = new Date(viewYear, viewMonth, d);
+      var cell = document.createElement('div');
+      cell.className = 'booking-cal-cell';
+      cell.textContent = d;
+
+      if (!isAvailable(cellDate)) {
+        cell.classList.add('booking-cal-disabled');
+      } else {
+        cell.classList.add('booking-cal-available');
+        ;(function (cd) {
+          cell.addEventListener('click', function () {
+            selectedDate = cd;
+            document.querySelectorAll('.booking-cal-selected')
+              .forEach(function (el) { el.classList.remove('booking-cal-selected'); });
+            this.classList.add('booking-cal-selected');
+            renderSlots(cd);
+            document.getElementById('bookingForm').style.display = 'none';
+            document.getElementById('bookingSuccess').style.display = 'none';
+            document.querySelectorAll('.booking-slot-btn')
+              .forEach(function (b) { b.classList.remove('active'); });
+          });
+        })(cellDate);
+      }
+
+      if (selectedDate &&
+          cellDate.toDateString() === selectedDate.toDateString()) {
+        cell.classList.add('booking-cal-selected');
+      }
+
+      grid.appendChild(cell);
+    }
+  }
+
+  /* ── RENDER TIME SLOTS ── */
+  function renderSlots(date) {
+    document.getElementById('bookingSlotsPlaceholder').style.display = 'none';
+    var block = document.getElementById('bookingSlotsBlock');
+    block.style.display = 'block';
+
+    document.getElementById('bookingSlotsDate').textContent =
+      formatDateLabel(date) + ' — CET (Berlin)';
+
+    var slotsGrid = document.getElementById('bookingSlotsGrid');
+    slotsGrid.innerHTML = '';
+
+    ALL_SLOTS.forEach(function (slot) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'booking-slot-btn';
+      btn.textContent = slot + ' Uhr';
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.booking-slot-btn')
+          .forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        showForm(date, slot);
+      });
+      slotsGrid.appendChild(btn);
+    });
+  }
+
+  /* ── SHOW BOOKING FORM ── */
+  function showForm(date, slot) {
+    var label = formatDateLabel(date) + '  ·  ' + slot + ' Uhr CET  ·  15 Min  ·  Online';
+    document.getElementById('bookingFormSummary').textContent = '📅  ' + label;
+    document.getElementById('bookingSlotHidden').value =
+      formatDateLabel(date) + ' – ' + slot + ' Uhr CET';
+    var form = document.getElementById('bookingForm');
+    form.style.display = 'block';
+    setTimeout(function () {
+      form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 80);
+  }
+
+  /* ── NAV BUTTONS ── */
+  document.getElementById('bookingPrev').addEventListener('click', function () {
+    viewMonth--;
+    if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+    renderCalendar();
+  });
+  document.getElementById('bookingNext').addEventListener('click', function () {
+    viewMonth++;
+    if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+    renderCalendar();
+  });
+
+  /* ── BACK BUTTON ── */
+  document.getElementById('bookingBackBtn').addEventListener('click', function () {
+    document.getElementById('bookingForm').style.display = 'none';
+    document.querySelectorAll('.booking-slot-btn')
+      .forEach(function (b) { b.classList.remove('active'); });
+  });
+
+  /* ── SUBMIT via fetch → show success state ── */
+  document.getElementById('bookingForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = this;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('bookingSuccess').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please email us directly at info@servizions.com');
+      }
+    }).catch(function () {
+      alert('Something went wrong. Please email us at info@servizions.com');
+    });
+  });
+
+  renderCalendar();
+})();
+</script>
   <section class="methodology-section">
     <div class="container">
       <div class="methodology-intro">
