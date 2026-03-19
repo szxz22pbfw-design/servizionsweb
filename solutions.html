@@ -7,447 +7,100 @@
   <title>Solutions – Healthcare Innovation for Medical Robotics &amp; HealthTech | Servizions</title>
   <meta name="description" content="Servizions works with medical robotics companies, healthtech ventures, and hospital innovation teams to solve the adoption, value proposition, and service system problems that stop great technologies from succeeding.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://szxz22pbfw-design.github.io/servizionsweb/solutions.html">
+  <link rel="canonical" href="https://servizions.com/solutions.html">
+  <meta property="og:title" content="Solutions – Servizions Healthcare Service Innovation">
+  <meta property="og:description" content="We solve the adoption, value proposition, and service system problems that stop great healthcare technologies from succeeding.">
+  <meta property="og:url" content="https://servizions.com/solutions.html">
+  <meta property="og:type" content="website">
   <style>
+    .sol-header { background:var(--white); padding:100px 0 90px; border-bottom:1px solid var(--border); }
+    .sol-header-inner { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:end; }
+    .sol-header h1 { font-family:var(--font-display); font-size:68px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.0; letter-spacing:-0.5px; margin-top:20px; }
+    .sol-header-right p { font-size:16px; font-weight:300; color:var(--text-mid); line-height:1.9; border-left:2px solid var(--border-strong); padding-left:28px; margin-bottom:36px; }
+    .header-cta { display:inline-block; background:var(--purple); color:white; padding:14px 36px; border-radius:var(--radius-sm); font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; font-family:var(--font-body); transition:all var(--transition); }
+    .header-cta:hover { background:var(--purple-mid); transform:translateY(-1px); box-shadow:0 6px 20px rgba(59,15,160,0.25); }
 
-    /* PAGE HEADER */
-    .sol-header {
-      background: var(--white);
-      padding: 100px 0 90px;
-      border-bottom: 1px solid var(--border);
-    }
-    .sol-header-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: end;
-    }
-    .sol-header h1 {
-      font-family: var(--font-display);
-      font-size: 68px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.0;
-      letter-spacing: -0.5px;
-      margin-top: 20px;
-    }
-    .sol-header-right p {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      border-left: 2px solid var(--border-strong);
-      padding-left: 28px;
-      margin-bottom: 36px;
-    }
-    .header-cta {
-      display: inline-block;
-      background: var(--purple);
-      color: white;
-      padding: 14px 36px;
-      border-radius: var(--radius-sm);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-family: var(--font-body);
-      transition: all var(--transition);
-    }
-    .header-cta:hover {
-      background: var(--purple-mid);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(59,15,160,0.25);
-    }
-
-    /* RECOGNITION STRIP */
-    .recognition-strip {
-      background: var(--stone);
-      padding: 80px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .recognition-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--purple-soft);
-      margin-bottom: 32px;
-      display: block;
-    }
-    .recognition-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .recognition-item {
-      background: var(--white);
-      padding: 32px 36px;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .recognition-item:last-child { border-right: none; }
-    .recognition-dash {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 300;
-      color: rgba(59,15,160,0.10);
-      line-height: 1;
-    }
-    .recognition-item p {
-      font-family: var(--font-display);
-      font-size: 19px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.5;
-      margin: 0;
-    }
+    /* RECOGNITION */
+    .recognition-strip { background:var(--stone); padding:80px 0; border-bottom:1px solid var(--border); }
+    .recognition-label { font-size:11px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--purple-soft); margin-bottom:32px; display:block; }
+    .recognition-grid { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
+    .recognition-item { background:var(--white); padding:32px 36px; border-right:1px solid var(--border); display:flex; flex-direction:column; gap:12px; }
+    .recognition-item:last-child { border-right:none; }
+    .recognition-dash { font-family:var(--font-display); font-size:28px; font-weight:300; color:rgba(59,15,160,0.10); line-height:1; }
+    .recognition-item p { font-family:var(--font-display); font-size:19px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.5; margin:0; }
 
     /* WHO WE WORK WITH */
-    .clients-section {
-      background: var(--white);
-      padding: 120px 0;
-    }
-    .clients-intro {
-      max-width: 680px;
-      margin-bottom: 72px;
-    }
-    .clients-intro h2 {
-      font-family: var(--font-display);
-      font-size: 50px;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.05;
-      letter-spacing: -0.4px;
-      margin-top: 16px;
-    }
-    .clients-intro p {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      margin-top: 18px;
-    }
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    .client-card {
-      background: var(--white);
-      padding: 52px 44px 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      border-right: 1px solid var(--border);
-      transition: background var(--transition);
-    }
-    .client-card:last-child { border-right: none; }
-    .client-card:hover { background: var(--purple-pale); }
-    .client-card-icon {
-      font-family: var(--font-display);
-      font-size: 40px;
-      font-weight: 300;
-      color: rgba(59,15,160,0.10);
-      line-height: 1;
-    }
-    .client-card h3 {
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.15;
-      margin: 0;
-    }
-    .client-card > p {
-      font-size: 13.5px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin: 0;
-      flex: 1;
-    }
-    .client-problems {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-    }
-    .client-problems span {
-      font-size: 11.5px;
-      font-weight: 300;
-      color: var(--text-mid);
-      padding-left: 14px;
-      position: relative;
-      line-height: 1.5;
-    }
-    .client-problems span::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-      color: var(--purple-soft);
-    }
+    .clients-section { background:var(--white); padding:110px 0; }
+    .clients-intro { max-width:680px; margin-bottom:64px; }
+    .clients-intro h2 { font-family:var(--font-display); font-size:50px; font-weight:400; color:var(--ink); line-height:1.05; letter-spacing:-0.4px; margin-top:16px; }
+    .clients-intro p { font-size:15px; font-weight:300; color:var(--text-mid); line-height:1.9; margin-top:16px; }
+    .clients-grid { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+    .client-card { background:var(--white); padding:48px 40px; display:flex; flex-direction:column; gap:16px; border-right:1px solid var(--border); transition:background var(--transition); }
+    .client-card:last-child { border-right:none; }
+    .client-card:hover { background:var(--purple-pale); }
+    .client-card-icon { font-family:var(--font-display); font-size:40px; font-weight:300; color:rgba(59,15,160,0.10); line-height:1; }
+    .client-card h3 { font-family:var(--font-display); font-size:24px; font-weight:500; color:var(--ink); line-height:1.15; margin:0; }
+    .client-card > p { font-size:13.5px; font-weight:300; color:var(--text-mid); line-height:1.85; margin:0; }
+    .client-cta-link { display:inline-block; margin-top:auto; padding-top:20px; border-top:1px solid var(--border); font-size:11px; font-weight:600; letter-spacing:0.10em; text-transform:uppercase; color:var(--purple-soft); transition:color var(--transition); }
+    .client-cta-link:hover { color:var(--purple); }
 
     /* PROBLEM → SOLUTION */
-    .problems-section {
-      background: var(--stone);
-      padding: 120px 0;
-    }
-    .problems-intro {
-      max-width: 680px;
-      margin-bottom: 72px;
-    }
-    .problems-intro h2 {
-      font-family: var(--font-display);
-      font-size: 50px;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.05;
-      letter-spacing: -0.4px;
-      margin-top: 16px;
-    }
-    .problems-intro p {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      margin-top: 18px;
-    }
-    .problems-grid {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-    }
-    .problem-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid var(--border);
-      transition: background var(--transition);
-    }
-    .problem-row:last-child { border-bottom: none; }
-    .problem-row:hover { background: var(--purple-pale); }
-    .problem-col { padding: 40px 44px; }
-    .problem-col:first-child { border-right: 1px solid var(--border); }
-    .problem-col-label {
-      font-size: 9.5px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      display: block;
-    }
-    .problem-col:first-child .problem-col-label { color: rgba(160,40,40,0.50); }
-    .problem-col:last-child .problem-col-label { color: var(--purple-soft); }
-    .problem-col h4 {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.3;
-      margin: 0 0 10px;
-    }
-    .problem-col p {
-      font-size: 13.5px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.8;
-      margin: 0;
-    }
+    .problems-section { background:var(--stone); padding:110px 0; }
+    .problems-intro { max-width:680px; margin-bottom:64px; }
+    .problems-intro h2 { font-family:var(--font-display); font-size:50px; font-weight:400; color:var(--ink); line-height:1.05; letter-spacing:-0.4px; margin-top:16px; }
+    .problems-intro p { font-size:15px; font-weight:300; color:var(--text-mid); line-height:1.9; margin-top:16px; }
+    .problems-grid { display:flex; flex-direction:column; border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; background:var(--white); box-shadow:var(--shadow-sm); }
+    .problem-row { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--border); transition:background var(--transition); }
+    .problem-row:last-child { border-bottom:none; }
+    .problem-row:hover { background:var(--purple-pale); }
+    .problem-col { padding:36px 40px; }
+    .problem-col:first-child { border-right:1px solid var(--border); }
+    .problem-col-label { font-size:9.5px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:12px; display:block; }
+    .problem-col:first-child .problem-col-label { color:rgba(160,40,40,0.50); }
+    .problem-col:last-child .problem-col-label { color:var(--purple-soft); }
+    .problem-col h4 { font-family:var(--font-display); font-size:21px; font-weight:500; color:var(--ink); line-height:1.3; margin:0; }
 
-    /* INNOVATION AREAS */
-    .areas-section {
-      background: var(--white);
-      padding: 120px 0;
-    }
-    .areas-intro {
-      max-width: 680px;
-      margin-bottom: 72px;
-    }
-    .areas-intro h2 {
-      font-family: var(--font-display);
-      font-size: 50px;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.05;
-      letter-spacing: -0.4px;
-      margin-top: 16px;
-    }
-    .areas-intro p {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      margin-top: 18px;
-    }
-    .areas-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    .area-card {
-      background: var(--white);
-      padding: 52px 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transition: background var(--transition);
-    }
-    .area-card:nth-child(2n) { border-right: none; }
-    .area-card:nth-child(3),
-    .area-card:nth-child(4) { border-bottom: none; }
-    .area-card:hover { background: var(--purple-pale); }
-    .area-tag {
-      display: inline-block;
-      font-size: 9.5px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--purple-soft);
-      border: 1px solid var(--border-strong);
-      padding: 4px 12px;
-      border-radius: 999px;
-      width: fit-content;
-    }
-    .area-card h3 {
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.2;
-      margin: 0;
-    }
-    .area-card p {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin: 0;
-      flex: 1;
-    }
-    .area-footer {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-      flex-wrap: wrap;
-    }
-    .area-footer span { font-size: 10.5px; color: var(--text-light); }
+    /* WHAT CHANGES */
+    .outcomes-section { background:var(--white); padding:110px 0; }
+    .outcomes-intro { max-width:680px; margin-bottom:64px; }
+    .outcomes-intro h2 { font-family:var(--font-display); font-size:50px; font-weight:400; color:var(--ink); line-height:1.05; letter-spacing:-0.4px; margin-top:16px; }
+    .outcomes-intro p { font-size:15px; font-weight:300; color:var(--text-mid); line-height:1.9; margin-top:16px; }
+    .outcomes-grid { display:grid; grid-template-columns:repeat(2,1fr); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+    .outcome-card { background:var(--white); padding:48px 44px; display:flex; flex-direction:column; gap:12px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); transition:background var(--transition); }
+    .outcome-card:nth-child(2n) { border-right:none; }
+    .outcome-card:nth-child(3), .outcome-card:nth-child(4) { border-bottom:none; }
+    .outcome-card:hover { background:var(--purple-pale); }
+    .outcome-tag { display:inline-block; font-size:9.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple-soft); border:1px solid var(--border-strong); padding:4px 12px; border-radius:999px; width:fit-content; }
+    .outcome-before { font-size:13px; font-weight:300; color:var(--text-light); line-height:1.6; margin:0; }
+    .outcome-after { font-family:var(--font-display); font-size:22px; font-weight:500; color:var(--ink); line-height:1.25; margin:0; }
 
-    /* APPROACH STATEMENT */
-    .approach-section {
-      background: var(--stone);
-      padding: 110px 0;
-      border-top: 1px solid var(--border);
-    }
-    .approach-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: start;
-    }
-    .approach-inner h2 {
-      font-family: var(--font-display);
-      font-size: 46px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.1;
-      letter-spacing: -0.3px;
-      position: sticky;
-      top: 100px;
-    }
-    .approach-points {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: var(--white);
-    }
-    .approach-point {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-      padding: 36px 40px;
-      border-bottom: 1px solid var(--border);
-      transition: background var(--transition);
-    }
-    .approach-point:last-child { border-bottom: none; }
-    .approach-point:hover { background: var(--purple-pale); }
-    .approach-num {
-      font-family: var(--font-display);
-      font-size: 13px;
-      color: var(--text-light);
-      letter-spacing: 0.08em;
-      padding-top: 4px;
-      flex-shrink: 0;
-    }
-    .approach-text h4 {
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--ink);
-      margin: 0 0 8px;
-    }
-    .approach-text p {
-      font-size: 13.5px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.8;
-      margin: 0;
-    }
+    /* APPROACH */
+    .approach-section { background:var(--stone); padding:110px 0; border-top:1px solid var(--border); }
+    .approach-inner { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
+    .approach-inner h2 { font-family:var(--font-display); font-size:46px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.1; letter-spacing:-0.3px; position:sticky; top:100px; }
+    .approach-points { display:flex; flex-direction:column; border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; background:var(--white); }
+    .approach-point { display:flex; gap:24px; align-items:flex-start; padding:32px 36px; border-bottom:1px solid var(--border); transition:background var(--transition); }
+    .approach-point:last-child { border-bottom:none; }
+    .approach-point:hover { background:var(--purple-pale); }
+    .approach-num { font-family:var(--font-display); font-size:13px; color:var(--text-light); letter-spacing:0.08em; padding-top:4px; flex-shrink:0; }
+    .approach-text h4 { font-family:var(--font-display); font-size:20px; font-weight:500; color:var(--ink); margin:0 0 6px; }
+    .approach-text p { font-size:13.5px; font-weight:300; color:var(--text-mid); line-height:1.8; margin:0; }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .sol-header-inner,
-      .approach-inner { grid-template-columns: 1fr; gap: 40px; }
-      .sol-header h1 { font-size: 46px; }
-      .recognition-grid,
-      .clients-grid { grid-template-columns: 1fr; }
-      .recognition-item,
-      .client-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .recognition-item:last-child,
-      .client-card:last-child { border-bottom: none; }
-      .problem-row { grid-template-columns: 1fr; }
-      .problem-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-      .problem-col { padding: 28px; }
-      .areas-grid { grid-template-columns: 1fr; }
-      .area-card { border-right: none; padding: 36px 28px; }
-      .area-card:nth-child(3) { border-bottom: 1px solid var(--border); }
-      .clients-intro h2, .problems-intro h2, .areas-intro h2, .approach-inner h2 { font-size: 36px; }
-      .approach-inner h2 { position: static; }
-      .client-card { padding: 36px 28px; }
+    @media (max-width:900px) {
+      .sol-header-inner, .approach-inner { grid-template-columns:1fr; gap:40px; }
+      .sol-header h1 { font-size:46px; }
+      .recognition-grid, .clients-grid { grid-template-columns:1fr; }
+      .recognition-item, .client-card { border-right:none; border-bottom:1px solid var(--border); }
+      .recognition-item:last-child, .client-card:last-child { border-bottom:none; }
+      .problem-row { grid-template-columns:1fr; }
+      .problem-col:first-child { border-right:none; border-bottom:1px solid var(--border); }
+      .problem-col { padding:24px 28px; }
+      .outcomes-grid { grid-template-columns:1fr; }
+      .outcome-card { border-right:none; }
+      .outcome-card:nth-child(3) { border-bottom:1px solid var(--border); }
+      .clients-intro h2, .problems-intro h2, .outcomes-intro h2, .approach-inner h2 { font-size:36px; }
+      .approach-inner h2 { position:static; }
     }
-  
-
-
-
-
   </style>
 </head>
 <body>
@@ -473,29 +126,29 @@
           <h1>You have the technology. We build what makes it work.</h1>
         </div>
         <div class="sol-header-right">
-          <p>Most healthcare technologies fail not because of the technology itself — but because the value proposition is unclear, the service system is missing, and nobody has designed how clinical adoption actually happens. That is the problem we solve.</p>
+          <p>Most healthcare technologies fail not because of the engineering — but because the value proposition is unclear, the service system is missing, and nobody has designed how clinical adoption actually happens.</p>
           <a href="contact.html" class="header-cta">Discuss Your Challenge</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RECOGNITION STRIP -->
+  <!-- RECOGNITION -->
   <section class="recognition-strip">
     <div class="container">
       <span class="recognition-label">Do you recognise this?</span>
       <div class="recognition-grid">
         <div class="recognition-item">
           <div class="recognition-dash">—</div>
-          <p>Our technology works — but hospitals aren't buying it, and we don't know why.</p>
+          <p>Our technology works — but hospitals aren't buying it.</p>
         </div>
         <div class="recognition-item">
           <div class="recognition-dash">—</div>
-          <p>We have clinical evidence, but we can't turn it into a value proposition that resonates.</p>
+          <p>We have clinical evidence. We can't turn it into a value proposition.</p>
         </div>
         <div class="recognition-item">
           <div class="recognition-dash">—</div>
-          <p>We're building the product, but nobody has designed how it will actually be used in a hospital.</p>
+          <p>Nobody has designed how our product will actually be used.</p>
         </div>
       </div>
     </div>
@@ -507,45 +160,29 @@
       <div class="clients-intro">
         <span class="eyebrow">Who We Work With</span>
         <h2>Three types of client. One shared challenge.</h2>
-        <p>The organisations we work with are building something genuinely important — but they are missing the innovation layer that connects their technology to real clinical adoption.</p>
+        <p>The organisations we work with are building something genuinely important — but they are missing the layer that connects their technology to real clinical adoption.</p>
       </div>
-
       <div class="clients-grid">
 
         <div class="client-card">
           <div class="client-card-icon">I</div>
           <h3>Medical Robotics Companies</h3>
-          <p>You have built a surgical or rehabilitation robot with real clinical potential. But you are struggling to articulate the value proposition, design the clinical service around it, and build the adoption architecture hospitals need before they commit.</p>
-          <div class="client-problems">
-            <span>Value proposition unclear to procurement teams</span>
-            <span>No clinical workflow design around the technology</span>
-            <span>Adoption stalling at pilot stage</span>
-            <span>No evidence framework for ROI conversations</span>
-          </div>
+          <p>You have real clinical potential. But articulating the value proposition, designing the clinical service, and building the adoption architecture hospitals need before they commit — that is the gap we fill.</p>
+          <a href="contact.html" class="client-cta-link">Discuss your challenge →</a>
         </div>
 
         <div class="client-card">
           <div class="client-card-icon">II</div>
           <h3>HealthTech Ventures</h3>
-          <p>You are building a digital health product — diagnostics, remote monitoring, AI-assisted care — and you need to ensure it is designed for real clinical integration, not just technical function. The service system around the technology is missing.</p>
-          <div class="client-problems">
-            <span>Technology built before service system is designed</span>
-            <span>No clear stakeholder value proposition hierarchy</span>
-            <span>Clinical workflow integration not yet mapped</span>
-            <span>Scaling blocked by weak adoption architecture</span>
-          </div>
+          <p>You are building a digital health product and need it designed for real clinical integration — not just technical function. The service system around your technology is the part that is missing.</p>
+          <a href="contact.html" class="client-cta-link">Discuss your challenge →</a>
         </div>
 
         <div class="client-card">
           <div class="client-card-icon">III</div>
           <h3>Hospital Innovation Teams</h3>
-          <p>You are leading innovation inside a hospital or health system — evaluating technologies, designing new care pathways, or building internal innovation capability. You need a structured service design approach that connects clinical ambition to operational reality.</p>
-          <div class="client-problems">
-            <span>Innovation initiatives failing to reach implementation</span>
-            <span>No structured service design methodology</span>
-            <span>Technology evaluation lacks value framework</span>
-            <span>Internal alignment on innovation priorities missing</span>
-          </div>
+          <p>You are leading innovation inside a health system and need a structured service design approach that connects clinical ambition to operational reality — and actually reaches implementation.</p>
+          <a href="contact.html" class="client-cta-link">Discuss your challenge →</a>
         </div>
 
       </div>
@@ -558,21 +195,18 @@
       <div class="problems-intro">
         <span class="eyebrow">Problem → Solution</span>
         <h2>The problems we are built to solve.</h2>
-        <p>Every Servizions engagement starts from a real problem — not a service category. Here are the situations we work in most often, and what we do about them.</p>
+        <p>Every Servizions engagement starts from a real problem. Here are the four situations we work in most often — and what we do about them.</p>
       </div>
-
       <div class="problems-grid">
 
         <div class="problem-row">
           <div class="problem-col">
             <span class="problem-col-label">The Problem</span>
-            <h4>No one can explain the value clearly</h4>
-            <p>Your technology has real clinical merit, but every stakeholder hears a different pitch. There is no single, evidence-backed statement that aligns clinical outcome, operational ROI, and patient value.</p>
+            <h4>Nobody can explain the value clearly</h4>
           </div>
           <div class="problem-col">
             <span class="problem-col-label">The Solution</span>
             <h4>Innovation Value Proposition Design</h4>
-            <p>We map every stakeholder, identify their decision criteria, and design one coherent value proposition that speaks to all of them — structured around evidence, outcome, and operational fit.</p>
           </div>
         </div>
 
@@ -580,12 +214,10 @@
           <div class="problem-col">
             <span class="problem-col-label">The Problem</span>
             <h4>The technology works. Adoption doesn't.</h4>
-            <p>Pilots succeed but rollout stalls. Clinical teams resist. The governance structure is unclear. No one has designed the service system that makes adoption sustainable beyond the first site.</p>
           </div>
           <div class="problem-col">
             <span class="problem-col-label">The Solution</span>
             <h4>Service System Architecture</h4>
-            <p>We design the complete service ecosystem — clinical workflows, governance model, training architecture, and rollout framework — so adoption is not dependent on individual champions.</p>
           </div>
         </div>
 
@@ -593,25 +225,21 @@
           <div class="problem-col">
             <span class="problem-col-label">The Problem</span>
             <h4>Built for today, not for what's coming</h4>
-            <p>The healthcare environment is shifting — reimbursement models, workforce structures, care pathways. Your innovation was designed for the system that exists, not the one that is forming.</p>
           </div>
           <div class="problem-col">
             <span class="problem-col-label">The Solution</span>
             <h4>Impact Analysis &amp; Future Readiness</h4>
-            <p>We map the evolving clinical and operational environment and stress-test your innovation against it — so your value proposition and service system remain relevant as the landscape shifts.</p>
           </div>
         </div>
 
         <div class="problem-row">
           <div class="problem-col">
             <span class="problem-col-label">The Problem</span>
-            <h4>No one has designed the clinical experience</h4>
-            <p>The product roadmap is full, but nobody has mapped the actual experience of the surgeon, the nurse, the patient, or the administrator. The human side of the innovation is missing entirely.</p>
+            <h4>The clinical experience was never designed</h4>
           </div>
           <div class="problem-col">
             <span class="problem-col-label">The Solution</span>
             <h4>Human-Centered Clinical Design</h4>
-            <p>We conduct deep clinical user research and design the service experience from the perspective of every person it must work for — identifying the friction that will kill adoption before it happens.</p>
           </div>
         </div>
 
@@ -620,50 +248,37 @@
   </section>
 
   <!-- WHAT CHANGES -->
-  <section class="areas-section">
+  <section class="outcomes-section">
     <div class="container">
-      <div class="areas-intro">
+      <div class="outcomes-intro">
         <span class="eyebrow">What Changes</span>
-        <h2>What is different after working with Servizions.</h2>
-        <p>The measure of a Servizions engagement is not what we produce — it is what becomes possible for your innovation that was not possible before.</p>
+        <h2>What becomes possible after working with us.</h2>
+        <p>The measure of every Servizions engagement is not what we produce — it is what your innovation can do that it could not do before.</p>
       </div>
+      <div class="outcomes-grid">
 
-      <div class="areas-grid">
-
-        <div class="area-card">
-          <span class="area-tag">Clarity</span>
-          <h3>You can explain your value to anyone</h3>
-          <p>Before: different stakeholders hear different things, and nobody is fully convinced. After: one clear, evidence-backed value proposition that works for the surgeon, the administrator, and the procurement committee — simultaneously.</p>
-          <div class="area-footer">
-            <span>From fragmented pitches</span><span>·</span><span>To one trusted statement</span>
-          </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Clarity</span>
+          <p class="outcome-before">Before — fragmented pitches, nobody fully convinced</p>
+          <p class="outcome-after">One evidence-backed value proposition that works for every stakeholder, simultaneously.</p>
         </div>
 
-        <div class="area-card">
-          <span class="area-tag">Adoption</span>
-          <h3>Hospitals can actually say yes</h3>
-          <p>Before: interest from clinical leads, but no clear path to commitment. After: the governance model, training architecture, and integration logic are designed — hospitals have what they need to move from pilot to decision.</p>
-          <div class="area-footer">
-            <span>From stalled pilots</span><span>·</span><span>To scalable adoption</span>
-          </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Adoption</span>
+          <p class="outcome-before">Before — interest from clinical leads, no path to commitment</p>
+          <p class="outcome-after">Hospitals have everything they need to move from pilot to decision.</p>
         </div>
 
-        <div class="area-card">
-          <span class="area-tag">Direction</span>
-          <h3>You know exactly what to build next</h3>
-          <p>Before: competing priorities, unclear requirements, and a product being built on assumptions. After: a ranked set of decisions grounded in clinical reality — so engineering effort goes where it creates the most adoption leverage.</p>
-          <div class="area-footer">
-            <span>From assumption-driven</span><span>·</span><span>To evidence-grounded</span>
-          </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Direction</span>
+          <p class="outcome-before">Before — competing priorities, building on assumptions</p>
+          <p class="outcome-after">A ranked set of decisions grounded in clinical reality, not opinion.</p>
         </div>
 
-        <div class="area-card">
-          <span class="area-tag">Confidence</span>
-          <h3>Your innovation is ready for serious conversations</h3>
-          <p>Before: promising technology, but not yet ready for hospital procurement, investor due diligence, or partnership discussions. After: a structured innovation package — value proposition, service system, impact framework — that holds up to scrutiny.</p>
-          <div class="area-footer">
-            <span>From potential</span><span>·</span><span>To credible proposition</span>
-          </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Confidence</span>
+          <p class="outcome-before">Before — promising technology, not yet ready for scrutiny</p>
+          <p class="outcome-after">A structured innovation package that holds up in every serious conversation.</p>
         </div>
 
       </div>
@@ -680,21 +295,21 @@
             <div class="approach-num">01</div>
             <div class="approach-text">
               <h4>Every engagement starts with diagnosis</h4>
-              <p>Before we propose anything, we understand your specific situation — the technology, the clinical environment, the stakeholders, and what is actually blocking adoption. The work is shaped around that, not around a standard process.</p>
+              <p>Before we propose anything, we understand your specific situation — the technology, the clinical environment, and what is actually blocking adoption.</p>
             </div>
           </div>
           <div class="approach-point">
             <div class="approach-num">02</div>
             <div class="approach-text">
               <h4>The methods stay between us</h4>
-              <p>The specific frameworks, tools, and proprietary approaches we use — including how we build Innovation Value Propositions and map future clinical scenarios — are shared with clients directly. They are not published. That is part of what you engage us for.</p>
+              <p>Our frameworks and proprietary approaches are shared with clients directly — not published. That is part of what you engage us for.</p>
             </div>
           </div>
           <div class="approach-point">
             <div class="approach-num">03</div>
             <div class="approach-text">
-              <h4>You receive structured outputs, not process documentation</h4>
-              <p>At the end of every engagement, you have something concrete — a value proposition, a service blueprint, an adoption framework. The work behind it belongs to the engagement. What you own is the result.</p>
+              <h4>You receive structured outputs, not reports</h4>
+              <p>Every engagement ends with something concrete and actionable — a value proposition, a service blueprint, an adoption framework you can actually use.</p>
             </div>
           </div>
         </div>
@@ -708,7 +323,7 @@
       <h2 class="contact-title">Recognise your situation?</h2>
       <p class="contact-subtitle">Tell us where you are and what is blocking you — we will tell you honestly whether and how we can help</p>
       <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block; padding:18px 48px;">Discuss Your Challenge</a>
+        <a href="contact.html" class="contact-button" style="display:inline-block;padding:18px 48px;">Discuss Your Challenge</a>
       </div>
     </div>
   </section>
@@ -717,7 +332,7 @@
     <div class="container footer-inner">
       <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
       <div class="footer-links">
-        <a href="mailto&#58;info&#64;servizions&#46;com">info&#64;servizions&#46;com</a>
+        <a href="mailto:info@servizions.com">info@servizions.com</a>
         <a href="contact.html">Start a conversation</a>
         <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
       </div>
