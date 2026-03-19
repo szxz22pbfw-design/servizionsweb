@@ -9,11 +9,10 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://servizions.com/services.html">
   <meta property="og:title" content="Services – Servizions Healthcare Service Innovation">
-  <meta property="og:description" content="We build the value proposition, service system, and adoption architecture that transforms healthcare technology into something genuinely needed.">
+  <meta property="og:description" content="We build the innovation layer that transforms healthcare technology into something genuinely needed.">
   <meta property="og:url" content="https://servizions.com/services.html">
   <meta property="og:type" content="website">
   <style>
-    /* PAGE HEADER */
     .services-page-header { background:var(--white); padding:100px 0 90px; border-bottom:1px solid var(--border); }
     .services-page-header-inner { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:end; }
     .services-page-header h1 { font-family:var(--font-display); font-size:68px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.0; letter-spacing:-0.5px; margin-top:20px; }
@@ -21,28 +20,25 @@
     .header-cta { display:inline-block; background:var(--purple); color:white; padding:14px 36px; border-radius:var(--radius-sm); font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; font-family:var(--font-body); transition:all var(--transition); }
     .header-cta:hover { background:var(--purple-mid); transform:translateY(-1px); box-shadow:0 6px 20px rgba(59,15,160,0.25); }
 
-    /* QUOTE STRIP */
     .services-quote-strip { background:var(--white); padding:80px 0; border-bottom:1px solid var(--border); }
     .services-quote-text { font-family:var(--font-display); font-size:38px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.4; max-width:860px; letter-spacing:-0.3px; }
     .services-quote-text::before { content:'\201C'; font-size:72px; line-height:0; vertical-align:-0.34em; color:rgba(59,15,160,0.10); margin-right:2px; font-family:var(--font-display); }
 
-    /* CAPABILITIES */
-    .capabilities-section { background:var(--white); padding:110px 0; }
-    .capabilities-header { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; margin-bottom:64px; padding-bottom:56px; border-bottom:1px solid var(--border); }
-    .capabilities-header h2 { font-family:var(--font-display); font-size:50px; font-weight:400; color:var(--ink); line-height:1.05; letter-spacing:-0.4px; margin-top:16px; }
-    .capabilities-header p { font-size:15px; font-weight:300; color:var(--text-mid); line-height:1.9; }
-    .capabilities-grid { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
-    .capability-card { background:var(--white); padding:44px 36px; display:flex; flex-direction:column; gap:12px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); transition:background var(--transition); }
-    .capability-card:nth-child(3n) { border-right:none; }
-    .capability-card:nth-child(4), .capability-card:nth-child(5), .capability-card:nth-child(6) { border-bottom:none; }
-    .capability-card:hover { background:var(--purple-pale); }
-    .capability-num { font-family:var(--font-display); font-size:44px; font-weight:300; color:rgba(59,15,160,0.07); line-height:1; }
-    .capability-card h3 { font-family:var(--font-display); font-size:22px; font-weight:500; color:var(--ink); line-height:1.2; margin:0; }
-    .capability-card p { font-size:13.5px; font-weight:300; color:var(--text-mid); line-height:1.8; margin:0; flex:1; }
-    .capability-tag { display:inline-block; margin-top:auto; padding-top:16px; font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--purple-soft); border-top:1px solid var(--border); width:100%; }
+    /* OUTCOME STATEMENT */
+    .outcome-statement-section { background:var(--stone); padding:110px 0; }
+    .outcome-statement-inner { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
+    .outcome-statement-left h2 { font-family:var(--font-display); font-size:50px; font-weight:400; color:var(--ink); line-height:1.05; letter-spacing:-0.4px; margin-top:16px; margin-bottom:20px; }
+    .outcome-statement-left p { font-size:15px; font-weight:300; color:var(--text-mid); line-height:1.9; }
+    .outcome-items { display:flex; flex-direction:column; gap:0; border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; background:var(--white); box-shadow:var(--shadow-sm); }
+    .outcome-item { display:flex; gap:24px; align-items:flex-start; padding:32px 36px; border-bottom:1px solid var(--border); transition:background var(--transition); }
+    .outcome-item:last-child { border-bottom:none; }
+    .outcome-item:hover { background:var(--purple-pale); }
+    .outcome-num { font-family:var(--font-display); font-size:13px; color:var(--text-light); letter-spacing:0.06em; flex-shrink:0; padding-top:3px; }
+    .outcome-body h4 { font-family:var(--font-display); font-size:20px; font-weight:500; color:var(--ink); margin:0 0 4px; line-height:1.2; }
+    .outcome-body p { font-size:13px; font-weight:300; color:var(--text-light); line-height:1.7; margin:0; }
 
     /* PACKAGES */
-    .packages-section { background:var(--stone); padding:110px 0; }
+    .packages-section { background:var(--white); padding:110px 0; }
     .packages-header { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; margin-bottom:64px; }
     .packages-header h2 { font-family:var(--font-display); font-size:50px; font-weight:400; letter-spacing:-0.4px; color:var(--ink); line-height:1.05; margin-top:16px; }
     .packages-header p { font-size:15px; font-weight:300; line-height:1.9; color:var(--text-mid); }
@@ -62,7 +58,7 @@
     .package-duration { font-size:12.5px; font-weight:300; color:var(--text-light); }
     .package-card.featured .package-duration { color:rgba(255,255,255,0.30); }
     .package-body { padding:32px 36px 40px; flex:1; display:flex; flex-direction:column; }
-    .package-desc { font-size:13.5px; font-weight:300; color:var(--text-mid); line-height:1.85; margin-bottom:0; }
+    .package-desc { font-size:13.5px; font-weight:300; color:var(--text-mid); line-height:1.85; }
     .package-card.featured .package-desc { color:rgba(255,255,255,0.50); }
     .package-enquire { display:inline-block; margin-top:auto; padding-top:24px; font-size:11px; font-weight:600; letter-spacing:0.10em; text-transform:uppercase; color:var(--purple-soft); transition:color var(--transition); }
     .package-enquire:hover { color:var(--purple); }
@@ -70,7 +66,7 @@
     .package-card.featured .package-enquire:hover { color:white; }
 
     /* WHY */
-    .why-section { background:var(--white); padding:110px 0; }
+    .why-section { background:var(--stone); padding:110px 0; }
     .why-header { max-width:680px; margin-bottom:64px; }
     .why-header h2 { font-family:var(--font-display); font-size:50px; font-weight:400; letter-spacing:-0.4px; color:var(--ink); line-height:1.05; margin-top:16px; }
     .why-header p { font-size:15px; font-weight:300; line-height:1.9; color:var(--text-mid); margin-top:16px; }
@@ -84,13 +80,10 @@
     .why-card p { font-size:13.5px; font-weight:300; color:var(--text-mid); line-height:1.8; margin:0; }
 
     @media (max-width:900px) {
-      .services-page-header-inner, .capabilities-header, .packages-header { grid-template-columns:1fr; gap:40px; }
+      .services-page-header-inner, .outcome-statement-inner, .packages-header { grid-template-columns:1fr; gap:40px; }
       .services-page-header h1 { font-size:46px; }
       .services-quote-text { font-size:26px; }
-      .capabilities-header h2, .packages-header h2, .why-header h2 { font-size:36px; }
-      .capabilities-grid { grid-template-columns:1fr; }
-      .capability-card { border-right:none; }
-      .capability-card:nth-child(5) { border-bottom:1px solid var(--border); }
+      .outcome-statement-left h2, .packages-header h2, .why-header h2 { font-size:36px; }
       .packages-grid { grid-template-columns:1fr; }
       .package-card { border-right:none; border-bottom:1px solid var(--border); }
       .package-card:last-child { border-bottom:none; }
@@ -114,7 +107,6 @@
     </div>
   </header>
 
-  <!-- PAGE HEADER -->
   <section class="services-page-header">
     <div class="container">
       <div class="services-page-header-inner">
@@ -123,76 +115,58 @@
           <h1>The innovation layer most companies never build.</h1>
         </div>
         <div class="services-page-header-right">
-          <p>We design the value proposition, service system, and adoption architecture that transforms a healthcare technology into something genuinely needed — before it is built the wrong way.</p>
+          <p>We design what transforms a healthcare technology into something genuinely needed — before it is built the wrong way. The specifics of how we work are shared with clients directly, not published here.</p>
           <a href="contact.html" class="header-cta">Start a Conversation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
   <section class="services-quote-strip">
     <div class="container">
       <p class="services-quote-text">The gap between a technology that works and a technology that is genuinely used is a service design problem. We solve it.</p>
     </div>
   </section>
 
-  <!-- CAPABILITIES -->
-  <section class="capabilities-section">
+  <!-- WHAT YOU WALK AWAY WITH -->
+  <section class="outcome-statement-section">
     <div class="container">
-      <div class="capabilities-header">
-        <div>
+      <div class="outcome-statement-inner">
+        <div class="outcome-statement-left">
           <span class="eyebrow">What We Deliver</span>
-          <h2>Six capabilities. One system.</h2>
+          <h2>What every client walks away with.</h2>
+          <p>We do not publish our methods or frameworks. What we can tell you is what every engagement produces — and what that makes possible for your innovation.</p>
         </div>
-        <div>
-          <p>Every capability is part of a connected engagement. The details of how we work are shared with clients directly — not published here. What matters is the outcome it creates for your innovation.</p>
+        <div class="outcome-items">
+          <div class="outcome-item">
+            <div class="outcome-num">01</div>
+            <div class="outcome-body">
+              <h4>Clarity on your value</h4>
+              <p>One statement that every stakeholder — surgeon, administrator, procurement — can trust and act on.</p>
+            </div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-num">02</div>
+            <div class="outcome-body">
+              <h4>A system hospitals can say yes to</h4>
+              <p>The governance, workflows, and integration logic that turn clinical interest into commitment.</p>
+            </div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-num">03</div>
+            <div class="outcome-body">
+              <h4>A clear next decision</h4>
+              <p>Not a list of options — a prioritised direction grounded in clinical reality, not assumption.</p>
+            </div>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-num">04</div>
+            <div class="outcome-body">
+              <h4>An innovation ready for scrutiny</h4>
+              <p>A structured package that holds up in procurement, due diligence, and partnership conversations.</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="capabilities-grid">
-
-        <div class="capability-card">
-          <div class="capability-num">01</div>
-          <h3>System Diagnosis</h3>
-          <p>A clear picture of where your innovation stands — the gaps, the risks, and the decisions that must be made before you invest further.</p>
-          <span class="capability-tag">Foundation</span>
-        </div>
-
-        <div class="capability-card">
-          <div class="capability-num">02</div>
-          <h3>Value Proposition Design</h3>
-          <p>One evidence-backed value proposition structured for every stakeholder who must say yes — replacing the features list with something they can trust.</p>
-          <span class="capability-tag">Core Offering</span>
-        </div>
-
-        <div class="capability-card">
-          <div class="capability-num">03</div>
-          <h3>Service System Architecture</h3>
-          <p>The complete system that makes your technology usable in a clinical environment — workflows, governance, training, and the logic hospitals need before they commit.</p>
-          <span class="capability-tag">System Design</span>
-        </div>
-
-        <div class="capability-card">
-          <div class="capability-num">04</div>
-          <h3>Impact Analysis</h3>
-          <p>A structured framework for measuring and communicating your innovation's value — built to support internal decisions and external scrutiny.</p>
-          <span class="capability-tag">Proprietary</span>
-        </div>
-
-        <div class="capability-card">
-          <div class="capability-num">05</div>
-          <h3>Implementation Coordination</h3>
-          <p>Structured support for the most fragile phase — when the innovation moves from design into clinical reality, and the system must hold under real conditions.</p>
-          <span class="capability-tag">Execution</span>
-        </div>
-
-        <div class="capability-card">
-          <div class="capability-num">06</div>
-          <h3>Innovation Workshops</h3>
-          <p>A facilitated session designed around your specific situation — not a generic agenda — that leaves your team with sharper clarity and internal alignment.</p>
-          <span class="capability-tag">Workshop</span>
-        </div>
-
       </div>
     </div>
   </section>
@@ -206,7 +180,7 @@
           <h2>Three packages. Clear scope.</h2>
         </div>
         <div>
-          <p>Designed for different stages of healthcare innovation. Every package is a fixed-scope engagement with defined deliverables. The specifics are discussed directly — contact us to find out what fits your situation.</p>
+          <p>Designed for different stages of healthcare innovation. Every package is a fixed-scope engagement. The specifics are discussed directly — contact us to find out what fits your situation.</p>
         </div>
       </div>
       <div class="packages-grid">
@@ -218,7 +192,7 @@
             <div class="package-duration">2 – 3 weeks · Focused engagement</div>
           </div>
           <div class="package-body">
-            <p class="package-desc">Rapid clarity on your value proposition and service concept. A focused sprint for healthcare technology companies that need to move — without months of process.</p>
+            <p class="package-desc">Rapid clarity on your value proposition and service concept. For healthcare technology companies that need to move — without months of process.</p>
             <a href="contact.html" class="package-enquire">Enquire about this package →</a>
           </div>
         </div>
@@ -230,7 +204,7 @@
             <div class="package-duration">4 – 6 weeks · Full engagement</div>
           </div>
           <div class="package-body">
-            <p class="package-desc">The complete Servizions engagement. Value proposition, service architecture, clinical workflow integration, and impact measurement — the full innovation layer, designed to last.</p>
+            <p class="package-desc">The complete Servizions engagement — the full innovation layer, designed to last. This is where the most consequential work happens.</p>
             <a href="contact.html" class="package-enquire">Enquire about this package →</a>
           </div>
         </div>
@@ -242,7 +216,7 @@
             <div class="package-duration">1 – 2 days · Facilitated session</div>
           </div>
           <div class="package-body">
-            <p class="package-desc">A structured facilitated session — run with your internal team, clinical partners, or both — to unlock new thinking and build the internal alignment needed to move forward.</p>
+            <p class="package-desc">A structured facilitated session designed around your specific situation — not a generic agenda — that leaves your team with sharper clarity and internal alignment.</p>
             <a href="contact.html" class="package-enquire">Enquire about this package →</a>
           </div>
         </div>
@@ -257,23 +231,23 @@
       <div class="why-header">
         <span class="eyebrow">Why Servizions</span>
         <h2>The innovation layer most companies skip.</h2>
-        <p>Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in the service system and value proposition that determines whether the technology is genuinely adopted.</p>
+        <p>Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in the layer that determines whether the technology is genuinely adopted.</p>
       </div>
       <div class="why-cards-grid">
         <div class="why-card">
           <div class="why-card-num">01</div>
           <h3>We build systems, not strategies</h3>
-          <p>Every engagement ends with something structured and actionable — not a slide deck. A value proposition, a service blueprint, an adoption framework a team can actually use.</p>
+          <p>Every engagement ends with something structured and actionable. Not a slide deck — a value proposition, a service blueprint, an adoption framework a team can actually use.</p>
         </div>
         <div class="why-card">
           <div class="why-card-num">02</div>
           <h3>Pre-product is our speciality</h3>
-          <p>The window before a technology is finalised is where the most consequential decisions are made — and almost never designed. We work here specifically, because this is where the work has the greatest leverage.</p>
+          <p>The window before a technology is finalised is where the most consequential decisions are made — and almost never designed. We work here specifically.</p>
         </div>
         <div class="why-card">
           <div class="why-card-num">03</div>
           <h3>We start from the clinical reality</h3>
-          <p>Every engagement begins from the actual environment the technology must succeed in — the real constraints, the real people, the real friction. Not from assumptions, and not from a template.</p>
+          <p>Every engagement begins from the actual environment the technology must succeed in — real constraints, real people, real friction. Not from assumptions.</p>
         </div>
         <div class="why-card">
           <div class="why-card-num">04</div>
@@ -284,7 +258,6 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="contact-section">
     <div class="container">
       <h2 class="contact-title">Ready to build the innovation layer?</h2>
