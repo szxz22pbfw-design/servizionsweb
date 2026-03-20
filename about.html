@@ -5,362 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>About – Healthcare Service Innovation Studio | Servizions</title>
-  <meta name="description" content="Servizions is a healthcare service innovation studio founded in Munich, 2026. We build the value proposition and service system layer that healthcare technologies are missing.">
+  <meta name="description" content="Servizions is a healthcare service innovation studio based in Munich. We bridge medtech and healthcare robotics companies with the real clinical world.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://szxz22pbfw-design.github.io/servizionsweb/about.html">
+  <link rel="canonical" href="https://servizions.com/about.html">
+  <meta property="og:title" content="About – Servizions Healthcare Service Innovation Studio">
+  <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
+  <meta property="og:url" content="https://servizions.com/about.html">
+  <meta property="og:type" content="website">
   <style>
-
-    /* PAGE HEADER */
-    .about-header {
-      background: var(--white);
-      padding: 100px 0 90px;
-      border-bottom: 1px solid var(--border);
+    .about-header{background:var(--white);padding:100px 0 90px;border-bottom:1px solid var(--border)}
+    .about-header-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:end}
+    .about-header h1{font-family:var(--font-display);font-size:68px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.0;letter-spacing:-0.5px;margin-top:20px}
+    .about-header-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;border-left:2px solid var(--border-strong);padding-left:28px}
+    .studio-section{background:var(--white);padding:110px 0;border-bottom:1px solid var(--border)}
+    .studio-inner{display:grid;grid-template-columns:5fr 7fr;gap:100px;align-items:start}
+    .studio-left h2{font-family:var(--font-display);font-size:46px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px;position:sticky;top:100px}
+    .studio-right{display:flex;flex-direction:column;gap:22px}
+    .studio-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;margin:0}
+    .studio-right p strong{font-weight:500;color:var(--ink)}
+    .beliefs-section{background:var(--stone);padding:110px 0}
+    .beliefs-intro{max-width:640px;margin-bottom:64px}
+    .beliefs-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
+    .beliefs-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
+    .beliefs-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm)}
+    .belief-item{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--border);transition:background var(--transition)}
+    .belief-item:last-child{border-bottom:none}
+    .belief-item:hover{background:var(--purple-pale)}
+    .belief-num{font-family:var(--font-display);font-size:13px;font-weight:400;color:var(--text-light);letter-spacing:0.06em;padding:40px 0 0 36px}
+    .belief-body{padding:36px 48px 36px 32px;border-left:1px solid var(--border)}
+    .belief-body h4{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--ink);margin:0 0 8px;line-height:1.25}
+    .belief-body p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.8;margin:0}
+    @media(max-width:900px){
+      .about-header-inner,.studio-inner{grid-template-columns:1fr;gap:40px}
+      .about-header h1{font-size:46px}
+      .studio-left h2{font-size:36px;position:static}
+      .beliefs-intro h2{font-size:36px}
+      .belief-item{grid-template-columns:44px 1fr}
+      .belief-num{padding:28px 0 0 20px}
+      .belief-body{padding:28px 24px}
     }
-    .about-header-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: end;
-    }
-    .about-header h1 {
-      font-family: var(--font-display);
-      font-size: 68px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.0;
-      letter-spacing: -0.5px;
-      margin-top: 20px;
-    }
-    .about-header-right p {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      border-left: 2px solid var(--border-strong);
-      padding-left: 28px;
-    }
-
-    /* STUDIO IDENTITY */
-    .studio-section {
-      background: var(--white);
-      padding: 110px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .studio-inner {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 100px;
-      align-items: start;
-    }
-    .studio-left h2 {
-      font-family: var(--font-display);
-      font-size: 46px;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.05;
-      letter-spacing: -0.4px;
-      margin-top: 16px;
-      position: sticky;
-      top: 100px;
-    }
-    .studio-right {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .studio-right p {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      margin: 0;
-    }
-    .studio-right p strong {
-      font-weight: 500;
-      color: var(--ink);
-    }
-    .studio-stat-row {
-      display: flex;
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-top: 12px;
-    }
-    .studio-stat {
-      flex: 1;
-      padding: 28px 32px;
-      border-right: 1px solid var(--border);
-    }
-    .studio-stat:last-child { border-right: none; }
-    .studio-stat-value {
-      font-family: var(--font-display);
-      font-size: 34px;
-      font-weight: 400;
-      color: var(--purple);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .studio-stat-label {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--text-light);
-      letter-spacing: 0.04em;
-    }
-
-    /* THE GAP */
-    .gap-section {
-      background: var(--stone);
-      padding: 110px 0;
-    }
-    .gap-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: start;
-    }
-    .gap-left {
-      position: sticky;
-      top: 100px;
-    }
-    .gap-left h2 {
-      font-family: var(--font-display);
-      font-size: 46px;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.05;
-      letter-spacing: -0.4px;
-      margin-top: 16px;
-      margin-bottom: 20px;
-    }
-    .gap-left p {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-    }
-    .gap-right {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-    }
-    .gap-item {
-      padding: 36px 40px;
-      border-bottom: 1px solid var(--border);
-      transition: background var(--transition);
-    }
-    .gap-item:last-child { border-bottom: none; }
-    .gap-item:hover { background: var(--purple-pale); }
-    .gap-item-marker {
-      font-size: 9.5px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--purple-soft);
-      margin-bottom: 10px;
-      display: block;
-    }
-    .gap-item h4 {
-      font-family: var(--font-display);
-      font-size: 21px;
-      font-weight: 500;
-      color: var(--ink);
-      margin: 0 0 10px;
-      line-height: 1.25;
-    }
-    .gap-item p {
-      font-size: 13.5px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    /* FOUNDER */
-    .founder-section {
-      background: var(--white);
-      padding: 110px 0;
-      border-top: 1px solid var(--border);
-    }
-    .founder-inner {
-      display: grid;
-      grid-template-columns: 5fr 7fr;
-      gap: 100px;
-      align-items: start;
-    }
-    .founder-left {
-      position: sticky;
-      top: 100px;
-    }
-    .founder-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--purple-soft);
-      margin-bottom: 24px;
-      display: block;
-    }
-    .founder-name {
-      font-family: var(--font-display);
-      font-size: 42px;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-    .founder-title {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--text-light);
-      letter-spacing: 0.04em;
-      margin-bottom: 32px;
-    }
-    .founder-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .founder-contact a {
-      font-size: 12.5px;
-      font-weight: 300;
-      color: var(--purple-soft);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
-    .founder-contact a:hover { color: var(--purple); }
-    .founder-right {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .founder-quote {
-      font-family: var(--font-display);
-      font-size: 30px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.4;
-      letter-spacing: -0.2px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--border);
-    }
-    .founder-quote::before {
-      content: '\201C';
-      font-size: 56px;
-      line-height: 0;
-      vertical-align: -0.30em;
-      color: rgba(59,15,160,0.10);
-      margin-right: 2px;
-      font-family: var(--font-display);
-    }
-    .founder-bio p {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      margin: 0 0 18px;
-    }
-    .founder-bio p:last-child { margin-bottom: 0; }
-
-    /* BELIEFS */
-    .beliefs-section {
-      background: var(--stone);
-      padding: 110px 0;
-    }
-    .beliefs-intro {
-      max-width: 640px;
-      margin-bottom: 64px;
-    }
-    .beliefs-intro h2 {
-      font-family: var(--font-display);
-      font-size: 50px;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.05;
-      letter-spacing: -0.4px;
-      margin-top: 16px;
-    }
-    .beliefs-intro p {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.9;
-      margin-top: 16px;
-    }
-    .beliefs-list {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-    }
-    .belief-item {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      border-bottom: 1px solid var(--border);
-      transition: background var(--transition);
-    }
-    .belief-item:last-child { border-bottom: none; }
-    .belief-item:hover { background: var(--purple-pale); }
-    .belief-num {
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--text-light);
-      letter-spacing: 0.06em;
-      padding: 40px 0 0 36px;
-    }
-    .belief-body {
-      padding: 36px 48px 36px 32px;
-      border-left: 1px solid var(--border);
-    }
-    .belief-body h4 {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--ink);
-      margin: 0 0 10px;
-      line-height: 1.25;
-    }
-    .belief-body p {
-      font-size: 13.5px;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .about-header-inner,
-      .studio-inner,
-      .gap-inner,
-      .founder-inner { grid-template-columns: 1fr; gap: 40px; }
-      .about-header h1 { font-size: 46px; }
-      .studio-left h2, .gap-left h2, .beliefs-intro h2 { font-size: 36px; }
-      .studio-left h2, .gap-left, .founder-left { position: static; }
-      .studio-stat-row { flex-direction: column; }
-      .studio-stat { border-right: none; border-bottom: 1px solid var(--border); }
-      .studio-stat:last-child { border-bottom: none; }
-      .belief-item { grid-template-columns: 44px 1fr; }
-      .belief-num { padding: 28px 0 0 20px; }
-      .belief-body { padding: 28px 24px; }
-      .founder-name { font-size: 34px; }
-      .founder-quote { font-size: 24px; }
-    }
-  
-
-
-
-
   </style>
 </head>
 <body>
@@ -377,7 +60,6 @@
     </div>
   </header>
 
-  <!-- PAGE HEADER -->
   <section class="about-header">
     <div class="container">
       <div class="about-header-inner">
@@ -386,13 +68,12 @@
           <h1>A studio built for the gap nobody fills.</h1>
         </div>
         <div class="about-header-right">
-          <p>Healthcare technologies fail not because of the engineering — but because the value proposition, service system, and adoption architecture are missing. Servizions was founded to fill that gap. Precisely, deliberately, and at the moment it matters most.</p>
+          <p>Bridging medtech and healthcare robotics companies with the real clinical world.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STUDIO IDENTITY -->
   <section class="studio-section">
     <div class="container">
       <div class="studio-inner">
@@ -401,52 +82,14 @@
           <h2>What Servizions is — and is not.</h2>
         </div>
         <div class="studio-right">
-          <p>Servizions is a <strong>healthcare service innovation studio</strong>. Not a consultancy. Not an agency. Not a research institute. A studio — where structured methods, deep domain knowledge, and a clear point of view are applied to a single problem: making healthcare innovation genuinely work.</p>
+          <p>Servizions is a <strong>healthcare service innovation studio</strong>. Not a consultancy. Not an agency. Not a research institute. A studio — where structured methods, deep domain knowledge, and a clear point of view are applied to a single problem: making healthcare innovation genuinely work in the real clinical world.</p>
           <p>We operate in the space between a technology and its clinical adoption. That space — the value proposition, the service architecture, the adoption system — is where most healthcare innovations either succeed or quietly fail. It is almost never designed. <strong>We design it.</strong></p>
-          <p>Our work is pre-product and pre-scale: the critical window before a technology is locked, before a value proposition hardens, before a service system is built around the wrong assumptions. This is where the work we do has the greatest leverage.</p>
           <p>We are based in Munich, Germany — at the centre of Europe's medical technology industry — and work with clients across the European healthcare innovation ecosystem.</p>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- THE GAP -->
-  <section class="gap-section">
-    <div class="container">
-      <div class="gap-inner">
-        <div class="gap-left">
-          <span class="eyebrow">The Problem We Solve</span>
-          <h2>The innovation layer that is almost always missing.</h2>
-          <p>Healthcare technology companies invest enormously in engineering, clinical trials, and regulatory approval. Almost none invest with the same rigour in the layer that determines whether the technology will actually be adopted. That layer has four components — and all four must be designed.</p>
-        </div>
-        <div class="gap-right">
-          <div class="gap-item">
-            <span class="gap-item-marker">Layer 01</span>
-            <h4>The Value Proposition</h4>
-            <p>A healthcare technology needs a value proposition that works for every stakeholder simultaneously — the surgeon, the administrator, the procurement committee, the patient. Most technologies never have one. They have a features list instead.</p>
-          </div>
-          <div class="gap-item">
-            <span class="gap-item-marker">Layer 02</span>
-            <h4>The Service System</h4>
-            <p>A technology is not a service. The workflows, training, governance, and touchpoints that make a technology usable in a clinical environment — the service system — must be designed from scratch. Most are not.</p>
-          </div>
-          <div class="gap-item">
-            <span class="gap-item-marker">Layer 03</span>
-            <h4>The Adoption Architecture</h4>
-            <p>Clinical adoption does not happen automatically. It requires a structured framework — stakeholder engagement, rollout sequencing, change management, evidence building — that most technology companies have never built.</p>
-          </div>
-          <div class="gap-item">
-            <span class="gap-item-marker">Layer 04</span>
-            <h4>The Impact Framework</h4>
-            <p>Sustainable adoption requires an evidence base that grows over time — measuring clinical outcomes, operational value, and user experience in a way that supports both scale and continued institutional trust.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BELIEFS -->
   <section class="beliefs-section">
     <div class="container">
       <div class="beliefs-intro">
@@ -455,58 +98,51 @@
         <p>These are not values statements. They are the specific beliefs that determine how Servizions works — and what we will and will not do.</p>
       </div>
       <div class="beliefs-list">
-
         <div class="belief-item">
           <div class="belief-num">01</div>
           <div class="belief-body">
             <h4>The pre-product phase is where adoption is determined</h4>
-            <p>Most healthcare technologies make their most consequential decisions before a single clinical user has been observed. We work at this stage — when assumptions are still testable, value propositions are still shapeable, and service systems are still designable.</p>
+            <p>Most healthcare technologies make their most consequential decisions before a single clinical user has been observed. We work at this stage — when assumptions are still testable and service systems are still designable.</p>
           </div>
         </div>
-
         <div class="belief-item">
           <div class="belief-num">02</div>
           <div class="belief-body">
             <h4>A technology without a service system is incomplete</h4>
-            <p>A medical device, a robotic platform, a digital tool — none of these succeed on their own. The clinical workflows, the training architecture, the governance model, the human touchpoints: these are not implementation details. They are the product.</p>
+            <p>The clinical workflows, training architecture, and governance model are not implementation details. They are the product. Without them, adoption is a matter of luck.</p>
           </div>
         </div>
-
         <div class="belief-item">
           <div class="belief-num">03</div>
           <div class="belief-body">
             <h4>Value propositions must be designed, not discovered</h4>
-            <p>The value of a healthcare technology is not self-evident — not to surgeons, not to hospital administrators, not to procurement committees. It must be articulated, evidenced, and structured for each stakeholder. That is design work, and it requires design methods.</p>
+            <p>The value of a healthcare technology is not self-evident. It must be articulated, evidenced, and structured for each stakeholder. That is design work — and it requires design methods.</p>
           </div>
         </div>
-
         <div class="belief-item">
           <div class="belief-num">04</div>
           <div class="belief-body">
             <h4>Intellectual honesty is not optional</h4>
-            <p>If a technology is solving the wrong problem, or a value proposition is built on weak evidence, or an adoption plan will not survive contact with a real clinical environment — we say so. Clearly, constructively, and early enough to matter.</p>
+            <p>If a technology is solving the wrong problem, or a value proposition is built on weak evidence — we say so. Clearly, constructively, and early enough to matter.</p>
           </div>
         </div>
-
         <div class="belief-item">
           <div class="belief-num">05</div>
           <div class="belief-body">
             <h4>Healthcare deserves better innovation infrastructure</h4>
-            <p>The gap between technological potential and clinical reality in healthcare is not inevitable. It is a design problem — and design problems have solutions. Servizions exists because we believe that gap can be closed, one innovation at a time.</p>
+            <p>The gap between technological potential and clinical reality in healthcare is not inevitable. It is a design problem — and design problems have solutions.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="contact-section">
     <div class="container">
-      <h2 class="contact-title">Work with us directly.</h2>
-      <p class="contact-subtitle">Every Servizions engagement is a direct collaboration with Hanna Kim — no intermediaries, no templated process</p>
+      <h2 class="contact-title">Work with us.</h2>
+      <p class="contact-subtitle">Every Servizions engagement is a direct collaboration — no intermediaries, no templated process</p>
       <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block; padding:18px 48px;">Start a Conversation</a>
+        <a href="contact.html" class="contact-button" style="display:inline-block;padding:18px 48px;">Start a Conversation</a>
       </div>
     </div>
   </section>
@@ -515,4 +151,12 @@
     <div class="container footer-inner">
       <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
       <div class="footer-links">
-        <a href="/cdn-cgi/l/email
+        <a href="mailto:info@servizions.com">info@servizions.com</a>
+        <a href="contact.html">Start a conversation</a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

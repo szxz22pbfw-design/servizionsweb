@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="Servizions-favicon-small.png">
-<link rel="apple-touch-icon" href="Servizions-favicon-small.png">
+  <link rel="icon" type="image/png" href="Servizions-favicon-small.png">
+  <link rel="apple-touch-icon" href="Servizions-favicon-small.png">
   <title>Servizions – Healthcare Service Innovation Studio</title>
-  <meta name="description" content="Servizions designs the innovation layer that most healthcare technology companies never build — the value proposition, service system, and future-ready concept that transforms a technology into something genuinely needed.">
+  <meta name="description" content="Servizions bridges medtech and healthcare robotics companies with the real clinical world — service innovation studio, Munich.">
   <meta name="author" content="Servizions">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://servizions.com/">
   <meta property="og:title" content="Servizions – Healthcare Service Innovation Studio">
-  <meta property="og:description" content="We design the value proposition, service system, and adoption architecture that transforms healthcare technology into something genuinely needed.">
+  <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
   <meta property="og:url" content="https://servizions.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Servizions">
-  <link rel="canonical" href="https://servizions.com/">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
       <source src="video/servizions-3.mp4" type="video/mp4">
     </video>
     <p class="hero-description">
-      Servizions designs the innovation layer that most healthcare technology companies never build — the value proposition, service system, and future-ready concept that transforms a technology into something genuinely needed.
+      Bridging medtech and healthcare robotics companies with the real clinical world.
     </p>
   </section>
 
@@ -69,306 +69,88 @@
     </div>
   </section>
 
-  <section class="diagram-section">
+  <!-- BRIDGE SECTION — replaces diagram section -->
+  <section class="bridge-statement-section">
     <div class="container">
-      <span class="eyebrow">Our Approach</span>
-      <h2 class="diagram-title">A system — not a strategy</h2>
-      <p class="diagram-text">We work at the service system level of healthcare innovation. Healthcare technologies are often built as products, but healthcare itself is a complex service involving patients, clinicians, workflows, and environments. Our approach builds the complete innovation layer — the value proposition, the service system, and the future-ready concept — that connects medical technology with real clinical adoption.</p>
-      <div class="diagram-wrap">
-        <img src="image/Servizions-4.png" alt="Servizions service innovation system — circular approach">
+      <div class="bridge-statement-inner">
+        <div class="bridge-statement-left">
+          <span class="eyebrow">What We Do</span>
+          <h2 class="bridge-statement-title">Bridging medtech and healthcare robotics companies with the real clinical world.</h2>
+        </div>
+        <div class="bridge-statement-right">
+          <p class="bridge-statement-text">Most healthcare technologies are built without the layer that connects them to real clinical adoption — the value proposition, the service architecture, and the adoption framework that hospitals and clinical teams need before they can commit.</p>
+          <p class="bridge-statement-text">Servizions designs that layer. We do not publish how. That is what the first conversation is for.</p>
+          <a href="contact.html" class="bridge-statement-cta">Start a Conversation</a>
+        </div>
       </div>
     </div>
   </section>
-<!-- DISCOVERY CALL BOOKING -->
-<section class="booking-section" id="booking">
-  <div class="container">
-    <div class="booking-intro">
-      <span class="eyebrow">Free Discovery Call</span>
-      <h2>Book a 15-Minute Design Thinking Discovery Call</h2>
-      <p>Choose a morning slot that works for you — Monday to Wednesday, German time (CET). We will confirm your booking and send you the meeting details by email within one business day.</p>
-    </div>
 
-    <div class="booking-grid">
-
-      <!-- LEFT: Calendar -->
-      <div class="booking-calendar-wrap">
-        <div class="booking-cal-header">
-          <button class="booking-nav" id="bookingPrev">&#8592;</button>
-          <span class="booking-month-label" id="bookingMonthLabel"></span>
-          <button class="booking-nav" id="bookingNext">&#8594;</button>
-        </div>
-        <div class="booking-cal-days-header">
-          <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
-        </div>
-        <div class="booking-cal-grid" id="bookingCalGrid"></div>
-        <p class="booking-cal-note">Verfügbar: Montag – Mittwoch · 9:00 – 12:00 Uhr (CET)</p>
+  <section class="booking-section" id="booking">
+    <div class="container">
+      <div class="booking-intro">
+        <span class="eyebrow">Free Discovery Call</span>
+        <h2>Book a 15-Minute Design Thinking Discovery Call</h2>
+        <p>Choose a morning slot that works for you — Monday to Wednesday, German time (CET). We will confirm your booking and send you the meeting details by email within one business day.</p>
       </div>
-
-      <!-- RIGHT: Slots + Form -->
-      <div class="booking-right">
-
-        <div class="booking-slots-wrap">
-          <p class="booking-slots-placeholder" id="bookingSlotsPlaceholder">← Datum auswählen, um verfügbare Zeiten zu sehen</p>
-          <div id="bookingSlotsBlock" style="display:none;">
-            <p class="booking-slots-date" id="bookingSlotsDate"></p>
-            <div class="booking-slots-grid" id="bookingSlotsGrid"></div>
+      <div class="booking-grid">
+        <div class="booking-calendar-wrap">
+          <div class="booking-cal-header">
+            <button class="booking-nav" id="bookingPrev">&#8592;</button>
+            <span class="booking-month-label" id="bookingMonthLabel"></span>
+            <button class="booking-nav" id="bookingNext">&#8594;</button>
           </div>
+          <div class="booking-cal-days-header">
+            <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+          </div>
+          <div class="booking-cal-grid" id="bookingCalGrid"></div>
+          <p class="booking-cal-note">Verfügbar: Montag – Mittwoch · 9:00 – 12:00 Uhr (CET)</p>
         </div>
-
-        <form class="booking-form" id="bookingForm" action="https://formspree.io/f/mjgakblb" method="POST" style="display:none;">
-          <input type="hidden" name="form-type" value="15-Min Discovery Call Booking">
-          <input type="hidden" name="selected-slot" id="bookingSlotHidden">
-
-          <div class="booking-form-summary" id="bookingFormSummary"></div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name *</label>
-              <input type="text" name="first-name" required>
-            </div>
-            <div class="form-group">
-              <label>Last Name *</label>
-              <input type="text" name="last-name" required>
+        <div class="booking-right">
+          <div class="booking-slots-wrap">
+            <p class="booking-slots-placeholder" id="bookingSlotsPlaceholder">← Datum auswählen, um verfügbare Zeiten zu sehen</p>
+            <div id="bookingSlotsBlock" style="display:none;">
+              <p class="booking-slots-date" id="bookingSlotsDate"></p>
+              <div class="booking-slots-grid" id="bookingSlotsGrid"></div>
             </div>
           </div>
-
-          <div class="form-group" style="margin-bottom:20px;">
-            <label>Business Email *</label>
-            <input type="email" name="email" required>
-          </div>
-
-          <div class="form-group" style="margin-bottom:20px;">
-            <label>Message <span class="booking-label-note">(max. 100 characters)</span></label>
-            <input type="text" name="message" maxlength="100"
-              placeholder="Briefly describe your challenge or topic...">
-          </div>
-
-          <div class="form-group hidden-field">
-            <label>Leave blank</label>
-            <input type="text" name="_gotcha">
-          </div>
-
-          <div class="form-consent">
-            <input type="checkbox" required>
-            <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
-          </div>
-
-          <div class="booking-form-actions">
-            <button type="submit" class="contact-button">Confirm Booking</button>
-            <button type="button" class="booking-back-btn" id="bookingBackBtn">← Change time</button>
-          </div>
-        </form>
-
-        <div class="booking-success" id="bookingSuccess" style="display:none;">
-          <div class="booking-success-inner">
-            <span class="booking-success-icon">✓</span>
-            <h3>Booking request sent.</h3>
-            <p>You will receive a confirmation email with all meeting details within one business day. We look forward to speaking with you.</p>
+          <form class="booking-form" id="bookingForm" action="https://formspree.io/f/mjgakblb" method="POST" style="display:none;">
+            <input type="hidden" name="form-type" value="15-Min Discovery Call Booking">
+            <input type="hidden" name="selected-slot" id="bookingSlotHidden">
+            <div class="booking-form-summary" id="bookingFormSummary"></div>
+            <div class="form-row">
+              <div class="form-group"><label>First Name *</label><input type="text" name="first-name" required></div>
+              <div class="form-group"><label>Last Name *</label><input type="text" name="last-name" required></div>
+            </div>
+            <div class="form-group" style="margin-bottom:20px;">
+              <label>Business Email *</label>
+              <input type="email" name="email" required>
+            </div>
+            <div class="form-group" style="margin-bottom:20px;">
+              <label>Message <span class="booking-label-note">(max. 100 characters)</span></label>
+              <input type="text" name="message" maxlength="100" placeholder="Briefly describe your challenge or topic...">
+            </div>
+            <div class="form-group hidden-field"><label>Leave blank</label><input type="text" name="_gotcha"></div>
+            <div class="form-consent">
+              <input type="checkbox" required>
+              <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
+            </div>
+            <div class="booking-form-actions">
+              <button type="submit" class="contact-button">Confirm Booking</button>
+              <button type="button" class="booking-back-btn" id="bookingBackBtn">← Change time</button>
+            </div>
+          </form>
+          <div class="booking-success" id="bookingSuccess" style="display:none;">
+            <div class="booking-success-inner">
+              <span class="booking-success-icon">✓</span>
+              <h3>Booking request sent.</h3>
+              <p>You will receive a confirmation email with all meeting details within one business day. We look forward to speaking with you.</p>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
-</section>
-
-<script>
-(function () {
-  var MONTHS_DE = ['Januar','Februar','März','April','Mai','Juni',
-                   'Juli','August','September','Oktober','November','Dezember'];
-  var DAYS_DE   = ['Sonntag','Montag','Dienstag','Mittwoch',
-                   'Donnerstag','Freitag','Samstag'];
-
-  var today = new Date();
-  today.setHours(0,0,0,0);
-  var viewYear  = today.getFullYear();
-  var viewMonth = today.getMonth();
-  var selectedDate = null;
-
-  /* 9:00 – 12:00, every 30 min */
-  var ALL_SLOTS = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00'];
-
-  function isAvailable(date) {
-    var d = date.getDay(); /* 1=Mon 2=Tue 3=Wed */
-    return d >= 1 && d <= 3 && date >= today;
-  }
-
-  function formatDateLabel(date) {
-    return DAYS_DE[date.getDay()] + ', ' +
-           date.getDate() + '. ' +
-           MONTHS_DE[date.getMonth()] + ' ' +
-           date.getFullYear();
-  }
-
-  /* ── RENDER CALENDAR ── */
-  function renderCalendar() {
-    document.getElementById('bookingMonthLabel').textContent =
-      MONTHS_DE[viewMonth] + ' ' + viewYear;
-
-    var grid = document.getElementById('bookingCalGrid');
-    grid.innerHTML = '';
-
-    var firstDay = new Date(viewYear, viewMonth, 1).getDay();
-    firstDay = firstDay === 0 ? 6 : firstDay - 1; /* Monday-first */
-
-    var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
-
-    for (var i = 0; i < firstDay; i++) {
-      var blank = document.createElement('div');
-      blank.className = 'booking-cal-cell booking-cal-empty';
-      grid.appendChild(blank);
-    }
-
-    for (var d = 1; d <= daysInMonth; d++) {
-      var cellDate = new Date(viewYear, viewMonth, d);
-      var cell = document.createElement('div');
-      cell.className = 'booking-cal-cell';
-      cell.textContent = d;
-
-      if (!isAvailable(cellDate)) {
-        cell.classList.add('booking-cal-disabled');
-      } else {
-        cell.classList.add('booking-cal-available');
-        ;(function (cd) {
-          cell.addEventListener('click', function () {
-            selectedDate = cd;
-            document.querySelectorAll('.booking-cal-selected')
-              .forEach(function (el) { el.classList.remove('booking-cal-selected'); });
-            this.classList.add('booking-cal-selected');
-            renderSlots(cd);
-            document.getElementById('bookingForm').style.display = 'none';
-            document.getElementById('bookingSuccess').style.display = 'none';
-            document.querySelectorAll('.booking-slot-btn')
-              .forEach(function (b) { b.classList.remove('active'); });
-          });
-        })(cellDate);
-      }
-
-      if (selectedDate &&
-          cellDate.toDateString() === selectedDate.toDateString()) {
-        cell.classList.add('booking-cal-selected');
-      }
-
-      grid.appendChild(cell);
-    }
-  }
-
-  /* ── RENDER TIME SLOTS ── */
-  function renderSlots(date) {
-    document.getElementById('bookingSlotsPlaceholder').style.display = 'none';
-    var block = document.getElementById('bookingSlotsBlock');
-    block.style.display = 'block';
-
-    document.getElementById('bookingSlotsDate').textContent =
-      formatDateLabel(date) + ' — CET (Berlin)';
-
-    var slotsGrid = document.getElementById('bookingSlotsGrid');
-    slotsGrid.innerHTML = '';
-
-    ALL_SLOTS.forEach(function (slot) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'booking-slot-btn';
-      btn.textContent = slot + ' Uhr';
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.booking-slot-btn')
-          .forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        showForm(date, slot);
-      });
-      slotsGrid.appendChild(btn);
-    });
-  }
-
-  /* ── SHOW BOOKING FORM ── */
-  function showForm(date, slot) {
-    var label = formatDateLabel(date) + '  ·  ' + slot + ' Uhr CET  ·  15 Min  ·  Online';
-    document.getElementById('bookingFormSummary').textContent = '📅  ' + label;
-    document.getElementById('bookingSlotHidden').value =
-      formatDateLabel(date) + ' – ' + slot + ' Uhr CET';
-    var form = document.getElementById('bookingForm');
-    form.style.display = 'block';
-    setTimeout(function () {
-      form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 80);
-  }
-
-  /* ── NAV BUTTONS ── */
-  document.getElementById('bookingPrev').addEventListener('click', function () {
-    viewMonth--;
-    if (viewMonth < 0) { viewMonth = 11; viewYear--; }
-    renderCalendar();
-  });
-  document.getElementById('bookingNext').addEventListener('click', function () {
-    viewMonth++;
-    if (viewMonth > 11) { viewMonth = 0; viewYear++; }
-    renderCalendar();
-  });
-
-  /* ── BACK BUTTON ── */
-  document.getElementById('bookingBackBtn').addEventListener('click', function () {
-    document.getElementById('bookingForm').style.display = 'none';
-    document.querySelectorAll('.booking-slot-btn')
-      .forEach(function (b) { b.classList.remove('active'); });
-  });
-
-  /* ── SUBMIT via fetch → show success state ── */
-  document.getElementById('bookingForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var form = this;
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function (res) {
-      if (res.ok) {
-        form.style.display = 'none';
-        document.getElementById('bookingSuccess').style.display = 'block';
-      } else {
-        alert('Something went wrong. Please email us directly at info@servizions.com');
-      }
-    }).catch(function () {
-      alert('Something went wrong. Please email us at info@servizions.com');
-    });
-  });
-
-  renderCalendar();
-})();
-</script>
-<section class="methodology-section">
-  <div class="container">
-    <div class="methodology-intro">
-      <span class="eyebrow">The Servizions Methodology</span>
-      <h2>Three phases. One clear path.</h2>
-      <p>From the first concept to full clinical adoption — Servizions works across every stage of the innovation journey.</p>
-    </div>
-    <div class="phase-flow">
-
-      <div class="phase-card">
-        <div class="phase-number">01</div>
-        <h3 class="phase-title">Pre-Development</h3>
-        <p class="phase-desc">Build the right thing from the start.</p>
-      </div>
-
-      <div class="phase-arrow">&#8594;</div>
-
-      <div class="phase-card">
-        <div class="phase-number">02</div>
-        <h3 class="phase-title">In Development</h3>
-        <p class="phase-desc">Stay aligned with clinical reality.</p>
-      </div>
-
-      <div class="phase-arrow">&#8594;</div>
-
-      <div class="phase-card">
-        <div class="phase-number">03</div>
-        <h3 class="phase-title">Adoption &amp; Implementation</h3>
-        <p class="phase-desc">Make sure it actually gets used.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
+  </section>
 
   <section class="insights-section">
     <div class="container">
@@ -382,7 +164,7 @@
           <div class="insight-image"><img src="image/insight-1.jpg" alt="Healthcare innovation" loading="lazy"></div>
           <div class="insight-content">
             <h3 class="insight-heading">From robotics potential to healthcare value: why adoption systems matter</h3>
-            <p class="insight-text">Healthcare robotics does not fail because of technology. It fails when service design, clinical workflows, and value propositions are missing. The future belongs to systems that connect innovation to adoption.</p>
+            <p class="insight-text">Healthcare robotics does not fail because of technology. It fails when service design, clinical workflows, and value propositions are missing.</p>
             <div class="insight-tags"><span class="tag">Service Innovation</span><span class="tag">Robotics</span></div>
           </div>
         </article>
@@ -390,7 +172,7 @@
           <div class="insight-image"><img src="image/insight-2.jpg" alt="Rehabilitation" loading="lazy"></div>
           <div class="insight-content">
             <h3 class="insight-heading">Why rehabilitation innovation needs value proposition clarity — not more technology</h3>
-            <p class="insight-text">Rehab is one of the most urgent areas in healthcare. Innovation only scales when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition decision-makers trust.</p>
+            <p class="insight-text">Innovation only scales when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition decision-makers trust.</p>
             <div class="insight-tags"><span class="tag">Value Proposition</span><span class="tag">Rehabilitation</span></div>
           </div>
         </article>
@@ -398,7 +180,7 @@
           <div class="insight-image"><img src="image/insight-3.jpg" alt="Digital health" loading="lazy"></div>
           <div class="insight-content">
             <h3 class="insight-heading">The next era of health technology: orchestration over transformation</h3>
-            <p class="insight-text">HealthTech is not just about digital transformation. It is about orchestrating services, people, and technology into one coherent innovation system — with evidence, governance, and measurable impact built in.</p>
+            <p class="insight-text">HealthTech is about orchestrating services, people, and technology into one coherent innovation system — with evidence, governance, and measurable impact built in.</p>
             <div class="insight-tags"><span class="tag">HealthTech</span><span class="tag">Innovation System</span></div>
           </div>
         </article>
@@ -426,10 +208,10 @@
         <div class="form-group" style="margin-bottom:20px;">
           <label>What type of support are you looking for?</label>
           <select name="support-type">
-            <option>Innovation Sprint — Value Proposition & Concept</option>
+            <option>Innovation Sprint — Value Proposition &amp; Concept</option>
             <option>Service System Design</option>
             <option>Future Scenario Planning</option>
-            <option>Innovation & Design Thinking Workshop</option>
+            <option>Innovation &amp; Design Thinking Workshop</option>
             <option>General Inquiry</option>
           </select>
         </div>
@@ -451,21 +233,36 @@
       <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
       <div class="footer-links">
         <a href="mailto:info@servizions.com">info@servizions.com</a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </footer>
 
+  <style>
+    .bridge-statement-section { background:var(--white); padding:110px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .bridge-statement-inner { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
+    .bridge-statement-title { font-family:var(--font-display); font-size:44px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.15; letter-spacing:-0.3px; margin-top:16px; }
+    .bridge-statement-right { display:flex; flex-direction:column; gap:0; }
+    .bridge-statement-text { font-size:15px; font-weight:300; color:var(--text-mid); line-height:1.9; margin-bottom:20px; }
+    .bridge-statement-cta { display:inline-block; margin-top:12px; background:var(--purple); color:white; padding:14px 36px; border-radius:var(--radius-sm); font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; font-family:var(--font-body); transition:all var(--transition); width:fit-content; }
+    .bridge-statement-cta:hover { background:var(--purple-mid); transform:translateY(-1px); box-shadow:0 6px 20px rgba(59,15,160,0.25); }
+    @media(max-width:900px) {
+      .bridge-statement-inner { grid-template-columns:1fr; gap:40px; }
+      .bridge-statement-title { font-size:32px; }
+    }
+  </style>
+
   <script>
     const descriptions = {
-      "service-innovation": "Service innovation in healthcare means designing the complete system around a clinical service — not just the technology, but the value it delivers, the workflows it fits into, and the future environment it must survive in. Servizions builds this layer before technologies are finalised — where adoption is won or lost.",
+      "service-innovation": "Service innovation in healthcare means designing the complete system around a clinical service — not just the technology, but the value it delivers, the workflows it fits into, and the future environment it must survive in.",
       "value-proposition": "A clear value proposition is the single most critical missing element in most healthcare technology launches. Servizions designs value propositions that align clinical outcomes, operational ROI, and stakeholder needs into one clear, evidence-backed statement that decision-makers trust.",
-      "future-scenarios": "Our proprietary future scenario planning method builds structured visions of the healthcare system as it is evolving — so that your innovation is designed not only for today's clinical reality, but for the healthcare environment that is coming. This is what makes Servizions genuinely different.",
+      "future-scenarios": "Our proprietary future scenario planning method builds structured visions of the healthcare system as it is evolving — so that your innovation is designed not only for today's clinical reality, but for the healthcare environment that is coming.",
       "clinical-workflow": "Clinical workflow design maps the step-by-step processes that healthcare professionals follow when delivering care. By understanding these workflows deeply, we identify exactly where new technologies fit, where friction exists, and how adoption can be made seamless and sustainable.",
       "technology-adoption": "Technology adoption in healthcare requires far more than installing a device or deploying software. It needs governance, training, stakeholder alignment, and workflow integration. Servizions builds the complete adoption architecture so technologies succeed in real clinical environments.",
       "service-design": "Human-centered design starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators. We surface the real needs, real friction, and real reasons innovations succeed or fail before a product is locked.",
-      "pre-product": "The pre-product phase is the most critical and most neglected stage of healthcare innovation. Servizions specialises in this phase — shaping the value proposition, service concept, and adoption architecture before a technology is finalised. This is where the innovation is won or lost.",
+      "pre-product": "The pre-product phase is the most critical and most neglected stage of healthcare innovation. Servizions specialises in this phase — shaping the value proposition, service concept, and adoption architecture before a technology is finalised.",
       "robotics": "Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement. We specialise in making robotics adoption sustainable, scalable, and genuinely valuable to clinical teams.",
-      "system-design": "Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system. Servizions builds innovation architectures that work within this complexity, creating lasting structural change."
+      "system-design": "Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system. Servizions builds innovation architectures that work within this complexity."
     };
     const tags = document.querySelectorAll('.keyword-tag');
     const panel = document.getElementById('keyword-panel');
@@ -483,5 +280,61 @@
       });
     });
   </script>
+
+  <script>
+  (function () {
+    var MONTHS_DE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    var DAYS_DE = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+    var today = new Date(); today.setHours(0,0,0,0);
+    var viewYear = today.getFullYear(), viewMonth = today.getMonth(), selectedDate = null;
+    var ALL_SLOTS = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00'];
+    function isAvailable(date) { var d=date.getDay(); return d>=1&&d<=3&&date>=today; }
+    function formatDateLabel(date) { return DAYS_DE[date.getDay()]+', '+date.getDate()+'. '+MONTHS_DE[date.getMonth()]+' '+date.getFullYear(); }
+    function renderCalendar() {
+      document.getElementById('bookingMonthLabel').textContent=MONTHS_DE[viewMonth]+' '+viewYear;
+      var grid=document.getElementById('bookingCalGrid'); grid.innerHTML='';
+      var firstDay=new Date(viewYear,viewMonth,1).getDay(); firstDay=firstDay===0?6:firstDay-1;
+      var daysInMonth=new Date(viewYear,viewMonth+1,0).getDate();
+      for(var i=0;i<firstDay;i++){var b=document.createElement('div');b.className='booking-cal-cell booking-cal-empty';grid.appendChild(b);}
+      for(var d=1;d<=daysInMonth;d++){
+        var cellDate=new Date(viewYear,viewMonth,d),cell=document.createElement('div');
+        cell.className='booking-cal-cell'; cell.textContent=d;
+        if(!isAvailable(cellDate)){cell.classList.add('booking-cal-disabled');}
+        else{cell.classList.add('booking-cal-available');(function(cd){cell.addEventListener('click',function(){selectedDate=cd;document.querySelectorAll('.booking-cal-selected').forEach(function(el){el.classList.remove('booking-cal-selected')});this.classList.add('booking-cal-selected');renderSlots(cd);document.getElementById('bookingForm').style.display='none';document.getElementById('bookingSuccess').style.display='none';document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active')});});})(cellDate);}
+        if(selectedDate&&cellDate.toDateString()===selectedDate.toDateString())cell.classList.add('booking-cal-selected');
+        grid.appendChild(cell);
+      }
+    }
+    function renderSlots(date) {
+      document.getElementById('bookingSlotsPlaceholder').style.display='none';
+      var block=document.getElementById('bookingSlotsBlock'); block.style.display='block';
+      document.getElementById('bookingSlotsDate').textContent=formatDateLabel(date)+' — CET (Berlin)';
+      var slotsGrid=document.getElementById('bookingSlotsGrid'); slotsGrid.innerHTML='';
+      ALL_SLOTS.forEach(function(slot){
+        var btn=document.createElement('button'); btn.type='button'; btn.className='booking-slot-btn'; btn.textContent=slot+' Uhr';
+        btn.addEventListener('click',function(){document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');showForm(date,slot);});
+        slotsGrid.appendChild(btn);
+      });
+    }
+    function showForm(date,slot){
+      var label=formatDateLabel(date)+'  ·  '+slot+' Uhr CET  ·  15 Min  ·  Online';
+      document.getElementById('bookingFormSummary').textContent='📅  '+label;
+      document.getElementById('bookingSlotHidden').value=formatDateLabel(date)+' – '+slot+' Uhr CET';
+      var form=document.getElementById('bookingForm'); form.style.display='block';
+      setTimeout(function(){form.scrollIntoView({behavior:'smooth',block:'nearest'});},80);
+    }
+    document.getElementById('bookingPrev').addEventListener('click',function(){viewMonth--;if(viewMonth<0){viewMonth=11;viewYear--;}renderCalendar();});
+    document.getElementById('bookingNext').addEventListener('click',function(){viewMonth++;if(viewMonth>11){viewMonth=0;viewYear++;}renderCalendar();});
+    document.getElementById('bookingBackBtn').addEventListener('click',function(){document.getElementById('bookingForm').style.display='none';document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active')});});
+    document.getElementById('bookingForm').addEventListener('submit',function(e){
+      e.preventDefault(); var form=this;
+      fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(res){if(res.ok){form.style.display='none';document.getElementById('bookingSuccess').style.display='block';}else{alert('Something went wrong. Please email us at info@servizions.com');}})
+      .catch(function(){alert('Something went wrong. Please email us at info@servizions.com');});
+    });
+    renderCalendar();
+  })();
+  </script>
+
 </body>
 </html>
