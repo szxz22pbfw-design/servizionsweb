@@ -129,7 +129,7 @@ img { max-width:100%; height:auto; display:block; }
 .package-label { font-size:10px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--purple-soft); margin-bottom:10px; display:block; }
 .package-featured-badge { display:inline-block; background:var(--purple); color:white; font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 12px; border-radius:999px; margin-bottom:10px; }
 .package-name { font-family:var(--font-display); font-size:30px; font-weight:500; color:var(--ink); line-height:1.2; margin-bottom:8px; }
-.package-duration { font-size:13px; font-weight:300; color:var(--text-light); }
+
 .package-body { padding:32px 36px; }
 .package-desc { font-size:14px; font-weight:300; color:var(--text-mid); line-height:1.8; margin-bottom:24px; }
 .package-deliverables { list-style:none; display:flex; flex-direction:column; gap:10px; }
