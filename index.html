@@ -1,651 +1,774 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="Servizions-favicon-small.png">
-<title>Servizions – Healthcare Service Innovation Studio</title>
-<meta name="description" content="Servizions bridges medtech and healthcare robotics companies with the real clinical world.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://servizions.com/">
-<meta property="og:title" content="Servizions – Healthcare Service Innovation Studio">
-<meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
-<meta property="og:url" content="https://servizions.com/">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-/* hero */
-.hero-animation-wrap{position:relative;height:3000vh;background:#f7f6fc;}
-.hero-sticky{position:sticky;top:0;width:100%;height:100vh;}
-#hero-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;display:block;z-index:1;}
-.navbar{position:sticky;top:0;z-index:999!important;}
-/* cursor */
-#szn-cur{position:fixed;width:7px;height:7px;background:#5e17eb;border-radius:50%;pointer-events:none;z-index:9999;top:0;left:0;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(94,23,235,.7);}
-#szn-cur-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(94,23,235,.4);border-radius:50%;pointer-events:none;z-index:9998;top:0;left:0;transform:translate(-50%,-50%);transition:width .18s,height .18s;}
-/* corners */
-.szn-corner{position:fixed;width:16px;height:16px;border-color:rgba(94,23,235,.2);border-style:solid;pointer-events:none;z-index:50;}
-.szn-corner.tl{top:20px;left:20px;border-width:1px 0 0 1px;}
-.szn-corner.tr{top:20px;right:20px;border-width:1px 1px 0 0;}
-.szn-corner.bl{bottom:20px;left:20px;border-width:0 0 1px 1px;}
-.szn-corner.br{bottom:20px;right:20px;border-width:0 1px 1px 0;}
-/* hint */
-#szn-hint{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(94,23,235,.38);text-transform:uppercase;pointer-events:none;z-index:100;transition:opacity .4s;}
-/* panel */
-#szn-panel{position:fixed;right:44px;top:50%;width:260px;background:rgba(247,246,252,.97);border:1px solid rgba(94,23,235,.12);border-left:2px solid rgba(94,23,235,.4);border-radius:4px 16px 16px 4px;padding:24px 20px 20px;box-shadow:0 24px 64px rgba(94,23,235,.09);opacity:0;pointer-events:none;transition:opacity .28s,transform .28s;transform:translateY(-50%) translateX(20px);z-index:200;}
-#szn-panel.on{opacity:1;pointer-events:auto;transform:translateY(-50%) translateX(0);}
-#szn-panel-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;color:rgba(94,23,235,.45);text-transform:uppercase;margin-bottom:10px;}
-#szn-panel-title{font-size:14px;font-weight:700;color:#2a1f5c;margin-bottom:8px;font-family:'Space Grotesk',sans-serif;}
-#szn-panel-desc{font-size:12px;color:#6a6090;line-height:1.68;font-family:'Space Grotesk',sans-serif;font-weight:300;}
-#szn-panel-close{position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:4px;background:none;border:1px solid rgba(94,23,235,.15);cursor:pointer;color:#9080c0;font-size:10px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;}
-#szn-panel-close:hover{background:rgba(94,23,235,.07);}
-/* bridge */
-.bridge-statement-section{background:var(--white);padding:110px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.bridge-statement-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
-.bridge-statement-title{font-family:var(--font-display);font-size:44px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.15;letter-spacing:-0.3px;margin-top:16px;}
-.bridge-statement-right{display:flex;flex-direction:column;gap:0;}
-.bridge-statement-text{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-bottom:20px;}
-.bridge-statement-cta{display:inline-block;margin-top:12px;background:var(--purple);color:white;padding:14px 36px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-body);transition:all var(--transition);width:fit-content;}
-.bridge-statement-cta:hover{background:var(--purple-mid);transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,15,160,.25);}
-@media(max-width:900px){.bridge-statement-inner{grid-template-columns:1fr;gap:40px;}.bridge-statement-title{font-size:32px;}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Servizions-favicon-small.png">
+  <link rel="apple-touch-icon" href="Servizions-favicon-small.png">
+  <title>Servizions – Healthcare Service Innovation Studio</title>
+  <meta name="description" content="Servizions bridges medtech and healthcare robotics companies with the real clinical world — service innovation studio, Munich.">
+  <meta name="author" content="Servizions">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://servizions.com/">
+  <meta property="og:title" content="Servizions – Healthcare Service Innovation Studio">
+  <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
+  <meta property="og:url" content="https://servizions.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Servizions">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+  /* hero wrap — 3000vh gives plenty of scroll room so page content never overlaps */
+  .hero-animation-wrap { position:relative; height:3000vh; background:#f7f6fc; }
+  .hero-sticky { position:sticky; top:0; width:100%; height:100vh; }
+  /* canvas fixed, always full viewport */
+  #hero-canvas {
+    position:fixed; top:0; left:0;
+    width:100vw; height:100vh;
+    display:block; z-index:1;
+  }
+  /* navbar above canvas */
+  .navbar { position:sticky; top:0; z-index:999 !important; }
+  /* cursor */
+  #szn-cur { position:fixed; width:7px; height:7px; background:#5e17eb; border-radius:50%; pointer-events:none; z-index:9999; top:0; left:0; transform:translate(-50%,-50%); box-shadow:0 0 10px rgba(94,23,235,.7); }
+  #szn-cur-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(94,23,235,.4); border-radius:50%; pointer-events:none; z-index:9998; top:0; left:0; transform:translate(-50%,-50%); transition:width .18s,height .18s; }
+  /* corner brackets */
+  .szn-corner { position:fixed; width:16px; height:16px; border-color:rgba(94,23,235,.2); border-style:solid; pointer-events:none; z-index:50; }
+  .szn-corner.tl { top:20px; left:20px; border-width:1px 0 0 1px; }
+  .szn-corner.tr { top:20px; right:20px; border-width:1px 1px 0 0; }
+  .szn-corner.bl { bottom:20px; left:20px; border-width:0 0 1px 1px; }
+  .szn-corner.br { bottom:20px; right:20px; border-width:0 1px 1px 0; }
+  /* scroll hint */
+  #szn-hint { position:fixed; bottom:32px; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.2em; color:rgba(94,23,235,.38); text-transform:uppercase; pointer-events:none; z-index:100; transition:opacity .4s; }
+  /* info panel */
+  #szn-panel { position:fixed; right:44px; top:50%; width:260px; background:rgba(247,246,252,0.97); border:1px solid rgba(94,23,235,.12); border-left:2px solid rgba(94,23,235,.4); border-radius:4px 16px 16px 4px; padding:24px 20px 20px; box-shadow:0 24px 64px rgba(94,23,235,.09); opacity:0; pointer-events:none; transition:opacity .28s,transform .28s; transform:translateY(-50%) translateX(20px); z-index:200; }
+  #szn-panel.on { opacity:1; pointer-events:auto; transform:translateY(-50%) translateX(0); }
+  #szn-panel-tag { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.18em; color:rgba(94,23,235,.45); text-transform:uppercase; margin-bottom:10px; }
+  #szn-panel-title { font-size:14px; font-weight:700; color:#2a1f5c; margin-bottom:8px; font-family:'Space Grotesk',sans-serif; }
+  #szn-panel-desc { font-size:12px; color:#6a6090; line-height:1.68; font-family:'Space Grotesk',sans-serif; font-weight:300; }
+  #szn-panel-close { position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:4px; background:none; border:1px solid rgba(94,23,235,.15); cursor:pointer; color:#9080c0; font-size:10px; display:flex; align-items:center; justify-content:center; font-family:'Space Mono',monospace; }
+  #szn-panel-close:hover { background:rgba(94,23,235,.07); }
+  /* page content sits below canvas z-index while canvas is showing */
+  .page-content { position:relative; z-index:0; }
+  .bridge-statement-section { background:var(--white); padding:110px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .bridge-statement-inner { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
+  .bridge-statement-title { font-family:var(--font-display); font-size:44px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.15; letter-spacing:-0.3px; margin-top:16px; }
+  .bridge-statement-right { display:flex; flex-direction:column; gap:0; }
+  .bridge-statement-text { font-size:15px; font-weight:300; color:var(--text-mid); line-height:1.9; margin-bottom:20px; }
+  .bridge-statement-cta { display:inline-block; margin-top:12px; background:var(--purple); color:white; padding:14px 36px; border-radius:var(--radius-sm); font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; font-family:var(--font-body); transition:all var(--transition); width:fit-content; }
+  .bridge-statement-cta:hover { background:var(--purple-mid); transform:translateY(-1px); box-shadow:0 6px 20px rgba(59,15,160,0.25); }
+  @media(max-width:900px){ .bridge-statement-inner{grid-template-columns:1fr;gap:40px;} .bridge-statement-title{font-size:32px;} }
+  </style>
 </head>
 <body>
 
-<header class="navbar">
-  <div class="container nav-inner">
-    <div class="logo">Servizions</div>
-    <nav class="nav-links">
-      <a href="services.html">Services</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">Servizions</div>
+      <nav class="nav-links">
+        <a href="services.html">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: tall wrapper drives scroll, sticky keeps canvas in view -->
+  <div class="hero-animation-wrap" id="hero-wrap">
+    <div class="hero-sticky"></div>
   </div>
-</header>
 
-<div class="hero-animation-wrap" id="hero-wrap">
-  <div class="hero-sticky"></div>
-</div>
-
-<canvas id="hero-canvas"></canvas>
-<div id="szn-cur"></div>
-<div id="szn-cur-ring"></div>
-<div class="szn-corner tl"></div>
-<div class="szn-corner tr"></div>
-<div class="szn-corner bl"></div>
-<div class="szn-corner br"></div>
-<div id="szn-hint">↓ scroll to explore</div>
-<div id="szn-panel">
-  <button id="szn-panel-close">[x]</button>
-  <div id="szn-panel-tag"></div>
-  <div id="szn-panel-title"></div>
-  <div id="szn-panel-desc"></div>
-</div>
-
-<div class="page-content" style="position:relative;z-index:0;">
-
-<section class="keywords-section">
-  <div class="container">
-    <h2 class="keywords-title">Areas of Expertise</h2>
-    <p class="keywords-intro">Select an area to learn more</p>
-    <div class="keywords-grid">
-      <button class="keyword-tag" data-key="service-innovation">Service Innovation</button>
-      <button class="keyword-tag" data-key="value-proposition">Value Proposition Design</button>
-      <button class="keyword-tag" data-key="future-scenarios">Future Scenario Planning</button>
-      <button class="keyword-tag" data-key="clinical-workflow">Clinical Workflow Design</button>
-      <button class="keyword-tag" data-key="technology-adoption">Technology Adoption</button>
-      <button class="keyword-tag" data-key="service-design">Human-Centered Design</button>
-      <button class="keyword-tag" data-key="pre-product">Pre-Product Innovation</button>
-      <button class="keyword-tag" data-key="robotics">Medical Robotics</button>
-      <button class="keyword-tag" data-key="system-design">Healthcare System Design</button>
-    </div>
-    <div class="keyword-panel" id="keyword-panel">
-      <div class="keyword-panel-inner">
-        <p class="keyword-panel-text" id="keyword-panel-text"></p>
-      </div>
-    </div>
+  <!-- fixed canvas + UI overlays -->
+  <canvas id="hero-canvas"></canvas>
+  <div id="szn-cur"></div>
+  <div id="szn-cur-ring"></div>
+  <div class="szn-corner tl"></div>
+  <div class="szn-corner tr"></div>
+  <div class="szn-corner bl"></div>
+  <div class="szn-corner br"></div>
+  <div id="szn-hint">↓ scroll to explore</div>
+  <div id="szn-panel">
+    <button id="szn-panel-close">[x]</button>
+    <div id="szn-panel-tag"></div>
+    <div id="szn-panel-title"></div>
+    <div id="szn-panel-desc"></div>
   </div>
-</section>
 
-<section class="bridge-statement-section">
-  <div class="container">
-    <div class="bridge-statement-inner">
-      <div class="bridge-statement-left">
-        <span class="eyebrow">What We Do</span>
-        <h2 class="bridge-statement-title">Bridging medtech and healthcare robotics companies with the real clinical world.</h2>
-      </div>
-      <div class="bridge-statement-right">
-        <p class="bridge-statement-text">Most healthcare technologies are built without the layer that connects them to real clinical adoption — the value proposition, the service architecture, and the adoption framework that hospitals and clinical teams need before they can commit.</p>
-        <p class="bridge-statement-text">Servizions designs that layer. We do not publish how. That is what the first conversation is for.</p>
-        <a href="contact.html" class="bridge-statement-cta">Start a Conversation</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- PAGE CONTENT — only visible after hero animation ends -->
+  <div class="page-content">
 
-<section class="insights-section">
-  <div class="container">
-    <div class="insights-header">
-      <span class="insights-eyebrow">Expert Insights</span>
-      <h2 class="insights-title">Looking for inspiration?</h2>
-      <p class="insights-subtitle">Explore human-centered service innovation, healthcare value proposition design, and the adoption systems shaping medical robotics and health technology.</p>
-    </div>
-    <div class="insights-grid">
-      <article class="insight-card">
-        <div class="insight-image"><img src="image/insight-1.jpg" alt="Healthcare innovation" loading="lazy"></div>
-        <div class="insight-content">
-          <h3 class="insight-heading">From robotics potential to healthcare value: why adoption systems matter</h3>
-          <p class="insight-text">Healthcare robotics does not fail because of technology. It fails when service design, clinical workflows, and value propositions are missing.</p>
-          <div class="insight-tags"><span class="tag">Service Innovation</span><span class="tag">Robotics</span></div>
+  <section class="keywords-section">
+    <div class="container">
+      <h2 class="keywords-title">Areas of Expertise</h2>
+      <p class="keywords-intro">Select an area to learn more</p>
+      <div class="keywords-grid">
+        <button class="keyword-tag" data-key="service-innovation">Service Innovation</button>
+        <button class="keyword-tag" data-key="value-proposition">Value Proposition Design</button>
+        <button class="keyword-tag" data-key="future-scenarios">Future Scenario Planning</button>
+        <button class="keyword-tag" data-key="clinical-workflow">Clinical Workflow Design</button>
+        <button class="keyword-tag" data-key="technology-adoption">Technology Adoption</button>
+        <button class="keyword-tag" data-key="service-design">Human-Centered Design</button>
+        <button class="keyword-tag" data-key="pre-product">Pre-Product Innovation</button>
+        <button class="keyword-tag" data-key="robotics">Medical Robotics</button>
+        <button class="keyword-tag" data-key="system-design">Healthcare System Design</button>
+      </div>
+      <div class="keyword-panel" id="keyword-panel">
+        <div class="keyword-panel-inner">
+          <p class="keyword-panel-text" id="keyword-panel-text"></p>
         </div>
-      </article>
-      <article class="insight-card">
-        <div class="insight-image"><img src="image/insight-2.jpg" alt="Rehabilitation" loading="lazy"></div>
-        <div class="insight-content">
-          <h3 class="insight-heading">Why rehabilitation innovation needs value proposition clarity — not more technology</h3>
-          <p class="insight-text">Innovation only scales when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition decision-makers trust.</p>
-          <div class="insight-tags"><span class="tag">Value Proposition</span><span class="tag">Rehabilitation</span></div>
-        </div>
-      </article>
-      <article class="insight-card">
-        <div class="insight-image"><img src="image/insight-3.jpg" alt="Digital health" loading="lazy"></div>
-        <div class="insight-content">
-          <h3 class="insight-heading">The next era of health technology: orchestration over transformation</h3>
-          <p class="insight-text">HealthTech is about orchestrating services, people, and technology into one coherent innovation system.</p>
-          <div class="insight-tags"><span class="tag">HealthTech</span><span class="tag">Innovation System</span></div>
-        </div>
-      </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="contact-section" id="contact">
-  <div class="container">
-    <h2 class="contact-title">Ready to build the innovation layer?</h2>
-    <p class="contact-subtitle">Tell us about your healthcare technology challenge</p>
-    <form class="contact-form" action="https://formspree.io/f/mjgakblb" method="POST">
-      <div class="form-row">
-        <div class="form-group"><label>First Name *</label><input type="text" name="first-name" required></div>
-        <div class="form-group"><label>Last Name *</label><input type="text" name="last-name" required></div>
+  <section class="bridge-statement-section">
+    <div class="container">
+      <div class="bridge-statement-inner">
+        <div class="bridge-statement-left">
+          <span class="eyebrow">What We Do</span>
+          <h2 class="bridge-statement-title">Bridging medtech and healthcare robotics companies with the real clinical world.</h2>
+        </div>
+        <div class="bridge-statement-right">
+          <p class="bridge-statement-text">Most healthcare technologies are built without the layer that connects them to real clinical adoption — the value proposition, the service architecture, and the adoption framework that hospitals and clinical teams need before they can commit.</p>
+          <p class="bridge-statement-text">Servizions designs that layer. We do not publish how. That is what the first conversation is for.</p>
+          <a href="contact.html" class="bridge-statement-cta">Start a Conversation</a>
+        </div>
       </div>
-      <div class="form-row">
-        <div class="form-group"><label>Business Email *</label><input type="email" name="email" required></div>
-        <div class="form-group hidden-field"><label>Leave blank</label><input type="text" name="company"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Job Title</label><input type="text" name="job-title"></div>
-        <div class="form-group"><label>Country</label><input type="text" name="country"></div>
-      </div>
-      <div class="form-group" style="margin-bottom:20px;">
-        <label>What type of support are you looking for?</label>
-        <select name="support-type">
-          <option>Innovation Sprint — Value Proposition &amp; Concept</option>
-          <option>Service System Design</option>
-          <option>Future Scenario Planning</option>
-          <option>Innovation &amp; Design Thinking Workshop</option>
-          <option>General Inquiry</option>
-        </select>
-      </div>
-      <div class="form-group" style="margin-bottom:20px;">
-        <label>Tell us about your challenge</label>
-        <textarea name="message" maxlength="500" placeholder="Describe your healthcare technology and the challenge you are facing..."></textarea>
-      </div>
-      <div class="form-consent">
-        <input type="checkbox" required>
-        <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
-      </div>
-      <button type="submit" class="contact-button">Submit Request</button>
-    </form>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container footer-inner">
-    <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
-    <div class="footer-links">
-      <a href="mailto:info@servizions.com">info@servizions.com</a>
-      <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-  </div>
-</footer>
+  </section>
 
-</div><!-- /page-content -->
+  <section class="insights-section">
+    <div class="container">
+      <div class="insights-header">
+        <span class="insights-eyebrow">Expert Insights</span>
+        <h2 class="insights-title">Looking for inspiration?</h2>
+        <p class="insights-subtitle">Explore human-centered service innovation, healthcare value proposition design, and the adoption systems shaping medical robotics and health technology.</p>
+      </div>
+      <div class="insights-grid">
+        <article class="insight-card">
+          <div class="insight-image"><img src="image/insight-1.jpg" alt="Healthcare innovation" loading="lazy"></div>
+          <div class="insight-content">
+            <h3 class="insight-heading">From robotics potential to healthcare value: why adoption systems matter</h3>
+            <p class="insight-text">Healthcare robotics does not fail because of technology. It fails when service design, clinical workflows, and value propositions are missing.</p>
+            <div class="insight-tags"><span class="tag">Service Innovation</span><span class="tag">Robotics</span></div>
+          </div>
+        </article>
+        <article class="insight-card">
+          <div class="insight-image"><img src="image/insight-2.jpg" alt="Rehabilitation" loading="lazy"></div>
+          <div class="insight-content">
+            <h3 class="insight-heading">Why rehabilitation innovation needs value proposition clarity — not more technology</h3>
+            <p class="insight-text">Innovation only scales when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition decision-makers trust.</p>
+            <div class="insight-tags"><span class="tag">Value Proposition</span><span class="tag">Rehabilitation</span></div>
+          </div>
+        </article>
+        <article class="insight-card">
+          <div class="insight-image"><img src="image/insight-3.jpg" alt="Digital health" loading="lazy"></div>
+          <div class="insight-content">
+            <h3 class="insight-heading">The next era of health technology: orchestration over transformation</h3>
+            <p class="insight-text">HealthTech is about orchestrating services, people, and technology into one coherent innovation system — with evidence, governance, and measurable impact built in.</p>
+            <div class="insight-tags"><span class="tag">HealthTech</span><span class="tag">Innovation System</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<script>
-(function(){
-  var d={
-    "service-innovation":"Service innovation in healthcare means designing the complete system around a clinical service — not just the technology, but the value it delivers, the workflows it fits into, and the future environment it must survive in.",
-    "value-proposition":"A clear value proposition is the single most critical missing element in most healthcare technology launches. Servizions designs value propositions that align clinical outcomes, operational ROI, and stakeholder needs.",
-    "future-scenarios":"Our proprietary future scenario planning method builds structured visions of the healthcare system as it is evolving — so that your innovation is designed not only for today's clinical reality, but for the healthcare environment that is coming.",
-    "clinical-workflow":"Clinical workflow design maps the step-by-step processes that healthcare professionals follow when delivering care. We identify exactly where new technologies fit and how adoption can be made seamless.",
-    "technology-adoption":"Technology adoption in healthcare requires governance, training, stakeholder alignment, and workflow integration. Servizions builds the complete adoption architecture.",
-    "service-design":"Human-centered design starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators.",
-    "pre-product":"The pre-product phase is the most critical and most neglected stage of healthcare innovation. Servizions specialises in shaping the value proposition and service concept before a technology is finalised.",
-    "robotics":"Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement.",
-    "system-design":"Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system."
-  };
-  var tags=document.querySelectorAll('.keyword-tag');
-  var panel=document.getElementById('keyword-panel');
-  var pt=document.getElementById('keyword-panel-text');
-  var ak=null;
-  tags.forEach(function(tag){
-    tag.addEventListener('click',function(){
-      var k=tag.dataset.key;
-      if(ak===k){panel.classList.remove('open');tag.classList.remove('active');ak=null;return;}
-      tags.forEach(function(t){t.classList.remove('active');});
-      pt.textContent=d[k];tag.classList.add('active');panel.classList.add('open');ak=k;
-    });
-  });
-})();
-</script>
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="contact-title">Ready to build the innovation layer?</h2>
+      <p class="contact-subtitle">Tell us about your healthcare technology challenge</p>
+      <form class="contact-form" action="https://formspree.io/f/mjgakblb" method="POST">
+        <div class="form-row">
+          <div class="form-group"><label>First Name *</label><input type="text" name="first-name" required></div>
+          <div class="form-group"><label>Last Name *</label><input type="text" name="last-name" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Business Email *</label><input type="email" name="email" required></div>
+          <div class="form-group hidden-field"><label>Leave blank</label><input type="text" name="company"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Job Title</label><input type="text" name="job-title"></div>
+          <div class="form-group"><label>Country</label><input type="text" name="country"></div>
+        </div>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>What type of support are you looking for?</label>
+          <select name="support-type">
+            <option>Innovation Sprint — Value Proposition &amp; Concept</option>
+            <option>Service System Design</option>
+            <option>Future Scenario Planning</option>
+            <option>Innovation &amp; Design Thinking Workshop</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Tell us about your challenge</label>
+          <textarea name="message" maxlength="500" placeholder="Describe your healthcare technology and the challenge you are facing..."></textarea>
+        </div>
+        <div class="form-consent">
+          <input type="checkbox" required>
+          <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
+        </div>
+        <button type="submit" class="contact-button">Submit Request</button>
+      </form>
+    </div>
+  </section>
 
-<!-- PASTE PART 2 HERE -->
- <!-- REPLACE "<!-- PASTE PART 2 HERE -->" with this entire block -->
-<script>
-(function(){
+  </div><!-- /page-content -->
 
-var canvas=document.getElementById('hero-canvas');
-var ctx=canvas.getContext('2d');
-var wrap=document.getElementById('hero-wrap');
-var W,H,CX,CY;
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Servizions. All rights reserved. Munich, Germany.</div>
+      <div class="footer-links">
+        <a href="/cdn-cgi/l/email-protection#721b1c141d32011700041b081b1d1c015c111d1f"><span class="__cf_email__" data-cfemail="e881868e87a89b8d9a9e81928187869bc68b8785">[email&#160;protected]</span></a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
 
-function resize(){
-  W=canvas.width=innerWidth;
-  H=canvas.height=innerHeight;
-  CX=W/2; CY=H/2;
-}
-resize();
-window.addEventListener('resize',resize);
-
-function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
-function rotY(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
-var FL=860;
-function proj(p){var z=p[2]+FL,sc=FL/z;return[CX+p[0]*sc,CY+p[1]*sc,sc];}
-
-var S=198;
-var rx=0.18,ry=0.04,velX=0,velY=0;
-var dragging=false,lastMX=0,lastMY=0;
-var t=0,spinS=0,spinH=0;
-var mouseX=0,mouseY=0;
-var hoveredId=null,badgeRects=[];
-var hoverGlow={};
-var scrollP=0,smoothP=0;
-
-var BASE={outer:{r:1.36,z:0},service:{r:1.08,z:24},human:{r:0.76,z:48},core:{z:68}};
-
-var LDESC={
-  outer:'The macro context — where AI advancement and robotics growth are reshaping healthcare delivery at a systemic level.',
-  service:'Four strategic pillars: Patient Journey, Adoption Strategy, Service Blueprint, and Clinicians-Workflow.',
-  human:'Empathy, Synthesis, and Co-Design ensure every innovation is grounded in real human experience.'
-};
-
-var badges=[
-  {id:'empathy',  label:'Empathy',           style:'teal',  layer:'human',  pos:[0,    -0.44,48/S],w:88, h:27,icon:'01',info:'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.'},
-  {id:'synthesis',label:'Synthesis',         style:'teal',  layer:'human',  pos:[-0.30, 0.26,48/S],w:88, h:27,icon:'02',info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
-  {id:'codesign', label:'Co-Design',         style:'teal',  layer:'human',  pos:[ 0.30, 0.26,48/S],w:94, h:27,icon:'03',info:'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.'},
-  {id:'patient',  label:'Patient Journey',   style:'purple',layer:'service',pos:[ 0.90, 0,   24/S],w:150,h:37,icon:'04',info:'Mapping every touchpoint of the patient experience to design compassionate, human-centered healthcare interactions.'},
-  {id:'adoption', label:'Adoption Strategy', style:'purple',layer:'service',pos:[-0.90, 0,   24/S],w:162,h:37,icon:'05',info:'Driving technology uptake through behavioral change frameworks and stakeholder alignment.'},
-  {id:'blueprint',label:'Service Blueprint', style:'purple',layer:'service',pos:[-0.82, 0.52,24/S],w:156,h:37,icon:'06',info:'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.'},
-  {id:'clinician',label:'Clinicians-Workflow',style:'purple',layer:'service',pos:[ 0.82, 0.52,24/S],w:168,h:37,icon:'07',info:'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.'}
-];
-badges.forEach(function(b){hoverGlow[b.id]=0;});
-
-function eio(v){return v<0.5?2*v*v:1-Math.pow(-2*v+2,2)/2;}
-function cl(v){return Math.max(0,Math.min(1,v));}
-function phP(p,s,e){return eio(cl((p-s)/(e-s)));}
-function makeRF(oY){
-  return function(p){var sh=[p[0],p[1]+oY,p[2]];sh=rotX(sh,rx);sh=rotY(sh,ry);return sh;};
-}
-
-function updateScroll(){
-  var wrapTop=wrap.offsetTop;
-  var wrapH=wrap.offsetHeight-innerHeight;
-  scrollP=cl((window.scrollY-wrapTop)/wrapH);
-  var past=window.scrollY>(wrap.offsetTop+wrap.offsetHeight);
-  canvas.style.display=past?'none':'block';
-  ['szn-cur','szn-cur-ring','szn-hint','szn-panel'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el)el.style.visibility=past?'hidden':'visible';
-  });
-  document.querySelectorAll('.szn-corner').forEach(function(el){
-    el.style.visibility=past?'hidden':'visible';
-  });
-  var hint=document.getElementById('szn-hint');
-  if(hint&&!past)hint.style.opacity=(scrollP>0.02)?'0':'1';
-}
-window.addEventListener('scroll',updateScroll,{passive:true});
-updateScroll();
-
-canvas.addEventListener('mousedown',function(e){if(smoothP>0.04)return;dragging=true;lastMX=e.clientX;lastMY=e.clientY;velX=0;velY=0;});
-window.addEventListener('mousemove',function(e){
-  mouseX=e.clientX;mouseY=e.clientY;
-  if(!dragging)return;
-  velY=(e.clientX-lastMX)*.009;velX=(e.clientY-lastMY)*.009;
-  ry+=velY;rx+=velX;lastMX=e.clientX;lastMY=e.clientY;
-});
-window.addEventListener('mouseup',function(){dragging=false;});
-canvas.addEventListener('click',function(e){
-  for(var i=badgeRects.length-1;i>=0;i--){
-    var r=badgeRects[i];
-    if(e.clientX>=r.x&&e.clientX<=r.x+r.w&&e.clientY>=r.y&&e.clientY<=r.y+r.h&&r.info){
-      document.getElementById('szn-panel-title').textContent=r.label;
-      document.getElementById('szn-panel-desc').textContent=r.info;
-      document.getElementById('szn-panel-tag').textContent='NODE · '+r.icon;
-      document.getElementById('szn-panel').classList.add('on');
-      break;
-    }
-  }
-});
-document.getElementById('szn-panel-close').onclick=function(){document.getElementById('szn-panel').classList.remove('on');};
-canvas.addEventListener('touchstart',function(e){var tc=e.touches[0];if(smoothP>0.04)return;dragging=true;lastMX=tc.clientX;lastMY=tc.clientY;velX=0;velY=0;},{passive:true});
-window.addEventListener('touchmove',function(e){var tc=e.touches[0];if(!dragging)return;velY=(tc.clientX-lastMX)*.009;velX=(tc.clientY-lastMY)*.009;ry+=velY;rx+=velX;lastMX=tc.clientX;lastMY=tc.clientY;},{passive:true});
-window.addEventListener('touchend',function(){dragging=false;});
-
-var cur=document.getElementById('szn-cur');
-var curRing=document.getElementById('szn-cur-ring');
-var crx=0,cry=0;
-(function ac(){
-  crx+=(mouseX-crx)*.12;cry+=(mouseY-cry)*.12;
-  if(cur){cur.style.left=mouseX+'px';cur.style.top=mouseY+'px';}
-  if(curRing){curRing.style.left=crx+'px';curRing.style.top=cry+'px';}
-  requestAnimationFrame(ac);
-})();
-
-function drawRing(r,z,color,lw,dash,rf){
-  var pts=[];
-  for(var i=0;i<=120;i++){var a=(i/120)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
-  ctx.save();ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);
-  ctx.beginPath();pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
-  ctx.stroke();ctx.setLineDash([]);ctx.restore();
-}
-function drawDisc(r,z,fill,rf){
-  var pts=[];
-  for(var i=0;i<=90;i++){var a=(i/90)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
-  ctx.save();ctx.fillStyle=fill;ctx.beginPath();
-  pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
-  ctx.closePath();ctx.fill();ctx.restore();
-}
-function drawEdge(r,z0,z1,color,rf){
-  ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1;
-  for(var i=0;i<90;i++){
-    var a=(i/90)*Math.PI*2,x=Math.cos(a)*r*S,y=Math.sin(a)*r*S;
-    var p1=proj(rf([x,y,z0])),p2=proj(rf([x,y,z1]));
-    ctx.globalAlpha=(Math.cos(a-ry)*0.5+0.5)*0.35;
-    ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.stroke();
-  }
-  ctx.globalAlpha=1;ctx.restore();
-}
-function drawArrow(r,angle,z,cw,color,rf){
-  var a=angle,sz=8;
-  var raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z];
-  var ta=cw?a+Math.PI/2:a-Math.PI/2;
-  var a1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz,raw[1]+(-Math.sin(ta)+Math.sin(a))*sz,z];
-  var a2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz,raw[1]+(-Math.sin(ta)-Math.sin(a))*sz,z];
-  var pp=proj(rf(raw)),pa1=proj(rf(a1)),pa2=proj(rf(a2));
-  ctx.save();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';
-  ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);
-  ctx.stroke();ctx.restore();
-}
-function drawSplitLabel(name,desc,sy,alpha,sx,showDesc){
-  if(alpha<0.02)return;
-  if(showDesc===undefined)showDesc=true;
-  var x=sx||60;
-  ctx.save();ctx.globalAlpha=alpha;
-  ctx.font='600 10px Space Grotesk,sans-serif';
-  ctx.fillStyle='rgba(94,23,235,.6)';ctx.textAlign='left';ctx.textBaseline='middle';
-  ctx.fillText(name.toUpperCase(),x,sy-(showDesc?22:0));
-  if(showDesc){
-    ctx.strokeStyle='rgba(94,23,235,.2)';ctx.lineWidth=1;
-    ctx.beginPath();ctx.moveTo(x,sy-10);ctx.lineTo(x+220,sy-10);ctx.stroke();
-    ctx.font='300 12.5px Space Grotesk,sans-serif';ctx.fillStyle='rgba(42,31,92,.72)';
-    var words=desc.split(' '),line='',lineY=sy+10,maxW=240;
-    words.forEach(function(w){
-      var test=line?line+' '+w:w;
-      if(ctx.measureText(test).width>maxW&&line){ctx.fillText(line,x,lineY);line=w;lineY+=18;}
-      else line=test;
-    });
-    if(line)ctx.fillText(line,x,lineY);
-  }
-  ctx.restore();
-}
-function drawBadge(badge,floatY,offY,alpha){
-  if(alpha<0.04)return;
-  var g=hoverGlow[badge.id];
-  var wp=[badge.pos[0]*S,badge.pos[1]*S+floatY+offY,badge.pos[2]*S+(g>0?g*30:0)];
-  wp=rotX(wp,rx);wp=rotY(wp,ry);
-  var pr=proj(wp),sf=Math.max(0.35,pr[2]);
-  var a2=Math.max(0,Math.min(1,(sf-.15)*3))*alpha;
-  if(a2<0.04)return;
-  var sw=badge.w*sf,sh=badge.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;
-  ctx.save();ctx.globalAlpha=a2;
-  if(g>0.02){
-    var gr=ctx.createRadialGradient(pr[0],pr[1],0,pr[0],pr[1],sw*.8+g*28);
-    gr.addColorStop(0,badge.style==='teal'?'rgba(90,173,163,'+(g*.22)+')':'rgba(94,23,235,'+(g*.18)+')');
-    gr.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=gr;ctx.beginPath();ctx.arc(pr[0],pr[1],sw*.8+g*28,0,Math.PI*2);ctx.fill();
-  }
-  ctx.shadowColor=badge.style==='teal'?'rgba(90,173,163,.2)':'rgba(94,23,235,.2)';
-  ctx.shadowBlur=(8+g*18)*sf;ctx.shadowOffsetY=(3+g*3)*sf;
-  var grd=ctx.createLinearGradient(px,py,badge.style==='teal'?px:px+sw,py+sh);
-  if(badge.style==='teal'){
-    grd.addColorStop(0,g>0?'#68bdb3':'#5aada3');grd.addColorStop(1,g>0?'#4c9e94':'#4a9990');
-  }else{
-    grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');
-  }
-  ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();
-  ctx.shadowBlur=0;ctx.shadowOffsetY=0;
-  var shim=ctx.createLinearGradient(px,py,px,py+sh*.55);
-  shim.addColorStop(0,'rgba(255,255,255,'+(.13+g*.09)+')');shim.addColorStop(1,'rgba(255,255,255,0)');
-  ctx.fillStyle=shim;ctx.beginPath();ctx.roundRect(px,py,sw,sh*.5,rad);ctx.fill();
-  ctx.fillStyle='rgba(255,255,255,.96)';
-  ctx.font='600 '+Math.max(7,(badge.style==='teal'?10:12)*sf)+'px Space Grotesk,sans-serif';
-  ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(badge.label,pr[0],pr[1]);
-  if(sf>0.65){
-    ctx.fillStyle='rgba(255,255,255,'+(.4*sf)+')';
-    ctx.font='400 '+Math.max(5,7*sf)+'px Space Mono,monospace';
-    ctx.textAlign='right';ctx.fillText(badge.icon,px+sw-5*sf,py+7*sf);
-  }
-  ctx.restore();
-  badgeRects.push({x:px,y:py,w:sw,h:sh,id:badge.id,label:badge.label,style:badge.style,info:badge.info||null,icon:badge.icon});
-}
-
-function draw(){
-  t+=0.013;badgeRects=[];
-  smoothP+=(scrollP-smoothP)*.06;
-
-  var rotA=1-cl(smoothP*8);
-  if(!dragging&&rotA>0){
-    velX*=0.92;velY*=0.92;rx+=velX*rotA;ry+=velY*rotA;
-    if(Math.abs(velX)<0.0004&&Math.abs(velY)<0.0004)rx+=0.0004*rotA;
-  }
-  var mx01=(mouseX-W/2)/(W/2),my01=(mouseY-H/2)/(H/2);
-  var flatP=cl(smoothP*12);
-  var sRX=rx,sRY=ry;
-  rx=rx*(1-flatP)+my01*0.06*flatP;
-  ry=ry*(1-flatP)+mx01*0.06*flatP;
-  spinS+=0.0018;spinH-=0.0012;
-  var ss=1-cl(smoothP*4);
-
-  ctx.clearRect(0,0,W,H);
-  var bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.7);
-  bg.addColorStop(0,'rgba(235,230,255,0.15)');bg.addColorStop(1,'rgba(247,246,252,0)');
-  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-
-  /* SERVIZIONS logo
-     - starts invisible
-     - fades in and slides to top as soon as scroll begins
-     - stays fixed at top forever after */
-  var logoSlide=cl((smoothP-0.01)/0.10);
-  var logoY=CY-(logoSlide*(CY-H*0.13));
-  var logoAlpha=cl(smoothP*30);
-  if(logoAlpha>0.01){
-    ctx.save();ctx.globalAlpha=logoAlpha;
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.font='700 52px Space Grotesk,sans-serif';
-    ctx.fillStyle='#5e17eb';ctx.letterSpacing='0.18em';
-    ctx.shadowColor='rgba(94,23,235,.12)';ctx.shadowBlur=16;
-    ctx.fillText('SERVIZIONS',CX,logoY);
-    ctx.shadowBlur=0;
-    ctx.font='300 10px Space Mono,monospace';
-    ctx.fillStyle='rgba(94,23,235,.4)';ctx.letterSpacing='0.22em';
-    ctx.fillText('SERVICE INNOVATION STUDIO',CX,logoY+48);
-    ctx.restore();
-  }
-
-  /* DROP PHASES
-     outer  (big teal)   drops FIRST:  scroll 0.03 → 0.20
-     service (purple)    drops SECOND: scroll 0.18 → 0.36
-     human  (small teal) drops LAST:   scroll 0.34 → 0.52
-
-     Final Y positions on screen (all overlapping, matching your image):
-       outer   lands at H*0.72  → offset from CY(0.50) = +H*0.22
-       service lands at H*0.58  → offset = +H*0.08
-       human   lands at H*0.44  → offset = -H*0.06
-  */
-  var pO=phP(smoothP,0.03,0.20);
-  var pS=phP(smoothP,0.18,0.36);
-  var pH=phP(smoothP,0.34,0.52);
-
-  var offO=pO*(H*0.22);
-  var offS=pS*(H*0.08);
-  var offH=pH*(-H*0.06);
-
-  var rfO=makeRF(offO),rfS=makeRF(offS),rfH=makeRF(offH);
-  var alO=cl(pO*2),alS=cl(pS*2),alH=cl(pH*2);
-
-  /* draw back to front so outer is behind, human on top */
-  drawDisc(BASE.outer.r,  BASE.outer.z,  'rgba(194,228,225,0.28)',rfO);
-  drawDisc(BASE.service.r,BASE.service.z,'rgba(197,183,240,0.58)',rfS);
-  drawDisc(BASE.human.r,  BASE.human.z,  'rgba(150,215,208,0.68)',rfH);
-
-  var ea=1-cl(smoothP*6);
-  if(ea>0.02){
-    ctx.save();ctx.globalAlpha=ea;
-    drawEdge(BASE.outer.r,  BASE.outer.z,  BASE.service.z,'rgba(175,155,230,0.8)',rfO);
-    drawEdge(BASE.service.r,BASE.service.z,BASE.human.z,  'rgba(140,210,205,0.8)',rfS);
-    drawEdge(BASE.human.r,  BASE.human.z,  BASE.core.z,   'rgba(120,200,193,0.8)',rfH);
-    ctx.restore();
-  }
-
-  drawRing(BASE.outer.r,  BASE.outer.z,  'rgba(140,210,205,1)',  2,   [],   rfO);
-  drawRing(BASE.service.r,BASE.service.z,'rgba(155,130,218,1)',  1.8, [5,8],rfS);
-  drawRing(BASE.human.r,  BASE.human.z,  'rgba(80,175,168,1)',   2.2, [],   rfH);
-
-  [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(function(a){drawArrow(BASE.service.r,a+spinS*ss,BASE.service.z,true, 'rgba(120,95,200,1)',rfS);});
-  [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(function(a){drawArrow(BASE.human.r,a+spinH*ss,BASE.human.z,false,'rgba(60,155,148,1)',rfH);});
-
-  var cO=proj(rfO([0,0,BASE.outer.z]));
-  var cS=proj(rfS([0,0,BASE.service.z]));
-  var cH=proj(rfH([0,0,BASE.human.z]));
-  var rSR=BASE.outer.r*S*cO[2];
-  drawSplitLabel('Systemic Innovation',      LDESC.outer,  cO[1],alO,cO[0]+rSR*0.72);
-  drawSplitLabel('Service System',           LDESC.service,cS[1],alS,cS[0]+BASE.service.r*S*cS[2]*0.72);
-  drawSplitLabel('Human-Centered Innovation','',           cH[1],alH,cH[0]+BASE.human.r*S*cH[2]*0.72,false);
-
-  [{c:cO,n:'01',col:'rgba(80,175,168,1)',p:pO},
-   {c:cS,n:'02',col:'rgba(120,95,200,1)',p:pS},
-   {c:cH,n:'03',col:'rgba(60,155,148,1)',p:pH}
-  ].forEach(function(it){
-    var a=cl(it.p*2);if(a<0.02)return;
-    var rr=BASE.outer.r*S*it.c[2]*0.9;
-    ctx.save();ctx.globalAlpha=a;
-    ctx.font='700 '+Math.max(11,13*it.c[2])+'px Space Mono,monospace';
-    ctx.fillStyle=it.col;ctx.textAlign='right';ctx.textBaseline='middle';
-    ctx.fillText(it.n,it.c[0]-rr*0.72,it.c[1]);ctx.restore();
-  });
-
-  var rla=1-cl(smoothP*10);
-  if(rla>0.02){
-    var drawRL=function(text,pd,size,color,bold){
-      var rfn=pd[2]<30?rfO:pd[2]<50?rfS:rfH;
-      var pp=proj(rfn([pd[0]*S,pd[1]*S,pd[2]]));
-      var a=Math.max(0,Math.min(1,(pp[2]-.12)*3))*rla;if(a<0.03)return;
-      ctx.save();ctx.globalAlpha=a;ctx.fillStyle=color;
-      ctx.font=(bold?'600':'300')+' '+Math.max(6,size*pp[2])+'px Space Grotesk,sans-serif';
-      ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,pp[0],pp[1]);ctx.restore();
+  <!-- KEYWORDS -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  (function(){
+    var d={
+      "service-innovation":"Service innovation in healthcare means designing the complete system around a clinical service — not just the technology, but the value it delivers, the workflows it fits into, and the future environment it must survive in.",
+      "value-proposition":"A clear value proposition is the single most critical missing element in most healthcare technology launches. Servizions designs value propositions that align clinical outcomes, operational ROI, and stakeholder needs into one clear, evidence-backed statement that decision-makers trust.",
+      "future-scenarios":"Our proprietary future scenario planning method builds structured visions of the healthcare system as it is evolving — so that your innovation is designed not only for today's clinical reality, but for the healthcare environment that is coming.",
+      "clinical-workflow":"Clinical workflow design maps the step-by-step processes that healthcare professionals follow when delivering care. By understanding these workflows deeply, we identify exactly where new technologies fit, where friction exists, and how adoption can be made seamless and sustainable.",
+      "technology-adoption":"Technology adoption in healthcare requires far more than installing a device or deploying software. It needs governance, training, stakeholder alignment, and workflow integration. Servizions builds the complete adoption architecture so technologies succeed in real clinical environments.",
+      "service-design":"Human-centered design starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators. We surface the real needs, real friction, and real reasons innovations succeed or fail before a product is locked.",
+      "pre-product":"The pre-product phase is the most critical and most neglected stage of healthcare innovation. Servizions specialises in this phase — shaping the value proposition, service concept, and adoption architecture before a technology is finalised.",
+      "robotics":"Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement. We specialise in making robotics adoption sustainable, scalable, and genuinely valuable to clinical teams.",
+      "system-design":"Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system. Servizions builds innovation architectures that work within this complexity."
     };
-    drawRL('AI & Robotics growth',     [0,-1.48,0],           12,'rgba(90,65,185,1)', true);
-    drawRL('Service System',           [0, 1.20,BASE.service.z],11,'rgba(110,90,175,1)',false);
-    drawRL('Human-Centered Innovation',[0, 0.88,BASE.human.z], 10,'rgba(50,140,133,1)',false);
-    drawRL('Systemic Innovation',      [0, 1.62,0],            10,'rgba(160,148,200,1)',false);
+    var tags=document.querySelectorAll('.keyword-tag');
+    var panel=document.getElementById('keyword-panel');
+    var pt=document.getElementById('keyword-panel-text');
+    var ak=null;
+    tags.forEach(function(tag){
+      tag.addEventListener('click',function(){
+        var k=tag.dataset.key;
+        if(ak===k){panel.classList.remove('open');tag.classList.remove('active');ak=null;return;}
+        tags.forEach(function(t){t.classList.remove('active');});
+        pt.textContent=d[k];tag.classList.add('active');panel.classList.add('open');ak=k;
+      });
+    });
+  })();
+  </script>
+
+  <!-- BOOKING -->
+  <script>
+  (function(){
+    var MO=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    var DA=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+    var today=new Date();today.setHours(0,0,0,0);
+    var vY=today.getFullYear(),vM=today.getMonth(),sd=null;
+    var SL=['09:00','09:30','10:00','10:30','11:00','11:30','12:00'];
+    function av(d){var w=d.getDay();return w>=1&&w<=3&&d>=today;}
+    function fm(d){return DA[d.getDay()]+', '+d.getDate()+'. '+MO[d.getMonth()]+' '+d.getFullYear();}
+    function rc(){
+      document.getElementById('bookingMonthLabel').textContent=MO[vM]+' '+vY;
+      var g=document.getElementById('bookingCalGrid');g.innerHTML='';
+      var fd=new Date(vY,vM,1).getDay();fd=fd===0?6:fd-1;
+      var dm=new Date(vY,vM+1,0).getDate();
+      for(var i=0;i<fd;i++){var b=document.createElement('div');b.className='booking-cal-cell booking-cal-empty';g.appendChild(b);}
+      for(var dd=1;dd<=dm;dd++){
+        var cd=new Date(vY,vM,dd),cell=document.createElement('div');
+        cell.className='booking-cal-cell';cell.textContent=dd;
+        if(!av(cd)){cell.classList.add('booking-cal-disabled');}
+        else{cell.classList.add('booking-cal-available');(function(xd){cell.addEventListener('click',function(){
+          sd=xd;document.querySelectorAll('.booking-cal-selected').forEach(function(e){e.classList.remove('booking-cal-selected');});
+          this.classList.add('booking-cal-selected');rs(xd);
+          document.getElementById('bookingForm').style.display='none';
+          document.getElementById('bookingSuccess').style.display='none';
+          document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active');});
+        });})(cd);}
+        if(sd&&cd.toDateString()===sd.toDateString())cell.classList.add('booking-cal-selected');
+        g.appendChild(cell);
+      }
+    }
+    function rs(date){
+      document.getElementById('bookingSlotsPlaceholder').style.display='none';
+      var bl=document.getElementById('bookingSlotsBlock');bl.style.display='block';
+      document.getElementById('bookingSlotsDate').textContent=fm(date)+' — CET (Berlin)';
+      var sg=document.getElementById('bookingSlotsGrid');sg.innerHTML='';
+      SL.forEach(function(slot){
+        var btn=document.createElement('button');btn.type='button';btn.className='booking-slot-btn';btn.textContent=slot+' Uhr';
+        btn.addEventListener('click',function(){
+          document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active');});
+          btn.classList.add('active');sf2(date,slot);
+        });
+        sg.appendChild(btn);
+      });
+    }
+    function sf2(date,slot){
+      var lbl=fm(date)+'  ·  '+slot+' Uhr CET  ·  15 Min  ·  Online';
+      document.getElementById('bookingFormSummary').textContent='📅  '+lbl;
+      document.getElementById('bookingSlotHidden').value=fm(date)+' – '+slot+' Uhr CET';
+      var f=document.getElementById('bookingForm');f.style.display='block';
+      setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'nearest'});},80);
+    }
+    document.getElementById('bookingPrev').addEventListener('click',function(){vM--;if(vM<0){vM=11;vY--;}rc();});
+    document.getElementById('bookingNext').addEventListener('click',function(){vM++;if(vM>11){vM=0;vY++;}rc();});
+    document.getElementById('bookingBackBtn').addEventListener('click',function(){
+      document.getElementById('bookingForm').style.display='none';
+      document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active');});
+    });
+    document.getElementById('bookingForm').addEventListener('submit',function(e){
+      e.preventDefault();var form=this;
+      fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(res){if(res.ok){form.style.display='none';document.getElementById('bookingSuccess').style.display='block';}
+      else{alert('Something went wrong. Pleas
+      <!-- PASTE THIS ENTIRE BLOCK before </body> in your index.html -->
+<script>
+(function(){
+
+  var canvas = document.getElementById('hero-canvas');
+  var ctx    = canvas.getContext('2d');
+  var wrap   = document.getElementById('hero-wrap');
+  var W,H,CX,CY;
+
+  function resize(){
+    W = canvas.width  = innerWidth;
+    H = canvas.height = innerHeight;
+    CX = W/2;
+    CY = H/2; /* true centre — everything positions around this */
+  }
+  resize();
+  window.addEventListener('resize',resize);
+
+  /* 3D math */
+  function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
+  function rotY(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
+  var FL=860;
+  function proj(p){var z=p[2]+FL,sc=FL/z;return[CX+p[0]*sc,CY+p[1]*sc,sc];}
+
+  var S=198;
+  var rx=0.18,ry=0.04,velX=0,velY=0;
+  var dragging=false,lastMX=0,lastMY=0;
+  var t=0,spinS=0,spinH=0;
+  var mouseX=0,mouseY=0;
+  var hoveredId=null,badgeRects=[];
+  var hoverGlow={};
+  var scrollP=0,smoothP=0;
+
+  /* layers */
+  var BASE={outer:{r:1.36,z:0},service:{r:1.08,z:24},human:{r:0.76,z:48},core:{z:68}};
+
+  /* labels */
+  var LDESC={
+    outer:  'The macro context — where AI advancement and robotics growth are reshaping healthcare delivery at a systemic level.',
+    service:'Four strategic pillars: Patient Journey, Adoption Strategy, Service Blueprint, and Clinicians-Workflow.',
+    human:  'Empathy, Synthesis, and Co-Design ensure every innovation is grounded in real human experience.'
+  };
+
+  /* badges */
+  var badges=[
+    {id:'empathy',  label:'Empathy',           style:'teal',  layer:'human',  pos:[0,    -0.44,48/S],w:88, h:27,icon:'01',info:'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.'},
+    {id:'synthesis',label:'Synthesis',         style:'teal',  layer:'human',  pos:[-0.30, 0.26,48/S],w:88, h:27,icon:'02',info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
+    {id:'codesign', label:'Co-Design',         style:'teal',  layer:'human',  pos:[ 0.30, 0.26,48/S],w:94, h:27,icon:'03',info:'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.'},
+    {id:'patient',  label:'Patient Journey',   style:'purple',layer:'service',pos:[ 0.90, 0,   24/S],w:150,h:37,icon:'04',info:'Mapping every touchpoint of the patient experience to design compassionate, human-centered healthcare interactions.'},
+    {id:'adoption', label:'Adoption Strategy', style:'purple',layer:'service',pos:[-0.90, 0,   24/S],w:162,h:37,icon:'05',info:'Driving technology uptake through behavioral change frameworks and stakeholder alignment.'},
+    {id:'blueprint',label:'Service Blueprint', style:'purple',layer:'service',pos:[-0.82, 0.52,24/S],w:156,h:37,icon:'06',info:'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.'},
+    {id:'clinician',label:'Clinicians-Workflow',style:'purple',layer:'service',pos:[ 0.82, 0.52,24/S],w:168,h:37,icon:'07',info:'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.'}
+  ];
+  badges.forEach(function(b){hoverGlow[b.id]=0;});
+
+  function eio(v){return v<0.5?2*v*v:1-Math.pow(-2*v+2,2)/2;}
+  function cl(v){return Math.max(0,Math.min(1,v));}
+  function phP(p,s,e){return eio(cl((p-s)/(e-s)));}
+  function makeRF(oY){
+    return function(p){var sh=[p[0],p[1]+oY,p[2]];sh=rotX(sh,rx);sh=rotY(sh,ry);return sh;};
   }
 
-  badges.forEach(function(b,i){
-    var lP  =b.layer==='outer'?pO:b.layer==='service'?pS:pH;
-    var oY  =b.layer==='outer'?offO:b.layer==='service'?offS:offH;
-    var exp =1+cl((lP-0.7)*3.3)*0.35;
-    var fy  =Math.sin(t+i*1.3)*3;
-    var bA  =cl(lP*2);
-    drawBadge({id:b.id,label:b.label,style:b.style,layer:b.layer,
-               pos:[b.pos[0]*exp,b.pos[1]*exp,b.pos[2]],
-               w:b.w,h:b.h,icon:b.icon,info:b.info},fy,oY,bA);
+  /* ── SCROLL ──
+     scrollP 0→1 maps across the full hero-wrap height.
+     
+     Animation phases:
+       0.00–0.05 : globe visible, SERVIZIONS text + tagline at top
+       0.05–0.15 : outer (big teal) drops DOWN from globe centre to its final Y
+       0.15–0.28 : service (purple) drops DOWN to its final Y
+       0.28–0.42 : human (small teal) drops DOWN to its final Y
+       0.42–1.00 : everything settled, all 3 circles overlapping — user stays here
+                   SERVIZIONS fixed at top, circles visible, no page content yet
+  */
+  function updateScroll(){
+    var wrapTop = wrap.offsetTop;
+    var wrapH   = wrap.offsetHeight - innerHeight;
+    scrollP = cl((window.scrollY - wrapTop) / wrapH);
+    var past = window.scrollY > wrap.offsetTop + wrap.offsetHeight;
+    canvas.style.display = past ? 'none' : 'block';
+    ['szn-cur','szn-cur-ring','szn-hint','szn-panel'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.style.visibility = past?'hidden':'visible';
+    });
+    document.querySelectorAll('.szn-corner').forEach(function(el){
+      el.style.visibility = past?'hidden':'visible';
+    });
+    var hint=document.getElementById('szn-hint');
+    if(hint&&!past) hint.style.opacity=(scrollP>0.03)?'0':'1';
+  }
+  window.addEventListener('scroll',updateScroll,{passive:true});
+  updateScroll();
+
+  /* drag */
+  canvas.addEventListener('mousedown',function(e){if(smoothP>0.04)return;dragging=true;lastMX=e.clientX;lastMY=e.clientY;velX=0;velY=0;});
+  window.addEventListener('mousemove',function(e){
+    mouseX=e.clientX;mouseY=e.clientY;
+    if(!dragging)return;
+    velY=(e.clientX-lastMX)*.009;velX=(e.clientY-lastMY)*.009;
+    ry+=velY;rx+=velX;lastMX=e.clientX;lastMY=e.clientY;
   });
+  window.addEventListener('mouseup',function(){dragging=false;});
+  canvas.addEventListener('click',function(e){
+    for(var i=badgeRects.length-1;i>=0;i--){
+      var r=badgeRects[i];
+      if(e.clientX>=r.x&&e.clientX<=r.x+r.w&&e.clientY>=r.y&&e.clientY<=r.y+r.h&&r.info){
+        document.getElementById('szn-panel-title').textContent=r.label;
+        document.getElementById('szn-panel-desc').textContent=r.info;
+        document.getElementById('szn-panel-tag').textContent='NODE · '+r.icon;
+        document.getElementById('szn-panel').classList.add('on');
+        break;
+      }
+    }
+  });
+  document.getElementById('szn-panel-close').onclick=function(){document.getElementById('szn-panel').classList.remove('on');};
+  canvas.addEventListener('touchstart',function(e){var tc=e.touches[0];if(smoothP>0.04)return;dragging=true;lastMX=tc.clientX;lastMY=tc.clientY;velX=0;velY=0;},{passive:true});
+  window.addEventListener('touchmove',function(e){var tc=e.touches[0];if(!dragging)return;velY=(tc.clientX-lastMX)*.009;velX=(tc.clientY-lastMY)*.009;ry+=velY;rx+=velX;lastMX=tc.clientX;lastMY=tc.clientY;},{passive:true});
+  window.addEventListener('touchend',function(){dragging=false;});
 
-  var nh=null;
-  for(var i=badgeRects.length-1;i>=0;i--){
-    var r=badgeRects[i];
-    if(mouseX>=r.x&&mouseX<=r.x+r.w&&mouseY>=r.y&&mouseY<=r.y+r.h){nh=r.id;break;}
+  /* cursor */
+  var cur=document.getElementById('szn-cur');
+  var curRing=document.getElementById('szn-cur-ring');
+  var crx=0,cry=0;
+  (function ac(){
+    crx+=(mouseX-crx)*.12;cry+=(mouseY-cry)*.12;
+    if(cur){cur.style.left=mouseX+'px';cur.style.top=mouseY+'px';}
+    if(curRing){curRing.style.left=crx+'px';curRing.style.top=cry+'px';}
+    requestAnimationFrame(ac);
+  })();
+
+  /* draw helpers */
+  function drawRing(r,z,color,lw,dash,rf){
+    var pts=[];
+    for(var i=0;i<=120;i++){var a=(i/120)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
+    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);
+    ctx.beginPath();pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
+    ctx.stroke();ctx.setLineDash([]);ctx.restore();
   }
-  hoveredId=nh;
-  badges.forEach(function(b){hoverGlow[b.id]+=((b.id===hoveredId?1:0)-hoverGlow[b.id])*.1;});
-  canvas.style.cursor=hoveredId?'pointer':'default';
-  if(curRing){curRing.style.width=hoveredId?'50px':'32px';curRing.style.height=hoveredId?'50px':'32px';}
-  rx=sRX;ry=sRY;
-
-  /* pill — only at very start before logo appears */
-  var pillA=1-cl(smoothP*30);
-  if(pillA>0.02){
-    var fz=BASE.core.z+Math.sin(t*1.4)*4;
-    var q=[0,0,fz];q=rotX(q,sRX);q=rotY(q,sRY);
-    var pr2=proj(q),sf2=Math.max(0.5,pr2[2]);
-    var pw=210*sf2,ph2=82*sf2,rr2=ph2/2,ppx=pr2[0]-pw/2,ppy=pr2[1]-ph2/2;
-    ctx.save();ctx.globalAlpha=pillA;
-    var pulse=0.82+Math.sin(t*1.4)*.18,hR=pw*.85*pulse;
-    var halo=ctx.createRadialGradient(pr2[0],pr2[1],pw*.1,pr2[0],pr2[1],hR);
-    halo.addColorStop(0,'rgba(94,23,235,'+.15*pulse+')');halo.addColorStop(1,'rgba(94,23,235,0)');
-    ctx.fillStyle=halo;ctx.beginPath();ctx.arc(pr2[0],pr2[1],hR,0,Math.PI*2);ctx.fill();
-    ctx.shadowColor='rgba(94,23,235,.3)';ctx.shadowBlur=28*sf2;ctx.shadowOffsetY=10*sf2;
-    var pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph2);
-    pgrd.addColorStop(0,'#7a35ef');pgrd.addColorStop(1,'#5e17eb');
-    ctx.fillStyle=pgrd;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph2,rr2);ctx.fill();
+  function drawDisc(r,z,fill,rf){
+    var pts=[];
+    for(var i=0;i<=90;i++){var a=(i/90)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
+    ctx.save();ctx.fillStyle=fill;ctx.beginPath();
+    pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
+    ctx.closePath();ctx.fill();ctx.restore();
+  }
+  function drawEdge(r,z0,z1,color,rf){
+    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1;
+    for(var i=0;i<90;i++){
+      var a=(i/90)*Math.PI*2,x=Math.cos(a)*r*S,y=Math.sin(a)*r*S;
+      var p1=proj(rf([x,y,z0])),p2=proj(rf([x,y,z1]));
+      ctx.globalAlpha=(Math.cos(a-ry)*0.5+0.5)*0.35;
+      ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.stroke();
+    }
+    ctx.globalAlpha=1;ctx.restore();
+  }
+  function drawArrow(r,angle,z,cw,color,rf){
+    var a=angle,sz=8;
+    var raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z];
+    var ta=cw?a+Math.PI/2:a-Math.PI/2;
+    var a1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz,raw[1]+(-Math.sin(ta)+Math.sin(a))*sz,z];
+    var a2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz,raw[1]+(-Math.sin(ta)-Math.sin(a))*sz,z];
+    var pp=proj(rf(raw)),pa1=proj(rf(a1)),pa2=proj(rf(a2));
+    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);
+    ctx.stroke();ctx.restore();
+  }
+  function drawSplitLabel(name,desc,sy,alpha,sx,showDesc){
+    if(alpha<0.02)return;
+    if(showDesc===undefined)showDesc=true;
+    var x=sx||60;
+    ctx.save();ctx.globalAlpha=alpha;
+    ctx.font='600 10px Space Grotesk,sans-serif';
+    ctx.fillStyle='rgba(94,23,235,.6)';ctx.textAlign='left';ctx.textBaseline='middle';
+    ctx.fillText(name.toUpperCase(),x,sy-(showDesc?22:0));
+    if(showDesc){
+      ctx.strokeStyle='rgba(94,23,235,.2)';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(x,sy-10);ctx.lineTo(x+220,sy-10);ctx.stroke();
+      ctx.font='300 12.5px Space Grotesk,sans-serif';ctx.fillStyle='rgba(42,31,92,.72)';
+      var words=desc.split(' '),line='',lineY=sy+10,maxW=240;
+      words.forEach(function(w){
+        var test=line?line+' '+w:w;
+        if(ctx.measureText(test).width>maxW&&line){ctx.fillText(line,x,lineY);line=w;lineY+=18;}
+        else line=test;
+      });
+      if(line)ctx.fillText(line,x,lineY);
+    }
+    ctx.restore();
+  }
+  function drawBadge(badge,floatY,offY,alpha){
+    if(alpha<0.04)return;
+    var g=hoverGlow[badge.id];
+    var wp=[badge.pos[0]*S,badge.pos[1]*S+floatY+offY,badge.pos[2]*S+(g>0?g*30:0)];
+    wp=rotX(wp,rx);wp=rotY(wp,ry);
+    var pr=proj(wp),sf=Math.max(0.35,pr[2]);
+    var a2=Math.max(0,Math.min(1,(sf-.15)*3))*alpha;
+    if(a2<0.04)return;
+    var sw=badge.w*sf,sh=badge.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;
+    ctx.save();ctx.globalAlpha=a2;
+    if(g>0.02){
+      var gr=ctx.createRadialGradient(pr[0],pr[1],0,pr[0],pr[1],sw*.8+g*28);
+      gr.addColorStop(0,badge.style==='teal'?'rgba(90,173,163,'+(g*.22)+')':'rgba(94,23,235,'+(g*.18)+')');
+      gr.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=gr;ctx.beginPath();ctx.arc(pr[0],pr[1],sw*.8+g*28,0,Math.PI*2);ctx.fill();
+    }
+    ctx.shadowColor=badge.style==='teal'?'rgba(90,173,163,.2)':'rgba(94,23,235,.2)';
+    ctx.shadowBlur=(8+g*18)*sf;ctx.shadowOffsetY=(3+g*3)*sf;
+    var grd=ctx.createLinearGradient(px,py,badge.style==='teal'?px:px+sw,py+sh);
+    if(badge.style==='teal'){
+      grd.addColorStop(0,g>0?'#68bdb3':'#5aada3');grd.addColorStop(1,g>0?'#4c9e94':'#4a9990');
+    } else {
+      grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');
+    }
+    ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();
     ctx.shadowBlur=0;ctx.shadowOffsetY=0;
-    var shim2=ctx.createLinearGradient(ppx,ppy,ppx,ppy+ph2);
-    shim2.addColorStop(0,'rgba(255,255,255,.16)');shim2.addColorStop(.5,'rgba(255,255,255,0)');
-    ctx.fillStyle=shim2;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph2*.5,rr2);ctx.fill();
-    ctx.fillStyle='#fff';
-    ctx.font='700 '+Math.max(9,17*sf2)+'px Space Grotesk,sans-serif';
-    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr2[0],pr2[1]);
+    var shim=ctx.createLinearGradient(px,py,px,py+sh*.55);
+    shim.addColorStop(0,'rgba(255,255,255,'+(.13+g*.09)+')');shim.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=shim;ctx.beginPath();ctx.roundRect(px,py,sw,sh*.5,rad);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.96)';
+    ctx.font='600 '+Math.max(7,(badge.style==='teal'?10:12)*sf)+'px Space Grotesk,sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(badge.label,pr[0],pr[1]);
+    if(sf>0.65){
+      ctx.fillStyle='rgba(255,255,255,'+(.4*sf)+')';
+      ctx.font='400 '+Math.max(5,7*sf)+'px Space Mono,monospace';
+      ctx.textAlign='right';ctx.fillText(badge.icon,px+sw-5*sf,py+7*sf);
+    }
     ctx.restore();
+    badgeRects.push({x:px,y:py,w:sw,h:sh,id:badge.id,label:badge.label,style:badge.style,info:badge.info||null,icon:badge.icon});
   }
 
-  /* body text between logo and circles */
-  var textP=cl((smoothP-0.54)/0.08);
-  if(textP>0.02){
-    ctx.save();ctx.globalAlpha=textP;
-    ctx.font='300 14px Space Grotesk,sans-serif';
-    ctx.fillStyle='rgba(42,31,92,0.6)';ctx.letterSpacing='0.01em';
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText('We bridge the innovation layer between healthcare technology companies',CX,H*0.26);
-    ctx.fillText('and real clinical practice — before a single line of code is written.',CX,H*0.26+22);
-    ctx.restore();
+  /* ═══════════════════════════════════
+     MAIN LOOP
+  ═══════════════════════════════════ */
+  function draw(){
+    t+=0.013; badgeRects=[];
+    smoothP+=(scrollP-smoothP)*.06;
+
+    /* globe rotation — only active at start */
+    var rotA=1-cl(smoothP*8);
+    if(!dragging&&rotA>0){
+      velX*=0.92;velY*=0.92;rx+=velX*rotA;ry+=velY*rotA;
+      if(Math.abs(velX)<0.0004&&Math.abs(velY)<0.0004)rx+=0.0004*rotA;
+    }
+    /* mouse tilt when settled */
+    var mx01=(mouseX-W/2)/(W/2),my01=(mouseY-H/2)/(H/2);
+    var flatP=cl(smoothP*12);
+    var sRX=rx,sRY=ry;
+    rx=rx*(1-flatP)+my01*0.06*flatP;
+    ry=ry*(1-flatP)+mx01*0.06*flatP;
+    spinS+=0.0018;spinH-=0.0012;
+    var ss=1-cl(smoothP*4);
+
+    ctx.clearRect(0,0,W,H);
+
+    /* bg */
+    var bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.7);
+    bg.addColorStop(0,'rgba(235,230,255,0.15)');bg.addColorStop(1,'rgba(247,246,252,0)');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+
+    /* ══════════════════════════════════════════════════════
+       SERVIZIONS TEXT — always at top after first scroll
+       
+       Phase A (smoothP 0→0.04): sits at centre with globe, fades in
+       Phase B (smoothP 0.04→0.12): slides UP to final position H*0.12
+       Phase C (smoothP > 0.12): stays locked at H*0.12 — never disappears
+    ══════════════════════════════════════════════════════ */
+    var logoSlideP = cl((smoothP-0.04)/0.08); /* 0→1 as it slides to top */
+    var logoY = CY - logoSlideP*(CY - H*0.12); /* CY → H*0.12 */
+    var logoAlpha = cl(smoothP*20); /* fades in very quickly */
+    if(logoAlpha>0.02){
+      ctx.save();ctx.globalAlpha=logoAlpha;
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.font='700 52px Space Grotesk,sans-serif';
+      ctx.fillStyle='#5e17eb';ctx.letterSpacing='0.18em';
+      ctx.shadowColor='rgba(94,23,235,.12)';ctx.shadowBlur=16;
+      ctx.fillText('SERVIZIONS',CX,logoY);
+      ctx.shadowBlur=0;
+      ctx.font='300 10px Space Mono,monospace';
+      ctx.fillStyle='rgba(94,23,235,.4)';ctx.letterSpacing='0.22em';
+      ctx.fillText('SERVICE INNOVATION STUDIO',CX,logoY+50);
+      ctx.restore();
+    }
+
+    /* ══════════════════════════════════════════════════════
+       DROP PHASES
+       
+       The 3 circles drop in sequence, each from globe centre
+       to its final resting Y position on screen.
+       
+       Final layout (overlapping, like your reference image):
+         outer  (big teal):   centre at H*0.72  (bottom)
+         service (purple):    centre at H*0.55  (middle)  
+         human  (small teal): centre at H*0.38  (top)
+       
+       They overlap = intentional, matches your design.
+       All 3 fit on screen at once.
+       
+       Drop order: outer FIRST, service SECOND, human LAST
+    ══════════════════════════════════════════════════════ */
+
+    /* phase progress per ring */
+    var pO = phP(smoothP, 0.05, 0.22); /* outer  drops: scroll 5%→22%  */
+    var pS = phP(smoothP, 0.20, 0.38); /* service drops: scroll 20%→38% */
+    var pH = phP(smoothP, 0.36, 0.54); /* human  drops: scroll 36%→54% */
+
+    /* 
+      Current globe centre = CY = H*0.50
+      Target screen Y:
+        outer  → H*0.72  → world offset = (H*0.72 - CY) = +H*0.22
+        service→ H*0.55  → world offset = (H*0.55 - CY) = +H*0.05
+        human  → H*0.38  → world offset = (H*0.38 - CY) = -H*0.12
+    */
+    var offO = pO * (H*0.22);
+    var offS = pS * (H*0.05);
+    var offH = pH * (-H*0.12);
+
+    var rfO=makeRF(offO),rfS=makeRF(offS),rfH=makeRF(offH);
+    var alO=cl(pO*2),alS=cl(pS*2),alH=cl(pH*2);
+
+    /* draw back→front: outer first, service on top, human on top */
+    drawDisc(BASE.outer.r,  BASE.outer.z,  'rgba(194,228,225,0.28)',rfO);
+    drawDisc(BASE.service.r,BASE.service.z,'rgba(197,183,240,0.58)',rfS);
+    drawDisc(BASE.human.r,  BASE.human.z,  'rgba(150,215,208,0.68)',rfH);
+
+    /* edges when 3D */
+    var ea=1-cl(smoothP*6);
+    if(ea>0.02){
+      ctx.save();ctx.globalAlpha=ea;
+      drawEdge(BASE.outer.r,  BASE.outer.z,  BASE.service.z,'rgba(175,155,230,0.8)',rfO);
+      drawEdge(BASE.service.r,BASE.service.z,BASE.human.z,  'rgba(140,210,205,0.8)',rfS);
+      drawEdge(BASE.human.r,  BASE.human.z,  BASE.core.z,   'rgba(120,200,193,0.8)',rfH);
+      ctx.restore();
+    }
+
+    /* ring borders */
+    drawRing(BASE.outer.r,  BASE.outer.z,  'rgba(140,210,205,1)',  2,   [],   rfO);
+    drawRing(BASE.service.r,BASE.service.z,'rgba(155,130,218,1)',  1.8, [5,8],rfS);
+    drawRing(BASE.human.r,  BASE.human.z,  'rgba(80,175,168,1)',   2.2, [],   rfH);
+
+    /* arrows */
+    [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(function(a){drawArrow(BASE.service.r,a+spinS*ss,BASE.service.z,true, 'rgba(120,95,200,1)',rfS);});
+    [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(function(a){drawArrow(BASE.human.r,a+spinH*ss,BASE.human.z,false,'rgba(60,155,148,1)',rfH);});
+
+    /* labels beside each ring */
+    var cOuter  =proj(rfO([0,0,BASE.outer.z]));
+    var cService=proj(rfS([0,0,BASE.service.z]));
+    var cHuman  =proj(rfH([0,0,BASE.human.z]));
+    var rSR=BASE.outer.r*S*cOuter[2];
+    drawSplitLabel('Systemic Innovation',      LDESC.outer,  cOuter[1],  alO,cOuter[0]  +rSR*0.72);
+    drawSplitLabel('Service System',           LDESC.service,cService[1],alS,cService[0]+BASE.service.r*S*cService[2]*0.72);
+    drawSplitLabel('Human-Centered Innovation','',           cHuman[1],  alH,cHuman[0]  +BASE.human.r*S*cHuman[2]*0.72,false);
+
+    /* 01/02/03 numbers */
+    [{c:cOuter,n:'01',col:'rgba(80,175,168,1)',p:pO},
+     {c:cService,n:'02',col:'rgba(120,95,200,1)',p:pS},
+     {c:cHuman, n:'03',col:'rgba(60,155,148,1)',p:pH}
+    ].forEach(function(it){
+      var a=cl(it.p*2);if(a<0.02)return;
+      var rr=BASE.outer.r*S*it.c[2]*0.9;
+      ctx.save();ctx.globalAlpha=a;
+      ctx.font='700 '+Math.max(11,13*it.c[2])+'px Space Mono,monospace';
+      ctx.fillStyle=it.col;ctx.textAlign='right';ctx.textBaseline='middle';
+      ctx.fillText(it.n,it.c[0]-rr*0.72,it.c[1]);ctx.restore();
+    });
+
+    /* globe ring labels — fade out as circles start dropping */
+    var rla=1-cl(smoothP*10);
+    if(rla>0.02){
+      function drawRL(text,pd,size,color,bold){
+        var rfn=pd[2]<30?rfO:pd[2]<50?rfS:rfH;
+        var pp=proj(rfn([pd[0]*S,pd[1]*S,pd[2]]));
+        var a=Math.max(0,Math.min(1,(pp[2]-.12)*3))*rla;if(a<0.03)return;
+        ctx.save();ctx.globalAlpha=a;ctx.fillStyle=color;
+        ctx.font=(bold?'600':'300')+' '+Math.max(6,size*pp[2])+'px Space Grotesk,sans-serif';
+        ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,pp[0],pp[1]);ctx.restore();
+      }
+      drawRL('AI & Robotics growth',     [0,-1.48,0],           12,'rgba(90,65,185,1)', true);
+      drawRL('Service System',           [0, 1.20,BASE.service.z],11,'rgba(110,90,175,1)',false);
+      drawRL('Human-Centered Innovation',[0, 0.88,BASE.human.z], 10,'rgba(50,140,133,1)',false);
+      drawRL('Systemic Innovation',      [0, 1.62,0],            10,'rgba(160,148,200,1)',false);
+    }
+
+    /* badges */
+    badges.forEach(function(b,i){
+      var lP  =b.layer==='outer'?pO:b.layer==='service'?pS:pH;
+      var oY  =b.layer==='outer'?offO:b.layer==='service'?offS:offH;
+      var lA  =b.layer==='outer'?alO:b.layer==='service'?alS:alH;
+      var exp =1+cl((lP-0.7)*3.3)*0.35;
+      var fy  =Math.sin(t+i*1.3)*3;
+      var bA  =cl(lP*2);
+      drawBadge({id:b.id,label:b.label,style:b.style,layer:b.layer,
+                 pos:[b.pos[0]*exp,b.pos[1]*exp,b.pos[2]],
+                 w:b.w,h:b.h,icon:b.icon,info:b.info},fy,oY,bA);
+    });
+
+    /* hover */
+    var nh=null;
+    for(var i=badgeRects.length-1;i>=0;i--){
+      var r=badgeRects[i];
+      if(mouseX>=r.x&&mouseX<=r.x+r.w&&mouseY>=r.y&&mouseY<=r.y+r.h){nh=r.id;break;}
+    }
+    hoveredId=nh;
+    badges.forEach(function(b){hoverGlow[b.id]+=((b.id===hoveredId?1:0)-hoverGlow[b.id])*.1;});
+    canvas.style.cursor=hoveredId?'pointer':'default';
+    if(curRing){curRing.style.width=hoveredId?'50px':'32px';curRing.style.height=hoveredId?'50px':'32px';}
+    rx=sRX;ry=sRY;
+
+    /* ══════════════════════════════════════════════════════
+       SERVIZIONS PILL (globe state only, before logo slides up)
+       Only visible while smoothP < 0.04
+    ══════════════════════════════════════════════════════ */
+    var pillAlpha = 1-cl(smoothP*25); /* fades out very quickly */
+    if(pillAlpha>0.02){
+      var fz=BASE.core.z+Math.sin(t*1.4)*4;
+      var q=[0,0,fz];q=rotX(q,sRX);q=rotY(q,sRY);
+      var pr2=proj(q),sf2=Math.max(0.5,pr2[2]);
+      var pw=210*sf2,ph=82*sf2,rr2=ph/2,ppx=pr2[0]-pw/2,ppy=pr2[1]-ph/2;
+      ctx.save();ctx.globalAlpha=pillAlpha;
+      var pulse=0.82+Math.sin(t*1.4)*.18,hR=pw*.85*pulse;
+      var halo=ctx.createRadialGradient(pr2[0],pr2[1],pw*.1,pr2[0],pr2[1],hR);
+      halo.addColorStop(0,'rgba(94,23,235,'+.15*pulse+')');halo.addColorStop(1,'rgba(94,23,235,0)');
+      ctx.fillStyle=halo;ctx.beginPath();ctx.arc(pr2[0],pr2[1],hR,0,Math.PI*2);ctx.fill();
+      ctx.shadowColor='rgba(94,23,235,.3)';ctx.shadowBlur=28*sf2;ctx.shadowOffsetY=10*sf2;
+      var pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);
+      pgrd.addColorStop(0,'#7a35ef');pgrd.addColorStop(1,'#5e17eb');
+      ctx.fillStyle=pgrd;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph,rr2);ctx.fill();
+      ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+      var shim2=ctx.createLinearGradient(ppx,ppy,ppx,ppy+ph);
+      shim2.addColorStop(0,'rgba(255,255,255,.16)');shim2.addColorStop(.5,'rgba(255,255,255,0)');
+      ctx.fillStyle=shim2;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph*.5,rr2);ctx.fill();
+      ctx.fillStyle='#fff';
+      ctx.font='700 '+Math.max(9,17*sf2)+'px Space Grotesk,sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr2[0],pr2[1]);
+      ctx.restore();
+    }
+
+    /* body text — appears between logo and circles when all settled */
+    var textP = cl((smoothP-0.55)/0.10);
+    if(textP>0.02){
+      ctx.save();ctx.globalAlpha=textP;
+      ctx.font='300 14px Space Grotesk,sans-serif';
+      ctx.fillStyle='rgba(42,31,92,0.6)';ctx.letterSpacing='0.01em';
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('We bridge the innovation layer between healthcare technology companies',CX,H*0.26);
+      ctx.fillText('and real clinical practice — before a single line of code is written.',CX,H*0.26+22);
+      ctx.restore();
+    }
+
+    requestAnimationFrame(draw);
   }
 
-  requestAnimationFrame(draw);
-}
-
-draw();
+  draw();
 
 })();
-
-
-
-
 </script>
-
-
-
-</body>
-</html>
