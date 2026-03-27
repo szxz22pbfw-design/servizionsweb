@@ -390,7 +390,6 @@
     rc();
   })();
   </script>
-
 <!-- ═══════════════════════════════════════════════════════
   PART 2 — 3D ANIMATION SCRIPT
   In your index.html, replace the line:
@@ -712,16 +711,29 @@
     var pH=phP(smoothP,PHASE.human[0],PHASE.human[1]);
 
     /* ── DROP OFFSETS ────────────────────────────
-       Globe is at CY = H*0.68
-       offO max = H*0.40 → ring lands at ~H*1.08 (just below viewport bottom edge, still partially visible)
-       offS max = H*0.22 → ring at ~H*0.90 (lower screen, fully visible)
-       offH max = H*0.08 → ring at ~H*0.76 (just below globe centre, fully visible)
-       Extra slow drift after rings settle
+       CY = H*0.68 (globe centre)
+       
+       When fully open, we want 3 circles stacked:
+         human   → stays near centre        ~ H*0.30 below CY
+         service → middle                   ~ H*0.58 below CY  
+         outer   → bottom of screen         ~ H*0.88 below CY
+       
+       Canvas is fixed 100vh so we use ctx.translate
+       to shift the whole scene up when rings spread,
+       making all 3 visible at once.
     ─────────────────────────────────────────── */
-    var ex=cl((smoothP-0.42)/0.58);ex=ex*ex;
-    var offO=pO*H*0.38+ex*H*0.30;
-    var offS=pS*H*0.20+ex*H*0.14;
-    var offH=pH*H*0.07+ex*H*0.05;
+    var ex=cl((smoothP-0.42)/0.58); ex=ex*ex;
+
+    /* how far each ring drops in world units */
+    var offH=pH*H*0.30 + ex*H*0.05;
+    var offS=pS*H*0.58 + ex*H*0.08;
+    var offO=pO*H*0.88 + ex*H*0.12;
+
+    /* shift the whole scene UP so all 3 rings fit on screen */
+    /* when fully open, translate up by ~H*0.38 so outer ring is visible */
+    var sceneShift = cl(Math.max(pO,pS,pH)) * H * 0.38;
+    ctx.save();
+    ctx.translate(0, -sceneShift);
 
     var rfO=makeRF(offO),rfS=makeRF(offS),rfH=makeRF(offH);
     var alO=cl(pO*1.8),alS=cl(pS*1.8),alH=cl(pH*1.8);
@@ -833,6 +845,9 @@
     if(curRing){curRing.style.width=hoveredId?'50px':'32px';curRing.style.height=hoveredId?'50px':'32px';}
     rx=sRX;ry=sRY;
 
+    /* restore scene translate — pill draws in un-shifted space */
+    ctx.restore();
+
     /* ── SERVIZIONS PILL → WORDMARK ──────────────────
        splitP 0→1 when smoothP goes 0.40→0.55
        posY moves from CY (globe centre at 68%)
@@ -840,7 +855,8 @@
        This means the wordmark ends up ABOVE all circles
     ─────────────────────────────────────────────── */
     var splitP=cl((smoothP-0.40)/0.15);
-    var posX=CX,posY=CY+(H*0.50-CY)*splitP;
+    /* pill starts at globe centre; wordmark moves to top area, above all circles */
+    var posX=CX, posY=CY + (H*0.12 - CY)*splitP - sceneShift*splitP;
     ctx.save();
 
     if(splitP<0.05){
@@ -885,7 +901,7 @@
       ctx.fillStyle='rgba(94,23,235,.42)';ctx.letterSpacing='0.22em';
       var tY=posY+fs*0.8;ctx.fillText('SERVICE INNOVATION STUDIO',posX,tY);
       /* body text between tagline and human circle */
-      var hCY=CY+offH,midY=tY+(hCY-tY)*0.45;
+      var hCY=CY+offH-sceneShift,midY=tY+(hCY-tY)*0.45;
       var tA=Math.max(0,(splitP-0.55)*3.5);
       if(tA>0.01){
         ctx.globalAlpha=tA;
@@ -904,5 +920,6 @@
 
 })();
 </script>
+
 </body>
 </html>
