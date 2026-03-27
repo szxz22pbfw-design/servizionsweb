@@ -4,222 +4,184 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Services – Value Proposition Design &amp; Service Innovation | Servizions</title>
-  <meta name="description" content="Servizions bridges medtech and healthcare robotics companies with the real clinical world. Three service packages. Contact us to discuss yours.">
+  <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+  <title>Services — Service System Design &amp; Innovation | Servizions</title>
+  <meta name="description" content="Servizions designs the service system that bridges medtech and healthcare robotics with real clinical adoption. Three engagement types. Contact us.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://servizions.com/services.html">
-  <meta property="og:title" content="Services – Servizions Healthcare Service Innovation Studio">
+  <meta property="og:title" content="Services — Servizions Service Innovation Studio">
   <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
   <meta property="og:url" content="https://servizions.com/services.html">
   <meta property="og:type" content="website">
-  <style>
-    .services-page-header{background:var(--white);padding:100px 0 90px;border-bottom:1px solid var(--border)}
-    .services-page-header-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:end}
-    .services-page-header h1{font-family:var(--font-display);font-size:68px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.0;letter-spacing:-0.5px;margin-top:20px}
-    .services-page-header-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;border-left:2px solid var(--border-strong);padding-left:28px;margin-bottom:36px}
-    .header-cta{display:inline-block;background:var(--purple);color:white;padding:14px 36px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-body);transition:all var(--transition)}
-    .header-cta:hover{background:var(--purple-mid);transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,15,160,0.25)}
-    .services-quote-strip{background:var(--white);padding:80px 0;border-bottom:1px solid var(--border)}
-    .services-quote-text{font-family:var(--font-display);font-size:38px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.4;max-width:860px;letter-spacing:-0.3px}
-    .services-quote-text::before{content:'\201C';font-size:72px;line-height:0;vertical-align:-0.34em;color:rgba(59,15,160,0.10);margin-right:2px;font-family:var(--font-display)}
-    .packages-section{background:var(--stone);padding:110px 0}
-    .packages-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
-    .packages-header h2{font-family:var(--font-display);font-size:50px;font-weight:400;letter-spacing:-0.4px;color:var(--ink);line-height:1.05;margin-top:16px}
-    .packages-header p{font-size:15px;font-weight:300;line-height:1.9;color:var(--text-mid)}
-    .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}
-    .package-card{background:var(--white);display:flex;flex-direction:column;border-right:1px solid var(--border);transition:background var(--transition)}
-    .package-card:last-child{border-right:none}
-    .package-card:hover{background:var(--purple-pale)}
-    .package-card.featured{background:var(--purple-dark)}
-    .package-card.featured:hover{background:#250870}
-    .package-header{padding:40px 36px 32px;border-bottom:1px solid var(--border)}
-    .package-card.featured .package-header{border-bottom-color:rgba(255,255,255,0.08)}
-    .package-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);margin-bottom:14px;display:block}
-    .package-card.featured .package-label{color:rgba(255,255,255,0.30)}
-    .package-badge{display:inline-block;background:var(--purple);color:white;font-size:9.5px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:14px}
-    .package-name{font-family:var(--font-display);font-size:30px;font-weight:500;color:var(--ink);line-height:1.1;margin-bottom:8px}
-    .package-card.featured .package-name{color:var(--white)}
-    .package-duration{font-size:12.5px;font-weight:300;color:var(--text-light)}
-    .package-card.featured .package-duration{color:rgba(255,255,255,0.30)}
-    .package-body{padding:32px 36px 40px;flex:1;display:flex;flex-direction:column}
-    .package-desc{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.85}
-    .package-card.featured .package-desc{color:rgba(255,255,255,0.50)}
-    .package-enquire{display:inline-block;margin-top:auto;padding-top:24px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--purple-soft);transition:color var(--transition)}
-    .package-enquire:hover{color:var(--purple)}
-    .package-card.featured .package-enquire{color:rgba(255,255,255,0.40)}
-    .package-card.featured .package-enquire:hover{color:white}
-    .why-section{background:var(--white);padding:110px 0}
-    .why-header{max-width:680px;margin-bottom:64px}
-    .why-header h2{font-family:var(--font-display);font-size:50px;font-weight:400;letter-spacing:-0.4px;color:var(--ink);line-height:1.05;margin-top:16px}
-    .why-header p{font-size:15px;font-weight:300;line-height:1.9;color:var(--text-mid);margin-top:16px}
-    .why-cards-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-    .why-card{background:var(--white);padding:44px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background var(--transition)}
-    .why-card:nth-child(2n){border-right:none}
-    .why-card:nth-child(3),.why-card:nth-child(4){border-bottom:none}
-    .why-card:hover{background:var(--purple-pale)}
-    .why-card-num{font-family:var(--font-display);font-size:44px;font-weight:300;color:rgba(59,15,160,0.08);line-height:1}
-    .why-card h3{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--ink);line-height:1.2;margin:0}
-    .why-card p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.8;margin:0}
-    @media(max-width:900px){
-      .services-page-header-inner,.packages-header{grid-template-columns:1fr;gap:40px}
-      .services-page-header h1{font-size:46px}
-      .services-quote-text{font-size:26px}
-      .packages-header h2,.why-header h2{font-size:36px}
-      .packages-grid{grid-template-columns:1fr}
-      .package-card{border-right:none;border-bottom:1px solid var(--border)}
-      .package-card:last-child{border-bottom:none}
-      .why-cards-grid{grid-template-columns:1fr}
-      .why-card{border-right:none;padding:36px 28px}
-      .why-card:nth-child(3){border-bottom:1px solid var(--border)}
-    }
-  body{padding-top:70px;cursor:auto}
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="subpage">
 
-  <header class="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(14,6,50,0.96);backdrop-filter:blur(18px);padding:0 64px;border-bottom:1px solid rgba(255,255,255,0.07);">
-    <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-text">Servizions</span></a>
-      <nav class="nav-links">
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-      </nav>
-    </div>
+  <!-- NAV -->
+  <header id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">Servizions</a>
+    <nav class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's talk</a>
+    </nav>
+    <button class="nav-burger" id="burger"><span></span><span></span></button>
   </header>
+  <div id="mob-nav">
+    <a href="services.html">Services</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-  <section class="services-page-header">
-    <div class="container">
-      <div class="services-page-header-inner">
+  <!-- PAGE HEADER -->
+  <section class="page-hd">
+    <div class="wrap">
+      <div class="page-hd-inner">
         <div>
-          <span class="eyebrow">Services</span>
+          <span class="label">Services</span>
           <h1>The innovation layer most companies never build.</h1>
         </div>
-        <div class="services-page-header-right">
-          <p>Bridging medtech and healthcare robotics companies with the real clinical world.</p>
-          <a href="contact.html" class="header-cta">Start a Conversation</a>
+        <div class="page-hd-right">
+          <p>Bridging medtech and healthcare robotics companies with the real clinical world. Every engagement is a fixed-scope collaboration with defined outputs.</p>
+          <a href="contact.html" class="page-hd-cta">Start a Conversation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="services-quote-strip">
-    <div class="container">
-      <p class="services-quote-text">The gap between a technology that works and a technology that is genuinely used is a service design problem. We solve it.</p>
+  <!-- QUOTE STRIP -->
+  <div class="quote-strip">
+    <div class="wrap">
+      <blockquote>The gap between a technology that works and a technology that is genuinely used is a service system problem. We solve it.</blockquote>
+    </div>
+  </div>
+
+  <!-- PACKAGES -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-intro">
+        <span class="label">Service Packages</span>
+        <h2 class="sec-h2">Three engagements. Clear scope.</h2>
+        <p>Every package is a fixed-scope engagement with defined outputs. Contact us to discuss which fits your situation.</p>
+      </div>
+      <div class="packages-row">
+
+        <div class="pkg">
+          <div class="pkg-head">
+            <span class="pkg-label">Where to start</span>
+            <div class="pkg-name">Innovation Sprint</div>
+          </div>
+          <div class="pkg-body">
+            <p class="pkg-desc">If you are not sure whether your value proposition is working — it probably is not. This is the fastest way to find out, and the fastest way to fix it. A structured sprint focused on clarifying the value and the service layer around your technology.</p>
+            <a href="contact.html" class="pkg-link">Is this right for you? Talk to us →</a>
+          </div>
+        </div>
+
+        <div class="pkg featured">
+          <div class="pkg-head">
+            <span class="pkg-badge">Most Requested</span>
+            <div class="pkg-name">Service System Design</div>
+          </div>
+          <div class="pkg-body">
+            <p class="pkg-desc">The complete engagement. If hospitals are not committing, if adoption is stalling, if nobody can explain the value clearly — this is the work that changes that. We design the entire service system around your technology.</p>
+            <a href="contact.html" class="pkg-link">Tell us your situation →</a>
+          </div>
+        </div>
+
+        <div class="pkg">
+          <div class="pkg-head">
+            <span class="pkg-label">For teams</span>
+            <div class="pkg-name">Innovation Workshop</div>
+          </div>
+          <div class="pkg-body">
+            <p class="pkg-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. We design the session entirely around your challenge, your technology, and the clinical context you are working in.</p>
+            <a href="contact.html" class="pkg-link">Is this right for you? Talk to us →</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <section class="packages-section">
-    <div class="container">
-      <div class="packages-header">
-        <div>
-          <span class="eyebrow">Service Packages</span>
-          <h2>Three packages. Clear scope.</h2>
-        </div>
-        <div>
-          <p>Every package is a fixed-scope engagement with defined outputs. Contact us to discuss which fits your situation.</p>
-        </div>
-      </div>
-<div class="packages-grid">
-
-        <div class="package-card">
-          <div class="package-header">
-            <span class="package-label">Where to start</span>
-            <div class="package-name">Innovation Sprint</div>
-          </div>
-          <div class="package-body">
-            <p class="package-desc">If you are not sure whether your value proposition is working — it probably is not. This is the fastest way to find out, and the fastest way to fix it.</p>
-            <a href="contact.html" class="package-enquire">Is this right for you? Talk to us →</a>
-          </div>
-        </div>
-
-        <div class="package-card featured">
-          <div class="package-header">
-            <span class="package-badge">Most Requested</span>
-            <div class="package-name">Service System Design</div>
-          </div>
-          <div class="package-body">
-            <p class="package-desc">The complete engagement. If hospitals are not committing, if adoption is stalling, if nobody can explain the value clearly — this is the work that changes that.</p>
-            <a href="contact.html" class="package-enquire">Tell us your situation →</a>
-          </div>
-        </div>
-
-        <div class="package-card">
-          <div class="package-header">
-            <span class="package-label">For teams</span>
-            <div class="package-name">Innovation Workshop</div>
-          </div>
-          <div class="package-body">
-            <p class="package-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. We design the session entirely around your challenge.</p>
-            <a href="contact.html" class="package-enquire">Is this right for you? Talk to us →</a>
-          </div>
-        </div>
-
-      </div>
-  </section>
-
-  <section class="why-section">
-    <div class="container">
-      <div class="why-header">
-        <span class="eyebrow">Why Servizions</span>
-        <h2>The innovation layer most companies skip.</h2>
+  <!-- WHY SERVIZIONS -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-intro">
+        <span class="label">Why Servizions</span>
+        <h2 class="sec-h2">The innovation layer most companies skip.</h2>
         <p>Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in what determines whether the technology is genuinely adopted.</p>
       </div>
-      <div class="why-cards-grid">
-        <div class="why-card">
-          <div class="why-card-num">01</div>
+      <div class="grid-2">
+        <div class="grid-card">
+          <div class="gc-num">01</div>
           <h3>We build systems, not strategies</h3>
-          <p>Every engagement ends with something structured and actionable — not a report. Something a team can actually use.</p>
+          <p>Every engagement ends with something structured and actionable — not a report. A service system your team can actually use to move forward.</p>
         </div>
-        <div class="why-card">
-          <div class="why-card-num">02</div>
+        <div class="grid-card">
+          <div class="gc-num">02</div>
           <h3>Pre-product is our speciality</h3>
-          <p>The window before a technology is finalised is where the most consequential decisions are made — and almost never designed.</p>
+          <p>The window before a technology is finalised is where the most consequential decisions are made — and almost never designed. We work here.</p>
         </div>
-        <div class="why-card">
-          <div class="why-card-num">03</div>
+        <div class="grid-card">
+          <div class="gc-num">03</div>
           <h3>We start from clinical reality</h3>
-          <p>Every engagement begins from the actual environment the technology must succeed in — real constraints, real people, real friction.</p>
+          <p>Every engagement begins from the actual environment the technology must succeed in — real constraints, real people, real clinical friction.</p>
         </div>
-        <div class="why-card">
-          <div class="why-card-num">04</div>
+        <div class="grid-card">
+          <div class="gc-num">04</div>
           <h3>Intellectual honesty, always</h3>
-          <p>If your value proposition is unclear or your technology is solving the wrong problem — we will tell you. Early enough to matter.</p>
+          <p>If your value proposition is unclear or your technology is solving the wrong problem — we will tell you. Early enough to actually matter.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="contact-section">
-    <div class="container">
-      <h2 class="contact-title">Ready to build the innovation layer?</h2>
-      <p class="contact-subtitle">Tell us about your healthcare technology challenge — we respond within two business days</p>
-      <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block;padding:18px 48px;">Start a Conversation</a>
-      </div>
+  <!-- CTA BAR -->
+  <div class="cta-bar">
+    <div class="wrap">
+      <span class="label" style="text-align:center;">Work with us</span>
+      <h2 class="sec-h2">Ready to build the service system?</h2>
+      <p>Tell us about your healthcare technology challenge — we respond within two business days.</p>
+      <a href="contact.html" class="btn">Start a Conversation</a>
     </div>
-  </section>
+  </div>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo">Servizions</div>
-      <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
-      <nav class="footer-nav">
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="foot-logo">Servizions</span>
+        <span class="foot-tag">Service Innovation Studio · Munich</span>
+      </div>
+      <nav class="foot-nav">
         <a href="services.html">Services</a>
         <a href="solutions.html">Solutions</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 Servizions. All rights reserved.</div>
-      <div class="footer-links">
+    <div class="foot-bottom">
+      <span>© 2026 Servizions. All rights reserved.</span>
+      <div class="foot-links">
         <a href="mailto:info@servizions.com">info@servizions.com</a>
-        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
 
+  <script>
+  (function(){
+    const burger = document.getElementById('burger');
+    const mob    = document.getElementById('mob-nav');
+    if(burger) burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mob.classList.toggle('open');
+    });
+  })();
+  </script>
 </body>
 </html>

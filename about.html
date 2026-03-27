@@ -4,131 +4,105 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>About – Healthcare Service Innovation Studio | Servizions</title>
-  <meta name="description" content="Servizions is a healthcare service innovation studio based in Munich. We bridge medtech and healthcare robotics companies with the real clinical world.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://servizions.com/about.html">
-  <meta property="og:title" content="About – Servizions Healthcare Service Innovation Studio">
-  <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
-  <meta property="og:url" content="https://servizions.com/about.html">
-  <meta property="og:type" content="website">
-  <style>
-    body{padding-top:70px;cursor:auto}
-    .about-header{background:var(--white);padding:100px 0 90px;border-bottom:1px solid var(--border)}
-    .about-header-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:end}
-    .about-header h1{font-family:var(--font-display);font-size:68px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.0;letter-spacing:-0.5px;margin-top:20px}
-    .about-header-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;border-left:2px solid var(--border-strong);padding-left:28px}
-    .studio-section{background:var(--white);padding:110px 0;border-bottom:1px solid var(--border)}
-    .studio-inner{display:grid;grid-template-columns:5fr 7fr;gap:100px;align-items:start}
-    .studio-left h2{font-family:var(--font-display);font-size:46px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px;position:sticky;top:100px}
-    .studio-right{display:flex;flex-direction:column;gap:22px}
-    .studio-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;margin:0}
-    .studio-right p strong{font-weight:500;color:var(--ink)}
-    .beliefs-section{background:var(--stone);padding:110px 0}
-    .beliefs-intro{max-width:640px;margin-bottom:64px}
-    .beliefs-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .beliefs-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .beliefs-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm)}
-    .belief-item{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--border);transition:background var(--transition)}
-    .belief-item:last-child{border-bottom:none}
-    .belief-item:hover{background:var(--purple-pale)}
-    .belief-num{font-family:var(--font-display);font-size:13px;font-weight:400;color:var(--text-light);letter-spacing:0.06em;padding:40px 0 0 36px}
-    .belief-body{padding:36px 48px 36px 32px;border-left:1px solid var(--border)}
-    .belief-body h4{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--ink);margin:0 0 8px;line-height:1.25}
-    .belief-body p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.8;margin:0}
-    @media(max-width:900px){
-      .about-header-inner,.studio-inner{grid-template-columns:1fr;gap:40px}
-      .about-header h1{font-size:46px}
-      .studio-left h2{font-size:36px;position:static}
-      .beliefs-intro h2{font-size:36px}
-      .belief-item{grid-template-columns:44px 1fr}
-      .belief-num{padding:28px 0 0 20px}
-      .belief-body{padding:28px 24px}
-    }
-  </style>
+  <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+  <title>About — Servizions Service Innovation Studio</title>
+  <meta name="description" content="Servizions is a service innovation studio based in Munich. We design the systemic layer that bridges healthcare technology and real clinical adoption.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="subpage">
 
-  <header class="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(14,6,50,0.96);backdrop-filter:blur(18px);padding:0 64px;border-bottom:1px solid rgba(255,255,255,0.07);">
-    <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-text">Servizions</span></a>
-      <nav class="nav-links">
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-      </nav>
-    </div>
+  <!-- NAV -->
+  <header id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">Servizions</a>
+    <nav class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's talk</a>
+    </nav>
+    <button class="nav-burger" id="burger"><span></span><span></span></button>
   </header>
+  <div id="mob-nav">
+    <a href="services.html">Services</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-  <section class="about-header">
-    <div class="container">
-      <div class="about-header-inner">
+  <!-- PAGE HEADER -->
+  <section class="page-hd">
+    <div class="wrap">
+      <div class="page-hd-inner">
         <div>
-          <span class="eyebrow">About</span>
+          <span class="micro">About</span>
           <h1>A studio built for the gap nobody fills.</h1>
         </div>
-        <div class="about-header-right">
-          <p>Bridging medtech and healthcare robotics companies with the real clinical world.</p>
+        <div class="page-hd-right">
+          <p>We are not a consultancy. Not an agency. A service innovation studio — built to design the systemic layer between healthcare technology and real clinical adoption.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="studio-section">
-    <div class="container">
-      <div class="studio-inner">
+  <!-- STUDIO -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="studio-grid">
         <div class="studio-left">
-          <span class="eyebrow">The Studio</span>
+          <span class="micro">The Studio</span>
           <h2>What Servizions is — and is not.</h2>
         </div>
         <div class="studio-right">
-          <p>Servizions is a <strong>healthcare service innovation studio</strong>. Not a consultancy. Not an agency. Not a research institute. A studio — where structured methods, deep domain knowledge, and a clear point of view are applied to a single problem: making healthcare innovation genuinely work in the real clinical world.</p>
-          <p>We operate in the space between a technology and its clinical adoption. That space — the value proposition, the service architecture, the adoption system — is where most healthcare innovations either succeed or quietly fail. It is almost never designed. <strong>We design it.</strong></p>
+          <p>Servizions is a <strong>service innovation studio</strong>. Not a consultancy. Not an agency. Not a research institute. A studio — where structured methods, deep domain knowledge, and a clear point of view are applied to a single problem: making healthcare innovation genuinely work in the real clinical world.</p>
+          <p>We operate in the space between a technology and its clinical adoption. That space — the value proposition, the service system, the adoption architecture — is where most healthcare innovations either succeed or quietly fail. It is almost never designed. <strong>We design it.</strong></p>
+          <p>We work in the pre-product phase — when a technology's future is still shapeable, when the assumptions are still testable, and when the service system can still be built from scratch.</p>
           <p>We are based in Munich, Germany — at the centre of Europe's medical technology industry — and work with clients across the European healthcare innovation ecosystem.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="beliefs-section">
-    <div class="container">
-      <div class="beliefs-intro">
-        <span class="eyebrow">What We Believe</span>
-        <h2>Five convictions that shape everything we do.</h2>
+  <!-- BELIEFS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-intro">
+        <span class="micro">What We Believe</span>
+        <h2 class="sec-h2">Five convictions that shape everything we do.</h2>
         <p>These are not values statements. They are the specific beliefs that determine how Servizions works — and what we will and will not do.</p>
       </div>
       <div class="beliefs-list">
-        <div class="belief-item">
-          <div class="belief-num">01</div>
+        <div class="belief">
+          <div class="belief-n">01</div>
           <div class="belief-body">
             <h4>The pre-product phase is where adoption is determined</h4>
             <p>Most healthcare technologies make their most consequential decisions before a single clinical user has been observed. We work at this stage — when assumptions are still testable and service systems are still designable.</p>
           </div>
         </div>
-        <div class="belief-item">
-          <div class="belief-num">02</div>
+        <div class="belief">
+          <div class="belief-n">02</div>
           <div class="belief-body">
             <h4>A technology without a service system is incomplete</h4>
             <p>The clinical workflows, training architecture, and governance model are not implementation details. They are the product. Without them, adoption is a matter of luck.</p>
           </div>
         </div>
-        <div class="belief-item">
-          <div class="belief-num">03</div>
+        <div class="belief">
+          <div class="belief-n">03</div>
           <div class="belief-body">
             <h4>Value propositions must be designed, not discovered</h4>
             <p>The value of a healthcare technology is not self-evident. It must be articulated, evidenced, and structured for each stakeholder. That is design work — and it requires design methods.</p>
           </div>
         </div>
-        <div class="belief-item">
-          <div class="belief-num">04</div>
+        <div class="belief">
+          <div class="belief-n">04</div>
           <div class="belief-body">
             <h4>Intellectual honesty is not optional</h4>
             <p>If a technology is solving the wrong problem, or a value proposition is built on weak evidence — we say so. Clearly, constructively, and early enough to matter.</p>
           </div>
         </div>
-        <div class="belief-item">
-          <div class="belief-num">05</div>
+        <div class="belief">
+          <div class="belief-n">05</div>
           <div class="belief-body">
             <h4>Healthcare deserves better innovation infrastructure</h4>
             <p>The gap between technological potential and clinical reality in healthcare is not inevitable. It is a design problem — and design problems have solutions.</p>
@@ -138,35 +112,45 @@
     </div>
   </section>
 
-  <section class="contact-section">
-    <div class="container">
-      <h2 class="contact-title">Work with us.</h2>
-      <p class="contact-subtitle">Every Servizions engagement is a direct collaboration — no intermediaries, no templated process</p>
-      <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block;padding:18px 48px;">Start a Conversation</a>
-      </div>
+  <!-- CTA -->
+  <section class="sec alt" style="text-align:center;padding:88px 0;">
+    <div class="wrap">
+      <span class="micro" style="text-align:center;display:block;">Work with us</span>
+      <h2 class="sec-h2" style="margin-bottom:16px;">Every engagement is a direct collaboration.</h2>
+      <p style="font-size:14px;font-weight:300;color:var(--ink-mid);max-width:480px;margin:0 auto 36px;">No intermediaries, no templated process. Just structured methods applied to your specific challenge.</p>
+      <a href="contact.html" class="btn-a">Start a Conversation</a>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo">Servizions</div>
-      <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
-      <nav class="footer-nav">
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="foot-logo">Servizions</span>
+        <span class="foot-tag">Service Innovation Studio · Munich</span>
+      </div>
+      <nav class="foot-nav">
         <a href="services.html">Services</a>
         <a href="solutions.html">Solutions</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 Servizions. All rights reserved.</div>
-      <div class="footer-links">
+    <div class="foot-bottom">
+      <span>© 2026 Servizions. All rights reserved.</span>
+      <div class="foot-links">
         <a href="mailto:info@servizions.com">info@servizions.com</a>
-        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
 
+  <script>
+  (function(){
+    const burger=document.getElementById('burger');
+    const mob=document.getElementById('mob-nav');
+    if(burger) burger.addEventListener('click',()=>{burger.classList.toggle('open');mob.classList.toggle('open');});
+  })();
+  </script>
 </body>
 </html>

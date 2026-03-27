@@ -4,126 +4,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Solutions – Healthcare Service Innovation Studio | Servizions</title>
-  <meta name="description" content="Servizions works with medical robotics companies, healthtech ventures, and hospital innovation teams. We bridge medtech and healthcare robotics with the real clinical world.">
+  <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+  <title>Solutions — Service Innovation Studio | Servizions</title>
+  <meta name="description" content="Servizions works with medical robotics companies, healthtech ventures, and hospital innovation teams. We design the service system that bridges technology with clinical adoption.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://servizions.com/solutions.html">
-  <meta property="og:title" content="Solutions – Servizions Healthcare Service Innovation Studio">
+  <meta property="og:title" content="Solutions — Servizions Service Innovation Studio">
   <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
   <meta property="og:url" content="https://servizions.com/solutions.html">
   <meta property="og:type" content="website">
-  <style>
-    body{padding-top:70px;cursor:auto}
-    .sol-header{background:var(--white);padding:100px 0 90px;border-bottom:1px solid var(--border)}
-    .sol-header-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:end}
-    .sol-header h1{font-family:var(--font-display);font-size:68px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.0;letter-spacing:-0.5px;margin-top:20px}
-    .sol-header-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;border-left:2px solid var(--border-strong);padding-left:28px;margin-bottom:36px}
-    .header-cta{display:inline-block;background:var(--purple);color:white;padding:14px 36px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-body);transition:all var(--transition)}
-    .header-cta:hover{background:var(--purple-mid);transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,15,160,0.25)}
-    .clients-section{background:var(--stone);padding:110px 0}
-    .clients-intro{max-width:680px;margin-bottom:64px}
-    .clients-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .clients-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-    .client-card{background:var(--white);padding:48px 40px;display:flex;flex-direction:column;gap:14px;border-right:1px solid var(--border);transition:background var(--transition)}
-    .client-card:last-child{border-right:none}
-    .client-card:hover{background:var(--purple-pale)}
-    .client-card-icon{font-family:var(--font-display);font-size:40px;font-weight:300;color:rgba(59,15,160,0.10);line-height:1}
-    .client-card h3{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--ink);line-height:1.2;margin:0}
-    .client-card>p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.85;margin:0;flex:1}
-    .problems-section{background:var(--white);padding:110px 0}
-    .problems-intro{max-width:680px;margin-bottom:64px}
-    .problems-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .problems-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .problems-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-    .problem-card{background:var(--white);padding:48px 44px;display:flex;flex-direction:column;gap:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background var(--transition)}
-    .problem-card:nth-child(2n){border-right:none}
-    .problem-card:nth-child(3),.problem-card:nth-child(4){border-bottom:none}
-    .problem-card:hover{background:var(--purple-pale)}
-    .problem-card-num{font-family:var(--font-display);font-size:44px;font-weight:300;color:rgba(59,15,160,0.07);line-height:1}
-    .problem-card-text{font-family:var(--font-display);font-size:22px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.4;margin:0;flex:1}
-    .problem-card-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple-soft);border:1px solid var(--border-strong);padding:5px 14px;border-radius:999px;width:fit-content;margin-top:auto}
-    .statement-section{background:var(--purple-dark);padding:110px 0}
-    .statement-inner{max-width:820px}
-    .statement-eyebrow{color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;margin-bottom:28px;display:block}
-    .statement-text{font-family:var(--font-display);font-size:46px;font-weight:400;font-style:italic;color:white;line-height:1.2;letter-spacing:-0.3px;margin-bottom:32px}
-    .statement-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.50);line-height:1.9;max-width:600px;margin-bottom:44px}
-    .statement-cta{display:inline-block;background:white;color:var(--purple-dark);padding:16px 40px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-body);transition:all var(--transition)}
-    .statement-cta:hover{background:var(--purple-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.25)}
-    .howwework-section{background:var(--stone);padding:110px 0}
-    .howwework-intro{max-width:680px;margin-bottom:64px}
-    .howwework-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .howwework-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .howwework-points{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm)}
-    .howwework-point{display:flex;gap:24px;align-items:flex-start;padding:36px 40px;border-bottom:1px solid var(--border);transition:background var(--transition)}
-    .howwework-point:last-child{border-bottom:none}
-    .howwework-point:hover{background:var(--purple-pale)}
-    .howwework-num{font-family:var(--font-display);font-size:13px;color:var(--text-light);letter-spacing:0.06em;flex-shrink:0;padding-top:4px}
-    .howwework-body h4{font-family:var(--font-display);font-size:20px;font-weight:500;color:var(--ink);margin:0 0 6px;line-height:1.2}
-    .howwework-body p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.8;margin:0}
-    @media(max-width:900px){
-      .sol-header-inner{grid-template-columns:1fr;gap:40px}
-      .sol-header h1{font-size:46px}
-      .clients-grid{grid-template-columns:1fr}
-      .client-card{border-right:none;border-bottom:1px solid var(--border)}
-      .client-card:last-child{border-bottom:none}
-      .problems-grid{grid-template-columns:1fr}
-      .problem-card{border-right:none}
-      .problem-card:nth-child(3){border-bottom:1px solid var(--border)}
-      .statement-text{font-size:34px}
-      .clients-intro h2,.problems-intro h2,.howwework-intro h2{font-size:36px}
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="subpage">
 
-  <header class="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(14,6,50,0.96);backdrop-filter:blur(18px);padding:0 64px;border-bottom:1px solid rgba(255,255,255,0.07);">
-    <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-text">Servizions</span></a>
-      <nav class="nav-links">
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-      </nav>
-    </div>
+  <!-- NAV -->
+  <header id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">Servizions</a>
+    <nav class="nav-links">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Let's talk</a>
+    </nav>
+    <button class="nav-burger" id="burger"><span></span><span></span></button>
   </header>
+  <div id="mob-nav">
+    <a href="services.html">Services</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-  <section class="sol-header">
-    <div class="container">
-      <div class="sol-header-inner">
+  <!-- PAGE HEADER -->
+  <section class="page-hd">
+    <div class="wrap">
+      <div class="page-hd-inner">
         <div>
-          <span class="eyebrow">Solutions</span>
+          <span class="label">Solutions</span>
           <h1>We recognise your problem. We have worked on it before.</h1>
         </div>
-        <div class="sol-header-right">
-          <p>Bridging medtech and healthcare robotics companies with the real clinical world.</p>
-          <a href="contact.html" class="header-cta">Tell Us Your Situation</a>
+        <div class="page-hd-right">
+          <p>Bridging medtech and healthcare robotics companies with the real clinical world. We work at the exact layer where adoption is determined — and most often left undesigned.</p>
+          <a href="contact.html" class="page-hd-cta">Tell Us Your Situation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="clients-section">
-    <div class="container">
-      <div class="clients-intro">
-        <span class="eyebrow">Who We Work With</span>
-        <h2>Three types of client. One shared challenge.</h2>
+  <!-- WHO WE WORK WITH -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-intro">
+        <span class="label">Who We Work With</span>
+        <h2 class="sec-h2">Three types of client. One shared challenge.</h2>
         <p>The organisations we work with are building something genuinely important in healthcare — and they are stuck at the same layer. Not the technology itself. What makes the technology work in the real clinical world.</p>
       </div>
       <div class="clients-grid">
         <div class="client-card">
-          <div class="client-card-icon">I</div>
+          <div class="cc-icon">I</div>
           <h3>Medical Robotics Companies</h3>
           <p>You have built something with real clinical potential. The technology is not the problem. Getting hospitals to understand the value and commit to adoption — that is the layer we work on.</p>
         </div>
         <div class="client-card">
-          <div class="client-card-icon">II</div>
+          <div class="cc-icon">II</div>
           <h3>HealthTech Ventures</h3>
           <p>You are building a digital health product and need it to work inside a real clinical environment. The service layer between your product and clinical adoption is what is missing.</p>
         </div>
         <div class="client-card">
-          <div class="client-card-icon">III</div>
+          <div class="cc-icon">III</div>
           <h3>Hospital Innovation Teams</h3>
           <p>You have clinical ambition and internal energy. What is missing is the structured approach that turns that ambition into something that actually reaches implementation.</p>
         </div>
@@ -131,74 +81,77 @@
     </div>
   </section>
 
-  <section class="problems-section">
-    <div class="container">
-      <div class="problems-intro">
-        <span class="eyebrow">Do You Recognise This?</span>
-        <h2>The situations we are built for.</h2>
+  <!-- PROBLEMS WE SOLVE -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-intro">
+        <span class="label">Do You Recognise This?</span>
+        <h2 class="sec-h2">The situations we are built for.</h2>
         <p>If any of these sound familiar — that is the conversation we need to have.</p>
       </div>
       <div class="problems-grid">
         <div class="problem-card">
-          <div class="problem-card-num">01</div>
-          <p class="problem-card-text">Our technology works. Nobody can explain why it matters to the people who need to say yes.</p>
-          <span class="problem-card-tag">Value Proposition</span>
+          <div class="problem-num">01</div>
+          <p class="problem-text">Our technology works. Nobody can explain why it matters to the people who need to say yes.</p>
+          <span class="problem-tag">Value Proposition</span>
         </div>
         <div class="problem-card">
-          <div class="problem-card-num">02</div>
-          <p class="problem-card-text">Pilots succeed. Rollout stalls. The adoption we expected never comes.</p>
-          <span class="problem-card-tag">Adoption</span>
+          <div class="problem-num">02</div>
+          <p class="problem-text">Pilots succeed. Rollout stalls. The adoption we expected never comes.</p>
+          <span class="problem-tag">Adoption</span>
         </div>
         <div class="problem-card">
-          <div class="problem-card-num">03</div>
-          <p class="problem-card-text">We are building the product — but nobody has designed how it will actually be used in a hospital.</p>
-          <span class="problem-card-tag">Service Design</span>
+          <div class="problem-num">03</div>
+          <p class="problem-text">We are building the product — but nobody has designed the service system for how it will actually be used in a hospital.</p>
+          <span class="problem-tag">Service System</span>
         </div>
         <div class="problem-card">
-          <div class="problem-card-num">04</div>
-          <p class="problem-card-text">We have clinical evidence. It does not translate into conversations that lead anywhere.</p>
-          <span class="problem-card-tag">Clinical Communication</span>
+          <div class="problem-num">04</div>
+          <p class="problem-text">We have clinical evidence. It does not translate into conversations that lead anywhere.</p>
+          <span class="problem-tag">Clinical Communication</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="statement-section">
-    <div class="container">
-      <div class="statement-inner">
-        <span class="statement-eyebrow">Our Position</span>
-        <p class="statement-text">We work on these problems. We do not publish how.</p>
-        <p class="statement-sub">The specific methods and approaches Servizions uses are shared with clients as part of the engagement — not on a website. Every organisation we work with leaves with something structured, concrete, and genuinely usable.</p>
-        <a href="contact.html" class="statement-cta">Tell Us Your Situation</a>
+  <!-- POSITION STATEMENT -->
+  <section class="s-dark">
+    <div class="wrap">
+      <div class="s-dark-inner">
+        <span class="label">Our Position</span>
+        <p class="dark-quote">We work on these problems. We do not publish how.</p>
+        <p class="dark-sub">The specific methods and approaches Servizions uses are shared with clients as part of the engagement — not on a website. Every organisation we work with leaves with something structured, concrete, and genuinely usable.</p>
+        <a href="contact.html" class="btn-white">Tell Us Your Situation</a>
       </div>
     </div>
   </section>
 
-  <section class="howwework-section">
-    <div class="container">
-      <div class="howwework-intro">
-        <span class="eyebrow">How We Work</span>
-        <h2>Direct. Specific. No templates.</h2>
+  <!-- HOW WE WORK -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-intro">
+        <span class="label">How We Work</span>
+        <h2 class="sec-h2">Direct. Specific. No templates.</h2>
         <p>Servizions is a service innovation studio — not an agency, not a management consultancy. Every engagement is a direct collaboration built around your specific situation.</p>
       </div>
-      <div class="howwework-points">
-        <div class="howwework-point">
-          <div class="howwework-num">01</div>
-          <div class="howwework-body">
+      <div class="howwework-list">
+        <div class="howwework-item">
+          <div class="hw-num">01</div>
+          <div class="hw-body">
             <h4>We start with your specific situation</h4>
             <p>Before anything is proposed, we understand exactly where your innovation stands — the technology, the clinical environment, and what is actually blocking progress.</p>
           </div>
         </div>
-        <div class="howwework-point">
-          <div class="howwework-num">02</div>
-          <div class="howwework-body">
+        <div class="howwework-item">
+          <div class="hw-num">02</div>
+          <div class="hw-body">
             <h4>You work with the Servizions core</h4>
             <p>Every engagement is a direct collaboration — no intermediaries, no junior team members delivering on a senior promise.</p>
           </div>
         </div>
-        <div class="howwework-point">
-          <div class="howwework-num">03</div>
-          <div class="howwework-body">
+        <div class="howwework-item">
+          <div class="hw-num">03</div>
+          <div class="hw-body">
             <h4>You receive something concrete</h4>
             <p>Every engagement ends with a structured, actionable output — not a process document. Something your team can actually use to move forward.</p>
           </div>
@@ -207,35 +160,48 @@
     </div>
   </section>
 
-  <section class="contact-section">
-    <div class="container">
-      <h2 class="contact-title">Recognise your situation?</h2>
-      <p class="contact-subtitle">Tell us where you are and what is blocking you — we will tell you honestly whether and how we can help</p>
-      <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block;padding:18px 48px;">Start the Conversation</a>
-      </div>
+  <!-- CTA BAR -->
+  <div class="cta-bar">
+    <div class="wrap">
+      <span class="label" style="text-align:center;">Start the conversation</span>
+      <h2 class="sec-h2">Recognise your situation?</h2>
+      <p>Tell us where you are and what is blocking you — we will tell you honestly whether and how we can help.</p>
+      <a href="contact.html" class="btn">Talk to Us</a>
     </div>
-  </section>
+  </div>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo">Servizions</div>
-      <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
-      <nav class="footer-nav">
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="foot-logo">Servizions</span>
+        <span class="foot-tag">Service Innovation Studio · Munich</span>
+      </div>
+      <nav class="foot-nav">
         <a href="services.html">Services</a>
         <a href="solutions.html">Solutions</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 Servizions. All rights reserved.</div>
-      <div class="footer-links">
+    <div class="foot-bottom">
+      <span>© 2026 Servizions. All rights reserved.</span>
+      <div class="foot-links">
         <a href="mailto:info@servizions.com">info@servizions.com</a>
-        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
   </footer>
 
+  <script>
+  (function(){
+    const burger = document.getElementById('burger');
+    const mob    = document.getElementById('mob-nav');
+    if(burger) burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mob.classList.toggle('open');
+    });
+  })();
+  </script>
 </body>
 </html>
