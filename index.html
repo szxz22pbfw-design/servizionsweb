@@ -5,919 +5,865 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
-<title>Servizions – Healthcare Service Innovation Studio</title>
-<meta name="description" content="Servizions bridges medtech and healthcare robotics companies with the real clinical world.">
+<title>Servizions — Service Innovation Studio</title>
+<meta name="description" content="Servizions is a service innovation studio. We design the systemic layer that bridges healthcare technology with real clinical adoption.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://servizions.com/">
-<meta property="og:title" content="Servizions – Healthcare Service Innovation Studio">
-<meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
+<meta property="og:title" content="Servizions — Service Innovation Studio">
+<meta property="og:description" content="We design the service system that makes healthcare technology clinically real.">
 <meta property="og:url" content="https://servizions.com/">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- CUSTOM CURSOR -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-<div id="cursor-label"></div>
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 
-<!-- CORNER MARKS -->
-<div class="corner-mark tl"></div>
-<div class="corner-mark tr"></div>
-<div class="corner-mark bl"></div>
-<div class="corner-mark br"></div>
-
-<!-- NAVBAR -->
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-text">Servizions</span>
-    </a>
-    <nav class="nav-links">
-      <a href="services.html" class="nav-link" data-label="Services">Services</a>
-      <a href="solutions.html" class="nav-link" data-label="Solutions">Solutions</a>
-      <a href="about.html" class="nav-link" data-label="About">About</a>
-      <a href="contact.html" class="nav-link nav-cta" data-label="Contact">Let's talk</a>
-    </nav>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-      <span></span><span></span>
-    </button>
-  </div>
+<!-- NAV -->
+<header id="nav">
+  <a href="index.html" class="nav-logo">Servizions</a>
+  <nav class="nav-links">
+    <a href="services.html">Services</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="nav-cta">Let's talk</a>
+  </nav>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span>
+  </button>
 </header>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobile-nav">
+<!-- MOBILE OVERLAY -->
+<div id="mob-nav">
   <a href="services.html">Services</a>
   <a href="solutions.html">Solutions</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
 </div>
 
-<!-- HERO -->
-<section id="hero" class="hero-section">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span class="eyebrow-line"></span>
-      <span class="eyebrow-text">Healthcare Service Innovation Studio</span>
-    </div>
-    <h1 class="hero-title">
-      <span class="split-line"><span class="split-inner">Beyond</span></span>
-      <span class="split-line"><span class="split-inner italic-word">technology,</span></span>
-      <span class="split-line"><span class="split-inner">into practice.</span></span>
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <canvas id="c"></canvas>
+
+  <div class="hero-inner">
+    <p class="hero-label" id="hl">Service Innovation Studio</p>
+    <h1 class="hero-h1" id="hh">
+      <span class="line"><span><em>Systemic</em></span></span>
+      <span class="line"><span>innovation</span></span>
+      <span class="line"><span>for health<br class="mob-br">care.</span></span>
     </h1>
-    <p class="hero-sub">We design the innovation layer that turns healthcare technology into clinical reality.</p>
-    <div class="hero-actions">
-      <a href="contact.html" class="btn-primary mag-btn">
-        <span>Start a conversation</span>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="about.html" class="btn-ghost mag-btn">
-        <span>Our approach</span>
-      </a>
+    <p class="hero-sub" id="hb">
+      We design the complete service system that makes healthcare technology<br class="desk-br"> clinically real — before a product ships, not after.
+    </p>
+    <div class="hero-btns" id="hv">
+      <a href="contact.html" class="btn">Begin the conversation</a>
+      <a href="about.html" class="btn-ghost">Our approach →</a>
     </div>
   </div>
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-  <div class="hero-badge">
-    <span class="badge-dot"></span>
-    <span>Munich, Germany</span>
+
+  <div class="hero-meta">
+    <span class="hero-loc"><span class="pulse-dot"></span>Munich, DE</span>
+    <span class="hero-scroll">Scroll ↓</span>
   </div>
 </section>
 
-<!-- MARQUEE TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span>Service Innovation</span><span class="ticker-dot">·</span>
-    <span>Value Proposition Design</span><span class="ticker-dot">·</span>
-    <span>Clinical Workflow</span><span class="ticker-dot">·</span>
-    <span>Medical Robotics</span><span class="ticker-dot">·</span>
-    <span>Technology Adoption</span><span class="ticker-dot">·</span>
-    <span>Healthcare System Design</span><span class="ticker-dot">·</span>
-    <span>Human-Centered Innovation</span><span class="ticker-dot">·</span>
-    <span>Pre-Product Strategy</span><span class="ticker-dot">·</span>
-    <span>Future Scenario Planning</span><span class="ticker-dot">·</span>
-    <!-- repeat -->
-    <span>Service Innovation</span><span class="ticker-dot">·</span>
-    <span>Value Proposition Design</span><span class="ticker-dot">·</span>
-    <span>Clinical Workflow</span><span class="ticker-dot">·</span>
-    <span>Medical Robotics</span><span class="ticker-dot">·</span>
-    <span>Technology Adoption</span><span class="ticker-dot">·</span>
-    <span>Healthcare System Design</span><span class="ticker-dot">·</span>
-    <span>Human-Centered Innovation</span><span class="ticker-dot">·</span>
-    <span>Pre-Product Strategy</span><span class="ticker-dot">·</span>
-    <span>Future Scenario Planning</span><span class="ticker-dot">·</span>
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Systemic Innovation</span><span class="sep">—</span>
+    <span>Service System</span><span class="sep">—</span>
+    <span>Value Proposition</span><span class="sep">—</span>
+    <span>Clinical Adoption</span><span class="sep">—</span>
+    <span>Medical Robotics</span><span class="sep">—</span>
+    <span>Future Scenarios</span><span class="sep">—</span>
+    <span>Innovation Architecture</span><span class="sep">—</span>
+    <span>Pre-Product Strategy</span><span class="sep">—</span>
+    <span>Systemic Innovation</span><span class="sep">—</span>
+    <span>Service System</span><span class="sep">—</span>
+    <span>Value Proposition</span><span class="sep">—</span>
+    <span>Clinical Adoption</span><span class="sep">—</span>
+    <span>Medical Robotics</span><span class="sep">—</span>
+    <span>Future Scenarios</span><span class="sep">—</span>
+    <span>Innovation Architecture</span><span class="sep">—</span>
+    <span>Pre-Product Strategy</span><span class="sep">—</span>
   </div>
 </div>
 
-<!-- STATEMENT -->
-<section class="statement-section reveal-section">
-  <div class="container">
-    <div class="statement-grid">
-      <div class="statement-left">
-        <span class="eyebrow-label reveal-child">What We Do</span>
-      </div>
-      <div class="statement-right">
-        <h2 class="statement-headline reveal-child">
-          Bridging medtech and healthcare robotics companies with the&nbsp;<em>real clinical world.</em>
-        </h2>
-        <div class="statement-body reveal-child">
-          <p>Most healthcare technologies are built without the layer that connects them to real clinical adoption — the value proposition, the service architecture, and the adoption framework that hospitals and clinical teams need before they can commit.</p>
-          <p>Servizions designs that layer. We do not publish how. That is what the first conversation is for.</p>
-        </div>
-        <a href="contact.html" class="btn-primary mag-btn reveal-child">
-          <span>Start a Conversation</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
+<!-- ═══════════ STATEMENT ═══════════ -->
+<section class="s-statement reveal">
+  <div class="wrap">
+    <div class="stmt-left">
+      <span class="label">What we do</span>
+    </div>
+    <div class="stmt-right">
+      <h2 class="stmt-h2">
+        Bridging medtech and healthcare robotics with the <em>real clinical world.</em>
+      </h2>
+      <p class="stmt-p">Most healthcare technologies fail not because they don't work — but because the service system around them was never designed. The value proposition, the adoption framework, the clinical workflow: all absent.</p>
+      <p class="stmt-p">Servizions designs that system. Entirely. Before a product goes to market.</p>
+      <a href="contact.html" class="btn mt">Start a conversation</a>
     </div>
   </div>
 </section>
 
-<!-- GLOBE SECTION (3D Canvas) -->
-<section class="globe-section" id="globe-section">
-  <div class="globe-bg"></div>
+<!-- ═══════════ SYSTEM MAP ═══════════ -->
+<section id="sysmap" class="s-sysmap">
+  <div class="sysmap-label reveal">
+    <span class="label">System Architecture</span>
+    <p class="sysmap-desc">The service system — drag to explore</p>
+  </div>
   <canvas id="globe-canvas"></canvas>
-  <div class="globe-ui">
-    <div class="globe-tag reveal-child">Innovation Architecture</div>
-    <p class="globe-desc reveal-child">An interconnected system of methods — drag to explore</p>
-  </div>
-  <div id="globe-panel" class="globe-panel">
-    <button id="globe-panel-close" class="globe-panel-close">×</button>
-    <div id="globe-panel-tag" class="globe-panel-tag"></div>
-    <div id="globe-panel-title" class="globe-panel-title"></div>
-    <div id="globe-panel-desc" class="globe-panel-desc"></div>
+  <div id="node-panel" class="node-panel">
+    <button id="np-close">×</button>
+    <p id="np-tag" class="np-tag"></p>
+    <h4 id="np-title"></h4>
+    <p id="np-body"></p>
   </div>
 </section>
 
-<!-- EXPERTISE KEYWORDS -->
-<section class="expertise-section reveal-section">
-  <div class="container">
-    <div class="expertise-header">
-      <span class="eyebrow-label reveal-child">Areas of Expertise</span>
-      <h2 class="expertise-title reveal-child">Select an area to explore</h2>
+<!-- ═══════════ PRINCIPLES ═══════════ -->
+<section class="s-principles reveal">
+  <div class="wrap">
+    <div class="prin-header">
+      <span class="label">Principles</span>
+      <h2 class="sec-h2">A different kind of innovation.</h2>
     </div>
-    <div class="expertise-tags reveal-child">
-      <button class="exp-tag" data-key="service-innovation">Service Innovation</button>
-      <button class="exp-tag" data-key="value-proposition">Value Proposition Design</button>
-      <button class="exp-tag" data-key="future-scenarios">Future Scenario Planning</button>
-      <button class="exp-tag" data-key="clinical-workflow">Clinical Workflow Design</button>
-      <button class="exp-tag" data-key="technology-adoption">Technology Adoption</button>
-      <button class="exp-tag" data-key="service-design">Human-Centered Design</button>
-      <button class="exp-tag" data-key="pre-product">Pre-Product Innovation</button>
-      <button class="exp-tag" data-key="robotics">Medical Robotics</button>
-      <button class="exp-tag" data-key="system-design">Healthcare System Design</button>
+    <div class="prin-grid">
+      <div class="prin-item reveal-item">
+        <div class="prin-num">01</div>
+        <h3>Systems before solutions</h3>
+        <p>We design the whole before any part. A technology without a service system is a product without a future.</p>
+      </div>
+      <div class="prin-item reveal-item">
+        <div class="prin-num">02</div>
+        <h3>Value must be designed</h3>
+        <p>Clinical value does not emerge on its own. It is articulated, evidenced, and structured for every stakeholder who must commit.</p>
+      </div>
+      <div class="prin-item reveal-item">
+        <div class="prin-num">03</div>
+        <h3>Before, not after</h3>
+        <p>The pre-product phase is where adoption is decided. We work here — when the system is still shapeable.</p>
+      </div>
+      <div class="prin-item reveal-item">
+        <div class="prin-num">04</div>
+        <h3>Honesty first</h3>
+        <p>If the assumptions are wrong, we say so. Early, clearly, constructively.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="s-process reveal">
+  <div class="wrap">
+    <div class="proc-header">
+      <span class="label">Process</span>
+      <h2 class="sec-h2">Four phases.<br>One coherent system.</h2>
+    </div>
+  </div>
+  <div class="proc-row">
+    <div class="proc-card reveal-item">
+      <span class="proc-n">01</span>
+      <div class="proc-body">
+        <h3>Discover</h3>
+        <p>Deep immersion into clinical environments — observing workflows, mapping stakeholder needs, identifying the adoption gaps.</p>
+        <span class="proc-tag">Research · Fieldwork</span>
+      </div>
+    </div>
+    <div class="proc-card reveal-item">
+      <span class="proc-n">02</span>
+      <div class="proc-body">
+        <h3>Define</h3>
+        <p>Synthesising findings into a value proposition structured for every stakeholder — clinician, administrator, procurement.</p>
+        <span class="proc-tag">Strategy · Framing</span>
+      </div>
+    </div>
+    <div class="proc-card reveal-item">
+      <span class="proc-n">03</span>
+      <div class="proc-body">
+        <h3>Design</h3>
+        <p>Building the complete service system — workflows, training architecture, governance, and the adoption infrastructure.</p>
+        <span class="proc-tag">Service System · Architecture</span>
+      </div>
+    </div>
+    <div class="proc-card reveal-item">
+      <span class="proc-n">04</span>
+      <div class="proc-body">
+        <h3>Deliver</h3>
+        <p>A fully designed innovation layer — ready for clinical decision-makers, investment committees, hospital procurement.</p>
+        <span class="proc-tag">Activation · Handover</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERTISE ═══════════ -->
+<section class="s-expertise reveal">
+  <div class="wrap">
+    <div class="exp-header">
+      <span class="label">Areas of Expertise</span>
+    </div>
+    <div class="exp-tags" id="exp-tags">
+      <button class="etag" data-k="si">Service Innovation</button>
+      <button class="etag" data-k="ss">Service System</button>
+      <button class="etag" data-k="vp">Value Proposition</button>
+      <button class="etag" data-k="fs">Future Scenario Planning</button>
+      <button class="etag" data-k="cw">Clinical Workflow</button>
+      <button class="etag" data-k="ta">Technology Adoption</button>
+      <button class="etag" data-k="pp">Pre-Product Strategy</button>
+      <button class="etag" data-k="mr">Medical Robotics</button>
+      <button class="etag" data-k="sc">Systemic Innovation</button>
     </div>
     <div class="exp-panel" id="exp-panel">
-      <div class="exp-panel-inner">
-        <p class="exp-panel-text" id="exp-panel-text"></p>
-      </div>
+      <p id="exp-text"></p>
     </div>
   </div>
 </section>
 
-<!-- PROCESS STEPS (Horizontal scroll-driven) -->
-<section class="process-section reveal-section">
-  <div class="container">
-    <div class="process-header">
-      <span class="eyebrow-label reveal-child">How We Work</span>
-      <h2 class="process-title reveal-child">Four phases.<br>One coherent system.</h2>
+<!-- ═══════════ INSIGHTS ═══════════ -->
+<section class="s-insights reveal">
+  <div class="wrap">
+    <div class="ins-header">
+      <span class="label">Thinking</span>
+      <h2 class="sec-h2">Perspectives on systemic innovation.</h2>
     </div>
-  </div>
-  <div class="process-track">
-    <div class="process-cards">
-      <div class="process-card" data-index="0">
-        <div class="pc-num">01</div>
-        <div class="pc-body">
-          <div class="pc-icon">◎</div>
-          <h3 class="pc-title">Discover</h3>
-          <p class="pc-text">Deep immersion into clinical environments — observing workflows, mapping stakeholder needs, and identifying the adoption barriers that prevent technologies from succeeding.</p>
-          <span class="pc-tag">Research · Fieldwork</span>
-        </div>
-      </div>
-      <div class="process-card" data-index="1">
-        <div class="pc-num">02</div>
-        <div class="pc-body">
-          <div class="pc-icon">◈</div>
-          <h3 class="pc-title">Define</h3>
-          <p class="pc-text">Synthesising findings into a clear value proposition — structured for surgeons, nurses, administrators, and procurement — with the evidence each stakeholder needs to commit.</p>
-          <span class="pc-tag">Strategy · Framing</span>
-        </div>
-      </div>
-      <div class="process-card" data-index="2">
-        <div class="pc-num">03</div>
-        <div class="pc-body">
-          <div class="pc-icon">◧</div>
-          <h3 class="pc-title">Design</h3>
-          <p class="pc-text">Building the complete service architecture — clinical workflows, training systems, governance frameworks, and the adoption infrastructure that makes a technology deployable.</p>
-          <span class="pc-tag">Service Design · Systems</span>
-        </div>
-      </div>
-      <div class="process-card" data-index="3">
-        <div class="pc-num">04</div>
-        <div class="pc-body">
-          <div class="pc-icon">◉</div>
-          <h3 class="pc-title">Deliver</h3>
-          <p class="pc-text">A fully designed innovation layer — ready to present to clinical decision-makers, investment committees, and hospital procurement teams with confidence and clarity.</p>
-          <span class="pc-tag">Activation · Handover</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INSIGHTS -->
-<section class="insights-section reveal-section">
-  <div class="container">
-    <div class="insights-header">
-      <span class="eyebrow-label reveal-child">Expert Insights</span>
-      <h2 class="insights-title reveal-child">Looking for inspiration?</h2>
-      <p class="insights-sub reveal-child">Explore human-centered service innovation, healthcare value proposition design, and the adoption systems shaping medical robotics and health technology.</p>
-    </div>
-    <div class="insights-grid">
-      <article class="insight-card reveal-card">
-        <div class="insight-img-wrap">
-          <img src="image/insight-1.jpg" alt="Healthcare innovation" loading="lazy">
-          <div class="insight-img-overlay"></div>
-        </div>
-        <div class="insight-content">
-          <div class="insight-tags-row">
-            <span class="itag">Service Innovation</span>
-            <span class="itag">Robotics</span>
-          </div>
-          <h3 class="insight-heading">From robotics potential to healthcare value: why adoption systems matter</h3>
-          <p class="insight-text">Healthcare robotics does not fail because of technology. It fails when service design, clinical workflows, and value propositions are missing.</p>
-          <div class="insight-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10.5 4.5L16 10l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+    <div class="ins-grid">
+      <article class="ins-card">
+        <div class="ins-img"><img src="image/insight-1.jpg" alt="Healthcare innovation" loading="lazy"></div>
+        <div class="ins-body">
+          <div class="ins-tags"><span>Service Innovation</span><span>Robotics</span></div>
+          <h3>From robotics potential to healthcare value: why adoption systems matter</h3>
+          <p>Healthcare robotics does not fail because of technology. It fails when the service system — the clinical workflows, the value proposition, the adoption architecture — was never designed.</p>
+          <span class="ins-arrow">→</span>
         </div>
       </article>
-      <article class="insight-card reveal-card">
-        <div class="insight-img-wrap">
-          <img src="image/insight-2.jpg" alt="Rehabilitation" loading="lazy">
-          <div class="insight-img-overlay"></div>
-        </div>
-        <div class="insight-content">
-          <div class="insight-tags-row">
-            <span class="itag">Value Proposition</span>
-            <span class="itag">Rehabilitation</span>
-          </div>
-          <h3 class="insight-heading">Why rehabilitation innovation needs value proposition clarity</h3>
-          <p class="insight-text">Innovation only scales when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition decision-makers trust.</p>
-          <div class="insight-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10.5 4.5L16 10l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+      <article class="ins-card">
+        <div class="ins-img"><img src="image/insight-2.jpg" alt="Rehabilitation" loading="lazy"></div>
+        <div class="ins-body">
+          <div class="ins-tags"><span>Value Proposition</span><span>Rehabilitation</span></div>
+          <h3>Why rehabilitation innovation needs value proposition clarity</h3>
+          <p>Innovation scales only when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition that decision-makers can commit to.</p>
+          <span class="ins-arrow">→</span>
         </div>
       </article>
-      <article class="insight-card reveal-card">
-        <div class="insight-img-wrap">
-          <img src="image/insight-3.jpg" alt="Digital health" loading="lazy">
-          <div class="insight-img-overlay"></div>
-        </div>
-        <div class="insight-content">
-          <div class="insight-tags-row">
-            <span class="itag">HealthTech</span>
-            <span class="itag">Innovation System</span>
-          </div>
-          <h3 class="insight-heading">The next era of health technology: orchestration over transformation</h3>
-          <p class="insight-text">HealthTech is about orchestrating services, people, and technology into one coherent innovation system.</p>
-          <div class="insight-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10.5 4.5L16 10l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+      <article class="ins-card">
+        <div class="ins-img"><img src="image/insight-3.jpg" alt="Digital health" loading="lazy"></div>
+        <div class="ins-body">
+          <div class="ins-tags"><span>HealthTech</span><span>Service System</span></div>
+          <h3>The next era of health technology: orchestration over transformation</h3>
+          <p>The future of HealthTech is not transformation — it is orchestration: services, people, and technology aligned into one coherent innovation system.</p>
+          <span class="ins-arrow">→</span>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- CTA FULL-BLEED -->
-<section class="cta-section reveal-section">
+<!-- ═══════════ CTA ═══════════ -->
+<section id="cta-sec" class="s-cta">
   <canvas id="cta-canvas"></canvas>
-  <div class="cta-inner">
-    <span class="cta-eyebrow reveal-child">Ready?</span>
-    <h2 class="cta-title reveal-child">Build the<br><em>innovation layer.</em></h2>
-    <p class="cta-sub reveal-child">Tell us about your healthcare technology challenge.</p>
-    <a href="contact.html" class="btn-white mag-btn reveal-child">
-      <span>Start a Conversation</span>
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+  <div class="cta-inner reveal">
+    <span class="cta-label">Ready to build the service system?</span>
+    <h2 class="cta-h2">Let's design<br><em>the system.</em></h2>
+    <a href="contact.html" class="btn-white">Begin the conversation</a>
   </div>
 </section>
 
-<!-- CONTACT FORM -->
-<section class="contact-section reveal-section" id="contact">
-  <div class="container">
-    <div class="contact-header reveal-child">
-      <span class="eyebrow-label">Contact</span>
-      <h2 class="contact-title">Ready to build the innovation layer?</h2>
-      <p class="contact-sub">Tell us about your healthcare technology challenge</p>
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="s-contact reveal">
+  <div class="wrap">
+    <div class="contact-head">
+      <span class="label">Contact</span>
+      <h2 class="sec-h2">Start a conversation.</h2>
+      <p class="contact-sub">Tell us about your healthcare technology challenge.</p>
     </div>
-    <form class="contact-form reveal-child" action="https://formspree.io/f/mjgakblb" method="POST">
+    <form class="contact-form" action="https://formspree.io/f/mjgakblb" method="POST">
       <div class="form-row">
-        <div class="form-group"><label>First Name *</label><input type="text" name="first-name" required placeholder="Anna"></div>
-        <div class="form-group"><label>Last Name *</label><input type="text" name="last-name" required placeholder="Schmidt"></div>
+        <div class="fg"><label>First Name *</label><input type="text" name="first-name" required placeholder="Anna"></div>
+        <div class="fg"><label>Last Name *</label><input type="text" name="last-name" required placeholder="Schmidt"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Business Email *</label><input type="email" name="email" required placeholder="anna@company.com"></div>
-        <div class="form-group hidden-field"><label>Leave blank</label><input type="text" name="company"></div>
+        <div class="fg"><label>Business Email *</label><input type="email" name="email" required placeholder="anna@company.com"></div>
+        <div class="fg hf"><label>Leave blank</label><input type="text" name="company"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Job Title</label><input type="text" name="job-title" placeholder="Head of Innovation"></div>
-        <div class="form-group"><label>Country</label><input type="text" name="country" placeholder="Germany"></div>
+        <div class="fg"><label>Job Title</label><input type="text" name="job-title" placeholder="Head of Innovation"></div>
+        <div class="fg"><label>Country</label><input type="text" name="country" placeholder="Germany"></div>
       </div>
-      <div class="form-group" style="margin-bottom:20px;">
-        <label>What type of support are you looking for?</label>
+      <div class="fg" style="margin-bottom:16px">
+        <label>Type of engagement</label>
         <select name="support-type">
           <option>Innovation Sprint — Value Proposition &amp; Concept</option>
           <option>Service System Design</option>
           <option>Future Scenario Planning</option>
-          <option>Innovation &amp; Design Thinking Workshop</option>
+          <option>Innovation Workshop</option>
           <option>General Inquiry</option>
         </select>
       </div>
-      <div class="form-group" style="margin-bottom:20px;">
+      <div class="fg" style="margin-bottom:16px">
         <label>Tell us about your challenge</label>
-        <textarea name="message" maxlength="500" placeholder="Describe your healthcare technology and the challenge you are facing..."></textarea>
+        <textarea name="message" maxlength="500" placeholder="Describe your healthcare technology and the challenge you face..."></textarea>
       </div>
       <div class="form-consent">
         <input type="checkbox" required>
         <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
       </div>
-      <button type="submit" class="btn-primary contact-submit">
-        <span>Submit Request</span>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+      <button type="submit" class="btn-submit">Submit Request</button>
     </form>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-top">
-    <div class="footer-logo">Servizions</div>
-    <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
-    <nav class="footer-nav">
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer id="footer">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <span class="foot-logo">Servizions</span>
+      <span class="foot-tag">Service Innovation Studio · Munich</span>
+    </div>
+    <nav class="foot-nav">
       <a href="services.html">Services</a>
       <a href="solutions.html">Solutions</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
-  <div class="footer-bottom">
-    <div>© 2026 Servizions. All rights reserved.</div>
-    <div class="footer-links">
+  <div class="foot-bottom">
+    <span>© 2026 Servizions. All rights reserved.</span>
+    <div class="foot-links">
       <a href="mailto:info@servizions.com">info@servizions.com</a>
-      <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </div>
 </footer>
 
 <script>
-/* =============================================
-   MASTER ANIMATION ENGINE — Servizions Studio
-   Inspired by Lusion.co visual language
-   ============================================= */
-
-(function () {
+/* ═══════════════════════════════════════════════
+   SERVIZIONS — Engine v4
+   Systemic · Futuristic · Minimal Aurora
+═══════════════════════════════════════════════ */
+(function(){
 'use strict';
 
-/* ── Utils ── */
-const qs = (s, p = document) => p.querySelector(s);
-const qsa = (s, p = document) => [...p.querySelectorAll(s)];
-const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-const lerp = (a, b, t) => a + (b - a) * t;
-const map = (v, a, b, c, d) => c + ((v - a) / (b - a)) * (d - c);
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const lerp = (a,b,t) => a + (b-a)*t;
+const clamp = (v,mn,mx) => Math.max(mn, Math.min(mx, v));
 
-/* ── Smooth Scroll ── */
-let scrollY = 0, targetScrollY = 0, scrollRaf;
-function initSmoothScroll() {
-  document.documentElement.style.setProperty('overflow', 'auto');
-  window.addEventListener('scroll', () => { targetScrollY = window.scrollY; }, { passive: true });
-  function tick() {
-    scrollY = lerp(scrollY, targetScrollY, 0.095);
-    scrollRaf = requestAnimationFrame(tick);
-  }
-  tick();
-}
-
-/* ── Custom Cursor ── */
-const dot = qs('#cursor-dot');
-const ring = qs('#cursor-ring');
-const label = qs('#cursor-label');
-let mx = -100, my = -100, rx = -100, ry = -100;
+/* ────────────────────────
+   1. CUSTOM CURSOR
+──────────────────────── */
+const dot  = $('#cur-dot');
+const ring = $('#cur-ring');
+let mx = innerWidth/2, my = innerHeight/2;
+let rx = mx, ry = my;
 
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-(function cursorLoop() {
-  rx = lerp(rx, mx, 0.13);
-  ry = lerp(ry, my, 0.13);
-  if (dot) { dot.style.transform = `translate(${mx}px,${my}px)`; }
-  if (ring) { ring.style.transform = `translate(${rx}px,${ry}px)`; }
-  if (label) { label.style.transform = `translate(${mx + 18}px,${my - 8}px)`; }
+(function cursorLoop(){
+  rx = lerp(rx, mx, .10);
+  ry = lerp(ry, my, .10);
+  if(dot)  dot.style.transform  = `translate(${mx}px,${my}px)`;
+  if(ring) ring.style.transform = `translate(${rx}px,${ry}px)`;
   requestAnimationFrame(cursorLoop);
 })();
 
-function setCursorState(state, txt = '') {
-  const body = document.body;
-  body.classList.remove('cur-hover', 'cur-link', 'cur-drag');
-  if (state) body.classList.add('cur-' + state);
-  if (label) label.textContent = txt;
-}
-
-qsa('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => setCursorState('link', el.dataset.label || ''));
-  el.addEventListener('mouseleave', () => setCursorState(''));
+$$('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('is-hovering'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('is-hovering'));
 });
 
-/* ── Navbar ── */
-const navbar = qs('#navbar');
-let lastSY = 0;
+/* ────────────────────────
+   2. NAVIGATION
+──────────────────────── */
+const nav    = $('#nav');
+const burger = $('#burger');
+const mobNav = $('#mob-nav');
+let lastY = 0;
+
 window.addEventListener('scroll', () => {
   const sy = window.scrollY;
-  navbar.classList.toggle('scrolled', sy > 60);
-  navbar.classList.toggle('hidden', sy > lastSY + 10 && sy > 120);
-  navbar.classList.toggle('visible', sy < lastSY - 10);
-  lastSY = sy;
+  nav.classList.toggle('scrolled', sy > 40);
+  nav.classList.toggle('nav-hidden',  sy > lastY + 10 && sy > 100);
+  nav.classList.toggle('nav-visible', sy < lastY - 10);
+  lastY = sy;
 }, { passive: true });
 
-/* mobile menu */
-const menuToggle = qs('#menu-toggle');
-const mobileNav = qs('#mobile-nav');
-if (menuToggle) {
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-  });
-}
-
-/* ── Magnetic Buttons ── */
-qsa('.mag-btn').forEach(btn => {
-  btn.addEventListener('mousemove', e => {
-    const r = btn.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
-    btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = '';
-  });
+if(burger) burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mobNav.classList.toggle('open');
 });
 
-/* ── Hero Canvas — Particle field ── */
-(function heroCanvas() {
-  const canvas = qs('#hero-canvas');
-  if (!canvas) return;
+/* ────────────────────────
+   3. HERO CANVAS — Deep Aurora
+──────────────────────── */
+(function heroAurora(){
+  const canvas = $('#c');
+  if(!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H, dpr;
+  let W, H, t = 0;
+  let mouseX = 0.5, mouseY = 0.5;
+  let targetX = 0.5, targetY = 0.5;
 
-  function resize() {
-    dpr = window.devicePixelRatio || 1;
-    W = canvas.offsetWidth;
-    H = canvas.offsetHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
+  function resize(){
+    const dpr = window.devicePixelRatio || 1;
+    W = canvas.offsetWidth; H = canvas.offsetHeight;
+    canvas.width  = W * dpr; canvas.height = H * dpr;
     ctx.scale(dpr, dpr);
   }
   resize();
-  window.addEventListener('resize', resize);
 
-  /* Particles */
-  const N = 120;
-  const particles = Array.from({ length: N }, () => ({
-    x: Math.random() * 1400,
-    y: Math.random() * 900,
-    ox: 0, oy: 0,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    r: Math.random() * 1.6 + 0.4,
-    a: Math.random(),
+  /* Aurora bands — slow, atmospheric, futuristic */
+  const bands = [
+    { yRel: 0.30, amp: 95,  freq: 0.0016, spd: 0.00032, h: 222, sat: 72, lit: 58, a: 0.055 },
+    { yRel: 0.45, amp: 75,  freq: 0.0021, spd: 0.00024, h: 248, sat: 68, lit: 54, a: 0.072 },
+    { yRel: 0.58, amp: 110, freq: 0.0013, spd: 0.00020, h: 196, sat: 65, lit: 56, a: 0.048 },
+    { yRel: 0.38, amp: 65,  freq: 0.0028, spd: 0.00038, h: 268, sat: 60, lit: 50, a: 0.042 },
+    { yRel: 0.64, amp: 88,  freq: 0.0018, spd: 0.00028, h: 210, sat: 70, lit: 60, a: 0.058 },
+  ];
+
+  /* Floating node particles */
+  const N = 55;
+  const particles = Array.from({length: N}, (_, i) => ({
+    x: Math.random() * 1,
+    y: Math.random() * 1,
+    vx: (Math.random()-.5) * .00025,
+    vy: (Math.random()-.5) * .00022,
+    size: .6 + Math.random() * 1.2,
+    alpha: .08 + Math.random() * .16,
     phase: Math.random() * Math.PI * 2,
-    speed: 0.4 + Math.random() * 0.8,
   }));
 
-  /* Flowing curves */
-  const CURVES = 6;
-  let t = 0;
-  let mouse = { x: W / 2, y: H / 2 };
+  /* Dynamic mesh grid */
+  const GC = 20, GR = 12;
+  let gPts = [], gVx = [], gVy = [];
+  function initGrid(){
+    gPts = []; gVx = []; gVy = [];
+    for(let r = 0; r <= GR; r++) for(let c = 0; c <= GC; c++){
+      gPts.push([c/GC * W, r/GR * H]);
+      gVx.push((Math.random()-.5) * .14);
+      gVy.push((Math.random()-.5) * .14);
+    }
+  }
+  initGrid();
+
+  window.addEventListener('resize', () => { resize(); initGrid(); });
+
   canvas.addEventListener('mousemove', e => {
     const r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
+    targetX = (e.clientX - r.left) / W;
+    targetY = (e.clientY - r.top) / H;
   });
 
-  function drawFlowCurve(index, time) {
-    const phase = (index / CURVES) * Math.PI * 2;
-    const amp = 60 + index * 18;
-    const yBase = H * (0.3 + (index / CURVES) * 0.5);
-    const speed = 0.0008 + index * 0.0003;
-
-    ctx.beginPath();
-    for (let x = -20; x <= W + 20; x += 4) {
-      const wave1 = Math.sin(x * 0.004 + time * speed + phase) * amp;
-      const wave2 = Math.sin(x * 0.007 - time * speed * 0.6 + phase * 1.3) * (amp * 0.4);
-      const mx_influence = ((mouse.x - W / 2) / W) * 30;
-      const y = yBase + wave1 + wave2 + mx_influence;
-      x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    }
-
-    const alpha = 0.025 + (index / CURVES) * 0.018;
-    const hue = 250 + index * 12;
-    ctx.strokeStyle = `hsla(${hue}, 72%, 62%, ${alpha})`;
-    ctx.lineWidth = 1.5 + index * 0.3;
-    ctx.stroke();
-  }
-
-  function drawHeroGrid() {
-    const gSize = 80;
-    ctx.strokeStyle = 'rgba(94,23,235,0.035)';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < W + gSize; x += gSize) {
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-    }
-    for (let y = 0; y < H + gSize; y += gSize) {
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-    }
-  }
-
-  function heroLoop() {
+  function heroLoop(){
     t += 1;
+    mouseX = lerp(mouseX, targetX, .032);
+    mouseY = lerp(mouseY, targetY, .032);
+
     ctx.clearRect(0, 0, W, H);
 
-    /* gradient bg */
-    const grad = ctx.createRadialGradient(W * 0.5, H * 0.4, 0, W * 0.5, H * 0.4, W * 0.8);
-    grad.addColorStop(0, 'rgba(220,210,255,0.22)');
-    grad.addColorStop(0.5, 'rgba(235,230,252,0.10)');
-    grad.addColorStop(1, 'rgba(247,246,252,0)');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, W, H);
+    /* base gradient */
+    const bg = ctx.createRadialGradient(W*.5, H*.38, 0, W*.5, H*.38, W * .95);
+    bg.addColorStop(0, 'rgba(7,4,20,1)');
+    bg.addColorStop(1, 'rgba(3,1,12,1)');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
 
-    drawHeroGrid();
+    /* aurora bands */
+    bands.forEach(b => {
+      const yCen = H * b.yRel;
+      const mxOff = (mouseX - .5) * 28;
+      ctx.beginPath();
+      for(let x = -10; x <= W + 10; x += 2){
+        const w1 = Math.sin(x * b.freq + t * b.spd) * b.amp;
+        const w2 = Math.sin(x * b.freq * 1.6 - t * b.spd * .7) * b.amp * .3;
+        const y  = yCen + w1 + w2 + mxOff;
+        x === -10 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      const grd = ctx.createLinearGradient(0, yCen - b.amp, 0, yCen + b.amp);
+      grd.addColorStop(0, `hsla(${b.h},${b.sat}%,${b.lit}%,0)`);
+      grd.addColorStop(.45, `hsla(${b.h},${b.sat}%,${b.lit}%,${b.a})`);
+      grd.addColorStop(1,  `hsla(${b.h},${b.sat}%,${b.lit}%,0)`);
+      ctx.strokeStyle = grd;
+      ctx.lineWidth   = 70 + b.amp * .5;
+      ctx.stroke();
+    });
 
-    for (let i = 0; i < CURVES; i++) {
-      drawFlowCurve(i, t);
+    /* mesh grid */
+    for(let i = 0; i < gPts.length; i++){
+      gPts[i][0] += gVx[i]; gPts[i][1] += gVy[i];
+      const c = i % (GC+1), r = Math.floor(i / (GC+1));
+      const ox = c/GC * W, oy = r/GR * H;
+      if(Math.abs(gPts[i][0] - ox) > 16) gVx[i] *= -1;
+      if(Math.abs(gPts[i][1] - oy) > 11) gVy[i] *= -1;
+    }
+    ctx.strokeStyle = 'rgba(110,85,220,0.038)';
+    ctx.lineWidth   = .6;
+    for(let r = 0; r < GR; r++) for(let c = 0; c < GC; c++){
+      const i0 = r*(GC+1) + c;
+      const p0 = gPts[i0], p1 = gPts[i0+1], p2 = gPts[i0+GC+1];
+      ctx.beginPath(); ctx.moveTo(p0[0],p0[1]); ctx.lineTo(p1[0],p1[1]); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(p0[0],p0[1]); ctx.lineTo(p2[0],p2[1]); ctx.stroke();
     }
 
-    /* particles */
+    /* floating particles */
     particles.forEach(p => {
-      p.x += p.vx * p.speed;
-      p.y += p.vy * p.speed;
-      if (p.x < -10) p.x = W + 10;
-      if (p.x > W + 10) p.x = -10;
-      if (p.y < -10) p.y = H + 10;
-      if (p.y > H + 10) p.y = -10;
-
-      const pulse = Math.sin(t * 0.02 + p.phase) * 0.5 + 0.5;
-      const alpha = p.a * pulse * 0.7;
-
-      /* repel from mouse */
-      const dx = p.x - mouse.x, dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        const force = (120 - dist) / 120;
-        p.x += (dx / dist) * force * 1.5;
-        p.y += (dy / dist) * force * 1.5;
-      }
-
-      /* connect near particles */
-      particles.forEach(q => {
-        const dx2 = p.x - q.x, dy2 = p.y - q.y;
-        const d2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-        if (d2 < 90 && d2 > 0) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(94,23,235,${(1 - d2 / 90) * 0.06})`;
-          ctx.lineWidth = 0.6;
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.stroke();
-        }
-      });
-
+      p.x = (p.x + p.vx + 1) % 1;
+      p.y = (p.y + p.vy + 1) % 1;
+      const pulse = .5 + .5 * Math.sin(t * .018 + p.phase);
+      const a = p.alpha * (.6 + .4*pulse);
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * (0.7 + pulse * 0.4), 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(94,23,235,${alpha})`;
+      ctx.arc(p.x * W, p.y * H, p.size, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(140,110,255,${a})`;
       ctx.fill();
     });
+
+    /* vignette */
+    const vig = ctx.createRadialGradient(W*.5, H*.5, H*.05, W*.5, H*.5, W*.85);
+    vig.addColorStop(0, 'rgba(0,0,0,0)');
+    vig.addColorStop(1, 'rgba(0,0,0,.75)');
+    ctx.fillStyle = vig; ctx.fillRect(0,0,W,H);
 
     requestAnimationFrame(heroLoop);
   }
   heroLoop();
 })();
 
-/* ── Globe Canvas ── */
-(function globeCanvas() {
-  const canvas = qs('#globe-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, CX, CY;
+/* ────────────────────────
+   4. HERO TEXT ENTRANCE
+──────────────────────── */
+(function heroEntrance(){
+  const label = $('#hl'), sub = $('#hb'), btns = $('#hv');
+  const lines = $$('.hero-h1 .line');
+  const after = (el, ms, cls='in') => { if(el) setTimeout(() => el.classList.add(cls), ms); };
+  after(label, 180);
+  lines.forEach((l, i) => after(l, 400 + i*130));
+  after(sub, 860);
+  after(btns, 1020);
+})();
 
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    W = canvas.offsetWidth;
-    H = canvas.offsetHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    ctx.scale(dpr, dpr);
-    CX = W / 2; CY = H / 2;
+/* ────────────────────────
+   5. PARALLAX HERO
+──────────────────────── */
+(function parallax(){
+  const cv  = $('#c');
+  const inn = $('.hero-inner');
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    if(cv)  cv.style.transform  = `translateY(${sy * .20}px)`;
+    if(inn) inn.style.transform = `translateY(${sy * .07}px)`;
+  }, { passive: true });
+})();
+
+/* ────────────────────────
+   6. SYSTEM MAP CANVAS
+──────────────────────── */
+(function sysmap(){
+  const canvas = $('#globe-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, CX, CY, t = 0;
+  let rx = .18, ry = .04, velX = 0, velY = 0;
+  let drag = false, lmx = 0, lmy = 0;
+  let spinA = 0, spinB = 0;
+  let mmx = 0, mmy = 0;
+  let hovId = null, glows = {}, rects = [];
+
+  function resize(){
+    const dpr = devicePixelRatio || 1;
+    W = canvas.offsetWidth; H = canvas.offsetHeight;
+    canvas.width = W*dpr; canvas.height = H*dpr;
+    ctx.scale(dpr, dpr); CX = W/2; CY = H/2;
   }
   resize();
   window.addEventListener('resize', resize);
 
-  const S = 200;
-  let rx = 0.22, ry = 0.04;
-  let velX = 0, velY = 0;
-  let dragging = false, lastMX = 0, lastMY = 0;
-  let gT = 0, spinS = 0, spinH = 0;
-  let mouseX = W / 2, mouseY = H / 2;
-  let hoveredId = null;
-  let badgeRects = [];
-  const hoverGlow = {};
+  const S  = Math.min(W, H) * .40;
+  const FL = 900;
+  const proj  = p => { const z=p[2]+FL,sc=FL/z; return [CX+p[0]*sc, CY+p[1]*sc, sc]; };
+  const rotX  = (p,a) => { const c=Math.cos(a),s=Math.sin(a); return [p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c]; };
+  const rotY  = (p,a) => { const c=Math.cos(a),s=Math.sin(a); return [p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c]; };
+  const tr    = p => { let q=[...p]; q=rotX(q,rx); q=rotY(q,ry); return q; };
 
-  const BASE = { outer: { r: 1.36, z: 0 }, service: { r: 1.08, z: 24 }, human: { r: 0.76, z: 48 }, core: { z: 68 } };
-
-  const badges = [
-    { id: 'empathy', label: 'Empathy', style: 'teal', pos: [0, -0.44, 48 / S], w: 88, h: 27, icon: '01', info: 'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.' },
-    { id: 'synthesis', label: 'Synthesis', style: 'teal', pos: [-0.30, 0.26, 48 / S], w: 88, h: 27, icon: '02', info: 'Integrating research insights into clear design principles and actionable innovation opportunities.' },
-    { id: 'codesign', label: 'Co-Design', style: 'teal', pos: [0.30, 0.26, 48 / S], w: 94, h: 27, icon: '03', info: 'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.' },
-    { id: 'patient', label: 'Patient Journey', style: 'purple', pos: [0.90, 0, 24 / S], w: 150, h: 37, icon: '04', info: 'Mapping every touchpoint of the patient experience to design compassionate, human-centered healthcare interactions.' },
-    { id: 'adoption', label: 'Adoption Strategy', style: 'purple', pos: [-0.90, 0, 24 / S], w: 162, h: 37, icon: '05', info: 'Driving technology uptake through behavioral change frameworks and stakeholder alignment.' },
-    { id: 'blueprint', label: 'Service Blueprint', style: 'purple', pos: [-0.82, 0.52, 24 / S], w: 156, h: 37, icon: '06', info: 'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.' },
-    { id: 'clinician', label: 'Clinician Workflow', style: 'purple', pos: [0.82, 0.52, 24 / S], w: 168, h: 37, icon: '07', info: 'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.' }
+  const RINGS = [
+    { r:1.36, z:0,  col:'rgba(90,65,200,.48)',  lw:1.1, dash:[] },
+    { r:1.06, z:22, col:'rgba(65,145,195,.58)',  lw:.95, dash:[6,10] },
+    { r:.74,  z:44, col:'rgba(42,190,165,.62)',  lw:1.2, dash:[] },
   ];
-  badges.forEach(b => { hoverGlow[b.id] = 0; });
 
-  function rotX(p, a) { const c = Math.cos(a), s = Math.sin(a); return [p[0], p[1] * c - p[2] * s, p[1] * s + p[2] * c]; }
-  function rotY(p, a) { const c = Math.cos(a), s = Math.sin(a); return [p[0] * c + p[2] * s, p[1], -p[0] * s + p[2] * c]; }
-  const FL = 860;
-  function proj(p) { const z = p[2] + FL, sc = FL / z; return [CX + p[0] * sc, CY + p[1] * sc, sc]; }
-  function ar(p) { let q = [...p]; q = rotX(q, rx); q = rotY(q, ry); return q; }
+  const NODES = [
+    { id:'si', label:'Service Innovation',  ring:0, angle:0,              w:154, h:30, col:'#3b6fc9',
+      info:'Service innovation means designing the entire system — not just the technology, but the value it creates, the workflows it integrates, and the future environment it must operate in.' },
+    { id:'vp', label:'Value Proposition',   ring:0, angle:Math.PI,         w:146, h:30, col:'#3b6fc9',
+      info:'A value proposition is not discovered — it is designed. Structured for every stakeholder who must say yes: clinicians, administrators, procurement, investors.' },
+    { id:'cw', label:'Clinical Workflow',   ring:1, angle:Math.PI/4,       w:134, h:28, col:'#2b7fa0',
+      info:'Clinical workflow integration maps the step-by-step processes of healthcare professionals — and designs exactly where and how a technology fits without disruption.' },
+    { id:'ta', label:'Technology Adoption', ring:1, angle:5*Math.PI/4,     w:152, h:28, col:'#2b7fa0',
+      info:'Technology adoption requires governance, training architecture, stakeholder alignment, and workflow integration. Servizions builds the complete adoption system.' },
+    { id:'ss', label:'Service System',      ring:1, angle:3*Math.PI/4,     w:124, h:28, col:'#2b7fa0',
+      info:'The service system is the complete operational layer around a technology — training, governance, workflows, measurement — without which adoption is left to chance.' },
+    { id:'pp', label:'Pre-Product',         ring:2, angle:Math.PI/3,       w:100, h:24, col:'#28a88e',
+      info:'The pre-product phase is the most critical and most neglected stage of healthcare innovation. This is when the service system and value proposition must be designed.' },
+    { id:'fs', label:'Future Scenarios',    ring:2, angle:Math.PI,         w:120, h:24, col:'#28a88e',
+      info:'Future scenario planning builds structured visions of the healthcare system as it is evolving — so your innovation is designed for the environment that is coming.' },
+    { id:'mr', label:'Medical Robotics',    ring:2, angle:5*Math.PI/3,     w:116, h:24, col:'#28a88e',
+      info:'Medical robotics integration requires the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement systems.' },
+  ];
+  NODES.forEach(n => { glows[n.id] = 0; });
 
-  canvas.addEventListener('mousedown', e => { dragging = true; lastMX = e.clientX; lastMY = e.clientY; velX = velY = 0; setCursorState('drag'); });
-  window.addEventListener('mousemove', e => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    if (!dragging) return;
-    velY = (e.clientX - lastMX) * 0.009; velX = (e.clientY - lastMY) * 0.009;
-    ry += velY; rx += velX; lastMX = e.clientX; lastMY = e.clientY;
+  /* Interaction */
+  canvas.addEventListener('mousedown',  e => { drag=true; lmx=e.clientX; lmy=e.clientY; velX=velY=0; canvas.style.cursor='grabbing'; });
+  window.addEventListener('mousemove',  e => {
+    mmx = e.clientX; mmy = e.clientY;
+    if(!drag) return;
+    velY = (e.clientX - lmx) * .009; velX = (e.clientY - lmy) * .009;
+    ry += velY; rx += velX; lmx = e.clientX; lmy = e.clientY;
   });
-  window.addEventListener('mouseup', () => { dragging = false; setCursorState(''); });
-
-  canvas.addEventListener('touchstart', e => { const tc = e.touches[0]; dragging = true; lastMX = tc.clientX; lastMY = tc.clientY; velX = velY = 0; }, { passive: true });
-  window.addEventListener('touchmove', e => { const tc = e.touches[0]; if (!dragging) return; velY = (tc.clientX - lastMX) * 0.009; velX = (tc.clientY - lastMY) * 0.009; ry += velY; rx += velX; lastMX = tc.clientX; lastMY = tc.clientY; }, { passive: true });
-  window.addEventListener('touchend', () => { dragging = false; });
+  window.addEventListener('mouseup',    () => { drag=false; canvas.style.cursor='grab'; });
+  canvas.addEventListener('touchstart', e => { const tc=e.touches[0]; drag=true; lmx=tc.clientX; lmy=tc.clientY; velX=velY=0; }, { passive:true });
+  window.addEventListener('touchmove',  e => { const tc=e.touches[0]; if(!drag) return; velY=(tc.clientX-lmx)*.009; velX=(tc.clientY-lmy)*.009; ry+=velY; rx+=velX; lmx=tc.clientX; lmy=tc.clientY; }, { passive:true });
+  window.addEventListener('touchend',   () => { drag=false; });
 
   canvas.addEventListener('click', e => {
-    for (let i = badgeRects.length - 1; i >= 0; i--) {
-      const r = badgeRects[i];
-      if (e.clientX >= r.x && e.clientX <= r.x + r.w && e.clientY >= r.y && e.clientY <= r.y + r.h && r.info) {
-        qs('#globe-panel-title').textContent = r.label;
-        qs('#globe-panel-desc').textContent = r.info;
-        qs('#globe-panel-tag').textContent = 'NODE · ' + r.icon;
-        qs('#globe-panel').classList.add('on');
+    for(let i = rects.length - 1; i >= 0; i--){
+      const r = rects[i];
+      if(e.clientX >= r.x && e.clientX <= r.x+r.w && e.clientY >= r.y && e.clientY <= r.y+r.h){
+        $('#np-title').textContent = r.label;
+        $('#np-body').textContent  = r.info;
+        $('#np-tag').textContent   = 'NODE · ' + r.id.toUpperCase();
+        $('#node-panel').classList.add('on');
         break;
       }
     }
   });
-  qs('#globe-panel-close').onclick = () => qs('#globe-panel').classList.remove('on');
+  $('#np-close').onclick = () => $('#node-panel').classList.remove('on');
 
-  function drawRing(r, z, color, lw, dash) {
+  function drawRing(ring){
     const pts = [];
-    for (let i = 0; i <= 120; i++) { const a = (i / 120) * Math.PI * 2; pts.push(proj(ar([Math.cos(a) * r * S, Math.sin(a) * r * S, z]))); }
-    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.setLineDash(dash || []);
-    ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
+    for(let i = 0; i <= 100; i++){
+      const a = i/100 * Math.PI*2;
+      pts.push(proj(tr([Math.cos(a)*ring.r*S, Math.sin(a)*ring.r*S, ring.z])));
+    }
+    ctx.save();
+    ctx.strokeStyle = ring.col; ctx.lineWidth = ring.lw; ctx.setLineDash(ring.dash);
+    ctx.beginPath(); pts.forEach((p,i) => i ? ctx.lineTo(p[0],p[1]) : ctx.moveTo(p[0],p[1]));
     ctx.stroke(); ctx.setLineDash([]); ctx.restore();
   }
 
-  function drawDisc(r, z, fill) {
-    const pts = [];
-    for (let i = 0; i <= 90; i++) { const a = (i / 90) * Math.PI * 2; pts.push(proj(ar([Math.cos(a) * r * S, Math.sin(a) * r * S, z]))); }
-    ctx.save(); ctx.fillStyle = fill; ctx.beginPath();
-    pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
-    ctx.closePath(); ctx.fill(); ctx.restore();
+  function drawArrows(ring, count, cw, col, phase){
+    for(let i = 0; i < count; i++){
+      const a   = (i/count)*Math.PI*2 + phase;
+      const sz  = 6.5;
+      const raw = [Math.cos(a)*ring.r*S, Math.sin(a)*ring.r*S, ring.z];
+      const ta  = cw ? a+Math.PI/2 : a-Math.PI/2;
+      const a1  = [raw[0]+(-Math.cos(ta)+Math.cos(a))*sz, raw[1]+(-Math.sin(ta)+Math.sin(a))*sz, ring.z];
+      const a2  = [raw[0]+(-Math.cos(ta)-Math.cos(a))*sz, raw[1]+(-Math.sin(ta)-Math.sin(a))*sz, ring.z];
+      const pp  = proj(tr(raw)), pa1 = proj(tr(a1)), pa2 = proj(tr(a2));
+      ctx.save();
+      ctx.strokeStyle=col; ctx.lineWidth=1.3; ctx.lineCap='round'; ctx.lineJoin='round';
+      ctx.beginPath(); ctx.moveTo(pa1[0],pa1[1]); ctx.lineTo(pp[0],pp[1]); ctx.lineTo(pa2[0],pa2[1]);
+      ctx.stroke(); ctx.restore();
+    }
   }
 
-  function drawEdge(r, z0, z1, color) {
-    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 1;
-    for (let i = 0; i < 90; i++) {
-      const a = (i / 90) * Math.PI * 2, x = Math.cos(a) * r * S, y = Math.sin(a) * r * S;
-      const p1 = proj(ar([x, y, z0])), p2 = proj(ar([x, y, z1]));
-      ctx.globalAlpha = (Math.cos(a - ry) * 0.5 + 0.5) * 0.35;
-      ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.stroke();
-    }
-    ctx.globalAlpha = 1; ctx.restore();
-  }
+  function drawNode(node){
+    const ring = RINGS[node.ring];
+    const a    = node.angle;
+    const flt  = Math.sin(t*.013 + node.ring*1.2) * 3.5;
+    let wp = [Math.cos(a)*ring.r*S, Math.sin(a)*ring.r*S + flt, ring.z + (glows[node.id]||0)*18];
+    wp = rotX(wp,rx); wp = rotY(wp,ry);
+    const pr = proj(wp), sf = Math.max(.3, pr[2]);
+    const alpha = clamp((sf-.1)*2.5, 0, 1);
+    if(alpha < .05) return;
 
-  function drawArrow(r, angle, z, cw, color) {
-    const a = angle, sz = 8;
-    const raw = [Math.cos(a) * r * S, Math.sin(a) * r * S, z];
-    const ta = cw ? a + Math.PI / 2 : a - Math.PI / 2;
-    const a1 = [raw[0] + (-Math.cos(ta) + Math.cos(a)) * sz, raw[1] + (-Math.sin(ta) + Math.sin(a)) * sz, z];
-    const a2 = [raw[0] + (-Math.cos(ta) - Math.cos(a)) * sz, raw[1] + (-Math.sin(ta) - Math.sin(a)) * sz, z];
-    const pp = proj(ar(raw)), pa1 = proj(ar(a1)), pa2 = proj(ar(a2));
-    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-    ctx.beginPath(); ctx.moveTo(pa1[0], pa1[1]); ctx.lineTo(pp[0], pp[1]); ctx.lineTo(pa2[0], pa2[1]);
-    ctx.stroke(); ctx.restore();
-  }
+    const g  = glows[node.id] || 0;
+    const sw = node.w*sf, sh = node.h*sf, rad = sh/2;
+    const px = pr[0]-sw/2, py = pr[1]-sh/2;
 
-  function drawBadge(badge, floatY) {
-    const g = hoverGlow[badge.id];
-    let wp = [badge.pos[0] * S, badge.pos[1] * S + floatY, badge.pos[2] * S + (g > 0 ? g * 30 : 0)];
-    wp = rotX(wp, rx); wp = rotY(wp, ry);
-    const pr = proj(wp), sf = Math.max(0.35, pr[2]);
-    const alpha = Math.max(0, Math.min(1, (sf - 0.15) * 3));
-    if (alpha < 0.04) return;
-    const sw = badge.w * sf, sh = badge.h * sf, rad = sh / 2, px = pr[0] - sw / 2, py = pr[1] - sh / 2;
-    ctx.save(); ctx.globalAlpha = alpha;
-    if (g > 0.02) {
-      const gr = ctx.createRadialGradient(pr[0], pr[1], 0, pr[0], pr[1], sw * 0.8 + g * 28);
-      gr.addColorStop(0, badge.style === 'teal' ? `rgba(90,173,163,${g * 0.22})` : `rgba(94,23,235,${g * 0.18})`);
-      gr.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(pr[0], pr[1], sw * 0.8 + g * 28, 0, Math.PI * 2); ctx.fill();
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    /* halo */
+    if(g > .02){
+      const hl = ctx.createRadialGradient(pr[0],pr[1],0,pr[0],pr[1],sw*.85+g*28);
+      hl.addColorStop(0, node.col.replace(')',`,${g*.14})`).replace('rgb','rgba'));
+      hl.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle = hl;
+      ctx.beginPath(); ctx.arc(pr[0],pr[1],sw*.85+g*28,0,Math.PI*2); ctx.fill();
     }
-    ctx.shadowColor = badge.style === 'teal' ? 'rgba(90,173,163,.3)' : 'rgba(94,23,235,.3)';
-    ctx.shadowBlur = (10 + g * 20) * sf; ctx.shadowOffsetY = (3 + g * 3) * sf;
-    const grd = ctx.createLinearGradient(px, py, badge.style === 'teal' ? px : px + sw, py + sh);
-    if (badge.style === 'teal') {
-      grd.addColorStop(0, g > 0 ? '#68bdb3' : '#5aada3'); grd.addColorStop(1, g > 0 ? '#4c9e94' : '#4a9990');
-    } else {
-      grd.addColorStop(0, g > 0 ? '#8872e0' : '#7560d0'); grd.addColorStop(1, g > 0 ? '#6a35d4' : '#5e17eb');
-    }
-    ctx.fillStyle = grd; ctx.beginPath(); ctx.roundRect(px, py, sw, sh, rad); ctx.fill();
-    ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-    const shim = ctx.createLinearGradient(px, py, px, py + sh * 0.55);
-    shim.addColorStop(0, `rgba(255,255,255,${0.16 + g * 0.08})`); shim.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = shim; ctx.beginPath(); ctx.roundRect(px, py, sw, sh * 0.5, rad); ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,.96)';
-    ctx.font = `600 ${Math.max(7, (badge.style === 'teal' ? 10 : 12) * sf)}px Space Grotesk,sans-serif`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(badge.label, pr[0], pr[1]);
-    if (sf > 0.65) {
-      ctx.fillStyle = `rgba(255,255,255,${0.4 * sf})`;
-      ctx.font = `400 ${Math.max(5, 7 * sf)}px Space Mono,monospace`;
-      ctx.textAlign = 'right';
-      ctx.fillText(badge.icon, px + sw - 5 * sf, py + 7 * sf);
-    }
+
+    /* pill */
+    ctx.shadowColor = node.col; ctx.shadowBlur = (10+g*18)*sf; ctx.shadowOffsetY = 1.5*sf;
+    ctx.fillStyle   = `rgba(5,3,16,${.88+g*.06})`;
+    ctx.beginPath(); ctx.roundRect(px,py,sw,sh,rad); ctx.fill();
+    ctx.strokeStyle = node.col + (alpha<.5?'44':'77'); ctx.lineWidth = .75*sf;
+    ctx.beginPath(); ctx.roundRect(px,py,sw,sh,rad); ctx.stroke();
+    const shim = ctx.createLinearGradient(px,py,px,py+sh*.55);
+    shim.addColorStop(0,`rgba(255,255,255,${.05+g*.03})`); shim.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = shim; ctx.beginPath(); ctx.roundRect(px,py,sw,sh*.5,rad); ctx.fill();
+    ctx.shadowBlur = 0;
+
+    /* label */
+    ctx.fillStyle  = `rgba(215,210,255,${.9+g*.1})`;
+    ctx.font       = `${node.ring===0?'500':'400'} ${Math.max(6,(node.ring===0?11.5:10)*sf)}px Inter,sans-serif`;
+    ctx.textAlign  = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(node.label, pr[0], pr[1]);
     ctx.restore();
-    const bounds = canvas.getBoundingClientRect();
-    badgeRects.push({ x: bounds.left + px, y: bounds.top + py, w: sw, h: sh, id: badge.id, label: badge.label, info: badge.info || null, icon: badge.icon });
+
+    const br = canvas.getBoundingClientRect();
+    rects.push({ x:br.left+px, y:br.top+py, w:sw, h:sh, id:node.id, label:node.label, info:node.info });
   }
 
-  function drawLabel(text, pos3d, size, color, bold) {
-    const p = proj(ar([pos3d[0] * S, pos3d[1] * S, pos3d[2]]));
-    const a = Math.max(0, Math.min(1, (p[2] - 0.12) * 3));
-    if (a < 0.03) return;
-    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = color;
-    ctx.font = `${bold ? '600' : '300'} ${Math.max(6, size * p[2])}px Space Grotesk,sans-serif`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(text, p[0], p[1]);
-    ctx.restore();
+  function drawCore(){
+    const fz = RINGS[2].z + 8 + Math.sin(t*.018)*4;
+    let q = [0,0,fz]; q=rotX(q,rx); q=rotY(q,ry);
+    const pr = proj(q), sf = Math.max(.5, pr[2]);
+    const pa = clamp((sf-.1)*2.8, 0, 1);
+    if(pa < .04) return;
+
+    const pulse = .8 + Math.sin(t*.022) * .2;
+    const pw = 136*sf, ph = 50*sf, r2 = ph/2;
+    const ppx = pr[0]-pw/2, ppy = pr[1]-ph/2;
+
+    ctx.globalAlpha = pa;
+    const hR = pw * pulse;
+    const hg = ctx.createRadialGradient(pr[0],pr[1],0,pr[0],pr[1],hR);
+    hg.addColorStop(0, `rgba(70,42,190,${.13*pulse})`);
+    hg.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(pr[0],pr[1],hR,0,Math.PI*2); ctx.fill();
+
+    ctx.shadowColor='rgba(70,42,190,.45)'; ctx.shadowBlur=22*sf;
+    const grd = ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);
+    grd.addColorStop(0,'#5030c0'); grd.addColorStop(1,'#351895');
+    ctx.fillStyle=grd; ctx.beginPath(); ctx.roundRect(ppx,ppy,pw,ph,r2); ctx.fill();
+    ctx.shadowBlur=0;
+    const shim = ctx.createLinearGradient(ppx,ppy,ppx,ppy+ph);
+    shim.addColorStop(0,'rgba(255,255,255,.10)'); shim.addColorStop(.5,'rgba(255,255,255,0)');
+    ctx.fillStyle=shim; ctx.beginPath(); ctx.roundRect(ppx,ppy,pw,ph*.5,r2); ctx.fill();
+    ctx.fillStyle='rgba(215,210,255,.95)';
+    ctx.font=`600 ${Math.max(7,13.5*sf)}px Syne,sans-serif`;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('SERVIZIONS', pr[0], pr[1]);
+    ctx.globalAlpha=1;
   }
 
-  function globeLoop() {
-    gT += 0.013;
-    badgeRects = [];
-    spinS += 0.0018;
-    spinH -= 0.0012;
+  function globeLoop(){
+    t++; rects = [];
+    spinA += .0014; spinB -= .0010;
+    if(!drag){ velX*=.92; velY*=.92; rx+=velX; ry+=velY; if(Math.abs(velX)<.0003&&Math.abs(velY)<.0003) rx+=.00025; }
 
-    if (!dragging) {
-      velX *= 0.92; velY *= 0.92;
-      rx += velX; ry += velY;
-      if (Math.abs(velX) < 0.0004 && Math.abs(velY) < 0.0004) rx += 0.0004;
-    }
+    const br = canvas.getBoundingClientRect();
+    const tx = (mmx - br.left - W/2)/W * .048;
+    const ty = (mmy - br.top  - H/2)/H * .048;
+    rx += (ty - rx) * .012; ry += (tx - ry) * .012;
 
-    const bounds = canvas.getBoundingClientRect();
-    const tx = (mouseX - bounds.left - W / 2) / W * 0.06;
-    const ty = (mouseY - bounds.top - H / 2) / H * 0.06;
-    rx += (ty - rx) * 0.018;
-    ry += (tx - ry) * 0.018;
+    ctx.clearRect(0,0,W,H);
 
-    ctx.clearRect(0, 0, W, H);
+    const bg = ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.72);
+    bg.addColorStop(0,'rgba(12,7,32,.20)'); bg.addColorStop(1,'rgba(4,2,14,0)');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
 
-    /* bg glow */
-    const bg = ctx.createRadialGradient(CX, CY, 0, CX, CY, Math.max(W, H) * 0.7);
-    bg.addColorStop(0, 'rgba(220,210,255,0.15)'); bg.addColorStop(1, 'rgba(247,246,252,0)');
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    /* disc fills */
+    [RINGS[2],RINGS[1],RINGS[0]].forEach(r => {
+      const pts=[];
+      for(let i=0;i<=80;i++){const a=i/80*Math.PI*2;pts.push(proj(tr([Math.cos(a)*r.r*S,Math.sin(a)*r.r*S,r.z])));}
+      const fc = r===RINGS[2]?'rgba(42,170,145,.05)':r===RINGS[1]?'rgba(50,125,175,.04)':'rgba(55,44,155,.035)';
+      ctx.save(); ctx.fillStyle=fc;
+      ctx.beginPath(); pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));
+      ctx.closePath(); ctx.fill(); ctx.restore();
+    });
 
-    drawDisc(BASE.outer.r, BASE.outer.z, 'rgba(194,228,225,0.18)');
-    drawDisc(BASE.service.r, BASE.service.z, 'rgba(197,183,240,0.48)');
-    drawDisc(BASE.human.r, BASE.human.z, 'rgba(150,215,208,0.6)');
+    /* vertical connectors */
+    RINGS.forEach((r, ri) => {
+      if(ri < 2){
+        const next = RINGS[ri+1];
+        ctx.save(); ctx.lineWidth=.55;
+        for(let i=0;i<56;i++){
+          const a=i/56*Math.PI*2, x=Math.cos(a)*r.r*S, y=Math.sin(a)*r.r*S;
+          const p1=proj(tr([x,y,r.z])), p2=proj(tr([x,y,next.z]));
+          ctx.globalAlpha=(Math.cos(a-ry)*.5+.5)*.18;
+          ctx.strokeStyle='rgba(110,80,210,1)';
+          ctx.beginPath(); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]); ctx.stroke();
+        }
+        ctx.globalAlpha=1; ctx.restore();
+      }
+    });
 
-    drawEdge(BASE.outer.r, BASE.outer.z, BASE.service.z, 'rgba(175,155,230,0.8)');
-    drawEdge(BASE.service.r, BASE.service.z, BASE.human.z, 'rgba(140,210,205,0.8)');
-    drawEdge(BASE.human.r, BASE.human.z, BASE.core.z, 'rgba(120,200,193,0.8)');
-
-    drawRing(BASE.outer.r, BASE.outer.z, 'rgba(140,210,205,1)', 2, []);
-    drawRing(BASE.service.r, BASE.service.z, 'rgba(155,130,218,1)', 1.8, [5, 8]);
-    drawRing(BASE.human.r, BASE.human.z, 'rgba(80,175,168,1)', 2.2, []);
-
-    [0, Math.PI / 2, Math.PI, 3 * Math.PI / 2].forEach(a => drawArrow(BASE.service.r, a + spinS, BASE.service.z, true, 'rgba(120,95,200,1)'));
-    [Math.PI / 4, 3 * Math.PI / 4, 5 * Math.PI / 4, 7 * Math.PI / 4].forEach(a => drawArrow(BASE.human.r, a + spinH, BASE.human.z, false, 'rgba(60,155,148,1)'));
-
-    drawLabel('AI & Robotics growth', [0, -1.48, 0], 12, 'rgba(90,65,185,1)', true);
-    drawLabel('Service System', [0, 1.20, BASE.service.z], 11, 'rgba(110,90,175,1)', false);
-    drawLabel('Human-Centered Innovation', [0, 0.88, BASE.human.z], 10, 'rgba(50,140,133,1)', false);
-    drawLabel('Systemic Innovation', [0, 1.62, 0], 10, 'rgba(160,148,200,1)', false);
-
-    badges.forEach((b, i) => drawBadge(b, Math.sin(gT + i * 1.3) * 3));
+    RINGS.forEach(r => drawRing(r));
+    drawArrows(RINGS[1], 4, true,  'rgba(70,140,195,.65)', spinA);
+    drawArrows(RINGS[2], 3, false, 'rgba(42,190,165,.65)', spinB);
+    NODES.forEach(n => drawNode(n));
+    drawCore();
 
     /* hover detection */
     let nh = null;
-    for (let i = badgeRects.length - 1; i >= 0; i--) {
-      const r = badgeRects[i];
-      if (mouseX >= r.x && mouseX <= r.x + r.w && mouseY >= r.y && mouseY <= r.y + r.h) { nh = r.id; break; }
+    for(let i = rects.length-1; i >= 0; i--){
+      const r=rects[i];
+      if(mmx>=r.x&&mmx<=r.x+r.w&&mmy>=r.y&&mmy<=r.y+r.h){ nh=r.id; break; }
     }
-    hoveredId = nh;
-    badges.forEach(b => { hoverGlow[b.id] += ((b.id === hoveredId ? 1 : 0) - hoverGlow[b.id]) * 0.1; });
-    canvas.style.cursor = hoveredId ? 'pointer' : dragging ? 'grabbing' : 'grab';
-
-    /* SERVIZIONS core pill */
-    const fz = BASE.core.z + Math.sin(gT * 1.4) * 4;
-    let q = [0, 0, fz]; q = rotX(q, rx); q = rotY(q, ry);
-    const pr = proj(q), sf = Math.max(0.5, pr[2]);
-    const pa = Math.max(0, Math.min(1, (sf - 0.15) * 3));
-    const pw = 210 * sf, ph = 82 * sf, r2 = ph / 2, ppx = pr[0] - pw / 2, ppy = pr[1] - ph / 2;
-    ctx.globalAlpha = pa;
-    const pulse = 0.82 + Math.sin(gT * 1.4) * 0.18, hR = pw * 0.85 * pulse;
-    const halo = ctx.createRadialGradient(pr[0], pr[1], pw * 0.1, pr[0], pr[1], hR);
-    halo.addColorStop(0, `rgba(94,23,235,${0.15 * pulse})`); halo.addColorStop(1, 'rgba(94,23,235,0)');
-    ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(pr[0], pr[1], hR, 0, Math.PI * 2); ctx.fill();
-    ctx.shadowColor = 'rgba(94,23,235,.35)'; ctx.shadowBlur = 30 * sf; ctx.shadowOffsetY = 10 * sf;
-    const pgrd = ctx.createLinearGradient(ppx, ppy, ppx + pw, ppy + ph);
-    pgrd.addColorStop(0, '#7a35ef'); pgrd.addColorStop(1, '#5e17eb');
-    ctx.fillStyle = pgrd; ctx.beginPath(); ctx.roundRect(ppx, ppy, pw, ph, r2); ctx.fill();
-    ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-    const shim = ctx.createLinearGradient(ppx, ppy, ppx, ppy + ph);
-    shim.addColorStop(0, 'rgba(255,255,255,.18)'); shim.addColorStop(0.5, 'rgba(255,255,255,0)');
-    ctx.fillStyle = shim; ctx.beginPath(); ctx.roundRect(ppx, ppy, pw, ph * 0.5, r2); ctx.fill();
-    ctx.fillStyle = '#fff';
-    ctx.font = `700 ${Math.max(9, 17 * sf)}px Space Grotesk,sans-serif`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText('SERVIZIONS', pr[0], pr[1]);
-    ctx.globalAlpha = 1;
+    hovId = nh;
+    NODES.forEach(n => { glows[n.id] += (+(n.id===hovId) - glows[n.id]) * .09; });
+    if(!drag) canvas.style.cursor = hovId ? 'pointer' : 'grab';
 
     requestAnimationFrame(globeLoop);
   }
   globeLoop();
 })();
 
-/* ── CTA Canvas — aurora ── */
-(function ctaCanvas() {
-  const canvas = qs('#cta-canvas');
-  if (!canvas) return;
+/* ────────────────────────
+   7. CTA CANVAS — Aurora
+──────────────────────── */
+(function ctaAurora(){
+  const canvas = $('#cta-canvas');
+  if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, t = 0;
 
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
+  function resize(){
+    const dpr = devicePixelRatio || 1;
     W = canvas.offsetWidth; H = canvas.offsetHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    ctx.scale(dpr, dpr);
+    canvas.width=W*dpr; canvas.height=H*dpr; ctx.scale(dpr,dpr);
   }
   resize();
   window.addEventListener('resize', resize);
 
-  function ctaLoop() {
-    t += 0.008;
-    ctx.clearRect(0, 0, W, H);
+  const blobs = [
+    { x:.20, y:.32, r:.52, h:232, ph:0,   spd:.00035 },
+    { x:.72, y:.58, r:.46, h:252, ph:2.1,  spd:.00042 },
+    { x:.46, y:.76, r:.42, h:208, ph:4.2,  spd:.00028 },
+  ];
 
-    /* deep bg */
-    const bg = ctx.createLinearGradient(0, 0, 0, H);
-    bg.addColorStop(0, '#0a0420'); bg.addColorStop(1, '#150840');
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  function ctaLoop(){
+    t += 1;
+    ctx.clearRect(0,0,W,H);
+    const bg = ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#040211'); bg.addColorStop(1,'#08031e');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
 
-    /* aurora blobs */
-    const blobs = [
-      { x: 0.2, y: 0.3, r: 0.5, h: 270, phase: 0 },
-      { x: 0.7, y: 0.6, r: 0.45, h: 250, phase: 1.5 },
-      { x: 0.5, y: 0.8, r: 0.4, h: 200, phase: 3 },
-    ];
     blobs.forEach(b => {
-      const bx = W * (b.x + Math.sin(t + b.phase) * 0.07);
-      const by = H * (b.y + Math.cos(t * 0.7 + b.phase) * 0.05);
-      const br = W * b.r;
-      const grad = ctx.createRadialGradient(bx, by, 0, bx, by, br);
-      const alpha = 0.08 + Math.sin(t * 0.5 + b.phase) * 0.03;
-      grad.addColorStop(0, `hsla(${b.h + Math.sin(t + b.phase) * 20}, 80%, 65%, ${alpha})`);
-      grad.addColorStop(1, 'hsla(270, 80%, 30%, 0)');
-      ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+      const bx = W*(b.x + Math.sin(t*b.spd + b.ph)*.055);
+      const by = H*(b.y + Math.cos(t*b.spd*.7 + b.ph)*.038);
+      const br = Math.min(W,H) * b.r;
+      const a  = .065 + Math.sin(t*b.spd*.5 + b.ph)*.022;
+      const g  = ctx.createRadialGradient(bx,by,0,bx,by,br);
+      g.addColorStop(0, `hsla(${b.h + Math.sin(t*b.spd+b.ph)*12},72%,56%,${a})`);
+      g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
     });
 
-    /* grid */
-    ctx.strokeStyle = 'rgba(255,255,255,0.025)'; ctx.lineWidth = 1;
-    const gs = 70;
-    for (let x = 0; x < W + gs; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-    for (let y = 0; y < H + gs; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    /* subtle grid */
+    ctx.strokeStyle = 'rgba(255,255,255,.012)'; ctx.lineWidth=1;
+    const gs = 80;
+    for(let x=0;x<W+gs;x+=gs){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
+    for(let y=0;y<H+gs;y+=gs){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
 
-    /* stars */
-    for (let i = 0; i < 60; i++) {
-      const sx = ((i * 137.5 * W / 100) % W);
-      const sy = ((i * 97.3 * H / 100) % H);
-      const sa = 0.3 + Math.sin(t * 0.5 + i) * 0.3;
-      ctx.beginPath(); ctx.arc(sx, sy, 0.8, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${sa})`; ctx.fill();
+    /* star field */
+    for(let i=0;i<44;i++){
+      const sx = i*179.3%W, sy = i*97.7%H;
+      const sa = .12 + Math.sin(t*.012+i)*.12;
+      ctx.beginPath(); ctx.arc(sx,sy,.65,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${sa})`; ctx.fill();
     }
 
     requestAnimationFrame(ctaLoop);
@@ -925,141 +871,63 @@ qsa('.mag-btn').forEach(btn => {
   ctaLoop();
 })();
 
-/* ── Expertise tags ── */
-(function expertiseTags() {
+/* ────────────────────────
+   8. EXPERTISE TAGS
+──────────────────────── */
+(function expertiseTags(){
   const data = {
-    'service-innovation': 'Service innovation in healthcare means designing the complete system around a clinical service — not just the technology, but the value it delivers, the workflows it fits into, and the future environment it must survive in.',
-    'value-proposition': 'A clear value proposition is the single most critical missing element in most healthcare technology launches. Servizions designs value propositions that align clinical outcomes, operational ROI, and stakeholder needs.',
-    'future-scenarios': 'Our proprietary future scenario planning method builds structured visions of the healthcare system as it is evolving — so that your innovation is designed not only for today\'s clinical reality, but for the healthcare environment that is coming.',
-    'clinical-workflow': 'Clinical workflow design maps the step-by-step processes that healthcare professionals follow. We identify exactly where new technologies fit and how adoption can be made seamless.',
-    'technology-adoption': 'Technology adoption in healthcare requires governance, training, stakeholder alignment, and workflow integration. Servizions builds the complete adoption architecture.',
-    'service-design': 'Human-centered design starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators.',
-    'pre-product': 'The pre-product phase is the most critical and most neglected stage of healthcare innovation. Servizions specialises in shaping the value proposition and service concept before a technology is finalised.',
-    'robotics': 'Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement.',
-    'system-design': 'Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system.'
+    si: 'Service innovation means designing the entire service system around a healthcare technology — the value it creates, the workflows it integrates, and the operational ecosystem required for real clinical adoption.',
+    ss: 'The service system is the complete operational layer that a technology requires — training architecture, clinical governance, workflow integration, adoption pathways, and value measurement. Without it, adoption is left to chance.',
+    vp: 'A value proposition is not discovered — it is designed. Structured for every stakeholder who must say yes: the clinician who uses it, the administrator who approves it, the procurement committee that buys it.',
+    fs: 'Future scenario planning builds structured visions of the healthcare system as it is evolving — so that your innovation is designed not only for today\'s clinical reality, but for the environment that is coming.',
+    cw: 'Clinical workflow integration maps the step-by-step processes of healthcare professionals and identifies exactly where and how a technology fits without creating disruption or resistance.',
+    ta: 'Technology adoption requires governance, training architecture, stakeholder alignment, and workflow integration. Servizions builds the complete adoption system — not just the product launch plan.',
+    pp: 'The pre-product phase is the most critical and most neglected stage of healthcare innovation. This is when the service system and value proposition must be designed — before a product is finalised.',
+    mr: 'Medical robotics integration requires the entire service ecosystem: clinical training, workflow redesign, governance frameworks, and value measurement systems aligned with hospital decision-making.',
+    sc: 'Systemic innovation addresses the entire ecosystem — not just the product or technology, but the service infrastructure, stakeholder relationships, governance, and adoption architecture that determines whether an innovation succeeds.',
   };
-  const tags = qsa('.exp-tag');
-  const panel = qs('#exp-panel');
-  const panelText = qs('#exp-panel-text');
-  let active = null;
+  const tags   = $$('.etag');
+  const panel  = $('#exp-panel');
+  const text   = $('#exp-text');
+  let active   = null;
 
   tags.forEach(tag => {
     tag.addEventListener('click', () => {
-      const k = tag.dataset.key;
-      if (active === k) { panel.classList.remove('open'); tag.classList.remove('active'); active = null; return; }
-      tags.forEach(t => t.classList.remove('active'));
-      panelText.textContent = data[k];
-      tag.classList.add('active');
+      const k = tag.dataset.k;
+      if(active === k){ panel.classList.remove('open'); tag.classList.remove('on'); active=null; return; }
+      tags.forEach(x => x.classList.remove('on'));
+      text.textContent = data[k];
+      tag.classList.add('on');
       panel.classList.add('open');
       active = k;
     });
   });
 })();
 
-/* ── Reveal on Scroll ── */
-(function revealOnScroll() {
-  const sections = qsa('.reveal-section');
-  const children = qsa('.reveal-child');
-  const cards = qsa('.reveal-card');
-
+/* ────────────────────────
+   9. SCROLL REVEALS
+──────────────────────── */
+(function reveals(){
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold:.07, rootMargin:'0px 0px -44px 0px' });
 
-  const childObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        childObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  const obsItem = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obsItem.unobserve(e.target); } });
+  }, { threshold:.08, rootMargin:'0px 0px -28px 0px' });
 
-  const cardObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        cardObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-
-  sections.forEach(s => obs.observe(s));
-  children.forEach((c, i) => {
-    c.style.transitionDelay = `${i * 0.08}s`;
-    childObs.observe(c);
+  $$('.reveal').forEach(el => obs.observe(el));
+  $$('.reveal-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * .10}s`;
+    obsItem.observe(el);
   });
-  cards.forEach((c, i) => {
-    c.style.transitionDelay = `${i * 0.12}s`;
-    cardObs.observe(c);
+  $$('.ins-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * .11}s`;
+    obsItem.observe(el);
   });
 })();
 
-/* ── Hero text entrance ── */
-(function heroEntrance() {
-  const lines = qsa('.split-inner');
-  const eyebrow = qs('.hero-eyebrow');
-  const sub = qs('.hero-sub');
-  const actions = qs('.hero-actions');
-  const hint = qs('.hero-scroll-hint');
-
-  setTimeout(() => { if (eyebrow) eyebrow.classList.add('in'); }, 200);
-  lines.forEach((el, i) => { setTimeout(() => el.classList.add('in'), 400 + i * 140); });
-  setTimeout(() => { if (sub) sub.classList.add('in'); }, 900);
-  setTimeout(() => { if (actions) actions.classList.add('in'); }, 1050);
-  setTimeout(() => { if (hint) hint.classList.add('in'); }, 1300);
 })();
-
-/* ── Process Cards — stagger ── */
-(function processCards() {
-  const cards = qsa('.process-card');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const i = parseInt(entry.target.dataset.index || '0');
-        setTimeout(() => entry.target.classList.add('in'), i * 120);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  cards.forEach(c => obs.observe(c));
-})();
-
-/* ── Ticker pause on hover ── */
-(function ticker() {
-  const track = qs('.ticker-track');
-  if (!track) return;
-  track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
-  track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
-})();
-
-/* ── Insight cards hover ── */
-qsa('.insight-card').forEach(card => {
-  card.addEventListener('mouseenter', () => setCursorState('link', 'Read'));
-  card.addEventListener('mouseleave', () => setCursorState(''));
-});
-
-/* ── Parallax on scroll ── */
-(function parallax() {
-  const hero = qs('#hero');
-  function onScroll() {
-    const sy = window.scrollY;
-    if (hero) {
-      const canvas = hero.querySelector('canvas');
-      if (canvas) canvas.style.transform = `translateY(${sy * 0.25}px)`;
-      const content = hero.querySelector('.hero-content');
-      if (content) content.style.transform = `translateY(${sy * 0.15}px)`;
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-})();
-
-})(); /* end IIFE */
 </script>
 </body>
 </html>
