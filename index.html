@@ -772,3 +772,140 @@
 
 })();
 </script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servizions</title>
+
+<style>
+body {
+  margin: 0;
+  background: #f7f6fc;
+  overflow-x: hidden;
+}
+
+/* Canvas */
+#hero-canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  z-index:0;
+}
+
+/* Scroll space */
+.hero-animation-wrap{
+  height:300vh;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero-animation-wrap"></div>
+<canvas id="hero-canvas"></canvas>
+
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+
+const canvas = document.getElementById("hero-canvas");
+const ctx = canvas.getContext("2d");
+
+let W, H, CX, CY;
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  CX = W/2;
+  CY = H/2;
+}
+resize();
+window.addEventListener("resize", resize);
+
+/* ========= SIMPLE 3D ENGINE ========= */
+
+function rotX(p,a){
+  const c=Math.cos(a),s=Math.sin(a);
+  return [p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];
+}
+
+function rotY(p,a){
+  const c=Math.cos(a),s=Math.sin(a);
+  return [p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];
+}
+
+const FL = 800;
+function proj(p){
+  const z = p[2] + FL;
+  const sc = FL / z;
+  return [CX + p[0]*sc, CY + p[1]*sc, sc];
+}
+
+/* ========= ANIMATION ========= */
+
+let rx = 0.2;
+let ry = 0.2;
+let t = 0;
+
+/* draw ring */
+function drawRing(r, z, color){
+  ctx.beginPath();
+  for(let i=0;i<=100;i++){
+    let a = i/100*Math.PI*2;
+    let p = [Math.cos(a)*r, Math.sin(a)*r, z];
+    p = rotX(p, rx);
+    p = rotY(p, ry);
+    let pr = proj(p);
+
+    if(i===0) ctx.moveTo(pr[0], pr[1]);
+    else ctx.lineTo(pr[0], pr[1]);
+  }
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
+/* ========= MAIN LOOP ========= */
+
+function draw(){
+  t += 0.01;
+
+  ctx.clearRect(0,0,W,H);
+
+  // subtle background glow
+  let grad = ctx.createRadialGradient(CX,CY,0,CX,CY,800);
+  grad.addColorStop(0,"rgba(94,23,235,0.15)");
+  grad.addColorStop(1,"transparent");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,W,H);
+
+  // rotate slowly
+  ry += 0.003;
+
+  // rings (layered system)
+  drawRing(120, 0, "rgba(94,23,235,0.8)");
+  drawRing(90, 40, "rgba(120,95,200,0.8)");
+  drawRing(60, 80, "rgba(80,175,168,0.8)");
+
+  // center sphere
+  let p = [0,0,100];
+  p = rotX(p, rx);
+  p = rotY(p, ry);
+  let pr = proj(p);
+
+  ctx.beginPath();
+  ctx.arc(pr[0], pr[1], 40*pr[2], 0, Math.PI*2);
+  ctx.fillStyle = "#5e17eb";
+  ctx.fill();
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+});
+</script>
+
+</body>
+</html>
