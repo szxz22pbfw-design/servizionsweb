@@ -20,18 +20,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-  .hero-animation-wrap { position:relative; height:1200vh; background:#f7f6fc; }
+  /* hero wrap — very tall so scroll drives full animation */
+  .hero-animation-wrap { position:relative; height:2000vh; background:#f7f6fc; }
   .hero-sticky { position:sticky; top:0; width:100%; height:100vh; }
-  #hero-canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; display:block; z-index:1; }
-  .navbar { position:sticky; top:0; z-index:999; }
+  /* canvas fixed, always full viewport */
+  #hero-canvas {
+    position:fixed; top:0; left:0;
+    width:100vw; height:100vh;
+    display:block; z-index:1;
+  }
+  /* navbar above canvas */
+  .navbar { position:sticky; top:0; z-index:999 !important; }
+  /* cursor */
   #szn-cur { position:fixed; width:7px; height:7px; background:#5e17eb; border-radius:50%; pointer-events:none; z-index:9999; top:0; left:0; transform:translate(-50%,-50%); box-shadow:0 0 10px rgba(94,23,235,.7); }
   #szn-cur-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(94,23,235,.4); border-radius:50%; pointer-events:none; z-index:9998; top:0; left:0; transform:translate(-50%,-50%); transition:width .18s,height .18s; }
+  /* corner brackets */
   .szn-corner { position:fixed; width:16px; height:16px; border-color:rgba(94,23,235,.2); border-style:solid; pointer-events:none; z-index:50; }
   .szn-corner.tl { top:20px; left:20px; border-width:1px 0 0 1px; }
   .szn-corner.tr { top:20px; right:20px; border-width:1px 1px 0 0; }
   .szn-corner.bl { bottom:20px; left:20px; border-width:0 0 1px 1px; }
   .szn-corner.br { bottom:20px; right:20px; border-width:0 1px 1px 0; }
+  /* scroll hint */
   #szn-hint { position:fixed; bottom:32px; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.2em; color:rgba(94,23,235,.38); text-transform:uppercase; pointer-events:none; z-index:100; transition:opacity .4s; }
+  /* info panel */
   #szn-panel { position:fixed; right:44px; top:50%; width:260px; background:rgba(247,246,252,0.97); border:1px solid rgba(94,23,235,.12); border-left:2px solid rgba(94,23,235,.4); border-radius:4px 16px 16px 4px; padding:24px 20px 20px; box-shadow:0 24px 64px rgba(94,23,235,.09); opacity:0; pointer-events:none; transition:opacity .28s,transform .28s; transform:translateY(-50%) translateX(20px); z-index:200; }
   #szn-panel.on { opacity:1; pointer-events:auto; transform:translateY(-50%) translateX(0); }
   #szn-panel-tag { font-family:'Space Mono',monospace; font-size:9px; letter-spacing:.18em; color:rgba(94,23,235,.45); text-transform:uppercase; margin-bottom:10px; }
@@ -39,6 +50,7 @@
   #szn-panel-desc { font-size:12px; color:#6a6090; line-height:1.68; font-family:'Space Grotesk',sans-serif; font-weight:300; }
   #szn-panel-close { position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:4px; background:none; border:1px solid rgba(94,23,235,.15); cursor:pointer; color:#9080c0; font-size:10px; display:flex; align-items:center; justify-content:center; font-family:'Space Mono',monospace; }
   #szn-panel-close:hover { background:rgba(94,23,235,.07); }
+  /* bridge section */
   .bridge-statement-section { background:var(--white); padding:110px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
   .bridge-statement-inner { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
   .bridge-statement-title { font-family:var(--font-display); font-size:44px; font-weight:400; font-style:italic; color:var(--ink); line-height:1.15; letter-spacing:-0.3px; margin-top:16px; }
@@ -63,10 +75,12 @@
     </div>
   </header>
 
+  <!-- HERO: tall wrapper drives scroll, sticky keeps canvas in view -->
   <div class="hero-animation-wrap" id="hero-wrap">
     <div class="hero-sticky"></div>
   </div>
 
+  <!-- fixed canvas + UI overlays -->
   <canvas id="hero-canvas"></canvas>
   <div id="szn-cur"></div>
   <div id="szn-cur-ring"></div>
@@ -82,6 +96,7 @@
     <div id="szn-panel-desc"></div>
   </div>
 
+  <!-- REST OF SITE — appears AFTER hero-wrap ends -->
   <section class="quote-section">
     <div class="container">
       <h1 class="quote-text">Designing innovations that healthcare will actually need.</h1>
@@ -278,9 +293,7 @@
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════
-       KEYWORDS SCRIPT
-  ═══════════════════════════════════════ -->
+  <!-- KEYWORDS -->
   <script>
   (function(){
     var d={
@@ -296,35 +309,30 @@
     };
     var tags=document.querySelectorAll('.keyword-tag');
     var panel=document.getElementById('keyword-panel');
-    var panelText=document.getElementById('keyword-panel-text');
-    var activeKey=null;
+    var pt=document.getElementById('keyword-panel-text');
+    var ak=null;
     tags.forEach(function(tag){
       tag.addEventListener('click',function(){
-        var key=tag.dataset.key;
-        if(activeKey===key){panel.classList.remove('open');tag.classList.remove('active');activeKey=null;return;}
+        var k=tag.dataset.key;
+        if(ak===k){panel.classList.remove('open');tag.classList.remove('active');ak=null;return;}
         tags.forEach(function(t){t.classList.remove('active');});
-        panelText.textContent=d[key];
-        tag.classList.add('active');
-        panel.classList.add('open');
-        activeKey=key;
+        pt.textContent=d[k];tag.classList.add('active');panel.classList.add('open');ak=k;
       });
     });
   })();
   </script>
 
-  <!-- ═══════════════════════════════════════
-       BOOKING SCRIPT
-  ═══════════════════════════════════════ -->
+  <!-- BOOKING -->
   <script>
   (function(){
     var MO=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
     var DA=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
     var today=new Date();today.setHours(0,0,0,0);
-    var vY=today.getFullYear(),vM=today.getMonth(),selDate=null;
-    var SLOTS=['09:00','09:30','10:00','10:30','11:00','11:30','12:00'];
-    function avail(d){var w=d.getDay();return w>=1&&w<=3&&d>=today;}
-    function fmt(d){return DA[d.getDay()]+', '+d.getDate()+'. '+MO[d.getMonth()]+' '+d.getFullYear();}
-    function renderCal(){
+    var vY=today.getFullYear(),vM=today.getMonth(),sd=null;
+    var SL=['09:00','09:30','10:00','10:30','11:00','11:30','12:00'];
+    function av(d){var w=d.getDay();return w>=1&&w<=3&&d>=today;}
+    function fm(d){return DA[d.getDay()]+', '+d.getDate()+'. '+MO[d.getMonth()]+' '+d.getFullYear();}
+    function rc(){
       document.getElementById('bookingMonthLabel').textContent=MO[vM]+' '+vY;
       var g=document.getElementById('bookingCalGrid');g.innerHTML='';
       var fd=new Date(vY,vM,1).getDay();fd=fd===0?6:fd-1;
@@ -333,43 +341,41 @@
       for(var dd=1;dd<=dm;dd++){
         var cd=new Date(vY,vM,dd),cell=document.createElement('div');
         cell.className='booking-cal-cell';cell.textContent=dd;
-        if(!avail(cd)){cell.classList.add('booking-cal-disabled');}
+        if(!av(cd)){cell.classList.add('booking-cal-disabled');}
         else{cell.classList.add('booking-cal-available');(function(xd){cell.addEventListener('click',function(){
-          selDate=xd;
-          document.querySelectorAll('.booking-cal-selected').forEach(function(el){el.classList.remove('booking-cal-selected');});
-          this.classList.add('booking-cal-selected');
-          renderSlots(xd);
+          sd=xd;document.querySelectorAll('.booking-cal-selected').forEach(function(e){e.classList.remove('booking-cal-selected');});
+          this.classList.add('booking-cal-selected');rs(xd);
           document.getElementById('bookingForm').style.display='none';
           document.getElementById('bookingSuccess').style.display='none';
           document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active');});
         });})(cd);}
-        if(selDate&&cd.toDateString()===selDate.toDateString())cell.classList.add('booking-cal-selected');
+        if(sd&&cd.toDateString()===sd.toDateString())cell.classList.add('booking-cal-selected');
         g.appendChild(cell);
       }
     }
-    function renderSlots(date){
+    function rs(date){
       document.getElementById('bookingSlotsPlaceholder').style.display='none';
       var bl=document.getElementById('bookingSlotsBlock');bl.style.display='block';
-      document.getElementById('bookingSlotsDate').textContent=fmt(date)+' — CET (Berlin)';
+      document.getElementById('bookingSlotsDate').textContent=fm(date)+' — CET (Berlin)';
       var sg=document.getElementById('bookingSlotsGrid');sg.innerHTML='';
-      SLOTS.forEach(function(slot){
+      SL.forEach(function(slot){
         var btn=document.createElement('button');btn.type='button';btn.className='booking-slot-btn';btn.textContent=slot+' Uhr';
         btn.addEventListener('click',function(){
           document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active');});
-          btn.classList.add('active');showForm(date,slot);
+          btn.classList.add('active');sf2(date,slot);
         });
         sg.appendChild(btn);
       });
     }
-    function showForm(date,slot){
-      var lbl=fmt(date)+'  ·  '+slot+' Uhr CET  ·  15 Min  ·  Online';
+    function sf2(date,slot){
+      var lbl=fm(date)+'  ·  '+slot+' Uhr CET  ·  15 Min  ·  Online';
       document.getElementById('bookingFormSummary').textContent='📅  '+lbl;
-      document.getElementById('bookingSlotHidden').value=fmt(date)+' – '+slot+' Uhr CET';
+      document.getElementById('bookingSlotHidden').value=fm(date)+' – '+slot+' Uhr CET';
       var f=document.getElementById('bookingForm');f.style.display='block';
       setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'nearest'});},80);
     }
-    document.getElementById('bookingPrev').addEventListener('click',function(){vM--;if(vM<0){vM=11;vY--;}renderCal();});
-    document.getElementById('bookingNext').addEventListener('click',function(){vM++;if(vM>11){vM=0;vY++;}renderCal();});
+    document.getElementById('bookingPrev').addEventListener('click',function(){vM--;if(vM<0){vM=11;vY--;}rc();});
+    document.getElementById('bookingNext').addEventListener('click',function(){vM++;if(vM>11){vM=0;vY++;}rc();});
     document.getElementById('bookingBackBtn').addEventListener('click',function(){
       document.getElementById('bookingForm').style.display='none';
       document.querySelectorAll('.booking-slot-btn').forEach(function(b){b.classList.remove('active');});
@@ -377,546 +383,526 @@
     document.getElementById('bookingForm').addEventListener('submit',function(e){
       e.preventDefault();var form=this;
       fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(res){
-        if(res.ok){form.style.display='none';document.getElementById('bookingSuccess').style.display='block';}
-        else{alert('Something went wrong. Please email us at info@servizions.com');}
-      })
+      .then(function(res){if(res.ok){form.style.display='none';document.getElementById('bookingSuccess').style.display='block';}
+      else{alert('Something went wrong. Please email us at info@servizions.com');}})
       .catch(function(){alert('Something went wrong. Please email us at info@servizions.com');});
     });
-    renderCal();
+    rc();
   })();
   </script>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PART 2 — 3D ANIMATION SCRIPT
-     In your index.html, replace the line:
-       <!-- ═══ PART 1 ENDS HERE ... ═══ -->
-     with everything below (from <script> to </script>)
-     BEFORE the </body> tag.
-═══════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════
+  PART 2 — 3D ANIMATION SCRIPT
+  In your index.html, replace the line:
+    <!-- PASTE PART 2 HERE (replace this comment) -->
+  with the <script>...</script> block below.
+  Place it just before </body>
+═══════════════════════════════════════════════════════ -->
 
-  <script>
-  (function(){
+<script>
+(function(){
 
-    /* ── CANVAS SETUP ── */
-    var canvas  = document.getElementById('hero-canvas');
-    var ctx     = canvas.getContext('2d');
-    var wrap    = document.getElementById('hero-wrap');
-    var W, H, CX, CY;
+  /* ─────────────────────────────────────────
+     CANVAS + RESIZE
+     CY = 68% down  →  globe in lower portion
+     Text (SERVIZIONS) draws ABOVE the globe
+     All 3 circles drop DOWN and stay visible
+  ───────────────────────────────────────── */
+  var canvas  = document.getElementById('hero-canvas');
+  var ctx     = canvas.getContext('2d');
+  var wrap    = document.getElementById('hero-wrap');
+  var W,H,CX,CY;
 
-    function resize(){
-      W  = canvas.width  = innerWidth;
-      H  = canvas.height = innerHeight;
-      CX = W / 2;
-      CY = H * 0.45;
+  function resize(){
+    W  = canvas.width  = innerWidth;
+    H  = canvas.height = innerHeight;
+    CX = W / 2;
+    CY = H * 0.68;  /* globe centre sits at 68% — plenty of room above for text */
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* ─────────────────────────────────────────
+     3D MATH
+  ───────────────────────────────────────── */
+  function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
+  function rotY(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
+  var FL=860;
+  function proj(p){var z=p[2]+FL,sc=FL/z;return[CX+p[0]*sc,CY+p[1]*sc,sc];}
+
+  /* ─────────────────────────────────────────
+     STATE
+  ───────────────────────────────────────── */
+  var S=198;
+  var rx=0.18,ry=0.04,velX=0,velY=0;
+  var dragging=false,lastMX=0,lastMY=0;
+  var t=0,spinS=0,spinH=0;
+  var mouseX=0,mouseY=0;
+  var hoveredId=null,badgeRects=[];
+  var hoverGlow={};
+  var scrollP=0,smoothP=0;
+
+  /* ─────────────────────────────────────────
+     SCENE CONFIG
+     Layers: outer z=0, service z=24, human z=48
+     DROP amounts keep all circles on screen:
+       outer  → max 40% viewport height
+       service→ max 22%
+       human  → max  8%
+     Extra slow drift continues as you scroll more
+  ───────────────────────────────────────── */
+  var BASE={outer:{r:1.36,z:0},service:{r:1.08,z:24},human:{r:0.76,z:48},core:{z:68}};
+  var PHASE={outer:[0.02,0.16],service:[0.14,0.28],human:[0.25,0.40]};
+  var LDESC={
+    outer:  'The macro context — where AI advancement and robotics growth are reshaping healthcare delivery at a systemic level.',
+    service:'Four strategic pillars connecting technology to real clinical environments: Patient Journey, Adoption Strategy, Service Blueprint, and Clinicians-Workflow.',
+    human:  'The inner layer of method — Empathy, Synthesis, and Co-Design ensure every innovation is grounded in real human experience before it is built.'
+  };
+
+  /* ─────────────────────────────────────────
+     BADGE DATA
+  ───────────────────────────────────────── */
+  var badges=[
+    {id:'empathy',  label:'Empathy',           style:'teal',  layer:'human',  pos:[0,    -0.44,48/S],w:88, h:27,icon:'01',info:'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.'},
+    {id:'synthesis',label:'Synthesis',         style:'teal',  layer:'human',  pos:[-0.30, 0.26,48/S],w:88, h:27,icon:'02',info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
+    {id:'codesign', label:'Co-Design',         style:'teal',  layer:'human',  pos:[ 0.30, 0.26,48/S],w:94, h:27,icon:'03',info:'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.'},
+    {id:'patient',  label:'Patient Journey',   style:'purple',layer:'service',pos:[ 0.90, 0,   24/S],w:150,h:37,icon:'04',info:'Mapping every touchpoint of the patient experience to design compassionate, human-centered healthcare interactions.'},
+    {id:'adoption', label:'Adoption Strategy', style:'purple',layer:'service',pos:[-0.90, 0,   24/S],w:162,h:37,icon:'05',info:'Driving technology uptake through behavioral change frameworks and stakeholder alignment.'},
+    {id:'blueprint',label:'Service Blueprint', style:'purple',layer:'service',pos:[-0.82, 0.52,24/S],w:156,h:37,icon:'06',info:'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.'},
+    {id:'clinician',label:'Clinicians-Workflow',style:'purple',layer:'service',pos:[ 0.82, 0.52,24/S],w:168,h:37,icon:'07',info:'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.'}
+  ];
+  badges.forEach(function(b){hoverGlow[b.id]=0;});
+
+  /* ─────────────────────────────────────────
+     HELPERS
+  ───────────────────────────────────────── */
+  function eio(v){return v<0.5?2*v*v:1-Math.pow(-2*v+2,2)/2;}
+  function cl(v){return Math.max(0,Math.min(1,v));}
+  function phP(p,s,e){return eio(cl((p-s)/(e-s)));}
+  function makeRF(oY){
+    return function(p){var sh=[p[0],p[1]+oY,p[2]];sh=rotX(sh,rx);sh=rotY(sh,ry);return sh;};
+  }
+
+  /* ─────────────────────────────────────────
+     SCROLL — relative to hero-wrap position
+  ───────────────────────────────────────── */
+  function updateScroll(){
+    var top  = wrap.getBoundingClientRect().top + window.scrollY;
+    var wrapH= wrap.offsetHeight - innerHeight;
+    var rel  = window.scrollY - top;
+    scrollP  = cl(rel / wrapH);
+    var past = window.scrollY > wrap.offsetHeight;
+    canvas.style.display = past ? 'none' : 'block';
+    var hint=document.getElementById('szn-hint');
+    if(hint) hint.style.opacity=(scrollY>80||past)?'0':'1';
+  }
+  window.addEventListener('scroll',updateScroll,{passive:true});
+  updateScroll();
+
+  /* ─────────────────────────────────────────
+     DRAG / TOUCH
+  ───────────────────────────────────────── */
+  canvas.addEventListener('mousedown',function(e){if(smoothP>0.05)return;dragging=true;lastMX=e.clientX;lastMY=e.clientY;velX=0;velY=0;});
+  window.addEventListener('mousemove',function(e){
+    mouseX=e.clientX;mouseY=e.clientY;
+    if(!dragging)return;
+    velY=(e.clientX-lastMX)*.009;velX=(e.clientY-lastMY)*.009;
+    ry+=velY;rx+=velX;lastMX=e.clientX;lastMY=e.clientY;
+  });
+  window.addEventListener('mouseup',function(){dragging=false;});
+  canvas.addEventListener('click',function(e){
+    for(var i=badgeRects.length-1;i>=0;i--){
+      var r=badgeRects[i];
+      if(e.clientX>=r.x&&e.clientX<=r.x+r.w&&e.clientY>=r.y&&e.clientY<=r.y+r.h&&r.info){
+        document.getElementById('szn-panel-title').textContent=r.label;
+        document.getElementById('szn-panel-desc').textContent=r.info;
+        document.getElementById('szn-panel-tag').textContent='NODE · '+r.icon;
+        document.getElementById('szn-panel').classList.add('on');
+        break;
+      }
     }
-    resize();
-    window.addEventListener('resize', resize);
+  });
+  document.getElementById('szn-panel-close').onclick=function(){document.getElementById('szn-panel').classList.remove('on');};
+  canvas.addEventListener('touchstart',function(e){var tc=e.touches[0];if(smoothP>0.05)return;dragging=true;lastMX=tc.clientX;lastMY=tc.clientY;velX=0;velY=0;},{passive:true});
+  window.addEventListener('touchmove',function(e){var tc=e.touches[0];if(!dragging)return;velY=(tc.clientX-lastMX)*.009;velX=(tc.clientY-lastMY)*.009;ry+=velY;rx+=velX;lastMX=tc.clientX;lastMY=tc.clientY;},{passive:true});
+  window.addEventListener('touchend',function(){dragging=false;});
 
-    /* ── 3D MATH ── */
-    function rotX(p,a){
-      var c=Math.cos(a),s=Math.sin(a);
-      return [p[0], p[1]*c-p[2]*s, p[1]*s+p[2]*c];
+  /* ─────────────────────────────────────────
+     CURSOR
+  ───────────────────────────────────────── */
+  var cur=document.getElementById('szn-cur');
+  var curRing=document.getElementById('szn-cur-ring');
+  var crx=0,cry=0;
+  (function ac(){
+    crx+=(mouseX-crx)*.12;cry+=(mouseY-cry)*.12;
+    if(cur){cur.style.left=mouseX+'px';cur.style.top=mouseY+'px';}
+    if(curRing){curRing.style.left=crx+'px';curRing.style.top=cry+'px';}
+    requestAnimationFrame(ac);
+  })();
+
+  /* ─────────────────────────────────────────
+     DRAW: RING PATH
+  ───────────────────────────────────────── */
+  function drawRing(r,z,color,lw,dash,rf){
+    var pts=[];
+    for(var i=0;i<=120;i++){var a=(i/120)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
+    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);
+    ctx.beginPath();pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
+    ctx.stroke();ctx.setLineDash([]);ctx.restore();
+  }
+
+  /* ─────────────────────────────────────────
+     DRAW: DISC
+  ───────────────────────────────────────── */
+  function drawDisc(r,z,fill,rf){
+    var pts=[];
+    for(var i=0;i<=90;i++){var a=(i/90)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
+    ctx.save();ctx.fillStyle=fill;ctx.beginPath();
+    pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
+    ctx.closePath();ctx.fill();ctx.restore();
+  }
+
+  /* ─────────────────────────────────────────
+     DRAW: EDGE (side wall visible when tilted)
+  ───────────────────────────────────────── */
+  function drawEdge(r,z0,z1,color,rf){
+    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1;
+    for(var i=0;i<90;i++){
+      var a=(i/90)*Math.PI*2,x=Math.cos(a)*r*S,y=Math.sin(a)*r*S;
+      var p1=proj(rf([x,y,z0])),p2=proj(rf([x,y,z1]));
+      ctx.globalAlpha=(Math.cos(a-ry)*0.5+0.5)*0.35;
+      ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.stroke();
     }
-    function rotY(p,a){
-      var c=Math.cos(a),s=Math.sin(a);
-      return [p[0]*c+p[2]*s, p[1], -p[0]*s+p[2]*c];
+    ctx.globalAlpha=1;ctx.restore();
+  }
+
+  /* ─────────────────────────────────────────
+     DRAW: ARROW
+  ───────────────────────────────────────── */
+  function drawArrow(r,angle,z,cw,color,rf){
+    var a=angle,sz=8;
+    var raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z];
+    var ta=cw?a+Math.PI/2:a-Math.PI/2;
+    var a1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz,raw[1]+(-Math.sin(ta)+Math.sin(a))*sz,z];
+    var a2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz,raw[1]+(-Math.sin(ta)-Math.sin(a))*sz,z];
+    var pp=proj(rf(raw)),pa1=proj(rf(a1)),pa2=proj(rf(a2));
+    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);
+    ctx.stroke();ctx.restore();
+  }
+
+  /* ─────────────────────────────────────────
+     DRAW: SPLIT LABEL (appears beside ring)
+  ───────────────────────────────────────── */
+  function drawSplitLabel(name,desc,sy,alpha,sx,showDesc){
+    if(alpha<0.02)return;
+    if(showDesc===undefined)showDesc=true;
+    var x=sx||60;
+    ctx.save();ctx.globalAlpha=alpha;
+    ctx.font='600 10px Space Grotesk,sans-serif';
+    ctx.fillStyle='rgba(94,23,235,.6)';ctx.textAlign='left';ctx.textBaseline='middle';
+    ctx.fillText(name.toUpperCase(),x,sy-(showDesc?22:0));
+    if(showDesc){
+      ctx.strokeStyle='rgba(94,23,235,.2)';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(x,sy-10);ctx.lineTo(x+220,sy-10);ctx.stroke();
+      ctx.font='300 12.5px Space Grotesk,sans-serif';ctx.fillStyle='rgba(42,31,92,.72)';
+      var words=desc.split(' '),line='',lineY=sy+10,maxW=240;
+      words.forEach(function(w){
+        var test=line?line+' '+w:w;
+        if(ctx.measureText(test).width>maxW&&line){ctx.fillText(line,x,lineY);line=w;lineY+=18;}
+        else line=test;
+      });
+      if(line)ctx.fillText(line,x,lineY);
     }
-    var FL=860;
-    function proj(p){
-      var z=p[2]+FL, sc=FL/z;
-      return [CX+p[0]*sc, CY+p[1]*sc, sc];
+    ctx.restore();
+  }
+
+  /* ─────────────────────────────────────────
+     DRAW: BADGE
+  ───────────────────────────────────────── */
+  function drawBadge(badge,floatY,offY,alpha){
+    if(alpha<0.04)return;
+    var g=hoverGlow[badge.id];
+    var wp=[badge.pos[0]*S,badge.pos[1]*S+floatY+offY,badge.pos[2]*S+(g>0?g*30:0)];
+    wp=rotX(wp,rx);wp=rotY(wp,ry);
+    var pr=proj(wp),sf=Math.max(0.35,pr[2]);
+    var a2=Math.max(0,Math.min(1,(sf-.15)*3))*alpha;
+    if(a2<0.04)return;
+    var sw=badge.w*sf,sh=badge.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;
+    ctx.save();ctx.globalAlpha=a2;
+    if(g>0.02){
+      var gr=ctx.createRadialGradient(pr[0],pr[1],0,pr[0],pr[1],sw*.8+g*28);
+      gr.addColorStop(0,badge.style==='teal'?'rgba(90,173,163,'+(g*.22)+')':'rgba(94,23,235,'+(g*.18)+')');
+      gr.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=gr;ctx.beginPath();ctx.arc(pr[0],pr[1],sw*.8+g*28,0,Math.PI*2);ctx.fill();
+    }
+    ctx.shadowColor=badge.style==='teal'?'rgba(90,173,163,.2)':'rgba(94,23,235,.2)';
+    ctx.shadowBlur=(8+g*18)*sf;ctx.shadowOffsetY=(3+g*3)*sf;
+    var grd=ctx.createLinearGradient(px,py,badge.style==='teal'?px:px+sw,py+sh);
+    if(badge.style==='teal'){
+      grd.addColorStop(0,g>0?'#68bdb3':'#5aada3');grd.addColorStop(1,g>0?'#4c9e94':'#4a9990');
+    } else {
+      grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');
+    }
+    ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();
+    ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+    var shim=ctx.createLinearGradient(px,py,px,py+sh*.55);
+    shim.addColorStop(0,'rgba(255,255,255,'+(.13+g*.09)+')');shim.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=shim;ctx.beginPath();ctx.roundRect(px,py,sw,sh*.5,rad);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.96)';
+    ctx.font='600 '+Math.max(7,(badge.style==='teal'?10:12)*sf)+'px Space Grotesk,sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(badge.label,pr[0],pr[1]);
+    if(sf>0.65){
+      ctx.fillStyle='rgba(255,255,255,'+(.4*sf)+')';
+      ctx.font='400 '+Math.max(5,7*sf)+'px Space Mono,monospace';
+      ctx.textAlign='right';ctx.fillText(badge.icon,px+sw-5*sf,py+7*sf);
+    }
+    ctx.restore();
+    badgeRects.push({x:px,y:py,w:sw,h:sh,id:badge.id,label:badge.label,style:badge.style,info:badge.info||null,icon:badge.icon});
+  }
+
+  /* ─────────────────────────────────────────
+     MAIN LOOP
+  ───────────────────────────────────────── */
+  function draw(){
+    t+=0.013;badgeRects=[];
+    smoothP+=(scrollP-smoothP)*.08;
+
+    var rotA=1-cl(smoothP*6);
+    if(!dragging&&rotA>0){
+      velX*=0.92;velY*=0.92;rx+=velX*rotA;ry+=velY*rotA;
+      if(Math.abs(velX)<0.0004&&Math.abs(velY)<0.0004)rx+=0.0004*rotA;
+    }
+    var mx01=(mouseX-W/2)/(W/2),my01=(mouseY-H/2)/(H/2);
+    var flatP=cl(smoothP*10);
+    var sRX=rx,sRY=ry;
+    rx=rx*(1-flatP)+my01*0.08*flatP;
+    ry=ry*(1-flatP)+mx01*0.08*flatP;
+    spinS+=0.0018;spinH-=0.0012;
+    var ss=1-cl(smoothP*3);
+
+    /* clear + bg */
+    ctx.clearRect(0,0,W,H);
+    var bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.7);
+    bg.addColorStop(0,'rgba(235,230,255,0.18)');bg.addColorStop(1,'rgba(247,246,252,0)');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+
+    /* ── INTRO TEXT above globe ─────────────────
+       Positioned at H*0.18 — well above CY (68%)
+       Shows on load, fades when scroll begins
+    ─────────────────────────────────────────── */
+    var ia=1-cl(smoothP*6);
+    if(ia>0.02){
+      ctx.save();ctx.globalAlpha=ia;
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.font='700 52px Space Grotesk,sans-serif';
+      ctx.fillStyle='#5e17eb';ctx.letterSpacing='0.18em';
+      ctx.shadowColor='rgba(94,23,235,.12)';ctx.shadowBlur=20;
+      ctx.fillText('SERVIZIONS',CX,H*0.18);
+      ctx.shadowBlur=0;
+      ctx.font='300 10px Space Mono,monospace';
+      ctx.fillStyle='rgba(94,23,235,.42)';ctx.letterSpacing='0.22em';
+      ctx.fillText('SERVICE INNOVATION STUDIO',CX,H*0.18+50);
+      ctx.restore();
     }
 
-    /* ── STATE ── */
-    var S=198;
-    var rx=0.18, ry=0.04, velX=0, velY=0;
-    var dragging=false, lastMX=0, lastMY=0;
-    var t=0, spinS=0, spinH=0;
-    var mouseX=0, mouseY=0;
-    var hoveredId=null, badgeRects=[];
-    var hoverGlow={};
-    var scrollP=0, smoothP=0;
+    /* ── SCROLL PHASES ── */
+    var pO=phP(smoothP,PHASE.outer[0],PHASE.outer[1]);
+    var pS=phP(smoothP,PHASE.service[0],PHASE.service[1]);
+    var pH=phP(smoothP,PHASE.human[0],PHASE.human[1]);
 
-    /* ── SCENE ── */
-    var BASE={
-      outer:   {r:1.36, z:0 },
-      service: {r:1.08, z:24},
-      human:   {r:0.76, z:48},
-      core:    {z:68}
-    };
-    var PHASE={
-      outer:   [0.02,0.14],
-      service: [0.12,0.24],
-      human:   [0.22,0.34]
-    };
-    var LDESC={
-      outer:   'The macro context — where AI advancement and robotics growth are reshaping healthcare delivery at a systemic level.',
-      service: 'Four strategic pillars connecting technology to real clinical environments: Patient Journey, Adoption Strategy, Service Blueprint, and Clinicians-Workflow.',
-      human:   'The inner layer of method — Empathy, Synthesis, and Co-Design ensure every innovation is grounded in real human experience before it is built.'
-    };
+    /* ── DROP OFFSETS ────────────────────────────
+       Globe is at CY = H*0.68
+       offO max = H*0.40 → ring lands at ~H*1.08 (just below viewport bottom edge, still partially visible)
+       offS max = H*0.22 → ring at ~H*0.90 (lower screen, fully visible)
+       offH max = H*0.08 → ring at ~H*0.76 (just below globe centre, fully visible)
+       Extra slow drift after rings settle
+    ─────────────────────────────────────────── */
+    var ex=cl((smoothP-0.42)/0.58);ex=ex*ex;
+    var offO=pO*H*0.38+ex*H*0.30;
+    var offS=pS*H*0.20+ex*H*0.14;
+    var offH=pH*H*0.07+ex*H*0.05;
+
+    var rfO=makeRF(offO),rfS=makeRF(offS),rfH=makeRF(offH);
+    var alO=cl(pO*1.8),alS=cl(pS*1.8),alH=cl(pH*1.8);
+
+    /* ── DISCS ── */
+    drawDisc(BASE.outer.r,  BASE.outer.z,  'rgba(194,228,225,0.22)',rfO);
+    drawDisc(BASE.service.r,BASE.service.z,'rgba(197,183,240,0.55)',rfS);
+    drawDisc(BASE.human.r,  BASE.human.z,  'rgba(150,215,208,0.65)',rfH);
+
+    /* ── EDGES (3D depth) ── */
+    var ea=1-cl(smoothP*5);
+    if(ea>0.02){
+      ctx.save();ctx.globalAlpha=ea;
+      drawEdge(BASE.outer.r,  BASE.outer.z,  BASE.service.z,'rgba(175,155,230,0.85)',rfO);
+      drawEdge(BASE.service.r,BASE.service.z,BASE.human.z,  'rgba(140,210,205,0.85)',rfS);
+      drawEdge(BASE.human.r,  BASE.human.z,  BASE.core.z,   'rgba(120,200,193,0.85)',rfH);
+      ctx.restore();
+    }
+
+    /* ── RINGS ── */
+    drawRing(BASE.outer.r,  BASE.outer.z,  'rgba(140,210,205,1)',2,  [],   rfO);
+    drawRing(BASE.service.r,BASE.service.z,'rgba(155,130,218,1)',1.8,[5,8],rfS);
+    drawRing(BASE.human.r,  BASE.human.z,  'rgba(80,175,168,1)', 2.2,[],   rfH);
+
+    /* ── ARROWS ── */
+    [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(function(a){drawArrow(BASE.service.r,a+spinS*ss,BASE.service.z,true, 'rgba(120,95,200,1)',rfS);});
+    [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(function(a){drawArrow(BASE.human.r,a+spinH*ss,BASE.human.z,false,'rgba(60,155,148,1)',rfH);});
+
+    /* ── CONNECTING LINES ── */
+    var la=cl(smoothP*3)*cl(1-smoothP*0.5)+cl((smoothP-0.3)*4)*0.6;
+    if(la>0.02){
+      var cO=proj(rfO([0,0,BASE.outer.z])),cS=proj(rfS([0,0,BASE.service.z])),cH=proj(rfH([0,0,BASE.human.z]));
+      ctx.save();ctx.globalAlpha=la*0.55;ctx.setLineDash([4,10]);ctx.lineCap='round';
+      var g1=ctx.createLinearGradient(cO[0],cO[1],cS[0],cS[1]);
+      g1.addColorStop(0,'rgba(140,210,205,1)');g1.addColorStop(1,'rgba(155,130,218,1)');
+      ctx.strokeStyle=g1;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(cO[0],cO[1]);ctx.lineTo(cS[0],cS[1]);ctx.stroke();
+      var g2=ctx.createLinearGradient(cS[0],cS[1],cH[0],cH[1]);
+      g2.addColorStop(0,'rgba(155,130,218,1)');g2.addColorStop(1,'rgba(80,175,168,1)');
+      ctx.strokeStyle=g2;ctx.beginPath();ctx.moveTo(cS[0],cS[1]);ctx.lineTo(cH[0],cH[1]);ctx.stroke();
+      [[cO,'rgba(140,210,205,1)'],[cS,'rgba(155,130,218,1)'],[cH,'rgba(80,175,168,1)']].forEach(function(pair){
+        ctx.setLineDash([]);ctx.fillStyle=pair[1];ctx.shadowColor=pair[1];ctx.shadowBlur=8;
+        ctx.beginPath();ctx.arc(pair[0][0],pair[0][1],3.5,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+      });
+      ctx.restore();
+    }
+
+    /* ── SPLIT LABELS ── */
+    var cOuter  =proj(rfO([0,0,BASE.outer.z]));
+    var cService=proj(rfS([0,0,BASE.service.z]));
+    var cHuman  =proj(rfH([0,0,BASE.human.z]));
+    var rSR=BASE.outer.r*S*cOuter[2];
+    drawSplitLabel('Systemic Innovation',      LDESC.outer,  cOuter[1],  alO,cOuter[0]  +rSR*0.72);
+    drawSplitLabel('Service System',           LDESC.service,cService[1],alS,cService[0]+BASE.service.r*S*cService[2]*0.72);
+    drawSplitLabel('Human-Centered Innovation','',           cHuman[1],  alH,cHuman[0]  +BASE.human.r*S*cHuman[2]*0.72,false);
+
+    /* ── 01/02/03 numbers ── */
+    [{c:cOuter,n:'01',col:'rgba(80,175,168,1)',p:pO},
+     {c:cService,n:'02',col:'rgba(120,95,200,1)',p:pS},
+     {c:cHuman, n:'03',col:'rgba(60,155,148,1)',p:pH}
+    ].forEach(function(it){
+      var a=cl(it.p*2.5);if(a<0.02)return;
+      var rr=BASE.outer.r*S*it.c[2]*0.9;
+      ctx.save();ctx.globalAlpha=a;
+      ctx.font='700 '+Math.max(11,13*it.c[2])+'px Space Mono,monospace';
+      ctx.fillStyle=it.col;ctx.textAlign='right';ctx.textBaseline='middle';
+      ctx.fillText(it.n,it.c[0]-rr*0.72,it.c[1]);ctx.restore();
+    });
+
+    /* ── GLOBE LABELS (fade out) ── */
+    var rla=1-cl(smoothP*4);
+    if(rla>0.02){
+      function drawRL(text,pd,size,color,bold){
+        var rfn=pd[2]<30?rfO:pd[2]<50?rfS:rfH;
+        var pp=proj(rfn([pd[0]*S,pd[1]*S,pd[2]]));
+        var a=Math.max(0,Math.min(1,(pp[2]-.12)*3))*rla;if(a<0.03)return;
+        ctx.save();ctx.globalAlpha=a;ctx.fillStyle=color;
+        ctx.font=(bold?'600':'300')+' '+Math.max(6,size*pp[2])+'px Space Grotesk,sans-serif';
+        ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,pp[0],pp[1]);ctx.restore();
+      }
+      drawRL('AI & Robotics growth',     [0,-1.48,0],           12,'rgba(90,65,185,1)', true);
+      drawRL('Service System',           [0, 1.20,BASE.service.z],11,'rgba(110,90,175,1)',false);
+      drawRL('Human-Centered Innovation',[0, 0.88,BASE.human.z], 10,'rgba(50,140,133,1)',false);
+      drawRL('Systemic Innovation',      [0, 1.62,0],            10,'rgba(160,148,200,1)',false);
+    }
 
     /* ── BADGES ── */
-    var badges=[
-      {id:'empathy',   label:'Empathy',            style:'teal',   layer:'human',   pos:[0,    -0.44,48/S], w:88,  h:27, icon:'01', info:'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.'},
-      {id:'synthesis', label:'Synthesis',           style:'teal',   layer:'human',   pos:[-0.30, 0.26,48/S], w:88,  h:27, icon:'02', info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
-      {id:'codesign',  label:'Co-Design',           style:'teal',   layer:'human',   pos:[ 0.30, 0.26,48/S], w:94,  h:27, icon:'03', info:'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.'},
-      {id:'patient',   label:'Patient Journey',     style:'purple', layer:'service', pos:[ 0.90, 0,   24/S], w:150, h:37, icon:'04', info:'Mapping every touchpoint of the patient experience to design compassionate, human-centered healthcare interactions.'},
-      {id:'adoption',  label:'Adoption Strategy',   style:'purple', layer:'service', pos:[-0.90, 0,   24/S], w:162, h:37, icon:'05', info:'Driving technology uptake through behavioral change frameworks and stakeholder alignment.'},
-      {id:'blueprint', label:'Service Blueprint',   style:'purple', layer:'service', pos:[-0.82, 0.52,24/S], w:156, h:37, icon:'06', info:'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.'},
-      {id:'clinician', label:'Clinicians-Workflow', style:'purple', layer:'service', pos:[ 0.82, 0.52,24/S], w:168, h:37, icon:'07', info:'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.'}
-    ];
-    badges.forEach(function(b){ hoverGlow[b.id]=0; });
-
-    /* ── HELPERS ── */
-    function eio(v){return v<0.5?2*v*v:1-Math.pow(-2*v+2,2)/2;}
-    function cl(v){return Math.max(0,Math.min(1,v));}
-    function phP(p,s,e){return eio(cl((p-s)/(e-s)));}
-
-    function makeRF(offY){
-      return function(p){
-        var sh=[p[0],p[1]+offY,p[2]];
-        sh=rotX(sh,rx); sh=rotY(sh,ry); return sh;
-      };
-    }
-
-    /* ── SCROLL ── */
-    function updateScroll(){
-      var wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
-      var wrapH   = wrap.offsetHeight - innerHeight;
-      var rel     = window.scrollY - wrapTop;
-      scrollP = cl(rel / wrapH);
-      var pastHero = window.scrollY > wrap.offsetHeight;
-      canvas.style.display = pastHero ? 'none' : 'block';
-      var hint = document.getElementById('szn-hint');
-      if(hint) hint.style.opacity = (scrollY>60||pastHero)?'0':'1';
-    }
-    window.addEventListener('scroll', updateScroll, {passive:true});
-    updateScroll();
-
-    /* ── DRAG ── */
-    canvas.addEventListener('mousedown', function(e){
-      if(smoothP>0.05) return;
-      dragging=true; lastMX=e.clientX; lastMY=e.clientY; velX=0; velY=0;
+    badges.forEach(function(b,i){
+      var lP  =b.layer==='outer'?pO:b.layer==='service'?pS:pH;
+      var oY  =b.layer==='outer'?offO:b.layer==='service'?offS:offH;
+      var lA  =b.layer==='outer'?alO:b.layer==='service'?alS:alH;
+      var exp =1+cl((lP-0.7)*3.3)*0.45;
+      var fy  =Math.sin(t+i*1.3)*3;
+      var bA  =1-cl(smoothP*2)+lA*0.9;
+      drawBadge({id:b.id,label:b.label,style:b.style,layer:b.layer,
+                 pos:[b.pos[0]*exp,b.pos[1]*exp,b.pos[2]],
+                 w:b.w,h:b.h,icon:b.icon,info:b.info},
+                fy,oY,Math.min(1,bA));
     });
-    window.addEventListener('mousemove', function(e){
-      mouseX=e.clientX; mouseY=e.clientY;
-      if(!dragging) return;
-      velY=(e.clientX-lastMX)*.009; velX=(e.clientY-lastMY)*.009;
-      ry+=velY; rx+=velX; lastMX=e.clientX; lastMY=e.clientY;
-    });
-    window.addEventListener('mouseup', function(){ dragging=false; });
-    canvas.addEventListener('click', function(e){
-      var hit=badgeRects.filter(function(r){
-        return e.clientX>=r.x&&e.clientX<=r.x+r.w&&e.clientY>=r.y&&e.clientY<=r.y+r.h;
-      })[0];
-      if(hit&&hit.info){
-        document.getElementById('szn-panel-title').textContent=hit.label;
-        document.getElementById('szn-panel-desc').textContent=hit.info;
-        document.getElementById('szn-panel-tag').textContent='NODE · '+hit.icon;
-        document.getElementById('szn-panel').classList.add('on');
-      }
-    });
-    document.getElementById('szn-panel-close').onclick=function(){
-      document.getElementById('szn-panel').classList.remove('on');
-    };
-    canvas.addEventListener('touchstart',function(e){
-      var tc=e.touches[0]; if(smoothP>0.05) return;
-      dragging=true; lastMX=tc.clientX; lastMY=tc.clientY; velX=0; velY=0;
-    },{passive:true});
-    window.addEventListener('touchmove',function(e){
-      var tc=e.touches[0]; if(!dragging) return;
-      velY=(tc.clientX-lastMX)*.009; velX=(tc.clientY-lastMY)*.009;
-      ry+=velY; rx+=velX; lastMX=tc.clientX; lastMY=tc.clientY;
-    },{passive:true});
-    window.addEventListener('touchend',function(){ dragging=false; });
 
-    /* ── CURSOR ── */
-    var cur=document.getElementById('szn-cur');
-    var curRing=document.getElementById('szn-cur-ring');
-    var crx=0, cry=0;
-    (function animCur(){
-      crx+=(mouseX-crx)*.12; cry+=(mouseY-cry)*.12;
-      if(cur){cur.style.left=mouseX+'px'; cur.style.top=mouseY+'px';}
-      if(curRing){curRing.style.left=crx+'px'; curRing.style.top=cry+'px';}
-      requestAnimationFrame(animCur);
-    })();
+    /* ── HOVER ── */
+    var nh=null;
+    for(var i=badgeRects.length-1;i>=0;i--){
+      var r=badgeRects[i];
+      if(mouseX>=r.x&&mouseX<=r.x+r.w&&mouseY>=r.y&&mouseY<=r.y+r.h){nh=r.id;break;}
+    }
+    hoveredId=nh;
+    badges.forEach(function(b){hoverGlow[b.id]+=((b.id===hoveredId?1:0)-hoverGlow[b.id])*.1;});
+    canvas.style.cursor=hoveredId?'pointer':'default';
+    if(curRing){curRing.style.width=hoveredId?'50px':'32px';curRing.style.height=hoveredId?'50px':'32px';}
+    rx=sRX;ry=sRY;
 
-    /* ── DRAW: RING ── */
-    function drawRing(r,z,color,lw,dash,rf){
-      var pts=[];
-      for(var i=0;i<=120;i++){
-        var a=(i/120)*Math.PI*2;
-        pts.push(proj(rf([Math.cos(a)*r*S, Math.sin(a)*r*S, z])));
+    /* ── SERVIZIONS PILL → WORDMARK ──────────────────
+       splitP 0→1 when smoothP goes 0.40→0.55
+       posY moves from CY (globe centre at 68%)
+       to H*0.50 (exact screen middle)
+       This means the wordmark ends up ABOVE all circles
+    ─────────────────────────────────────────────── */
+    var splitP=cl((smoothP-0.40)/0.15);
+    var posX=CX,posY=CY+(H*0.50-CY)*splitP;
+    ctx.save();
+
+    if(splitP<0.05){
+      /* GLOBE — purple pill at centre */
+      var fz=BASE.core.z+Math.sin(t*1.4)*4;
+      var q=[0,0,fz];q=rotX(q,sRX);q=rotY(q,sRY);
+      var pr2=proj(q),sf2=Math.max(0.5,pr2[2]);
+      var al2=Math.max(0,Math.min(1,(sf2-.15)*3));
+      var pw=210*sf2,ph=82*sf2,rr2=ph/2,ppx=pr2[0]-pw/2,ppy=pr2[1]-ph/2;
+      ctx.globalAlpha=al2;
+      var pulse=0.82+Math.sin(t*1.4)*.18,hR=pw*.85*pulse;
+      var halo=ctx.createRadialGradient(pr2[0],pr2[1],pw*.1,pr2[0],pr2[1],hR);
+      halo.addColorStop(0,'rgba(94,23,235,'+.15*pulse+')');halo.addColorStop(1,'rgba(94,23,235,0)');
+      ctx.fillStyle=halo;ctx.beginPath();ctx.arc(pr2[0],pr2[1],hR,0,Math.PI*2);ctx.fill();
+      ctx.shadowColor='rgba(94,23,235,.3)';ctx.shadowBlur=28*sf2;ctx.shadowOffsetY=10*sf2;
+      var pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);
+      pgrd.addColorStop(0,'#7a35ef');pgrd.addColorStop(1,'#5e17eb');
+      ctx.fillStyle=pgrd;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph,rr2);ctx.fill();
+      ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+      var shim2=ctx.createLinearGradient(ppx,ppy,ppx,ppy+ph);
+      shim2.addColorStop(0,'rgba(255,255,255,.16)');shim2.addColorStop(.5,'rgba(255,255,255,0)');
+      ctx.fillStyle=shim2;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph*.5,rr2);ctx.fill();
+      ctx.fillStyle='#fff';
+      ctx.font='700 '+Math.max(9,17*sf2)+'px Space Grotesk,sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr2[0],pr2[1]);
+
+    } else {
+      /* SPLIT STATE — big wordmark at screen centre */
+      ctx.globalAlpha=splitP;
+      var glow=ctx.createRadialGradient(posX,posY,0,posX,posY,180);
+      glow.addColorStop(0,'rgba(94,23,235,'+(0.08*splitP)+')');glow.addColorStop(1,'rgba(94,23,235,0)');
+      ctx.fillStyle=glow;ctx.beginPath();ctx.arc(posX,posY,180,0,Math.PI*2);ctx.fill();
+      var fs=52+splitP*14;
+      ctx.font='700 '+fs+'px Space Grotesk,sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillStyle='#5e17eb';ctx.letterSpacing='0.18em';
+      ctx.shadowColor='rgba(94,23,235,.15)';ctx.shadowBlur=28;
+      ctx.fillText('SERVIZIONS',posX,posY);ctx.shadowBlur=0;
+      /* tagline */
+      ctx.globalAlpha=Math.max(0,(splitP-0.4)*3);
+      ctx.font='300 10px Space Mono,monospace';
+      ctx.fillStyle='rgba(94,23,235,.42)';ctx.letterSpacing='0.22em';
+      var tY=posY+fs*0.8;ctx.fillText('SERVICE INNOVATION STUDIO',posX,tY);
+      /* body text between tagline and human circle */
+      var hCY=CY+offH,midY=tY+(hCY-tY)*0.45;
+      var tA=Math.max(0,(splitP-0.55)*3.5);
+      if(tA>0.01){
+        ctx.globalAlpha=tA;
+        ctx.font='300 14px Space Grotesk,sans-serif';
+        ctx.fillStyle='rgba(42,31,92,0.65)';ctx.letterSpacing='0.01em';
+        ctx.fillText('We bridge the innovation layer between healthcare technology companies',posX,midY-12);
+        ctx.fillText('and real clinical practice — before a single line of code is written.',posX,midY+12);
       }
-      ctx.save();
-      ctx.strokeStyle=color; ctx.lineWidth=lw; ctx.setLineDash(dash||[]);
-      ctx.beginPath();
-      pts.forEach(function(p,i){ i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]); });
-      ctx.stroke(); ctx.setLineDash([]); ctx.restore();
     }
 
-    /* ── DRAW: DISC ── */
-    function drawDisc(r,z,fill,rf){
-      var pts=[];
-      for(var i=0;i<=90;i++){
-        var a=(i/90)*Math.PI*2;
-        pts.push(proj(rf([Math.cos(a)*r*S, Math.sin(a)*r*S, z])));
-      }
-      ctx.save(); ctx.fillStyle=fill;
-      ctx.beginPath();
-      pts.forEach(function(p,i){ i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]); });
-      ctx.closePath(); ctx.fill(); ctx.restore();
-    }
+    ctx.restore();
+    requestAnimationFrame(draw);
+  }
 
-    /* ── DRAW: EDGE ── */
-    function drawEdge(r,z0,z1,color,rf){
-      ctx.save(); ctx.strokeStyle=color; ctx.lineWidth=1;
-      for(var i=0;i<90;i++){
-        var a=(i/90)*Math.PI*2, x=Math.cos(a)*r*S, y=Math.sin(a)*r*S;
-        var p1=proj(rf([x,y,z0])), p2=proj(rf([x,y,z1]));
-        ctx.globalAlpha=(Math.cos(a-ry)*0.5+0.5)*0.35;
-        ctx.beginPath(); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]); ctx.stroke();
-      }
-      ctx.globalAlpha=1; ctx.restore();
-    }
+  draw();
 
-    /* ── DRAW: ARROW ── */
-    function drawArrow(r,angle,z,cw,color,rf){
-      var a=angle, sz=8;
-      var raw=[Math.cos(a)*r*S, Math.sin(a)*r*S, z];
-      var ta=cw?a+Math.PI/2:a-Math.PI/2;
-      var arm1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz, raw[1]+(-Math.sin(ta)+Math.sin(a))*sz, z];
-      var arm2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz, raw[1]+(-Math.sin(ta)-Math.sin(a))*sz, z];
-      var pp=proj(rf(raw)), pa1=proj(rf(arm1)), pa2=proj(rf(arm2));
-      ctx.save(); ctx.strokeStyle=color; ctx.lineWidth=2; ctx.lineCap='round'; ctx.lineJoin='round';
-      ctx.beginPath(); ctx.moveTo(pa1[0],pa1[1]); ctx.lineTo(pp[0],pp[1]); ctx.lineTo(pa2[0],pa2[1]);
-      ctx.stroke(); ctx.restore();
-    }
-
-    /* ── DRAW: SPLIT LABEL ── */
-    function drawSplitLabel(name,desc,sy,alpha,sx,showDesc){
-      if(alpha<0.02) return;
-      if(showDesc===undefined) showDesc=true;
-      var x=sx||60;
-      ctx.save(); ctx.globalAlpha=alpha;
-      ctx.font='600 10px Space Grotesk,sans-serif';
-      ctx.fillStyle='rgba(94,23,235,.6)'; ctx.textAlign='left'; ctx.textBaseline='middle';
-      ctx.fillText(name.toUpperCase(), x, sy-(showDesc?22:0));
-      if(showDesc){
-        ctx.strokeStyle='rgba(94,23,235,.2)'; ctx.lineWidth=1;
-        ctx.beginPath(); ctx.moveTo(x,sy-10); ctx.lineTo(x+220,sy-10); ctx.stroke();
-        ctx.font='300 12.5px Space Grotesk,sans-serif';
-        ctx.fillStyle='rgba(42,31,92,.72)';
-        var words=desc.split(' '), line='', lineY=sy+10, maxW=240;
-        words.forEach(function(w){
-          var test=line?line+' '+w:w;
-          if(ctx.measureText(test).width>maxW&&line){ ctx.fillText(line,x,lineY); line=w; lineY+=18; }
-          else line=test;
-        });
-        if(line) ctx.fillText(line,x,lineY);
-      }
-      ctx.restore();
-    }
-
-    /* ── DRAW: BADGE ── */
-    function drawBadge(badge,floatY,offY,alpha){
-      if(alpha<0.04) return;
-      var g=hoverGlow[badge.id];
-      var wp=[badge.pos[0]*S, badge.pos[1]*S+floatY+offY, badge.pos[2]*S+(g>0?g*30:0)];
-      wp=rotX(wp,rx); wp=rotY(wp,ry);
-      var pr=proj(wp), sf=Math.max(0.35,pr[2]);
-      var a2=Math.max(0,Math.min(1,(sf-.15)*3))*alpha;
-      if(a2<0.04) return;
-      var sw=badge.w*sf, sh=badge.h*sf, rad=sh/2, px=pr[0]-sw/2, py=pr[1]-sh/2;
-      ctx.save(); ctx.globalAlpha=a2;
-      if(g>0.02){
-        var gr=ctx.createRadialGradient(pr[0],pr[1],0,pr[0],pr[1],sw*.8+g*28);
-        gr.addColorStop(0,badge.style==='teal'?'rgba(90,173,163,'+g*.22+')':'rgba(94,23,235,'+g*.18+')');
-        gr.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.fillStyle=gr; ctx.beginPath(); ctx.arc(pr[0],pr[1],sw*.8+g*28,0,Math.PI*2); ctx.fill();
-      }
-      ctx.shadowColor=badge.style==='teal'?'rgba(90,173,163,.2)':'rgba(94,23,235,.2)';
-      ctx.shadowBlur=(8+g*18)*sf; ctx.shadowOffsetY=(3+g*3)*sf;
-      var grd=ctx.createLinearGradient(px,py,badge.style==='teal'?px:px+sw,py+sh);
-      if(badge.style==='teal'){
-        grd.addColorStop(0,g>0?'#68bdb3':'#5aada3');
-        grd.addColorStop(1,g>0?'#4c9e94':'#4a9990');
-      } else {
-        grd.addColorStop(0,g>0?'#8872e0':'#7560d0');
-        grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');
-      }
-      ctx.fillStyle=grd; ctx.beginPath(); ctx.roundRect(px,py,sw,sh,rad); ctx.fill();
-      ctx.shadowBlur=0; ctx.shadowOffsetY=0;
-      var shim=ctx.createLinearGradient(px,py,px,py+sh*.55);
-      shim.addColorStop(0,'rgba(255,255,255,'+(.13+g*.09)+')');
-      shim.addColorStop(1,'rgba(255,255,255,0)');
-      ctx.fillStyle=shim; ctx.beginPath(); ctx.roundRect(px,py,sw,sh*.5,rad); ctx.fill();
-      ctx.fillStyle='rgba(255,255,255,.96)';
-      ctx.font='600 '+Math.max(7,(badge.style==='teal'?10:12)*sf)+'px Space Grotesk,sans-serif';
-      ctx.textAlign='center'; ctx.textBaseline='middle';
-      ctx.fillText(badge.label,pr[0],pr[1]);
-      if(sf>0.65){
-        ctx.fillStyle='rgba(255,255,255,'+(.4*sf)+')';
-        ctx.font='400 '+Math.max(5,7*sf)+'px Space Mono,monospace';
-        ctx.textAlign='right';
-        ctx.fillText(badge.icon,px+sw-5*sf,py+7*sf);
-      }
-      ctx.restore();
-      badgeRects.push({x:px,y:py,w:sw,h:sh,id:badge.id,label:badge.label,style:badge.style,info:badge.info||null,icon:badge.icon});
-    }
-
-    /* ── MAIN LOOP ── */
-    function draw(){
-      t+=0.013; badgeRects=[];
-      smoothP+=(scrollP-smoothP)*.08;
-
-      var rotActive=1-cl(smoothP*6);
-      if(!dragging&&rotActive>0){
-        velX*=0.92; velY*=0.92;
-        rx+=velX*rotActive; ry+=velY*rotActive;
-        if(Math.abs(velX)<0.0004&&Math.abs(velY)<0.0004) rx+=0.0004*rotActive;
-      }
-      var mx01=(mouseX-W/2)/(W/2), my01=(mouseY-H/2)/(H/2);
-      var flatP=cl(smoothP*10);
-      var sRX=rx, sRY=ry;
-      rx=rx*(1-flatP)+my01*0.08*flatP;
-      ry=ry*(1-flatP)+mx01*0.08*flatP;
-      spinS+=0.0018; spinH-=0.0012;
-      var ss=1-cl(smoothP*3);
-
-      ctx.clearRect(0,0,W,H);
-
-      /* bg glow */
-      var bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.7);
-      bg.addColorStop(0,'rgba(235,230,255,0.18)');
-      bg.addColorStop(1,'rgba(247,246,252,0)');
-      ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
-
-      /* ── intro text (fades on scroll) ── */
-      var ia=1-cl(smoothP*8);
-      if(ia>0.02){
-        ctx.save(); ctx.globalAlpha=ia;
-        ctx.textAlign='center'; ctx.textBaseline='middle';
-        ctx.font='700 52px Space Grotesk,sans-serif';
-        ctx.fillStyle='#5e17eb'; ctx.letterSpacing='0.18em';
-        ctx.shadowColor='rgba(94,23,235,.12)'; ctx.shadowBlur=20;
-        ctx.fillText('SERVIZIONS',CX,H*0.22);
-        ctx.shadowBlur=0;
-        ctx.font='300 10px Space Mono,monospace';
-        ctx.fillStyle='rgba(94,23,235,.42)'; ctx.letterSpacing='0.22em';
-        ctx.fillText('SERVICE INNOVATION STUDIO',CX,H*0.22+50);
-        ctx.restore();
-      }
-
-      /* ── scroll phases ── */
-      var pO=phP(smoothP,PHASE.outer[0],PHASE.outer[1]);
-      var pS=phP(smoothP,PHASE.service[0],PHASE.service[1]);
-      var pH=phP(smoothP,PHASE.human[0],PHASE.human[1]);
-
-      var ex=cl((smoothP-0.35)/0.65)*cl((smoothP-0.35)/0.65);
-      var offO=pO*H*0.55+ex*H*0.9;
-      var offS=pS*H*0.28+ex*H*0.4;
-      var offH=pH*H*0.10+ex*H*0.15;
-
-      var rfO=makeRF(offO), rfS=makeRF(offS), rfH=makeRF(offH);
-      var alO=cl(pO*1.8), alS=cl(pS*1.8), alH=cl(pH*1.8);
-
-      /* ── discs ── */
-      drawDisc(BASE.outer.r,   BASE.outer.z,   'rgba(194,228,225,0.22)',rfO);
-      drawDisc(BASE.service.r, BASE.service.z, 'rgba(197,183,240,0.55)',rfS);
-      drawDisc(BASE.human.r,   BASE.human.z,   'rgba(150,215,208,0.65)',rfH);
-
-      /* ── edges ── */
-      var ea=1-cl(smoothP*5);
-      if(ea>0.02){
-        ctx.save(); ctx.globalAlpha=ea;
-        drawEdge(BASE.outer.r,  BASE.outer.z,  BASE.service.z,'rgba(175,155,230,0.85)',rfO);
-        drawEdge(BASE.service.r,BASE.service.z,BASE.human.z,  'rgba(140,210,205,0.85)',rfS);
-        drawEdge(BASE.human.r,  BASE.human.z,  BASE.core.z,   'rgba(120,200,193,0.85)',rfH);
-        ctx.restore();
-      }
-
-      /* ── rings ── */
-      drawRing(BASE.outer.r,  BASE.outer.z,  'rgba(140,210,205,1)',2,  [],   rfO);
-      drawRing(BASE.service.r,BASE.service.z,'rgba(155,130,218,1)',1.8,[5,8],rfS);
-      drawRing(BASE.human.r,  BASE.human.z,  'rgba(80,175,168,1)', 2.2,[],   rfH);
-
-      /* ── arrows ── */
-      [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(function(a){
-        drawArrow(BASE.service.r,a+spinS*ss,BASE.service.z,true, 'rgba(120,95,200,1)',rfS);
-      });
-      [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(function(a){
-        drawArrow(BASE.human.r,a+spinH*ss,BASE.human.z,false,'rgba(60,155,148,1)',rfH);
-      });
-
-      /* ── connecting lines ── */
-      var la=cl(smoothP*3)*cl(1-smoothP*0.5)+cl((smoothP-0.3)*4)*0.6;
-      if(la>0.02){
-        var cO=proj(rfO([0,0,BASE.outer.z]));
-        var cS=proj(rfS([0,0,BASE.service.z]));
-        var cH=proj(rfH([0,0,BASE.human.z]));
-        ctx.save(); ctx.globalAlpha=la*0.55; ctx.setLineDash([4,10]); ctx.lineCap='round';
-        var g1=ctx.createLinearGradient(cO[0],cO[1],cS[0],cS[1]);
-        g1.addColorStop(0,'rgba(140,210,205,1)'); g1.addColorStop(1,'rgba(155,130,218,1)');
-        ctx.strokeStyle=g1; ctx.lineWidth=1.2;
-        ctx.beginPath(); ctx.moveTo(cO[0],cO[1]); ctx.lineTo(cS[0],cS[1]); ctx.stroke();
-        var g2=ctx.createLinearGradient(cS[0],cS[1],cH[0],cH[1]);
-        g2.addColorStop(0,'rgba(155,130,218,1)'); g2.addColorStop(1,'rgba(80,175,168,1)');
-        ctx.strokeStyle=g2;
-        ctx.beginPath(); ctx.moveTo(cS[0],cS[1]); ctx.lineTo(cH[0],cH[1]); ctx.stroke();
-        [[cO,'rgba(140,210,205,1)'],[cS,'rgba(155,130,218,1)'],[cH,'rgba(80,175,168,1)']].forEach(function(pair){
-          var c=pair[0], col=pair[1];
-          ctx.setLineDash([]); ctx.fillStyle=col; ctx.shadowColor=col; ctx.shadowBlur=8;
-          ctx.beginPath(); ctx.arc(c[0],c[1],3.5,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=0;
-        });
-        ctx.restore();
-      }
-
-      /* ── split labels ── */
-      var cOuter  =proj(rfO([0,0,BASE.outer.z]));
-      var cService=proj(rfS([0,0,BASE.service.z]));
-      var cHuman  =proj(rfH([0,0,BASE.human.z]));
-      var rSR=BASE.outer.r*S*cOuter[2];
-      drawSplitLabel('Systemic Innovation',      LDESC.outer,  cOuter[1],  alO, cOuter[0]  +rSR*0.72);
-      drawSplitLabel('Service System',           LDESC.service,cService[1],alS, cService[0]+BASE.service.r*S*cService[2]*0.72);
-      drawSplitLabel('Human-Centered Innovation','',           cHuman[1],  alH, cHuman[0]  +BASE.human.r*S*cHuman[2]*0.72, false);
-
-      /* ── 01/02/03 numbers ── */
-      [{c:cOuter,n:'01',col:'rgba(80,175,168,1)',p:pO},
-       {c:cService,n:'02',col:'rgba(120,95,200,1)',p:pS},
-       {c:cHuman, n:'03',col:'rgba(60,155,148,1)',p:pH}
-      ].forEach(function(it){
-        var a=cl(it.p*2.5); if(a<0.02) return;
-        var rr=BASE.outer.r*S*it.c[2]*0.9;
-        ctx.save(); ctx.globalAlpha=a;
-        ctx.font='700 '+Math.max(11,13*it.c[2])+'px Space Mono,monospace';
-        ctx.fillStyle=it.col; ctx.textAlign='right'; ctx.textBaseline='middle';
-        ctx.fillText(it.n, it.c[0]-rr*0.72, it.c[1]);
-        ctx.restore();
-      });
-
-      /* ── globe ring labels (fade out on scroll) ── */
-      var rla=1-cl(smoothP*4);
-      if(rla>0.02){
-        function drawRL(text,pd,size,color,bold){
-          var rfn=pd[2]<30?rfO:pd[2]<50?rfS:rfH;
-          var pp=proj(rfn([pd[0]*S,pd[1]*S,pd[2]]));
-          var a=Math.max(0,Math.min(1,(pp[2]-.12)*3))*rla;
-          if(a<0.03) return;
-          ctx.save(); ctx.globalAlpha=a; ctx.fillStyle=color;
-          ctx.font=(bold?'600':'300')+' '+Math.max(6,size*pp[2])+'px Space Grotesk,sans-serif';
-          ctx.textAlign='center'; ctx.textBaseline='middle';
-          ctx.fillText(text,pp[0],pp[1]); ctx.restore();
-        }
-        drawRL('AI & Robotics growth',     [0,-1.48,0],           12,'rgba(90,65,185,1)', true);
-        drawRL('Service System',           [0, 1.20,BASE.service.z],11,'rgba(110,90,175,1)',false);
-        drawRL('Human-Centered Innovation',[0, 0.88,BASE.human.z], 10,'rgba(50,140,133,1)',false);
-        drawRL('Systemic Innovation',      [0, 1.62,0],            10,'rgba(160,148,200,1)',false);
-      }
-
-      /* ── badges (expand outward when settled) ── */
-      badges.forEach(function(b,i){
-        var lP  =b.layer==='outer'?pO:b.layer==='service'?pS:pH;
-        var offY=b.layer==='outer'?offO:b.layer==='service'?offS:offH;
-        var lA  =b.layer==='outer'?alO:b.layer==='service'?alS:alH;
-        var exp =1+cl((lP-0.7)*3.3)*0.45;
-        var fy  =Math.sin(t+i*1.3)*3;
-        var bA  =1-cl(smoothP*2)+lA*0.9;
-        drawBadge({id:b.id,label:b.label,style:b.style,layer:b.layer,
-                   pos:[b.pos[0]*exp,b.pos[1]*exp,b.pos[2]],
-                   w:b.w,h:b.h,icon:b.icon,info:b.info},
-                  fy, offY, Math.min(1,bA));
-      });
-
-      /* ── hover ── */
-      var nh=null;
-      for(var i=badgeRects.length-1;i>=0;i--){
-        var r=badgeRects[i];
-        if(mouseX>=r.x&&mouseX<=r.x+r.w&&mouseY>=r.y&&mouseY<=r.y+r.h){ nh=r.id; break; }
-      }
-      hoveredId=nh;
-      badges.forEach(function(b){
-        hoverGlow[b.id]+=((b.id===hoveredId?1:0)-hoverGlow[b.id])*.1;
-      });
-      canvas.style.cursor=hoveredId?'pointer':'default';
-      if(curRing){
-        curRing.style.width =hoveredId?'50px':'32px';
-        curRing.style.height=hoveredId?'50px':'32px';
-      }
-
-      rx=sRX; ry=sRY;
-
-      /* ── SERVIZIONS pill → wordmark ── */
-      var splitP=cl((smoothP-0.30)/0.15);
-      var posX=CX, posY=CY+(H*0.50-CY)*splitP;
-      ctx.save();
-
-      if(splitP<0.05){
-        /* globe state — purple pill */
-        var fz=BASE.core.z+Math.sin(t*1.4)*4;
-        var q=[0,0,fz]; q=rotX(q,sRX); q=rotY(q,sRY);
-        var pr=proj(q), sf=Math.max(0.5,pr[2]);
-        var al=Math.max(0,Math.min(1,(sf-.15)*3));
-        var pw=210*sf, ph=82*sf, r2=ph/2, ppx=pr[0]-pw/2, ppy=pr[1]-ph/2;
-        ctx.globalAlpha=al;
-        var pulse=0.82+Math.sin(t*1.4)*.18, hR=pw*.85*pulse;
-        var halo=ctx.createRadialGradient(pr[0],pr[1],pw*.1,pr[0],pr[1],hR);
-        halo.addColorStop(0,'rgba(94,23,235,'+.15*pulse+')');
-        halo.addColorStop(1,'rgba(94,23,235,0)');
-        ctx.fillStyle=halo; ctx.beginPath(); ctx.arc(pr[0],pr[1],hR,0,Math.PI*2); ctx.fill();
-        ctx.shadowColor='rgba(94,23,235,.3)'; ctx.shadowBlur=28*sf; ctx.shadowOffsetY=10*sf;
-        var pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);
-        pgrd.addColorStop(0,'#7a35ef'); pgrd.addColorStop(1,'#5e17eb');
-        ctx.fillStyle=pgrd; ctx.beginPath(); ctx.roundRect(ppx,ppy,pw,ph,r2); ctx.fill();
-        ctx.shadowBlur=0; ctx.shadowOffsetY=0;
-        var shim=ctx.createLinearGradient(ppx,ppy,ppx,ppy+ph);
-        shim.addColorStop(0,'rgba(255,255,255,.16)'); shim.addColorStop(.5,'rgba(255,255,255,0)');
-        ctx.fillStyle=shim; ctx.beginPath(); ctx.roundRect(ppx,ppy,pw,ph*.5,r2); ctx.fill();
-        ctx.fillStyle='#fff';
-        ctx.font='700 '+Math.max(9,17*sf)+'px Space Grotesk,sans-serif';
-        ctx.textAlign='center'; ctx.textBaseline='middle';
-        ctx.fillText('SERVIZIONS',pr[0],pr[1]);
-
-      } else {
-        /* split state — wordmark */
-        ctx.globalAlpha=splitP;
-        var glow=ctx.createRadialGradient(posX,posY,0,posX,posY,160);
-        glow.addColorStop(0,'rgba(94,23,235,'+(0.07*splitP)+')');
-        glow.addColorStop(1,'rgba(94,23,235,0)');
-        ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(posX,posY,160,0,Math.PI*2); ctx.fill();
-        var fs=52+splitP*14;
-        ctx.font='700 '+fs+'px Space Grotesk,sans-serif';
-        ctx.textAlign='center'; ctx.textBaseline='middle';
-        ctx.fillStyle='#5e17eb'; ctx.letterSpacing='0.18em';
-        ctx.shadowColor='rgba(94,23,235,.15)'; ctx.shadowBlur=28;
-        ctx.fillText('SERVIZIONS',posX,posY);
-        ctx.shadowBlur=0;
-        /* tagline */
-        ctx.globalAlpha=Math.max(0,(splitP-0.4)*3);
-        ctx.font='300 10px Space Mono,monospace';
-        ctx.fillStyle='rgba(94,23,235,.42)'; ctx.letterSpacing='0.22em';
-        var tY=posY+fs*0.78;
-        ctx.fillText('SERVICE INNOVATION STUDIO',posX,tY);
-        /* body text */
-        var hCY=CY+offH, midY=tY+(hCY-tY)*0.48;
-        var tA=Math.max(0,(splitP-0.55)*3.5);
-        if(tA>0.01){
-          ctx.globalAlpha=tA;
-          ctx.font='300 14px Space Grotesk,sans-serif';
-          ctx.fillStyle='rgba(42,31,92,0.65)'; ctx.letterSpacing='0.01em';
-          ctx.fillText('We bridge the innovation layer between healthcare technology companies',posX,midY-12);
-          ctx.fillText('and real clinical practice — before a single line of code is written.',posX,midY+12);
-        }
-      }
-
-      ctx.restore();
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-
-  })();
-  </script>
+})();
+</script>
 </body>
 </html>
