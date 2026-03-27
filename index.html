@@ -319,48 +319,30 @@
       fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(res){if(res.ok){form.style.display='none';document.getElementById('bookingSuccess').style.display='block';}
       else{alert('Something went wrong. Pleas
-      <!-- ═══════════════════════════════════════════════════════
-  PART 2 — 3D ANIMATION SCRIPT
-  In your index.html, replace the line:
-    <!-- PASTE PART 2 HERE (replace this comment) -->
-  with the <script>...</script> block below.
-  Place it just before </body>
-═══════════════════════════════════════════════════════ -->
-
+      <!-- PASTE THIS ENTIRE BLOCK before </body> in your index.html -->
 <script>
 (function(){
 
-  /* ─────────────────────────────────────────
-     CANVAS + RESIZE
-     CY = 68% down  →  globe in lower portion
-     Text (SERVIZIONS) draws ABOVE the globe
-     All 3 circles drop DOWN and stay visible
-  ───────────────────────────────────────── */
-  var canvas  = document.getElementById('hero-canvas');
-  var ctx     = canvas.getContext('2d');
-  var wrap    = document.getElementById('hero-wrap');
+  var canvas = document.getElementById('hero-canvas');
+  var ctx    = canvas.getContext('2d');
+  var wrap   = document.getElementById('hero-wrap');
   var W,H,CX,CY;
 
   function resize(){
-    W  = canvas.width  = innerWidth;
-    H  = canvas.height = innerHeight;
-    CX = W / 2;
-    CY = H * 0.68;  /* globe centre sits at 68% — plenty of room above for text */
+    W = canvas.width  = innerWidth;
+    H = canvas.height = innerHeight;
+    CX = W/2;
+    CY = H/2; /* true centre — everything positions around this */
   }
   resize();
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize',resize);
 
-  /* ─────────────────────────────────────────
-     3D MATH
-  ───────────────────────────────────────── */
+  /* 3D math */
   function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
   function rotY(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
   var FL=860;
   function proj(p){var z=p[2]+FL,sc=FL/z;return[CX+p[0]*sc,CY+p[1]*sc,sc];}
 
-  /* ─────────────────────────────────────────
-     STATE
-  ───────────────────────────────────────── */
   var S=198;
   var rx=0.18,ry=0.04,velX=0,velY=0;
   var dragging=false,lastMX=0,lastMY=0;
@@ -370,26 +352,17 @@
   var hoverGlow={};
   var scrollP=0,smoothP=0;
 
-  /* ─────────────────────────────────────────
-     SCENE CONFIG
-     Layers: outer z=0, service z=24, human z=48
-     DROP amounts keep all circles on screen:
-       outer  → max 40% viewport height
-       service→ max 22%
-       human  → max  8%
-     Extra slow drift continues as you scroll more
-  ───────────────────────────────────────── */
+  /* layers */
   var BASE={outer:{r:1.36,z:0},service:{r:1.08,z:24},human:{r:0.76,z:48},core:{z:68}};
-  var PHASE={outer:[0.02,0.16],service:[0.14,0.28],human:[0.25,0.40]};
+
+  /* labels */
   var LDESC={
     outer:  'The macro context — where AI advancement and robotics growth are reshaping healthcare delivery at a systemic level.',
-    service:'Four strategic pillars connecting technology to real clinical environments: Patient Journey, Adoption Strategy, Service Blueprint, and Clinicians-Workflow.',
-    human:  'The inner layer of method — Empathy, Synthesis, and Co-Design ensure every innovation is grounded in real human experience before it is built.'
+    service:'Four strategic pillars: Patient Journey, Adoption Strategy, Service Blueprint, and Clinicians-Workflow.',
+    human:  'Empathy, Synthesis, and Co-Design ensure every innovation is grounded in real human experience.'
   };
 
-  /* ─────────────────────────────────────────
-     BADGE DATA
-  ───────────────────────────────────────── */
+  /* badges */
   var badges=[
     {id:'empathy',  label:'Empathy',           style:'teal',  layer:'human',  pos:[0,    -0.44,48/S],w:88, h:27,icon:'01',info:'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.'},
     {id:'synthesis',label:'Synthesis',         style:'teal',  layer:'human',  pos:[-0.30, 0.26,48/S],w:88, h:27,icon:'02',info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
@@ -401,9 +374,6 @@
   ];
   badges.forEach(function(b){hoverGlow[b.id]=0;});
 
-  /* ─────────────────────────────────────────
-     HELPERS
-  ───────────────────────────────────────── */
   function eio(v){return v<0.5?2*v*v:1-Math.pow(-2*v+2,2)/2;}
   function cl(v){return Math.max(0,Math.min(1,v));}
   function phP(p,s,e){return eio(cl((p-s)/(e-s)));}
@@ -411,36 +381,38 @@
     return function(p){var sh=[p[0],p[1]+oY,p[2]];sh=rotX(sh,rx);sh=rotY(sh,ry);return sh;};
   }
 
-  /* ─────────────────────────────────────────
-     SCROLL — relative to hero-wrap position
-  ───────────────────────────────────────── */
+  /* ── SCROLL ──
+     scrollP 0→1 maps across the full hero-wrap height.
+     
+     Animation phases:
+       0.00–0.05 : globe visible, SERVIZIONS text + tagline at top
+       0.05–0.15 : outer (big teal) drops DOWN from globe centre to its final Y
+       0.15–0.28 : service (purple) drops DOWN to its final Y
+       0.28–0.42 : human (small teal) drops DOWN to its final Y
+       0.42–1.00 : everything settled, all 3 circles overlapping — user stays here
+                   SERVIZIONS fixed at top, circles visible, no page content yet
+  */
   function updateScroll(){
-    var top  = wrap.getBoundingClientRect().top + window.scrollY;
-    var wrapH= wrap.offsetHeight - innerHeight;
-    var rel  = window.scrollY - top;
-    scrollP  = cl(rel / wrapH);
-    /* hide canvas the moment page content begins scrolling into view */
-    var past = window.scrollY > (wrap.offsetTop + wrap.offsetHeight - innerHeight);
+    var wrapTop = wrap.offsetTop;
+    var wrapH   = wrap.offsetHeight - innerHeight;
+    scrollP = cl((window.scrollY - wrapTop) / wrapH);
+    var past = window.scrollY > wrap.offsetTop + wrap.offsetHeight;
     canvas.style.display = past ? 'none' : 'block';
-    /* also hide fixed UI elements when past hero */
-    var uiEl=['szn-cur','szn-cur-ring','szn-hint','szn-panel'];
-    uiEl.forEach(function(id){
+    ['szn-cur','szn-cur-ring','szn-hint','szn-panel'].forEach(function(id){
       var el=document.getElementById(id);
-      if(el) el.style.visibility = past ? 'hidden' : 'visible';
+      if(el) el.style.visibility = past?'hidden':'visible';
     });
     document.querySelectorAll('.szn-corner').forEach(function(el){
-      el.style.visibility = past ? 'hidden' : 'visible';
+      el.style.visibility = past?'hidden':'visible';
     });
     var hint=document.getElementById('szn-hint');
-    if(hint&&!past) hint.style.opacity=(scrollY>80)?'0':'1';
+    if(hint&&!past) hint.style.opacity=(scrollP>0.03)?'0':'1';
   }
   window.addEventListener('scroll',updateScroll,{passive:true});
   updateScroll();
 
-  /* ─────────────────────────────────────────
-     DRAG / TOUCH
-  ───────────────────────────────────────── */
-  canvas.addEventListener('mousedown',function(e){if(smoothP>0.05)return;dragging=true;lastMX=e.clientX;lastMY=e.clientY;velX=0;velY=0;});
+  /* drag */
+  canvas.addEventListener('mousedown',function(e){if(smoothP>0.04)return;dragging=true;lastMX=e.clientX;lastMY=e.clientY;velX=0;velY=0;});
   window.addEventListener('mousemove',function(e){
     mouseX=e.clientX;mouseY=e.clientY;
     if(!dragging)return;
@@ -461,13 +433,11 @@
     }
   });
   document.getElementById('szn-panel-close').onclick=function(){document.getElementById('szn-panel').classList.remove('on');};
-  canvas.addEventListener('touchstart',function(e){var tc=e.touches[0];if(smoothP>0.05)return;dragging=true;lastMX=tc.clientX;lastMY=tc.clientY;velX=0;velY=0;},{passive:true});
+  canvas.addEventListener('touchstart',function(e){var tc=e.touches[0];if(smoothP>0.04)return;dragging=true;lastMX=tc.clientX;lastMY=tc.clientY;velX=0;velY=0;},{passive:true});
   window.addEventListener('touchmove',function(e){var tc=e.touches[0];if(!dragging)return;velY=(tc.clientX-lastMX)*.009;velX=(tc.clientY-lastMY)*.009;ry+=velY;rx+=velX;lastMX=tc.clientX;lastMY=tc.clientY;},{passive:true});
   window.addEventListener('touchend',function(){dragging=false;});
 
-  /* ─────────────────────────────────────────
-     CURSOR
-  ───────────────────────────────────────── */
+  /* cursor */
   var cur=document.getElementById('szn-cur');
   var curRing=document.getElementById('szn-cur-ring');
   var crx=0,cry=0;
@@ -478,9 +448,7 @@
     requestAnimationFrame(ac);
   })();
 
-  /* ─────────────────────────────────────────
-     DRAW: RING PATH
-  ───────────────────────────────────────── */
+  /* draw helpers */
   function drawRing(r,z,color,lw,dash,rf){
     var pts=[];
     for(var i=0;i<=120;i++){var a=(i/120)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
@@ -488,10 +456,6 @@
     ctx.beginPath();pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
     ctx.stroke();ctx.setLineDash([]);ctx.restore();
   }
-
-  /* ─────────────────────────────────────────
-     DRAW: DISC
-  ───────────────────────────────────────── */
   function drawDisc(r,z,fill,rf){
     var pts=[];
     for(var i=0;i<=90;i++){var a=(i/90)*Math.PI*2;pts.push(proj(rf([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}
@@ -499,10 +463,6 @@
     pts.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);});
     ctx.closePath();ctx.fill();ctx.restore();
   }
-
-  /* ─────────────────────────────────────────
-     DRAW: EDGE (side wall visible when tilted)
-  ───────────────────────────────────────── */
   function drawEdge(r,z0,z1,color,rf){
     ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1;
     for(var i=0;i<90;i++){
@@ -513,10 +473,6 @@
     }
     ctx.globalAlpha=1;ctx.restore();
   }
-
-  /* ─────────────────────────────────────────
-     DRAW: ARROW
-  ───────────────────────────────────────── */
   function drawArrow(r,angle,z,cw,color,rf){
     var a=angle,sz=8;
     var raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z];
@@ -528,10 +484,6 @@
     ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);
     ctx.stroke();ctx.restore();
   }
-
-  /* ─────────────────────────────────────────
-     DRAW: SPLIT LABEL (appears beside ring)
-  ───────────────────────────────────────── */
   function drawSplitLabel(name,desc,sy,alpha,sx,showDesc){
     if(alpha<0.02)return;
     if(showDesc===undefined)showDesc=true;
@@ -554,10 +506,6 @@
     }
     ctx.restore();
   }
-
-  /* ─────────────────────────────────────────
-     DRAW: BADGE
-  ───────────────────────────────────────── */
   function drawBadge(badge,floatY,offY,alpha){
     if(alpha<0.04)return;
     var g=hoverGlow[badge.id];
@@ -599,127 +547,120 @@
     badgeRects.push({x:px,y:py,w:sw,h:sh,id:badge.id,label:badge.label,style:badge.style,info:badge.info||null,icon:badge.icon});
   }
 
-  /* ─────────────────────────────────────────
+  /* ═══════════════════════════════════
      MAIN LOOP
-  ───────────────────────────────────────── */
+  ═══════════════════════════════════ */
   function draw(){
-    t+=0.013;badgeRects=[];
-    smoothP+=(scrollP-smoothP)*.08;
+    t+=0.013; badgeRects=[];
+    smoothP+=(scrollP-smoothP)*.06;
 
-    var rotA=1-cl(smoothP*6);
+    /* globe rotation — only active at start */
+    var rotA=1-cl(smoothP*8);
     if(!dragging&&rotA>0){
       velX*=0.92;velY*=0.92;rx+=velX*rotA;ry+=velY*rotA;
       if(Math.abs(velX)<0.0004&&Math.abs(velY)<0.0004)rx+=0.0004*rotA;
     }
+    /* mouse tilt when settled */
     var mx01=(mouseX-W/2)/(W/2),my01=(mouseY-H/2)/(H/2);
-    var flatP=cl(smoothP*10);
+    var flatP=cl(smoothP*12);
     var sRX=rx,sRY=ry;
-    rx=rx*(1-flatP)+my01*0.08*flatP;
-    ry=ry*(1-flatP)+mx01*0.08*flatP;
+    rx=rx*(1-flatP)+my01*0.06*flatP;
+    ry=ry*(1-flatP)+mx01*0.06*flatP;
     spinS+=0.0018;spinH-=0.0012;
-    var ss=1-cl(smoothP*3);
+    var ss=1-cl(smoothP*4);
 
-    /* clear + bg */
     ctx.clearRect(0,0,W,H);
+
+    /* bg */
     var bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.7);
-    bg.addColorStop(0,'rgba(235,230,255,0.18)');bg.addColorStop(1,'rgba(247,246,252,0)');
+    bg.addColorStop(0,'rgba(235,230,255,0.15)');bg.addColorStop(1,'rgba(247,246,252,0)');
     ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
 
-    /* ── INTRO TEXT above globe ─────────────────
-       Positioned at H*0.18 — well above CY (68%)
-       Shows on load, fades when scroll begins
-    ─────────────────────────────────────────── */
-    var ia=1-cl(smoothP*6);
-    if(ia>0.02){
-      ctx.save();ctx.globalAlpha=ia;
+    /* ══════════════════════════════════════════════════════
+       SERVIZIONS TEXT — always at top after first scroll
+       
+       Phase A (smoothP 0→0.04): sits at centre with globe, fades in
+       Phase B (smoothP 0.04→0.12): slides UP to final position H*0.12
+       Phase C (smoothP > 0.12): stays locked at H*0.12 — never disappears
+    ══════════════════════════════════════════════════════ */
+    var logoSlideP = cl((smoothP-0.04)/0.08); /* 0→1 as it slides to top */
+    var logoY = CY - logoSlideP*(CY - H*0.12); /* CY → H*0.12 */
+    var logoAlpha = cl(smoothP*20); /* fades in very quickly */
+    if(logoAlpha>0.02){
+      ctx.save();ctx.globalAlpha=logoAlpha;
       ctx.textAlign='center';ctx.textBaseline='middle';
       ctx.font='700 52px Space Grotesk,sans-serif';
       ctx.fillStyle='#5e17eb';ctx.letterSpacing='0.18em';
-      ctx.shadowColor='rgba(94,23,235,.12)';ctx.shadowBlur=20;
-      ctx.fillText('SERVIZIONS',CX,H*0.18);
+      ctx.shadowColor='rgba(94,23,235,.12)';ctx.shadowBlur=16;
+      ctx.fillText('SERVIZIONS',CX,logoY);
       ctx.shadowBlur=0;
       ctx.font='300 10px Space Mono,monospace';
-      ctx.fillStyle='rgba(94,23,235,.42)';ctx.letterSpacing='0.22em';
-      ctx.fillText('SERVICE INNOVATION STUDIO',CX,H*0.18+50);
+      ctx.fillStyle='rgba(94,23,235,.4)';ctx.letterSpacing='0.22em';
+      ctx.fillText('SERVICE INNOVATION STUDIO',CX,logoY+50);
       ctx.restore();
     }
 
-    /* ── SCROLL PHASES ── */
-    var pO=phP(smoothP,PHASE.outer[0],PHASE.outer[1]);
-    var pS=phP(smoothP,PHASE.service[0],PHASE.service[1]);
-    var pH=phP(smoothP,PHASE.human[0],PHASE.human[1]);
-
-    /* ── DROP OFFSETS ────────────────────────────
-       CY = H*0.68 (globe centre)
+    /* ══════════════════════════════════════════════════════
+       DROP PHASES
        
-       When fully open, we want 3 circles stacked:
-         human   → stays near centre        ~ H*0.30 below CY
-         service → middle                   ~ H*0.58 below CY  
-         outer   → bottom of screen         ~ H*0.88 below CY
+       The 3 circles drop in sequence, each from globe centre
+       to its final resting Y position on screen.
        
-       Canvas is fixed 100vh so we use ctx.translate
-       to shift the whole scene up when rings spread,
-       making all 3 visible at once.
-    ─────────────────────────────────────────── */
-    var ex=cl((smoothP-0.42)/0.58); ex=ex*ex;
+       Final layout (overlapping, like your reference image):
+         outer  (big teal):   centre at H*0.72  (bottom)
+         service (purple):    centre at H*0.55  (middle)  
+         human  (small teal): centre at H*0.38  (top)
+       
+       They overlap = intentional, matches your design.
+       All 3 fit on screen at once.
+       
+       Drop order: outer FIRST, service SECOND, human LAST
+    ══════════════════════════════════════════════════════ */
 
-    /* how far each ring drops in world units */
-    var offH=pH*H*0.30 + ex*H*0.05;
-    var offS=pS*H*0.58 + ex*H*0.08;
-    var offO=pO*H*0.88 + ex*H*0.12;
+    /* phase progress per ring */
+    var pO = phP(smoothP, 0.05, 0.22); /* outer  drops: scroll 5%→22%  */
+    var pS = phP(smoothP, 0.20, 0.38); /* service drops: scroll 20%→38% */
+    var pH = phP(smoothP, 0.36, 0.54); /* human  drops: scroll 36%→54% */
 
-    /* shift the whole scene UP so all 3 rings fit on screen */
-    /* when fully open, translate up by ~H*0.38 so outer ring is visible */
-    var sceneShift = cl(Math.max(pO,pS,pH)) * H * 0.38;
-    ctx.save();
-    ctx.translate(0, -sceneShift);
+    /* 
+      Current globe centre = CY = H*0.50
+      Target screen Y:
+        outer  → H*0.72  → world offset = (H*0.72 - CY) = +H*0.22
+        service→ H*0.55  → world offset = (H*0.55 - CY) = +H*0.05
+        human  → H*0.38  → world offset = (H*0.38 - CY) = -H*0.12
+    */
+    var offO = pO * (H*0.22);
+    var offS = pS * (H*0.05);
+    var offH = pH * (-H*0.12);
 
     var rfO=makeRF(offO),rfS=makeRF(offS),rfH=makeRF(offH);
-    var alO=cl(pO*1.8),alS=cl(pS*1.8),alH=cl(pH*1.8);
+    var alO=cl(pO*2),alS=cl(pS*2),alH=cl(pH*2);
 
-    /* ── DISCS ── */
-    drawDisc(BASE.outer.r,  BASE.outer.z,  'rgba(194,228,225,0.22)',rfO);
-    drawDisc(BASE.service.r,BASE.service.z,'rgba(197,183,240,0.55)',rfS);
-    drawDisc(BASE.human.r,  BASE.human.z,  'rgba(150,215,208,0.65)',rfH);
+    /* draw back→front: outer first, service on top, human on top */
+    drawDisc(BASE.outer.r,  BASE.outer.z,  'rgba(194,228,225,0.28)',rfO);
+    drawDisc(BASE.service.r,BASE.service.z,'rgba(197,183,240,0.58)',rfS);
+    drawDisc(BASE.human.r,  BASE.human.z,  'rgba(150,215,208,0.68)',rfH);
 
-    /* ── EDGES (3D depth) ── */
-    var ea=1-cl(smoothP*5);
+    /* edges when 3D */
+    var ea=1-cl(smoothP*6);
     if(ea>0.02){
       ctx.save();ctx.globalAlpha=ea;
-      drawEdge(BASE.outer.r,  BASE.outer.z,  BASE.service.z,'rgba(175,155,230,0.85)',rfO);
-      drawEdge(BASE.service.r,BASE.service.z,BASE.human.z,  'rgba(140,210,205,0.85)',rfS);
-      drawEdge(BASE.human.r,  BASE.human.z,  BASE.core.z,   'rgba(120,200,193,0.85)',rfH);
+      drawEdge(BASE.outer.r,  BASE.outer.z,  BASE.service.z,'rgba(175,155,230,0.8)',rfO);
+      drawEdge(BASE.service.r,BASE.service.z,BASE.human.z,  'rgba(140,210,205,0.8)',rfS);
+      drawEdge(BASE.human.r,  BASE.human.z,  BASE.core.z,   'rgba(120,200,193,0.8)',rfH);
       ctx.restore();
     }
 
-    /* ── RINGS ── */
-    drawRing(BASE.outer.r,  BASE.outer.z,  'rgba(140,210,205,1)',2,  [],   rfO);
-    drawRing(BASE.service.r,BASE.service.z,'rgba(155,130,218,1)',1.8,[5,8],rfS);
-    drawRing(BASE.human.r,  BASE.human.z,  'rgba(80,175,168,1)', 2.2,[],   rfH);
+    /* ring borders */
+    drawRing(BASE.outer.r,  BASE.outer.z,  'rgba(140,210,205,1)',  2,   [],   rfO);
+    drawRing(BASE.service.r,BASE.service.z,'rgba(155,130,218,1)',  1.8, [5,8],rfS);
+    drawRing(BASE.human.r,  BASE.human.z,  'rgba(80,175,168,1)',   2.2, [],   rfH);
 
-    /* ── ARROWS ── */
+    /* arrows */
     [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(function(a){drawArrow(BASE.service.r,a+spinS*ss,BASE.service.z,true, 'rgba(120,95,200,1)',rfS);});
     [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(function(a){drawArrow(BASE.human.r,a+spinH*ss,BASE.human.z,false,'rgba(60,155,148,1)',rfH);});
 
-    /* ── CONNECTING LINES ── */
-    var la=cl(smoothP*3)*cl(1-smoothP*0.5)+cl((smoothP-0.3)*4)*0.6;
-    if(la>0.02){
-      var cO=proj(rfO([0,0,BASE.outer.z])),cS=proj(rfS([0,0,BASE.service.z])),cH=proj(rfH([0,0,BASE.human.z]));
-      ctx.save();ctx.globalAlpha=la*0.55;ctx.setLineDash([4,10]);ctx.lineCap='round';
-      var g1=ctx.createLinearGradient(cO[0],cO[1],cS[0],cS[1]);
-      g1.addColorStop(0,'rgba(140,210,205,1)');g1.addColorStop(1,'rgba(155,130,218,1)');
-      ctx.strokeStyle=g1;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(cO[0],cO[1]);ctx.lineTo(cS[0],cS[1]);ctx.stroke();
-      var g2=ctx.createLinearGradient(cS[0],cS[1],cH[0],cH[1]);
-      g2.addColorStop(0,'rgba(155,130,218,1)');g2.addColorStop(1,'rgba(80,175,168,1)');
-      ctx.strokeStyle=g2;ctx.beginPath();ctx.moveTo(cS[0],cS[1]);ctx.lineTo(cH[0],cH[1]);ctx.stroke();
-      [[cO,'rgba(140,210,205,1)'],[cS,'rgba(155,130,218,1)'],[cH,'rgba(80,175,168,1)']].forEach(function(pair){
-        ctx.setLineDash([]);ctx.fillStyle=pair[1];ctx.shadowColor=pair[1];ctx.shadowBlur=8;
-        ctx.beginPath();ctx.arc(pair[0][0],pair[0][1],3.5,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
-      });
-      ctx.restore();
-    }
-
-    /* ── SPLIT LABELS ── */
+    /* labels beside each ring */
     var cOuter  =proj(rfO([0,0,BASE.outer.z]));
     var cService=proj(rfS([0,0,BASE.service.z]));
     var cHuman  =proj(rfH([0,0,BASE.human.z]));
@@ -728,12 +669,12 @@
     drawSplitLabel('Service System',           LDESC.service,cService[1],alS,cService[0]+BASE.service.r*S*cService[2]*0.72);
     drawSplitLabel('Human-Centered Innovation','',           cHuman[1],  alH,cHuman[0]  +BASE.human.r*S*cHuman[2]*0.72,false);
 
-    /* ── 01/02/03 numbers ── */
+    /* 01/02/03 numbers */
     [{c:cOuter,n:'01',col:'rgba(80,175,168,1)',p:pO},
      {c:cService,n:'02',col:'rgba(120,95,200,1)',p:pS},
      {c:cHuman, n:'03',col:'rgba(60,155,148,1)',p:pH}
     ].forEach(function(it){
-      var a=cl(it.p*2.5);if(a<0.02)return;
+      var a=cl(it.p*2);if(a<0.02)return;
       var rr=BASE.outer.r*S*it.c[2]*0.9;
       ctx.save();ctx.globalAlpha=a;
       ctx.font='700 '+Math.max(11,13*it.c[2])+'px Space Mono,monospace';
@@ -741,8 +682,8 @@
       ctx.fillText(it.n,it.c[0]-rr*0.72,it.c[1]);ctx.restore();
     });
 
-    /* ── GLOBE LABELS (fade out) ── */
-    var rla=1-cl(smoothP*4);
+    /* globe ring labels — fade out as circles start dropping */
+    var rla=1-cl(smoothP*10);
     if(rla>0.02){
       function drawRL(text,pd,size,color,bold){
         var rfn=pd[2]<30?rfO:pd[2]<50?rfS:rfH;
@@ -758,21 +699,20 @@
       drawRL('Systemic Innovation',      [0, 1.62,0],            10,'rgba(160,148,200,1)',false);
     }
 
-    /* ── BADGES ── */
+    /* badges */
     badges.forEach(function(b,i){
       var lP  =b.layer==='outer'?pO:b.layer==='service'?pS:pH;
       var oY  =b.layer==='outer'?offO:b.layer==='service'?offS:offH;
       var lA  =b.layer==='outer'?alO:b.layer==='service'?alS:alH;
-      var exp =1+cl((lP-0.7)*3.3)*0.45;
+      var exp =1+cl((lP-0.7)*3.3)*0.35;
       var fy  =Math.sin(t+i*1.3)*3;
-      var bA  =1-cl(smoothP*2)+lA*0.9;
+      var bA  =cl(lP*2);
       drawBadge({id:b.id,label:b.label,style:b.style,layer:b.layer,
                  pos:[b.pos[0]*exp,b.pos[1]*exp,b.pos[2]],
-                 w:b.w,h:b.h,icon:b.icon,info:b.info},
-                fy,oY,Math.min(1,bA));
+                 w:b.w,h:b.h,icon:b.icon,info:b.info},fy,oY,bA);
     });
 
-    /* ── HOVER ── */
+    /* hover */
     var nh=null;
     for(var i=badgeRects.length-1;i>=0;i--){
       var r=badgeRects[i];
@@ -784,28 +724,17 @@
     if(curRing){curRing.style.width=hoveredId?'50px':'32px';curRing.style.height=hoveredId?'50px':'32px';}
     rx=sRX;ry=sRY;
 
-    /* restore scene translate — pill draws in un-shifted space */
-    ctx.restore();
-
-    /* ── SERVIZIONS PILL → WORDMARK ──────────────────
-       splitP 0→1 when smoothP goes 0.40→0.55
-       posY moves from CY (globe centre at 68%)
-       to H*0.50 (exact screen middle)
-       This means the wordmark ends up ABOVE all circles
-    ─────────────────────────────────────────────── */
-    var splitP=cl((smoothP-0.40)/0.15);
-    /* pill starts at globe centre; wordmark moves to top area, above all circles */
-    var posX=CX, posY=CY + (H*0.12 - CY)*splitP - sceneShift*splitP;
-    ctx.save();
-
-    if(splitP<0.05){
-      /* GLOBE — purple pill at centre */
+    /* ══════════════════════════════════════════════════════
+       SERVIZIONS PILL (globe state only, before logo slides up)
+       Only visible while smoothP < 0.04
+    ══════════════════════════════════════════════════════ */
+    var pillAlpha = 1-cl(smoothP*25); /* fades out very quickly */
+    if(pillAlpha>0.02){
       var fz=BASE.core.z+Math.sin(t*1.4)*4;
       var q=[0,0,fz];q=rotX(q,sRX);q=rotY(q,sRY);
       var pr2=proj(q),sf2=Math.max(0.5,pr2[2]);
-      var al2=Math.max(0,Math.min(1,(sf2-.15)*3));
       var pw=210*sf2,ph=82*sf2,rr2=ph/2,ppx=pr2[0]-pw/2,ppy=pr2[1]-ph/2;
-      ctx.globalAlpha=al2;
+      ctx.save();ctx.globalAlpha=pillAlpha;
       var pulse=0.82+Math.sin(t*1.4)*.18,hR=pw*.85*pulse;
       var halo=ctx.createRadialGradient(pr2[0],pr2[1],pw*.1,pr2[0],pr2[1],hR);
       halo.addColorStop(0,'rgba(94,23,235,'+.15*pulse+')');halo.addColorStop(1,'rgba(94,23,235,0)');
@@ -821,37 +750,21 @@
       ctx.fillStyle='#fff';
       ctx.font='700 '+Math.max(9,17*sf2)+'px Space Grotesk,sans-serif';
       ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr2[0],pr2[1]);
-
-    } else {
-      /* SPLIT STATE — big wordmark at screen centre */
-      ctx.globalAlpha=splitP;
-      var glow=ctx.createRadialGradient(posX,posY,0,posX,posY,180);
-      glow.addColorStop(0,'rgba(94,23,235,'+(0.08*splitP)+')');glow.addColorStop(1,'rgba(94,23,235,0)');
-      ctx.fillStyle=glow;ctx.beginPath();ctx.arc(posX,posY,180,0,Math.PI*2);ctx.fill();
-      var fs=52+splitP*14;
-      ctx.font='700 '+fs+'px Space Grotesk,sans-serif';
-      ctx.textAlign='center';ctx.textBaseline='middle';
-      ctx.fillStyle='#5e17eb';ctx.letterSpacing='0.18em';
-      ctx.shadowColor='rgba(94,23,235,.15)';ctx.shadowBlur=28;
-      ctx.fillText('SERVIZIONS',posX,posY);ctx.shadowBlur=0;
-      /* tagline */
-      ctx.globalAlpha=Math.max(0,(splitP-0.4)*3);
-      ctx.font='300 10px Space Mono,monospace';
-      ctx.fillStyle='rgba(94,23,235,.42)';ctx.letterSpacing='0.22em';
-      var tY=posY+fs*0.8;ctx.fillText('SERVICE INNOVATION STUDIO',posX,tY);
-      /* body text between tagline and human circle */
-      var hCY=CY+offH-sceneShift,midY=tY+(hCY-tY)*0.45;
-      var tA=Math.max(0,(splitP-0.55)*3.5);
-      if(tA>0.01){
-        ctx.globalAlpha=tA;
-        ctx.font='300 14px Space Grotesk,sans-serif';
-        ctx.fillStyle='rgba(42,31,92,0.65)';ctx.letterSpacing='0.01em';
-        ctx.fillText('We bridge the innovation layer between healthcare technology companies',posX,midY-12);
-        ctx.fillText('and real clinical practice — before a single line of code is written.',posX,midY+12);
-      }
+      ctx.restore();
     }
 
-    ctx.restore();
+    /* body text — appears between logo and circles when all settled */
+    var textP = cl((smoothP-0.55)/0.10);
+    if(textP>0.02){
+      ctx.save();ctx.globalAlpha=textP;
+      ctx.font='300 14px Space Grotesk,sans-serif';
+      ctx.fillStyle='rgba(42,31,92,0.6)';ctx.letterSpacing='0.01em';
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('We bridge the innovation layer between healthcare technology companies',CX,H*0.26);
+      ctx.fillText('and real clinical practice — before a single line of code is written.',CX,H*0.26+22);
+      ctx.restore();
+    }
+
     requestAnimationFrame(draw);
   }
 
