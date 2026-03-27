@@ -5,18 +5,19 @@
   <title>Contact | Servizions</title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>body{padding-top:70px;cursor:auto}</style>
   <meta name="description" content="Contact Servizions — healthcare service innovation studio in Munich, Germany. Discuss your healthcare technology adoption challenge with us.">
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="logo"><a href="index.html">Servizions</a></div>
+  <header class="navbar" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(14,6,50,0.96);backdrop-filter:blur(18px);padding:0 64px;border-bottom:1px solid rgba(255,255,255,0.07);">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-text">Servizions</span></a>
       <nav class="nav-links">
-        <a href="services.html">Services</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="solutions.html" class="nav-link">Solutions</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
       </nav>
     </div>
   </header>
@@ -134,10 +135,21 @@
   </section>
 
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">Servizions</div>
+      <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
+      <nav class="footer-nav">
+        <a href="services.html">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
       <div>© 2026 Servizions. All rights reserved.</div>
       <div class="footer-links">
         <a href="mailto:info@servizions.com">info@servizions.com</a>
+        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </footer>
