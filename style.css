@@ -221,12 +221,12 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
   text-transform: uppercase; color: var(--purple-soft);
 }
 .hero-title {
-  font-family: var(--font-display); font-size: clamp(36px, 7vw, 108px);
-  font-weight: 400; line-height: 1.0; letter-spacing: -1px;
+  font-family: var(--font-display); font-size: clamp(32px, 6vw, 108px);
+  font-weight: 400; line-height: 1.05; letter-spacing: -1px;
   color: var(--ink); margin-bottom: 30px;
-  overflow: hidden;
+  overflow: visible;
 }
-.hero-title .split-line { display: block; overflow: hidden; white-space: nowrap; }
+.hero-title .split-line { display: block; overflow: visible; white-space: nowrap; }
 .hero-title .split-inner {
   display: block;
   transform: translateY(110%);
@@ -942,7 +942,7 @@ a.contact-info-value:hover { color: var(--purple-mid); }
   .booking-slots-grid { grid-template-columns: repeat(2, 1fr); }
   .insights-grid { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: 30px 24px; }
-  #cursor-dot, #cursor-ring, #cursor-label { display: none; }
+  #cursor-dot, #cursor-label { display: none; }
   body { cursor: auto; }
   body *, body button, body a { cursor: auto !important; }
 }
