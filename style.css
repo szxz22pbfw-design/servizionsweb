@@ -56,11 +56,7 @@ button { cursor: none; font-family: var(--font-body); }
   transition: width 0.2s, height 0.2s, opacity 0.2s;
   will-change: transform;
 }
-#cursor-ring {
-  position: fixed; width: 36px; height: 36px;
-  border: 1.5px solid rgba(94,23,235,0.35); border-radius: 50%;
-  
-}
+
 
 
 #cursor-label {
@@ -71,10 +67,10 @@ button { cursor: none; font-family: var(--font-body); }
   opacity: 0; transition: opacity 0.2s;
 }
 body.cur-link #cursor-dot { width: 12px; height: 12px; background: var(--purple-mid); }
-body.cur-link #cursor-ring { width: 54px; height: 54px; border-color: rgba(94,23,235,0.5); }
+
 body.cur-link #cursor-label { opacity: 1; }
 body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
-body.cur-drag #cursor-ring { width: 28px; height: 28px; border-style: dashed; }
+
 
 /* ── Corner marks ── */
 .corner-mark {
@@ -225,7 +221,7 @@ body.cur-drag #cursor-ring { width: 28px; height: 28px; border-style: dashed; }
   text-transform: uppercase; color: var(--purple-soft);
 }
 .hero-title {
-  font-family: var(--font-display); font-size: clamp(48px, 8vw, 108px);
+  font-family: var(--font-display); font-size: clamp(36px, 7vw, 108px);
   font-weight: 400; line-height: 1.0; letter-spacing: -1px;
   color: var(--ink); margin-bottom: 30px;
   overflow: hidden;
