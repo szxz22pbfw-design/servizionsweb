@@ -231,7 +231,7 @@ body.cur-drag #cursor-ring { width: 28px; height: 28px; border-style: dashed; }
   color: var(--ink); margin-bottom: 30px;
   overflow: hidden;
 }
-.hero-title .split-line { display: block; overflow: hidden; }
+.hero-title .split-line { display: block; overflow: hidden; white-space: nowrap; }
 .hero-title .split-inner {
   display: block;
   transform: translateY(110%);
