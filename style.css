@@ -59,7 +59,7 @@ button { cursor: none; font-family: var(--font-body); }
 #cursor-ring {
   position: fixed; width: 36px; height: 36px;
   border: 1.5px solid rgba(94,23,235,0.35); border-radius: 50%;
-  ...
+  
 }
 
 
@@ -376,19 +376,15 @@ body.cur-drag #cursor-ring { width: 28px; height: 28px; border-style: dashed; }
   padding: 10px 22px; border-radius: 999px;
   font-size: 11.5px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
   font-family: var(--font-body);
-  transition: all 0.25s var(--ease-out);
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
   position: relative; overflow: hidden;
 }
-.exp-tag::before {
-  content: ''; position: absolute; inset: 0; background: var(--purple); color: white;
-  transform: scale(0); border-radius: 999px;
-  transition: transform 0.35s var(--ease-out);
-  z-index: 0;
-}
-.exp-tag span { position: relative; z-index: 1; }
-.exp-tag:hover { color: white; border-color: var(--purple); transform: translateY(-2px); box-shadow: var(--shadow-sm); background: var(--purple); }
-.exp-tag:hover::before { transform: scale(1); }
-.exp-tag.active { background: var(--purple); color: white; border-color: var(--purple); box-shadow: 0 4px 20px rgba(59,15,160,0.25); }
+.exp-tag::before { display: none; }
+.exp-tag span { position: relative; color: inherit; }
+.exp-tag:hover,
+.exp-tag:hover span { background: var(--purple); color: white; border-color: var(--purple); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.exp-tag.active { background: var(--purple); color: white !important; border-color: var(--purple); box-shadow: 0 4px 20px rgba(59,15,160,0.25); }
+
 .exp-panel {
   max-height: 0; overflow: hidden; margin-top: 0;
   transition: max-height 0.5s var(--ease-out), opacity 0.35s, margin-top 0.35s;
@@ -585,7 +581,7 @@ body.cur-drag #cursor-ring { width: 28px; height: 28px; border-style: dashed; }
 .footer-links a:hover { color: rgba(255,255,255,0.85); }
 
 /* ── Reveal animations ── */
-.reveal-section { }
+.reveal-section { position: relative;}
 .reveal-child {
   opacity: 0; transform: translateY(28px);
   transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
