@@ -59,11 +59,10 @@ button { cursor: none; font-family: var(--font-body); }
 #cursor-ring {
   position: fixed; width: 36px; height: 36px;
   border: 1.5px solid rgba(94,23,235,0.35); border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  top: 0; left: 0; transform: translate(-50%, -50%);
-  transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s, opacity 0.2s;
-  will-change: transform;
+  ...
 }
+
+
 #cursor-label {
   position: fixed; pointer-events: none; z-index: 9997;
   font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em;
@@ -381,13 +380,13 @@ body.cur-drag #cursor-ring { width: 28px; height: 28px; border-style: dashed; }
   position: relative; overflow: hidden;
 }
 .exp-tag::before {
-  content: ''; position: absolute; inset: 0; background: var(--purple);
+  content: ''; position: absolute; inset: 0; background: var(--purple); color: white;
   transform: scale(0); border-radius: 999px;
   transition: transform 0.35s var(--ease-out);
   z-index: 0;
 }
 .exp-tag span { position: relative; z-index: 1; }
-.exp-tag:hover { color: white; border-color: var(--purple); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.exp-tag:hover { color: white; border-color: var(--purple); transform: translateY(-2px); box-shadow: var(--shadow-sm); background: var(--purple); }
 .exp-tag:hover::before { transform: scale(1); }
 .exp-tag.active { background: var(--purple); color: white; border-color: var(--purple); box-shadow: 0 4px 20px rgba(59,15,160,0.25); }
 .exp-panel {
