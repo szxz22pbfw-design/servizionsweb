@@ -92,7 +92,7 @@ body.cur-drag #cursor-ring { width: 28px; height: 28px; border-style: dashed; }
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   padding: 0 64px;
-  background: rgba(30, 6, 96, 0.85);
+  background: rgba(14, 6, 50, 0.96);
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   border-bottom: 1px solid rgba(255,255,255,0.07);
