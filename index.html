@@ -151,45 +151,52 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   position:sticky;top:0;height:100vh;
   display:grid;grid-template-columns:1fr 1fr;
   overflow:hidden;
+  background:var(--ink);
 }
 
 /* ── LEFT — fixed, content swaps with scroll ── */
 .sc-left{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:0 60px 0 80px;
+  display:flex;flex-direction:column;
+  padding:64px 60px 64px 80px;
   position:relative;
   border-right:1px solid rgba(255,255,255,.05);
+  height:100%;
 }
 
-/* Section label + title — always visible */
-.sc-left-header{margin-bottom:52px;}
-.sc-left-label{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--ps);display:block;margin-bottom:16px;}
-.sc-left-title{font-family:var(--fd);font-size:clamp(32px,3.5vw,52px);font-weight:300;color:white;line-height:1.05;letter-spacing:-.8px;}
+/* Section label + title — always visible at top */
+.sc-left-header{flex-shrink:0;margin-bottom:40px;}
+.sc-left-label{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--ps);display:block;margin-bottom:14px;}
+.sc-left-title{font-family:var(--fd);font-size:clamp(32px,3.2vw,48px);font-weight:300;color:white;line-height:1.05;letter-spacing:-.8px;}
 
-/* Act panes — stack, one fades in at a time */
+/* Pane wrapper — fills remaining space, contains absolute panes */
+.sc-pane-wrap{
+  position:relative;
+  flex:1;
+  overflow:hidden;
+}
+
+/* Act panes — all stacked inside wrapper, one visible at a time */
 .sc-pane{
-  position:absolute;
-  left:80px;right:60px;
-  top:50%;transform:translateY(-50%);
-  padding-top:180px; /* push below header */
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
   opacity:0;
-  transition:opacity .55s var(--ease),transform .55s var(--ease);
+  transition:opacity .5s var(--ease);
   pointer-events:none;
 }
 .sc-pane.on{opacity:1;pointer-events:all;}
 
-.sc-act-badge{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.sc-act-badge{display:flex;align-items:center;gap:12px;margin-bottom:22px;}
 .sc-act-line{width:28px;height:1px;background:var(--teal);}
 .sc-act-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);}
 
-.sc-left-h{font-family:var(--fd);font-size:clamp(36px,4vw,62px);font-weight:300;line-height:.97;letter-spacing:-1.5px;color:white;margin-bottom:20px;}
+.sc-left-h{font-family:var(--fd);font-size:clamp(32px,3.5vw,56px);font-weight:300;line-height:.97;letter-spacing:-1.5px;color:white;margin-bottom:18px;}
 .sc-left-h em{font-style:italic;color:var(--teal-l);}
 
-.sc-left-sub{font-family:var(--fd);font-size:clamp(14px,1.4vw,19px);font-weight:300;font-style:italic;color:rgba(255,255,255,.38);margin-bottom:24px;}
+.sc-left-sub{font-family:var(--fd);font-size:clamp(13px,1.3vw,17px);font-weight:300;font-style:italic;color:rgba(255,255,255,.38);margin-bottom:20px;}
 
-.sc-left-desc{font-size:13.5px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.9;margin-bottom:28px;max-width:420px;}
+.sc-left-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.85;margin-bottom:24px;max-width:400px;}
 
-.sc-left-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;}
+.sc-left-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px;}
 .sc-left-tag{font-size:9px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:4px 12px;border-radius:999px;color:var(--teal-l);border:1px solid rgba(59,158,148,.3);background:rgba(59,158,148,.07);}
 
 .sc-left-lnk{display:inline-flex;align-items:center;gap:10px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-family:var(--fb);transition:gap .3s,color .3s;}
@@ -197,10 +204,11 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .sc-left-lnk:hover{gap:16px;color:var(--teal-l);}
 .sc-left-lnk:hover::after{transform:translateX(4px);}
 
-/* Progress dots — bottom left */
+/* Progress dots — bottom of left panel, in normal flow */
 .sc-left-dots{
-  position:absolute;bottom:48px;left:80px;
+  flex-shrink:0;
   display:flex;gap:8px;align-items:center;
+  padding-top:24px;
 }
 .sc-ldot{width:18px;height:2px;border-radius:999px;background:rgba(255,255,255,.15);transition:width .4s var(--ease),background .4s;}
 .sc-ldot.on{width:36px;background:var(--teal);}
@@ -535,35 +543,40 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
         <h2 class="sc-left-title">Three acts.<br>Clear scope.</h2>
       </div>
 
-      <!-- Act 1 pane -->
-      <div class="sc-pane on" id="spl0">
-        <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 1 — Where to Start</span></div>
-        <h3 class="sc-left-h">Clinical<br>Intelligence<br><em>Sprint</em></h3>
-        <p class="sc-left-sub">Observed reality. Not desk research.</p>
-        <p class="sc-left-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone showing exactly where your technology fits and which directions will survive the healthcare environment coming next.</p>
-        <div class="sc-left-tags"><span class="sc-left-tag">Fieldwork</span><span class="sc-left-tag">Observation</span><span class="sc-left-tag">Scenario Cone</span></div>
-        <a href="contact.html" class="sc-left-lnk">Is this right for you?</a>
-      </div>
+      <!-- Pane wrapper — panes swap inside here -->
+      <div class="sc-pane-wrap">
 
-      <!-- Act 2 pane -->
-      <div class="sc-pane" id="spl1">
-        <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 2 — Most Requested</span></div>
-        <h3 class="sc-left-h">Service<br>System<br><em>Design</em></h3>
-        <p class="sc-left-sub">The complete engagement. End to end.</p>
-        <p class="sc-left-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value — this changes that. Clinical intelligence feeds into a full architecture: value proposition, workflows, training systems, governance.</p>
-        <div class="sc-left-tags"><span class="sc-left-tag">Service Architecture</span><span class="sc-left-tag">Value Proposition</span><span class="sc-left-tag">Adoption</span></div>
-        <a href="contact.html" class="sc-left-lnk">Tell us your situation</a>
-      </div>
+        <!-- Act 1 pane -->
+        <div class="sc-pane on" id="spl0">
+          <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 1 — Where to Start</span></div>
+          <h3 class="sc-left-h">Clinical<br>Intelligence<br><em>Sprint</em></h3>
+          <p class="sc-left-sub">Observed reality. Not desk research.</p>
+          <p class="sc-left-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone showing exactly where your technology fits and which directions will survive the healthcare environment coming next.</p>
+          <div class="sc-left-tags"><span class="sc-left-tag">Fieldwork</span><span class="sc-left-tag">Observation</span><span class="sc-left-tag">Scenario Cone</span></div>
+          <a href="contact.html" class="sc-left-lnk">Is this right for you?</a>
+        </div>
 
-      <!-- Act 3 pane -->
-      <div class="sc-pane" id="spl2">
-        <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 3 — For Teams</span></div>
-        <h3 class="sc-left-h">Innovation<br><em>Workshop</em></h3>
-        <p class="sc-left-sub">Built for your context. Not a template.</p>
-        <p class="sc-left-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
-        <div class="sc-left-tags"><span class="sc-left-tag">Team Alignment</span><span class="sc-left-tag">Design Thinking</span><span class="sc-left-tag">Facilitation</span></div>
-        <a href="contact.html" class="sc-left-lnk">Talk to us</a>
-      </div>
+        <!-- Act 2 pane -->
+        <div class="sc-pane" id="spl1">
+          <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 2 — Most Requested</span></div>
+          <h3 class="sc-left-h">Service<br>System<br><em>Design</em></h3>
+          <p class="sc-left-sub">The complete engagement. End to end.</p>
+          <p class="sc-left-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value — this changes that. Clinical intelligence feeds into a full architecture: value proposition, workflows, training systems, governance.</p>
+          <div class="sc-left-tags"><span class="sc-left-tag">Service Architecture</span><span class="sc-left-tag">Value Proposition</span><span class="sc-left-tag">Adoption</span></div>
+          <a href="contact.html" class="sc-left-lnk">Tell us your situation</a>
+        </div>
+
+        <!-- Act 3 pane -->
+        <div class="sc-pane" id="spl2">
+          <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 3 — For Teams</span></div>
+          <h3 class="sc-left-h">Innovation<br><em>Workshop</em></h3>
+          <p class="sc-left-sub">Built for your context. Not a template.</p>
+          <p class="sc-left-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
+          <div class="sc-left-tags"><span class="sc-left-tag">Team Alignment</span><span class="sc-left-tag">Design Thinking</span><span class="sc-left-tag">Facilitation</span></div>
+          <a href="contact.html" class="sc-left-lnk">Talk to us</a>
+        </div>
+
+      </div><!-- /sc-pane-wrap -->
 
       <!-- Progress dots -->
       <div class="sc-left-dots">
