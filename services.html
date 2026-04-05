@@ -76,7 +76,7 @@
     .stack-section{position:relative;z-index:10;}
     .stack-lane{position:relative;}
     #lane-0{height:300vh;}#lane-1{height:200vh;}#lane-2{height:100vh;}
-    .stack-card{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;will-change:transform;transform-origin:center top;}
+    .stack-card{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;will-change:transform,opacity;transform-origin:center top;transition:border-radius .1s linear;}
     .stack-lane+.stack-lane .stack-card::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,rgba(0,0,0,.28),transparent);z-index:6;pointer-events:none;}
     .card-inner{display:grid;grid-template-columns:1fr 1fr;height:100%;}
     .card-content{display:flex;flex-direction:column;justify-content:center;padding:96px 72px;position:relative;overflow:hidden;}
@@ -415,11 +415,11 @@
   </div>
   <div class="footer-bottom">
     <div>© 2026 Servizions. All rights reserved.</div>
-    <div class="footer-links"><a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="footer-links"><a href="/cdn-cgi/l/email-protection#1a727b74747b347173775a697f686c73607375746934797577"><span class="__cf_email__" data-cfemail="640c050a0a054a0f0d0924170116120d1e0d0b0a174a070b09">[email&#160;protected]</span></a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (() => {
   'use strict';
   const q = s => document.querySelector(s);
@@ -455,11 +455,21 @@
       const laneH = parseFloat(lane.style.height) || vh;
       const extra = laneH - vh;
       const scrolledPast = scrollY - laneTop;
-      if (scrolledPast <= 0) { card.style.transform = 'scale(1)'; card.style.borderRadius = '0px'; return; }
+      if (scrolledPast <= 0) {
+        card.style.transform = 'scale(1)';
+        card.style.borderRadius = '0px';
+        card.style.opacity = '1';
+        return;
+      }
       if (extra <= 0) { card.style.transform = 'scale(1)'; return; }
       const cover = Math.min(scrolledPast / extra, 1);
-      if (cover >= 1) { card.style.transform = 'scale(0.93)'; card.style.borderRadius = '16px'; }
-      else { card.style.transform = `scale(${(1 - cover * 0.07).toFixed(4)})`; card.style.borderRadius = `${(cover * 16).toFixed(1)}px`; card.style.transformOrigin = 'center top'; }
+      const scale = 1 - cover * 0.14;          /* shrinks to 0.86 — visible but clearly buried */
+      const radius = cover * 28;               /* generous rounding as it recedes */
+      const opacity = 1 - cover * 0.3;        /* fades to 0.70 — still readable */
+      card.style.transform = `scale(${scale.toFixed(4)})`;
+      card.style.borderRadius = `${radius.toFixed(1)}px`;
+      card.style.opacity = opacity.toFixed(3);
+      card.style.transformOrigin = 'center top';
     });
   }
 
@@ -469,10 +479,3 @@
 
   /* REVEALS */
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  qa('.reveal').forEach(el => obs.observe(el));
-})();
-</script>
-</body>
-</html>
