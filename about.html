@@ -418,4 +418,12 @@ window.addEventListener('scroll',()=>{
 })();
 
 /* REVEALS */
-const rvO=new Inte
+const rvO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvO.unobserve(e.target);}});
+},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+qa('.rv').forEach(el=>rvO.observe(el));
+
+})();
+</script>
+</body>
+</html>
