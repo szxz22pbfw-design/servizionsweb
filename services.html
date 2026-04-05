@@ -26,15 +26,16 @@
     body{font-family:var(--fb);background:var(--ink);color:var(--white);overflow-x:clip;padding-top:70px;}
     a{color:inherit;text-decoration:none;}
 
-    /* NAV */
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:9000;padding:0 64px;background:rgba(13,3,48,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:transform .4s var(--ease);}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
-    .logo-text{font-family:var(--fd);font-size:22px;font-weight:500;letter-spacing:.04em;color:white;}
-    .nav-links{display:flex;gap:38px;align-items:center;}
-    .nav-link{font-size:11px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;transition:color .3s;}
-    .nav-link:hover,.nav-link.active{color:white;}
-    .nav-cta{background:rgba(90,43,214,.25);color:rgba(255,255,255,.9)!important;padding:9px 22px;border-radius:999px;border:1px solid rgba(90,43,214,.45);transition:all .3s!important;}
-    .nav-cta:hover{background:var(--purple-mid)!important;color:white!important;}
+    /* NAV — standard across all pages */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:0 80px;height:70px;display:flex;align-items:center;justify-content:space-between;transition:transform .5s var(--ease);}
+    .nav::before{content:'';position:absolute;inset:0;background:rgba(13,3,48,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);pointer-events:none;}
+    .nav.hide{transform:translateY(-100%);}
+    .nav-logo{font-family:var(--fd);font-size:21px;font-weight:400;letter-spacing:.06em;color:white;position:relative;}
+    .nav-links{display:flex;gap:40px;align-items:center;position:relative;}
+    .nav-a{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:color .3s;}
+    .nav-a:hover,.nav-a.active{color:white;}
+    .nav-cta{padding:8px 20px;border-radius:999px;border:1px solid rgba(123,85,224,.4);background:rgba(90,43,214,.15);color:rgba(255,255,255,.85)!important;}
+    .nav-cta:hover{background:var(--purple-mid)!important;border-color:var(--purple-mid)!important;color:white!important;}
 
     /* HERO */
     .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 110px;position:relative;overflow:hidden;background:var(--ink);}
@@ -208,7 +209,7 @@
     @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(14px,-20px) scale(1.06)}66%{transform:translate(-10px,12px) scale(.95)}}
 
     @media(max-width:1024px){
-      .navbar{padding:0 40px}.hero{padding:0 48px 90px}.intro-strip{padding:64px 48px}
+      .nav{padding:0 40px}.hero{padding:0 48px 90px}.intro-strip{padding:64px 48px}
       .intro-inner{grid-template-columns:1fr;gap:20px}.breakdown-header{padding:72px 48px 52px}
       .breakdown-inner{grid-template-columns:1fr;gap:36px}
       .card-inner{grid-template-columns:1fr}.card-visual{display:none}
@@ -218,7 +219,7 @@
       .cta-section{padding:120px 48px}.footer-top{padding:48px 48px 36px}.footer-bottom{padding:22px 48px}
     }
     @media(max-width:768px){
-      .navbar{padding:0 24px}.nav-links{display:none}.hero{padding:0 28px 80px}
+      .nav{padding:0 24px}.nav-links{display:none}.hero{padding:0 28px 80px}
       .intro-strip{padding:56px 28px}.breakdown-header{padding:64px 28px 44px}
       .card-content{padding:72px 28px 56px}.process-section{padding:80px 28px}
       .process-step{grid-template-columns:48px 1fr}
@@ -232,16 +233,14 @@
 </head>
 <body>
 
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="index.html"><span class="logo-text">Servizions</span></a>
-    <nav class="nav-links">
-      <a href="services.html" class="nav-link active">Services</a>
-      <a href="solutions.html" class="nav-link">Solutions</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-    </nav>
-  </div>
+<header class="nav" id="nav">
+  <a href="index.html"><span class="nav-logo">Servizions</span></a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-a active">Services</a>
+    <a href="solutions.html" class="nav-a">Solutions</a>
+    <a href="about.html" class="nav-a">About</a>
+    <a href="contact.html" class="nav-a nav-cta">Let's talk</a>
+  </nav>
 </header>
 
 <!-- HERO -->
@@ -461,13 +460,13 @@
   const qa = s => [...document.querySelectorAll(s)];
 
   /* NAV */
-  let lastY = 0;
-  const navbar = q('#navbar');
-  window.addEventListener('scroll', () => {
-    const sy = window.scrollY;
-    navbar.style.transform = (sy > lastY + 8 && sy > 120) ? 'translateY(-100%)' : 'translateY(0)';
-    lastY = sy;
-  }, { passive: true });
+  const nav=q('#nav');let lastY=0;
+  window.addEventListener('scroll',()=>{
+    const sy=window.scrollY;
+    if(sy>lastY+10&&sy>120)nav.classList.add('hide');
+    else if(sy<lastY-10)nav.classList.remove('hide');
+    lastY=sy;
+  },{passive:true});
 
   /* STACKING CARDS */
   const NUM = 4;

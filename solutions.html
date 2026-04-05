@@ -42,24 +42,16 @@
     /* PROGRESS */
     #prg{position:fixed;top:0;left:0;height:1px;width:0;z-index:99999;background:linear-gradient(90deg,var(--ps),var(--teal));pointer-events:none;transition:width .1s linear;}
 
-    /* NAV */
+    /* NAV — standard across all pages */
     .nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:0 80px;height:70px;display:flex;align-items:center;justify-content:space-between;transition:transform .5s var(--ease);}
-    .nav-bg{position:absolute;inset:0;transition:background .4s;}
-    .nav.dark .nav-bg{background:rgba(6,4,15,.88);backdrop-filter:blur(20px);}
-    .nav.light .nav-bg{background:rgba(245,243,238,.9);backdrop-filter:blur(20px);}
+    .nav::before{content:'';position:absolute;inset:0;background:rgba(6,4,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);pointer-events:none;}
     .nav.hide{transform:translateY(-100%);}
-    .nav-logo{font-family:var(--fd);font-size:21px;font-weight:400;letter-spacing:.06em;position:relative;transition:color .4s;}
-    .nav.dark .nav-logo{color:white;}
-    .nav.light .nav-logo{color:var(--ink);}
+    .nav-logo{font-family:var(--fd);font-size:21px;font-weight:400;letter-spacing:.06em;color:white;position:relative;}
     .nav-links{display:flex;gap:40px;align-items:center;position:relative;}
-    .nav-a{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;transition:color .3s;}
-    .nav.dark .nav-a{color:rgba(255,255,255,.35);}
-    .nav.dark .nav-a:hover,.nav.dark .nav-a.active{color:white;}
-    .nav.light .nav-a{color:rgba(10,6,24,.4);}
-    .nav.light .nav-a:hover,.nav.light .nav-a.active{color:var(--ink);}
-    .nav-cta{padding:8px 20px;border-radius:999px;border:1px solid rgba(123,85,224,.45);background:rgba(90,43,214,.15);}
-    .nav.dark .nav-cta{color:rgba(255,255,255,.85)!important;}
-    .nav.light .nav-cta{background:var(--purple)!important;color:white!important;border-color:var(--purple)!important;}
+    .nav-a{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:color .3s;}
+    .nav-a:hover,.nav-a.active{color:white;}
+    .nav-cta{padding:8px 20px;border-radius:999px;border:1px solid rgba(123,85,224,.4);background:rgba(90,43,214,.15);color:rgba(255,255,255,.85)!important;}
+    .nav-cta:hover{background:var(--purple-mid)!important;border-color:var(--purple-mid)!important;color:white!important;}
 
     /* HERO — dark, full height */
     .hero{height:100vh;min-height:700px;display:flex;flex-direction:column;justify-content:center;padding:0 80px;position:relative;overflow:hidden;background:var(--bg);}
@@ -208,7 +200,7 @@
 <div id="cd"></div>
 <div id="cr"></div>
 
-<header class="nav dark" id="nav">
+<header class="nav" id="nav">
   <a href="index.html"><span class="nav-logo">Servizions</span></a>
   <nav class="nav-links">
     <a href="services.html" class="nav-a">Services</a>
@@ -216,11 +208,10 @@
     <a href="about.html" class="nav-a">About</a>
     <a href="contact.html" class="nav-a nav-cta">Let's talk</a>
   </nav>
-  <div class="nav-bg"></div>
 </header>
 
 <!-- HERO — dark -->
-<section class="hero" id="hero">
+<section class="hero" id="hero" data-theme="dark">
   <div class="hero-orb hero-orb-1" data-parallax-mouse="18"></div>
   <div class="hero-orb hero-orb-2" data-parallax-mouse="-12"></div>
   <div class="hero-content">
@@ -286,7 +277,7 @@
       </div>
       <div class="problem-row rv">
         <p class="problem-text">We are building the product — but nobody has designed how it will actually be used in a hospital.</p>
-        <span class="problem-tag">Service System</span>
+        <span class="problem-tag">Service Design</span>
       </div>
       <div class="problem-row rv">
         <p class="problem-text">We have clinical evidence. It does not translate into conversations that lead anywhere.</p>
@@ -350,7 +341,7 @@
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-logo">Servizions</div>
-    <div class="footer-tagline">Service Innovation Studio<br>Munich · 2026</div>
+    <div class="footer-tagline">MedTech Product Strategy Studio<br>Munich · 2026</div>
     <nav class="footer-nav">
       <a href="services.html">Services</a><a href="solutions.html">Solutions</a>
       <a href="about.html">About</a><a href="contact.html">Contact</a>
@@ -359,13 +350,13 @@
   <div class="footer-bottom">
     <span>© 2026 Servizions</span>
     <div class="footer-links">
-      <a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a>
+      <a href="/cdn-cgi/l/email-protection#e189808f8f80cf8a888ca192849397889b888e8f92cf828e8c"><span class="__cf_email__" data-cfemail="6c040d02020d420705012c1f091e1a05160503021f420f0301">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
 'use strict';
 const q=s=>document.querySelector(s);
@@ -393,21 +384,8 @@ document.addEventListener('mouseover',e=>{
   document.body.classList.toggle('hov',!!e.target.closest('a,button'));
 });
 
-/* NAV — switches dark/light based on section */
-const nav=q('#nav');
-let lastY=0;
-const sections=qa('[data-theme]');
-const themeObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const t=e.target.dataset.theme;
-      nav.classList.toggle('dark',t==='dark');
-      nav.classList.toggle('light',t==='light');
-      document.body.classList.toggle('on-light',t==='light');
-    }
-  });
-},{threshold:.4});
-sections.forEach(s=>themeObs.observe(s));
+/* NAV */
+const nav=q('#nav');let lastY=0;
 window.addEventListener('scroll',()=>{
   const sy=window.scrollY;
   if(sy>lastY+10&&sy>120)nav.classList.add('hide');
@@ -504,12 +482,4 @@ document.addEventListener('mousemove',e=>{
 });
 
 /* SCROLL REVEALS */
-const rvO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvO.unobserve(e.target);}});
-},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
-qa('.rv').forEach(el=>rvO.observe(el));
-
-})();
-</script>
-</body>
-</html>
+const rvO=new Inte
