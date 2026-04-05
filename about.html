@@ -8,13 +8,13 @@
   <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#06040F;--purple:#3B0FA0;--pm:#5A2BD6;--ps:#7B55E0;
       --teal:#3B9E94;--teal-l:#4DBFB4;
-      --fd:'Cormorant Garamond',Georgia,serif;
-      --fb:'Outfit',system-ui,sans-serif;
+      --fd:'Vollkorn',Georgia,serif;
+      --fb:'DM Sans',system-ui,sans-serif;
       --fm:'Space Mono',monospace;
       --ease:cubic-bezier(0.16,1,0.3,1);
       --border:rgba(255,255,255,.07);
@@ -395,8 +395,8 @@ window.addEventListener('scroll',()=>{
   function dD(r,z,fill){const pts=[];for(let i=0;i<=90;i++){const a=(i/90)*Math.PI*2;pts.push(pj(ar([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}ctx.save();ctx.fillStyle=fill;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fill();ctx.restore();}
   function dE(r,z0,z1,col){ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1;for(let i=0;i<90;i++){const a=(i/90)*Math.PI*2,x=Math.cos(a)*r*S,y=Math.sin(a)*r*S;const p1=pj(ar([x,y,z0])),p2=pj(ar([x,y,z1]));ctx.globalAlpha=(Math.cos(a-ry)*.5+.5)*.35;ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.stroke();}ctx.globalAlpha=1;ctx.restore();}
   function dA(r,angle,z,cw,col){const a=angle,sz=8,raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z],ta=cw?a+Math.PI/2:a-Math.PI/2;const a1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz,raw[1]+(-Math.sin(ta)+Math.sin(a))*sz,z],a2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz,raw[1]+(-Math.sin(ta)-Math.sin(a))*sz,z];const pp=pj(ar(raw)),pa1=pj(ar(a1)),pa2=pj(ar(a2));ctx.save();ctx.strokeStyle=col;ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);ctx.stroke();ctx.restore();}
-  function dB(b,fy){const g=hG[b.id];let wp=[b.pos[0]*S,b.pos[1]*S+fy,b.pos[2]*S+(g>0?g*30:0)];wp=rX(wp,rx);wp=rY(wp,ry);const pr=pj(wp),sf=Math.max(.35,pr[2]),al=Math.max(0,Math.min(1,(sf-.15)*3));if(al<.04)return;const sw=b.w*sf,sh=b.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;ctx.save();ctx.globalAlpha=al;ctx.shadowColor=b.style==='teal'?'rgba(59,158,148,.4)':'rgba(123,85,224,.4)';ctx.shadowBlur=(10+g*20)*sf;ctx.shadowOffsetY=(3+g*3)*sf;const grd=ctx.createLinearGradient(px,py,b.style==='teal'?px:px+sw,py+sh);if(b.style==='teal'){grd.addColorStop(0,g>0?'#4DBFB4':'#3B9E94');grd.addColorStop(1,g>0?'#2D7A72':'#2A7268');}else{grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');}ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.fillStyle='rgba(255,255,255,.96)';ctx.font=`600 ${Math.max(7,(b.style==='teal'?10:12)*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(b.label,pr[0],pr[1]);ctx.restore();const bnd=cvs.getBoundingClientRect();bR.push({x:bnd.left+px,y:bnd.top+py,w:sw,h:sh,id:b.id,label:b.label,info:b.info,icon:b.icon});}
-  function dL(text,p3,sz,col,bold){const p=pj(ar([p3[0]*S,p3[1]*S,p3[2]]));const a=Math.max(0,Math.min(1,(p[2]-.12)*3));if(a<.03)return;ctx.save();ctx.globalAlpha=a;ctx.fillStyle=col;ctx.font=`${bold?'600':'300'} ${Math.max(6,sz*p[2])}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,p[0],p[1]);ctx.restore();}
+  function dB(b,fy){const g=hG[b.id];let wp=[b.pos[0]*S,b.pos[1]*S+fy,b.pos[2]*S+(g>0?g*30:0)];wp=rX(wp,rx);wp=rY(wp,ry);const pr=pj(wp),sf=Math.max(.35,pr[2]),al=Math.max(0,Math.min(1,(sf-.15)*3));if(al<.04)return;const sw=b.w*sf,sh=b.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;ctx.save();ctx.globalAlpha=al;ctx.shadowColor=b.style==='teal'?'rgba(59,158,148,.4)':'rgba(123,85,224,.4)';ctx.shadowBlur=(10+g*20)*sf;ctx.shadowOffsetY=(3+g*3)*sf;const grd=ctx.createLinearGradient(px,py,b.style==='teal'?px:px+sw,py+sh);if(b.style==='teal'){grd.addColorStop(0,g>0?'#4DBFB4':'#3B9E94');grd.addColorStop(1,g>0?'#2D7A72':'#2A7268');}else{grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');}ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.fillStyle='rgba(255,255,255,.96)';ctx.font=`600 ${Math.max(7,(b.style==='teal'?10:12)*sf)}px DM Sans,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(b.label,pr[0],pr[1]);ctx.restore();const bnd=cvs.getBoundingClientRect();bR.push({x:bnd.left+px,y:bnd.top+py,w:sw,h:sh,id:b.id,label:b.label,info:b.info,icon:b.icon});}
+  function dL(text,p3,sz,col,bold){const p=pj(ar([p3[0]*S,p3[1]*S,p3[2]]));const a=Math.max(0,Math.min(1,(p[2]-.12)*3));if(a<.03)return;ctx.save();ctx.globalAlpha=a;ctx.fillStyle=col;ctx.font=`${bold?'600':'300'} ${Math.max(6,sz*p[2])}px DM Sans,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,p[0],p[1]);ctx.restore();}
   function loop(){
     gT+=.013;bR=[];spS+=.0018;spH-=.0012;
     if(!drag){vx*=.92;vy*=.92;rx+=vx;ry+=vy;if(Math.abs(vx)<.0004&&Math.abs(vy)<.0004)rx+=.0004;}
@@ -416,7 +416,7 @@ window.addEventListener('scroll',()=>{
     const pw=210*sf,ph=82*sf,r2=ph/2,ppx=pr[0]-pw/2,ppy=pr[1]-ph/2;
     ctx.globalAlpha=pa;const pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);pgrd.addColorStop(0,'#7a35ef');pgrd.addColorStop(1,'#5e17eb');
     ctx.shadowColor='rgba(94,23,235,.5)';ctx.shadowBlur=30*sf;ctx.shadowOffsetY=10*sf;ctx.fillStyle=pgrd;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph,r2);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
-    ctx.fillStyle='#fff';ctx.font=`700 ${Math.max(9,17*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr[0],pr[1]);ctx.globalAlpha=1;
+    ctx.fillStyle='#fff';ctx.font=`700 ${Math.max(9,17*sf)}px DM Sans,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr[0],pr[1]);ctx.globalAlpha=1;
     requestAnimationFrame(loop);
   }
   loop();
