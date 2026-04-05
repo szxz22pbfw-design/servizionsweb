@@ -1068,7 +1068,7 @@ if(q('.nums'))cO.observe(q('.nums'));
   const cO=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');cO.unobserve(e.target);}});
   },{threshold:.1});
-  qa('.ic').forEach(c,i)=>{c.style.transitionDelay=`${i*.14}s`;cO.observe(c);});
+  qa('.ic').forEach((c,i)=>{c.style.transitionDelay=`${i*.14}s`;cO.observe(c);});
 })();
 
 /* HERO PARALLAX */
