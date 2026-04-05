@@ -142,125 +142,104 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .nsrc{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(123,85,224,.4);margin-top:16px;display:block;}
 
 /* ═══════════════════════════════════════
-   SHOWCASE — translateX slide animation
-   Purple base, teal as accent points
+   SHOWCASE — sticky LEFT fixed + scrolling card stack RIGHT
 ═══════════════════════════════════════ */
 .sc-wrap{position:relative;background:var(--ink);}
-.sc-sticky{position:sticky;top:0;height:100vh;overflow:hidden;}
+/* height = 3×100vh set by JS */
 
-/* All panels stacked — JS moves them with translateX inline styles */
-.sc-p{
-  position:absolute;inset:0;
-  will-change:transform;
+.sc-sticky{
+  position:sticky;top:0;height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
   overflow:hidden;
 }
 
-/* Dark backgrounds per panel */
-.sc-p:nth-child(1){background:linear-gradient(160deg,#0A0618 0%,#0E0A20 100%);}
-.sc-p:nth-child(2){background:linear-gradient(160deg,#080E10 0%,#0A1210 100%);}
-.sc-p:nth-child(3){background:linear-gradient(160deg,#0C0818 0%,#100E24 100%);}
-
-/* Subtle radial glow — teal for act panels */
-.sc-p::before{content:'';position:absolute;inset:0;pointer-events:none;}
-.sc-p:nth-child(1)::before{background:radial-gradient(ellipse 50% 60% at 65% 45%,rgba(59,158,148,.07) 0%,transparent 70%);}
-.sc-p:nth-child(2)::before{background:radial-gradient(ellipse 50% 60% at 35% 55%,rgba(59,158,148,.07) 0%,transparent 70%);}
-.sc-p:nth-child(3)::before{background:radial-gradient(ellipse 50% 60% at 55% 40%,rgba(59,158,148,.07) 0%,transparent 70%);}
-
-/* Giant background number — teal accent */
-.sc-bgn{
-  position:absolute;right:-40px;bottom:-80px;
-  font-family:var(--fd);
-  font-size:min(65vh,520px);
-  font-weight:300;line-height:1;letter-spacing:-20px;
-  color:var(--teal);opacity:.06;
-  pointer-events:none;user-select:none;
-  transition:opacity .6s var(--ease);
+/* ── LEFT — fixed, content swaps with scroll ── */
+.sc-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 60px 0 80px;
+  position:relative;
+  border-right:1px solid rgba(255,255,255,.05);
 }
 
-/* Layout */
-.sc-layout{
-  position:absolute;inset:0;
-  display:grid;grid-template-rows:1fr auto;
+/* Section label + title — always visible */
+.sc-left-header{margin-bottom:52px;}
+.sc-left-label{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--ps);display:block;margin-bottom:16px;}
+.sc-left-title{font-family:var(--fd);font-size:clamp(32px,3.5vw,52px);font-weight:300;color:white;line-height:1.05;letter-spacing:-.8px;}
+
+/* Act panes — stack, one fades in at a time */
+.sc-pane{
+  position:absolute;
+  left:80px;right:60px;
+  top:50%;transform:translateY(-50%);
+  padding-top:180px; /* push below header */
+  opacity:0;
+  transition:opacity .55s var(--ease),transform .55s var(--ease);
+  pointer-events:none;
 }
-.sc-main{
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:60px;
-  padding:80px 80px 0;
+.sc-pane.on{opacity:1;pointer-events:all;}
+
+.sc-act-badge{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.sc-act-line{width:28px;height:1px;background:var(--teal);}
+.sc-act-lbl{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);}
+
+.sc-left-h{font-family:var(--fd);font-size:clamp(36px,4vw,62px);font-weight:300;line-height:.97;letter-spacing:-1.5px;color:white;margin-bottom:20px;}
+.sc-left-h em{font-style:italic;color:var(--teal-l);}
+
+.sc-left-sub{font-family:var(--fd);font-size:clamp(14px,1.4vw,19px);font-weight:300;font-style:italic;color:rgba(255,255,255,.38);margin-bottom:24px;}
+
+.sc-left-desc{font-size:13.5px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.9;margin-bottom:28px;max-width:420px;}
+
+.sc-left-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;}
+.sc-left-tag{font-size:9px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:4px 12px;border-radius:999px;color:var(--teal-l);border:1px solid rgba(59,158,148,.3);background:rgba(59,158,148,.07);}
+
+.sc-left-lnk{display:inline-flex;align-items:center;gap:10px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-family:var(--fb);transition:gap .3s,color .3s;}
+.sc-left-lnk::after{content:'→';transition:transform .3s;}
+.sc-left-lnk:hover{gap:16px;color:var(--teal-l);}
+.sc-left-lnk:hover::after{transform:translateX(4px);}
+
+/* Progress dots — bottom left */
+.sc-left-dots{
+  position:absolute;bottom:48px;left:80px;
+  display:flex;gap:8px;align-items:center;
 }
-.sc-content{position:relative;z-index:2;}
+.sc-ldot{width:18px;height:2px;border-radius:999px;background:rgba(255,255,255,.15);transition:width .4s var(--ease),background .4s;}
+.sc-ldot.on{width:36px;background:var(--teal);}
 
-/* Act badge — teal accent line + label */
-.sc-badge{display:flex;align-items:center;gap:12px;margin-bottom:28px;margin-top:48px;}
-.sc-bl{width:28px;height:1px;background:var(--teal);}  /* teal accent */
-.sc-bt{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);}  /* teal accent */
-
-/* Title — purple-white, italic in teal */
-.sc-title{
-  font-family:var(--fd);
-  font-size:clamp(40px,5.5vw,88px);
-  font-weight:300;line-height:.97;
-  letter-spacing:-2px;color:white;
-  margin-bottom:24px;
-}
-.sc-title em{font-style:italic;color:var(--teal-l);}  /* teal accent on italic */
-
-.sc-sub{
-  font-family:var(--fd);font-size:clamp(15px,1.6vw,21px);
-  font-weight:300;font-style:italic;
-  color:rgba(255,255,255,.38);line-height:1.4;margin-bottom:28px;
-}
-
-/* Divider — teal accent */
-.sc-div{width:44px;height:1px;background:linear-gradient(to right,var(--teal),transparent);margin-bottom:28px;}
-
-.sc-desc{
-  font-size:14px;font-weight:300;color:rgba(255,255,255,.45);
-  line-height:1.9;max-width:440px;margin-bottom:32px;
-}
-
-/* Tags — teal border accent */
-.sc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;}
-.sc-tag{
-  font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
-  padding:5px 14px;border-radius:999px;
-  color:var(--teal-l);border:1px solid rgba(59,158,148,.3);background:rgba(59,158,148,.07);
-}
-
-/* CTA link — teal accent */
-.sc-lnk{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--teal);font-family:var(--fb);
-  transition:gap .3s,color .3s;
-}
-.sc-lnk::after{content:'→';transition:transform .3s;}
-.sc-lnk:hover{gap:18px;color:var(--teal-l);}
-.sc-lnk:hover::after{transform:translateX(4px);}
-
-/* Visual area */
-.sc-visual{
-  position:relative;display:flex;align-items:center;justify-content:center;
-  height:320px;z-index:2;
+/* ── RIGHT — card stack ── */
+.sc-right{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  overflow:visible;
 }
 
-/* Bottom bar */
-.sc-foot{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 80px 44px;
+/* Individual cards — JS controls transform/opacity */
+.sc-card{
+  position:absolute;
+  width:clamp(300px,28vw,380px);
+  border-radius:20px;
+  overflow:hidden;
+  will-change:transform,opacity;
+  box-shadow:0 32px 80px rgba(0,0,0,.45);
+  transform-origin:top center;
 }
-/* Progress dots — teal when active */
-.sc-dots{display:flex;gap:10px;align-items:center;}
-.sc-dot{width:20px;height:2px;border-radius:999px;background:rgba(255,255,255,.15);transition:width .4s var(--ease),background .4s;}
-.sc-dot.on{width:44px;background:var(--teal);}
-/* Next button */
-.sc-nxt{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--fm);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(59,158,148,.55);cursor:none;
-  padding:10px 20px;border:1px solid rgba(59,158,148,.2);border-radius:999px;
-  transition:all .35s;background:none;
-}
-.sc-nxt:hover{color:var(--teal-l);border-color:rgba(59,158,148,.5);background:rgba(59,158,148,.05);}
+
+/* Card backgrounds */
+.sc-card:nth-child(1){background:linear-gradient(160deg,#0E1614 0%,#0A1210 100%);}
+.sc-card:nth-child(2){background:linear-gradient(160deg,#10110E 0%,#141208 100%);}
+.sc-card:nth-child(3){background:linear-gradient(160deg,#0D0E16 0%,#0A0A1A 100%);}
+
+/* Teal top band per card */
+.sc-card-band{height:3px;background:linear-gradient(to right,var(--teal),var(--teal-l),transparent);}
+
+/* Card inner */
+.sc-card-in{padding:32px 36px 36px;}
+.sc-card-num{font-family:var(--fd);font-size:80px;font-weight:300;line-height:1;letter-spacing:-4px;color:var(--teal);opacity:.12;margin-bottom:-16px;}
+.sc-card-act{font-family:var(--fm);font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:block;}
+.sc-card-title{font-family:var(--fd);font-size:clamp(24px,2.4vw,34px);font-weight:400;color:white;line-height:1.1;letter-spacing:-.4px;margin-bottom:16px;}
+.sc-card-title em{font-style:italic;color:var(--teal-l);}
+.sc-card-desc{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:24px;}
+.sc-card-visual{height:160px;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(59,158,148,.1);padding-top:20px;}
+
 /* Progress bar */
 .sc-bar{position:absolute;bottom:0;left:0;height:1.5px;z-index:20;background:linear-gradient(to right,var(--ps),var(--teal));width:0;}
 
@@ -544,26 +523,69 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   </div>
 </section>
 
-<!-- ═══ SHOWCASE — translateX slide ═══ -->
+<!-- ═══ SHOWCASE — sticky left + card stack ═══ -->
 <div class="sc-wrap" id="s3">
   <div class="sc-sticky" id="sc-st">
 
-    <!-- ACT 1 -->
-    <div class="sc-p" id="sp0">
-      <div class="sc-bgn">01</div>
-      <div class="sc-layout">
-        <div class="sc-main">
-          <div class="sc-content">
-            <div class="sc-badge"><span class="sc-bl"></span><span class="sc-bt">Act 1 — Where to Start</span></div>
-            <h2 class="sc-title">Clinical<br>Intelligence<br><em>Sprint</em></h2>
-            <p class="sc-sub">Observed reality. Not desk research.</p>
-            <div class="sc-div"></div>
-            <p class="sc-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone showing exactly where your technology fits and which directions will survive the healthcare environment coming next.</p>
-            <div class="sc-tags"><span class="sc-tag">Fieldwork</span><span class="sc-tag">Observation</span><span class="sc-tag">Scenario Cone</span></div>
-            <a href="contact.html" class="sc-lnk">Is this right for you?</a>
-          </div>
-          <div class="sc-visual">
-            <div class="v-radar">
+    <!-- ── LEFT: fixed content panels ── -->
+    <div class="sc-left">
+      <!-- Always-visible header -->
+      <div class="sc-left-header">
+        <span class="sc-left-label">What We Deliver</span>
+        <h2 class="sc-left-title">Three acts.<br>Clear scope.</h2>
+      </div>
+
+      <!-- Act 1 pane -->
+      <div class="sc-pane on" id="spl0">
+        <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 1 — Where to Start</span></div>
+        <h3 class="sc-left-h">Clinical<br>Intelligence<br><em>Sprint</em></h3>
+        <p class="sc-left-sub">Observed reality. Not desk research.</p>
+        <p class="sc-left-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone showing exactly where your technology fits and which directions will survive the healthcare environment coming next.</p>
+        <div class="sc-left-tags"><span class="sc-left-tag">Fieldwork</span><span class="sc-left-tag">Observation</span><span class="sc-left-tag">Scenario Cone</span></div>
+        <a href="contact.html" class="sc-left-lnk">Is this right for you?</a>
+      </div>
+
+      <!-- Act 2 pane -->
+      <div class="sc-pane" id="spl1">
+        <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 2 — Most Requested</span></div>
+        <h3 class="sc-left-h">Service<br>System<br><em>Design</em></h3>
+        <p class="sc-left-sub">The complete engagement. End to end.</p>
+        <p class="sc-left-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value — this changes that. Clinical intelligence feeds into a full architecture: value proposition, workflows, training systems, governance.</p>
+        <div class="sc-left-tags"><span class="sc-left-tag">Service Architecture</span><span class="sc-left-tag">Value Proposition</span><span class="sc-left-tag">Adoption</span></div>
+        <a href="contact.html" class="sc-left-lnk">Tell us your situation</a>
+      </div>
+
+      <!-- Act 3 pane -->
+      <div class="sc-pane" id="spl2">
+        <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 3 — For Teams</span></div>
+        <h3 class="sc-left-h">Innovation<br><em>Workshop</em></h3>
+        <p class="sc-left-sub">Built for your context. Not a template.</p>
+        <p class="sc-left-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
+        <div class="sc-left-tags"><span class="sc-left-tag">Team Alignment</span><span class="sc-left-tag">Design Thinking</span><span class="sc-left-tag">Facilitation</span></div>
+        <a href="contact.html" class="sc-left-lnk">Talk to us</a>
+      </div>
+
+      <!-- Progress dots -->
+      <div class="sc-left-dots">
+        <div class="sc-ldot on" id="ld0"></div>
+        <div class="sc-ldot" id="ld1"></div>
+        <div class="sc-ldot" id="ld2"></div>
+      </div>
+    </div>
+
+    <!-- ── RIGHT: card stack, JS-driven ── -->
+    <div class="sc-right">
+
+      <!-- Card 1 — Act 1 (on top initially) -->
+      <div class="sc-card" id="sc0">
+        <div class="sc-card-band"></div>
+        <div class="sc-card-in">
+          <div class="sc-card-num">01</div>
+          <span class="sc-card-act">Clinical Intelligence Sprint</span>
+          <h4 class="sc-card-title">Observed<br>clinical <em>reality.</em></h4>
+          <p class="sc-card-desc">We enter clinical environments, map real workflows, and identify the gaps no market report captures.</p>
+          <div class="sc-card-visual">
+            <div class="v-radar" style="transform:scale(.72)">
               <div class="vr-ring"></div><div class="vr-ring"></div>
               <div class="vr-ring"></div><div class="vr-ring"></div>
               <div class="vr-scan"></div>
@@ -573,29 +595,18 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
             </div>
           </div>
         </div>
-        <div class="sc-foot">
-          <div class="sc-dots"><div class="sc-dot on"></div><div class="sc-dot"></div><div class="sc-dot"></div></div>
-          <button class="sc-nxt" id="snxt0">02 Service System Design →</button>
-        </div>
       </div>
-    </div>
 
-    <!-- ACT 2 -->
-    <div class="sc-p" id="sp1">
-      <div class="sc-bgn">02</div>
-      <div class="sc-layout">
-        <div class="sc-main">
-          <div class="sc-content">
-            <div class="sc-badge"><span class="sc-bl"></span><span class="sc-bt">Act 2 — Most Requested</span></div>
-            <h2 class="sc-title">Service<br>System<br><em>Design</em></h2>
-            <p class="sc-sub">The complete engagement. End to end.</p>
-            <div class="sc-div"></div>
-            <p class="sc-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value — this changes that. Clinical intelligence feeds into a full architecture: value proposition, workflows, training systems, governance.</p>
-            <div class="sc-tags"><span class="sc-tag">Service Architecture</span><span class="sc-tag">Value Proposition</span><span class="sc-tag">Adoption</span></div>
-            <a href="contact.html" class="sc-lnk">Tell us your situation</a>
-          </div>
-          <div class="sc-visual">
-            <div class="v-bp">
+      <!-- Card 2 — Act 2 -->
+      <div class="sc-card" id="sc1">
+        <div class="sc-card-band"></div>
+        <div class="sc-card-in">
+          <div class="sc-card-num">02</div>
+          <span class="sc-card-act">Service System Design</span>
+          <h4 class="sc-card-title">The complete<br><em>engagement.</em></h4>
+          <p class="sc-card-desc">Value proposition, workflows, training architecture, governance — the full adoption infrastructure.</p>
+          <div class="sc-card-visual">
+            <div class="v-bp" style="transform:scale(.65)">
               <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line class="bp-ln" x1="150" y1="40"  x2="80"  y2="120"/>
                 <line class="bp-ln" x1="150" y1="40"  x2="220" y2="120"/>
@@ -619,29 +630,18 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
             </div>
           </div>
         </div>
-        <div class="sc-foot">
-          <div class="sc-dots"><div class="sc-dot"></div><div class="sc-dot on"></div><div class="sc-dot"></div></div>
-          <button class="sc-nxt" id="snxt1">03 Innovation Workshop →</button>
-        </div>
       </div>
-    </div>
 
-    <!-- ACT 3 -->
-    <div class="sc-p" id="sp2">
-      <div class="sc-bgn">03</div>
-      <div class="sc-layout">
-        <div class="sc-main">
-          <div class="sc-content">
-            <div class="sc-badge"><span class="sc-bl"></span><span class="sc-bt">Act 3 — For Teams</span></div>
-            <h2 class="sc-title">Innovation<br><em>Workshop</em></h2>
-            <p class="sc-sub">Built for your context. Not a template.</p>
-            <div class="sc-div"></div>
-            <p class="sc-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
-            <div class="sc-tags"><span class="sc-tag">Team Alignment</span><span class="sc-tag">Design Thinking</span><span class="sc-tag">Facilitation</span></div>
-            <a href="contact.html" class="sc-lnk">Talk to us</a>
-          </div>
-          <div class="sc-visual">
-            <div class="v-conv">
+      <!-- Card 3 — Act 3 -->
+      <div class="sc-card" id="sc2">
+        <div class="sc-card-band"></div>
+        <div class="sc-card-in">
+          <div class="sc-card-num">03</div>
+          <span class="sc-card-act">Innovation Workshop</span>
+          <h4 class="sc-card-title">Built for<br>your <em>context.</em></h4>
+          <p class="sc-card-desc">Designed entirely around your specific challenge and the real adoption barriers your technology faces.</p>
+          <div class="sc-card-visual">
+            <div class="v-conv" style="transform:scale(.72)">
               <div class="vc-arm"><div class="vc-e"></div></div>
               <div class="vc-arm"><div class="vc-e"></div></div>
               <div class="vc-arm"><div class="vc-e"></div></div>
@@ -649,17 +649,13 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
               <div class="vc-arm"><div class="vc-e"></div></div>
               <div class="vc-arm"><div class="vc-e"></div></div>
               <div class="vc-arm"><div class="vc-e"></div></div>
-              <div class="vc-o"></div>
-              <div class="vc-c"></div>
+              <div class="vc-o"></div><div class="vc-c"></div>
             </div>
           </div>
         </div>
-        <div class="sc-foot">
-          <div class="sc-dots"><div class="sc-dot"></div><div class="sc-dot"></div><div class="sc-dot on"></div></div>
-          <a href="contact.html" class="sc-nxt">Start a conversation →</a>
-        </div>
       </div>
-    </div>
+
+    </div><!-- /sc-right -->
 
     <div class="sc-bar" id="sc-bar"></div>
   </div>
@@ -737,8 +733,8 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
       <span class="cl-ln"><span class="cl-in em">layer starts</span></span>
       <span class="cl-ln"><span class="cl-in">with a conversation.</span></span>
     </h2>
-    <a href="mailto:info@servizions.com" class="cls-link">
-      <span class="cls-txt">info@servizions.com</span>
+    <a href="/cdn-cgi/l/email-protection#254c4b434a65564057534c5f4c4a4b560b464a48" class="cls-link">
+      <span class="cls-txt"><span class="__cf_email__" data-cfemail="7e171018113e0d1b0c0817041711100d501d1113">[email&#160;protected]</span></span>
       <span class="cls-arr"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </a>
   </div>
@@ -753,11 +749,11 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   </div>
   <div class="fb">
     <div>© 2026 Servizions. All rights reserved.</div>
-    <div class="flinks"><a href="mailto:info@servizions.com">info@servizions.com</a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="flinks"><a href="/cdn-cgi/l/email-protection#1a73747c755a697f686c73607375746934797577"><span class="__cf_email__" data-cfemail="a0c9cec6cfe0d3c5d2d6c9dac9cfced38ec3cfcd">[email&#160;protected]</span></a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
 'use strict';
 const q=s=>document.querySelector(s);
@@ -842,97 +838,89 @@ const cO=new IntersectionObserver(entries=>{
 },{threshold:.4});
 if(q('.nums'))cO.observe(q('.nums'));
 
-/* ═══════════════════════════════════════════════════════
-   SHOWCASE — JS-driven translateX slide
-   The most reliable animation approach: direct style manipulation
-   + double-rAF to guarantee transition fires on new panel
-═══════════════════════════════════════════════════════ */
+/* ── SHOWCASE — sticky left + scroll-driven card stack ── */
 (function(){
   const wrap=q('.sc-wrap');
-  const panels=[q('#sp0'),q('#sp1'),q('#sp2')];
+  const cards=[q('#sc0'),q('#sc1'),q('#sc2')];
+  const panes=[q('#spl0'),q('#spl1'),q('#spl2')];
+  const dots=[q('#ld0'),q('#ld1'),q('#ld2')];
   const bar=q('#sc-bar');
-  const N=panels.length;
-  if(!wrap||panels.some(p=>!p))return;
+  const N=3;
+  if(!wrap||cards.some(c=>!c))return;
 
-  /* Set heights */
+  /* Wrap height = 3 viewports */
   function setH(){wrap.style.height=(N*window.innerHeight)+'px';}
   setH();window.addEventListener('resize',setH);
 
-  /* Position all panels immediately — no transitions yet */
-  let cur=0;
-  const TRANS='transform 0.95s cubic-bezier(0.77,0,0.18,1)';
-
-  function place(idx,x,animate){
-    const p=panels[idx];
-    if(!animate){p.style.transition='none';}
-    else{p.style.transition=TRANS;}
-    p.style.transform=`translateX(${x}%)`;
-  }
-
-  /* Initial state — panel 0 visible, rest off right */
-  panels.forEach((p,i)=>{
-    p.style.transition='none';
-    p.style.transform=i===0?'translateX(0)':'translateX(100%)';
-  });
-
-  function go(idx){
-    if(idx===cur)return;
-    const dir=idx>cur?1:-1;
-    const prev=cur;
-    cur=idx;
-
-    /* Outgoing: push slightly opposite direction + fade depth */
-    panels[prev].style.transition=TRANS;
-    panels[prev].style.transform=`translateX(${-dir*8}%) scale(0.97)`;
-
-    /* Incoming: start off-screen, then slide in via double-rAF */
-    panels[cur].style.transition='none';
-    panels[cur].style.transform=`translateX(${dir*100}%)`;
-    panels[cur].style.zIndex='2';
-    panels[prev].style.zIndex='1';
-
-    requestAnimationFrame(()=>{
-      requestAnimationFrame(()=>{
-        panels[cur].style.transition=TRANS;
-        panels[cur].style.transform='translateX(0)';
-      });
+  /* Initial card stack positions — rendered below each other */
+  function initCards(){
+    cards.forEach((card,i)=>{
+      card.style.transition='none';
+      /* Stack: card 0 on top, card 2 at bottom */
+      const depth=i; /* 0=front, 1=mid, 2=back */
+      card.style.transform=`translateY(${depth*22}px) scale(${1-depth*0.05})`;
+      card.style.opacity='1';
+      card.style.zIndex=String(10-i);
     });
-
-    /* After anim: reset outgoing panel behind, off-screen */
-    setTimeout(()=>{
-      panels[prev].style.transition='none';
-      panels[prev].style.transform=`translateX(${-dir*100}%)`;
-      panels[prev].style.zIndex='1';
-    },1000);
   }
+  initCards();
 
-  /* Next buttons */
-  [q('#snxt0'),q('#snxt1')].forEach((btn,i)=>{
-    if(!btn)return;
-    btn.addEventListener('click',()=>{
-      const total=wrap.offsetHeight-window.innerHeight;
-      window.scrollTo({top:wrap.offsetTop+((i+1)/N)*total+20,behavior:'smooth'});
-      setTimeout(()=>go(i+1),60);
-    });
-  });
+  let lastP=-1;
 
-  /* Scroll-driven */
-  let ticking=false;
-  window.addEventListener('scroll',()=>{
-    if(ticking)return;
-    ticking=true;
-    requestAnimationFrame(()=>{
-      const rect=wrap.getBoundingClientRect();
-      const scrolled=-rect.top;
-      const total=wrap.offsetHeight-window.innerHeight;
-      if(scrolled>=-100&&scrolled<=total+100){
-        const p=Math.max(0,Math.min(1,scrolled/total));
-        if(bar)bar.style.width=(p*100)+'%';
-        go(Math.min(Math.floor(p*N),N-1));
+  function update(){
+    const rect=wrap.getBoundingClientRect();
+    const scrolled=-rect.top;
+    const total=wrap.offsetHeight-window.innerHeight;
+    if(scrolled<-50||scrolled>total+50)return;
+
+    const p=Math.max(0,Math.min(1,scrolled/total));
+    if(Math.abs(p-lastP)<0.001)return;
+    lastP=p;
+
+    if(bar)bar.style.width=(p*100)+'%';
+
+    /* Each card's position relative to scroll
+       pos = 0  → front of stack
+       pos < 0  → queued in stack behind
+       pos > 0  → exiting upward */
+    cards.forEach((card,i)=>{
+      const pos=p*2-i; /* p*2 because N-1=2 transitions */
+
+      if(pos>=0){
+        /* Exiting: fly up + slight rotate */
+        const e=Math.min(pos,1);
+        const ty=-(e*110); /* percent of card height */
+        const rot=e*4;
+        const sc=1-e*0.04;
+        card.style.transform=`translateY(${ty}%) rotate(${rot}deg) scale(${sc})`;
+        card.style.opacity=String(Math.max(0,1-e*1.6));
+        card.style.zIndex=String(10-i);
+      } else {
+        /* In stack behind: depth scaling */
+        const depth=Math.min(-pos,2);
+        const sc=1-depth*0.05;
+        const ty=depth*22; /* px — pushed down */
+        card.style.transform=`translateY(${ty}px) scale(${sc})`;
+        card.style.opacity='1';
+        card.style.zIndex=String(10-i);
       }
-      ticking=false;
     });
+
+    /* Left panes — show the one closest to front */
+    const activeIdx=Math.min(Math.round(p*2),2);
+    panes.forEach((pane,i)=>pane.classList.toggle('on',i===activeIdx));
+    dots.forEach((dot,i)=>dot.classList.toggle('on',i===activeIdx));
+  }
+
+  /* rAF-throttled scroll */
+  let raf=false;
+  window.addEventListener('scroll',()=>{
+    if(raf)return;raf=true;
+    requestAnimationFrame(()=>{update();raf=false;});
   },{passive:true});
+
+  /* Initial render */
+  update();
 })();
 
 /* GLOBE */
@@ -1067,7 +1055,7 @@ if(q('.nums'))cO.observe(q('.nums'));
   const cO=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');cO.unobserve(e.target);}});
   },{threshold:.1});
-  qa('.ic').forEach((c,i)=>{c.style.transitionDelay=`${i*.14}s`;cO.observe(c);});
+  qa('.ic').forEach(c,i)=>{c.style.transitionDelay=`${i*.14}s`;cO.observe(c);});
 })();
 
 /* HERO PARALLAX */
