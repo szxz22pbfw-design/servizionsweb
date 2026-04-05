@@ -3,240 +3,513 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>Solutions – Servizions | MedTech Product Strategy Studio</title>
+  <meta name="description" content="Servizions works with medical robotics companies, healthtech ventures, and hospital innovation teams.">
   <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
-  <title>Solutions – Healthcare Service Innovation Studio | Servizions</title>
-  <meta name="description" content="Servizions works with medical robotics companies, healthtech ventures, and hospital innovation teams. We bridge medtech and healthcare robotics with the real clinical world.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://servizions.com/solutions.html">
-  <meta property="og:title" content="Solutions – Servizions Healthcare Service Innovation Studio">
-  <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
-  <meta property="og:url" content="https://servizions.com/solutions.html">
-  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
-    body{padding-top:70px;cursor:auto}
-    .sol-header{background:var(--white);padding:100px 0 90px;border-bottom:1px solid var(--border)}
-    .sol-header-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:end}
-    .sol-header h1{font-family:var(--font-display);font-size:68px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.0;letter-spacing:-0.5px;margin-top:20px}
-    .sol-header-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;border-left:2px solid var(--border-strong);padding-left:28px;margin-bottom:36px}
-    .header-cta{display:inline-block;background:var(--purple);color:white;padding:14px 36px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-body);transition:all var(--transition)}
-    .header-cta:hover{background:var(--purple-mid);transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,15,160,0.25)}
-    .clients-section{background:var(--stone);padding:110px 0}
-    .clients-intro{max-width:680px;margin-bottom:64px}
-    .clients-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .clients-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-    .client-card{background:var(--white);padding:48px 40px;display:flex;flex-direction:column;gap:14px;border-right:1px solid var(--border);transition:background var(--transition)}
-    .client-card:last-child{border-right:none}
-    .client-card:hover{background:var(--purple-pale)}
-    .client-card-icon{font-family:var(--font-display);font-size:40px;font-weight:300;color:rgba(59,15,160,0.10);line-height:1}
-    .client-card h3{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--ink);line-height:1.2;margin:0}
-    .client-card>p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.85;margin:0;flex:1}
-    .problems-section{background:var(--white);padding:110px 0}
-    .problems-intro{max-width:680px;margin-bottom:64px}
-    .problems-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .problems-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .problems-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-    .problem-card{background:var(--white);padding:48px 44px;display:flex;flex-direction:column;gap:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background var(--transition)}
-    .problem-card:nth-child(2n){border-right:none}
-    .problem-card:nth-child(3),.problem-card:nth-child(4){border-bottom:none}
-    .problem-card:hover{background:var(--purple-pale)}
-    .problem-card-num{font-family:var(--font-display);font-size:44px;font-weight:300;color:rgba(59,15,160,0.07);line-height:1}
-    .problem-card-text{font-family:var(--font-display);font-size:22px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.4;margin:0;flex:1}
-    .problem-card-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple-soft);border:1px solid var(--border-strong);padding:5px 14px;border-radius:999px;width:fit-content;margin-top:auto}
-    .statement-section{background:var(--purple-dark);padding:110px 0}
-    .statement-inner{max-width:820px}
-    .statement-eyebrow{color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;margin-bottom:28px;display:block}
-    .statement-text{font-family:var(--font-display);font-size:46px;font-weight:400;font-style:italic;color:white;line-height:1.2;letter-spacing:-0.3px;margin-bottom:32px}
-    .statement-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.50);line-height:1.9;max-width:600px;margin-bottom:44px}
-    .statement-cta{display:inline-block;background:white;color:var(--purple-dark);padding:16px 40px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-body);transition:all var(--transition)}
-    .statement-cta:hover{background:var(--purple-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.25)}
-    .howwework-section{background:var(--stone);padding:110px 0}
-    .howwework-intro{max-width:680px;margin-bottom:64px}
-    .howwework-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .howwework-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .howwework-points{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm)}
-    .howwework-point{display:flex;gap:24px;align-items:flex-start;padding:36px 40px;border-bottom:1px solid var(--border);transition:background var(--transition)}
-    .howwework-point:last-child{border-bottom:none}
-    .howwework-point:hover{background:var(--purple-pale)}
-    .howwework-num{font-family:var(--font-display);font-size:13px;color:var(--text-light);letter-spacing:0.06em;flex-shrink:0;padding-top:4px}
-    .howwework-body h4{font-family:var(--font-display);font-size:20px;font-weight:500;color:var(--ink);margin:0 0 6px;line-height:1.2}
-    .howwework-body p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.8;margin:0}
-    @media(max-width:900px){
-      .sol-header-inner{grid-template-columns:1fr;gap:40px}
-      .sol-header h1{font-size:46px}
-      .clients-grid{grid-template-columns:1fr}
-      .client-card{border-right:none;border-bottom:1px solid var(--border)}
-      .client-card:last-child{border-bottom:none}
-      .problems-grid{grid-template-columns:1fr}
-      .problem-card{border-right:none}
-      .problem-card:nth-child(3){border-bottom:1px solid var(--border)}
-      .statement-text{font-size:34px}
-      .clients-intro h2,.problems-intro h2,.howwework-intro h2{font-size:36px}
+    :root{
+      --bg:#06040F;--cream:#F5F3EE;--white:#FFFFFF;
+      --purple:#3B0FA0;--pm:#5A2BD6;--ps:#7B55E0;
+      --teal:#3B9E94;--teal-l:#4DBFB4;
+      --ink:#0A0618;--text-mid:#4A4263;
+      --fd:'Cormorant Garamond',Georgia,serif;
+      --fb:'Outfit',system-ui,sans-serif;
+      --fm:'Space Mono',monospace;
+      --ease:cubic-bezier(0.16,1,0.3,1);
+      --ease-out:cubic-bezier(0.22,1,0.36,1);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{-webkit-font-smoothing:antialiased;overflow-x:clip;}
+    body{font-family:var(--fb);background:var(--bg);color:white;overflow-x:clip;cursor:none;}
+    a{color:inherit;text-decoration:none;}
+
+    /* GRAIN */
+    body::after{content:'';position:fixed;inset:0;z-index:8000;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:180px;opacity:.025;}
+
+    /* CURSOR */
+    #cd{position:fixed;width:8px;height:8px;background:var(--ps);border-radius:50%;pointer-events:none;z-index:99997;top:0;left:0;transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(123,85,224,.7);transition:width .2s,height .2s,background .2s;}
+    #cr{position:fixed;width:36px;height:36px;border:1px solid rgba(123,85,224,.35);border-radius:50%;pointer-events:none;z-index:99996;top:0;left:0;transform:translate(-50%,-50%);transition:width .5s var(--ease),height .5s var(--ease),border-color .3s,transform .08s;}
+    body.hov #cd{width:12px;height:12px;background:var(--pm);}
+    body.hov #cr{width:56px;height:56px;border-color:rgba(123,85,224,.6);}
+    body.on-light #cd{background:var(--purple);}
+    body.on-light #cr{border-color:rgba(59,15,160,.3);}
+
+    /* PROGRESS */
+    #prg{position:fixed;top:0;left:0;height:1px;width:0;z-index:99999;background:linear-gradient(90deg,var(--ps),var(--teal));pointer-events:none;transition:width .1s linear;}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:0 80px;height:70px;display:flex;align-items:center;justify-content:space-between;transition:transform .5s var(--ease);}
+    .nav-bg{position:absolute;inset:0;transition:background .4s;}
+    .nav.dark .nav-bg{background:rgba(6,4,15,.88);backdrop-filter:blur(20px);}
+    .nav.light .nav-bg{background:rgba(245,243,238,.9);backdrop-filter:blur(20px);}
+    .nav.hide{transform:translateY(-100%);}
+    .nav-logo{font-family:var(--fd);font-size:21px;font-weight:400;letter-spacing:.06em;position:relative;transition:color .4s;}
+    .nav.dark .nav-logo{color:white;}
+    .nav.light .nav-logo{color:var(--ink);}
+    .nav-links{display:flex;gap:40px;align-items:center;position:relative;}
+    .nav-a{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;transition:color .3s;}
+    .nav.dark .nav-a{color:rgba(255,255,255,.35);}
+    .nav.dark .nav-a:hover,.nav.dark .nav-a.active{color:white;}
+    .nav.light .nav-a{color:rgba(10,6,24,.4);}
+    .nav.light .nav-a:hover,.nav.light .nav-a.active{color:var(--ink);}
+    .nav-cta{padding:8px 20px;border-radius:999px;border:1px solid rgba(123,85,224,.45);background:rgba(90,43,214,.15);}
+    .nav.dark .nav-cta{color:rgba(255,255,255,.85)!important;}
+    .nav.light .nav-cta{background:var(--purple)!important;color:white!important;border-color:var(--purple)!important;}
+
+    /* HERO — dark, full height */
+    .hero{height:100vh;min-height:700px;display:flex;flex-direction:column;justify-content:center;padding:0 80px;position:relative;overflow:hidden;background:var(--bg);}
+    .hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(120px);will-change:transform;}
+    .hero-orb-1{width:600px;height:600px;background:rgba(90,43,214,.18);top:-100px;right:-80px;}
+    .hero-orb-2{width:400px;height:400px;background:rgba(59,158,148,.1);bottom:-60px;left:60px;}
+    .hero-content{position:relative;z-index:2;max-width:1100px;}
+    .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:40px;}
+    .h-rule{width:36px;height:1px;background:rgba(123,85,224,.6);}
+    .h-et{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(123,85,224,.7);}
+    /* Split text — each word slides up */
+    .hero-h1{font-family:var(--fd);font-size:clamp(60px,9.5vw,148px);font-weight:300;line-height:.93;letter-spacing:-3px;color:white;overflow:visible;}
+    .hero-sub-wrap{margin-top:48px;display:flex;align-items:flex-end;gap:80px;flex-wrap:wrap;}
+    .hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.32);max-width:380px;line-height:1.85;}
+    .hero-scroll{display:flex;flex-direction:column;align-items:center;gap:10px;}
+    .hero-scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,rgba(255,255,255,.18),transparent);animation:scP 2s ease-in-out infinite;}
+    .hero-scroll-label{font-family:var(--fm);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.18);}
+    @keyframes scP{0%,100%{opacity:1;height:52px}50%{opacity:.2;height:32px}}
+
+    /* Word split animation */
+    .word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;}
+    .word-inner{display:inline-block;transform:translateY(115%);transition:transform 1s var(--ease-out);}
+    .word-inner.vis{transform:translateY(0);}
+    .word-inner.em{font-style:italic;color:rgba(180,155,255,.9);}
+
+    /* MARQUEE */
+    .marquee-bar{overflow:hidden;padding:16px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(59,15,160,.25);}
+    .marquee-track{display:flex;white-space:nowrap;animation:tickScroll 44s linear infinite;}
+    .marquee-track span{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);padding:0 20px;}
+    .marquee-track .mdot{color:rgba(123,85,224,.6)!important;}
+    @keyframes tickScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* WHO — cream, very clean */
+    .clients-section{background:var(--cream);padding:140px 80px;}
+    .clients-inner{max-width:1200px;margin:0 auto;}
+    .sec-label-light{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(59,15,160,.45);display:block;margin-bottom:52px;}
+    .sec-label-dark{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(123,85,224,.55);display:block;margin-bottom:52px;}
+    .clients-ttl{font-family:var(--fd);font-size:clamp(36px,5vw,72px);font-weight:300;color:var(--ink);line-height:.97;letter-spacing:-1.5px;margin-bottom:80px;}
+    .clients-ttl em{font-style:italic;color:var(--pm);}
+    .client-rows{display:flex;flex-direction:column;}
+    .client-row{display:grid;grid-template-columns:80px 1fr 1fr;align-items:start;padding:48px 0;border-top:1px solid rgba(10,6,24,.08);gap:48px;transition:opacity .4s;}
+    .client-row:last-child{border-bottom:1px solid rgba(10,6,24,.08);}
+    .client-rows:hover .client-row{opacity:.45;}
+    .client-rows:hover .client-row:hover{opacity:1;}
+    .client-roman{font-family:var(--fd);font-size:56px;font-weight:300;color:rgba(59,15,160,.12);line-height:1;}
+    .client-name{font-family:var(--fd);font-size:clamp(24px,2.8vw,40px);font-weight:300;color:var(--ink);line-height:1.1;letter-spacing:-.3px;}
+    .client-name em{font-style:italic;color:var(--pm);}
+    .client-desc{font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.85;padding-top:8px;}
+
+    /* PROBLEMS — white, large italic, fill-on-hover */
+    .problems-section{background:var(--white);padding:140px 80px;border-top:1px solid rgba(10,6,24,.06);}
+    .problems-inner{max-width:1200px;margin:0 auto;}
+    .problems-ttl{font-family:var(--fd);font-size:clamp(34px,4.5vw,62px);font-weight:300;color:var(--ink);line-height:1.05;letter-spacing:-1px;margin-bottom:80px;}
+    .problem-rows{display:flex;flex-direction:column;}
+    .problem-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:36px 0;border-top:1px solid rgba(10,6,24,.08);gap:40px;cursor:default;position:relative;overflow:hidden;}
+    .problem-row:last-child{border-bottom:1px solid rgba(10,6,24,.08);}
+    /* fill line that slides left→right on hover */
+    .problem-row::before{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:linear-gradient(to right,var(--ps),var(--teal));transition:width .6s var(--ease);}
+    .problem-row:hover::before{width:100%;}
+    .problem-text{font-family:var(--fd);font-size:clamp(22px,3.2vw,46px);font-weight:300;font-style:italic;color:var(--ink);line-height:1.2;transition:color .3s;}
+    .problem-row:hover .problem-text{color:var(--pm);}
+    .problem-tag{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(59,15,160,.38);white-space:nowrap;padding:6px 16px;border:1px solid rgba(59,15,160,.15);border-radius:999px;transition:all .3s;}
+    .problem-row:hover .problem-tag{border-color:rgba(123,85,224,.4);color:var(--ps);}
+
+    /* STATEMENT — back to dark */
+    .statement-section{background:var(--bg);padding:160px 80px;position:relative;overflow:hidden;}
+    .statement-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(90,43,214,.16) 0%,transparent 65%);pointer-events:none;}
+    .statement-inner{position:relative;z-index:2;max-width:960px;margin:0 auto;text-align:center;}
+    .statement-pre{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(123,85,224,.5);display:block;margin-bottom:56px;}
+    .statement-q{font-family:var(--fd);font-size:clamp(34px,5.5vw,80px);font-weight:300;font-style:italic;color:white;line-height:1.12;letter-spacing:-.8px;margin-bottom:48px;}
+    .statement-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.35);line-height:1.9;max-width:580px;margin:0 auto 56px;}
+
+    /* Magnetic button */
+    .btn-mag{display:inline-flex;align-items:center;gap:14px;font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:18px 40px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.6);background:none;transition:background .35s,border-color .35s,color .35s;will-change:transform;}
+    .btn-mag:hover{background:rgba(90,43,214,.25);border-color:rgba(123,85,224,.55);color:white;}
+    .btn-mag svg{transition:transform .3s var(--ease);}
+    .btn-mag:hover svg{transform:translateX(4px);}
+    .btn-mag-dark{border-color:rgba(59,15,160,.25);color:rgba(10,6,24,.55);background:none;}
+    .btn-mag-dark:hover{background:rgba(59,15,160,.08);border-color:rgba(59,15,160,.4);color:var(--ink);}
+
+    /* HOW WE WORK — cream again */
+    .howwework-section{background:var(--cream);padding:140px 80px;}
+    .howwework-inner{max-width:1200px;margin:0 auto;}
+    .howwework-ttl{font-family:var(--fd);font-size:clamp(36px,5vw,72px);font-weight:300;color:var(--ink);line-height:.97;letter-spacing:-1.5px;margin-bottom:80px;}
+    .howwework-ttl em{font-style:italic;color:var(--pm);}
+    .hw-rows{display:flex;flex-direction:column;}
+    .hw-row{display:grid;grid-template-columns:64px 1fr 1fr;align-items:start;padding:48px 0;border-top:1px solid rgba(10,6,24,.08);gap:48px;transition:opacity .4s;}
+    .hw-row:last-child{border-bottom:1px solid rgba(10,6,24,.08);}
+    .hw-rows:hover .hw-row{opacity:.45;}
+    .hw-rows:hover .hw-row:hover{opacity:1;}
+    .hw-num{font-family:var(--fm);font-size:10px;color:rgba(59,15,160,.35);letter-spacing:.12em;padding-top:10px;}
+    .hw-name{font-family:var(--fd);font-size:clamp(24px,2.8vw,40px);font-weight:300;color:var(--ink);line-height:1.1;letter-spacing:-.3px;}
+    .hw-name em{font-style:italic;color:var(--pm);}
+    .hw-desc{font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.85;padding-top:10px;}
+
+    /* CTA — dark */
+    .cta-wrap{padding:160px 80px;text-align:center;background:var(--bg);border-top:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;}
+    .cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 55% 75% at 50% 50%,rgba(90,43,214,.14) 0%,transparent 65%);pointer-events:none;}
+    .cta-pre{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(123,85,224,.5);display:block;margin-bottom:28px;position:relative;}
+    .cta-h{font-family:var(--fd);font-size:clamp(48px,8vw,120px);font-weight:300;color:white;line-height:.93;letter-spacing:-2.5px;margin-bottom:56px;position:relative;}
+    .cta-h em{font-style:italic;color:rgba(180,155,255,.9);}
+
+    /* FOOTER */
+    .footer{border-top:1px solid rgba(255,255,255,.07);}
+    .footer-top{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;padding:52px 80px 40px;border-bottom:1px solid rgba(255,255,255,.06);}
+    .footer-logo{font-family:var(--fd);font-size:24px;font-weight:400;letter-spacing:.05em;color:white;}
+    .footer-tagline{text-align:center;font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.18);line-height:1.9;}
+    .footer-nav{display:flex;gap:28px;justify-content:flex-end;}
+    .footer-nav a{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.28);transition:color .3s;}
+    .footer-nav a:hover{color:white;}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:20px 80px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.18);}
+    .footer-links{display:flex;gap:24px;}
+    .footer-links a{color:rgba(255,255,255,.22);transition:color .3s;}
+    .footer-links a:hover{color:rgba(255,255,255,.65);}
+
+    /* REVEAL — generic */
+    .rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+    .rv.in{opacity:1;transform:none;}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+    @media(max-width:1024px){
+      .nav{padding:0 48px}.hero{padding:0 48px}
+      .clients-section,.problems-section,.statement-section,.howwework-section,.cta-wrap{padding:100px 48px}
+      .client-row,.hw-row{grid-template-columns:56px 1fr;gap:24px}
+      .client-desc,.hw-desc{grid-column:2}
+      .footer-top{padding:48px 48px 36px}.footer-bottom{padding:18px 48px}
+    }
+    @media(max-width:768px){
+      .nav{padding:0 28px}.nav-links{display:none}
+      .hero{padding:0 28px}.hero-sub-wrap{gap:36px}
+      .clients-section,.problems-section,.statement-section,.howwework-section,.cta-wrap{padding:80px 28px}
+      .client-row{grid-template-columns:1fr;gap:12px;padding:32px 0}
+      .client-roman{font-size:36px}
+      .problem-row{grid-template-columns:1fr;gap:12px}.problem-tag{display:none}
+      .hw-row{grid-template-columns:1fr;gap:8px;padding:32px 0}.hw-num{display:none}
+      .footer-top{grid-template-columns:1fr;gap:20px;padding:36px 28px 28px}
+      .footer-nav{justify-content:flex-start}.footer-bottom{padding:16px 28px;flex-direction:column;gap:8px;align-items:flex-start}
+      #cd,#cr{display:none}body{cursor:auto}
     }
   </style>
 </head>
 <body>
 
-  <header class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-text">Servizions</span></a>
-      <nav class="nav-links">
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-      </nav>
-    </div>
-  </header>
+<div id="prg"></div>
+<div id="cd"></div>
+<div id="cr"></div>
 
-  <section class="sol-header">
-    <div class="container">
-      <div class="sol-header-inner">
-        <div>
-          <span class="eyebrow">Solutions</span>
-          <h1>We recognise your problem. We have worked on it before.</h1>
-        </div>
-        <div class="sol-header-right">
-          <p>Bridging medtech and healthcare robotics companies with the real clinical world.</p>
-          <a href="contact.html" class="header-cta">Tell Us Your Situation</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<header class="nav dark" id="nav">
+  <a href="index.html"><span class="nav-logo">Servizions</span></a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-a">Services</a>
+    <a href="solutions.html" class="nav-a active">Solutions</a>
+    <a href="about.html" class="nav-a">About</a>
+    <a href="contact.html" class="nav-a nav-cta">Let's talk</a>
+  </nav>
+  <div class="nav-bg"></div>
+</header>
 
-  <section class="clients-section">
-    <div class="container">
-      <div class="clients-intro">
-        <span class="eyebrow">Who We Work With</span>
-        <h2>Three types of client. One shared challenge.</h2>
-        <p>The organisations we work with are building something genuinely important in healthcare — and they are stuck at the same layer. Not the technology itself. What makes the technology work in the real clinical world.</p>
-      </div>
-      <div class="clients-grid">
-        <div class="client-card">
-          <div class="client-card-icon">I</div>
-          <h3>Medical Robotics Companies</h3>
-          <p>You have built something with real clinical potential. The technology is not the problem. Getting hospitals to understand the value and commit to adoption — that is the layer we work on.</p>
-        </div>
-        <div class="client-card">
-          <div class="client-card-icon">II</div>
-          <h3>HealthTech Ventures</h3>
-          <p>You are building a digital health product and need it to work inside a real clinical environment. The service layer between your product and clinical adoption is what is missing.</p>
-        </div>
-        <div class="client-card">
-          <div class="client-card-icon">III</div>
-          <h3>Hospital Innovation Teams</h3>
-          <p>You have clinical ambition and internal energy. What is missing is the structured approach that turns that ambition into something that actually reaches implementation.</p>
-        </div>
+<!-- HERO — dark -->
+<section class="hero" id="hero">
+  <div class="hero-orb hero-orb-1" data-parallax-mouse="18"></div>
+  <div class="hero-orb hero-orb-2" data-parallax-mouse="-12"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" style="opacity:0;animation:fadeUp .8s var(--ease) .2s forwards">
+      <span class="h-rule"></span>
+      <span class="h-et">Solutions — Munich, 2026</span>
+    </div>
+    <h1 class="hero-h1" data-split>We have worked on this problem before.</h1>
+    <div class="hero-sub-wrap">
+      <p class="hero-sub rv">The gap between a technology that works and a technology that is adopted is a service design problem. We know exactly where it lives.</p>
+      <div class="hero-scroll rv">
+        <div class="hero-scroll-line"></div>
+        <span class="hero-scroll-label">Scroll</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="problems-section">
-    <div class="container">
-      <div class="problems-intro">
-        <span class="eyebrow">Do You Recognise This?</span>
-        <h2>The situations we are built for.</h2>
-        <p>If any of these sound familiar — that is the conversation we need to have.</p>
-      </div>
-      <div class="problems-grid">
-        <div class="problem-card">
-          <div class="problem-card-num">01</div>
-          <p class="problem-card-text">Our technology works. Nobody can explain why it matters to the people who need to say yes.</p>
-          <span class="problem-card-tag">Value Proposition</span>
-        </div>
-        <div class="problem-card">
-          <div class="problem-card-num">02</div>
-          <p class="problem-card-text">Pilots succeed. Rollout stalls. The adoption we expected never comes.</p>
-          <span class="problem-card-tag">Adoption</span>
-        </div>
-        <div class="problem-card">
-          <div class="problem-card-num">03</div>
-          <p class="problem-card-text">We are building the product — but nobody has designed how it will actually be used in a hospital.</p>
-          <span class="problem-card-tag">Service Design</span>
-        </div>
-        <div class="problem-card">
-          <div class="problem-card-num">04</div>
-          <p class="problem-card-text">We have clinical evidence. It does not translate into conversations that lead anywhere.</p>
-          <span class="problem-card-tag">Clinical Communication</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- MARQUEE -->
+<div class="marquee-bar"><div class="marquee-track">
+  <span>Medical Robotics</span><span class="mdot">·</span><span>HealthTech Ventures</span><span class="mdot">·</span><span>Hospital Innovation</span><span class="mdot">·</span><span>Value Proposition</span><span class="mdot">·</span><span>Clinical Adoption</span><span class="mdot">·</span><span>Service Design</span><span class="mdot">·</span><span>Pre-Product Strategy</span><span class="mdot">·</span>
+  <span>Medical Robotics</span><span class="mdot">·</span><span>HealthTech Ventures</span><span class="mdot">·</span><span>Hospital Innovation</span><span class="mdot">·</span><span>Value Proposition</span><span class="mdot">·</span><span>Clinical Adoption</span><span class="mdot">·</span><span>Service Design</span><span class="mdot">·</span><span>Pre-Product Strategy</span><span class="mdot">·</span>
+</div></div>
 
-  <section class="statement-section">
-    <div class="container">
-      <div class="statement-inner">
-        <span class="statement-eyebrow">Our Position</span>
-        <p class="statement-text">We work on these problems. We do not publish how.</p>
-        <p class="statement-sub">The specific methods and approaches Servizions uses are shared with clients as part of the engagement — not on a website. Every organisation we work with leaves with something structured, concrete, and genuinely usable.</p>
-        <a href="contact.html" class="statement-cta">Tell Us Your Situation</a>
+<!-- WHO WE WORK WITH — cream -->
+<section class="clients-section" data-theme="light">
+  <div class="clients-inner">
+    <span class="sec-label-light rv">Who We Work With</span>
+    <h2 class="clients-ttl" data-split>Three types of client.<br><em>One shared challenge.</em></h2>
+    <div class="client-rows">
+      <div class="client-row rv">
+        <div class="client-roman">I</div>
+        <h3 class="client-name">Medical Robotics<br><em>Companies</em></h3>
+        <p class="client-desc">You have built something with real clinical potential. The technology is not the problem. Getting hospitals to understand the value and commit to adoption — that is the layer we work on.</p>
+      </div>
+      <div class="client-row rv">
+        <div class="client-roman">II</div>
+        <h3 class="client-name">HealthTech<br><em>Ventures</em></h3>
+        <p class="client-desc">You are building a digital health product and need it to work inside a real clinical environment. The service layer between your product and clinical adoption is what is missing.</p>
+      </div>
+      <div class="client-row rv">
+        <div class="client-roman">III</div>
+        <h3 class="client-name">Hospital<br><em>Innovation Teams</em></h3>
+        <p class="client-desc">You have clinical ambition and internal energy. What is missing is the structured approach that turns that ambition into something that actually reaches implementation.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="howwework-section">
-    <div class="container">
-      <div class="howwework-intro">
-        <span class="eyebrow">How We Work</span>
-        <h2>Direct. Specific. No templates.</h2>
-        <p>Servizions is a service innovation studio — not an agency, not a management consultancy. Every engagement is a direct collaboration built around your specific situation.</p>
+<!-- PROBLEMS — white, large italic with fill-on-hover -->
+<section class="problems-section" data-theme="light">
+  <div class="problems-inner">
+    <span class="sec-label-light rv">Do You Recognise This?</span>
+    <h2 class="problems-ttl rv">The situations we are built for.</h2>
+    <div class="problem-rows">
+      <div class="problem-row rv">
+        <p class="problem-text">Our technology works. Nobody can explain why it matters to the people who need to say yes.</p>
+        <span class="problem-tag">Value Proposition</span>
       </div>
-      <div class="howwework-points">
-        <div class="howwework-point">
-          <div class="howwework-num">01</div>
-          <div class="howwework-body">
-            <h4>We start with your specific situation</h4>
-            <p>Before anything is proposed, we understand exactly where your innovation stands — the technology, the clinical environment, and what is actually blocking progress.</p>
-          </div>
-        </div>
-        <div class="howwework-point">
-          <div class="howwework-num">02</div>
-          <div class="howwework-body">
-            <h4>You work with the Servizions core</h4>
-            <p>Every engagement is a direct collaboration — no intermediaries, no junior team members delivering on a senior promise.</p>
-          </div>
-        </div>
-        <div class="howwework-point">
-          <div class="howwework-num">03</div>
-          <div class="howwework-body">
-            <h4>You receive something concrete</h4>
-            <p>Every engagement ends with a structured, actionable output — not a process document. Something your team can actually use to move forward.</p>
-          </div>
-        </div>
+      <div class="problem-row rv">
+        <p class="problem-text">Pilots succeed. Rollout stalls. The adoption we expected never comes.</p>
+        <span class="problem-tag">Adoption</span>
+      </div>
+      <div class="problem-row rv">
+        <p class="problem-text">We are building the product — but nobody has designed how it will actually be used in a hospital.</p>
+        <span class="problem-tag">Service Design</span>
+      </div>
+      <div class="problem-row rv">
+        <p class="problem-text">We have clinical evidence. It does not translate into conversations that lead anywhere.</p>
+        <span class="problem-tag">Clinical Communication</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="contact-section">
-    <div class="container">
-      <h2 class="contact-title">Recognise your situation?</h2>
-      <p class="contact-subtitle">Tell us where you are and what is blocking you — we will tell you honestly whether and how we can help</p>
-      <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block;padding:18px 48px;">Start the Conversation</a>
+<!-- STATEMENT — dark, centered quote -->
+<section class="statement-section" data-theme="dark">
+  <div class="statement-glow"></div>
+  <div class="statement-inner">
+    <span class="statement-pre rv">Our Position</span>
+    <p class="statement-q" data-split>We work on these problems. We do not publish how.</p>
+    <p class="statement-sub rv">The specific methods Servizions uses are shared with clients as part of the engagement — not on a website. Every organisation we work with leaves with something structured, concrete, and genuinely usable.</p>
+    <a href="contact.html" class="btn-mag magnetic rv">
+      <span>Tell us your situation</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- HOW WE WORK — cream -->
+<section class="howwework-section" data-theme="light">
+  <div class="howwework-inner">
+    <span class="sec-label-light rv">How We Work</span>
+    <h2 class="howwework-ttl" data-split>Direct. Specific.<br><em>No templates.</em></h2>
+    <div class="hw-rows">
+      <div class="hw-row rv">
+        <span class="hw-num">01</span>
+        <h3 class="hw-name">We start with<br>your <em>situation</em></h3>
+        <p class="hw-desc">Before anything is proposed, we understand exactly where your innovation stands — the technology, the clinical environment, and what is actually blocking progress.</p>
+      </div>
+      <div class="hw-row rv">
+        <span class="hw-num">02</span>
+        <h3 class="hw-name">You work with<br>the <em>Servizions core</em></h3>
+        <p class="hw-desc">Every engagement is a direct collaboration — no intermediaries, no junior team members delivering on a senior promise. You work with Hanna Kim directly.</p>
+      </div>
+      <div class="hw-row rv">
+        <span class="hw-num">03</span>
+        <h3 class="hw-name">You receive<br>something <em>concrete</em></h3>
+        <p class="hw-desc">Every engagement ends with a structured, actionable output — not a process document. A scenario cone, a service blueprint, a strategic product direction. Something your team can use the day it is received.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo">Servizions</div>
-      <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
-      <nav class="footer-nav">
-        <a href="services.html">Services</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 Servizions. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="mailto:info@servizions.com">info@servizions.com</a>
-        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+<!-- CTA — dark -->
+<div class="cta-wrap" data-theme="dark">
+  <div class="cta-glow"></div>
+  <span class="cta-pre rv">Recognise your situation?</span>
+  <h2 class="cta-h" data-split>Tell us<br>where you<br><em>are stuck.</em></h2>
+  <a href="contact.html" class="btn-mag magnetic rv" style="margin-top:8px;">
+    <span>Start the conversation</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo">Servizions</div>
+    <div class="footer-tagline">MedTech Product Strategy Studio<br>Munich · 2026</div>
+    <nav class="footer-nav">
+      <a href="services.html">Services</a><a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a><a href="contact.html">Contact</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Servizions</span>
+    <div class="footer-links">
+      <a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a>
+      <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q=s=>document.querySelector(s);
+const qa=s=>[...document.querySelectorAll(s)];
+const lerp=(a,b,t)=>a+(b-a)*t;
+
+/* PROGRESS */
+const prg=q('#prg');
+window.addEventListener('scroll',()=>{
+  const max=document.body.scrollHeight-window.innerHeight;
+  prg.style.width=Math.min(100,window.scrollY/max*100)+'%';
+},{passive:true});
+
+/* CURSOR */
+const cd=q('#cd'),cr=q('#cr');
+let mx=-200,my=-200,rx=-200,ry=-200;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){
+  rx=lerp(rx,mx,.11);ry=lerp(ry,my,.11);
+  if(cd)cd.style.transform=`translate(${mx}px,${my}px)`;
+  if(cr)cr.style.transform=`translate(${rx}px,${ry}px)`;
+  requestAnimationFrame(loop);
+})();
+document.addEventListener('mouseover',e=>{
+  document.body.classList.toggle('hov',!!e.target.closest('a,button'));
+});
+
+/* NAV — switches dark/light based on section */
+const nav=q('#nav');
+let lastY=0;
+const sections=qa('[data-theme]');
+const themeObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const t=e.target.dataset.theme;
+      nav.classList.toggle('dark',t==='dark');
+      nav.classList.toggle('light',t==='light');
+      document.body.classList.toggle('on-light',t==='light');
+    }
+  });
+},{threshold:.4});
+sections.forEach(s=>themeObs.observe(s));
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  if(sy>lastY+10&&sy>120)nav.classList.add('hide');
+  else if(sy<lastY-10)nav.classList.remove('hide');
+  lastY=sy;
+},{passive:true});
+
+/* WORD SPLIT — Lusion-style text reveal */
+function initSplit(){
+  qa('[data-split]').forEach(el=>{
+    const html=el.innerHTML;
+    // Split preserving <br> and <em>
+    const tmp=document.createElement('div');
+    tmp.innerHTML=html;
+    el.innerHTML='';
+    function processNode(node,target){
+      if(node.nodeType===3){
+        // text node — split into words
+        node.textContent.split(' ').forEach((w,i,arr)=>{
+          if(!w){return;}
+          const wrap=document.createElement('span');
+          wrap.className='word-wrap';
+          const inner=document.createElement('span');
+          inner.className='word-inner';
+          inner.textContent=w;
+          wrap.appendChild(inner);
+          target.appendChild(wrap);
+          if(i<arr.length-1)target.appendChild(document.createTextNode(' '));
+        });
+      } else if(node.nodeName==='EM'){
+        // italic words
+        node.childNodes.forEach(child=>{
+          if(child.nodeType===3){
+            child.textContent.split(' ').forEach((w,i,arr)=>{
+              if(!w)return;
+              const wrap=document.createElement('span');
+              wrap.className='word-wrap';
+              const inner=document.createElement('span');
+              inner.className='word-inner em';
+              inner.textContent=w;
+              wrap.appendChild(inner);
+              target.appendChild(wrap);
+              if(i<arr.length-1)target.appendChild(document.createTextNode(' '));
+            });
+          }
+        });
+      } else if(node.nodeName==='BR'){
+        target.appendChild(document.createElement('br'));
+      } else {
+        node.childNodes.forEach(c=>processNode(c,target));
+      }
+    }
+    tmp.childNodes.forEach(c=>processNode(c,el));
+    // stagger delays
+    qa('.word-inner',el).forEach((w,i)=>{w.style.transitionDelay=`${i*0.055}s`;});
+  });
+}
+initSplit();
+
+// Observe split text
+const splitObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      qa('.word-inner',e.target).forEach(w=>w.classList.add('vis'));
+      splitObs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+qa('[data-split]').forEach(el=>splitObs.observe(el));
+
+/* MAGNETIC BUTTONS */
+qa('.magnetic').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{el.style.transition='transform 0.1s';});
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*0.28;
+    const y=(e.clientY-r.top-r.height/2)*0.28;
+    el.style.transform=`translate(${x}px,${y}px)`;
+  });
+  el.addEventListener('mouseleave',()=>{
+    el.style.transition='transform 0.6s var(--ease)';
+    el.style.transform='translate(0,0)';
+  });
+});
+
+/* MOUSE PARALLAX on hero orbs */
+document.addEventListener('mousemove',e=>{
+  const px=(e.clientX/window.innerWidth-.5)*2;
+  const py=(e.clientY/window.innerHeight-.5)*2;
+  qa('[data-parallax-mouse]').forEach(el=>{
+    const s=parseFloat(el.dataset.parallaxMouse);
+    el.style.transform=`translate(${px*s}px,${py*s}px)`;
+  });
+});
+
+/* SCROLL REVEALS */
+const rvO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvO.unobserve(e.target);}});
+},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+qa('.rv').forEach(el=>rvO.observe(el));
+
+})();
+</script>
 </body>
 </html>
