@@ -269,110 +269,285 @@ body.h #cur-ring { width:50px; height:50px; border-color:rgba(123,85,224,0.8); }
 .num-src { font-family:var(--fm); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(123,85,224,.4); margin-top:16px; display:block; }
 
 /* ─────────────────────────────────────
-   SHOWCASE — cross-fade + ghost peek
+   SHOWCASE — horizontal wipe + editorial
 ───────────────────────────────────── */
 .sc-wrap { position:relative; background:var(--ink); }
 /* height = 3×100vh set by JS */
 
 .sc-sticky { position:sticky; top:0; height:100vh; overflow:hidden; }
 
-/* Stacked panels */
-.sc-panel {
+/* Stack panels — wipe transition */
+.sc-panel { position:absolute; inset:0; z-index:0; }
+.sc-panel.s-enter  { z-index:1; clip-path:inset(0 0 0 100%); }
+.sc-panel.s-active { z-index:1; clip-path:inset(0 0 0 0%); transition:clip-path 1.15s cubic-bezier(0.77,0,0.18,1); }
+.sc-panel.s-exit   { z-index:0; clip-path:none; }
+
+/* ── Panel layout ── */
+.sc-inner {
   position:absolute; inset:0;
-  display:grid; grid-template-columns:1fr 300px;
-  opacity:0; pointer-events:none;
+  display:grid; grid-template-rows:auto 1fr auto;
+  padding:0;
 }
-.sc-panel.s-active { opacity:1; pointer-events:all; transition:opacity .9s var(--ease); }
-.sc-panel.s-exit   { opacity:0; pointer-events:none; transform:translateY(-2%); transition:opacity .65s,transform .65s; }
-.sc-panel.s-enter  { opacity:0; transition:none; }
 
-/* Content */
-.sc-text {
-  display:flex; flex-direction:column; justify-content:center;
-  padding:96px 80px 80px; position:relative; overflow:hidden;
+/* Top bar — act label + number */
+.sc-topbar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:40px 80px 0;
+  position:relative; z-index:2;
 }
-.sc-panel:nth-child(1) .sc-text { background:#0A0818; }
-.sc-panel:nth-child(2) .sc-text { background:#0C0428; }
-.sc-panel:nth-child(3) .sc-text { background:#07100E; }
+.sc-act-badge {
+  display:flex; align-items:center; gap:14px;
+}
+.sc-act-line { width:32px; height:1px; }
+.sc-act-txt  { font-family:var(--fm); font-size:9px; letter-spacing:.24em; text-transform:uppercase; }
+.sc-big-num  {
+  font-family:var(--fd); font-size:clamp(80px,10vw,140px);
+  font-weight:300; line-height:1; letter-spacing:-4px;
+  opacity:.08;
+  /* animate number in after panel wipe */
+  transform:translateX(40px);
+  transition:transform 1s var(--ease) .4s, opacity .8s var(--ease) .4s;
+}
+.sc-panel.s-active .sc-big-num { transform:translateX(0); opacity:.12; }
 
-/* Ghost number — clip-path wipe */
-.sc-num {
-  font-family:var(--fd); font-size:210px; font-weight:300;
-  color:rgba(255,255,255,.04); line-height:1; letter-spacing:-12px;
-  position:absolute; top:16px; left:52px;
-  pointer-events:none; user-select:none;
+/* Center — the editorial content */
+.sc-center {
+  display:grid; grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 80px;
+  gap:80px;
+}
+.sc-left {}
+.sc-title-big {
+  font-family:var(--fd);
+  font-size:clamp(44px,6vw,96px);
+  font-weight:300; line-height:.97;
+  letter-spacing:-2px; color:white;
+  margin-bottom:28px;
+  /* wipe in */
   clip-path:inset(0 100% 0 0);
-  transition:clip-path 1.1s var(--ease) .12s;
+  transition:clip-path 1s cubic-bezier(0.77,0,0.18,1) .25s;
 }
-.sc-panel.s-active .sc-num { clip-path:inset(0 0% 0 0); }
+.sc-panel.s-active .sc-title-big { clip-path:inset(0 0% 0 0); }
+.sc-title-big em { font-style:italic; }
 
-/* Content elements — staggered slide-up */
-.sc-act,.sc-title,.sc-sub,.sc-rule,.sc-desc,.sc-tags,.sc-lnk {
-  opacity:0; transform:translateY(22px);
-  transition:opacity .8s var(--ease), transform .8s var(--ease);
+.sc-sub-big {
+  font-family:var(--fd); font-size:clamp(16px,1.8vw,22px);
+  font-weight:300; font-style:italic;
+  line-height:1.4; margin-bottom:32px;
+  opacity:0; transform:translateY(16px);
+  transition:opacity .8s var(--ease) .7s, transform .8s var(--ease) .7s;
 }
-.sc-panel.s-active .sc-act  { opacity:1;transform:none;transition-delay:.2s; }
-.sc-panel.s-active .sc-title{ opacity:1;transform:none;transition-delay:.3s; }
-.sc-panel.s-active .sc-sub  { opacity:1;transform:none;transition-delay:.38s; }
-.sc-panel.s-active .sc-rule { opacity:1;transform:none;transition-delay:.42s; }
-.sc-panel.s-active .sc-desc { opacity:1;transform:none;transition-delay:.48s; }
-.sc-panel.s-active .sc-tags { opacity:1;transform:none;transition-delay:.56s; }
-.sc-panel.s-active .sc-lnk  { opacity:1;transform:none;transition-delay:.64s; }
+.sc-panel.s-active .sc-sub-big { opacity:1; transform:none; }
 
-.sc-act  { font-family:var(--fm); font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(123,85,224,.8); margin-bottom:18px; margin-top:52px; }
-.sc-title{ font-family:var(--fd); font-size:clamp(30px,3.8vw,56px); font-weight:500; color:white; line-height:1.05; letter-spacing:-.5px; margin-bottom:10px; }
-.sc-sub  { font-family:var(--fd); font-size:clamp(15px,1.6vw,21px); font-weight:300; font-style:italic; color:rgba(255,255,255,.38); line-height:1.35; margin-bottom:26px; }
-.sc-rule { width:44px; height:1px; background:linear-gradient(to right,rgba(123,85,224,.7),transparent); margin-bottom:26px; }
-.sc-desc { font-size:15px; font-weight:300; color:rgba(255,255,255,.48); line-height:1.9; max-width:460px; margin-bottom:34px; }
-.sc-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:38px; }
-.sc-tag  { font-size:9.5px; font-weight:600; letter-spacing:.13em; text-transform:uppercase; padding:5px 14px; border-radius:999px; color:rgba(180,155,255,.85); border:1px solid rgba(123,85,224,.3); background:rgba(123,85,224,.08); }
-.sc-lnk  { display:inline-flex; align-items:center; gap:12px; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(180,155,255,.8); font-family:var(--fb); transition:gap .3s,color .3s; }
-.sc-lnk::after { content:'→'; transition:transform .3s; }
-.sc-lnk:hover  { gap:18px; color:white; }
-.sc-lnk:hover::after { transform:translateX(4px); }
+.sc-desc-text {
+  font-size:14px; font-weight:300; line-height:1.9;
+  max-width:420px; margin-bottom:32px;
+  opacity:0; transform:translateY(14px);
+  transition:opacity .8s var(--ease) .82s, transform .8s var(--ease) .82s;
+}
+.sc-panel.s-active .sc-desc-text { opacity:1; transform:none; }
 
-/* Ghost peek strip */
-.sc-peek {
-  position:relative; overflow:hidden;
-  border-left:1px solid rgba(255,255,255,.045);
-  background:rgba(255,255,255,.01);
-  cursor:none;
-  transition:background .5s;
+.sc-tags-row {
+  display:flex; flex-wrap:wrap; gap:8px; margin-bottom:36px;
+  opacity:0;
+  transition:opacity .8s var(--ease) .94s;
 }
-.sc-peek:hover { background:rgba(123,85,224,.04); }
-.sc-peek::before {
-  content:''; position:absolute; inset:0; z-index:2; pointer-events:none;
-  background:linear-gradient(to right,rgba(8,6,20,.55) 0%,rgba(8,6,20,.05) 50%,transparent 100%);
+.sc-panel.s-active .sc-tags-row { opacity:1; }
+.sc-tag { font-size:9.5px; font-weight:600; letter-spacing:.13em; text-transform:uppercase; padding:5px 14px; border-radius:999px; }
+
+.sc-cta-link {
+  display:inline-flex; align-items:center; gap:12px;
+  font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  font-family:var(--fb); transition:gap .3s,color .3s;
+  opacity:0;
+  transition:gap .3s,color .3s,opacity .8s var(--ease) 1.05s;
 }
-.sc-peek-body {
-  position:absolute; inset:0; z-index:1;
-  display:flex; flex-direction:column; justify-content:center;
-  padding:60px 36px;
-  opacity:.13; filter:blur(1.5px);
-  transition:opacity .55s var(--ease), filter .55s var(--ease);
-  pointer-events:none;
-}
-.sc-peek:hover .sc-peek-body { opacity:.28; filter:blur(0); }
-.sc-peek-num   { font-family:var(--fd); font-size:130px; font-weight:300; color:white; line-height:.9; letter-spacing:-7px; display:block; margin-bottom:14px; }
-.sc-peek-label { font-family:var(--fm); font-size:8px; letter-spacing:.22em; text-transform:uppercase; color:rgba(123,85,224,.85); margin-bottom:10px; display:block; }
-.sc-peek-title { font-family:var(--fd); font-size:clamp(18px,1.8vw,26px); font-weight:500; color:white; line-height:1.15; }
-.sc-peek-arrow {
-  position:absolute; bottom:40px; right:28px; z-index:3;
-  width:46px; height:46px; border-radius:50%;
-  border:1px solid rgba(255,255,255,.12);
+.sc-panel.s-active .sc-cta-link { opacity:1; }
+.sc-cta-link::after { content:'→'; transition:transform .3s; }
+.sc-cta-link:hover { gap:18px; }
+.sc-cta-link:hover::after { transform:translateX(4px); }
+
+/* Right visual area */
+.sc-right {
+  position:relative;
+  height:320px;
   display:flex; align-items:center; justify-content:center;
-  color:rgba(255,255,255,.3); transition:all .4s var(--ease);
 }
-.sc-peek:hover .sc-peek-arrow { border-color:rgba(123,85,224,.7); color:rgba(180,155,255,.9); transform:scale(1.1) rotate(-45deg); box-shadow:0 0 20px rgba(123,85,224,.25); }
-/* Final panel CTA peek */
-.sc-peek-cta-inner { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:60px 36px; gap:18px; }
-.sc-peek-cta-label { font-family:var(--fm); font-size:8.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(123,85,224,.55); }
-.sc-peek-cta-title { font-family:var(--fd); font-size:clamp(22px,2.5vw,34px); font-weight:300; font-style:italic; color:rgba(255,255,255,.5); line-height:1.2; }
-.sc-peek-cta-btn { display:inline-flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:rgba(180,155,255,.65); font-family:var(--fb); border:1px solid rgba(123,85,224,.28); padding:11px 22px; border-radius:999px; transition:all .3s; width:fit-content; }
-.sc-peek-cta-btn:hover { color:white; border-color:rgba(123,85,224,.7); background:rgba(123,85,224,.1); }
+
+/* ── Panel 1 colours ── */
+.sc-panel:nth-child(1) { background:#080614; }
+.sc-panel:nth-child(1) .sc-act-line { background:rgba(59,158,148,.6); }
+.sc-panel:nth-child(1) .sc-act-txt  { color:rgba(59,158,148,.8); }
+.sc-panel:nth-child(1) .sc-title-big em { color:rgba(100,210,200,.85); }
+.sc-panel:nth-child(1) .sc-sub-big  { color:rgba(59,158,148,.6); }
+.sc-panel:nth-child(1) .sc-desc-text{ color:rgba(255,255,255,.45); }
+.sc-panel:nth-child(1) .sc-tag      { color:rgba(100,210,200,.85); border:1px solid rgba(59,158,148,.3); background:rgba(59,158,148,.08); }
+.sc-panel:nth-child(1) .sc-cta-link { color:rgba(100,210,200,.8); }
+.sc-panel:nth-child(1) .sc-big-num  { color:rgba(59,158,148,1); }
+
+/* ── Panel 2 colours ── */
+.sc-panel:nth-child(2) { background:#0A0420; }
+.sc-panel:nth-child(2) .sc-act-line { background:rgba(123,85,224,.6); }
+.sc-panel:nth-child(2) .sc-act-txt  { color:rgba(123,85,224,.85); }
+.sc-panel:nth-child(2) .sc-title-big em { color:rgba(180,155,255,.9); }
+.sc-panel:nth-child(2) .sc-sub-big  { color:rgba(123,85,224,.6); }
+.sc-panel:nth-child(2) .sc-desc-text{ color:rgba(255,255,255,.45); }
+.sc-panel:nth-child(2) .sc-tag      { color:rgba(180,155,255,.85); border:1px solid rgba(123,85,224,.3); background:rgba(123,85,224,.08); }
+.sc-panel:nth-child(2) .sc-cta-link { color:rgba(180,155,255,.8); }
+.sc-panel:nth-child(2) .sc-big-num  { color:rgba(123,85,224,1); }
+
+/* ── Panel 3 colours ── */
+.sc-panel:nth-child(3) { background:#04100E; }
+.sc-panel:nth-child(3) .sc-act-line { background:rgba(59,158,148,.5); }
+.sc-panel:nth-child(3) .sc-act-txt  { color:rgba(59,158,148,.75); }
+.sc-panel:nth-child(3) .sc-title-big em { color:rgba(100,210,200,.85); }
+.sc-panel:nth-child(3) .sc-sub-big  { color:rgba(59,158,148,.55); }
+.sc-panel:nth-child(3) .sc-desc-text{ color:rgba(255,255,255,.45); }
+.sc-panel:nth-child(3) .sc-tag      { color:rgba(100,210,200,.85); border:1px solid rgba(59,158,148,.3); background:rgba(59,158,148,.08); }
+.sc-panel:nth-child(3) .sc-cta-link { color:rgba(100,210,200,.8); }
+.sc-panel:nth-child(3) .sc-big-num  { color:rgba(59,158,148,1); }
+
+/* Bottom bar */
+.sc-bottom {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 80px 44px;
+}
+.sc-progress-dots { display:flex; gap:10px; align-items:center; }
+.sc-pdot {
+  width:20px; height:2px; border-radius:999px;
+  background:rgba(255,255,255,.15);
+  transition:width .4s var(--ease), background .4s;
+}
+.sc-pdot.on { width:40px; }
+.sc-panel:nth-child(1) .sc-pdot.on { background:rgba(59,158,148,.7); }
+.sc-panel:nth-child(2) .sc-pdot.on { background:rgba(123,85,224,.7); }
+.sc-panel:nth-child(3) .sc-pdot.on { background:rgba(59,158,148,.7); }
+
+.sc-next-btn {
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--fm); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.3); cursor:none;
+  padding:10px 20px; border:1px solid rgba(255,255,255,.1); border-radius:999px;
+  transition:all .35s;
+  opacity:0; transform:translateY(8px);
+  transition:all .35s, opacity .8s var(--ease) 1.1s, transform .8s var(--ease) 1.1s;
+}
+.sc-panel.s-active .sc-next-btn { opacity:1; transform:none; }
+.sc-next-btn:hover { color:white; border-color:rgba(255,255,255,.3); background:rgba(255,255,255,.04); }
 
 /* Progress bar */
-.sc-pbar { position:absolute; bottom:0; left:0; height:1.5px; z-index:20; background:linear-gradient(to right,var(--purple-soft),var(--teal)); width:0; transition:width .08s linear; }
+.sc-pbar { position:absolute; bottom:0; left:0; height:1.5px; z-index:20; background:linear-gradient(to right,var(--purple-soft),var(--teal)); width:0; }
+
+/* ── CSS Visuals per act ── */
+
+/* Act 1: Radar / Clinical Observation */
+.vis-radar {
+  width:280px; height:280px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:opacity 1s var(--ease) .6s;
+}
+.sc-panel.s-active .vis-radar { opacity:1; }
+.vr-ring {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(59,158,148,.25);
+  animation:ringPulse 3s ease-in-out infinite;
+}
+.vr-ring:nth-child(1) { width:80px;  height:80px;  animation-delay:0s; }
+.vr-ring:nth-child(2) { width:140px; height:140px; animation-delay:.4s; border-color:rgba(59,158,148,.18); }
+.vr-ring:nth-child(3) { width:200px; height:200px; animation-delay:.8s; border-color:rgba(59,158,148,.12); }
+.vr-ring:nth-child(4) { width:260px; height:260px; animation-delay:1.2s; border-color:rgba(59,158,148,.07); }
+@keyframes ringPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.04);opacity:.6} }
+.vr-scan {
+  position:absolute; inset:0; border-radius:50%; overflow:hidden;
+}
+.vr-scan::before {
+  content:''; position:absolute; top:50%; left:50%;
+  width:50%; height:1px;
+  background:linear-gradient(to right,rgba(59,158,148,.7),transparent);
+  transform-origin:0 50%;
+  animation:scanRotate 4s linear infinite;
+}
+@keyframes scanRotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.vr-dot {
+  position:absolute; width:4px; height:4px; border-radius:50%;
+  background:rgba(59,158,148,.9); box-shadow:0 0 8px rgba(59,158,148,.6);
+  animation:dotBlink 2s ease-in-out infinite;
+}
+.vr-dot:nth-child(4) { top:20%; left:60%; animation-delay:.3s; }
+.vr-dot:nth-child(5) { top:65%; left:25%; animation-delay:.9s; }
+.vr-dot:nth-child(6) { top:40%; left:72%; animation-delay:1.5s; }
+.vr-dot:nth-child(7) { top:75%; left:55%; animation-delay:.6s; }
+.vr-center { width:8px; height:8px; border-radius:50%; background:rgba(59,158,148,1); box-shadow:0 0 16px rgba(59,158,148,.8); animation:dotBlink 1.5s ease-in-out infinite; }
+@keyframes dotBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* Act 2: Service Blueprint / Connected nodes */
+.vis-blueprint {
+  width:300px; height:280px; position:relative;
+  opacity:0; transition:opacity 1s var(--ease) .6s;
+}
+.sc-panel.s-active .vis-blueprint { opacity:1; }
+.vis-blueprint svg { width:100%; height:100%; }
+.bp-line {
+  stroke:rgba(123,85,224,.35); stroke-width:1;
+  stroke-dasharray:200; stroke-dashoffset:200;
+  animation:drawLine 2s var(--ease) forwards;
+}
+.sc-panel.s-active .bp-line { animation:drawLine 1.5s var(--ease) .8s forwards; }
+@keyframes drawLine { to{stroke-dashoffset:0} }
+.bp-node {
+  fill:none; stroke:rgba(123,85,224,.6); stroke-width:1.5;
+  transform-origin:center; transform:scale(0);
+  animation:nodeIn .5s var(--ease) forwards;
+}
+.sc-panel.s-active .bp-node { animation:nodeIn .5s var(--ease) 1.4s forwards; }
+@keyframes nodeIn { to{transform:scale(1)} }
+.bp-node-fill { fill:rgba(123,85,224,.9); animation:nodeIn .5s var(--ease) 1.6s both; }
+.bp-node-fill-sm { fill:rgba(180,155,255,.7); }
+
+/* Act 3: Convergence / Innovation */
+.vis-converge {
+  width:280px; height:280px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:opacity 1s var(--ease) .6s;
+}
+.sc-panel.s-active .vis-converge { opacity:1; }
+.vc-arm {
+  position:absolute; width:2px;
+  background:linear-gradient(to bottom,transparent,rgba(59,158,148,.5));
+  transform-origin:bottom center;
+  border-radius:2px;
+}
+.vc-arm:nth-child(1) { height:100px; bottom:50%; left:50%; transform:translateX(-1px) rotate(0deg);   animation:armGrow 1.2s var(--ease) 1s both; }
+.vc-arm:nth-child(2) { height:90px;  bottom:50%; left:50%; transform:translateX(-1px) rotate(60deg);  animation:armGrow 1.2s var(--ease) 1.1s both; }
+.vc-arm:nth-child(3) { height:95px;  bottom:50%; left:50%; transform:translateX(-1px) rotate(120deg); animation:armGrow 1.2s var(--ease) 1.2s both; }
+.vc-arm:nth-child(4) { height:88px;  bottom:50%; left:50%; transform:translateX(-1px) rotate(180deg); animation:armGrow 1.2s var(--ease) 1.3s both; }
+.vc-arm:nth-child(5) { height:92px;  bottom:50%; left:50%; transform:translateX(-1px) rotate(240deg); animation:armGrow 1.2s var(--ease) 1.15s both; }
+.vc-arm:nth-child(6) { height:98px;  bottom:50%; left:50%; transform:translateX(-1px) rotate(300deg); animation:armGrow 1.2s var(--ease) 1.25s both; }
+@keyframes armGrow { from{height:0;opacity:0} to{opacity:1} }
+.vc-dot {
+  position:absolute;
+  width:6px; height:6px; border-radius:50%;
+  background:rgba(59,158,148,.8); box-shadow:0 0 10px rgba(59,158,148,.6);
+  animation:vcDotIn .5s var(--ease) 2s both;
+}
+@keyframes vcDotIn { from{transform:scale(0)} to{transform:scale(1)} }
+.vc-arm:nth-child(1) .vc-dot { top:-3px; left:-2px; }
+.vc-arm:nth-child(2) .vc-dot { top:-3px; left:-2px; }
+.vc-arm:nth-child(3) .vc-dot { top:-3px; left:-2px; }
+.vc-arm:nth-child(4) .vc-dot { top:-3px; left:-2px; }
+.vc-arm:nth-child(5) .vc-dot { top:-3px; left:-2px; }
+.vc-arm:nth-child(6) .vc-dot { top:-3px; left:-2px; }
+.vc-center {
+  position:absolute; width:16px; height:16px; border-radius:50%;
+  background:rgba(59,158,148,1); box-shadow:0 0 24px rgba(59,158,148,.8);
+  animation:vcDotIn .6s var(--ease) 2.2s both;
+}
+.vc-ring-outer {
+  position:absolute; width:32px; height:32px; border-radius:50%;
+  border:1px solid rgba(59,158,148,.4);
+  animation:vcDotIn .6s var(--ease) 2.3s both, ringPulse 2s ease-in-out 2.3s infinite;
+}
 
 /* ─────────────────────────────────────
    GLOBE
@@ -410,13 +585,21 @@ body.h #cur-ring { width:50px; height:50px; border-color:rgba(123,85,224,0.8); }
 ───────────────────────────────────── */
 .process { background:var(--stone); padding:120px 0; }
 .process-title { font-family:var(--fd); color:var(--ink); font-size:clamp(34px,4vw,54px); font-weight:400; letter-spacing:-.4px; line-height:1.1; margin-top:12px; margin-bottom:80px; }
-.proc-item { display:grid; grid-template-columns:80px 1fr 1fr; gap:0; border-top:1px solid rgba(59,15,160,.1); padding:48px 0; transition:background .3s; }
+.proc-item {
+  display:grid;
+  grid-template-columns:72px 1fr 1fr;
+  align-items:start;
+  border-top:1px solid rgba(59,15,160,.1);
+  padding:48px 0;
+  transition:background .3s;
+}
 .proc-item:hover { background:rgba(59,15,160,.02); }
-.pi-n { font-family:var(--fd); font-size:20px; font-weight:300; color:var(--purple-soft); letter-spacing:.04em; padding-top:4px; }
+.pi-n { font-family:var(--fd); font-size:18px; font-weight:300; color:var(--purple-soft); letter-spacing:.04em; line-height:1.4; padding-top:6px; }
 .pi-name { font-family:var(--fd); font-size:clamp(26px,3vw,42px); font-weight:400; color:var(--ink); line-height:1.15; letter-spacing:-.3px; }
 .pi-name em { font-style:italic; color:var(--purple-mid); }
-.pi-desc { font-size:14px; font-weight:300; color:var(--text-mid); line-height:1.85; padding-left:40px; padding-top:8px; max-width:400px; }
-.pi-tag  { display:block; font-family:var(--fm); font-size:9px; letter-spacing:.13em; text-transform:uppercase; color:var(--purple-soft); margin-top:12px; }
+.pi-body { padding-top:6px; }
+.pi-desc { font-size:14px; font-weight:300; color:var(--text-mid); line-height:1.85; max-width:400px; }
+.pi-tag  { display:block; font-family:var(--fm); font-size:9px; letter-spacing:.13em; text-transform:uppercase; color:var(--purple-soft); margin-top:14px; }
 
 /* ─────────────────────────────────────
    INSIGHTS
@@ -652,67 +835,160 @@ body.h #cur-ring { width:50px; height:50px; border-color:rgba(123,85,224,0.8); }
 <div class="sc-wrap" id="sec-3">
   <div class="sc-sticky" id="sc-sticky">
 
-    <!-- Act 1 — peek → Act 2 -->
+    <!-- ── ACT 1 ── Clinical Intelligence Sprint -->
     <div class="sc-panel s-active" id="scp-0">
-      <div class="sc-text">
-        <div class="sc-num">01</div>
-        <p class="sc-act">Act 1 — Where to Start</p>
-        <h3 class="sc-title">Clinical Intelligence Sprint</h3>
-        <p class="sc-sub">Observed reality. Not desk research.</p>
-        <div class="sc-rule"></div>
-        <p class="sc-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone that shows you exactly where your technology fits and which product directions will survive the healthcare environment coming next.</p>
-        <div class="sc-tags"><span class="sc-tag">Fieldwork</span><span class="sc-tag">Observation</span><span class="sc-tag">Scenario Cone</span></div>
-        <a href="contact.html" class="sc-lnk">Is this right for you?</a>
-      </div>
-      <div class="sc-peek" id="scp-peek-0">
-        <div class="sc-peek-body">
-          <span class="sc-peek-num">02</span>
-          <span class="sc-peek-label">Act 2 — Most Requested</span>
-          <span class="sc-peek-title">Service System Design</span>
+      <div class="sc-inner">
+        <div class="sc-topbar">
+          <div class="sc-act-badge">
+            <span class="sc-act-line"></span>
+            <span class="sc-act-txt">Act 1 — Where to Start</span>
+          </div>
+          <span class="sc-big-num">01</span>
         </div>
-        <div class="sc-peek-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="sc-center">
+          <div class="sc-left">
+            <h2 class="sc-title-big">Clinical<br>Intelligence<br><em>Sprint</em></h2>
+            <p class="sc-sub-big">Observed reality. Not desk research.</p>
+            <p class="sc-desc-text">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone showing exactly where your technology fits and which directions will survive the healthcare environment coming next.</p>
+            <div class="sc-tags-row">
+              <span class="sc-tag">Fieldwork</span>
+              <span class="sc-tag">Observation</span>
+              <span class="sc-tag">Scenario Cone</span>
+            </div>
+            <a href="contact.html" class="sc-cta-link">Is this right for you?</a>
+          </div>
+          <div class="sc-right">
+            <!-- Radar visual -->
+            <div class="vis-radar">
+              <div class="vr-ring"></div>
+              <div class="vr-ring"></div>
+              <div class="vr-ring"></div>
+              <div class="vr-ring"></div>
+              <div class="vr-scan"></div>
+              <div class="vr-dot"></div>
+              <div class="vr-dot"></div>
+              <div class="vr-dot"></div>
+              <div class="vr-dot"></div>
+              <div class="vr-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-bottom">
+          <div class="sc-progress-dots">
+            <div class="sc-pdot on"></div>
+            <div class="sc-pdot"></div>
+            <div class="sc-pdot"></div>
+          </div>
+          <button class="sc-next-btn" id="sc-next-0">02 Service System Design →</button>
+        </div>
       </div>
     </div>
 
-    <!-- Act 2 — peek → Act 3 -->
+    <!-- ── ACT 2 ── Service System Design -->
     <div class="sc-panel s-enter" id="scp-1">
-      <div class="sc-text">
-        <div class="sc-num">02</div>
-        <p class="sc-act">Act 2 — Most Requested</p>
-        <h3 class="sc-title">Service System Design</h3>
-        <p class="sc-sub">The complete engagement. End to end.</p>
-        <div class="sc-rule"></div>
-        <p class="sc-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value clearly — this is the work that changes that. Clinical intelligence feeds into a full service architecture: value proposition, workflows, training systems, governance.</p>
-        <div class="sc-tags"><span class="sc-tag">Service Architecture</span><span class="sc-tag">Value Proposition</span><span class="sc-tag">Adoption</span></div>
-        <a href="contact.html" class="sc-lnk">Tell us your situation</a>
-      </div>
-      <div class="sc-peek" id="scp-peek-1">
-        <div class="sc-peek-body">
-          <span class="sc-peek-num">03</span>
-          <span class="sc-peek-label">Act 3 — For Teams</span>
-          <span class="sc-peek-title">Innovation Workshop</span>
+      <div class="sc-inner">
+        <div class="sc-topbar">
+          <div class="sc-act-badge">
+            <span class="sc-act-line"></span>
+            <span class="sc-act-txt">Act 2 — Most Requested</span>
+          </div>
+          <span class="sc-big-num">02</span>
         </div>
-        <div class="sc-peek-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="sc-center">
+          <div class="sc-left">
+            <h2 class="sc-title-big">Service<br>System<br><em>Design</em></h2>
+            <p class="sc-sub-big">The complete engagement. End to end.</p>
+            <p class="sc-desc-text">If hospitals are not committing, if adoption is stalling, if nobody can explain the value — this changes that. Clinical intelligence feeds into a full architecture: value proposition, workflows, training systems, governance.</p>
+            <div class="sc-tags-row">
+              <span class="sc-tag">Service Architecture</span>
+              <span class="sc-tag">Value Proposition</span>
+              <span class="sc-tag">Adoption</span>
+            </div>
+            <a href="contact.html" class="sc-cta-link">Tell us your situation</a>
+          </div>
+          <div class="sc-right">
+            <!-- Blueprint visual -->
+            <div class="vis-blueprint">
+              <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Connecting lines -->
+                <line class="bp-line" x1="150" y1="40"  x2="80"  y2="120" style="animation-delay:.9s"/>
+                <line class="bp-line" x1="150" y1="40"  x2="220" y2="120" style="animation-delay:1.1s"/>
+                <line class="bp-line" x1="80"  y1="120" x2="60"  y2="210" style="animation-delay:1.3s"/>
+                <line class="bp-line" x1="80"  y1="120" x2="150" y2="210" style="animation-delay:1.4s"/>
+                <line class="bp-line" x1="220" y1="120" x2="150" y2="210" style="animation-delay:1.5s"/>
+                <line class="bp-line" x1="220" y1="120" x2="240" y2="210" style="animation-delay:1.6s"/>
+                <!-- Nodes -->
+                <circle class="bp-node" cx="150" cy="40"  r="10" style="animation-delay:1.5s"/>
+                <circle class="bp-node" cx="80"  cy="120" r="8"  style="animation-delay:1.7s"/>
+                <circle class="bp-node" cx="220" cy="120" r="8"  style="animation-delay:1.8s"/>
+                <circle class="bp-node" cx="60"  cy="210" r="7"  style="animation-delay:1.9s"/>
+                <circle class="bp-node" cx="150" cy="210" r="7"  style="animation-delay:2.0s"/>
+                <circle class="bp-node" cx="240" cy="210" r="7"  style="animation-delay:2.1s"/>
+                <!-- Node fills -->
+                <circle class="bp-node-fill" cx="150" cy="40" r="4" fill="rgba(123,85,224,.9)" style="animation-delay:1.7s"/>
+                <circle class="bp-node-fill bp-node-fill-sm" cx="80"  cy="120" r="3" style="animation-delay:1.9s"/>
+                <circle class="bp-node-fill bp-node-fill-sm" cx="220" cy="120" r="3" style="animation-delay:2.0s"/>
+                <circle class="bp-node-fill bp-node-fill-sm" cx="60"  cy="210" r="2.5" style="animation-delay:2.1s"/>
+                <circle class="bp-node-fill bp-node-fill-sm" cx="150" cy="210" r="2.5" style="animation-delay:2.2s"/>
+                <circle class="bp-node-fill bp-node-fill-sm" cx="240" cy="210" r="2.5" style="animation-delay:2.3s"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="sc-bottom">
+          <div class="sc-progress-dots">
+            <div class="sc-pdot"></div>
+            <div class="sc-pdot on"></div>
+            <div class="sc-pdot"></div>
+          </div>
+          <button class="sc-next-btn" id="sc-next-1">03 Innovation Workshop →</button>
+        </div>
       </div>
     </div>
 
-    <!-- Act 3 — peek → CTA -->
+    <!-- ── ACT 3 ── Innovation Workshop -->
     <div class="sc-panel s-enter" id="scp-2">
-      <div class="sc-text">
-        <div class="sc-num">03</div>
-        <p class="sc-act">Act 3 — For Teams</p>
-        <h3 class="sc-title">Innovation Workshop</h3>
-        <p class="sc-sub">Built for your context. Not a template.</p>
-        <div class="sc-rule"></div>
-        <p class="sc-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
-        <div class="sc-tags"><span class="sc-tag">Team Alignment</span><span class="sc-tag">Design Thinking</span><span class="sc-tag">Facilitation</span></div>
-        <a href="contact.html" class="sc-lnk">Talk to us</a>
-      </div>
-      <div class="sc-peek">
-        <div class="sc-peek-cta-inner">
-          <span class="sc-peek-cta-label">Ready to begin?</span>
-          <p class="sc-peek-cta-title">Build the innovation layer.</p>
-          <a href="contact.html" class="sc-peek-cta-btn">Start a conversation →</a>
+      <div class="sc-inner">
+        <div class="sc-topbar">
+          <div class="sc-act-badge">
+            <span class="sc-act-line"></span>
+            <span class="sc-act-txt">Act 3 — For Teams</span>
+          </div>
+          <span class="sc-big-num">03</span>
+        </div>
+        <div class="sc-center">
+          <div class="sc-left">
+            <h2 class="sc-title-big">Innovation<br><em>Workshop</em></h2>
+            <p class="sc-sub-big">Built for your context. Not a template.</p>
+            <p class="sc-desc-text">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
+            <div class="sc-tags-row">
+              <span class="sc-tag">Team Alignment</span>
+              <span class="sc-tag">Design Thinking</span>
+              <span class="sc-tag">Facilitation</span>
+            </div>
+            <a href="contact.html" class="sc-cta-link">Talk to us</a>
+          </div>
+          <div class="sc-right">
+            <!-- Convergence visual -->
+            <div class="vis-converge">
+              <div class="vc-arm"><div class="vc-dot"></div></div>
+              <div class="vc-arm"><div class="vc-dot"></div></div>
+              <div class="vc-arm"><div class="vc-dot"></div></div>
+              <div class="vc-arm"><div class="vc-dot"></div></div>
+              <div class="vc-arm"><div class="vc-dot"></div></div>
+              <div class="vc-arm"><div class="vc-dot"></div></div>
+              <div class="vc-ring-outer"></div>
+              <div class="vc-center"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-bottom">
+          <div class="sc-progress-dots">
+            <div class="sc-pdot"></div>
+            <div class="sc-pdot"></div>
+            <div class="sc-pdot on"></div>
+          </div>
+          <a href="contact.html" class="sc-next-btn">Start a conversation →</a>
         </div>
       </div>
     </div>
@@ -764,10 +1040,10 @@ body.h #cur-ring { width:50px; height:50px; border-color:rgba(123,85,224,0.8); }
   <div class="container">
     <span class="stmt-label rev">How We Work</span>
     <h2 class="process-title rev">Three acts.<br>One coherent system.</h2>
-    <div class="proc-item rev"><span class="pi-n">01</span><h3 class="pi-name">Clinical<br><em>Intelligence</em></h3><div><p class="pi-desc">Direct immersion into your clinical environment — observing real workflows, interviewing clinicians, mapping adoption barriers that desk research misses entirely.</p><span class="pi-tag">Fieldwork · Observation</span></div></div>
-    <div class="proc-item rev"><span class="pi-n">02</span><h3 class="pi-name">Scenario<br><em>Cone</em></h3><div><p class="pi-desc">Structuring the futures the healthcare system is already moving toward — grounded in observed clinical signals, not market projections.</p><span class="pi-tag">Foresight · Strategy</span></div></div>
-    <div class="proc-item rev"><span class="pi-n">03</span><h3 class="pi-name">Service<br><em>System</em></h3><div><p class="pi-desc">Building the complete innovation layer — value proposition, clinical workflows, training architecture, governance frameworks, and adoption infrastructure.</p><span class="pi-tag">Service Design · Architecture</span></div></div>
-    <div class="proc-item rev" style="border-bottom:1px solid rgba(59,15,160,.1)"><span class="pi-n">04</span><h3 class="pi-name">Deliver</h3><div><p class="pi-desc">A fully designed innovation layer — defensible, clinically grounded, ready to present to clinical decision-makers and investment committees.</p><span class="pi-tag">Activation · Handover</span></div></div>
+    <div class="proc-item rev"><span class="pi-n">01</span><h3 class="pi-name">Clinical<br><em>Intelligence</em></h3><div class="pi-body"><p class="pi-desc">Direct immersion into your clinical environment — observing real workflows, interviewing clinicians, mapping adoption barriers that desk research misses entirely.</p><span class="pi-tag">Fieldwork · Observation</span></div></div>
+    <div class="proc-item rev"><span class="pi-n">02</span><h3 class="pi-name">Scenario<br><em>Cone</em></h3><div class="pi-body"><p class="pi-desc">Structuring the futures the healthcare system is already moving toward — grounded in observed clinical signals, not market projections.</p><span class="pi-tag">Foresight · Strategy</span></div></div>
+    <div class="proc-item rev"><span class="pi-n">03</span><h3 class="pi-name">Service<br><em>System</em></h3><div class="pi-body"><p class="pi-desc">Building the complete innovation layer — value proposition, clinical workflows, training architecture, governance frameworks, and adoption infrastructure.</p><span class="pi-tag">Service Design · Architecture</span></div></div>
+    <div class="proc-item rev" style="border-bottom:1px solid rgba(59,15,160,.1)"><span class="pi-n">04</span><h3 class="pi-name">Deliver</h3><div class="pi-body"><p class="pi-desc">A fully designed innovation layer — defensible, clinically grounded, ready to present to clinical decision-makers and investment committees.</p><span class="pi-tag">Activation · Handover</span></div></div>
   </div>
 </section>
 
@@ -804,8 +1080,8 @@ body.h #cur-ring { width:50px; height:50px; border-color:rgba(123,85,224,0.8); }
       <span class="cl-line"><span class="cl-inner em">layer starts</span></span>
       <span class="cl-line"><span class="cl-inner">with a conversation.</span></span>
     </h2>
-    <a href="mailto:info@servizions.com" class="closing-link">
-      <span class="cl-link-txt">info@servizions.com</span>
+    <a href="/cdn-cgi/l/email-protection#4e272028210e3d2b3c3827342721203d602d2123" class="closing-link">
+      <span class="cl-link-txt"><span class="__cf_email__" data-cfemail="84edeae2ebc4f7e1f6f2edfeedebeaf7aae7ebe9">[email&#160;protected]</span></span>
       <span class="cl-arr"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </a>
   </div>
@@ -826,13 +1102,13 @@ body.h #cur-ring { width:50px; height:50px; border-color:rgba(123,85,224,0.8); }
   <div class="footer-bot">
     <div>© 2026 Servizions. All rights reserved.</div>
     <div class="footer-links">
-      <a href="mailto:info@servizions.com">info@servizions.com</a>
+      <a href="/cdn-cgi/l/email-protection#c1a8afa7ae81b2a4b3b7a8bba8aeafb2efa2aeac"><span class="__cf_email__" data-cfemail="4f262129200f3c2a3d3926352620213c612c2022">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
 'use strict';
 
@@ -936,47 +1212,49 @@ const cObs=new IntersectionObserver(entries=>{
 },{threshold:.4});
 if(qs('.numbers')) cObs.observe(qs('.numbers'));
 
-/* ── SHOWCASE cross-fade + peek click ── */
+/* ── SHOWCASE — horizontal wipe ── */
 (function(){
-  const wrap=qs('.sc-wrap');
-  const panels=[qs('#scp-0'),qs('#scp-1'),qs('#scp-2')];
-  const peeks=[qs('#scp-peek-0'),qs('#scp-peek-1')];
-  const pbar=qs('#sc-pbar');
+  const wrap=qs(".sc-wrap");
+  const panels=[qs("#scp-0"),qs("#scp-1"),qs("#scp-2")];
+  const pbar=qs("#sc-pbar");
   const N=panels.length;
   if(!wrap) return;
 
-  const setH=()=>{ wrap.style.height=(N*window.innerHeight)+'px'; };
-  setH(); window.addEventListener('resize',setH);
+  const setH=()=>{ wrap.style.height=(N*window.innerHeight)+"px"; };
+  setH(); window.addEventListener("resize",setH);
 
-  let cur=0, animating=false;
+  let cur=0, locked=false;
 
   function go(idx){
-    if(idx===cur) return;
-    panels[cur].className='sc-panel s-exit';
-    const prev=cur; cur=idx;
-    setTimeout(()=>{ if(panels[prev].className==='sc-panel s-exit') panels[prev].className='sc-panel s-enter'; },800);
-    panels[cur].className='sc-panel s-active';
-    animating=false;
+    if(idx===cur||locked) return;
+    locked=true;
+    panels[cur].className="sc-panel s-exit";
+    cur=idx;
+    panels[cur].className="sc-panel s-enter";
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        panels[cur].className="sc-panel s-active";
+        setTimeout(()=>{ locked=false; },1200);
+      });
+    });
   }
 
-  peeks.forEach((pk,i)=>{
-    if(!pk) return;
-    pk.addEventListener('click',()=>{
-      if(animating) return; animating=true;
-      const total=wrap.offsetHeight-window.innerHeight;
-      const target=wrap.offsetTop+((i+1)/N)*total+10;
-      window.scrollTo({top:target,behavior:'smooth'});
+  ["sc-next-0","sc-next-1"].forEach((id,i)=>{
+    const btn=qs("#"+id); if(!btn) return;
+    btn.addEventListener("click",()=>{
+      const target=wrap.offsetTop+((i+1)/N)*(wrap.offsetHeight-window.innerHeight)+10;
+      window.scrollTo({top:target,behavior:"smooth"});
       setTimeout(()=>go(i+1),80);
     });
   });
 
-  window.addEventListener('scroll',()=>{
+  window.addEventListener("scroll",()=>{
     const rect=wrap.getBoundingClientRect();
     const scrolled=-rect.top;
     const total=wrap.offsetHeight-window.innerHeight;
-    if(scrolled<-50||scrolled>total+100) return;
+    if(scrolled<-80||scrolled>total+100) return;
     const p=Math.max(0,Math.min(1,scrolled/total));
-    if(pbar) pbar.style.width=(p*100)+'%';
+    if(pbar) pbar.style.width=(p*100)+"%";
     go(Math.min(Math.floor(p*N),N-1));
   },{passive:true});
 })();
@@ -1115,7 +1393,7 @@ if(qs('.numbers')) cObs.observe(qs('.numbers'));
   const cardObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');cardObs.unobserve(e.target);}});
   },{threshold:.1});
-  qsa('.ins-card').forEach((c,i)=>{c.style.transitionDelay=`${i*.14}s`;cardObs.observe(c);});
+  qsa('.ins-card').forEach((c,i)=>{c.style.transit  qsa('.ins-card').forEach((c,i)=>{c.style.transitionDelay=`${i*.14}s`;cardObs.observe(c);});
 })();
 
 /* ── HERO PARALLAX ── */
