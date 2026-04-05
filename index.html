@@ -150,8 +150,8 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .sc-sticky{
   position:sticky;top:0;height:100vh;
   display:grid;grid-template-columns:1fr 1fr;
-  overflow:hidden;
   background:var(--ink);
+  /* NO overflow:hidden — kills position:sticky in Safari */
 }
 
 /* ── LEFT — fixed, content swaps with scroll ── */
@@ -220,15 +220,17 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   overflow:visible;
 }
 
-/* Individual cards — JS controls transform/opacity */
+/* Individual cards — JS controls transform/opacity, CSS anchors center */
 .sc-card{
   position:absolute;
+  top:50%; left:50%;           /* anchor to center of .sc-right */
   width:clamp(300px,28vw,380px);
   border-radius:20px;
   overflow:hidden;
   will-change:transform,opacity;
   box-shadow:0 32px 80px rgba(0,0,0,.45);
-  transform-origin:top center;
+  transform-origin:center top;
+  /* default: hidden off right — JS overrides on init */
 }
 
 /* Card backgrounds */
@@ -865,13 +867,14 @@ if(q('.nums'))cO.observe(q('.nums'));
   function setH(){wrap.style.height=(N*window.innerHeight)+'px';}
   setH();window.addEventListener('resize',setH);
 
-  /* Initial card stack positions — rendered below each other */
+  /* Initial card stack — translate(-50%) centres the top/left anchor */
   function initCards(){
     cards.forEach((card,i)=>{
       card.style.transition='none';
-      /* Stack: card 0 on top, card 2 at bottom */
-      const depth=i; /* 0=front, 1=mid, 2=back */
-      card.style.transform=`translateY(${depth*22}px) scale(${1-depth*0.05})`;
+      const depth=i;
+      const sc=1-depth*0.05;
+      const ty=depth*22; /* px below centre */
+      card.style.transform=`translate(-50%, calc(-50% + ${ty}px)) scale(${sc})`;
       card.style.opacity='1';
       card.style.zIndex=String(10-i);
     });
@@ -892,34 +895,29 @@ if(q('.nums'))cO.observe(q('.nums'));
 
     if(bar)bar.style.width=(p*100)+'%';
 
-    /* Each card's position relative to scroll
-       pos = 0  → front of stack
-       pos < 0  → queued in stack behind
-       pos > 0  → exiting upward */
     cards.forEach((card,i)=>{
-      const pos=p*2-i; /* p*2 because N-1=2 transitions */
+      const pos=p*2-i;
 
       if(pos>=0){
-        /* Exiting: fly up + slight rotate */
+        /* Exiting upward */
         const e=Math.min(pos,1);
-        const ty=-(e*110); /* percent of card height */
         const rot=e*4;
         const sc=1-e*0.04;
-        card.style.transform=`translateY(${ty}%) rotate(${rot}deg) scale(${sc})`;
+        /* translate(-50%) keeps horizontal centre; vertical exits upward */
+        card.style.transform=`translate(-50%, calc(-50% - ${e*110}%)) rotate(${rot}deg) scale(${sc})`;
         card.style.opacity=String(Math.max(0,1-e*1.6));
         card.style.zIndex=String(10-i);
       } else {
-        /* In stack behind: depth scaling */
+        /* In stack behind */
         const depth=Math.min(-pos,2);
         const sc=1-depth*0.05;
-        const ty=depth*22; /* px — pushed down */
-        card.style.transform=`translateY(${ty}px) scale(${sc})`;
+        const ty=depth*22;
+        card.style.transform=`translate(-50%, calc(-50% + ${ty}px)) scale(${sc})`;
         card.style.opacity='1';
         card.style.zIndex=String(10-i);
       }
     });
 
-    /* Left panes — show the one closest to front */
     const activeIdx=Math.min(Math.round(p*2),2);
     panes.forEach((pane,i)=>pane.classList.toggle('on',i===activeIdx));
     dots.forEach((dot,i)=>dot.classList.toggle('on',i===activeIdx));
