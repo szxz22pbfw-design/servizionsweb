@@ -3,44 +3,606 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
 <title>Servizions – Service Innovation Studio</title>
 <meta name="description" content="Servizions bridges medtech and healthcare robotics companies with the real clinical world.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://servizions.com/">
-<meta property="og:title" content="Servizions – Service Innovation Studio">
-<meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
-<meta property="og:url" content="https://servizions.com/">
-<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════
+   TOKENS
+════════════════════════════════════ */
+:root{
+  --ink:#0A0818;
+  --purple:#3B0FA0;
+  --purple-mid:#5A2BD6;
+  --purple-soft:#7B55E0;
+  --purple-pale:#F8F6FE;
+  --teal:#3B9E94;
+  --white:#FFFFFF;
+  --stone:#F3F1EE;
+  --text-mid:#4A4263;
+  --text-faint:#8A7FAA;
+  --border:rgba(59,15,160,0.10);
+  --font-disp:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Outfit',system-ui,sans-serif;
+  --font-mono:'Space Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --ease-in:cubic-bezier(0.4,0,1,1);
+}
+
+/* ════════════════════════════════════
+   RESET
+════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{overflow-x:hidden;font-size:16px;}
+body{
+  font-family:var(--font-body);
+  background:var(--ink);
+  color:var(--white);
+  overflow-x:hidden;
+  cursor:none;
+}
+a{color:inherit;text-decoration:none;}
+img,video{display:block;max-width:100%;}
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 80px;}
+
+/* ════════════════════════════════════
+   NOISE GRAIN OVERLAY
+════════════════════════════════════ */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:9990;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+  opacity:0.028;
+  mix-blend-mode:overlay;
+}
+
+/* ════════════════════════════════════
+   SCROLL PROGRESS
+════════════════════════════════════ */
+#progress{position:fixed;top:0;left:0;height:1.5px;width:0%;background:linear-gradient(90deg,var(--purple-soft),var(--teal));z-index:9999;transition:width 0.08s linear;}
+
+/* ════════════════════════════════════
+   CURSOR
+════════════════════════════════════ */
+#cur-dot{
+  position:fixed;width:6px;height:6px;
+  background:var(--purple-soft);border-radius:50%;
+  pointer-events:none;z-index:9998;
+  top:0;left:0;transform:translate(-50%,-50%);
+  will-change:transform;
+  mix-blend-mode:screen;
+}
+#cur-ring{
+  position:fixed;width:32px;height:32px;
+  border:1px solid rgba(123,85,224,0.5);border-radius:50%;
+  pointer-events:none;z-index:9997;
+  top:0;left:0;transform:translate(-50%,-50%);
+  will-change:transform;
+  transition:width 0.4s var(--ease),height 0.4s var(--ease),border-color 0.3s,opacity 0.3s;
+}
+body.h #cur-ring{width:52px;height:52px;border-color:rgba(123,85,224,0.8);}
+body.h #cur-dot{width:4px;height:4px;opacity:0.5;}
+
+/* ════════════════════════════════════
+   SIDE NAV DOTS
+════════════════════════════════════ */
+#side-nav{
+  position:fixed;right:32px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:14px;z-index:5000;
+  mix-blend-mode:normal;
+}
+.snd{
+  width:4px;height:4px;border-radius:50%;
+  background:rgba(255,255,255,0.25);
+  transition:all 0.4s var(--ease);cursor:none;
+}
+.snd.active{background:rgba(123,85,224,0.9);transform:scale(1.8);}
+.snd:hover{background:rgba(255,255,255,0.6);}
+
+/* ════════════════════════════════════
+   NAVBAR — ultra minimal
+════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:8000;
+  padding:0 80px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:transform 0.5s var(--ease);
+}
+.nav::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(10,8,24,0.7),transparent);
+  pointer-events:none;opacity:0;transition:opacity 0.4s;
+}
+.nav.scrolled::before{opacity:1;}
+.nav.hide{transform:translateY(-100%);}
+.nav-logo{font-family:var(--font-disp);font-size:21px;font-weight:500;letter-spacing:0.05em;color:white;}
+.nav-links{display:flex;gap:36px;align-items:center;}
+.nav-link{font-size:10.5px;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.13em;text-transform:uppercase;transition:color 0.3s;position:relative;}
+.nav-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:rgba(255,255,255,0.5);transition:width 0.35s var(--ease);}
+.nav-link:hover{color:white;}
+.nav-link:hover::after{width:100%;}
+.nav-cta{padding:8px 20px;border-radius:999px;border:1px solid rgba(123,85,224,0.5);background:rgba(90,43,214,0.18);color:rgba(255,255,255,0.85)!important;transition:all 0.3s!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--purple-mid)!important;color:white!important;}
+.menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.menu-toggle span{display:block;width:20px;height:1px;background:rgba(255,255,255,0.7);transition:all 0.3s;}
+.menu-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
+.menu-toggle.open span:nth-child(2){transform:rotate(-45deg) translate(4px,-4px);}
+.mobile-nav{position:fixed;inset:0;background:#070512;z-index:7000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;opacity:0;pointer-events:none;transition:opacity 0.4s var(--ease);}
+.mobile-nav.open{opacity:1;pointer-events:all;}
+.mobile-nav a{font-family:var(--font-disp);font-size:52px;font-weight:300;font-style:italic;color:white;}
+
+/* ════════════════════════════════════
+   HERO — full screen video
+════════════════════════════════════ */
+.hero{
+  position:relative;width:100vw;height:100vh;
+  display:flex;align-items:flex-end;
+  padding:0 80px 96px;
+  overflow:hidden;
+}
+.hero-vid{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  z-index:0;
+}
+.hero-grad{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to right,rgba(10,8,24,0.92) 0%,rgba(10,8,24,0.55) 50%,rgba(10,8,24,0.2) 100%),
+    linear-gradient(to top,rgba(10,8,24,0.88) 0%,transparent 60%);
+}
+#hero-cvs{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;}
+
+.hero-inner{position:relative;z-index:3;max-width:1000px;}
+
+/* Big reveal title — lines slide up */
+.hero-title{
+  font-family:var(--font-disp);
+  font-size:clamp(56px,8vw,128px);
+  font-weight:300;
+  line-height:0.95;
+  letter-spacing:-2px;
+  color:white;
+  margin-bottom:40px;
+}
+.h-line{display:block;overflow:hidden;}
+.h-inner{
+  display:block;
+  transform:translateY(115%);
+  transition:transform 1.2s var(--ease);
+}
+.h-inner.italic{font-style:italic;color:rgba(180,155,255,0.95);}
+.h-inner.in{transform:translateY(0);}
+
+.hero-meta{
+  display:flex;align-items:center;gap:20px;
+  margin-bottom:40px;
+  opacity:0;transform:translateY(10px);
+  transition:opacity 0.9s var(--ease) 0.3s,transform 0.9s var(--ease) 0.3s;
+}
+.hero-meta.in{opacity:1;transform:none;}
+.hero-meta-line{width:40px;height:1px;background:rgba(123,85,224,0.7);}
+.hero-meta-txt{font-family:var(--font-mono);font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(123,85,224,0.85);}
+
+.hero-sub{
+  font-size:clamp(15px,1.4vw,18px);font-weight:300;
+  color:rgba(255,255,255,0.5);
+  line-height:1.8;max-width:560px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 0.9s var(--ease) 0.8s,transform 0.9s var(--ease) 0.8s;
+}
+.hero-sub.in{opacity:1;transform:none;}
+
+.hero-cta-row{
+  display:flex;gap:16px;align-items:center;
+  margin-top:44px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 0.9s var(--ease) 1s,transform 0.9s var(--ease) 1s;
+}
+.hero-cta-row.in{opacity:1;transform:none;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-body);font-size:10.5px;font-weight:600;
+  letter-spacing:0.13em;text-transform:uppercase;
+  padding:14px 32px;border-radius:999px;
+  transition:all 0.3s;cursor:none;border:none;
+}
+.btn-p{background:var(--purple);color:white;}
+.btn-p:hover{background:var(--purple-mid);box-shadow:0 8px 32px rgba(90,43,214,0.5);transform:translateY(-2px);}
+.btn-p svg{transition:transform 0.3s var(--ease);}
+.btn-p:hover svg{transform:translateX(4px);}
+.btn-g{background:none;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.16);}
+.btn-g:hover{color:white;border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.04);}
+
+/* scroll cue */
+.hero-scroll-cue{
+  position:absolute;bottom:40px;right:80px;z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  opacity:0;transition:opacity 0.8s 1.5s;
+}
+.hero-scroll-cue.in{opacity:1;}
+.hsc-line{width:1px;height:50px;background:linear-gradient(to bottom,rgba(123,85,224,0.6),transparent);animation:scPulse 2.2s ease-in-out infinite;}
+@keyframes scPulse{0%,100%{opacity:1;height:50px}50%{opacity:0.25;height:30px}}
+.hsc-lbl{font-family:var(--font-mono);font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(123,85,224,0.45);}
+
+/* location */
+.hero-loc{position:absolute;bottom:42px;left:80px;z-index:3;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:8.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.loc-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:locPulse 2.5s ease-in-out infinite;}
+@keyframes locPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.5)}}
+
+/* ════════════════════════════════════
+   TICKER
+════════════════════════════════════ */
+.ticker{overflow:hidden;background:rgba(30,6,96,0.9);padding:14px 0;border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);}
+.ticker-t{display:flex;white-space:nowrap;animation:tickScroll 40s linear infinite;}
+.ticker-t span{font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.28);padding:0 20px;}
+.ticker-dot{color:rgba(123,85,224,0.55)!important;padding:0 3px!important;}
+@keyframes tickScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ════════════════════════════════════
+   STATEMENT SECTION — word by word
+════════════════════════════════════ */
+.statement{
+  background:var(--stone);
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 80px;
+  position:relative;overflow:hidden;
+}
+.statement-bg-num{
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  font-family:var(--font-disp);font-size:360px;font-weight:300;
+  color:rgba(59,15,160,0.04);line-height:1;
+  pointer-events:none;user-select:none;letter-spacing:-20px;
+}
+.statement-inner{max-width:1100px;margin:0 auto;width:100%;}
+.statement-label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--purple-soft);display:block;margin-bottom:48px;}
+.statement-text{
+  font-family:var(--font-disp);
+  font-size:clamp(32px,4.5vw,72px);
+  font-weight:400;
+  color:var(--ink);
+  line-height:1.2;
+  letter-spacing:-0.5px;
+}
+/* word-reveal spans */
+.word{display:inline-block;overflow:hidden;vertical-align:bottom;margin-right:0.22em;}
+.word-inner{display:inline-block;transform:translateY(110%);transition:transform 0.8s var(--ease);}
+.word-inner.in{transform:translateY(0);}
+.word-inner.italic{font-style:italic;color:var(--purple-mid);}
+.statement-cta{margin-top:64px;display:flex;align-items:center;gap:32px;}
+.stmt-link{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--purple);font-family:var(--font-body);
+  transition:gap 0.3s;
+  opacity:0;transform:translateY(12px);
+  transition:gap 0.3s,opacity 0.7s var(--ease),transform 0.7s var(--ease);
+}
+.stmt-link.in{opacity:1;transform:none;}
+.stmt-link::after{content:'→';font-size:14px;transition:transform 0.3s;}
+.stmt-link:hover{gap:18px;}
+.stmt-link:hover::after{transform:translateX(4px);}
+
+/* ════════════════════════════════════
+   NUMBERS — animated counters
+════════════════════════════════════ */
+.numbers{
+  background:var(--ink);
+  padding:140px 0;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+.numbers-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,0.04);
+  border-radius:2px;overflow:hidden;
+}
+.num-card{
+  padding:72px 60px;
+  background:rgba(255,255,255,0.02);
+  transition:background 0.4s;
+}
+.num-card:hover{background:rgba(123,85,224,0.06);}
+.num-big{
+  font-family:var(--font-disp);
+  font-size:clamp(64px,8vw,112px);
+  font-weight:300;
+  line-height:1;
+  letter-spacing:-3px;
+  color:white;
+  margin-bottom:20px;
+  display:flex;align-items:baseline;gap:4px;
+}
+.num-val{display:inline-block;}
+.num-suffix{font-size:0.5em;color:var(--purple-soft);font-style:italic;}
+.num-label{font-size:14px;font-weight:300;color:rgba(255,255,255,0.42);line-height:1.7;max-width:280px;}
+.num-source{font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(123,85,224,0.45);margin-top:16px;}
+
+/* ════════════════════════════════════
+   SHOWCASE — horizontal scroll
+════════════════════════════════════ */
+.showcase-wrap{
+  position:relative;
+  background:var(--ink);
+  overflow:hidden;
+}
+.showcase-sticky{
+  position:sticky;top:0;
+  height:100vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.showcase-header-pin{
+  position:absolute;top:52px;left:80px;z-index:10;
+}
+.showcase-section-label{font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(123,85,224,0.7);display:block;margin-bottom:10px;}
+.showcase-section-title{font-family:var(--font-disp);font-size:clamp(28px,3vw,42px);font-weight:400;color:white;line-height:1.1;}
+
+.showcase-track{
+  display:flex;gap:0;
+  will-change:transform;
+  transform:translateX(0);
+}
+.showcase-panel{
+  flex-shrink:0;
+  width:100vw;height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;
+}
+.sc-text{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 80px 80px;
+  position:relative;
+}
+.sc-num{
+  font-family:var(--font-disp);
+  font-size:180px;font-weight:300;
+  color:rgba(255,255,255,0.03);
+  line-height:1;letter-spacing:-10px;
+  position:absolute;top:20px;left:60px;
+  pointer-events:none;user-select:none;
+}
+.sc-act{font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(123,85,224,0.75);margin-bottom:20px;margin-top:60px;}
+.sc-title{font-family:var(--font-disp);font-size:clamp(32px,3.8vw,58px);font-weight:500;color:white;line-height:1.05;letter-spacing:-0.5px;margin-bottom:10px;}
+.sc-sub{font-family:var(--font-disp);font-size:clamp(16px,1.8vw,22px);font-weight:300;font-style:italic;color:rgba(255,255,255,0.4);line-height:1.35;margin-bottom:28px;}
+.sc-rule{width:44px;height:1px;background:linear-gradient(to right,rgba(123,85,224,0.7),transparent);margin-bottom:28px;}
+.sc-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,0.48);line-height:1.9;max-width:460px;margin-bottom:40px;}
+.sc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px;}
+.sc-tag{font-size:9.5px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;padding:5px 14px;border-radius:999px;color:rgba(180,155,255,0.85);border:1px solid rgba(123,85,224,0.3);background:rgba(123,85,224,0.08);}
+.sc-link{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(180,155,255,0.8);font-family:var(--font-body);transition:gap 0.3s,color 0.3s;}
+.sc-link::after{content:'→';transition:transform 0.3s;}
+.sc-link:hover{gap:18px;color:white;}
+.sc-link:hover::after{transform:translateX(4px);}
+
+/* Panel: dark bg variants */
+.showcase-panel:nth-child(1) .sc-text{background:rgba(10,8,24,1);}
+.showcase-panel:nth-child(2) .sc-text{background:rgba(14,6,50,1);}
+.showcase-panel:nth-child(3) .sc-text{background:rgba(7,16,20,1);}
+
+.sc-visual{position:relative;overflow:hidden;}
+.sc-visual video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.sc-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,10,31,0.25),transparent 60%);pointer-events:none;}
+
+/* Progress dots inside showcase */
+.showcase-dots{position:absolute;bottom:44px;left:80px;display:flex;gap:8px;z-index:10;}
+.sc-dot{width:24px;height:2px;background:rgba(255,255,255,0.2);border-radius:999px;transition:background 0.3s,width 0.4s var(--ease);}
+.sc-dot.active{background:var(--purple-soft);width:44px;}
+
+/* ════════════════════════════════════
+   GLOBE
+════════════════════════════════════ */
+.globe-section{position:relative;height:92vh;min-height:600px;background:var(--stone);overflow:hidden;}
+.globe-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(200,190,255,0.25) 0%,var(--stone) 70%);}
+#globe-cvs{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;}
+#globe-cvs:active{cursor:grabbing;}
+.globe-ui{position:absolute;top:48px;left:80px;z-index:10;}
+.globe-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(94,23,235,0.55);margin-bottom:8px;}
+.globe-desc{font-size:13px;color:var(--text-faint);font-weight:300;}
+.globe-panel{position:fixed;right:44px;top:50%;width:270px;background:rgba(248,246,254,0.97);backdrop-filter:blur(12px);border:1px solid rgba(94,23,235,0.12);border-left:2px solid rgba(94,23,235,0.4);border-radius:4px 18px 18px 4px;padding:26px 22px 22px;box-shadow:0 24px 64px rgba(94,23,235,0.12);opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.3s var(--ease);transform:translateY(-50%) translateX(24px);z-index:200;}
+.globe-panel.on{opacity:1;pointer-events:auto;transform:translateY(-50%) translateX(0);}
+.globe-panel-close{position:absolute;top:10px;right:10px;width:22px;height:22px;background:none;border:1px solid rgba(94,23,235,0.15);border-radius:4px;color:var(--text-faint);font-size:14px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;cursor:none;}
+.globe-panel-close:hover{background:rgba(94,23,235,0.08);}
+.globe-panel-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;color:rgba(94,23,235,0.45);text-transform:uppercase;margin-bottom:10px;}
+.globe-panel-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.globe-panel-desc{font-size:12.5px;color:var(--text-mid);line-height:1.72;font-weight:300;}
+
+/* ════════════════════════════════════
+   EXPERTISE
+════════════════════════════════════ */
+.expertise{background:white;padding:120px 0;border-top:1px solid var(--border);}
+.expertise-title{font-family:var(--font-disp);color:var(--ink);font-size:clamp(28px,3vw,42px);font-weight:400;font-style:italic;margin-top:12px;margin-bottom:44px;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:10px;}
+.exp-tag{background:none;border:1px solid rgba(59,15,160,0.2);color:var(--purple);padding:10px 22px;border-radius:999px;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-body);cursor:none;transition:all 0.3s;}
+.exp-tag:hover,.exp-tag.active{background:var(--purple);color:white;border-color:var(--purple);transform:translateY(-2px);box-shadow:0 4px 20px rgba(59,15,160,0.22);}
+.exp-panel{max-height:0;overflow:hidden;margin-top:0;transition:max-height 0.5s var(--ease),opacity 0.35s,margin-top 0.35s;opacity:0;}
+.exp-panel.open{max-height:200px;opacity:1;margin-top:36px;}
+.exp-panel-inner{border-left:2px solid var(--purple-soft);padding:22px 30px;background:var(--purple-pale);border-radius:0 14px 14px 0;}
+.exp-text{font-size:15px;font-weight:300;line-height:1.9;color:var(--text-mid);}
+
+/* ════════════════════════════════════
+   PROCESS
+════════════════════════════════════ */
+.process{background:var(--stone);padding:120px 0;}
+.process-title{font-family:var(--font-disp);color:var(--ink);font-size:clamp(36px,4vw,56px);font-weight:400;letter-spacing:-0.4px;line-height:1.1;margin-top:12px;margin-bottom:80px;}
+.process-list{display:flex;flex-direction:column;}
+.process-item{
+  display:grid;grid-template-columns:100px 1fr 1fr;
+  gap:0;
+  border-top:1px solid rgba(59,15,160,0.12);
+  padding:48px 0;
+  transition:background 0.3s;
+}
+.process-item:hover{background:rgba(59,15,160,0.025);}
+.pi-num{font-family:var(--font-disp);font-size:22px;font-weight:300;color:var(--purple-soft);padding-top:4px;letter-spacing:0.04em;}
+.pi-name{font-family:var(--font-disp);font-size:clamp(28px,3vw,44px);font-weight:400;color:var(--ink);line-height:1.15;letter-spacing:-0.3px;}
+.pi-name em{font-style:italic;color:var(--purple-mid);}
+.pi-desc{font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.85;padding-left:40px;padding-top:8px;max-width:400px;}
+.pi-tag{display:inline-block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:var(--purple-soft);margin-top:12px;}
+
+/* ════════════════════════════════════
+   INSIGHTS
+════════════════════════════════════ */
+.insights{background:var(--stone);padding:120px 0 140px;border-top:1px solid rgba(59,15,160,0.08);}
+.insights-title{font-family:var(--font-disp);color:var(--ink);font-size:clamp(34px,4vw,52px);font-weight:400;line-height:1.05;letter-spacing:-0.4px;margin-top:12px;margin-bottom:12px;}
+.insights-sub{color:var(--text-mid);font-size:15px;font-weight:300;line-height:1.8;max-width:540px;margin-bottom:64px;}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.insight-card{border-radius:16px;overflow:hidden;background:white;border:1px solid var(--border);display:flex;flex-direction:column;opacity:0;transform:translateY(44px) scale(0.98);transition:opacity 0.8s var(--ease),transform 0.8s var(--ease),box-shadow 0.35s,border-color 0.35s;cursor:none;}
+.insight-card.in{opacity:1;transform:none;}
+.insight-card:hover{box-shadow:0 32px 80px rgba(14,10,31,0.12);border-color:rgba(59,15,160,0.2);transform:translateY(-6px);}
+.insight-img{position:relative;overflow:hidden;}
+.insight-img img{width:100%;height:240px;object-fit:cover;transition:transform 0.8s var(--ease);display:block;}
+.insight-card:hover .insight-img img{transform:scale(1.07);}
+.insight-body{padding:28px 30px 32px;display:flex;flex-direction:column;flex:1;}
+.itags{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap;}
+.itag{color:var(--purple);background:var(--purple-pale);padding:4px 12px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
+.ih{font-family:var(--font-disp);font-size:22px;font-weight:400;color:var(--ink);line-height:1.35;margin-bottom:14px;flex:1;}
+.it{color:var(--text-mid);font-size:13.5px;font-weight:300;line-height:1.8;margin-bottom:24px;}
+.ia{color:var(--purple);width:34px;height:34px;border:1px solid rgba(59,15,160,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s var(--ease);margin-top:auto;}
+.insight-card:hover .ia{background:var(--purple);color:white;border-color:var(--purple);transform:translate(3px,-3px);}
+
+/* ════════════════════════════════════
+   CTA — full dark
+════════════════════════════════════ */
+.cta{
+  background:var(--ink);
+  min-height:80vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:140px 80px;
+  position:relative;overflow:hidden;
+}
+#cta-cvs{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.cta-inner{position:relative;z-index:2;max-width:900px;}
+.cta-eyebrow{display:block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(123,85,224,0.65);margin-bottom:28px;}
+.cta-title{font-family:var(--font-disp);font-size:clamp(52px,8vw,108px);font-weight:300;color:white;line-height:0.95;letter-spacing:-2px;margin-bottom:28px;}
+.cta-title em{font-style:italic;color:rgba(180,155,255,1);}
+.cta-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,0.45);margin-bottom:52px;line-height:1.8;}
+.btn-w{display:inline-flex;align-items:center;gap:12px;background:white;color:#1E0660;padding:18px 44px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;font-family:var(--font-body);transition:all 0.3s;cursor:none;}
+.btn-w:hover{background:var(--purple-pale);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+
+/* ════════════════════════════════════
+   CONTACT
+════════════════════════════════════ */
+.contact{background:var(--stone);padding:120px 0;border-top:1px solid rgba(59,15,160,0.08);}
+.contact-title{font-family:var(--font-disp);font-size:clamp(30px,3.5vw,48px);font-weight:400;font-style:italic;color:var(--ink);margin-bottom:10px;letter-spacing:-0.3px;text-align:center;}
+.contact-sub{color:var(--text-faint);font-size:15px;font-weight:300;text-align:center;margin-bottom:60px;}
+.contact-form{max-width:860px;margin:0 auto;background:white;border-radius:24px;padding:60px 64px;box-shadow:0 12px 48px rgba(14,10,31,0.07);border:1px solid var(--border);}
+.form-row{display:flex;gap:20px;margin-bottom:20px;}
+.form-group{flex:1;display:flex;flex-direction:column;}
+.form-group label{font-size:10px;font-weight:600;margin-bottom:8px;color:var(--ink);letter-spacing:0.09em;text-transform:uppercase;}
+.form-group input,.form-group select,.form-group textarea{padding:14px 18px;border-radius:8px;border:1px solid #E0D8F0;font-size:14px;font-family:var(--font-body);font-weight:300;color:var(--ink);background:var(--purple-pale);transition:border-color 0.3s,box-shadow 0.3s,background 0.3s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--purple);background:white;box-shadow:0 0 0 3px rgba(59,15,160,0.07);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(138,127,170,0.45);}
+.form-group textarea{min-height:130px;resize:vertical;}
+.form-consent{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text-mid);margin:28px 0;line-height:1.6;font-weight:300;}
+.form-consent input[type="checkbox"]{margin-top:2px;width:16px;height:16px;accent-color:var(--purple);flex-shrink:0;}
+.hidden-field{display:none;}
+
+/* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+.footer{background:#070512;border-top:1px solid rgba(255,255,255,0.05);}
+.footer-top{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;padding:64px 80px 48px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.footer-logo{font-family:var(--font-disp);font-size:26px;font-weight:500;letter-spacing:0.04em;color:white;}
+.footer-tag{text-align:center;font-size:11.5px;font-weight:300;color:rgba(255,255,255,0.25);line-height:1.7;}
+.footer-nav{display:flex;gap:28px;justify-content:flex-end;}
+.footer-nav a{font-size:10.5px;font-weight:500;letter-spacing:0.11em;text-transform:uppercase;color:rgba(255,255,255,0.32);transition:color 0.3s;}
+.footer-nav a:hover{color:white;}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;padding:20px 80px;color:rgba(255,255,255,0.18);font-size:11.5px;flex-wrap:wrap;gap:16px;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{color:rgba(255,255,255,0.28);transition:color 0.3s;}
+.footer-links a:hover{color:rgba(255,255,255,0.75);}
+
+/* ════════════════════════════════════
+   GENERIC REVEAL
+════════════════════════════════════ */
+.rev{opacity:0;transform:translateY(28px);transition:opacity 0.85s var(--ease),transform 0.85s var(--ease);}
+.rev.in{opacity:1;transform:none;}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════ */
+@media(max-width:1100px){
+  .container{padding:0 48px;}
+  .showcase-panel{grid-template-columns:1fr;}
+  .sc-visual{display:none;}
+  .num-card{padding:52px 40px;}
+  .process-item{grid-template-columns:70px 1fr;gap:20px;}
+  .pi-desc{padding-left:0;grid-column:2;}
+}
+@media(max-width:900px){
+  .container{padding:0 28px;}
+  .nav{padding:0 28px;}
+  .nav-links{display:none;}
+  .menu-toggle{display:flex;}
+  .hero{padding:0 28px 80px;}
+  .hero-scroll-cue{right:28px;}
+  .hero-loc{left:28px;}
+  .statement{padding:100px 28px;}
+  .numbers-grid{grid-template-columns:1fr;}
+  .insights-grid{grid-template-columns:1fr;}
+  .contact-form{padding:36px 28px;}
+  .form-row{flex-direction:column;}
+  .footer-top{grid-template-columns:1fr;gap:24px;padding:40px 28px 28px;}
+  .footer-nav{justify-content:flex-start;}
+  .footer-bot{padding:18px 28px;flex-direction:column;align-items:flex-start;}
+  .globe-ui{left:28px;}
+  .showcase-header-pin{left:28px;}
+  .showcase-dots{left:28px;}
+  .sc-text{padding:100px 28px 80px;}
+  .sc-num{font-size:120px;}
+  #side-nav{display:none;}
+  .process-item{grid-template-columns:60px 1fr;}
+  .pi-desc{grid-column:2;padding-left:0;}
+}
+@media(max-width:640px){
+  .hero-title{font-size:48px;}
+  .cta-title{font-size:52px;}
+  #cur-dot,#cur-ring{display:none;}
+  body{cursor:auto;}
+  body *,body button,body a{cursor:auto!important;}
+}
+</style>
 </head>
 <body>
 
-<!-- CUSTOM CURSOR -->
-<div id="cursor-dot"></div>
+<!-- PROGRESS -->
+<div id="progress"></div>
+
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- SIDE NAV DOTS -->
+<nav id="side-nav">
+  <div class="snd active" data-sec="0" title="Hero"></div>
+  <div class="snd" data-sec="1" title="Statement"></div>
+  <div class="snd" data-sec="2" title="Numbers"></div>
+  <div class="snd" data-sec="3" title="Services"></div>
+  <div class="snd" data-sec="4" title="Globe"></div>
+  <div class="snd" data-sec="5" title="Process"></div>
+  <div class="snd" data-sec="6" title="Contact"></div>
+</nav>
 
 <!-- NAVBAR -->
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-text">Servizions</span>
-    </a>
-    <nav class="nav-links">
-      <a href="services.html" class="nav-link" data-label="Services">Services</a>
-      <a href="solutions.html" class="nav-link" data-label="Solutions">Solutions</a>
-      <a href="about.html" class="nav-link" data-label="About">About</a>
-      <a href="contact.html" class="nav-link nav-cta" data-label="Contact">Let's talk</a>
-    </nav>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
-      <span></span><span></span>
-    </button>
-  </div>
+<header class="nav" id="nav">
+  <a href="index.html"><span class="nav-logo">Servizions</span></a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
+  </nav>
+  <button class="menu-toggle" id="menu-toggle"><span></span><span></span></button>
 </header>
-
-<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
   <a href="services.html">Services</a>
   <a href="solutions.html">Solutions</a>
@@ -48,321 +610,314 @@
   <a href="contact.html">Contact</a>
 </div>
 
-<!-- HERO -->
-<section id="hero" class="hero-section">
-  <video class="hero-video-bg" autoplay muted loop playsinline>
+<!-- ════ HERO ════ -->
+<section class="hero" id="sec-0">
+  <video class="hero-vid" autoplay muted loop playsinline>
     <source src="video/servizions.mp4" type="video/mp4">
   </video>
-  <div class="hero-overlay"></div>
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span class="eyebrow-line"></span>
-      <span class="eyebrow-text">Healthcare · Robotics · MedTech · Digital Health</span>
+  <div class="hero-grad"></div>
+  <canvas id="hero-cvs"></canvas>
+  <div class="hero-inner">
+    <div class="hero-meta" id="hero-meta">
+      <span class="hero-meta-line"></span>
+      <span class="hero-meta-txt">Healthcare · Robotics · MedTech · Digital Health</span>
     </div>
     <h1 class="hero-title">
-      <span class="split-line"><span class="split-inner">Beyond</span></span>
-      <span class="split-line"><span class="split-inner italic-word">Technology,</span></span>
-      <span class="split-line"><span class="split-inner">Into practice.</span></span>
+      <span class="h-line"><span class="h-inner" id="hl0">Beyond</span></span>
+      <span class="h-line"><span class="h-inner italic" id="hl1">Technology,</span></span>
+      <span class="h-line"><span class="h-inner" id="hl2">Into practice.</span></span>
     </h1>
-    <p class="hero-sub">We observe your clinical reality, map the futures it is moving toward, and design the innovation layer that makes your technology viable in both.</p>
-    <div class="hero-actions">
-      <a href="contact.html" class="btn-primary mag-btn">
+    <p class="hero-sub" id="hero-sub">We observe your clinical reality, map the futures it is moving toward, and design the innovation layer that makes your technology viable in both.</p>
+    <div class="hero-cta-row" id="hero-cta">
+      <a href="contact.html" class="btn btn-p">
         <span>Start a conversation</span>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="about.html" class="btn-ghost mag-btn">
-        <span>Our approach</span>
-      </a>
+      <a href="about.html" class="btn btn-g">Our approach</a>
     </div>
   </div>
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
+  <div class="hero-scroll-cue" id="hero-sc">
+    <div class="hsc-line"></div>
+    <span class="hsc-lbl">Scroll</span>
   </div>
-  <div class="hero-badge">
-    <span class="badge-dot"></span>
+  <div class="hero-loc">
+    <span class="loc-dot"></span>
     <span>Munich, Germany</span>
   </div>
 </section>
 
-<!-- MARQUEE TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-t" id="ticker-t">
     <span>Clinical Intelligence</span><span class="ticker-dot">·</span>
     <span>Value Proposition Design</span><span class="ticker-dot">·</span>
     <span>Scenario Cone</span><span class="ticker-dot">·</span>
     <span>Medical Robotics</span><span class="ticker-dot">·</span>
     <span>Technology Adoption</span><span class="ticker-dot">·</span>
-    <span>Healthcare System Design</span><span class="ticker-dot">·</span>
     <span>Observed Clinical Reality</span><span class="ticker-dot">·</span>
-    <span>Pre-Product Strategy</span><span class="ticker-dot">·</span>
     <span>Future Scenario Planning</span><span class="ticker-dot">·</span>
-    <!-- repeat -->
+    <span>Pre-Product Strategy</span><span class="ticker-dot">·</span>
     <span>Clinical Intelligence</span><span class="ticker-dot">·</span>
     <span>Value Proposition Design</span><span class="ticker-dot">·</span>
     <span>Scenario Cone</span><span class="ticker-dot">·</span>
     <span>Medical Robotics</span><span class="ticker-dot">·</span>
     <span>Technology Adoption</span><span class="ticker-dot">·</span>
-    <span>Healthcare System Design</span><span class="ticker-dot">·</span>
     <span>Observed Clinical Reality</span><span class="ticker-dot">·</span>
-    <span>Pre-Product Strategy</span><span class="ticker-dot">·</span>
     <span>Future Scenario Planning</span><span class="ticker-dot">·</span>
+    <span>Pre-Product Strategy</span><span class="ticker-dot">·</span>
   </div>
 </div>
 
-<!-- STATEMENT -->
-<section class="statement-section reveal-section">
+<!-- ════ STATEMENT ════ -->
+<section class="statement" id="sec-1">
+  <div class="statement-bg-num">01</div>
+  <div class="statement-inner">
+    <span class="statement-label rev">What We Do</span>
+    <p class="statement-text" id="stmt-text">
+      <!-- Words injected by JS -->
+    </p>
+    <div class="statement-cta">
+      <a href="services.html" class="stmt-link" id="stmt-link1">Explore our services</a>
+      <a href="contact.html" class="stmt-link" id="stmt-link2" style="transition-delay:0.15s;">Start a conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ NUMBERS ════ -->
+<section class="numbers" id="sec-2">
   <div class="container">
-    <div class="statement-grid">
-      <div class="statement-left">
-        <span class="eyebrow-label reveal-child">What We Do</span>
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="num-big"><span class="num-val" data-target="70" data-suffix="%">0</span><span class="num-suffix">%</span></div>
+        <p class="num-label">of healthcare technologies fail to achieve clinical adoption. The technology works. The human system around it was never designed.</p>
+        <span class="num-source">Industry Signal · Clinical Observation</span>
       </div>
-      <div class="statement-right">
-        <h2 class="statement-headline reveal-child">
-          Bridging medtech and healthcare robotics companies with the&nbsp;<em>real clinical world.</em>
-        </h2>
-        <div class="statement-body reveal-child">
-          <p>Most innovation strategies for healthcare technology are built from market reports and desk research. The output is generic. The adoption barriers remain invisible until a pilot fails — and by then, the most consequential decisions have already been made.</p>
-          <p>Servizions builds from observed clinical reality — the actual workflows, constraints, and decision-making patterns we map directly in clinical environments. We combine that ground truth with structured future scenario planning to show you exactly which product and service directions will survive the healthcare system that is already arriving.</p>
-          <p>We do not publish how. That is what the first conversation is for.</p>
-        </div>
-        <a href="contact.html" class="btn-primary mag-btn reveal-child">
-          <span>Start a Conversation</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <div class="num-card">
+        <div class="num-big"><span class="num-val" data-target="72" data-prefix="$" data-suffix="B">0</span><span class="num-suffix">B</span></div>
+        <p class="num-label">projected medical robotics market by 2035. The technology is growing. The adoption infrastructure is not keeping pace.</p>
+        <span class="num-source">Market Signal · Servizions Analysis</span>
+      </div>
+      <div class="num-card">
+        <div class="num-big"><span class="num-val" data-target="3">0</span><span class="num-suffix" style="font-size:0.4em;line-height:1.2;font-style:normal;letter-spacing:0;display:flex;flex-direction:column;gap:2px;margin-left:8px;"><span>acts.</span><span>one</span><span>system.</span></span></div>
+        <p class="num-label">Every Servizions engagement follows three structured acts — from clinical observation to strategic product direction.</p>
+        <span class="num-source">The Servizions Method</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SHOWCASE CARDS (why.de-style split cards) -->
-<section class="showcase-section reveal-section">
-  <div class="container">
-    <div class="showcase-header">
-      <span class="eyebrow-label reveal-child">What We Deliver</span>
-      <h2 class="showcase-title reveal-child">Real-world impact,<br>designed from the ground up.</h2>
+<!-- ════ SHOWCASE — horizontal scroll ════ -->
+<div class="showcase-wrap" id="sec-3">
+  <!-- height set by JS to enable scroll travel -->
+  <div class="showcase-sticky" id="showcase-sticky">
+    <div class="showcase-header-pin">
+      <span class="showcase-section-label">What We Deliver</span>
+      <h2 class="showcase-section-title">Three acts.<br>Clear scope.</h2>
     </div>
-    <div class="showcase-cards">
-      <div class="showcase-card reveal-child">
-        <div class="showcase-card-text">
-          <span class="showcase-num">01</span>
-          <h3>Clinical intelligence that reveals what desk research cannot — observed workflows, adoption barriers, and the real decision-making patterns inside clinical environments.</h3>
-          <a href="services.html" class="showcase-link">Discover the approach</a>
+    <div class="showcase-track" id="showcase-track">
+
+      <!-- Panel 1 -->
+      <div class="showcase-panel">
+        <div class="sc-text">
+          <div class="sc-num">01</div>
+          <p class="sc-act">Act 1 — Where to Start</p>
+          <h3 class="sc-title">Clinical Intelligence Sprint</h3>
+          <p class="sc-sub">Observed reality. Not desk research.</p>
+          <div class="sc-rule"></div>
+          <p class="sc-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone that shows you exactly where your technology fits and which product directions will survive the healthcare environment coming next.</p>
+          <div class="sc-tags"><span class="sc-tag">Fieldwork</span><span class="sc-tag">Observation</span><span class="sc-tag">Scenario Cone</span></div>
+          <a href="contact.html" class="sc-link">Is this right for you?</a>
         </div>
-        <div class="showcase-card-media">
-          <video autoplay muted loop playsinline>
-            <source src="video/servizions-1.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <div class="showcase-card showcase-card--reverse reveal-child">
-        <div class="showcase-card-text">
-          <span class="showcase-num">02</span>
-          <h3>Future scenario planning grounded in clinical signals — showing which product and service directions will survive the healthcare system that is already arriving.</h3>
-          <a href="services.html" class="showcase-link">Explore our methods</a>
-        </div>
-        <div class="showcase-card-media">
-          <video autoplay muted loop playsinline>
-            <source src="video/20260302_systemicinnovation.mp4" type="video/mp4">
-          </video>
+        <div class="sc-visual">
+          <video autoplay muted loop playsinline><source src="video/servizions-1.mp4" type="video/mp4"></video>
         </div>
       </div>
-      <div class="showcase-card reveal-child">
-        <div class="showcase-card-text">
-          <span class="showcase-num">03</span>
-          <h3>A complete innovation layer — value proposition, workflows, training architecture, and the adoption infrastructure that makes your technology genuinely deployable.</h3>
-          <a href="contact.html" class="showcase-link">Start a conversation</a>
+
+      <!-- Panel 2 -->
+      <div class="showcase-panel">
+        <div class="sc-text">
+          <div class="sc-num">02</div>
+          <p class="sc-act">Act 2 — Most Requested</p>
+          <h3 class="sc-title">Service System Design</h3>
+          <p class="sc-sub">The complete engagement. End to end.</p>
+          <div class="sc-rule"></div>
+          <p class="sc-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value clearly — this is the work that changes that. Clinical intelligence feeds into a full service architecture: value proposition, workflows, training systems, governance.</p>
+          <div class="sc-tags"><span class="sc-tag">Service Architecture</span><span class="sc-tag">Value Proposition</span><span class="sc-tag">Adoption</span></div>
+          <a href="contact.html" class="sc-link">Tell us your situation</a>
         </div>
-        <div class="showcase-card-media">
-          <video autoplay muted loop playsinline>
-            <source src="video/servizions-3.mp4" type="video/mp4">
-          </video>
+        <div class="sc-visual">
+          <video autoplay muted loop playsinline><source src="video/20260302_systemicinnovation.mp4" type="video/mp4"></video>
         </div>
       </div>
+
+      <!-- Panel 3 -->
+      <div class="showcase-panel">
+        <div class="sc-text">
+          <div class="sc-num">03</div>
+          <p class="sc-act">Act 3 — For Teams</p>
+          <h3 class="sc-title">Innovation Workshop</h3>
+          <p class="sc-sub">Built for your context. Not a template.</p>
+          <div class="sc-rule"></div>
+          <p class="sc-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
+          <div class="sc-tags"><span class="sc-tag">Team Alignment</span><span class="sc-tag">Design Thinking</span><span class="sc-tag">Facilitation</span></div>
+          <a href="contact.html" class="sc-link">Talk to us</a>
+        </div>
+        <div class="sc-visual">
+          <video autoplay muted loop playsinline><source src="video/servizions-3.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+    </div>
+    <!-- Progress dots -->
+    <div class="showcase-dots" id="sc-dots">
+      <div class="sc-dot active"></div>
+      <div class="sc-dot"></div>
+      <div class="sc-dot"></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- GLOBE SECTION (3D Canvas) -->
-<section class="globe-section" id="globe-section">
+<!-- ════ GLOBE ════ -->
+<section class="globe-section" id="sec-4">
   <div class="globe-bg"></div>
-  <canvas id="globe-canvas"></canvas>
+  <canvas id="globe-cvs"></canvas>
   <div class="globe-ui">
-    <div class="globe-tag reveal-child">Systemic Innovation</div>
-    <p class="globe-desc reveal-child">An interconnected system of methods — drag and click to explore</p>
+    <div class="globe-tag rev">Systemic Innovation</div>
+    <p class="globe-desc rev">An interconnected system of methods — drag and click to explore</p>
   </div>
   <div id="globe-panel" class="globe-panel">
-    <button id="globe-panel-close" class="globe-panel-close">×</button>
-    <div id="globe-panel-tag" class="globe-panel-tag"></div>
-    <div id="globe-panel-title" class="globe-panel-title"></div>
-    <div id="globe-panel-desc" class="globe-panel-desc"></div>
+    <button id="globe-close" class="globe-panel-close">×</button>
+    <div id="globe-tag" class="globe-panel-tag"></div>
+    <div id="globe-title" class="globe-panel-title"></div>
+    <div id="globe-desc" class="globe-panel-desc"></div>
   </div>
 </section>
 
-<!-- EXPERTISE KEYWORDS -->
-<section class="expertise-section reveal-section">
+<!-- ════ EXPERTISE ════ -->
+<section class="expertise">
   <div class="container">
-    <div class="expertise-header">
-      <span class="eyebrow-label reveal-child">Areas of Expertise</span>
-      <h2 class="expertise-title reveal-child">Select an area to explore</h2>
-    </div>
-    <div class="expertise-tags reveal-child">
-      <button class="exp-tag" data-key="clinical-intelligence">Clinical Intelligence</button>
-      <button class="exp-tag" data-key="value-proposition">Value Proposition Design</button>
-      <button class="exp-tag" data-key="future-scenarios">Future Scenario Planning</button>
-      <button class="exp-tag" data-key="clinical-workflow">Clinical Workflow Design</button>
-      <button class="exp-tag" data-key="technology-adoption">Technology Adoption</button>
-      <button class="exp-tag" data-key="service-design">Human-Centered Design</button>
-      <button class="exp-tag" data-key="pre-product">Pre-Product Innovation</button>
-      <button class="exp-tag" data-key="robotics">Medical Robotics</button>
-      <button class="exp-tag" data-key="system-design">Healthcare System Design</button>
+    <span class="statement-label rev">Areas of Expertise</span>
+    <h2 class="expertise-title rev">Select an area to explore</h2>
+    <div class="exp-tags rev">
+      <button class="exp-tag" data-key="ci">Clinical Intelligence</button>
+      <button class="exp-tag" data-key="vp">Value Proposition Design</button>
+      <button class="exp-tag" data-key="fs">Future Scenario Planning</button>
+      <button class="exp-tag" data-key="cw">Clinical Workflow Design</button>
+      <button class="exp-tag" data-key="ta">Technology Adoption</button>
+      <button class="exp-tag" data-key="sd">Human-Centered Design</button>
+      <button class="exp-tag" data-key="pp">Pre-Product Innovation</button>
+      <button class="exp-tag" data-key="ro">Medical Robotics</button>
+      <button class="exp-tag" data-key="hs">Healthcare System Design</button>
     </div>
     <div class="exp-panel" id="exp-panel">
-      <div class="exp-panel-inner">
-        <p class="exp-panel-text" id="exp-panel-text"></p>
-      </div>
+      <div class="exp-panel-inner"><p class="exp-text" id="exp-text"></p></div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS STEPS (Horizontal scroll-driven) -->
-<section class="process-section reveal-section">
+<!-- ════ PROCESS ════ -->
+<section class="process" id="sec-5">
   <div class="container">
-    <div class="process-header">
-      <span class="eyebrow-label reveal-child">How We Work</span>
-      <h2 class="process-title reveal-child">Three acts.<br>One coherent system.</h2>
-    </div>
-  </div>
-  <div class="process-track">
-    <div class="process-cards">
-      <div class="process-card" data-index="0">
-        <div class="pc-num">01</div>
-        <div class="pc-body">
-          <div class="pc-icon">◎</div>
-          <h3 class="pc-title">Clinical Intelligence</h3>
-          <p class="pc-text">Direct immersion into your clinical environment — observing real workflows, interviewing clinicians, mapping adoption barriers that desk research misses entirely. This is where we build the ground truth no competitor has.</p>
-          <span class="pc-tag">Fieldwork · Observation</span>
+    <span class="statement-label rev">How We Work</span>
+    <h2 class="process-title rev">Three acts.<br>One coherent system.</h2>
+    <div class="process-list">
+      <div class="process-item rev">
+        <span class="pi-num">01</span>
+        <h3 class="pi-name">Clinical<br><em>Intelligence</em></h3>
+        <div>
+          <p class="pi-desc">Direct immersion into your clinical environment — observing real workflows, interviewing clinicians, mapping adoption barriers that desk research misses entirely. This is where we build the ground truth no competitor has.</p>
+          <span class="pi-tag">Fieldwork · Observation</span>
         </div>
       </div>
-      <div class="process-card" data-index="1">
-        <div class="pc-num">02</div>
-        <div class="pc-body">
-          <div class="pc-icon">◈</div>
-          <h3 class="pc-title">Scenario Cone</h3>
-          <p class="pc-text">Structuring the futures the healthcare system is already moving toward — grounded in observed clinical signals, not market projections. We show you which product and service directions survive what is coming.</p>
-          <span class="pc-tag">Foresight · Strategy</span>
+      <div class="process-item rev">
+        <span class="pi-num">02</span>
+        <h3 class="pi-name">Scenario<br><em>Cone</em></h3>
+        <div>
+          <p class="pi-desc">Structuring the futures the healthcare system is already moving toward — grounded in observed clinical signals, not market projections. We show you which product and service directions survive what is coming.</p>
+          <span class="pi-tag">Foresight · Strategy</span>
         </div>
       </div>
-      <div class="process-card" data-index="2">
-        <div class="pc-num">03</div>
-        <div class="pc-body">
-          <div class="pc-icon">◧</div>
-          <h3 class="pc-title">Service System</h3>
-          <p class="pc-text">Building the complete innovation layer — value proposition, clinical workflows, training architecture, governance frameworks, and the adoption infrastructure that makes a technology genuinely deployable.</p>
-          <span class="pc-tag">Service Design · Architecture</span>
+      <div class="process-item rev">
+        <span class="pi-num">03</span>
+        <h3 class="pi-name">Service<br><em>System</em></h3>
+        <div>
+          <p class="pi-desc">Building the complete innovation layer — value proposition, clinical workflows, training architecture, governance frameworks, and the adoption infrastructure that makes a technology genuinely deployable.</p>
+          <span class="pi-tag">Service Design · Architecture</span>
         </div>
       </div>
-      <div class="process-card" data-index="3">
-        <div class="pc-num">04</div>
-        <div class="pc-body">
-          <div class="pc-icon">◉</div>
-          <h3 class="pc-title">Deliver</h3>
-          <p class="pc-text">A fully designed innovation layer — defensible, clinically grounded, and ready to present to clinical decision-makers, investment committees, and hospital procurement with confidence and clarity.</p>
-          <span class="pc-tag">Activation · Handover</span>
+      <div class="process-item rev">
+        <span class="pi-num">04</span>
+        <h3 class="pi-name">Deliver</h3>
+        <div>
+          <p class="pi-desc">A fully designed innovation layer — defensible, clinically grounded, and ready to present to clinical decision-makers, investment committees, and hospital procurement with confidence and clarity.</p>
+          <span class="pi-tag">Activation · Handover</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INSIGHTS -->
-<section class="insights-section reveal-section">
+<!-- ════ INSIGHTS ════ -->
+<section class="insights">
   <div class="container">
-    <div class="insights-header">
-      <span class="eyebrow-label reveal-child">Expert Insights</span>
-      <h2 class="insights-title reveal-child">Looking for inspiration?</h2>
-      <p class="insights-sub reveal-child">Explore human-centered service innovation, healthcare value proposition design, and the adoption systems shaping medical robotics and health technology.</p>
-    </div>
+    <span class="statement-label rev">Expert Insights</span>
+    <h2 class="insights-title rev">Looking for inspiration?</h2>
+    <p class="insights-sub rev">Explore human-centered service innovation, healthcare value proposition design, and the adoption systems shaping medical robotics and health technology.</p>
     <div class="insights-grid">
-      <article class="insight-card reveal-card">
-        <div class="insight-img-wrap">
-          <img src="image/insight-1.jpg" alt="Healthcare innovation" loading="lazy">
-          <div class="insight-img-overlay"></div>
-        </div>
-        <div class="insight-content">
-          <div class="insight-tags-row">
-            <span class="itag">Clinical Intelligence</span>
-            <span class="itag">Robotics</span>
-          </div>
-          <h3 class="insight-heading">From robotics potential to healthcare value: why adoption systems matter</h3>
-          <p class="insight-text">Healthcare robotics does not fail because of technology. It fails when the service design, clinical workflows, and value propositions are missing — and when nobody has observed what clinical reality actually looks like.</p>
-          <div class="insight-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10.5 4.5L16 10l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+      <article class="insight-card">
+        <div class="insight-img"><img src="image/insight-1.jpg" alt="Healthcare innovation" loading="lazy"></div>
+        <div class="insight-body">
+          <div class="itags"><span class="itag">Clinical Intelligence</span><span class="itag">Robotics</span></div>
+          <h3 class="ih">From robotics potential to healthcare value: why adoption systems matter</h3>
+          <p class="it">Healthcare robotics does not fail because of technology. It fails when service design, clinical workflows, and value propositions are missing.</p>
+          <div class="ia"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
       </article>
-      <article class="insight-card reveal-card">
-        <div class="insight-img-wrap">
-          <img src="image/insight-2.jpg" alt="Rehabilitation" loading="lazy">
-          <div class="insight-img-overlay"></div>
-        </div>
-        <div class="insight-content">
-          <div class="insight-tags-row">
-            <span class="itag">Value Proposition</span>
-            <span class="itag">Rehabilitation</span>
-          </div>
-          <h3 class="insight-heading">Why rehabilitation innovation needs value proposition clarity</h3>
-          <p class="insight-text">Innovation only scales when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition — built from what actually happens in the clinic, not from assumptions.</p>
-          <div class="insight-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10.5 4.5L16 10l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+      <article class="insight-card">
+        <div class="insight-img"><img src="image/insight-2.jpg" alt="Rehabilitation" loading="lazy"></div>
+        <div class="insight-body">
+          <div class="itags"><span class="itag">Value Proposition</span><span class="itag">Rehabilitation</span></div>
+          <h3 class="ih">Why rehabilitation innovation needs value proposition clarity</h3>
+          <p class="it">Innovation only scales when clinical outcomes, therapist workflows, and operational ROI align into one clear value proposition.</p>
+          <div class="ia"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
       </article>
-      <article class="insight-card reveal-card">
-        <div class="insight-img-wrap">
-          <img src="image/insight-3.jpg" alt="Digital health" loading="lazy">
-          <div class="insight-img-overlay"></div>
-        </div>
-        <div class="insight-content">
-          <div class="insight-tags-row">
-            <span class="itag">HealthTech</span>
-            <span class="itag">Future Scenarios</span>
-          </div>
-          <h3 class="insight-heading">The next era of health technology: orchestration over transformation</h3>
-          <p class="insight-text">HealthTech is about orchestrating services, people, and technology into one coherent innovation system — designed not only for today's clinical reality, but for the healthcare environment already arriving.</p>
-          <div class="insight-arrow">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10.5 4.5L16 10l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
+      <article class="insight-card">
+        <div class="insight-img"><img src="image/insight-3.jpg" alt="Digital health" loading="lazy"></div>
+        <div class="insight-body">
+          <div class="itags"><span class="itag">HealthTech</span><span class="itag">Future Scenarios</span></div>
+          <h3 class="ih">The next era of health technology: orchestration over transformation</h3>
+          <p class="it">HealthTech is about orchestrating services, people, and technology into one coherent innovation system — designed for the healthcare environment already arriving.</p>
+          <div class="ia"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- CTA FULL-BLEED -->
-<section class="cta-section reveal-section">
-  <canvas id="cta-canvas"></canvas>
+<!-- ════ CTA ════ -->
+<section class="cta" id="sec-6">
+  <canvas id="cta-cvs"></canvas>
   <div class="cta-inner">
-    <span class="cta-eyebrow reveal-child">Ready?</span>
-    <h2 class="cta-title reveal-child">Build the<br><em>innovation layer.</em></h2>
-    <p class="cta-sub reveal-child">Tell us about your healthcare technology challenge.</p>
-    <a href="contact.html" class="btn-white mag-btn reveal-child">
+    <span class="cta-eyebrow rev">Ready?</span>
+    <h2 class="cta-title rev">Build the<br><em>innovation layer.</em></h2>
+    <p class="cta-sub rev">Tell us about your healthcare technology challenge.</p>
+    <a href="contact.html" class="btn-w rev">
       <span>Start a Conversation</span>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
 </section>
 
-<!-- CONTACT FORM -->
-<section class="contact-section reveal-section" id="contact">
+<!-- ════ CONTACT ════ -->
+<section class="contact" id="contact">
   <div class="container">
-    <div class="contact-header reveal-child">
-      <span class="eyebrow-label">Contact</span>
+    <div class="rev" style="text-align:center;margin-bottom:60px;">
+      <span class="statement-label" style="display:inline-block;text-align:center;">Contact</span>
       <h2 class="contact-title">Ready to build the innovation layer?</h2>
       <p class="contact-sub">Tell us about your healthcare technology challenge</p>
     </div>
-    <form class="contact-form reveal-child" action="https://formspree.io/f/mjgakblb" method="POST">
+    <form class="contact-form rev" action="https://formspree.io/f/mjgakblb" method="POST">
       <div class="form-row">
         <div class="form-group"><label>First Name *</label><input type="text" name="first-name" required placeholder="Anna"></div>
         <div class="form-group"><label>Last Name *</label><input type="text" name="last-name" required placeholder="Schmidt"></div>
@@ -389,11 +944,8 @@
         <label>Tell us about your challenge</label>
         <textarea name="message" maxlength="500" placeholder="Describe your healthcare technology and the challenge you are facing..."></textarea>
       </div>
-      <div class="form-consent">
-        <input type="checkbox" required>
-        <span>I have read and agreed to the Privacy Policy and Terms of Use.</span>
-      </div>
-      <button type="submit" class="btn-primary contact-submit">
+      <div class="form-consent"><input type="checkbox" required><span>I have read and agreed to the Privacy Policy and Terms of Use.</span></div>
+      <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;padding:18px;font-size:13px;">
         <span>Submit Request</span>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -401,11 +953,11 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ════ FOOTER ════ -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-logo">Servizions</div>
-    <div class="footer-tagline">Service Innovation Studio<br>Munich, Germany</div>
+    <div class="footer-tag">Service Innovation Studio<br>Munich, Germany</div>
     <nav class="footer-nav">
       <a href="services.html">Services</a>
       <a href="solutions.html">Solutions</a>
@@ -413,7 +965,7 @@
       <a href="contact.html">Contact</a>
     </nav>
   </div>
-  <div class="footer-bottom">
+  <div class="footer-bot">
     <div>© 2026 Servizions. All rights reserved.</div>
     <div class="footer-links">
       <a href="mailto:info@servizions.com">info@servizions.com</a>
@@ -423,675 +975,382 @@
 </footer>
 
 <script>
-/* =============================================
-   MASTER ANIMATION ENGINE — Servizions Studio
-   Inspired by Lusion.co visual language
-   ============================================= */
-
-(function () {
+(function(){
 'use strict';
 
-/* ── Utils ── */
-const qs = (s, p = document) => p.querySelector(s);
-const qsa = (s, p = document) => [...p.querySelectorAll(s)];
-const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-const lerp = (a, b, t) => a + (b - a) * t;
-const map = (v, a, b, c, d) => c + ((v - a) / (b - a)) * (d - c);
+/* ── utils ── */
+const qs  = s => document.querySelector(s);
+const qsa = s => [...document.querySelectorAll(s)];
+const lerp = (a,b,t) => a+(b-a)*t;
 
-/* ── Smooth Scroll ── */
-let scrollY = 0, targetScrollY = 0, scrollRaf;
-function initSmoothScroll() {
-  document.documentElement.style.setProperty('overflow', 'auto');
-  window.addEventListener('scroll', () => { targetScrollY = window.scrollY; }, { passive: true });
-  function tick() {
-    scrollY = lerp(scrollY, targetScrollY, 0.095);
-    scrollRaf = requestAnimationFrame(tick);
-  }
-  tick();
-}
+/* ════════════════════
+   SCROLL PROGRESS
+════════════════════ */
+const prog = qs('#progress');
+window.addEventListener('scroll',()=>{
+  const max = document.body.scrollHeight - window.innerHeight;
+  prog.style.width = Math.min(100,window.scrollY/max*100)+'%';
+},{passive:true});
 
-/* ── Custom Cursor ── */
-const dot = qs('#cursor-dot');
-const ring = qs('#cursor-ring');
-const label = qs('#cursor-label');
-let mx = -100, my = -100, rx = -100, ry = -100;
-
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-(function cursorLoop() {
-  rx = lerp(rx, mx, 0.13);
-  ry = lerp(ry, my, 0.13);
-  if (dot) { dot.style.transform = `translate(${mx}px,${my}px)`; }
-  if (ring) { ring.style.transform = `translate(${rx}px,${ry}px)`; }
-  if (label) { label.style.transform = `translate(${mx + 18}px,${my - 8}px)`; }
-  requestAnimationFrame(cursorLoop);
+/* ════════════════════
+   CURSOR
+════════════════════ */
+const dot=qs('#cur-dot'),ring=qs('#cur-ring');
+let mx=-200,my=-200,rx=-200,ry=-200;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function cl(){
+  rx=lerp(rx,mx,0.11); ry=lerp(ry,my,0.11);
+  dot.style.transform=`translate(${mx}px,${my}px)`;
+  ring.style.transform=`translate(${rx}px,${ry}px)`;
+  requestAnimationFrame(cl);
 })();
-
-function setCursorState(state, txt = '') {
-  const body = document.body;
-  body.classList.remove('cur-hover', 'cur-link', 'cur-drag');
-  if (state) body.classList.add('cur-' + state);
-  if (label) label.textContent = txt;
-}
-
-qsa('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => setCursorState('link', el.dataset.label || ''));
-  el.addEventListener('mouseleave', () => setCursorState(''));
+qsa('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('h'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));
 });
 
-/* ── Navbar ── */
-const navbar = qs('#navbar');
-let lastSY = 0;
-window.addEventListener('scroll', () => {
-  const sy = window.scrollY;
-  navbar.classList.toggle('scrolled', sy > 60);
-  navbar.classList.toggle('hidden', sy > lastSY + 10 && sy > 120);
-  navbar.classList.toggle('visible', sy < lastSY - 10);
-  lastSY = sy;
-}, { passive: true });
+/* ════════════════════
+   NAVBAR
+════════════════════ */
+const nav = qs('#nav');
+let lastY=0;
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  nav.classList.toggle('scrolled',sy>80);
+  if(sy>lastY+10&&sy>150) nav.classList.add('hide');
+  else if(sy<lastY-10) nav.classList.remove('hide');
+  lastY=sy;
+},{passive:true});
 
-/* mobile menu */
-const menuToggle = qs('#menu-toggle');
-const mobileNav = qs('#mobile-nav');
-if (menuToggle) {
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-  });
+const mt=qs('#menu-toggle'),mn=qs('#mobile-nav');
+if(mt) mt.addEventListener('click',()=>{mt.classList.toggle('open');mn.classList.toggle('open');});
+
+/* ════════════════════
+   HERO ENTRANCE
+════════════════════ */
+setTimeout(()=>qs('#hero-meta').classList.add('in'),150);
+[0,1,2].forEach(i=>setTimeout(()=>qs(`#hl${i}`).classList.add('in'),380+i*160));
+setTimeout(()=>qs('#hero-sub').classList.add('in'),880);
+setTimeout(()=>qs('#hero-cta').classList.add('in'),1060);
+setTimeout(()=>qs('#hero-sc').classList.add('in'),1400);
+
+/* hero parallax */
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  const v=qs('.hero-vid'),c=qs('.hero-inner');
+  if(v) v.style.transform=`translateY(${sy*0.28}px) scale(1.05)`;
+  if(c) c.style.transform=`translateY(${sy*0.1}px)`;
+},{passive:true});
+
+/* ════════════════════
+   TICKER
+════════════════════ */
+const tt=qs('#ticker-t');
+if(tt){
+  tt.addEventListener('mouseenter',()=>tt.style.animationPlayState='paused');
+  tt.addEventListener('mouseleave',()=>tt.style.animationPlayState='running');
 }
 
-/* ── Magnetic Buttons ── */
-qsa('.mag-btn').forEach(btn => {
-  btn.addEventListener('mousemove', e => {
-    const r = btn.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
-    btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = '';
-  });
+/* ════════════════════
+   STATEMENT — word reveal
+════════════════════ */
+const stmtRaw = "Bridging medtech and healthcare robotics companies with the real clinical world. Most strategies are built from desk research. Servizions builds from observed clinical reality — the actual workflows, constraints, and decision-making patterns we map directly in clinical environments.";
+const italicWords = ['real','clinical','world.','observed'];
+
+const stmtEl = qs('#stmt-text');
+const words = stmtRaw.split(' ');
+words.forEach(w=>{
+  const span = document.createElement('span');
+  span.className='word';
+  const inner = document.createElement('span');
+  inner.className='word-inner'+(italicWords.includes(w.toLowerCase().replace(/[.,]/g,''))?' italic':'');
+  inner.textContent=w;
+  span.appendChild(inner);
+  stmtEl.appendChild(span);
+  stmtEl.appendChild(document.createTextNode(' '));
 });
 
-/* ── Hero Canvas — Particle field ── */
-(function heroCanvas() {
-  const canvas = qs('#hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, dpr;
-
-  function resize() {
-    dpr = window.devicePixelRatio || 1;
-    W = canvas.offsetWidth;
-    H = canvas.offsetHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    ctx.scale(dpr, dpr);
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const N = 120;
-  const particles = Array.from({ length: N }, () => ({
-    x: Math.random() * 1400,
-    y: Math.random() * 900,
-    ox: 0, oy: 0,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    r: Math.random() * 1.6 + 0.4,
-    a: Math.random(),
-    phase: Math.random() * Math.PI * 2,
-    speed: 0.4 + Math.random() * 0.8,
-  }));
-
-  const CURVES = 6;
-  let t = 0;
-  let mouse = { x: W / 2, y: H / 2 };
-  canvas.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
+const wordInners = qsa('#stmt-text .word-inner');
+const stmtObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      // Trigger word by word with stagger
+      wordInners.forEach((w,i)=>{setTimeout(()=>w.classList.add('in'),i*28);});
+      stmtObs.disconnect();
+    }
   });
+},{threshold:0.3});
+stmtObs.observe(qs('.statement'));
 
-  function drawFlowCurve(index, time) {
-    const phase = (index / CURVES) * Math.PI * 2;
-    const amp = 60 + index * 18;
-    const yBase = H * (0.3 + (index / CURVES) * 0.5);
-    const speed = 0.0008 + index * 0.0003;
+/* stmt links */
+const stmtLinkObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){qs('#stmt-link1').classList.add('in');setTimeout(()=>qs('#stmt-link2').classList.add('in'),120);}});
+},{threshold:0.5});
+stmtLinkObs.observe(qs('.statement-cta'));
 
-    ctx.beginPath();
-    for (let x = -20; x <= W + 20; x += 4) {
-      const wave1 = Math.sin(x * 0.004 + time * speed + phase) * amp;
-      const wave2 = Math.sin(x * 0.007 - time * speed * 0.6 + phase * 1.3) * (amp * 0.4);
-      const mx_influence = ((mouse.x - W / 2) / W) * 30;
-      const y = yBase + wave1 + wave2 + mx_influence;
-      x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    }
-
-    const alpha = 0.025 + (index / CURVES) * 0.018;
-    const hue = 250 + index * 12;
-    ctx.strokeStyle = `hsla(${hue}, 72%, 62%, ${alpha})`;
-    ctx.lineWidth = 1.5 + index * 0.3;
-    ctx.stroke();
+/* ════════════════════
+   NUMBER COUNTERS
+════════════════════ */
+function animateCount(el,target,duration=1800){
+  const start=performance.now();
+  function tick(now){
+    const t=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-t,4);
+    el.textContent=Math.round(ease*target);
+    if(t<1) requestAnimationFrame(tick);
+    else el.textContent=target;
   }
+  requestAnimationFrame(tick);
+}
 
-  function drawHeroGrid() {
-    const gSize = 80;
-    ctx.strokeStyle = 'rgba(94,23,235,0.035)';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < W + gSize; x += gSize) {
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-    }
-    for (let y = 0; y < H + gSize; y += gSize) {
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-    }
-  }
-
-  function heroLoop() {
-    t += 1;
-    ctx.clearRect(0, 0, W, H);
-
-    const grad = ctx.createRadialGradient(W * 0.5, H * 0.4, 0, W * 0.5, H * 0.4, W * 0.8);
-    grad.addColorStop(0, 'rgba(220,210,255,0.22)');
-    grad.addColorStop(0.5, 'rgba(235,230,252,0.10)');
-    grad.addColorStop(1, 'rgba(247,246,252,0)');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, W, H);
-
-    drawHeroGrid();
-
-    for (let i = 0; i < CURVES; i++) {
-      drawFlowCurve(i, t);
-    }
-
-    particles.forEach(p => {
-      p.x += p.vx * p.speed;
-      p.y += p.vy * p.speed;
-      if (p.x < -10) p.x = W + 10;
-      if (p.x > W + 10) p.x = -10;
-      if (p.y < -10) p.y = H + 10;
-      if (p.y > H + 10) p.y = -10;
-
-      const pulse = Math.sin(t * 0.02 + p.phase) * 0.5 + 0.5;
-      const alpha = p.a * pulse * 0.7;
-
-      const dx = p.x - mouse.x, dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        const force = (120 - dist) / 120;
-        p.x += (dx / dist) * force * 1.5;
-        p.y += (dy / dist) * force * 1.5;
-      }
-
-      particles.forEach(q => {
-        const dx2 = p.x - q.x, dy2 = p.y - q.y;
-        const d2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-        if (d2 < 90 && d2 > 0) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(94,23,235,${(1 - d2 / 90) * 0.06})`;
-          ctx.lineWidth = 0.6;
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.stroke();
-        }
+const numObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      qsa('.num-val').forEach(v=>{
+        animateCount(v,parseInt(v.dataset.target));
       });
+      numObs.disconnect();
+    }
+  });
+},{threshold:0.4});
+numObs.observe(qs('.numbers'));
 
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * (0.7 + pulse * 0.4), 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(94,23,235,${alpha})`;
-      ctx.fill();
-    });
+/* ════════════════════
+   HORIZONTAL SHOWCASE SCROLL
+════════════════════ */
+(function(){
+  const wrap = qs('.showcase-wrap');
+  const sticky = qs('#showcase-sticky');
+  const track = qs('#showcase-track');
+  const dots = qsa('.sc-dot');
+  const panels = qsa('.showcase-panel');
+  const N = panels.length;
 
-    requestAnimationFrame(heroLoop);
-  }
-  heroLoop();
+  if(!wrap||!track) return;
+
+  // Set total height: N viewports of scroll travel
+  const setH = ()=>{ wrap.style.height = (N*window.innerHeight)+'px'; };
+  setH();
+  window.addEventListener('resize',setH);
+
+  let currentPanel = 0;
+
+  window.addEventListener('scroll',()=>{
+    const rect = wrap.getBoundingClientRect();
+    const totalScroll = wrap.offsetHeight - window.innerHeight;
+    const scrolled = -rect.top;
+    if(scrolled<0||scrolled>wrap.offsetHeight) return;
+    const progress = Math.max(0,Math.min(1,scrolled/totalScroll));
+    const maxTranslate = (N-1)*window.innerWidth;
+    const tx = -progress*maxTranslate;
+    track.style.transform = `translateX(${tx}px)`;
+    // Update dots
+    const panel = Math.round(progress*(N-1));
+    if(panel!==currentPanel){
+      currentPanel=panel;
+      dots.forEach((d,i)=>d.classList.toggle('active',i===panel));
+    }
+  },{passive:true});
 })();
 
-/* ── Globe Canvas ── */
-(function globeCanvas() {
-  const canvas = qs('#globe-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, CX, CY;
-
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    W = canvas.offsetWidth;
-    H = canvas.offsetHeight;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    ctx.scale(dpr, dpr);
-    CX = W / 2; CY = H / 2;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const S = 200;
-  let rx = 0.22, ry = 0.04;
-  let velX = 0, velY = 0;
-  let dragging = false, lastMX = 0, lastMY = 0;
-  let gT = 0, spinS = 0, spinH = 0;
-  let mouseX = W / 2, mouseY = H / 2;
-  let hoveredId = null;
-  let badgeRects = [];
-  const hoverGlow = {};
-
-  const BASE = { outer: { r: 1.36, z: 0 }, service: { r: 1.08, z: 24 }, human: { r: 0.76, z: 48 }, core: { z: 68 } };
-
-  const badges = [
-    { id: 'empathy', label: 'Empathy', style: 'teal', pos: [0, -0.44, 48 / S], w: 88, h: 27, icon: '01', info: 'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.' },
-    { id: 'synthesis', label: 'Synthesis', style: 'teal', pos: [-0.30, 0.26, 48 / S], w: 88, h: 27, icon: '02', info: 'Integrating research insights into clear design principles and actionable innovation opportunities.' },
-    { id: 'codesign', label: 'Co-Design', style: 'teal', pos: [0.30, 0.26, 48 / S], w: 94, h: 27, icon: '03', info: 'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.' },
-    { id: 'patient', label: 'Patient Journey', style: 'purple', pos: [0.90, 0, 24 / S], w: 150, h: 37, icon: '04', info: 'Mapping every touchpoint of the patient experience to design compassionate, human-centered healthcare interactions.' },
-    { id: 'adoption', label: 'Adoption Strategy', style: 'purple', pos: [-0.90, 0, 24 / S], w: 162, h: 37, icon: '05', info: 'Driving technology uptake through behavioral change frameworks and stakeholder alignment.' },
-    { id: 'blueprint', label: 'Service Blueprint', style: 'purple', pos: [-0.82, 0.52, 24 / S], w: 156, h: 37, icon: '06', info: 'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.' },
-    { id: 'clinician', label: 'Clinician Workflow', style: 'purple', pos: [0.82, 0.52, 24 / S], w: 168, h: 37, icon: '07', info: 'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.' }
+/* ════════════════════
+   GLOBE (full, preserved)
+════════════════════ */
+(function globeCanvas(){
+  const canvas=qs('#globe-cvs');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,CX,CY;
+  function resize(){const dpr=window.devicePixelRatio||1;W=canvas.offsetWidth;H=canvas.offsetHeight;canvas.width=W*dpr;canvas.height=H*dpr;ctx.scale(dpr,dpr);CX=W/2;CY=H/2;}
+  resize();window.addEventListener('resize',resize);
+  const S=200;let rx=0.22,ry=0.04,velX=0,velY=0,dragging=false,lastMX=0,lastMY=0;
+  let gT=0,spinS=0,spinH=0,mouseX=W/2,mouseY=H/2,hoveredId=null,badgeRects=[];
+  const hG={};
+  const BASE={outer:{r:1.36,z:0},service:{r:1.08,z:24},human:{r:0.76,z:48},core:{z:68}};
+  const badges=[
+    {id:'em',label:'Empathy',style:'teal',pos:[0,-0.44,48/S],w:88,h:27,icon:'01',info:'Deep observation and active listening to understand patient needs, emotions, and lived healthcare experiences.'},
+    {id:'sy',label:'Synthesis',style:'teal',pos:[-0.30,0.26,48/S],w:88,h:27,icon:'02',info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
+    {id:'co',label:'Co-Design',style:'teal',pos:[0.30,0.26,48/S],w:94,h:27,icon:'03',info:'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.'},
+    {id:'pa',label:'Patient Journey',style:'purple',pos:[0.90,0,24/S],w:150,h:37,icon:'04',info:'Mapping every touchpoint of the patient experience to design compassionate, human-centered healthcare interactions.'},
+    {id:'ad',label:'Adoption Strategy',style:'purple',pos:[-0.90,0,24/S],w:162,h:37,icon:'05',info:'Driving technology uptake through behavioral change frameworks and stakeholder alignment.'},
+    {id:'bp',label:'Service Blueprint',style:'purple',pos:[-0.82,0.52,24/S],w:156,h:37,icon:'06',info:'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.'},
+    {id:'cl',label:'Clinician Workflow',style:'purple',pos:[0.82,0.52,24/S],w:168,h:37,icon:'07',info:'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.'}
   ];
-  badges.forEach(b => { hoverGlow[b.id] = 0; });
-
-  function rotX(p, a) { const c = Math.cos(a), s = Math.sin(a); return [p[0], p[1] * c - p[2] * s, p[1] * s + p[2] * c]; }
-  function rotY(p, a) { const c = Math.cos(a), s = Math.sin(a); return [p[0] * c + p[2] * s, p[1], -p[0] * s + p[2] * c]; }
-  const FL = 860;
-  function proj(p) { const z = p[2] + FL, sc = FL / z; return [CX + p[0] * sc, CY + p[1] * sc, sc]; }
-  function ar(p) { let q = [...p]; q = rotX(q, rx); q = rotY(q, ry); return q; }
-
-  canvas.addEventListener('mousedown', e => { dragging = true; lastMX = e.clientX; lastMY = e.clientY; velX = velY = 0; setCursorState('drag'); });
-  window.addEventListener('mousemove', e => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    if (!dragging) return;
-    velY = (e.clientX - lastMX) * 0.009; velX = (e.clientY - lastMY) * 0.009;
-    ry += velY; rx += velX; lastMX = e.clientX; lastMY = e.clientY;
-  });
-  window.addEventListener('mouseup', () => { dragging = false; setCursorState(''); });
-
-  canvas.addEventListener('touchstart', e => { const tc = e.touches[0]; dragging = true; lastMX = tc.clientX; lastMY = tc.clientY; velX = velY = 0; }, { passive: true });
-  window.addEventListener('touchmove', e => { const tc = e.touches[0]; if (!dragging) return; velY = (tc.clientX - lastMX) * 0.009; velX = (tc.clientY - lastMY) * 0.009; ry += velY; rx += velX; lastMX = tc.clientX; lastMY = tc.clientY; }, { passive: true });
-  window.addEventListener('touchend', () => { dragging = false; });
-
-  canvas.addEventListener('click', e => {
-    for (let i = badgeRects.length - 1; i >= 0; i--) {
-      const r = badgeRects[i];
-      if (e.clientX >= r.x && e.clientX <= r.x + r.w && e.clientY >= r.y && e.clientY <= r.y + r.h && r.info) {
-        qs('#globe-panel-title').textContent = r.label;
-        qs('#globe-panel-desc').textContent = r.info;
-        qs('#globe-panel-tag').textContent = 'NODE · ' + r.icon;
-        qs('#globe-panel').classList.add('on');
-        break;
-      }
-    }
-  });
-  qs('#globe-panel-close').onclick = () => qs('#globe-panel').classList.remove('on');
-
-  function drawRing(r, z, color, lw, dash) {
-    const pts = [];
-    for (let i = 0; i <= 120; i++) { const a = (i / 120) * Math.PI * 2; pts.push(proj(ar([Math.cos(a) * r * S, Math.sin(a) * r * S, z]))); }
-    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.setLineDash(dash || []);
-    ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
-    ctx.stroke(); ctx.setLineDash([]); ctx.restore();
-  }
-
-  function drawDisc(r, z, fill) {
-    const pts = [];
-    for (let i = 0; i <= 90; i++) { const a = (i / 90) * Math.PI * 2; pts.push(proj(ar([Math.cos(a) * r * S, Math.sin(a) * r * S, z]))); }
-    ctx.save(); ctx.fillStyle = fill; ctx.beginPath();
-    pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
-    ctx.closePath(); ctx.fill(); ctx.restore();
-  }
-
-  function drawEdge(r, z0, z1, color) {
-    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 1;
-    for (let i = 0; i < 90; i++) {
-      const a = (i / 90) * Math.PI * 2, x = Math.cos(a) * r * S, y = Math.sin(a) * r * S;
-      const p1 = proj(ar([x, y, z0])), p2 = proj(ar([x, y, z1]));
-      ctx.globalAlpha = (Math.cos(a - ry) * 0.5 + 0.5) * 0.35;
-      ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.stroke();
-    }
-    ctx.globalAlpha = 1; ctx.restore();
-  }
-
-  function drawArrow(r, angle, z, cw, color) {
-    const a = angle, sz = 8;
-    const raw = [Math.cos(a) * r * S, Math.sin(a) * r * S, z];
-    const ta = cw ? a + Math.PI / 2 : a - Math.PI / 2;
-    const a1 = [raw[0] + (-Math.cos(ta) + Math.cos(a)) * sz, raw[1] + (-Math.sin(ta) + Math.sin(a)) * sz, z];
-    const a2 = [raw[0] + (-Math.cos(ta) - Math.cos(a)) * sz, raw[1] + (-Math.sin(ta) - Math.sin(a)) * sz, z];
-    const pp = proj(ar(raw)), pa1 = proj(ar(a1)), pa2 = proj(ar(a2));
-    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-    ctx.beginPath(); ctx.moveTo(pa1[0], pa1[1]); ctx.lineTo(pp[0], pp[1]); ctx.lineTo(pa2[0], pa2[1]);
-    ctx.stroke(); ctx.restore();
-  }
-
-  function drawBadge(badge, floatY) {
-    const g = hoverGlow[badge.id];
-    let wp = [badge.pos[0] * S, badge.pos[1] * S + floatY, badge.pos[2] * S + (g > 0 ? g * 30 : 0)];
-    wp = rotX(wp, rx); wp = rotY(wp, ry);
-    const pr = proj(wp), sf = Math.max(0.35, pr[2]);
-    const alpha = Math.max(0, Math.min(1, (sf - 0.15) * 3));
-    if (alpha < 0.04) return;
-    const sw = badge.w * sf, sh = badge.h * sf, rad = sh / 2, px = pr[0] - sw / 2, py = pr[1] - sh / 2;
-    ctx.save(); ctx.globalAlpha = alpha;
-    if (g > 0.02) {
-      const gr = ctx.createRadialGradient(pr[0], pr[1], 0, pr[0], pr[1], sw * 0.8 + g * 28);
-      gr.addColorStop(0, badge.style === 'teal' ? `rgba(90,173,163,${g * 0.22})` : `rgba(94,23,235,${g * 0.18})`);
-      gr.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(pr[0], pr[1], sw * 0.8 + g * 28, 0, Math.PI * 2); ctx.fill();
-    }
-    ctx.shadowColor = badge.style === 'teal' ? 'rgba(90,173,163,.3)' : 'rgba(94,23,235,.3)';
-    ctx.shadowBlur = (10 + g * 20) * sf; ctx.shadowOffsetY = (3 + g * 3) * sf;
-    const grd = ctx.createLinearGradient(px, py, badge.style === 'teal' ? px : px + sw, py + sh);
-    if (badge.style === 'teal') {
-      grd.addColorStop(0, g > 0 ? '#68bdb3' : '#5aada3'); grd.addColorStop(1, g > 0 ? '#4c9e94' : '#4a9990');
-    } else {
-      grd.addColorStop(0, g > 0 ? '#8872e0' : '#7560d0'); grd.addColorStop(1, g > 0 ? '#6a35d4' : '#5e17eb');
-    }
-    ctx.fillStyle = grd; ctx.beginPath(); ctx.roundRect(px, py, sw, sh, rad); ctx.fill();
-    ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-    const shim = ctx.createLinearGradient(px, py, px, py + sh * 0.55);
-    shim.addColorStop(0, `rgba(255,255,255,${0.16 + g * 0.08})`); shim.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = shim; ctx.beginPath(); ctx.roundRect(px, py, sw, sh * 0.5, rad); ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,.96)';
-    ctx.font = `600 ${Math.max(7, (badge.style === 'teal' ? 10 : 12) * sf)}px Space Grotesk,sans-serif`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(badge.label, pr[0], pr[1]);
-    if (sf > 0.65) {
-      ctx.fillStyle = `rgba(255,255,255,${0.4 * sf})`;
-      ctx.font = `400 ${Math.max(5, 7 * sf)}px Space Mono,monospace`;
-      ctx.textAlign = 'right';
-      ctx.fillText(badge.icon, px + sw - 5 * sf, py + 7 * sf);
-    }
-    ctx.restore();
-    const bounds = canvas.getBoundingClientRect();
-    badgeRects.push({ x: bounds.left + px, y: bounds.top + py, w: sw, h: sh, id: badge.id, label: badge.label, info: badge.info || null, icon: badge.icon });
-  }
-
-  function drawLabel(text, pos3d, size, color, bold) {
-    const p = proj(ar([pos3d[0] * S, pos3d[1] * S, pos3d[2]]));
-    const a = Math.max(0, Math.min(1, (p[2] - 0.12) * 3));
-    if (a < 0.03) return;
-    ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = color;
-    ctx.font = `${bold ? '600' : '300'} ${Math.max(6, size * p[2])}px Space Grotesk,sans-serif`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(text, p[0], p[1]);
-    ctx.restore();
-  }
-
-  function globeLoop() {
-    gT += 0.013;
-    badgeRects = [];
-    spinS += 0.0018;
-    spinH -= 0.0012;
-
-    if (!dragging) {
-      velX *= 0.92; velY *= 0.92;
-      rx += velX; ry += velY;
-      if (Math.abs(velX) < 0.0004 && Math.abs(velY) < 0.0004) rx += 0.0004;
-    }
-
-    const bounds = canvas.getBoundingClientRect();
-    const tx = (mouseX - bounds.left - W / 2) / W * 0.06;
-    const ty = (mouseY - bounds.top - H / 2) / H * 0.06;
-    rx += (ty - rx) * 0.018;
-    ry += (tx - ry) * 0.018;
-
-    ctx.clearRect(0, 0, W, H);
-
-    const bg = ctx.createRadialGradient(CX, CY, 0, CX, CY, Math.max(W, H) * 0.7);
-    bg.addColorStop(0, 'rgba(220,210,255,0.15)'); bg.addColorStop(1, 'rgba(247,246,252,0)');
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-
-    drawDisc(BASE.outer.r, BASE.outer.z, 'rgba(194,228,225,0.18)');
-    drawDisc(BASE.service.r, BASE.service.z, 'rgba(197,183,240,0.48)');
-    drawDisc(BASE.human.r, BASE.human.z, 'rgba(150,215,208,0.6)');
-
-    drawEdge(BASE.outer.r, BASE.outer.z, BASE.service.z, 'rgba(175,155,230,0.8)');
-    drawEdge(BASE.service.r, BASE.service.z, BASE.human.z, 'rgba(140,210,205,0.8)');
-    drawEdge(BASE.human.r, BASE.human.z, BASE.core.z, 'rgba(120,200,193,0.8)');
-
-    drawRing(BASE.outer.r, BASE.outer.z, 'rgba(140,210,205,1)', 2, []);
-    drawRing(BASE.service.r, BASE.service.z, 'rgba(155,130,218,1)', 1.8, [5, 8]);
-    drawRing(BASE.human.r, BASE.human.z, 'rgba(80,175,168,1)', 2.2, []);
-
-    [0, Math.PI / 2, Math.PI, 3 * Math.PI / 2].forEach(a => drawArrow(BASE.service.r, a + spinS, BASE.service.z, true, 'rgba(120,95,200,1)'));
-    [Math.PI / 4, 3 * Math.PI / 4, 5 * Math.PI / 4, 7 * Math.PI / 4].forEach(a => drawArrow(BASE.human.r, a + spinH, BASE.human.z, false, 'rgba(60,155,148,1)'));
-
-    drawLabel('AI & Robotics growth', [0, -1.48, 0], 12, 'rgba(90,65,185,1)', true);
-    drawLabel('Service System', [0, 1.20, BASE.service.z], 11, 'rgba(110,90,175,1)', false);
-    drawLabel('Human-Centered Innovation', [0, 0.88, BASE.human.z], 10, 'rgba(50,140,133,1)', false);
-    drawLabel('Systemic Innovation', [0, 1.62, 0], 10, 'rgba(160,148,200,1)', false);
-
-    badges.forEach((b, i) => drawBadge(b, Math.sin(gT + i * 1.3) * 3));
-
-    let nh = null;
-    for (let i = badgeRects.length - 1; i >= 0; i--) {
-      const r = badgeRects[i];
-      if (mouseX >= r.x && mouseX <= r.x + r.w && mouseY >= r.y && mouseY <= r.y + r.h) { nh = r.id; break; }
-    }
-    hoveredId = nh;
-    badges.forEach(b => { hoverGlow[b.id] += ((b.id === hoveredId ? 1 : 0) - hoverGlow[b.id]) * 0.1; });
-    canvas.style.cursor = hoveredId ? 'pointer' : dragging ? 'grabbing' : 'grab';
-
-    const fz = BASE.core.z + Math.sin(gT * 1.4) * 4;
-    let q = [0, 0, fz]; q = rotX(q, rx); q = rotY(q, ry);
-    const pr = proj(q), sf = Math.max(0.5, pr[2]);
-    const pa = Math.max(0, Math.min(1, (sf - 0.15) * 3));
-    const pw = 210 * sf, ph = 82 * sf, r2 = ph / 2, ppx = pr[0] - pw / 2, ppy = pr[1] - ph / 2;
-    ctx.globalAlpha = pa;
-    const pulse = 0.82 + Math.sin(gT * 1.4) * 0.18, hR = pw * 0.85 * pulse;
-    const halo = ctx.createRadialGradient(pr[0], pr[1], pw * 0.1, pr[0], pr[1], hR);
-    halo.addColorStop(0, `rgba(94,23,235,${0.15 * pulse})`); halo.addColorStop(1, 'rgba(94,23,235,0)');
-    ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(pr[0], pr[1], hR, 0, Math.PI * 2); ctx.fill();
-    ctx.shadowColor = 'rgba(94,23,235,.35)'; ctx.shadowBlur = 30 * sf; ctx.shadowOffsetY = 10 * sf;
-    const pgrd = ctx.createLinearGradient(ppx, ppy, ppx + pw, ppy + ph);
-    pgrd.addColorStop(0, '#7a35ef'); pgrd.addColorStop(1, '#5e17eb');
-    ctx.fillStyle = pgrd; ctx.beginPath(); ctx.roundRect(ppx, ppy, pw, ph, r2); ctx.fill();
-    ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-    const shim = ctx.createLinearGradient(ppx, ppy, ppx, ppy + ph);
-    shim.addColorStop(0, 'rgba(255,255,255,.18)'); shim.addColorStop(0.5, 'rgba(255,255,255,0)');
-    ctx.fillStyle = shim; ctx.beginPath(); ctx.roundRect(ppx, ppy, pw, ph * 0.5, r2); ctx.fill();
-    ctx.fillStyle = '#fff';
-    ctx.font = `700 ${Math.max(9, 17 * sf)}px Space Grotesk,sans-serif`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText('SERVIZIONS', pr[0], pr[1]);
-    ctx.globalAlpha = 1;
-
+  badges.forEach(b=>{hG[b.id]=0;});
+  function rotX(p,a){const c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
+  function rotY(p,a){const c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
+  const FL=860;
+  function proj(p){const z=p[2]+FL,sc=FL/z;return[CX+p[0]*sc,CY+p[1]*sc,sc];}
+  function ar(p){let q=[...p];q=rotX(q,rx);q=rotY(q,ry);return q;}
+  canvas.addEventListener('mousedown',e=>{dragging=true;lastMX=e.clientX;lastMY=e.clientY;velX=velY=0;document.body.classList.add('h');});
+  window.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;if(!dragging)return;velY=(e.clientX-lastMX)*0.009;velX=(e.clientY-lastMY)*0.009;ry+=velY;rx+=velX;lastMX=e.clientX;lastMY=e.clientY;});
+  window.addEventListener('mouseup',()=>{dragging=false;document.body.classList.remove('h');});
+  canvas.addEventListener('touchstart',e=>{const tc=e.touches[0];dragging=true;lastMX=tc.clientX;lastMY=tc.clientY;velX=velY=0;},{passive:true});
+  window.addEventListener('touchmove',e=>{const tc=e.touches[0];if(!dragging)return;velY=(tc.clientX-lastMX)*0.009;velX=(tc.clientY-lastMY)*0.009;ry+=velY;rx+=velX;lastMX=tc.clientX;lastMY=tc.clientY;},{passive:true});
+  window.addEventListener('touchend',()=>{dragging=false;});
+  canvas.addEventListener('click',e=>{for(let i=badgeRects.length-1;i>=0;i--){const r=badgeRects[i];if(e.clientX>=r.x&&e.clientX<=r.x+r.w&&e.clientY>=r.y&&e.clientY<=r.y+r.h&&r.info){qs('#globe-title').textContent=r.label;qs('#globe-desc').textContent=r.info;qs('#globe-tag').textContent='NODE · '+r.icon;qs('#globe-panel').classList.add('on');break;}}});
+  qs('#globe-close').onclick=()=>qs('#globe-panel').classList.remove('on');
+  function dR(r,z,col,lw,dash){const pts=[];for(let i=0;i<=120;i++){const a=(i/120)*Math.PI*2;pts.push(proj(ar([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}ctx.save();ctx.strokeStyle=col;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();ctx.setLineDash([]);ctx.restore();}
+  function dD(r,z,fill){const pts=[];for(let i=0;i<=90;i++){const a=(i/90)*Math.PI*2;pts.push(proj(ar([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}ctx.save();ctx.fillStyle=fill;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fill();ctx.restore();}
+  function dE(r,z0,z1,col){ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1;for(let i=0;i<90;i++){const a=(i/90)*Math.PI*2,x=Math.cos(a)*r*S,y=Math.sin(a)*r*S;const p1=proj(ar([x,y,z0])),p2=proj(ar([x,y,z1]));ctx.globalAlpha=(Math.cos(a-ry)*0.5+0.5)*0.35;ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.stroke();}ctx.globalAlpha=1;ctx.restore();}
+  function dA(r,angle,z,cw,col){const a=angle,sz=8,raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z],ta=cw?a+Math.PI/2:a-Math.PI/2;const a1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz,raw[1]+(-Math.sin(ta)+Math.sin(a))*sz,z],a2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz,raw[1]+(-Math.sin(ta)-Math.sin(a))*sz,z];const pp=proj(ar(raw)),pa1=proj(ar(a1)),pa2=proj(ar(a2));ctx.save();ctx.strokeStyle=col;ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);ctx.stroke();ctx.restore();}
+  function dB(badge,fy){const g=hG[badge.id];let wp=[badge.pos[0]*S,badge.pos[1]*S+fy,badge.pos[2]*S+(g>0?g*30:0)];wp=rotX(wp,rx);wp=rotY(wp,ry);const pr=proj(wp),sf=Math.max(0.35,pr[2]),alpha=Math.max(0,Math.min(1,(sf-0.15)*3));if(alpha<0.04)return;const sw=badge.w*sf,sh=badge.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;ctx.save();ctx.globalAlpha=alpha;ctx.shadowColor=badge.style==='teal'?'rgba(90,173,163,.3)':'rgba(94,23,235,.3)';ctx.shadowBlur=(10+g*20)*sf;ctx.shadowOffsetY=(3+g*3)*sf;const grd=ctx.createLinearGradient(px,py,badge.style==='teal'?px:px+sw,py+sh);if(badge.style==='teal'){grd.addColorStop(0,g>0?'#68bdb3':'#5aada3');grd.addColorStop(1,g>0?'#4c9e94':'#4a9990');}else{grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');}ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.fillStyle='rgba(255,255,255,.96)';ctx.font=`600 ${Math.max(7,(badge.style==='teal'?10:12)*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(badge.label,pr[0],pr[1]);ctx.restore();const b=canvas.getBoundingClientRect();badgeRects.push({x:b.left+px,y:b.top+py,w:sw,h:sh,id:badge.id,label:badge.label,info:badge.info,icon:badge.icon});}
+  function dL(text,pos3d,size,col,bold){const p=proj(ar([pos3d[0]*S,pos3d[1]*S,pos3d[2]]));const a=Math.max(0,Math.min(1,(p[2]-0.12)*3));if(a<0.03)return;ctx.save();ctx.globalAlpha=a;ctx.fillStyle=col;ctx.font=`${bold?'600':'300'} ${Math.max(6,size*p[2])}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,p[0],p[1]);ctx.restore();}
+  function globeLoop(){
+    gT+=0.013;badgeRects=[];spinS+=0.0018;spinH-=0.0012;
+    if(!dragging){velX*=0.92;velY*=0.92;rx+=velX;ry+=velY;if(Math.abs(velX)<0.0004&&Math.abs(velY)<0.0004)rx+=0.0004;}
+    const b=canvas.getBoundingClientRect();const tx=(mouseX-b.left-W/2)/W*0.06,ty=(mouseY-b.top-H/2)/H*0.06;rx+=(ty-rx)*0.018;ry+=(tx-ry)*0.018;
+    ctx.clearRect(0,0,W,H);const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*0.7);bg.addColorStop(0,'rgba(220,210,255,0.15)');bg.addColorStop(1,'rgba(247,246,252,0)');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    dD(BASE.outer.r,BASE.outer.z,'rgba(194,228,225,0.18)');dD(BASE.service.r,BASE.service.z,'rgba(197,183,240,0.48)');dD(BASE.human.r,BASE.human.z,'rgba(150,215,208,0.6)');
+    dE(BASE.outer.r,BASE.outer.z,BASE.service.z,'rgba(175,155,230,0.8)');dE(BASE.service.r,BASE.service.z,BASE.human.z,'rgba(140,210,205,0.8)');dE(BASE.human.r,BASE.human.z,BASE.core.z,'rgba(120,200,193,0.8)');
+    dR(BASE.outer.r,BASE.outer.z,'rgba(140,210,205,1)',2,[]);dR(BASE.service.r,BASE.service.z,'rgba(155,130,218,1)',1.8,[5,8]);dR(BASE.human.r,BASE.human.z,'rgba(80,175,168,1)',2.2,[]);
+    [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(a=>dA(BASE.service.r,a+spinS,BASE.service.z,true,'rgba(120,95,200,1)'));
+    [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(a=>dA(BASE.human.r,a+spinH,BASE.human.z,false,'rgba(60,155,148,1)'));
+    dL('AI & Robotics growth',[0,-1.48,0],12,'rgba(90,65,185,1)',true);dL('Service System',[0,1.20,BASE.service.z],11,'rgba(110,90,175,1)',false);dL('Human-Centered Innovation',[0,0.88,BASE.human.z],10,'rgba(50,140,133,1)',false);dL('Systemic Innovation',[0,1.62,0],10,'rgba(160,148,200,1)',false);
+    badges.forEach((badge,i)=>dB(badge,Math.sin(gT+i*1.3)*3));
+    let nh=null;for(let i=badgeRects.length-1;i>=0;i--){const r=badgeRects[i];if(mouseX>=r.x&&mouseX<=r.x+r.w&&mouseY>=r.y&&mouseY<=r.y+r.h){nh=r.id;break;}}
+    hoveredId=nh;badges.forEach(b=>{hG[b.id]+=((b.id===hoveredId?1:0)-hG[b.id])*0.1;});
+    canvas.style.cursor=hoveredId?'pointer':dragging?'grabbing':'grab';
+    const fz=BASE.core.z+Math.sin(gT*1.4)*4;let q=[0,0,fz];q=rotX(q,rx);q=rotY(q,ry);const pr=proj(q),sf=Math.max(0.5,pr[2]),pa=Math.max(0,Math.min(1,(sf-0.15)*3));
+    const pw=210*sf,ph=82*sf,r2=ph/2,ppx=pr[0]-pw/2,ppy=pr[1]-ph/2;
+    ctx.globalAlpha=pa;const pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);pgrd.addColorStop(0,'#7a35ef');pgrd.addColorStop(1,'#5e17eb');
+    ctx.shadowColor='rgba(94,23,235,.35)';ctx.shadowBlur=30*sf;ctx.shadowOffsetY=10*sf;ctx.fillStyle=pgrd;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph,r2);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+    ctx.fillStyle='#fff';ctx.font=`700 ${Math.max(9,17*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr[0],pr[1]);ctx.globalAlpha=1;
     requestAnimationFrame(globeLoop);
   }
   globeLoop();
 })();
 
-/* ── CTA Canvas — aurora ── */
-(function ctaCanvas() {
-  const canvas = qs('#cta-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0;
-
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    W = canvas.offsetWidth; H = canvas.offsetHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    ctx.scale(dpr, dpr);
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function ctaLoop() {
-    t += 0.008;
-    ctx.clearRect(0, 0, W, H);
-
-    const bg = ctx.createLinearGradient(0, 0, 0, H);
-    bg.addColorStop(0, '#0a0420'); bg.addColorStop(1, '#150840');
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-
-    const blobs = [
-      { x: 0.2, y: 0.3, r: 0.5, h: 270, phase: 0 },
-      { x: 0.7, y: 0.6, r: 0.45, h: 250, phase: 1.5 },
-      { x: 0.5, y: 0.8, r: 0.4, h: 200, phase: 3 },
-    ];
-    blobs.forEach(b => {
-      const bx = W * (b.x + Math.sin(t + b.phase) * 0.07);
-      const by = H * (b.y + Math.cos(t * 0.7 + b.phase) * 0.05);
-      const br = W * b.r;
-      const grad = ctx.createRadialGradient(bx, by, 0, bx, by, br);
-      const alpha = 0.08 + Math.sin(t * 0.5 + b.phase) * 0.03;
-      grad.addColorStop(0, `hsla(${b.h + Math.sin(t + b.phase) * 20}, 80%, 65%, ${alpha})`);
-      grad.addColorStop(1, 'hsla(270, 80%, 30%, 0)');
-      ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
-    });
-
-    ctx.strokeStyle = 'rgba(255,255,255,0.025)'; ctx.lineWidth = 1;
-    const gs = 70;
-    for (let x = 0; x < W + gs; x += gs) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-    for (let y = 0; y < H + gs; y += gs) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-
-    for (let i = 0; i < 60; i++) {
-      const sx = ((i * 137.5 * W / 100) % W);
-      const sy = ((i * 97.3 * H / 100) % H);
-      const sa = 0.3 + Math.sin(t * 0.5 + i) * 0.3;
-      ctx.beginPath(); ctx.arc(sx, sy, 0.8, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${sa})`; ctx.fill();
+/* ════════════════════
+   HERO CANVAS — subtle particles
+════════════════════ */
+(function heroCvs(){
+  const canvas=qs('#hero-cvs');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,dpr;
+  function resize(){dpr=window.devicePixelRatio||1;W=canvas.offsetWidth;H=canvas.offsetHeight;canvas.width=W*dpr;canvas.height=H*dpr;ctx.scale(dpr,dpr);}
+  resize();window.addEventListener('resize',resize);
+  const N=50,pts=Array.from({length:N},()=>({x:Math.random()*1400,y:Math.random()*900,vx:(Math.random()-0.5)*0.2,vy:(Math.random()-0.5)*0.2,r:Math.random()*1.1+0.3,a:Math.random()*0.5+0.2,ph:Math.random()*Math.PI*2}));
+  let t=0,mx2=0,my2=0;
+  canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mx2=e.clientX-r.left;my2=e.clientY-r.top;});
+  function loop(){
+    t++;ctx.clearRect(0,0,W,H);
+    // subtle wave lines
+    for(let i=0;i<4;i++){
+      const ph=(i/4)*Math.PI*2,amp=38+i*10,yb=H*(0.3+(i/4)*0.55);
+      ctx.beginPath();
+      for(let x=-20;x<=W+20;x+=6){
+        const y=yb+Math.sin(x*0.003+t*0.0004+ph)*amp;
+        x===-20?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle=`hsla(${250+i*10},65%,65%,${0.01+i*0.008})`;
+      ctx.lineWidth=1+i*0.2;ctx.stroke();
     }
-
-    requestAnimationFrame(ctaLoop);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<-5)p.x=W+5;if(p.x>W+5)p.x=-5;
+      if(p.y<-5)p.y=H+5;if(p.y>H+5)p.y=-5;
+      const pulse=Math.sin(t*0.015+p.ph)*0.5+0.5;
+      const dx=p.x-mx2,dy=p.y-my2,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<100&&d>0){const f=(100-d)/100;p.x+=(dx/d)*f*0.8;p.y+=(dy/d)*f*0.8;}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r*(0.6+pulse*0.4),0,Math.PI*2);
+      ctx.fillStyle=`rgba(123,85,224,${p.a*pulse*0.45})`;ctx.fill();
+    });
+    requestAnimationFrame(loop);
   }
-  ctaLoop();
+  loop();
 })();
 
-/* ── Expertise tags ── */
-(function expertiseTags() {
-  const data = {
-    'clinical-intelligence': 'Clinical intelligence is the ground truth that separates Servizions from every strategy and foresight firm. We observe real clinical environments — mapping workflows, interviewing clinicians, and identifying adoption barriers that no desk research report can capture. This is where the work begins, and it is what makes every output defensible.',
-    'value-proposition': 'A clear value proposition is the single most critical missing element in most healthcare technology launches. Servizions designs value propositions that align clinical outcomes, operational ROI, and stakeholder needs — structured for surgeons, nurses, administrators, and procurement separately.',
-    'future-scenarios': 'Our scenario cone method builds structured visions of the healthcare system as it is already evolving — grounded in observed clinical signals, not market projections. Your innovation is stress-tested against the futures already arriving, so you know which product directions will survive them.',
-    'clinical-workflow': 'Clinical workflow design maps the step-by-step processes that healthcare professionals follow in real clinical settings. We identify exactly where new technologies fit, where they break down, and how adoption can be made seamless — observed directly, not assumed.',
-    'technology-adoption': 'Technology adoption in healthcare requires governance, training, stakeholder alignment, and workflow integration. Servizions builds the complete adoption architecture — grounded in the specific constraints of your clinical environment.',
-    'service-design': 'Human-centered design starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators. Observation before assumption. Clinical reality before market assumption.',
-    'pre-product': 'The pre-product phase is the most critical and most neglected stage of healthcare innovation. Servizions specialises in shaping the value proposition and service concept before a technology is finalised — when the most consequential decisions are still designable.',
-    'robotics': 'Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement. The technology is rarely the problem. What is missing is the service system around it.',
-    'system-design': 'Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system — and identifying where your innovation fits into the futures that system is moving toward.'
+/* ════════════════════
+   CTA CANVAS
+════════════════════ */
+(function ctaCvs(){
+  const canvas=qs('#cta-cvs');if(!canvas)return;
+  const ctx=canvas.getContext('2d');let W,H,t=0;
+  function resize(){const dpr=window.devicePixelRatio||1;W=canvas.offsetWidth;H=canvas.offsetHeight;canvas.width=W*dpr;canvas.height=H*dpr;ctx.scale(dpr,dpr);}
+  resize();window.addEventListener('resize',resize);
+  function loop(){t+=0.007;ctx.clearRect(0,0,W,H);const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#0a0420');bg.addColorStop(1,'#0d0530');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    [{x:0.2,y:0.3,r:0.55,h:265,ph:0},{x:0.75,y:0.6,r:0.45,h:245,ph:1.6},{x:0.5,y:0.85,r:0.4,h:195,ph:3.1}].forEach(b=>{const bx=W*(b.x+Math.sin(t+b.ph)*0.06),by=H*(b.y+Math.cos(t*0.65+b.ph)*0.05),br=W*b.r;const g=ctx.createRadialGradient(bx,by,0,bx,by,br);const alpha=0.07+Math.sin(t*0.45+b.ph)*0.03;g.addColorStop(0,`hsla(${b.h+Math.sin(t+b.ph)*18},80%,62%,${alpha})`);g.addColorStop(1,'hsla(268,80%,28%,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);});
+    ctx.strokeStyle='rgba(255,255,255,0.018)';ctx.lineWidth=1;for(let x=0;x<W+70;x+=70){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}for(let y=0;y<H+70;y+=70){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    requestAnimationFrame(loop);}
+  loop();
+})();
+
+/* ════════════════════
+   EXPERTISE
+════════════════════ */
+(function(){
+  const data={
+    'ci':'Clinical intelligence is the ground truth that separates Servizions from every strategy and foresight firm. We observe real clinical environments — mapping workflows, interviewing clinicians, and identifying adoption barriers that no desk research report can capture.',
+    'vp':'A clear value proposition is the single most critical missing element in most healthcare technology launches. Servizions designs value propositions that align clinical outcomes, operational ROI, and stakeholder needs.',
+    'fs':'Our scenario cone method builds structured visions of the healthcare system as it is already evolving — grounded in observed clinical signals, not market projections.',
+    'cw':'Clinical workflow design maps the step-by-step processes that healthcare professionals follow in real clinical settings. We identify exactly where new technologies fit, where they break down, and how adoption can be made seamless.',
+    'ta':'Technology adoption in healthcare requires governance, training, stakeholder alignment, and workflow integration. Servizions builds the complete adoption architecture — grounded in the specific constraints of your clinical environment.',
+    'sd':'Human-centered design starts from the lived experience of every person the technology must serve — patients, surgeons, nurses, administrators. Observation before assumption.',
+    'pp':'The pre-product phase is the most critical and most neglected stage of healthcare innovation. Servizions specialises in shaping the value proposition and service concept before a technology is finalised.',
+    'ro':'Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement.',
+    'hs':'Healthcare system design takes a macro view — looking at how hospitals, clinics, technology providers, payers, and patients interact as a connected system.'
   };
-  const tags = qsa('.exp-tag');
-  const panel = qs('#exp-panel');
-  const panelText = qs('#exp-panel-text');
-  let active = null;
-
-  tags.forEach(tag => {
-    tag.addEventListener('click', () => {
-      const k = tag.dataset.key;
-      if (active === k) { panel.classList.remove('open'); tag.classList.remove('active'); active = null; return; }
-      tags.forEach(t => t.classList.remove('active'));
-      panelText.textContent = data[k];
-      tag.classList.add('active');
-      panel.classList.add('open');
-      active = k;
+  const tags=qsa('.exp-tag'),panel=qs('#exp-panel'),text=qs('#exp-text');
+  let active=null;
+  tags.forEach(tag=>{
+    tag.addEventListener('click',()=>{
+      const k=tag.dataset.key;
+      if(active===k){panel.classList.remove('open');tag.classList.remove('active');active=null;return;}
+      tags.forEach(t=>t.classList.remove('active'));
+      text.textContent=data[k];tag.classList.add('active');panel.classList.add('open');active=k;
     });
   });
 })();
 
-/* ── Reveal on Scroll ── */
-(function revealOnScroll() {
-  const sections = qsa('.reveal-section');
-  const children = qsa('.reveal-child');
-  const cards = qsa('.reveal-card');
-
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-  const childObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        childObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-
-  const cardObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        cardObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-
-  sections.forEach(s => obs.observe(s));
-  children.forEach((c, i) => {
-    c.style.transitionDelay = `${i * 0.08}s`;
-    childObs.observe(c);
+/* ════════════════════
+   SIDE NAV
+════════════════════ */
+(function(){
+  const sections=[qs('#sec-0'),qs('#sec-1'),qs('#sec-2'),qs('#sec-3'),qs('#sec-4'),qs('#sec-5'),qs('#sec-6')];
+  const dots=qsa('.snd');
+  dots.forEach((d,i)=>{
+    d.addEventListener('click',()=>{if(sections[i])sections[i].scrollIntoView({behavior:'smooth'});});
   });
-  cards.forEach((c, i) => {
-    c.style.transitionDelay = `${i * 0.12}s`;
-    cardObs.observe(c);
-  });
-})();
-
-/* ── Hero text entrance ── */
-(function heroEntrance() {
-  const lines = qsa('.split-inner');
-  const eyebrow = qs('.hero-eyebrow');
-  const sub = qs('.hero-sub');
-  const actions = qs('.hero-actions');
-  const hint = qs('.hero-scroll-hint');
-
-  setTimeout(() => { if (eyebrow) eyebrow.classList.add('in'); }, 200);
-  lines.forEach((el, i) => { setTimeout(() => el.classList.add('in'), 400 + i * 140); });
-  setTimeout(() => { if (sub) sub.classList.add('in'); }, 900);
-  setTimeout(() => { if (actions) actions.classList.add('in'); }, 1050);
-  setTimeout(() => { if (hint) hint.classList.add('in'); }, 1300);
-})();
-
-/* ── Process Cards — stagger ── */
-(function processCards() {
-  const cards = qsa('.process-card');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const i = parseInt(entry.target.dataset.index || '0');
-        setTimeout(() => entry.target.classList.add('in'), i * 120);
-        obs.unobserve(entry.target);
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=sections.indexOf(e.target);
+        if(i>=0){dots.forEach((d,j)=>d.classList.toggle('active',j===i));}
       }
     });
-  }, { threshold: 0.15 });
-  cards.forEach(c => obs.observe(c));
+  },{threshold:0.4});
+  sections.forEach(s=>{if(s)obs.observe(s);});
 })();
 
-/* ── Ticker pause on hover ── */
-(function ticker() {
-  const track = qs('.ticker-track');
-  if (!track) return;
-  track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
-  track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
+/* ════════════════════
+   GENERIC REVEALS
+════════════════════ */
+(function(){
+  const els=qsa('.rev');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach((el,i)=>{
+    el.style.transitionDelay=`${Math.min(i%4*0.08,0.3)}s`;
+    obs.observe(el);
+  });
+
+  // Insight cards
+  const cards=qsa('.insight-card');
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');cObs.unobserve(e.target);}});
+  },{threshold:0.1});
+  cards.forEach((c,i)=>{c.style.transitionDelay=`${i*0.14}s`;cObs.observe(c);});
+
+  // Process items
+  const items=qsa('.process-item');
+  const pObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');pObs.unobserve(e.target);}});
+  },{threshold:0.12});
+  items.forEach(it=>pObs.observe(it));
 })();
 
-/* ── Insight cards hover ── */
-qsa('.insight-card').forEach(card => {
-  card.addEventListener('mouseenter', () => setCursorState('link', 'Read'));
-  card.addEventListener('mouseleave', () => setCursorState(''));
-});
-
-/* ── Parallax on scroll ── */
-(function parallax() {
-  const hero = qs('#hero');
-  function onScroll() {
-    const sy = window.scrollY;
-    if (hero) {
-      const canvas = hero.querySelector('canvas');
-      if (canvas) canvas.style.transform = `translateY(${sy * 0.25}px)`;
-      const content = hero.querySelector('.hero-content');
-      if (content) content.style.transform = `translateY(${sy * 0.15}px)`;
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
 })();
-
-})(); /* end IIFE */
 </script>
 </body>
 </html>
