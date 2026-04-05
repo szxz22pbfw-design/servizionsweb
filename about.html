@@ -3,171 +3,439 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>About – Servizions | MedTech Product Strategy Studio</title>
+  <meta name="description" content="Servizions was founded in Munich in March 2026 by Hanna Kim. We turn clinical human reality into MedTech product strategy.">
   <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
-  <title>About – Healthcare Service Innovation Studio | Servizions</title>
-  <meta name="description" content="Servizions is a healthcare service innovation studio based in Munich. We bridge medtech and healthcare robotics companies with the real clinical world.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://servizions.com/about.html">
-  <meta property="og:title" content="About – Servizions Healthcare Service Innovation Studio">
-  <meta property="og:description" content="Bridging medtech and healthcare robotics companies with the real clinical world.">
-  <meta property="og:url" content="https://servizions.com/about.html">
-  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
-    body{padding-top:70px;cursor:auto}
-    .about-header{background:var(--white);padding:100px 0 90px;border-bottom:1px solid var(--border)}
-    .about-header-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:end}
-    .about-header h1{font-family:var(--font-display);font-size:68px;font-weight:400;font-style:italic;color:var(--ink);line-height:1.0;letter-spacing:-0.5px;margin-top:20px}
-    .about-header-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;border-left:2px solid var(--border-strong);padding-left:28px}
-    .studio-section{background:var(--white);padding:110px 0;border-bottom:1px solid var(--border)}
-    .studio-inner{display:grid;grid-template-columns:5fr 7fr;gap:100px;align-items:start}
-    .studio-left h2{font-family:var(--font-display);font-size:46px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px;position:sticky;top:100px}
-    .studio-right{display:flex;flex-direction:column;gap:22px}
-    .studio-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;margin:0}
-    .studio-right p strong{font-weight:500;color:var(--ink)}
-    .beliefs-section{background:var(--stone);padding:110px 0}
-    .beliefs-intro{max-width:640px;margin-bottom:64px}
-    .beliefs-intro h2{font-family:var(--font-display);font-size:50px;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-0.4px;margin-top:16px}
-    .beliefs-intro p{font-size:15px;font-weight:300;color:var(--text-mid);line-height:1.9;margin-top:16px}
-    .beliefs-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm)}
-    .belief-item{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--border);transition:background var(--transition)}
-    .belief-item:last-child{border-bottom:none}
-    .belief-item:hover{background:var(--purple-pale)}
-    .belief-num{font-family:var(--font-display);font-size:13px;font-weight:400;color:var(--text-light);letter-spacing:0.06em;padding:40px 0 0 36px}
-    .belief-body{padding:36px 48px 36px 32px;border-left:1px solid var(--border)}
-    .belief-body h4{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--ink);margin:0 0 8px;line-height:1.25}
-    .belief-body p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.8;margin:0}
-    @media(max-width:900px){
-      .about-header-inner,.studio-inner{grid-template-columns:1fr;gap:40px}
-      .about-header h1{font-size:46px}
-      .studio-left h2{font-size:36px;position:static}
-      .beliefs-intro h2{font-size:36px}
-      .belief-item{grid-template-columns:44px 1fr}
-      .belief-num{padding:28px 0 0 20px}
-      .belief-body{padding:28px 24px}
+    :root{
+      --ink:#080614;--purple:#3B0FA0;--purple-dark:#1E0660;--purple-deeper:#0D0330;
+      --purple-mid:#5A2BD6;--ps:#7B55E0;--purple-light:#F0ECFB;--purple-pale:#F8F6FE;
+      --teal:#3B9E94;--teal-l:#4DBFB4;--white:#FFFFFF;--stone:#F3F1EE;--off-white:#FAFAF9;
+      --text-mid:#4A4263;--text-light:#8A7FAA;--tfaint:#8A7FAA;
+      --border:rgba(59,15,160,.10);--border-strong:rgba(59,15,160,.22);
+      --fd:'Cormorant Garamond',Georgia,serif;--fb:'Outfit',system-ui,sans-serif;--fm:'Space Mono',monospace;
+      --ease:cubic-bezier(0.16,1,0.3,1);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{-webkit-font-smoothing:antialiased;overflow-x:clip;}
+    body{font-family:var(--fb);background:var(--white);color:var(--ink);overflow-x:clip;padding-top:70px;}
+    a{color:inherit;text-decoration:none;}
+    .W{max-width:1280px;margin:0 auto;padding:0 80px;}
+
+    /* NAV */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:9000;padding:0 80px;background:rgba(13,3,48,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:transform .4s var(--ease);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
+    .logo-text{font-family:var(--fd);font-size:22px;font-weight:500;letter-spacing:.04em;color:white;}
+    .nav-links{display:flex;gap:38px;align-items:center;}
+    .nav-link{font-size:11px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;transition:color .3s;}
+    .nav-link:hover,.nav-link.active{color:white;}
+    .nav-cta{background:rgba(90,43,214,.25);color:rgba(255,255,255,.9)!important;padding:9px 22px;border-radius:999px;border:1px solid rgba(90,43,214,.45);transition:all .3s!important;}
+    .nav-cta:hover{background:var(--purple-mid)!important;color:white!important;}
+
+    /* HERO */
+    .about-hero{background:var(--ink);padding:100px 80px 110px;position:relative;overflow:hidden;}
+    .about-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 70% at 72% 40%,rgba(59,15,160,.28) 0%,transparent 60%),radial-gradient(ellipse 45% 50% at 20% 70%,rgba(59,158,148,.10) 0%,transparent 55%);pointer-events:none;}
+    .about-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;}
+    .ah-label{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(123,85,224,.7);display:block;margin-bottom:32px;opacity:0;animation:fadeUp .9s var(--ease) .2s forwards;}
+    .ah-h1{font-family:var(--fd);font-size:clamp(54px,7vw,108px);font-weight:300;color:white;line-height:.97;letter-spacing:-2px;max-width:900px;opacity:0;animation:fadeUp 1s var(--ease) .35s forwards;}
+    .ah-h1 em{font-style:italic;color:rgba(180,155,255,.9);}
+    .ah-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:72px;opacity:0;animation:fadeUp .9s var(--ease) .55s forwards;}
+    .ah-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.48);line-height:1.85;}
+    .ah-stat-col{display:flex;flex-direction:column;gap:32px;}
+    .ah-stat{border-left:1px solid rgba(255,255,255,.12);padding-left:24px;}
+    .ah-stat-label{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(123,85,224,.6);margin-bottom:6px;display:block;}
+    .ah-stat-val{font-family:var(--fd);font-size:20px;font-weight:300;color:rgba(255,255,255,.8);line-height:1.4;}
+
+    /* FOUNDER */
+    .founder-section{background:var(--stone);padding:120px 80px;}
+    .founder-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+    .el{font-family:var(--fm);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ps);display:block;margin-bottom:40px;}
+    .founder-quote{font-family:var(--fd);font-size:clamp(30px,3.5vw,50px);font-weight:400;font-style:italic;color:var(--ink);line-height:1.2;letter-spacing:-.3px;margin-bottom:36px;}
+    .founder-quote::before{content:'\201C';font-size:80px;line-height:0;vertical-align:-.35em;color:rgba(59,15,160,.1);margin-right:4px;}
+    .founder-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:4px;}
+    .founder-title{font-size:13px;font-weight:300;color:var(--text-light);}
+    .founder-facts{display:flex;flex-direction:column;gap:20px;}
+    .founder-fact{padding:28px 32px;background:white;border-radius:14px;border:1px solid var(--border);}
+    .founder-fact h4{font-family:var(--fd);font-size:19px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+    .founder-fact p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.75;}
+
+    /* STUDIO */
+    .studio-section{background:var(--white);padding:120px 80px;border-top:1px solid var(--border);}
+    .studio-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:100px;align-items:start;}
+    .studio-sticky{position:sticky;top:100px;}
+    .studio-ttl{font-family:var(--fd);font-size:clamp(36px,4vw,54px);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.4px;margin-top:16px;}
+    .studio-body{display:flex;flex-direction:column;gap:22px;}
+    .studio-body p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;}
+    .studio-body p strong{font-weight:500;color:var(--ink);}
+
+    /* GLOBE */
+    .globe-section{position:relative;height:92vh;min-height:600px;background:var(--stone);overflow:hidden;}
+    .globe-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(200,190,255,.22) 0%,var(--stone) 70%);}
+    #gcvs{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;}
+    #gcvs:active{cursor:grabbing;}
+    .globe-ui{position:absolute;top:48px;left:80px;z-index:10;}
+    .globe-tag{font-family:var(--fm);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(59,15,160,.6);margin-bottom:8px;}
+    .globe-dsc{font-size:13px;color:var(--tfaint);font-weight:300;}
+    .gpan{position:fixed;right:44px;top:50%;width:270px;background:rgba(248,246,254,.97);backdrop-filter:blur(12px);border:1px solid rgba(94,23,235,.12);border-left:2px solid rgba(94,23,235,.4);border-radius:4px 18px 18px 4px;padding:26px 22px 22px;box-shadow:0 24px 64px rgba(94,23,235,.12);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s var(--ease);transform:translateY(-50%) translateX(24px);z-index:200;}
+    .gpan.on{opacity:1;pointer-events:auto;transform:translateY(-50%) translateX(0);}
+    .gpc{position:absolute;top:10px;right:10px;width:22px;height:22px;background:none;border:1px solid rgba(94,23,235,.15);border-radius:4px;color:var(--tfaint);font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .2s;cursor:pointer;}
+    .gpc:hover{background:rgba(94,23,235,.08);}
+    .gpt{font-family:var(--fm);font-size:9px;letter-spacing:.18em;color:rgba(94,23,235,.45);text-transform:uppercase;margin-bottom:10px;}
+    .gph{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:10px;font-family:var(--fb);}
+    .gpd{font-size:12.5px;color:var(--text-mid);line-height:1.72;font-weight:300;}
+
+    /* EXPERTISE */
+    .exp-section{background:var(--white);padding:120px 80px;border-top:1px solid var(--border);}
+    .exp-ttl{font-family:var(--fd);color:var(--ink);font-size:clamp(28px,3vw,42px);font-weight:400;font-style:italic;margin-top:12px;margin-bottom:40px;}
+    .exp-tags{display:flex;flex-wrap:wrap;gap:10px;}
+    .exp-tag{background:none;border:1px solid var(--border-strong);color:var(--purple);padding:10px 22px;border-radius:999px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-family:var(--fb);cursor:pointer;transition:all .3s;}
+    .exp-tag:hover,.exp-tag.active{background:var(--purple);color:white;border-color:var(--purple);transform:translateY(-2px);box-shadow:0 4px 16px rgba(59,15,160,.25);}
+    .exp-pan{max-height:0;overflow:hidden;margin-top:0;transition:max-height .5s var(--ease),opacity .35s,margin-top .35s;opacity:0;}
+    .exp-pan.open{max-height:200px;opacity:1;margin-top:32px;}
+    .exp-in{border-left:2px solid var(--ps);padding:22px 30px;background:rgba(59,15,160,.03);border-radius:0 14px 14px 0;}
+    .exp-bd{font-size:15px;font-weight:300;line-height:1.9;color:var(--text-mid);}
+
+    /* METHOD */
+    .method-section{background:var(--stone);padding:120px 80px;border-top:1px solid var(--border);}
+    .method-inner{max-width:1200px;margin:0 auto;}
+    .method-ttl{font-family:var(--fd);font-size:clamp(34px,4vw,54px);font-weight:400;color:var(--ink);line-height:1.1;letter-spacing:-.4px;margin-top:12px;margin-bottom:64px;}
+    .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:22px;overflow:hidden;}
+    .method-card{background:var(--white);padding:44px 36px;transition:background .3s;}
+    .method-card:hover{background:var(--purple-pale);}
+    .method-num{font-family:var(--fd);font-size:64px;font-weight:300;color:rgba(59,15,160,.08);line-height:1;margin-bottom:20px;}
+    .method-card h3{font-family:var(--fd);font-size:26px;font-weight:500;color:var(--ink);margin-bottom:12px;line-height:1.2;}
+    .method-card p{font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.8;}
+    .method-tag{display:inline-block;margin-top:16px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ps);border:1px solid var(--border-strong);padding:4px 12px;border-radius:999px;font-family:var(--fm);}
+
+    /* CTA */
+    .cta-section{background:var(--ink);padding:130px 80px;text-align:center;position:relative;overflow:hidden;}
+    .cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(59,15,160,.3) 0%,transparent 65%);pointer-events:none;}
+    .cta-inner{position:relative;z-index:2;}
+    .cta-label{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(123,85,224,.6);display:block;margin-bottom:24px;}
+    .cta-h2{font-family:var(--fd);font-size:clamp(44px,6vw,88px);font-weight:300;color:white;line-height:.97;letter-spacing:-1.5px;margin-bottom:28px;}
+    .cta-h2 em{font-style:italic;color:rgba(180,155,255,.9);}
+    .cta-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.42);margin-bottom:52px;}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--purple);color:white;padding:16px 36px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;}
+    .btn-primary:hover{background:var(--purple-mid);transform:translateY(-1px);box-shadow:0 8px 32px rgba(90,43,214,.45);}
+
+    /* FOOTER */
+    .footer{background:var(--purple-deeper);border-top:1px solid rgba(255,255,255,.05);}
+    .footer-top{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;padding:64px 80px 48px;border-bottom:1px solid rgba(255,255,255,.06);}
+    .footer-logo{font-family:var(--fd);font-size:28px;font-weight:500;letter-spacing:.04em;color:white;}
+    .footer-tagline{text-align:center;font-size:12px;font-weight:300;color:rgba(255,255,255,.28);line-height:1.7;}
+    .footer-nav{display:flex;gap:28px;justify-content:flex-end;}
+    .footer-nav a{font-size:11px;font-weight:500;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.38);transition:color .3s;}
+    .footer-nav a:hover{color:white;}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:22px 80px;color:rgba(255,255,255,.22);font-size:12px;}
+    .footer-links{display:flex;gap:24px;}
+    .footer-links a{color:rgba(255,255,255,.32);transition:color .3s;}
+    .footer-links a:hover{color:rgba(255,255,255,.78);}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+    .rv.in{opacity:1;transform:none;}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+    @media(max-width:1024px){
+      .navbar{padding:0 40px}.about-hero{padding:80px 48px 90px}.W{padding:0 48px}
+      .ah-grid{grid-template-columns:1fr;gap:48px}.founder-section{padding:100px 48px}
+      .founder-inner{grid-template-columns:1fr;gap:52px}.studio-section{padding:100px 48px}
+      .studio-inner{grid-template-columns:1fr;gap:48px}.studio-sticky{position:static}
+      .globe-section{height:70vh}.globe-ui{left:48px}.exp-section{padding:100px 48px}
+      .method-section{padding:100px 48px}.method-grid{grid-template-columns:1fr 1fr}
+      .cta-section{padding:100px 48px}
+      .footer-top{padding:48px 48px 36px}.footer-bottom{padding:22px 48px}
+    }
+    @media(max-width:768px){
+      .navbar{padding:0 24px}.nav-links{display:none}
+      .about-hero{padding:64px 28px 80px}.W{padding:0 28px}
+      .ah-h1{font-size:44px}.founder-section,.studio-section,.exp-section,.method-section{padding:80px 28px}
+      .method-grid{grid-template-columns:1fr}.globe-ui{left:28px}
+      .cta-section{padding:80px 28px}
+      .footer-top{grid-template-columns:1fr;gap:24px;padding:40px 28px 28px}
+      .footer-nav{justify-content:flex-start}.footer-bottom{padding:18px 28px;flex-direction:column;gap:12px;align-items:flex-start}
     }
   </style>
 </head>
 <body>
 
 <header class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-text">Servizions</span></a>
-      <nav class="nav-links">
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-      </nav>
-    </div>
-  </header>
+  <div class="nav-inner">
+    <a href="index.html"><span class="logo-text">Servizions</span></a>
+    <nav class="nav-links">
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="solutions.html" class="nav-link">Solutions</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="about-header">
-    <div class="container">
-      <div class="about-header-inner">
-        <div>
-          <span class="eyebrow">About</span>
-          <h1>A studio built for the gap nobody fills.</h1>
-        </div>
-        <div class="about-header-right">
-          <p>Bridging medtech and healthcare robotics companies with the real clinical world.</p>
-        </div>
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <span class="ah-label">About Servizions</span>
+    <h1 class="ah-h1">We turn clinical<br>human reality into<br><em>MedTech strategy.</em></h1>
+    <div class="ah-grid">
+      <p class="ah-sub">Servizions is a MedTech product strategy studio. We tell MedTech companies what to build next — backed by clinical field evidence, not market reports. Founded in Munich in March 2026 by Hanna Kim.</p>
+      <div class="ah-stat-col">
+        <div class="ah-stat"><span class="ah-stat-label">Founded</span><div class="ah-stat-val">March 2026 · Munich, Germany</div></div>
+        <div class="ah-stat"><span class="ah-stat-label">Focus</span><div class="ah-stat-val">Healthcare · Robotics · MedTech · Digital Health</div></div>
+        <div class="ah-stat"><span class="ah-stat-label">Method</span><div class="ah-stat-val">Clinical Foresight — fieldwork, service design, strategic foresight</div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="studio-section">
-    <div class="container">
-      <div class="studio-inner">
-        <div class="studio-left">
-          <span class="eyebrow">The Studio</span>
-          <h2>What Servizions is — and is not.</h2>
-        </div>
-        <div class="studio-right">
-          <p>Servizions is a <strong>healthcare service innovation studio</strong>. Not a consultancy. Not an agency. Not a research institute. A studio — where structured methods, deep domain knowledge, and a clear point of view are applied to a single problem: making healthcare innovation genuinely work in the real clinical world.</p>
-          <p>We operate in the space between a technology and its clinical adoption. That space — the value proposition, the service architecture, the adoption system — is where most healthcare innovations either succeed or quietly fail. It is almost never designed. <strong>We design it.</strong></p>
-          <p>We are based in Munich, Germany — at the centre of Europe's medical technology industry — and work with clients across the European healthcare innovation ecosystem.</p>
-        </div>
+<!-- FOUNDER -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div>
+      <span class="el rv">The Founder</span>
+      <p class="founder-quote rv">We start where nobody else starts — in the room where a patient and a device meet a therapist, and something breaks.</p>
+      <div class="rv">
+        <p class="founder-name">Hanna Kim</p>
+        <p class="founder-title">Founder, Servizions</p>
       </div>
     </div>
-  </section>
-
-  <section class="beliefs-section">
-    <div class="container">
-      <div class="beliefs-intro">
-        <span class="eyebrow">What We Believe</span>
-        <h2>Five convictions that shape everything we do.</h2>
-        <p>These are not values statements. They are the specific beliefs that determine how Servizions works — and what we will and will not do.</p>
+    <div class="founder-facts rv">
+      <div class="founder-fact">
+        <h4>Professional Background</h4>
+        <p>Experience in medical robotics across clinical environments in Europe and Asia. Direct observation of rehabilitation robotics, AI-assisted therapy, and digital health integration.</p>
       </div>
-      <div class="beliefs-list">
-        <div class="belief-item">
-          <div class="belief-num">01</div>
-          <div class="belief-body">
-            <h4>The pre-product phase is where adoption is determined</h4>
-            <p>Most healthcare technologies make their most consequential decisions before a single clinical user has been observed. We work at this stage — when assumptions are still testable and service systems are still designable.</p>
-          </div>
-        </div>
-        <div class="belief-item">
-          <div class="belief-num">02</div>
-          <div class="belief-body">
-            <h4>A technology without a service system is incomplete</h4>
-            <p>The clinical workflows, training architecture, and governance model are not implementation details. They are the product. Without them, adoption is a matter of luck.</p>
-          </div>
-        </div>
-        <div class="belief-item">
-          <div class="belief-num">03</div>
-          <div class="belief-body">
-            <h4>Value propositions must be designed, not discovered</h4>
-            <p>The value of a healthcare technology is not self-evident. It must be articulated, evidenced, and structured for each stakeholder. That is design work — and it requires design methods.</p>
-          </div>
-        </div>
-        <div class="belief-item">
-          <div class="belief-num">04</div>
-          <div class="belief-body">
-            <h4>Intellectual honesty is not optional</h4>
-            <p>If a technology is solving the wrong problem, or a value proposition is built on weak evidence — we say so. Clearly, constructively, and early enough to matter.</p>
-          </div>
-        </div>
-        <div class="belief-item">
-          <div class="belief-num">05</div>
-          <div class="belief-body">
-            <h4>Healthcare deserves better innovation infrastructure</h4>
-            <p>The gap between technological potential and clinical reality in healthcare is not inevitable. It is a design problem — and design problems have solutions.</p>
-          </div>
-        </div>
+      <div class="founder-fact">
+        <h4>Education</h4>
+        <p>Postgraduate degree in Innovation and Future Research, completed 2024. The combination of clinical fieldwork and structured foresight methodology is the foundation of the Servizions approach.</p>
+      </div>
+      <div class="founder-fact">
+        <h4>Why Servizions</h4>
+        <p>Most MedTech strategy is built from desk research. Clinical human reality — what actually happens between a patient, a clinician, and a device — was missing. That is the gap Servizions was built to fill.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="contact-section">
-    <div class="container">
-      <h2 class="contact-title">Work with us.</h2>
-      <p class="contact-subtitle">Every Servizions engagement is a direct collaboration — no intermediaries, no templated process</p>
-      <div style="text-align:center;">
-        <a href="contact.html" class="contact-button" style="display:inline-block;padding:18px 48px;">Start a Conversation</a>
+<!-- STUDIO -->
+<section class="studio-section">
+  <div class="studio-inner">
+    <div class="studio-sticky">
+      <span class="el rv">The Studio</span>
+      <h2 class="studio-ttl rv">What Servizions is — and isn't.</h2>
+    </div>
+    <div class="studio-body rv">
+      <p>Servizions is a <strong>MedTech product strategy studio</strong>. Not a consultancy that delivers reports. Not a design agency that delivers interfaces. Not a foresight firm that delivers trend scenarios.</p>
+      <p>We deliver <strong>strategic product directions</strong> — specific, grounded in human reality, defensible to the board, and actionable by engineering teams the day they are received.</p>
+      <p>Our methodology combines three disciplines: <strong>clinical fieldwork</strong> (what humans actually do), <strong>service design</strong> (where the system breaks), and <strong>strategic foresight</strong> (where the future is going). Together they produce something no trend report can: a strategic product direction grounded in what you observed, not what you assumed.</p>
+      <p>We call this <strong>Clinical Foresight</strong> — and Servizions is building the category.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBE / SYSTEMIC INNOVATION -->
+<section class="globe-section">
+  <div class="globe-bg"></div>
+  <canvas id="gcvs"></canvas>
+  <div class="globe-ui">
+    <div class="globe-tag rv">Systemic Innovation</div>
+    <p class="globe-dsc rv">An interconnected system of methods — drag and click to explore</p>
+  </div>
+  <div id="gpan" class="gpan">
+    <button id="gpc" class="gpc">×</button>
+    <div id="gpt" class="gpt"></div>
+    <div id="gph" class="gph"></div>
+    <div id="gpd" class="gpd"></div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="exp-section">
+  <div class="W">
+    <span class="el rv">Areas of Expertise</span>
+    <h2 class="exp-ttl rv">Select an area to explore</h2>
+    <div class="exp-tags rv">
+      <button class="exp-tag" data-k="ci">Clinical Intelligence</button>
+      <button class="exp-tag" data-k="vp">Value Proposition Design</button>
+      <button class="exp-tag" data-k="fs">Future Scenario Planning</button>
+      <button class="exp-tag" data-k="cw">Clinical Workflow Design</button>
+      <button class="exp-tag" data-k="ta">Technology Adoption</button>
+      <button class="exp-tag" data-k="sd">Human-Centered Design</button>
+      <button class="exp-tag" data-k="pp">Pre-Product Innovation</button>
+      <button class="exp-tag" data-k="ro">Medical Robotics</button>
+      <button class="exp-tag" data-k="hs">Healthcare System Design</button>
+    </div>
+    <div class="exp-pan" id="epan"><div class="exp-in"><p class="exp-bd" id="ebd"></p></div></div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section">
+  <div class="method-inner">
+    <span class="el rv">The Method</span>
+    <h2 class="method-ttl rv">Clinical Foresight —<br>the Servizions methodology.</h2>
+    <div class="method-grid">
+      <div class="method-card rv">
+        <div class="method-num">01</div>
+        <h3>Clinical Fieldwork</h3>
+        <p>We observe the human reality of clinical sessions. Patient experience. Therapist workflow. Device behavior. Three parallel workflows mapped simultaneously across every phase.</p>
+        <span class="method-tag">Observation · Evidence</span>
+      </div>
+      <div class="method-card rv">
+        <div class="method-num">02</div>
+        <h3>Service Design</h3>
+        <p>We build the service blueprint from what we observed. Every friction point categorised: product problem, service problem, or training problem. Impact analysis attached to each.</p>
+        <span class="method-tag">Blueprint · Gap Analysis</span>
+      </div>
+      <div class="method-card rv">
+        <div class="method-num">03</div>
+        <h3>Strategic Foresight</h3>
+        <p>We build 4–5 healthcare futures from the clinical signals we observed — not from macro trend data. We stress-test product directions against each future and deliver an investment sequence.</p>
+        <span class="method-tag">Scenario Cone · Roadmap</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo">Servizions</div>
-      <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
-      <nav class="footer-nav">
-        <a href="services.html">Services</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 Servizions. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="mailto:info@servizions.com">info@servizions.com</a>
-        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="cta-inner">
+    <span class="cta-label rv">Start here</span>
+    <h2 class="cta-h2 rv">The clinical ground truth<br>is <em>the differentiator.</em></h2>
+    <p class="cta-sub rv">Tell us about your MedTech challenge. We'll tell you honestly whether and how we can help.</p>
+    <a href="contact.html" class="btn-primary rv">
+      <span>Start a Conversation</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo">Servizions</div>
+    <div class="footer-tagline">MedTech Product Strategy Studio<br>Munich, Germany</div>
+    <nav class="footer-nav"><a href="services.html">Services</a><a href="solutions.html">Solutions</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Servizions. All rights reserved.</div>
+    <div class="footer-links"><a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q=s=>document.querySelector(s);
+const qa=s=>[...document.querySelectorAll(s)];
+
+/* NAV */
+const navbar=q('#navbar');let lastY=0;
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  navbar.style.transform=(sy>lastY+8&&sy>120)?'translateY(-100%)':'translateY(0)';
+  lastY=sy;
+},{passive:true});
+
+/* GLOBE */
+(function(){
+  const cvs=q('#gcvs');if(!cvs)return;
+  const ctx=cvs.getContext('2d');let W,H,CX,CY;
+  function rsz(){const d=window.devicePixelRatio||1;W=cvs.offsetWidth;H=cvs.offsetHeight;cvs.width=W*d;cvs.height=H*d;ctx.scale(d,d);CX=W/2;CY=H/2;}
+  rsz();window.addEventListener('resize',rsz);
+  const S=200;let rx=.22,ry=.04,vx=0,vy=0,drag=false,lmx=0,lmy=0;
+  let gT=0,spS=0,spH=0,mX=W/2,mY=H/2,hov=null,bR=[];
+  const hG={};
+  const B={outer:{r:1.36,z:0},service:{r:1.08,z:24},human:{r:.76,z:48},core:{z:68}};
+  const badges=[
+    {id:'em',label:'Empathy',style:'teal',pos:[0,-.44,48/S],w:88,h:27,icon:'01',info:'Deep observation and active listening to understand patient needs and lived healthcare experiences.'},
+    {id:'sy',label:'Synthesis',style:'teal',pos:[-.30,.26,48/S],w:88,h:27,icon:'02',info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
+    {id:'co',label:'Co-Design',style:'teal',pos:[.30,.26,48/S],w:94,h:27,icon:'03',info:'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.'},
+    {id:'pa',label:'Patient Journey',style:'purple',pos:[.90,0,24/S],w:150,h:37,icon:'04',info:'Mapping every touchpoint of the patient experience to design compassionate healthcare interactions.'},
+    {id:'ad',label:'Adoption Strategy',style:'purple',pos:[-.90,0,24/S],w:162,h:37,icon:'05',info:'Driving technology uptake through behavioral change frameworks and stakeholder alignment.'},
+    {id:'bp',label:'Service Blueprint',style:'purple',pos:[-.82,.52,24/S],w:156,h:37,icon:'06',info:'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.'},
+    {id:'cl',label:'Clinician Workflow',style:'purple',pos:[.82,.52,24/S],w:168,h:37,icon:'07',info:'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.'}
+  ];
+  badges.forEach(b=>{hG[b.id]=0;});
+  const rX=(p,a)=>{const c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];};
+  const rY=(p,a)=>{const c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];};
+  const FL=860;
+  const pj=p=>{const z=p[2]+FL,sc=FL/z;return[CX+p[0]*sc,CY+p[1]*sc,sc];};
+  const ar=p=>{let qq=[...p];qq=rX(qq,rx);qq=rY(qq,ry);return qq;};
+  cvs.addEventListener('mousedown',e=>{drag=true;lmx=e.clientX;lmy=e.clientY;vx=vy=0;});
+  window.addEventListener('mousemove',e=>{mX=e.clientX;mY=e.clientY;if(!drag)return;vy=(e.clientX-lmx)*.009;vx=(e.clientY-lmy)*.009;ry+=vy;rx+=vx;lmx=e.clientX;lmy=e.clientY;});
+  window.addEventListener('mouseup',()=>{drag=false;});
+  cvs.addEventListener('touchstart',e=>{const t=e.touches[0];drag=true;lmx=t.clientX;lmy=t.clientY;vx=vy=0;},{passive:true});
+  window.addEventListener('touchmove',e=>{const t=e.touches[0];if(!drag)return;vy=(t.clientX-lmx)*.009;vx=(t.clientY-lmy)*.009;ry+=vy;rx+=vx;lmx=t.clientX;lmy=t.clientY;},{passive:true});
+  window.addEventListener('touchend',()=>{drag=false;});
+  cvs.addEventListener('click',e=>{for(let i=bR.length-1;i>=0;i--){const r=bR[i];if(e.clientX>=r.x&&e.clientX<=r.x+r.w&&e.clientY>=r.y&&e.clientY<=r.y+r.h&&r.info){q('#gph').textContent=r.label;q('#gpd').textContent=r.info;q('#gpt').textContent='NODE · '+r.icon;q('#gpan').classList.add('on');break;}}});
+  if(q('#gpc'))q('#gpc').onclick=()=>q('#gpan').classList.remove('on');
+  function dR(r,z,col,lw,dash){const pts=[];for(let i=0;i<=120;i++){const a=(i/120)*Math.PI*2;pts.push(pj(ar([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}ctx.save();ctx.strokeStyle=col;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();ctx.setLineDash([]);ctx.restore();}
+  function dD(r,z,fill){const pts=[];for(let i=0;i<=90;i++){const a=(i/90)*Math.PI*2;pts.push(pj(ar([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}ctx.save();ctx.fillStyle=fill;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fill();ctx.restore();}
+  function dE(r,z0,z1,col){ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1;for(let i=0;i<90;i++){const a=(i/90)*Math.PI*2,x=Math.cos(a)*r*S,y=Math.sin(a)*r*S;const p1=pj(ar([x,y,z0])),p2=pj(ar([x,y,z1]));ctx.globalAlpha=(Math.cos(a-ry)*.5+.5)*.35;ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.stroke();}ctx.globalAlpha=1;ctx.restore();}
+  function dA(r,angle,z,cw,col){const a=angle,sz=8,raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z],ta=cw?a+Math.PI/2:a-Math.PI/2;const a1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz,raw[1]+(-Math.sin(ta)+Math.sin(a))*sz,z],a2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz,raw[1]+(-Math.sin(ta)-Math.sin(a))*sz,z];const pp=pj(ar(raw)),pa1=pj(ar(a1)),pa2=pj(ar(a2));ctx.save();ctx.strokeStyle=col;ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);ctx.stroke();ctx.restore();}
+  function dB(b,fy){const g=hG[b.id];let wp=[b.pos[0]*S,b.pos[1]*S+fy,b.pos[2]*S+(g>0?g*30:0)];wp=rX(wp,rx);wp=rY(wp,ry);const pr=pj(wp),sf=Math.max(.35,pr[2]),al=Math.max(0,Math.min(1,(sf-.15)*3));if(al<.04)return;const sw=b.w*sf,sh=b.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;ctx.save();ctx.globalAlpha=al;ctx.shadowColor=b.style==='teal'?'rgba(59,158,148,.3)':'rgba(94,23,235,.3)';ctx.shadowBlur=(10+g*20)*sf;ctx.shadowOffsetY=(3+g*3)*sf;const grd=ctx.createLinearGradient(px,py,b.style==='teal'?px:px+sw,py+sh);if(b.style==='teal'){grd.addColorStop(0,g>0?'#4DBFB4':'#3B9E94');grd.addColorStop(1,g>0?'#2D7A72':'#2A7268');}else{grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');}ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.fillStyle='rgba(255,255,255,.96)';ctx.font=`600 ${Math.max(7,(b.style==='teal'?10:12)*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(b.label,pr[0],pr[1]);ctx.restore();const bnd=cvs.getBoundingClientRect();bR.push({x:bnd.left+px,y:bnd.top+py,w:sw,h:sh,id:b.id,label:b.label,info:b.info,icon:b.icon});}
+  function dL(text,p3,sz,col,bold){const p=pj(ar([p3[0]*S,p3[1]*S,p3[2]]));const a=Math.max(0,Math.min(1,(p[2]-.12)*3));if(a<.03)return;ctx.save();ctx.globalAlpha=a;ctx.fillStyle=col;ctx.font=`${bold?'600':'300'} ${Math.max(6,sz*p[2])}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,p[0],p[1]);ctx.restore();}
+  function loop(){
+    gT+=.013;bR=[];spS+=.0018;spH-=.0012;
+    if(!drag){vx*=.92;vy*=.92;rx+=vx;ry+=vy;if(Math.abs(vx)<.0004&&Math.abs(vy)<.0004)rx+=.0004;}
+    const bnd=cvs.getBoundingClientRect();const tx=(mX-bnd.left-W/2)/W*.06,ty=(mY-bnd.top-H/2)/H*.06;rx+=(ty-rx)*.018;ry+=(tx-ry)*.018;
+    ctx.clearRect(0,0,W,H);const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.7);bg.addColorStop(0,'rgba(220,210,255,.15)');bg.addColorStop(1,'rgba(247,246,252,0)');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    dD(B.outer.r,B.outer.z,'rgba(194,228,225,.18)');dD(B.service.r,B.service.z,'rgba(197,183,240,.48)');dD(B.human.r,B.human.z,'rgba(150,215,208,.6)');
+    dE(B.outer.r,B.outer.z,B.service.z,'rgba(175,155,230,.8)');dE(B.service.r,B.service.z,B.human.z,'rgba(140,210,205,.8)');dE(B.human.r,B.human.z,B.core.z,'rgba(120,200,193,.8)');
+    dR(B.outer.r,B.outer.z,'rgba(140,210,205,1)',2,[]);dR(B.service.r,B.service.z,'rgba(155,130,218,1)',1.8,[5,8]);dR(B.human.r,B.human.z,'rgba(80,175,168,1)',2.2,[]);
+    [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(a=>dA(B.service.r,a+spS,B.service.z,true,'rgba(120,95,200,1)'));
+    [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(a=>dA(B.human.r,a+spH,B.human.z,false,'rgba(60,155,148,1)'));
+    dL('AI & Robotics growth',[0,-1.48,0],12,'rgba(90,65,185,1)',true);dL('Service System',[0,1.20,B.service.z],11,'rgba(110,90,175,1)',false);dL('Human-Centered Innovation',[0,.88,B.human.z],10,'rgba(50,140,133,1)',false);dL('Systemic Innovation',[0,1.62,0],10,'rgba(160,148,200,1)',false);
+    badges.forEach((b,i)=>dB(b,Math.sin(gT+i*1.3)*3));
+    let nh=null;for(let i=bR.length-1;i>=0;i--){const r=bR[i];if(mX>=r.x&&mX<=r.x+r.w&&mY>=r.y&&mY<=r.y+r.h){nh=r.id;break;}}
+    hov=nh;badges.forEach(b=>{hG[b.id]+=((b.id===hov?1:0)-hG[b.id])*.1;});
+    cvs.style.cursor=hov?'pointer':drag?'grabbing':'grab';
+    const fz=B.core.z+Math.sin(gT*1.4)*4;let qq2=[0,0,fz];qq2=rX(qq2,rx);qq2=rY(qq2,ry);const pr=pj(qq2),sf=Math.max(.5,pr[2]),pa=Math.max(0,Math.min(1,(sf-.15)*3));
+    const pw=210*sf,ph=82*sf,r2=ph/2,ppx=pr[0]-pw/2,ppy=pr[1]-ph/2;
+    ctx.globalAlpha=pa;const pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);pgrd.addColorStop(0,'#7a35ef');pgrd.addColorStop(1,'#5e17eb');
+    ctx.shadowColor='rgba(94,23,235,.35)';ctx.shadowBlur=30*sf;ctx.shadowOffsetY=10*sf;ctx.fillStyle=pgrd;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph,r2);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+    ctx.fillStyle='#fff';ctx.font=`700 ${Math.max(9,17*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr[0],pr[1]);ctx.globalAlpha=1;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* EXPERTISE */
+(function(){
+  const data={
+    'ci':'Clinical intelligence is the ground truth that separates Servizions. We observe real clinical environments — mapping workflows, interviewing clinicians, and identifying adoption barriers no desk research can capture.',
+    'vp':'A clear value proposition is the most critical missing element in most healthcare technology launches. We design value propositions that align clinical outcomes, operational ROI, and stakeholder needs.',
+    'fs':'Our scenario cone method builds structured visions of the healthcare system as it is evolving — grounded in clinical signals, not market projections.',
+    'cw':'Clinical workflow design maps step-by-step processes in real clinical settings. We identify exactly where technologies fit, where they break down, and how adoption can be seamless.',
+    'ta':'Technology adoption requires governance, training, stakeholder alignment, and workflow integration. We build the complete adoption architecture grounded in your clinical environment.',
+    'sd':'Human-centered design starts from the lived experience of every person the technology must serve. Observation before assumption.',
+    'pp':'The pre-product phase is the most critical and most neglected stage. We specialise in shaping value proposition and service concept before a technology is finalised.',
+    'ro':'Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement.',
+    'hs':'Healthcare system design looks at how hospitals, clinics, technology providers, payers, and patients interact as a connected system — and where your innovation fits.'
+  };
+  const tags=qa('.exp-tag'),pan=q('#epan'),bd=q('#ebd');
+  let active=null;
+  tags.forEach(tag=>{
+    tag.addEventListener('click',()=>{
+      const k=tag.dataset.k;
+      if(active===k){pan.classList.remove('open');tag.classList.remove('active');active=null;return;}
+      tags.forEach(t=>t.classList.remove('active'));
+      bd.textContent=data[k];tag.classList.add('active');pan.classList.add('open');active=k;
+    });
+  });
+})();
+
+/* REVEALS */
+const rvO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvO.unobserve(e.target);}});
+},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+qa('.rv').forEach(el=>rvO.observe(el));
+
+})();
+</script>
 </body>
 </html>

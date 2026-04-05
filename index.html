@@ -643,53 +643,6 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
     </div><!-- /sc-right -->
 </div>
 
-<!-- GLOBE -->
-<section class="globe" id="s4">
-  <div class="globe-bg"></div>
-  <canvas id="gcvs"></canvas>
-  <div class="globe-ui">
-    <div class="globe-tag rv">Systemic Innovation</div>
-    <p class="globe-dsc rv">An interconnected system of methods — drag and click to explore</p>
-  </div>
-  <div id="gpan" class="gpan">
-    <button id="gpc" class="gpc">×</button>
-    <div id="gpt" class="gpt"></div>
-    <div id="gph" class="gph"></div>
-    <div id="gpd" class="gpd"></div>
-  </div>
-</section>
-
-<!-- EXPERTISE -->
-<section class="exp-sec">
-  <div class="W">
-    <span class="el rv">Areas of Expertise</span>
-    <h2 class="exp-ttl rv">Select an area to explore</h2>
-    <div class="exp-tags rv">
-      <button class="exp-tag" data-k="ci">Clinical Intelligence</button>
-      <button class="exp-tag" data-k="vp">Value Proposition Design</button>
-      <button class="exp-tag" data-k="fs">Future Scenario Planning</button>
-      <button class="exp-tag" data-k="cw">Clinical Workflow Design</button>
-      <button class="exp-tag" data-k="ta">Technology Adoption</button>
-      <button class="exp-tag" data-k="sd">Human-Centered Design</button>
-      <button class="exp-tag" data-k="pp">Pre-Product Innovation</button>
-      <button class="exp-tag" data-k="ro">Medical Robotics</button>
-      <button class="exp-tag" data-k="hs">Healthcare System Design</button>
-    </div>
-    <div class="exp-pan" id="epan"><div class="exp-in"><p class="exp-bd" id="ebd"></p></div></div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="proc-sec" id="s5">
-  <div class="W">
-    <span class="el rv">How We Work</span>
-    <h2 class="proc-ttl rv">Three acts.<br>One coherent system.</h2>
-    <div class="pi rv"><span class="pi-n">01</span><h3 class="pi-nm">Clinical<br><em>Intelligence</em></h3><div class="pi-bd"><p class="pi-ds">Direct immersion into your clinical environment — observing real workflows, interviewing clinicians, mapping adoption barriers that desk research misses entirely.</p><span class="pi-tg">Fieldwork · Observation</span></div></div>
-    <div class="pi rv"><span class="pi-n">02</span><h3 class="pi-nm">Scenario<br><em>Cone</em></h3><div class="pi-bd"><p class="pi-ds">Structuring the futures the healthcare system is already moving toward — grounded in observed clinical signals, not market projections.</p><span class="pi-tg">Foresight · Strategy</span></div></div>
-    <div class="pi rv"><span class="pi-n">03</span><h3 class="pi-nm">Service<br><em>System</em></h3><div class="pi-bd"><p class="pi-ds">Building the complete innovation layer — value proposition, clinical workflows, training architecture, governance frameworks, and adoption infrastructure.</p><span class="pi-tg">Service Design · Architecture</span></div></div>
-    <div class="pi rv" style="border-bottom:1px solid rgba(59,15,160,.1)"><span class="pi-n">04</span><h3 class="pi-nm">Deliver</h3><div class="pi-bd"><p class="pi-ds">A fully designed innovation layer — defensible, clinically grounded, ready to present to clinical decision-makers and investment committees.</p><span class="pi-tg">Activation · Handover</span></div></div>
-  </div>
-</section>
 
 <!-- INSIGHTS -->
 <section class="ins-sec">
@@ -776,7 +729,7 @@ const mb=q('#mbtn'),mn=q('#mnav');
 if(mb)mb.addEventListener('click',()=>{mb.classList.toggle('open');mn.classList.toggle('open');});
 
 /* SIDE DOTS */
-const secs=[q('#s0'),q('#s1'),q('#s2'),q('#s3'),q('#s5'),q('#s6')];
+const secs=[q('#s0'),q('#s1'),q('#s2'),q('#s3'),q('#s6')];
 const sdots=qa('.sdot');
 sdots.forEach((d,i)=>d.addEventListener('click',()=>secs[i]&&secs[i].scrollIntoView({behavior:'smooth'})));
 const dO=new IntersectionObserver(entries=>{
@@ -859,69 +812,6 @@ if(q('.nums'))cO.observe(q('.nums'));
   });
 })();
 
-/* GLOBE */
-(function(){
-  const cvs=q('#gcvs');if(!cvs)return;
-  const ctx=cvs.getContext('2d');let W,H,CX,CY;
-  function rsz(){const d=window.devicePixelRatio||1;W=cvs.offsetWidth;H=cvs.offsetHeight;cvs.width=W*d;cvs.height=H*d;ctx.scale(d,d);CX=W/2;CY=H/2;}
-  rsz();window.addEventListener('resize',rsz);
-  const S=200;let rx=.22,ry=.04,vx=0,vy=0,drag=false,lmx=0,lmy=0;
-  let gT=0,spS=0,spH=0,mX=W/2,mY=H/2,hov=null,bR=[];
-  const hG={};
-  const B={outer:{r:1.36,z:0},service:{r:1.08,z:24},human:{r:.76,z:48},core:{z:68}};
-  const badges=[
-    {id:'em',label:'Empathy',style:'teal',pos:[0,-.44,48/S],w:88,h:27,icon:'01',info:'Deep observation and active listening to understand patient needs and lived healthcare experiences.'},
-    {id:'sy',label:'Synthesis',style:'teal',pos:[-.30,.26,48/S],w:88,h:27,icon:'02',info:'Integrating research insights into clear design principles and actionable innovation opportunities.'},
-    {id:'co',label:'Co-Design',style:'teal',pos:[.30,.26,48/S],w:94,h:27,icon:'03',info:'Co-creating solutions with patients and clinicians so innovations truly fit clinical reality.'},
-    {id:'pa',label:'Patient Journey',style:'purple',pos:[.90,0,24/S],w:150,h:37,icon:'04',info:'Mapping every touchpoint of the patient experience to design compassionate healthcare interactions.'},
-    {id:'ad',label:'Adoption Strategy',style:'purple',pos:[-.90,0,24/S],w:162,h:37,icon:'05',info:'Driving technology uptake through behavioral change frameworks and stakeholder alignment.'},
-    {id:'bp',label:'Service Blueprint',style:'purple',pos:[-.82,.52,24/S],w:156,h:37,icon:'06',info:'Orchestrating front-stage and back-stage processes to deliver seamless, scalable healthcare services.'},
-    {id:'cl',label:'Clinician Workflow',style:'purple',pos:[.82,.52,24/S],w:168,h:37,icon:'07',info:'Integrating AI and robotics into clinical practice without disrupting the natural rhythm of care.'}
-  ];
-  badges.forEach(b=>{hG[b.id]=0;});
-  const rX=(p,a)=>{const c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];};
-  const rY=(p,a)=>{const c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];};
-  const FL=860;
-  const pj=p=>{const z=p[2]+FL,sc=FL/z;return[CX+p[0]*sc,CY+p[1]*sc,sc];};
-  const ar=p=>{let q=[...p];q=rX(q,rx);q=rY(q,ry);return q;};
-  cvs.addEventListener('mousedown',e=>{drag=true;lmx=e.clientX;lmy=e.clientY;vx=vy=0;});
-  window.addEventListener('mousemove',e=>{mX=e.clientX;mY=e.clientY;if(!drag)return;vy=(e.clientX-lmx)*.009;vx=(e.clientY-lmy)*.009;ry+=vy;rx+=vx;lmx=e.clientX;lmy=e.clientY;});
-  window.addEventListener('mouseup',()=>{drag=false;});
-  cvs.addEventListener('touchstart',e=>{const t=e.touches[0];drag=true;lmx=t.clientX;lmy=t.clientY;vx=vy=0;},{passive:true});
-  window.addEventListener('touchmove',e=>{const t=e.touches[0];if(!drag)return;vy=(t.clientX-lmx)*.009;vx=(t.clientY-lmy)*.009;ry+=vy;rx+=vx;lmx=t.clientX;lmy=t.clientY;},{passive:true});
-  window.addEventListener('touchend',()=>{drag=false;});
-  cvs.addEventListener('click',e=>{for(let i=bR.length-1;i>=0;i--){const r=bR[i];if(e.clientX>=r.x&&e.clientX<=r.x+r.w&&e.clientY>=r.y&&e.clientY<=r.y+r.h&&r.info){q('#gph').textContent=r.label;q('#gpd').textContent=r.info;q('#gpt').textContent='NODE · '+r.icon;q('#gpan').classList.add('on');break;}}});
-  if(q('#gpc'))q('#gpc').onclick=()=>q('#gpan').classList.remove('on');
-  function dR(r,z,col,lw,dash){const pts=[];for(let i=0;i<=120;i++){const a=(i/120)*Math.PI*2;pts.push(pj(ar([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}ctx.save();ctx.strokeStyle=col;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();ctx.setLineDash([]);ctx.restore();}
-  function dD(r,z,fill){const pts=[];for(let i=0;i<=90;i++){const a=(i/90)*Math.PI*2;pts.push(pj(ar([Math.cos(a)*r*S,Math.sin(a)*r*S,z])));}ctx.save();ctx.fillStyle=fill;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fill();ctx.restore();}
-  function dE(r,z0,z1,col){ctx.save();ctx.strokeStyle=col;ctx.lineWidth=1;for(let i=0;i<90;i++){const a=(i/90)*Math.PI*2,x=Math.cos(a)*r*S,y=Math.sin(a)*r*S;const p1=pj(ar([x,y,z0])),p2=pj(ar([x,y,z1]));ctx.globalAlpha=(Math.cos(a-ry)*.5+.5)*.35;ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.stroke();}ctx.globalAlpha=1;ctx.restore();}
-  function dA(r,angle,z,cw,col){const a=angle,sz=8,raw=[Math.cos(a)*r*S,Math.sin(a)*r*S,z],ta=cw?a+Math.PI/2:a-Math.PI/2;const a1=[raw[0]+(-Math.cos(ta)+Math.cos(a))*sz,raw[1]+(-Math.sin(ta)+Math.sin(a))*sz,z],a2=[raw[0]+(-Math.cos(ta)-Math.cos(a))*sz,raw[1]+(-Math.sin(ta)-Math.sin(a))*sz,z];const pp=pj(ar(raw)),pa1=pj(ar(a1)),pa2=pj(ar(a2));ctx.save();ctx.strokeStyle=col;ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(pa1[0],pa1[1]);ctx.lineTo(pp[0],pp[1]);ctx.lineTo(pa2[0],pa2[1]);ctx.stroke();ctx.restore();}
-  function dB(b,fy){const g=hG[b.id];let wp=[b.pos[0]*S,b.pos[1]*S+fy,b.pos[2]*S+(g>0?g*30:0)];wp=rX(wp,rx);wp=rY(wp,ry);const pr=pj(wp),sf=Math.max(.35,pr[2]),al=Math.max(0,Math.min(1,(sf-.15)*3));if(al<.04)return;const sw=b.w*sf,sh=b.h*sf,rad=sh/2,px=pr[0]-sw/2,py=pr[1]-sh/2;ctx.save();ctx.globalAlpha=al;ctx.shadowColor=b.style==='teal'?'rgba(59,158,148,.3)':'rgba(94,23,235,.3)';ctx.shadowBlur=(10+g*20)*sf;ctx.shadowOffsetY=(3+g*3)*sf;const grd=ctx.createLinearGradient(px,py,b.style==='teal'?px:px+sw,py+sh);if(b.style==='teal'){grd.addColorStop(0,g>0?'#4DBFB4':'#3B9E94');grd.addColorStop(1,g>0?'#2D7A72':'#2A7268');}else{grd.addColorStop(0,g>0?'#8872e0':'#7560d0');grd.addColorStop(1,g>0?'#6a35d4':'#5e17eb');}ctx.fillStyle=grd;ctx.beginPath();ctx.roundRect(px,py,sw,sh,rad);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.fillStyle='rgba(255,255,255,.96)';ctx.font=`600 ${Math.max(7,(b.style==='teal'?10:12)*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(b.label,pr[0],pr[1]);ctx.restore();const bnd=cvs.getBoundingClientRect();bR.push({x:bnd.left+px,y:bnd.top+py,w:sw,h:sh,id:b.id,label:b.label,info:b.info,icon:b.icon});}
-  function dL(text,p3,sz,col,bold){const p=pj(ar([p3[0]*S,p3[1]*S,p3[2]]));const a=Math.max(0,Math.min(1,(p[2]-.12)*3));if(a<.03)return;ctx.save();ctx.globalAlpha=a;ctx.fillStyle=col;ctx.font=`${bold?'600':'300'} ${Math.max(6,sz*p[2])}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,p[0],p[1]);ctx.restore();}
-  function loop(){
-    gT+=.013;bR=[];spS+=.0018;spH-=.0012;
-    if(!drag){vx*=.92;vy*=.92;rx+=vx;ry+=vy;if(Math.abs(vx)<.0004&&Math.abs(vy)<.0004)rx+=.0004;}
-    const bnd=cvs.getBoundingClientRect();const tx=(mX-bnd.left-W/2)/W*.06,ty=(mY-bnd.top-H/2)/H*.06;rx+=(ty-rx)*.018;ry+=(tx-ry)*.018;
-    ctx.clearRect(0,0,W,H);const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*.7);bg.addColorStop(0,'rgba(220,210,255,.15)');bg.addColorStop(1,'rgba(247,246,252,0)');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-    dD(B.outer.r,B.outer.z,'rgba(194,228,225,.18)');dD(B.service.r,B.service.z,'rgba(197,183,240,.48)');dD(B.human.r,B.human.z,'rgba(150,215,208,.6)');
-    dE(B.outer.r,B.outer.z,B.service.z,'rgba(175,155,230,.8)');dE(B.service.r,B.service.z,B.human.z,'rgba(140,210,205,.8)');dE(B.human.r,B.human.z,B.core.z,'rgba(120,200,193,.8)');
-    dR(B.outer.r,B.outer.z,'rgba(140,210,205,1)',2,[]);dR(B.service.r,B.service.z,'rgba(155,130,218,1)',1.8,[5,8]);dR(B.human.r,B.human.z,'rgba(80,175,168,1)',2.2,[]);
-    [0,Math.PI/2,Math.PI,3*Math.PI/2].forEach(a=>dA(B.service.r,a+spS,B.service.z,true,'rgba(120,95,200,1)'));
-    [Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4].forEach(a=>dA(B.human.r,a+spH,B.human.z,false,'rgba(60,155,148,1)'));
-    dL('AI & Robotics growth',[0,-1.48,0],12,'rgba(90,65,185,1)',true);dL('Service System',[0,1.20,B.service.z],11,'rgba(110,90,175,1)',false);dL('Human-Centered Innovation',[0,.88,B.human.z],10,'rgba(50,140,133,1)',false);dL('Systemic Innovation',[0,1.62,0],10,'rgba(160,148,200,1)',false);
-    badges.forEach((b,i)=>dB(b,Math.sin(gT+i*1.3)*3));
-    let nh=null;for(let i=bR.length-1;i>=0;i--){const r=bR[i];if(mX>=r.x&&mX<=r.x+r.w&&mY>=r.y&&mY<=r.y+r.h){nh=r.id;break;}}
-    hov=nh;badges.forEach(b=>{hG[b.id]+=((b.id===hov?1:0)-hG[b.id])*.1;});
-    cvs.style.cursor=hov?'pointer':drag?'grabbing':'grab';
-    const fz=B.core.z+Math.sin(gT*1.4)*4;let qq=[0,0,fz];qq=rX(qq,rx);qq=rY(qq,ry);const pr=pj(qq),sf=Math.max(.5,pr[2]),pa=Math.max(0,Math.min(1,(sf-.15)*3));
-    const pw=210*sf,ph=82*sf,r2=ph/2,ppx=pr[0]-pw/2,ppy=pr[1]-ph/2;
-    ctx.globalAlpha=pa;const pgrd=ctx.createLinearGradient(ppx,ppy,ppx+pw,ppy+ph);pgrd.addColorStop(0,'#7a35ef');pgrd.addColorStop(1,'#5e17eb');
-    ctx.shadowColor='rgba(94,23,235,.35)';ctx.shadowBlur=30*sf;ctx.shadowOffsetY=10*sf;ctx.fillStyle=pgrd;ctx.beginPath();ctx.roundRect(ppx,ppy,pw,ph,r2);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
-    ctx.fillStyle='#fff';ctx.font=`700 ${Math.max(9,17*sf)}px Outfit,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('SERVIZIONS',pr[0],pr[1]);ctx.globalAlpha=1;
-    requestAnimationFrame(loop);
-  }
-  loop();
-})();
 
 /* HERO PARTICLES — purple */
 (function(){
@@ -949,29 +839,7 @@ if(q('.nums'))cO.observe(q('.nums'));
 })();
 
 /* EXPERTISE */
-(function(){
-  const data={
-    'ci':'Clinical intelligence is the ground truth that separates Servizions. We observe real clinical environments — mapping workflows, interviewing clinicians, and identifying adoption barriers no desk research can capture.',
-    'vp':'A clear value proposition is the most critical missing element in most healthcare technology launches. We design value propositions that align clinical outcomes, operational ROI, and stakeholder needs.',
-    'fs':'Our scenario cone method builds structured visions of the healthcare system as it is evolving — grounded in clinical signals, not market projections.',
-    'cw':'Clinical workflow design maps step-by-step processes in real clinical settings. We identify exactly where technologies fit, where they break down, and how adoption can be seamless.',
-    'ta':'Technology adoption requires governance, training, stakeholder alignment, and workflow integration. We build the complete adoption architecture grounded in your clinical environment.',
-    'sd':'Human-centered design starts from the lived experience of every person the technology must serve. Observation before assumption.',
-    'pp':'The pre-product phase is the most critical and most neglected stage. We specialise in shaping value proposition and service concept before a technology is finalised.',
-    'ro':'Medical robotics integration requires building the entire service ecosystem — clinical training, workflow redesign, governance frameworks, and value measurement.',
-    'hs':'Healthcare system design looks at how hospitals, clinics, technology providers, payers, and patients interact as a connected system — and where your innovation fits.'
-  };
-  const tags=qa('.exp-tag'),pan=q('#epan'),bd=q('#ebd');
-  let active=null;
-  tags.forEach(tag=>{
-    tag.addEventListener('click',()=>{
-      const k=tag.dataset.k;
-      if(active===k){pan.classList.remove('open');tag.classList.remove('active');active=null;return;}
-      tags.forEach(t=>t.classList.remove('active'));
-      bd.textContent=data[k];tag.classList.add('active');pan.classList.add('open');active=k;
-    });
-  });
-})();
+
 
 /* CLOSING reveal */
 (function(){

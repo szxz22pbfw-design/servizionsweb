@@ -5,744 +5,474 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services – Clinical Intelligence & Service Innovation | Servizions</title>
   <meta name="description" content="Servizions bridges medtech and healthcare robotics companies with the real clinical world.">
+  <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --ink:           #0E0A1F;
-      --purple:        #3B0FA0;
-      --purple-dark:   #1E0660;
-      --purple-deeper: #0D0330;
-      --purple-mid:    #5A2BD6;
-      --purple-soft:   #7B55E0;
-      --purple-light:  #F0ECFB;
-      --purple-pale:   #F8F6FE;
-      --teal:          #3B9E94;
-      --white:         #FFFFFF;
-      --stone:         #F4F2EF;
-      --off-white:     #FAFAF8;
-      --text-mid:      #4A4263;
-      --text-light:    #8A7FAA;
-      --border:        rgba(59,15,160,0.10);
-      --border-strong: rgba(59,15,160,0.22);
-      --font-display:  'Cormorant Garamond', Georgia, serif;
-      --font-body:     'Outfit', system-ui, sans-serif;
-      --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+    :root{
+      --ink:#0E0A1F;--purple:#3B0FA0;--purple-dark:#1E0660;--purple-deeper:#0D0330;
+      --purple-mid:#5A2BD6;--purple-soft:#7B55E0;--purple-light:#F0ECFB;--purple-pale:#F8F6FE;
+      --teal:#3B9E94;--teal-l:#4DBFB4;--white:#FFFFFF;--stone:#F4F2EF;--off-white:#FAFAF8;
+      --text-mid:#4A4263;--text-light:#8A7FAA;
+      --border:rgba(59,15,160,0.10);--border-strong:rgba(59,15,160,0.22);
+      --fd:'Cormorant Garamond',Georgia,serif;--fb:'Outfit',system-ui,sans-serif;--fm:'Space Mono',monospace;
+      --ease:cubic-bezier(0.16,1,0.3,1);
+      --shadow-sm:0 1px 4px rgba(14,10,31,.06);--shadow-md:0 6px 24px rgba(14,10,31,.08);
+      --radius-sm:8px;--radius-md:14px;--radius-lg:22px;
     }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{-webkit-font-smoothing:antialiased;}
+    body{font-family:var(--fb);background:var(--ink);color:var(--white);overflow-x:clip;padding-top:70px;}
+    a{color:inherit;text-decoration:none;}
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-    body { font-family: var(--font-body); background: var(--ink); color: var(--white); overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
+    /* NAV */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:9000;padding:0 64px;background:rgba(13,3,48,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:transform .4s var(--ease);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
+    .logo-text{font-family:var(--fd);font-size:22px;font-weight:500;letter-spacing:.04em;color:white;}
+    .nav-links{display:flex;gap:38px;align-items:center;}
+    .nav-link{font-size:11px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;transition:color .3s;}
+    .nav-link:hover,.nav-link.active{color:white;}
+    .nav-cta{background:rgba(90,43,214,.25);color:rgba(255,255,255,.9)!important;padding:9px 22px;border-radius:999px;border:1px solid rgba(90,43,214,.45);transition:all .3s!important;}
+    .nav-cta:hover{background:var(--purple-mid)!important;color:white!important;}
 
-    /* ── NAVBAR ── */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
-      padding: 0 64px;
-      background: rgba(13,3,48,0.94);
-      backdrop-filter: blur(20px) saturate(160%);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.4s var(--ease-out);
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
-    .logo-text { font-family: var(--font-display); font-size: 22px; font-weight: 500; letter-spacing: 0.04em; color: white; }
-    .nav-links { display: flex; gap: 38px; align-items: center; }
-    .nav-link { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
-    .nav-link:hover, .nav-link.active { color: white; }
-    .nav-cta { background: rgba(90,43,214,0.25); color: rgba(255,255,255,0.9) !important; padding: 9px 22px; border-radius: 999px; border: 1px solid rgba(90,43,214,0.45); transition: all 0.3s !important; }
-    .nav-cta:hover { background: var(--purple-mid) !important; color: white !important; }
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 110px;position:relative;overflow:hidden;background:var(--ink);}
+    .hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 65% at 68% 28%,rgba(90,43,214,.22) 0%,transparent 60%),radial-gradient(ellipse 45% 40% at 18% 78%,rgba(59,158,148,.12) 0%,transparent 55%);}
+    .hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);background-size:80px 80px;}
+    .hero-content{position:relative;z-index:2;}
+    .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:34px;opacity:0;transform:translateY(18px);animation:fadeUp .9s var(--ease) .2s forwards;}
+    .eyebrow-rule{width:40px;height:1px;background:rgba(123,85,224,.65);}
+    .eyebrow-txt{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(123,85,224,.85);font-weight:600;font-family:var(--fm);}
+    .hero-h1{font-family:var(--fd);font-size:clamp(54px,7.5vw,116px);font-weight:400;font-style:italic;color:white;line-height:.97;letter-spacing:-1.5px;max-width:920px;opacity:0;transform:translateY(28px);animation:fadeUp 1s var(--ease) .35s forwards;}
+    .hero-sub{margin-top:38px;font-size:16px;font-weight:300;color:rgba(255,255,255,.48);max-width:500px;line-height:1.85;opacity:0;transform:translateY(18px);animation:fadeUp .9s var(--ease) .55s forwards;}
+    .hero-actions{display:flex;align-items:center;gap:18px;margin-top:52px;opacity:0;transform:translateY(18px);animation:fadeUp .9s var(--ease) .7s forwards;}
+    .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--purple);color:white;padding:16px 36px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;}
+    .btn-primary:hover{background:var(--purple-mid);transform:translateY(-1px);box-shadow:0 8px 32px rgba(90,43,214,.45);}
+    .btn-ghost{display:inline-flex;align-items:center;color:rgba(255,255,255,.5);padding:16px 28px;border-radius:999px;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.14);transition:all .3s;}
+    .btn-ghost:hover{color:white;border-color:rgba(255,255,255,.35);}
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 80px 110px;
-      position: relative; overflow: hidden;
-      background: var(--ink);
-    }
-    .hero-glow {
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 75% 65% at 68% 28%, rgba(90,43,214,0.22) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 40% at 18% 78%, rgba(59,158,148,0.12) 0%, transparent 55%);
-    }
-    .hero-grid {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image: linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-      background-size: 80px 80px;
-    }
-    .hero-content { position: relative; z-index: 2; }
-    .hero-eyebrow {
-      display: flex; align-items: center; gap: 14px; margin-bottom: 34px;
-      opacity: 0; transform: translateY(18px);
-      animation: fadeUp 0.9s var(--ease-out) 0.2s forwards;
-    }
-    .eyebrow-rule { width: 40px; height: 1px; background: rgba(123,85,224,0.65); }
-    .eyebrow-txt { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(123,85,224,0.85); font-weight: 600; }
-    .hero-h1 {
-      font-family: var(--font-display);
-      font-size: clamp(54px, 7.5vw, 116px);
-      font-weight: 400; font-style: italic;
-      color: white; line-height: 0.97; letter-spacing: -1.5px; max-width: 920px;
-      opacity: 0; transform: translateY(28px);
-      animation: fadeUp 1s var(--ease-out) 0.35s forwards;
-    }
-    .hero-sub {
-      margin-top: 38px; font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.48); max-width: 500px; line-height: 1.85;
-      opacity: 0; transform: translateY(18px);
-      animation: fadeUp 0.9s var(--ease-out) 0.55s forwards;
-    }
-    .hero-actions {
-      display: flex; align-items: center; gap: 18px; margin-top: 52px;
-      opacity: 0; transform: translateY(18px);
-      animation: fadeUp 0.9s var(--ease-out) 0.7s forwards;
-    }
-    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--purple); color: white; padding: 16px 36px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.3s; }
-    .btn-primary:hover { background: var(--purple-mid); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(90,43,214,0.45); }
-    .btn-ghost { display: inline-flex; align-items: center; color: rgba(255,255,255,0.5); padding: 16px 28px; border-radius: 999px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.14); transition: all 0.3s; }
-    .btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.35); }
-    .hero-scroll-ind {
-      position: absolute; right: 80px; bottom: 110px; z-index: 2;
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      opacity: 0; animation: fadeUp 0.9s var(--ease-out) 1s forwards;
-    }
-    .scroll-line { width: 1px; height: 56px; background: linear-gradient(to bottom, rgba(123,85,224,0.6), transparent); animation: scrollPulse 2s ease-in-out infinite; }
-    .scroll-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(123,85,224,0.5); writing-mode: vertical-rl; }
-    @keyframes scrollPulse { 0%,100%{opacity:1;height:56px} 50%{opacity:0.3;height:36px} }
+    /* MARQUEE */
+    .marquee-bar{background:var(--purple-dark);overflow:hidden;padding:17px 0;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);}
+    .marquee-track{display:flex;white-space:nowrap;animation:marqueeScroll 42s linear infinite;}
+    .marquee-track span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);padding:0 22px;font-family:var(--fm);}
+    .marquee-track .mdot{color:rgba(123,85,224,.65)!important;}
 
-    /* ── MARQUEE ── */
-    .marquee-bar { background: var(--purple-dark); overflow: hidden; padding: 17px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 10; }
-    .marquee-track { display: flex; white-space: nowrap; animation: marqueeScroll 42s linear infinite; }
-    .marquee-track span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.32); padding: 0 22px; }
-    .marquee-track .mdot { color: rgba(123,85,224,0.65) !important; }
-    @keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    /* INTRO */
+    .intro-strip{background:var(--off-white);padding:80px;}
+    .intro-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:80px;align-items:center;}
+    .section-label{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-soft);font-weight:600;font-family:var(--fm);}
+    .intro-quote{font-family:var(--fd);font-size:clamp(22px,2.4vw,34px);font-weight:400;color:var(--ink);line-height:1.4;letter-spacing:-.2px;}
+    .intro-quote em{font-style:italic;color:var(--purple-mid);}
 
-    /* ── INTRO STRIP ── */
-    .intro-strip { background: var(--off-white); padding: 80px 80px; position: relative; z-index: 10; }
-    .intro-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 260px 1fr; gap: 80px; align-items: center; }
-    .section-label { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--purple-soft); font-weight: 600; }
-    .intro-quote { font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 34px); font-weight: 400; color: var(--ink); line-height: 1.4; letter-spacing: -0.2px; }
-    .intro-quote em { font-style: italic; color: var(--purple-mid); }
+    /* BREAKDOWN HEADER */
+    .breakdown-header{background:var(--white);padding:80px 80px 56px;border-bottom:1px solid var(--border);}
+    .breakdown-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;}
+    .breakdown-title{font-family:var(--fd);font-size:clamp(44px,5vw,72px);font-weight:400;color:var(--ink);line-height:1.0;letter-spacing:-.8px;margin-top:14px;}
+    .breakdown-title em{font-style:italic;}
+    .breakdown-right p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;border-left:2px solid var(--border-strong);padding-left:28px;}
 
-    /* ── BREAKDOWN HEADER ── */
-    .breakdown-header { background: var(--white); padding: 80px 80px 56px; border-bottom: 1px solid var(--border); position: relative; z-index: 10; }
-    .breakdown-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
-    .breakdown-title { font-family: var(--font-display); font-size: clamp(44px, 5vw, 72px); font-weight: 400; color: var(--ink); line-height: 1.0; letter-spacing: -0.8px; margin-top: 14px; }
-    .breakdown-title em { font-style: italic; }
-    .breakdown-right p { font-size: 16px; font-weight: 300; color: var(--text-mid); line-height: 1.9; border-left: 2px solid var(--border-strong); padding-left: 28px; }
+    /* STACKING CARDS */
+    .stack-section{position:relative;z-index:10;}
+    .stack-lane{position:relative;}
+    #lane-0{height:300vh;}#lane-1{height:200vh;}#lane-2{height:100vh;}
+    .stack-card{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;will-change:transform;transform-origin:center top;}
+    .stack-lane+.stack-lane .stack-card::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,rgba(0,0,0,.28),transparent);z-index:6;pointer-events:none;}
+    .card-inner{display:grid;grid-template-columns:1fr 1fr;height:100%;}
+    .card-content{display:flex;flex-direction:column;justify-content:center;padding:96px 72px;position:relative;overflow:hidden;}
+    .card-content::after{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;}
+    .card-num{font-family:var(--fd);font-size:130px;font-weight:300;line-height:1;letter-spacing:-6px;position:absolute;top:32px;left:56px;pointer-events:none;user-select:none;}
+    .card-act-label{font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin-bottom:18px;margin-top:90px;font-family:var(--fm);}
+    .card-name{font-family:var(--fd);font-size:clamp(34px,3.6vw,56px);font-weight:500;line-height:1.05;letter-spacing:-.5px;margin-bottom:8px;}
+    .card-tagline{font-family:var(--fd);font-size:clamp(17px,1.8vw,24px);font-weight:300;font-style:italic;line-height:1.35;margin-bottom:28px;}
+    .card-rule{width:48px;height:1px;margin-bottom:28px;}
+    .card-desc{font-size:15px;font-weight:300;line-height:1.9;max-width:460px;margin-bottom:36px;}
+    .card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px;}
+    .card-tag{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:999px;}
+    .card-cta{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:gap .3s;}
+    .card-cta:hover{gap:18px;}
+    .card-visual{position:relative;overflow:hidden;}
+    .card-visual-bg{position:absolute;inset:0;}
+    .card-visual-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;}
+    .orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;animation:orbFloat 9s ease-in-out infinite;}
+    .card-badge{position:absolute;bottom:52px;left:52px;background:rgba(255,255,255,.07);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px 30px;max-width:320px;}
+    .badge-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:10px;color:rgba(255,255,255,.42);font-family:var(--fm);}
+    .badge-text{font-family:var(--fd);font-size:20px;font-weight:400;font-style:italic;color:rgba(255,255,255,.88);line-height:1.4;}
+    .card-icon-ring{position:absolute;top:52px;right:52px;width:68px;height:68px;border:1px solid rgba(255,255,255,.10);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+    .card-1{background:var(--white);}
+    .card-1 .card-content::after{background:var(--border);}
+    .card-1 .card-num{color:rgba(59,15,160,.05);}
+    .card-1 .card-act-label{color:var(--purple-soft);}
+    .card-1 .card-name{color:var(--ink);}
+    .card-1 .card-tagline{color:var(--text-mid);}
+    .card-1 .card-rule{background:linear-gradient(to right,var(--purple-soft),transparent);}
+    .card-1 .card-desc{color:var(--text-mid);}
+    .card-1 .card-tag{color:var(--purple);border:1px solid var(--border-strong);background:var(--purple-pale);}
+    .card-1 .card-cta{color:var(--purple);}
+    .card-1 .card-visual-bg{background:radial-gradient(ellipse 70% 70% at 40% 35%,rgba(90,43,214,.32) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 82% 80%,rgba(59,158,148,.20) 0%,transparent 55%),linear-gradient(140deg,#0d0428 0%,#1a0845 100%);}
+    .card-2{background:var(--ink);}
+    .card-2 .card-content::after{background:rgba(255,255,255,.06);}
+    .card-2 .card-num{color:rgba(255,255,255,.04);}
+    .card-2 .card-act-label{color:rgba(123,85,224,.85);}
+    .card-2 .card-name{color:white;}
+    .card-2 .card-tagline{color:rgba(255,255,255,.45);}
+    .card-2 .card-rule{background:linear-gradient(to right,rgba(123,85,224,.7),transparent);}
+    .card-2 .card-desc{color:rgba(255,255,255,.50);}
+    .card-2 .card-tag{color:rgba(180,155,255,.9);border:1px solid rgba(123,85,224,.35);background:rgba(123,85,224,.12);}
+    .card-2 .card-cta{color:rgba(180,155,255,.9);}
+    .card-2 .card-visual-bg{background:radial-gradient(ellipse 65% 65% at 55% 30%,rgba(59,158,148,.30) 0%,transparent 60%),radial-gradient(ellipse 50% 55% at 20% 70%,rgba(90,43,214,.22) 0%,transparent 55%),linear-gradient(140deg,#071a17 0%,#0E0A1F 100%);}
+    .card-3{background:var(--stone);}
+    .card-3 .card-content::after{background:var(--border);}
+    .card-3 .card-num{color:rgba(59,15,160,.05);}
+    .card-3 .card-act-label{color:var(--purple-soft);}
+    .card-3 .card-name{color:var(--ink);}
+    .card-3 .card-tagline{color:var(--text-mid);}
+    .card-3 .card-rule{background:linear-gradient(to right,var(--purple-soft),transparent);}
+    .card-3 .card-desc{color:var(--text-mid);}
+    .card-3 .card-tag{color:var(--purple);border:1px solid var(--border-strong);background:rgba(59,15,160,.05);}
+    .card-3 .card-cta{color:var(--purple);}
+    .card-3 .card-visual-bg{background:radial-gradient(ellipse 70% 60% at 48% 50%,rgba(58,15,160,.36) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 88% 20%,rgba(180,140,255,.16) 0%,transparent 55%),linear-gradient(140deg,#120630 0%,#0E0A1F 100%);}
 
-    /* ── STACKING SECTION ── */
-    /*
-      Each .stack-lane is a tall scroll container.
-      Lane 0 → height = 3 × 100vh (card stays sticky while 2 more scroll past)
-      Lane 1 → height = 2 × 100vh
-      Lane 2 → height = 1 × 100vh  (just the card, no extra travel)
+    /* HOW WE WORK */
+    .process-section{background:var(--stone);padding:120px 80px;}
+    .process-inner{max-width:1200px;margin:0 auto;}
+    .process-header{margin-bottom:72px;}
+    .process-title{font-family:var(--fd);font-size:clamp(38px,4vw,56px);font-weight:400;color:var(--ink);line-height:1.1;letter-spacing:-.4px;margin-top:14px;}
+    .process-steps{display:flex;flex-direction:column;}
+    .process-step{display:grid;grid-template-columns:72px 1fr 1fr;align-items:start;border-top:1px solid rgba(59,15,160,.1);padding:48px 0;transition:background .3s;}
+    .process-step:hover{background:rgba(59,15,160,.02);}
+    .process-step:last-child{border-bottom:1px solid rgba(59,15,160,.1);}
+    .ps-num{font-family:var(--fd);font-size:18px;font-weight:300;color:var(--purple-soft);letter-spacing:.04em;padding-top:6px;}
+    .ps-name{font-family:var(--fd);font-size:clamp(26px,3vw,42px);font-weight:400;color:var(--ink);line-height:1.15;letter-spacing:-.3px;}
+    .ps-name em{font-style:italic;color:var(--purple-mid);}
+    .ps-body{padding-top:6px;}
+    .ps-desc{font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.85;max-width:400px;}
+    .ps-tag{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--purple-soft);margin-top:14px;}
 
-      The sticky card sits at top:0 and fills 100vh.
-      As the next lane scrolls in, its sticky card naturally slides up
-      from below and covers the previous one — like a stack of paper.
+    /* WHY */
+    .why-section{background:var(--purple-dark);padding:130px 80px;position:relative;z-index:10;}
+    .why-inner{max-width:1200px;margin:0 auto;}
+    .why-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px;}
+    .why-title{font-family:var(--fd);font-size:clamp(44px,5vw,68px);font-weight:400;color:white;line-height:1.0;letter-spacing:-.8px;margin-top:14px;}
+    .why-title em{font-style:italic;color:rgba(180,155,255,1);}
+    .why-header-p{font-size:15px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.9;border-left:1px solid rgba(255,255,255,.12);padding-left:28px;}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);border-radius:20px;overflow:hidden;}
+    .why-card{background:rgba(255,255,255,.03);padding:52px 48px;transition:background .35s;}
+    .why-card:hover{background:rgba(255,255,255,.07);}
+    .why-num{font-family:var(--fd);font-size:52px;font-weight:300;color:rgba(255,255,255,.06);line-height:1;margin-bottom:24px;}
+    .why-card h3{font-family:var(--fd);font-size:24px;font-weight:500;color:white;line-height:1.25;margin-bottom:12px;}
+    .why-card p{font-size:14px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.85;}
 
-      We drive a slight scale-down on the buried card via JS for depth.
-    */
-    .stack-section { position: relative; z-index: 10; }
+    /* CTA */
+    .cta-section{background:var(--ink);padding:150px 80px;text-align:center;position:relative;overflow:hidden;}
+    .cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 70% at 28% 50%,rgba(90,43,214,.22) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 75% 40%,rgba(59,158,148,.10) 0%,transparent 55%);}
+    .cta-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:80px 80px;}
+    .cta-inner{position:relative;z-index:2;}
+    .cta-eyebrow{display:block;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(123,85,224,.7);font-weight:600;margin-bottom:24px;font-family:var(--fm);}
+    .cta-h2{font-family:var(--fd);font-size:clamp(52px,7.5vw,104px);font-weight:400;font-style:italic;color:white;line-height:.97;letter-spacing:-1.5px;margin-bottom:28px;}
+    .cta-sub{font-size:16px;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:56px;}
+    .btn-white{display:inline-flex;align-items:center;gap:12px;background:white;color:var(--purple-dark);padding:18px 44px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;}
+    .btn-white:hover{background:var(--purple-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.35);}
 
-    .stack-lane { position: relative; }
-    /* Heights set by JS, but give sensible defaults */
-    #lane-0 { height: 300vh; }
-    #lane-1 { height: 200vh; }
-    #lane-2 { height: 100vh; }
+    /* FOOTER */
+    .footer{background:var(--purple-deeper);border-top:1px solid rgba(255,255,255,.05);}
+    .footer-top{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;padding:64px 80px 48px;border-bottom:1px solid rgba(255,255,255,.06);}
+    .footer-logo{font-family:var(--fd);font-size:28px;font-weight:500;letter-spacing:.04em;color:white;}
+    .footer-tagline{text-align:center;font-size:12px;font-weight:300;color:rgba(255,255,255,.28);line-height:1.7;}
+    .footer-nav{display:flex;gap:28px;justify-content:flex-end;}
+    .footer-nav a{font-size:11px;font-weight:500;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.38);transition:color .3s;}
+    .footer-nav a:hover{color:white;}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:22px 80px;color:rgba(255,255,255,.22);font-size:12px;}
+    .footer-links{display:flex;gap:24px;}
+    .footer-links a{color:rgba(255,255,255,.32);transition:color .3s;}
+    .footer-links a:hover{color:rgba(255,255,255,.78);}
 
-    .stack-card {
-      position: sticky; top: 0;
-      height: 100vh; width: 100%;
-      overflow: hidden;
-      will-change: transform;
-      transform-origin: center top;
-    }
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+    .reveal.in{opacity:1;transform:none;}
+    .d1{transition-delay:.10s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}
 
-    /* Shadow at top of each card (except first) for depth */
-    .stack-lane + .stack-lane .stack-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 80px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.28), transparent);
-      z-index: 6; pointer-events: none;
-    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+    @keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(14px,-20px) scale(1.06)}66%{transform:translate(-10px,12px) scale(.95)}}
 
-    .card-inner { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
-
-    /* Content side */
-    .card-content {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 96px 72px; position: relative; overflow: hidden;
-    }
-    .card-content::after {
-      content: '';
-      position: absolute; top: 0; right: 0; bottom: 0; width: 1px;
-    }
-
-    .card-num {
-      font-family: var(--font-display); font-size: 130px; font-weight: 300;
-      line-height: 1; letter-spacing: -6px;
-      position: absolute; top: 32px; left: 56px;
-      pointer-events: none; user-select: none;
-    }
-    .card-act-label { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; margin-top: 90px; }
-    .card-name { font-family: var(--font-display); font-size: clamp(34px, 3.6vw, 56px); font-weight: 500; line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 8px; }
-    .card-tagline { font-family: var(--font-display); font-size: clamp(17px, 1.8vw, 24px); font-weight: 300; font-style: italic; line-height: 1.35; margin-bottom: 28px; }
-    .card-rule { width: 48px; height: 1px; margin-bottom: 28px; }
-    .card-desc { font-size: 15px; font-weight: 300; line-height: 1.9; max-width: 460px; margin-bottom: 36px; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px; }
-    .card-tag { font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; }
-    .card-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: gap 0.3s; }
-    .card-cta:hover { gap: 18px; }
-
-    /* Visual side */
-    .card-visual { position: relative; overflow: hidden; }
-    .card-visual-bg { position: absolute; inset: 0; }
-    .card-visual-grid {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .orb { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; animation: orbFloat 9s ease-in-out infinite; }
-    @keyframes orbFloat { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(14px,-20px) scale(1.06)} 66%{transform:translate(-10px,12px) scale(0.95)} }
-    .card-badge {
-      position: absolute; bottom: 52px; left: 52px;
-      background: rgba(255,255,255,0.07); backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.12); border-radius: 18px;
-      padding: 26px 30px; max-width: 320px;
-    }
-    .badge-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; color: rgba(255,255,255,0.42); }
-    .badge-text { font-family: var(--font-display); font-size: 20px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.88); line-height: 1.4; }
-    .card-icon-ring { position: absolute; top: 52px; right: 52px; width: 68px; height: 68px; border: 1px solid rgba(255,255,255,0.10); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
-    /* ── Card 1: white bg ── */
-    .card-1 { background: var(--white); }
-    .card-1 .card-content::after { background: var(--border); }
-    .card-1 .card-num { color: rgba(59,15,160,0.05); }
-    .card-1 .card-act-label { color: var(--purple-soft); }
-    .card-1 .card-name { color: var(--ink); }
-    .card-1 .card-tagline { color: var(--text-mid); }
-    .card-1 .card-rule { background: linear-gradient(to right, var(--purple-soft), transparent); }
-    .card-1 .card-desc { color: var(--text-mid); }
-    .card-1 .card-tag { color: var(--purple); border: 1px solid var(--border-strong); background: var(--purple-pale); }
-    .card-1 .card-cta { color: var(--purple); }
-    .card-1 .card-visual-bg {
-      background: radial-gradient(ellipse 70% 70% at 40% 35%, rgba(90,43,214,0.32) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 82% 80%, rgba(59,158,148,0.20) 0%, transparent 55%),
-        linear-gradient(140deg, #0d0428 0%, #1a0845 100%);
-    }
-
-    /* ── Card 2: ink bg ── */
-    .card-2 { background: var(--ink); }
-    .card-2 .card-content::after { background: rgba(255,255,255,0.06); }
-    .card-2 .card-num { color: rgba(255,255,255,0.04); }
-    .card-2 .card-act-label { color: rgba(123,85,224,0.85); }
-    .card-2 .card-name { color: white; }
-    .card-2 .card-tagline { color: rgba(255,255,255,0.45); }
-    .card-2 .card-rule { background: linear-gradient(to right, rgba(123,85,224,0.7), transparent); }
-    .card-2 .card-desc { color: rgba(255,255,255,0.50); }
-    .card-2 .card-tag { color: rgba(180,155,255,0.9); border: 1px solid rgba(123,85,224,0.35); background: rgba(123,85,224,0.12); }
-    .card-2 .card-cta { color: rgba(180,155,255,0.9); }
-    .card-2 .card-visual-bg {
-      background: radial-gradient(ellipse 65% 65% at 55% 30%, rgba(59,158,148,0.30) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 55% at 20% 70%, rgba(90,43,214,0.22) 0%, transparent 55%),
-        linear-gradient(140deg, #071a17 0%, #0E0A1F 100%);
-    }
-
-    /* ── Card 3: stone bg ── */
-    .card-3 { background: var(--stone); }
-    .card-3 .card-content::after { background: var(--border); }
-    .card-3 .card-num { color: rgba(59,15,160,0.05); }
-    .card-3 .card-act-label { color: var(--purple-soft); }
-    .card-3 .card-name { color: var(--ink); }
-    .card-3 .card-tagline { color: var(--text-mid); }
-    .card-3 .card-rule { background: linear-gradient(to right, var(--purple-soft), transparent); }
-    .card-3 .card-desc { color: var(--text-mid); }
-    .card-3 .card-tag { color: var(--purple); border: 1px solid var(--border-strong); background: rgba(59,15,160,0.05); }
-    .card-3 .card-cta { color: var(--purple); }
-    .card-3 .card-visual-bg {
-      background: radial-gradient(ellipse 70% 60% at 48% 50%, rgba(58,15,160,0.36) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 88% 20%, rgba(180,140,255,0.16) 0%, transparent 55%),
-        linear-gradient(140deg, #120630 0%, #0E0A1F 100%);
-    }
-
-    /* ── WHY SECTION ── */
-    .why-section { background: var(--purple-dark); padding: 130px 80px; position: relative; z-index: 10; }
-    .why-inner { max-width: 1200px; margin: 0 auto; }
-    .why-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
-    .why-title { font-family: var(--font-display); font-size: clamp(44px, 5vw, 68px); font-weight: 400; color: white; line-height: 1.0; letter-spacing: -0.8px; margin-top: 14px; }
-    .why-title em { font-style: italic; color: rgba(180,155,255,1); }
-    .why-header-p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.42); line-height: 1.9; border-left: 1px solid rgba(255,255,255,0.12); padding-left: 28px; }
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.07); border-radius: 20px; overflow: hidden; }
-    .why-card { background: rgba(255,255,255,0.03); padding: 52px 48px; transition: background 0.35s; }
-    .why-card:hover { background: rgba(255,255,255,0.07); }
-    .why-num { font-family: var(--font-display); font-size: 52px; font-weight: 300; color: rgba(255,255,255,0.06); line-height: 1; margin-bottom: 24px; }
-    .why-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 500; color: white; line-height: 1.25; margin-bottom: 12px; }
-    .why-card p { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.42); line-height: 1.85; }
-
-    /* ── MARQUEE CTA ── */
-    .marquee-cta { background: var(--ink); overflow: hidden; padding: 26px 0; position: relative; z-index: 10; }
-    .marquee-cta-track { display: flex; white-space: nowrap; animation: marqueeScroll 30s linear infinite; }
-    .marquee-cta-track span { font-family: var(--font-display); font-size: 30px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.14); padding: 0 44px; }
-    .marquee-cta-track .accent { color: rgba(123,85,224,0.45) !important; font-style: normal; padding: 0 16px !important; }
-
-    /* ── CTA ── */
-    .cta-section { background: var(--ink); padding: 150px 80px; text-align: center; position: relative; overflow: hidden; }
-    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 65% 70% at 28% 50%, rgba(90,43,214,0.22) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 75% 40%, rgba(59,158,148,0.10) 0%, transparent 55%); }
-    .cta-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 80px 80px; }
-    .cta-inner { position: relative; z-index: 2; }
-    .cta-eyebrow { display: block; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(123,85,224,0.7); font-weight: 600; margin-bottom: 24px; }
-    .cta-h2 { font-family: var(--font-display); font-size: clamp(52px, 7.5vw, 104px); font-weight: 400; font-style: italic; color: white; line-height: 0.97; letter-spacing: -1.5px; margin-bottom: 28px; }
-    .cta-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.45); margin-bottom: 56px; }
-    .btn-white { display: inline-flex; align-items: center; gap: 12px; background: white; color: var(--purple-dark); padding: 18px 44px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.3s; }
-    .btn-white:hover { background: var(--purple-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
-
-    /* ── FOOTER ── */
-    .footer { background: var(--purple-deeper); border-top: 1px solid rgba(255,255,255,0.05); }
-    .footer-top { display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; padding: 64px 80px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .footer-logo { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: 0.04em; color: white; }
-    .footer-tagline { text-align: center; font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.28); line-height: 1.7; }
-    .footer-nav { display: flex; gap: 28px; justify-content: flex-end; }
-    .footer-nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.38); transition: color 0.3s; }
-    .footer-nav a:hover { color: white; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: 22px 80px; color: rgba(255,255,255,0.22); font-size: 12px; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: rgba(255,255,255,0.32); transition: color 0.3s; }
-    .footer-links a:hover { color: rgba(255,255,255,0.78); }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out); }
-    .reveal.in { opacity: 1; transform: none; }
-    .d1{transition-delay:.10s} .d2{transition-delay:.22s} .d3{transition-delay:.34s} .d4{transition-delay:.46s}
-
-    /* ── RESPONSIVE ── */
     @media(max-width:1024px){
-      .navbar{padding:0 40px} .hero{padding:0 48px 90px} .intro-strip{padding:64px 48px}
-      .intro-inner{grid-template-columns:1fr;gap:20px} .breakdown-header{padding:72px 48px 52px}
+      .navbar{padding:0 40px}.hero{padding:0 48px 90px}.intro-strip{padding:64px 48px}
+      .intro-inner{grid-template-columns:1fr;gap:20px}.breakdown-header{padding:72px 48px 52px}
       .breakdown-inner{grid-template-columns:1fr;gap:36px}
-      .card-inner{grid-template-columns:1fr} .card-visual{display:none}
-      .card-content{padding:80px 48px 60px} .card-num{font-size:80px}
-      .why-section{padding:100px 48px} .why-header{grid-template-columns:1fr;gap:32px}
-      .cta-section{padding:120px 48px} .footer-top{padding:48px 48px 36px} .footer-bottom{padding:22px 48px}
+      .card-inner{grid-template-columns:1fr}.card-visual{display:none}
+      .card-content{padding:80px 48px 60px}.process-section{padding:100px 48px}
+      .process-step{grid-template-columns:60px 1fr}.ps-body{grid-column:2}
+      .why-section{padding:100px 48px}.why-header{grid-template-columns:1fr;gap:32px}
+      .cta-section{padding:120px 48px}.footer-top{padding:48px 48px 36px}.footer-bottom{padding:22px 48px}
     }
     @media(max-width:768px){
-      .navbar{padding:0 24px} .nav-links{display:none}
-      .hero{padding:0 28px 80px} .hero-h1{font-size:48px} .hero-scroll-ind{display:none}
-      .intro-strip{padding:56px 28px} .breakdown-header{padding:64px 28px 44px}
-      .card-content{padding:72px 28px 56px}
-      .why-section{padding:80px 28px} .why-grid{grid-template-columns:1fr} .why-card{padding:40px 32px}
+      .navbar{padding:0 24px}.nav-links{display:none}.hero{padding:0 28px 80px}
+      .intro-strip{padding:56px 28px}.breakdown-header{padding:64px 28px 44px}
+      .card-content{padding:72px 28px 56px}.process-section{padding:80px 28px}
+      .process-step{grid-template-columns:48px 1fr}
+      .why-section{padding:80px 28px}.why-grid{grid-template-columns:1fr}.why-card{padding:40px 32px}
       .cta-section{padding:100px 28px}
       .footer-top{grid-template-columns:1fr;gap:24px;padding:40px 28px 28px}
-      .footer-nav{justify-content:flex-start} .footer-bottom{padding:18px 28px;flex-direction:column;gap:12px;align-items:flex-start}
-      .marquee-cta-track span{font-size:22px}
-      #lane-0{height:100vh!important} #lane-1{height:100vh!important} #lane-2{height:100vh!important}
+      .footer-nav{justify-content:flex-start}.footer-bottom{padding:18px 28px;flex-direction:column;gap:12px;align-items:flex-start}
+      #lane-0{height:100vh!important}#lane-1{height:100vh!important}#lane-2{height:100vh!important}
     }
   </style>
 </head>
 <body>
 
-  <header class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html"><span class="logo-text">Servizions</span></a>
-      <nav class="nav-links">
-        <a href="services.html" class="nav-link active">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-      </nav>
-    </div>
-  </header>
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html"><span class="logo-text">Servizions</span></a>
+    <nav class="nav-links">
+      <a href="services.html" class="nav-link active">Services</a>
+      <a href="solutions.html" class="nav-link">Solutions</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">
-        <span class="eyebrow-rule"></span>
-        <span class="eyebrow-txt">Services — Clinical Intelligence &amp; Service Innovation</span>
-      </div>
-      <h1 class="hero-h1">The innovation layer<br>most companies<br>never build.</h1>
-      <p class="hero-sub">Every engagement begins with observed clinical reality — not desk research. That is what makes the outputs defensible, specific, and unlike anything a strategy firm produces.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn-primary">
-          <span>Start a Conversation</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="about.html" class="btn-ghost">Our approach</a>
-      </div>
-    </div>
-    <div class="hero-scroll-ind">
-      <span class="scroll-label">Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee-bar">
-    <div class="marquee-track">
-      <span>Clinical Intelligence</span><span class="mdot">·</span>
-      <span>Scenario Cone</span><span class="mdot">·</span>
-      <span>Value Proposition Design</span><span class="mdot">·</span>
-      <span>Service System Design</span><span class="mdot">·</span>
-      <span>Medical Robotics</span><span class="mdot">·</span>
-      <span>Technology Adoption</span><span class="mdot">·</span>
-      <span>Observed Clinical Reality</span><span class="mdot">·</span>
-      <span>Future Scenario Planning</span><span class="mdot">·</span>
-      <span>Clinical Intelligence</span><span class="mdot">·</span>
-      <span>Scenario Cone</span><span class="mdot">·</span>
-      <span>Value Proposition Design</span><span class="mdot">·</span>
-      <span>Service System Design</span><span class="mdot">·</span>
-      <span>Medical Robotics</span><span class="mdot">·</span>
-      <span>Technology Adoption</span><span class="mdot">·</span>
-      <span>Observed Clinical Reality</span><span class="mdot">·</span>
-      <span>Future Scenario Planning</span><span class="mdot">·</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="eyebrow-rule"></span><span class="eyebrow-txt">Services — Clinical Intelligence &amp; Service Innovation</span></div>
+    <h1 class="hero-h1">The innovation layer<br>most companies<br>never build.</h1>
+    <p class="hero-sub">Every engagement begins with observed clinical reality — not desk research. That is what makes the outputs defensible, specific, and unlike anything a strategy firm produces.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary"><span>Start a Conversation</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="about.html" class="btn-ghost">Our approach</a>
     </div>
   </div>
+</section>
 
-  <!-- INTRO STRIP -->
-  <div class="intro-strip">
-    <div class="intro-inner">
-      <span class="section-label reveal">What We Do</span>
-      <p class="intro-quote reveal d1">The gap between a technology that works and a technology that is genuinely used is a <em>service design problem.</em> We solve it — from the clinical ground up.</p>
-    </div>
+<!-- MARQUEE -->
+<div class="marquee-bar"><div class="marquee-track">
+  <span>Clinical Intelligence</span><span class="mdot">·</span><span>Scenario Cone</span><span class="mdot">·</span><span>Value Proposition Design</span><span class="mdot">·</span><span>Service System Design</span><span class="mdot">·</span><span>Medical Robotics</span><span class="mdot">·</span><span>Technology Adoption</span><span class="mdot">·</span><span>Observed Clinical Reality</span><span class="mdot">·</span><span>Future Scenario Planning</span><span class="mdot">·</span>
+  <span>Clinical Intelligence</span><span class="mdot">·</span><span>Scenario Cone</span><span class="mdot">·</span><span>Value Proposition Design</span><span class="mdot">·</span><span>Service System Design</span><span class="mdot">·</span><span>Medical Robotics</span><span class="mdot">·</span><span>Technology Adoption</span><span class="mdot">·</span><span>Observed Clinical Reality</span><span class="mdot">·</span><span>Future Scenario Planning</span><span class="mdot">·</span>
+</div></div>
+
+<!-- INTRO -->
+<div class="intro-strip">
+  <div class="intro-inner">
+    <span class="section-label reveal">What We Do</span>
+    <p class="intro-quote reveal d1">The gap between a technology that works and a technology that is genuinely used is a <em>service design problem.</em> We solve it — from the clinical ground up.</p>
   </div>
+</div>
 
-  <!-- BREAKDOWN HEADER -->
-  <div class="breakdown-header">
-    <div class="breakdown-inner">
-      <div class="reveal">
-        <span class="section-label">Three Acts</span>
-        <h2 class="breakdown-title">Three engagements.<br><em>Clear scope.</em></h2>
-      </div>
-      <div class="reveal d2">
-        <p>Each engagement builds on the last. Act&nbsp;1 earns the right to Act&nbsp;3. Every output is structured, concrete, and grounded in what we have actually observed in your clinical environment.</p>
+<!-- BREAKDOWN HEADER -->
+<div class="breakdown-header">
+  <div class="breakdown-inner">
+    <div class="reveal"><span class="section-label">Three Acts</span><h2 class="breakdown-title">Three engagements.<br><em>Clear scope.</em></h2></div>
+    <div class="reveal d2"><p>Each engagement builds on the last. Act&nbsp;1 earns the right to Act&nbsp;3. Every output is structured, concrete, and grounded in what we have actually observed in your clinical environment.</p></div>
+  </div>
+</div>
+
+<!-- STACKING CARDS -->
+<div class="stack-section" id="stackSection">
+
+  <div class="stack-lane" id="lane-0">
+    <div class="stack-card card-1" id="card-0">
+      <div class="card-inner">
+        <div class="card-content">
+          <div class="card-num">01</div>
+          <p class="card-act-label">Act 1 — Where to Start</p>
+          <h2 class="card-name">Clinical Intelligence Sprint</h2>
+          <p class="card-tagline">Observed reality. Not desk research.</p>
+          <div class="card-rule"></div>
+          <p class="card-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone that shows you exactly where your technology fits and which product directions will survive the healthcare environment coming next.</p>
+          <div class="card-tags"><span class="card-tag">Fieldwork</span><span class="card-tag">Observation</span><span class="card-tag">Scenario Cone</span><span class="card-tag">Clinical Signals</span></div>
+          <a href="contact.html" class="card-cta"><span>Is this right for you? Talk to us</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9.5 3.5L15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="card-visual">
+          <div class="card-visual-bg"></div><div class="card-visual-grid"></div>
+          <div class="orb" style="width:340px;height:340px;background:radial-gradient(circle,rgba(90,43,214,.42),transparent);top:-80px;right:-80px;animation-duration:10s;"></div>
+          <div class="orb" style="width:220px;height:220px;background:radial-gradient(circle,rgba(59,158,148,.32),transparent);bottom:60px;left:50px;animation-duration:7.5s;animation-delay:-3s;"></div>
+          <div class="card-icon-ring"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><circle cx="13" cy="13" r="3.5" fill="rgba(255,255,255,.45)"/><path d="M13 4v3M13 19v3M4 13h3M19 13h3" stroke="rgba(255,255,255,.35)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div class="card-badge"><div class="badge-label">Output · Act 1</div><p class="badge-text">Clinical Intelligence Brief — Three-Workflow Map + Scenario Cone</p></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════
-       STACKING CARDS
-       Each lane is given scroll height by JS.
-       Lane 0 = tallest, Lane 2 = shortest.
-       Cards stick at top:0 and get covered by the next.
-  ════════════════════════════ -->
-  <div class="stack-section" id="stackSection">
-
-    <!-- LANE 0 — Act 1 -->
-    <div class="stack-lane" id="lane-0">
-      <div class="stack-card card-1" id="card-0">
-        <div class="card-inner">
-          <div class="card-content">
-            <div class="card-num">01</div>
-            <p class="card-act-label">Act 1 — Where to Start</p>
-            <h2 class="card-name">Clinical Intelligence Sprint</h2>
-            <p class="card-tagline">Observed reality. Not desk research.</p>
-            <div class="card-rule"></div>
-            <p class="card-desc">Direct clinical observation, stakeholder interviews, and adoption barrier mapping — built into a scenario cone that shows you exactly where your technology fits and which product directions will survive the healthcare environment coming next. Specific, defensible, and unlike anything built from desk research.</p>
-            <div class="card-tags">
-              <span class="card-tag">Fieldwork</span>
-              <span class="card-tag">Observation</span>
-              <span class="card-tag">Scenario Cone</span>
-              <span class="card-tag">Clinical Signals</span>
-            </div>
-            <a href="contact.html" class="card-cta">
-              <span>Is this right for you? Talk to us</span>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9.5 3.5L15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-          <div class="card-visual">
-            <div class="card-visual-bg"></div>
-            <div class="card-visual-grid"></div>
-            <div class="orb" style="width:340px;height:340px;background:radial-gradient(circle,rgba(90,43,214,0.42),transparent);top:-80px;right:-80px;animation-duration:10s;"></div>
-            <div class="orb" style="width:220px;height:220px;background:radial-gradient(circle,rgba(59,158,148,0.32),transparent);bottom:60px;left:50px;animation-duration:7.5s;animation-delay:-3s;"></div>
-            <div class="card-icon-ring">
-              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/><circle cx="13" cy="13" r="3.5" fill="rgba(255,255,255,0.45)"/><path d="M13 4v3M13 19v3M4 13h3M19 13h3" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </div>
-            <div class="card-badge">
-              <div class="badge-label">Output · Act 1</div>
-              <p class="badge-text">Clinical Intelligence Brief — Three-Workflow Map + Scenario Cone</p>
-            </div>
-          </div>
+  <div class="stack-lane" id="lane-1">
+    <div class="stack-card card-2" id="card-1">
+      <div class="card-inner">
+        <div class="card-content">
+          <div class="card-num">02</div>
+          <p class="card-act-label">Act 2 — Most Requested</p>
+          <h2 class="card-name">Service System Design</h2>
+          <p class="card-tagline">The complete engagement. End to end.</p>
+          <div class="card-rule"></div>
+          <p class="card-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value clearly — this is the work that changes that. Clinical intelligence feeds directly into a full service architecture: value proposition, workflows, training systems, governance, and adoption infrastructure.</p>
+          <div class="card-tags"><span class="card-tag">Service Architecture</span><span class="card-tag">Value Proposition</span><span class="card-tag">Adoption</span></div>
+          <a href="contact.html" class="card-cta"><span>Tell us your situation</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9.5 3.5L15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="card-visual">
+          <div class="card-visual-bg"></div><div class="card-visual-grid"></div>
+          <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(59,158,148,.40),transparent);top:30px;left:-60px;animation-duration:11s;"></div>
+          <div class="orb" style="width:200px;height:200px;background:radial-gradient(circle,rgba(90,43,214,.32),transparent);bottom:40px;right:30px;animation-duration:8.5s;animation-delay:-4s;"></div>
+          <div class="card-icon-ring"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="8" height="8" rx="2" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><rect x="14" y="4" width="8" height="8" rx="2" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/><rect x="4" y="14" width="8" height="8" rx="2" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/><rect x="14" y="14" width="8" height="8" rx="2" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/></svg></div>
+          <div class="card-badge"><div class="badge-label">Output · Act 2</div><p class="badge-text">Service Blueprint + Gap Analysis + Full Adoption Architecture</p></div>
         </div>
       </div>
-    </div>
-
-    <!-- LANE 1 — Act 2 -->
-    <div class="stack-lane" id="lane-1">
-      <div class="stack-card card-2" id="card-1">
-        <div class="card-inner">
-          <div class="card-content">
-            <div class="card-num">02</div>
-            <p class="card-act-label">Act 2 — Most Requested</p>
-            <h2 class="card-name">Service System Design</h2>
-            <p class="card-tagline">The complete engagement. End to end.</p>
-            <div class="card-rule"></div>
-            <p class="card-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value clearly — this is the work that changes that. Clinical intelligence feeds directly into a full service architecture: value proposition, workflows, training systems, governance, and adoption infrastructure.</p>
-            <div class="card-tags">
-              <span class="card-tag">Service Architecture</span>
-              <span class="card-tag">Value Proposition</span>
-              <span class="card-tag">Adoption</span>
-          
-            </div>
-            <a href="contact.html" class="card-cta">
-              <span>Tell us your situation</span>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9.5 3.5L15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-          <div class="card-visual">
-            <div class="card-visual-bg"></div>
-            <div class="card-visual-grid"></div>
-            <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(59,158,148,0.40),transparent);top:30px;left:-60px;animation-duration:11s;"></div>
-            <div class="orb" style="width:200px;height:200px;background:radial-gradient(circle,rgba(90,43,214,0.32),transparent);bottom:40px;right:30px;animation-duration:8.5s;animation-delay:-4s;"></div>
-            <div class="card-icon-ring">
-              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="8" height="8" rx="2" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/><rect x="14" y="4" width="8" height="8" rx="2" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/><rect x="4" y="14" width="8" height="8" rx="2" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/><rect x="14" y="14" width="8" height="8" rx="2" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/></svg>
-            </div>
-            <div class="card-badge">
-              <div class="badge-label">Output · Act 2</div>
-              <p class="badge-text">Service Blueprint + Gap Analysis + Full Adoption Architecture</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LANE 2 — Act 3 -->
-    <div class="stack-lane" id="lane-2">
-      <div class="stack-card card-3" id="card-2">
-        <div class="card-inner">
-          <div class="card-content">
-            <div class="card-num">03</div>
-            <p class="card-act-label">Act 3 — For Teams</p>
-            <h2 class="card-name">Innovation Workshop</h2>
-            <p class="card-tagline">Built for your context. Not a template.</p>
-            <div class="card-rule"></div>
-            <p class="card-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces. Not a generic design thinking session.</p>
-            <div class="card-tags">
-              <span class="card-tag">Team Alignment</span>
-              <span class="card-tag">Design Thinking</span>
-              <span class="card-tag">Innovation</span>
-              <span class="card-tag">Facilitation</span>
-            </div>
-            <a href="contact.html" class="card-cta">
-              <span>Is this right for you? Talk to us</span>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9.5 3.5L15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-          <div class="card-visual">
-            <div class="card-visual-bg"></div>
-            <div class="card-visual-grid"></div>
-            <div class="orb" style="width:360px;height:360px;background:radial-gradient(circle,rgba(90,43,214,0.38),transparent);top:-60px;right:-90px;animation-duration:9.5s;"></div>
-            <div class="orb" style="width:220px;height:220px;background:radial-gradient(circle,rgba(180,140,255,0.22),transparent);bottom:70px;left:50px;animation-duration:7.5s;animation-delay:-2s;"></div>
-            <div class="card-icon-ring">
-              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4v3M13 19v3M4 13h3M19 13h3" stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round"/><circle cx="13" cy="13" r="6" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/><circle cx="13" cy="13" r="2" fill="rgba(255,255,255,0.65)"/></svg>
-            </div>
-            <div class="card-badge">
-              <div class="badge-label">Output · Act 3</div>
-              <p class="badge-text">Aligned team. Clear innovation direction. Concrete next steps.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /stack-section -->
-
-  <!-- MARQUEE CTA -->
-  <div class="marquee-cta">
-    <div class="marquee-cta-track">
-      <span>Build the innovation layer</span><span class="accent">·</span>
-      <span>Build the innovation layer</span><span class="accent">·</span>
-      <span>Build the innovation layer</span><span class="accent">·</span>
-      <span>Build the innovation layer</span><span class="accent">·</span>
-      <span>Build the innovation layer</span><span class="accent">·</span>
-      <span>Build the innovation layer</span><span class="accent">·</span>
-      <span>Build the innovation layer</span><span class="accent">·</span>
-      <span>Build the innovation layer</span><span class="accent">·</span>
     </div>
   </div>
 
-  <!-- WHY SERVIZIONS -->
-  <section class="why-section">
-    <div class="why-inner">
-      <div class="why-header">
-        <div class="reveal">
-          <span class="section-label" style="color:rgba(123,85,224,0.7);">Why Servizions</span>
-          <h2 class="why-title">The innovation layer<br>most companies <em>skip.</em></h2>
+  <div class="stack-lane" id="lane-2">
+    <div class="stack-card card-3" id="card-2">
+      <div class="card-inner">
+        <div class="card-content">
+          <div class="card-num">03</div>
+          <p class="card-act-label">Act 3 — For Teams</p>
+          <h2 class="card-name">Innovation Workshop</h2>
+          <p class="card-tagline">Built for your context. Not a template.</p>
+          <div class="card-rule"></div>
+          <p class="card-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces. Not a generic design thinking session.</p>
+          <div class="card-tags"><span class="card-tag">Team Alignment</span><span class="card-tag">Design Thinking</span><span class="card-tag">Innovation</span><span class="card-tag">Facilitation</span></div>
+          <a href="contact.html" class="card-cta"><span>Is this right for you? Talk to us</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9.5 3.5L15 9l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
-        <p class="why-header-p reveal d2">Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in what actually determines whether the technology is genuinely adopted — and almost none build it from observed clinical reality.</p>
-      </div>
-      <div class="why-grid">
-        <div class="why-card reveal">
-          <div class="why-num">01</div>
-          <h3>We build from clinical ground truth</h3>
-          <p>Every engagement begins with direct observation in clinical environments — not market reports. The output is specific, defensible, and impossible to replicate from a desk.</p>
-        </div>
-        <div class="why-card reveal d1">
-          <div class="why-num">02</div>
-          <h3>Pre-product is our speciality</h3>
-          <p>The window before a technology is finalised is where the most consequential decisions are made — and almost never designed. We work here, when assumptions are still testable.</p>
-        </div>
-        <div class="why-card reveal d2">
-          <div class="why-num">03</div>
-          <h3>Systems, not strategies</h3>
-          <p>Every engagement ends with something structured and actionable — not a report. A scenario cone, a service architecture, a value proposition framework. Something a team can actually use.</p>
-        </div>
-        <div class="why-card reveal d3">
-          <div class="why-num">04</div>
-          <h3>Intellectual honesty, always</h3>
-          <p>If your value proposition is unclear or your technology is solving the wrong problem — we will tell you. Our clinical ground truth makes that conversation possible, and early enough to matter.</p>
+        <div class="card-visual">
+          <div class="card-visual-bg"></div><div class="card-visual-grid"></div>
+          <div class="orb" style="width:360px;height:360px;background:radial-gradient(circle,rgba(90,43,214,.38),transparent);top:-60px;right:-90px;animation-duration:9.5s;"></div>
+          <div class="orb" style="width:220px;height:220px;background:radial-gradient(circle,rgba(180,140,255,.22),transparent);bottom:70px;left:50px;animation-duration:7.5s;animation-delay:-2s;"></div>
+          <div class="card-icon-ring"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4v3M13 19v3M4 13h3M19 13h3" stroke="rgba(255,255,255,.45)" stroke-width="1.2" stroke-linecap="round"/><circle cx="13" cy="13" r="6" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/><circle cx="13" cy="13" r="2" fill="rgba(255,255,255,.65)"/></svg></div>
+          <div class="card-badge"><div class="badge-label">Output · Act 3</div><p class="badge-text">Aligned team. Clear innovation direction. Concrete next steps.</p></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-bg"></div>
-    <div class="cta-grid"></div>
-    <div class="cta-inner">
-      <span class="cta-eyebrow reveal">Ready to build?</span>
-      <h2 class="cta-h2 reveal d1">Build the<br>innovation layer.</h2>
-      <p class="cta-sub reveal d2">Tell us about your healthcare technology challenge.</p>
-      <a href="contact.html" class="btn-white reveal d3">
-        <span>Start a Conversation</span>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </section>
+</div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo">Servizions</div>
-      <div class="footer-tagline">Service Innovation Studio<br>Munich, Germany</div>
-      <nav class="footer-nav">
-        <a href="services.html">Services</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+<!-- HOW WE WORK -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <span class="section-label reveal">How We Work</span>
+      <h2 class="process-title reveal d1">Three acts.<br>One coherent system.</h2>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 Servizions. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="mailto:info@servizions.com">info@servizions.com</a>
-        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <span class="ps-num">01</span>
+        <h3 class="ps-name">Clinical<br><em>Intelligence</em></h3>
+        <div class="ps-body"><p class="ps-desc">Direct immersion into your clinical environment — observing real workflows, interviewing clinicians, mapping adoption barriers that desk research misses entirely.</p><span class="ps-tag">Fieldwork · Observation</span></div>
+      </div>
+      <div class="process-step reveal d1">
+        <span class="ps-num">02</span>
+        <h3 class="ps-name">Scenario<br><em>Cone</em></h3>
+        <div class="ps-body"><p class="ps-desc">Structuring the futures the healthcare system is already moving toward — grounded in observed clinical signals, not market projections.</p><span class="ps-tag">Foresight · Strategy</span></div>
+      </div>
+      <div class="process-step reveal d2">
+        <span class="ps-num">03</span>
+        <h3 class="ps-name">Service<br><em>System</em></h3>
+        <div class="ps-body"><p class="ps-desc">Building the complete innovation layer — value proposition, clinical workflows, training architecture, governance frameworks, and adoption infrastructure.</p><span class="ps-tag">Service Design · Architecture</span></div>
+      </div>
+      <div class="process-step reveal d3">
+        <span class="ps-num">04</span>
+        <h3 class="ps-name">Deliver</h3>
+        <div class="ps-body"><p class="ps-desc">A fully designed innovation layer — defensible, clinically grounded, ready to present to clinical decision-makers and investment committees.</p><span class="ps-tag">Activation · Handover</span></div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-  (() => {
-    'use strict';
+<!-- WHY SERVIZIONS -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="why-header">
+      <div class="reveal"><span class="section-label" style="color:rgba(123,85,224,.7);">Why Servizions</span><h2 class="why-title">The innovation layer<br>most companies <em>skip.</em></h2></div>
+      <p class="why-header-p reveal d2">Most healthcare technology companies invest in engineering, regulatory approval, and commercial strategy. Almost none invest in what actually determines whether the technology is genuinely adopted — and almost none build it from observed clinical reality.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-num">01</div><h3>We build from clinical ground truth</h3><p>Every engagement begins with direct observation in clinical environments — not market reports. The output is specific, defensible, and impossible to replicate from a desk.</p></div>
+      <div class="why-card reveal d1"><div class="why-num">02</div><h3>Pre-product is our speciality</h3><p>The window before a technology is finalised is where the most consequential decisions are made — and almost never designed. We work here, when assumptions are still testable.</p></div>
+      <div class="why-card reveal d2"><div class="why-num">03</div><h3>Systems, not strategies</h3><p>Every engagement ends with something structured and actionable — not a report. A scenario cone, a service architecture, a value proposition framework. Something a team can actually use.</p></div>
+      <div class="why-card reveal d3"><div class="why-num">04</div><h3>Intellectual honesty, always</h3><p>If your value proposition is unclear or your technology is solving the wrong problem — we will tell you. Our clinical ground truth makes that conversation possible, and early enough to matter.</p></div>
+    </div>
+  </div>
+</section>
 
-    /* ── NAVBAR HIDE ── */
-    let lastY = 0;
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      const sy = window.scrollY;
-      navbar.style.transform = (sy > lastY + 8 && sy > 120) ? 'translateY(-100%)' : 'translateY(0)';
-      lastY = sy;
-    }, { passive: true });
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div><div class="cta-grid"></div>
+  <div class="cta-inner">
+    <span class="cta-eyebrow reveal">Ready to build?</span>
+    <h2 class="cta-h2 reveal d1">Build the<br>innovation layer.</h2>
+    <p class="cta-sub reveal d2">Tell us about your healthcare technology challenge.</p>
+    <a href="contact.html" class="btn-white reveal d3"><span>Start a Conversation</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
 
-    /* ──────────────────────────────────────────
-       STACKING CARDS ENGINE
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo">Servizions</div>
+    <div class="footer-tagline">Service Innovation Studio<br>Munich, Germany</div>
+    <nav class="footer-nav"><a href="services.html">Services</a><a href="solutions.html">Solutions</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Servizions. All rights reserved.</div>
+    <div class="footer-links"><a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+</footer>
 
-       Concept:
-         - N cards, each full-screen (100vh).
-         - We want card[i] to stay pinned while the user
-           scrolls far enough for card[i+1] to fully cover it.
-         - Lane[i] height = 100vh + (N-1-i) × 100vh
-             = (N-i) × 100vh
-           So Lane 0 = 3×vh, Lane 1 = 2×vh, Lane 2 = 1×vh.
-         - card[i] is position:sticky top:0, so it occupies
-           the viewport for the entirety of its lane's scroll.
-         - As the next lane scrolls into view, its sticky card
-           naturally rises from below and covers the previous one
-           — no JS transform needed for the slide itself!
-         - We only use JS to:
-           a) set lane heights dynamically (responsive)
-           b) scale-down buried cards slightly for depth
-           c) add a top-edge shadow on cards[1..N] for lift
-    ────────────────────────────────────────── */
+<script>
+(() => {
+  'use strict';
+  const q = s => document.querySelector(s);
+  const qa = s => [...document.querySelectorAll(s)];
 
-    const NUM   = 3;
-    const lanes = Array.from({length: NUM}, (_, i) => document.getElementById(`lane-${i}`));
-    const cards = Array.from({length: NUM}, (_, i) => document.getElementById(`card-${i}`));
+  /* NAV */
+  let lastY = 0;
+  const navbar = q('#navbar');
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    navbar.style.transform = (sy > lastY + 8 && sy > 120) ? 'translateY(-100%)' : 'translateY(0)';
+    lastY = sy;
+  }, { passive: true });
 
-    function setLaneHeights() {
-      const vh = window.innerHeight;
-      // Skip on small screens (mobile stacks are handled by CSS)
-      if (window.innerWidth <= 768) return;
-      lanes.forEach((lane, i) => {
-        // Lane i has (NUM - i) screens of scroll travel
-        lane.style.height = ((NUM - i) * vh) + 'px';
-      });
-    }
+  /* STACKING CARDS */
+  const NUM = 3;
+  const lanes = Array.from({length: NUM}, (_, i) => q(`#lane-${i}`));
+  const cards = Array.from({length: NUM}, (_, i) => q(`#card-${i}`));
 
-    function onScroll() {
-      if (window.innerWidth <= 768) return;
-      const scrollY = window.scrollY;
-      const vh = window.innerHeight;
+  function setLaneHeights() {
+    if (window.innerWidth <= 768) return;
+    const vh = window.innerHeight;
+    lanes.forEach((lane, i) => { lane.style.height = ((NUM - i) * vh) + 'px'; });
+  }
 
-      cards.forEach((card, i) => {
-        const lane      = lanes[i];
-        const laneRect  = lane.getBoundingClientRect();
-        const laneTop   = laneRect.top + scrollY;
-        const laneH     = parseFloat(lane.style.height) || vh;
-        const extra     = laneH - vh; // scroll travel beyond first screen
+  function onScroll() {
+    if (window.innerWidth <= 768) return;
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+    cards.forEach((card, i) => {
+      const lane = lanes[i];
+      const laneTop = lane.getBoundingClientRect().top + scrollY;
+      const laneH = parseFloat(lane.style.height) || vh;
+      const extra = laneH - vh;
+      const scrolledPast = scrollY - laneTop;
+      if (scrolledPast <= 0) { card.style.transform = 'scale(1)'; card.style.borderRadius = '0px'; return; }
+      if (extra <= 0) { card.style.transform = 'scale(1)'; return; }
+      const cover = Math.min(scrolledPast / extra, 1);
+      if (cover >= 1) { card.style.transform = 'scale(0.93)'; card.style.borderRadius = '16px'; }
+      else { card.style.transform = `scale(${(1 - cover * 0.07).toFixed(4)})`; card.style.borderRadius = `${(cover * 16).toFixed(1)}px`; card.style.transformOrigin = 'center top'; }
+    });
+  }
 
-        // How much of the extra travel has happened?
-        const scrolledPastStart = scrollY - laneTop;
+  setLaneHeights(); onScroll();
+  window.addEventListener('resize', () => { setLaneHeights(); onScroll(); });
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-        if (scrolledPastStart <= 0) {
-          // Not yet reached — full size
-          card.style.transform = 'scale(1)';
-          card.style.borderRadius = '0px';
-          return;
-        }
-
-        if (extra <= 0) {
-          // Last card, no extra travel — never scales
-          card.style.transform = 'scale(1)';
-          return;
-        }
-
-        // coverProgress: 0 = card just became sticky,
-        //                1 = entirely covered by next card
-        const cover = Math.min(scrolledPastStart / extra, 1);
-
-        if (cover >= 1) {
-          card.style.transform = 'scale(0.93)';
-          card.style.borderRadius = '16px';
-        } else {
-          const scale = 1 - cover * 0.07;
-          const radius = cover * 16;
-          card.style.transform = `scale(${scale.toFixed(4)})`;
-          card.style.borderRadius = `${radius.toFixed(1)}px`;
-          card.style.transformOrigin = 'center top';
-        }
-      });
-    }
-
-    // Init
-    setLaneHeights();
-    onScroll();
-    window.addEventListener('resize', () => { setLaneHeights(); onScroll(); });
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    /* ── SCROLL REVEAL ── */
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => obs.observe(el));
-
-  })();
-  </script>
+  /* REVEALS */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  qa('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
 </body>
 </html>
