@@ -57,10 +57,8 @@
     .founder-quote::before{content:'\201C';font-size:80px;line-height:0;vertical-align:-.35em;color:rgba(59,15,160,.1);margin-right:4px;}
     .founder-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:4px;}
     .founder-title{font-size:13px;font-weight:300;color:var(--text-light);}
-    .founder-facts{display:flex;flex-direction:column;gap:20px;}
-    .founder-fact{padding:28px 32px;background:white;border-radius:14px;border:1px solid var(--border);}
-    .founder-fact h4{font-family:var(--fd);font-size:19px;font-weight:500;color:var(--ink);margin-bottom:6px;}
-    .founder-fact p{font-size:13.5px;font-weight:300;color:var(--text-mid);line-height:1.75;}
+    .founder-bio{display:flex;flex-direction:column;gap:20px;}
+    .founder-bio p{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.9;}
 
     /* STUDIO */
     .studio-section{background:var(--white);padding:120px 80px;border-top:1px solid var(--border);}
@@ -202,19 +200,9 @@
         <p class="founder-title">Founder, Servizions</p>
       </div>
     </div>
-    <div class="founder-facts rv">
-      <div class="founder-fact">
-        <h4>Professional Background</h4>
-        <p>Experience in medical robotics across clinical environments in Europe and Asia. Direct observation of rehabilitation robotics, AI-assisted therapy, and digital health integration.</p>
-      </div>
-      <div class="founder-fact">
-        <h4>Education</h4>
-        <p>Postgraduate degree in Innovation and Future Research, completed 2024. The combination of clinical fieldwork and structured foresight methodology is the foundation of the Servizions approach.</p>
-      </div>
-      <div class="founder-fact">
-        <h4>Why Servizions</h4>
-        <p>Most MedTech strategy is built from desk research. Clinical human reality — what actually happens between a patient, a clinician, and a device — was missing. That is the gap Servizions was built to fill.</p>
-      </div>
+    <div class="founder-bio rv">
+      <p>Hanna's work began in the space where robotic arms meet the human body — specifically in medical rehabilitation, where upper and lower limb exoskeletons are deployed in real clinical sessions with stroke, spinal cord injury, and neurological patients. That work took her across clinical environments in Europe and Asia, observing the same pattern repeatedly: the hardware worked, the adoption didn't. The gap was never the technology. It was everything the technology landed inside.</p>
+      <p>That direct experience — in the room, watching a therapist interrupt a session to manually recalibrate a device, watching a patient wait while a technician is called — is the foundation of the Servizions methodology. Clinical human reality, observed first-hand, is what makes the strategy defensible. It cannot be replicated from a desk.</p>
     </div>
   </div>
 </section>
@@ -322,11 +310,11 @@
   </div>
   <div class="footer-bottom">
     <div>© 2026 Servizions. All rights reserved.</div>
-    <div class="footer-links"><a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="footer-links"><a href="/cdn-cgi/l/email-protection#a5cdc4cbcbc48bceccc8e5d6c0d7d3ccdfcccacbd68bc6cac8"><span class="__cf_email__" data-cfemail="f29a939c9c93dc999b9fb2819780849b889b9d9c81dc919d9f">[email&#160;protected]</span></a><a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
 'use strict';
 const q=s=>document.querySelector(s);
@@ -430,12 +418,4 @@ window.addEventListener('scroll',()=>{
 })();
 
 /* REVEALS */
-const rvO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvO.unobserve(e.target);}});
-},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
-qa('.rv').forEach(el=>rvO.observe(el));
-
-})();
-</script>
-</body>
-</html>
+const rvO=new Inte
