@@ -69,13 +69,13 @@
     .hero-scroll-label{font-family:var(--fm);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.18);}
     @keyframes scP{0%,100%{opacity:1;height:56px}50%{opacity:.2;height:34px}}
 
-    /* FOUNDER — large centered quote */
-    .founder-wrap{padding:160px 80px;display:flex;flex-direction:column;align-items:center;text-align:center;border-top:1px solid var(--border);position:relative;}
-    .founder-pre{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(123,85,224,.55);margin-bottom:72px;}
-    .founder-q{font-family:var(--fd);font-size:clamp(30px,5vw,74px);font-weight:300;font-style:italic;color:white;line-height:1.15;letter-spacing:-.5px;max-width:980px;margin:0 auto 60px;}
-    .founder-rule{width:40px;height:1px;background:rgba(255,255,255,.15);margin:0 auto 28px;}
-    .founder-name{font-size:14px;font-weight:400;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:6px;}
-    .founder-title{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(123,85,224,.45);}
+    /* FOUNDER — light contrast against dark hero */
+    .founder-wrap{padding:160px 80px;display:flex;flex-direction:column;align-items:center;text-align:center;background:#F3F1EE;position:relative;}
+    .founder-pre{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(59,15,160,.5);margin-bottom:72px;}
+    .founder-q{font-family:var(--fd);font-size:clamp(30px,5vw,74px);font-weight:300;font-style:italic;color:#06040F;line-height:1.15;letter-spacing:-.5px;max-width:980px;margin:0 auto 60px;}
+    .founder-rule{width:40px;height:1px;background:rgba(0,0,0,.15);margin:0 auto 28px;}
+    .founder-name{font-size:14px;font-weight:400;color:rgba(0,0,0,.5);letter-spacing:.08em;margin-bottom:6px;}
+    .founder-title{font-family:var(--fm);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(59,15,160,.45);}
 
     /* GLOBE */
     .globe-section{position:relative;height:92vh;min-height:600px;overflow:hidden;border-top:1px solid var(--border);}
@@ -97,6 +97,8 @@
     .exp-section{padding:120px 80px;border-top:1px solid var(--border);}
     .exp-inner{max-width:1200px;margin:0 auto;}
     .sec-label{font-family:var(--fm);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(123,85,224,.55);display:block;margin-bottom:48px;}
+    .sec-label.dark{color:rgba(59,15,160,.45);}
+    .method-section .sec-label{color:rgba(59,15,160,.45);}
     .exp-ttl{font-family:var(--fd);font-size:clamp(30px,3.5vw,50px);font-weight:300;color:white;margin-bottom:40px;line-height:1.1;}
     .exp-tags{display:flex;flex-wrap:wrap;gap:10px;}
     .exp-tag{background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);padding:10px 22px;border-radius:999px;font-size:11px;font-weight:300;letter-spacing:.06em;text-transform:uppercase;font-family:var(--fb);cursor:none;transition:all .3s;}
@@ -106,20 +108,20 @@
     .exp-in{border-left:1px solid rgba(123,85,224,.35);padding:20px 28px;}
     .exp-bd{font-size:15px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.9;}
 
-    /* METHOD — editorial rows */
-    .method-section{padding:120px 80px;border-top:1px solid var(--border);}
+    /* METHOD — light section, editorial rows */
+    .method-section{padding:120px 80px;background:white;border-top:1px solid rgba(0,0,0,.07);}
     .method-inner{max-width:1200px;margin:0 auto;}
     .method-rows{display:flex;flex-direction:column;margin-top:72px;}
-    .method-row{display:grid;grid-template-columns:52px 1fr auto;align-items:start;padding:44px 0;border-top:1px solid var(--border);gap:36px;transition:border-color .4s;}
-    .method-row:last-child{border-bottom:1px solid var(--border);}
-    .method-row:hover{border-top-color:rgba(123,85,224,.25);}
-    .method-num{font-family:var(--fm);font-size:10px;color:rgba(123,85,224,.45);letter-spacing:.12em;padding-top:12px;}
+    .method-row{display:grid;grid-template-columns:52px 1fr auto;align-items:start;padding:44px 0;border-top:1px solid rgba(0,0,0,.07);gap:36px;transition:border-color .4s;}
+    .method-row:last-child{border-bottom:1px solid rgba(0,0,0,.07);}
+    .method-row:hover{border-top-color:rgba(59,15,160,.2);}
+    .method-num{font-family:var(--fm);font-size:10px;color:rgba(59,15,160,.4);letter-spacing:.12em;padding-top:12px;}
     .method-body{display:flex;flex-direction:column;gap:12px;}
-    .method-name{font-family:var(--fd);font-size:clamp(30px,3.5vw,52px);font-weight:300;color:white;line-height:1.05;letter-spacing:-.3px;transition:opacity .3s;}
-    .method-row:hover .method-name{opacity:.75;}
-    .method-name em{font-style:italic;color:rgba(180,155,255,.8);}
-    .method-desc{font-size:13.5px;font-weight:300;color:rgba(255,255,255,.3);line-height:1.8;max-width:500px;}
-    .method-tag{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(123,85,224,.4);white-space:nowrap;padding-top:14px;text-align:right;}
+    .method-name{font-family:var(--fd);font-size:clamp(30px,3.5vw,52px);font-weight:300;color:#06040F;line-height:1.05;letter-spacing:-.3px;transition:opacity .3s;}
+    .method-row:hover .method-name{opacity:.6;}
+    .method-name em{font-style:italic;color:#5A2BD6;}
+    .method-desc{font-size:13.5px;font-weight:300;color:rgba(0,0,0,.4);line-height:1.8;max-width:500px;}
+    .method-tag{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(59,15,160,.38);white-space:nowrap;padding-top:14px;text-align:right;}
 
     /* CTA */
     .cta-wrap{padding:160px 80px;text-align:center;border-top:1px solid var(--border);position:relative;overflow:hidden;}
@@ -148,6 +150,9 @@
     /* REVEAL */
     .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
     .rv.in{opacity:1;transform:none;}
+
+    /* Rhythm summary: dark → LIGHT → dark → dark → LIGHT → dark */
+    /* hero(dark) founder(stone) globe(dark) expertise(dark) method(white) cta(dark) */
 
     @keyframes slideUp{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:none}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
