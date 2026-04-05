@@ -39,7 +39,7 @@
 
     /* NAV */
     .nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:0 80px;height:70px;display:flex;align-items:center;justify-content:space-between;transition:transform .5s var(--ease);}
-    .nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,4,15,.9),transparent);pointer-events:none;}
+    .nav::before{content:'';position:absolute;inset:0;background:rgba(6,4,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);pointer-events:none;}
     .nav.hide{transform:translateY(-100%);}
     .nav-logo{font-family:var(--fd);font-size:21px;font-weight:400;letter-spacing:.06em;color:white;position:relative;}
     .nav-links{display:flex;gap:40px;align-items:center;position:relative;}
@@ -315,13 +315,13 @@
   <div class="footer-bottom">
     <span>© 2026 Servizions</span>
     <div class="footer-links">
-      <a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a>
+      <a href="/cdn-cgi/l/email-protection#f39b929d9d92dd989a9eb3809681859a899a9c9d80dd909c9e"><span class="__cf_email__" data-cfemail="93fbf2fdfdf2bdf8fafed3e0f6e1e5fae9fafcfde0bdf0fcfe">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
 'use strict';
 const q=s=>document.querySelector(s);
@@ -448,12 +448,4 @@ window.addEventListener('scroll',()=>{
 })();
 
 /* REVEALS */
-const rvO=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvO.unobserve(e.target);}});
-},{threshold:.07,rootMargin:'0px 0px -40px 0px'});
-qa('.rv').forEach(el=>rvO.observe(el));
-
-})();
-</script>
-</body>
-</html>
+const rvO=new Inte
