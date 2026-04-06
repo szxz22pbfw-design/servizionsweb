@@ -63,7 +63,7 @@
     .h-rule{width:36px;height:1px;background:rgba(123,85,224,.6);}
     .h-et{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(123,85,224,.7);}
     /* Split text — each word slides up */
-    .hero-h1{font-family:var(--fd);font-size:clamp(60px,9.5vw,148px);font-weight:300;line-height:.93;letter-spacing:-3px;color:white;overflow:visible;}
+    .hero-h1{font-family:var(--fd);font-size:clamp(60px,9.5vw,148px);font-weight:300;line-height:.93;letter-spacing:-3px;color:white;overflow:visible;opacity:0;transform:translateY(28px);animation:fadeUp 1s var(--ease) .38s forwards;}
     .hero-sub-wrap{margin-top:48px;display:flex;align-items:flex-end;gap:80px;flex-wrap:wrap;}
     .hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.32);max-width:380px;line-height:1.85;}
     .hero-scroll{display:flex;flex-direction:column;align-items:center;gap:10px;}
@@ -219,9 +219,9 @@
       <span class="h-rule"></span>
       <span class="h-et">Solutions — Munich, 2026</span>
     </div>
-    <h1 class="hero-h1" data-split>We have worked on this problem before.</h1>
+    <h1 class="hero-h1">We recognise<br>your problem.</h1>
     <div class="hero-sub-wrap">
-      <p class="hero-sub rv">The gap between a technology that works and a technology that is adopted is a service design problem. We know exactly where it lives.</p>
+      <p class="hero-sub rv">MedTech companies building in healthcare face the same gap. Not the technology. What makes the technology work in the real clinical world. That is the layer we work on.</p>
       <div class="hero-scroll rv">
         <div class="hero-scroll-line"></div>
         <span class="hero-scroll-label">Scroll</span>
