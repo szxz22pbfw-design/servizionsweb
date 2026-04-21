@@ -73,23 +73,94 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 /* HERO */
 .hero{position:relative;width:100vw;height:100vh;display:flex;align-items:flex-end;padding:0 80px 96px;overflow:hidden;background:var(--ink);}
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(8,6,20,.88) 0%,rgba(8,6,20,.5) 55%,rgba(8,6,20,.18) 100%),linear-gradient(to top,rgba(8,6,20,.92) 0%,rgba(8,6,20,.1) 60%);}
+.hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(8,6,20,.92) 0%,rgba(8,6,20,.6) 55%,rgba(8,6,20,.2) 100%),linear-gradient(to top,rgba(8,6,20,.96) 0%,rgba(8,6,20,.1) 60%);}
 #hcvs{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;}
-.hero-in{position:relative;z-index:3;max-width:980px;}
+.hero-in{position:relative;z-index:3;max-width:1100px;}
 
-/* Hero — pure CSS animations, zero JS dependency */
-.hero-ey{display:flex;align-items:center;gap:14px;margin-bottom:28px;animation:fadeUp .9s var(--ease) .15s both;}
+/* Category stamp */
+.hero-stamp{position:absolute;top:88px;left:80px;z-index:3;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp .8s var(--ease) .1s forwards;}
+.hero-stamp-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:ldot 2.5s ease-in-out infinite;}
+.hero-stamp-txt{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+
+/* Eyebrow */
+.hero-ey{display:flex;align-items:center;gap:14px;margin-bottom:32px;opacity:0;animation:fadeUp .9s var(--ease) .2s forwards;}
 .h-rl{width:36px;height:1px;background:rgba(123,85,224,.7);}
 .h-et{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(123,85,224,.85);}
-.hero-h1{font-family:var(--fd);font-size:clamp(54px,8.2vw,128px);font-weight:300;line-height:.95;letter-spacing:-2px;color:white;margin-bottom:32px;}
+
+/* Hero h1 */
+.hero-h1{font-family:var(--fd);font-size:clamp(60px,9.5vw,148px);font-weight:300;line-height:.91;letter-spacing:-3.5px;color:white;margin-bottom:0;}
 .hl{display:block;overflow:hidden;}
 .hi{display:block;animation:slideUp 1.1s var(--ease) both;}
-.hl:nth-child(1) .hi{animation-delay:.35s;}
-.hl:nth-child(2) .hi{animation-delay:.52s;}
-.hl:nth-child(3) .hi{animation-delay:.68s;}
+.hl:nth-child(1) .hi{animation-delay:.28s;}
+.hl:nth-child(2) .hi{animation-delay:.44s;}
+.hl:nth-child(3) .hi{animation-delay:.60s;}
+.hl:nth-child(4) .hi{animation-delay:.76s;}
 .hi.em{font-style:italic;color:rgba(180,155,255,.95);}
-.hero-sub{font-size:clamp(14px,1.4vw,17px);font-weight:300;color:rgba(255,255,255,.48);line-height:1.85;max-width:520px;animation:fadeUp .9s var(--ease) .88s both;}
-.hero-acts{display:flex;gap:16px;align-items:center;margin-top:44px;animation:fadeUp .9s var(--ease) 1.05s both;}
+
+/* Cycling sector word */
+.hero-cycle{display:inline-block;position:relative;min-width:8ch;}
+.cycle-word{
+  position:absolute;top:0;left:0;
+  white-space:nowrap;
+  opacity:0;transform:translateY(50%) skewY(4deg);
+  transition:opacity .6s var(--ease),transform .6s var(--ease);
+  color:rgba(180,155,255,.95);font-style:italic;
+  pointer-events:none;
+}
+.cycle-word.active{opacity:1;transform:translateY(0) skewY(0deg);}
+.cycle-word.exit{opacity:0;transform:translateY(-50%) skewY(-4deg);}
+.cycle-spacer{visibility:hidden;color:rgba(180,155,255,.95);font-style:italic;pointer-events:none;}
+
+/* Future line — animated gradient text */
+.hero-future{
+  display:block;overflow:hidden;
+}
+.hero-future-in{
+  display:block;
+  font-style:italic;
+  background:linear-gradient(90deg,rgba(180,155,255,.95) 0%,rgba(77,191,180,.9) 50%,rgba(180,155,255,.95) 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:slideUp 1.1s var(--ease) .76s both, gradientShift 4s linear 1.8s infinite;
+}
+@keyframes gradientShift{
+  0%{background-position:0% center}
+  100%{background-position:200% center}
+}
+
+/* Animated underline rule */
+.hero-rule{
+  display:block;width:0;height:1px;
+  background:linear-gradient(to right,var(--ps),var(--teal));
+  margin:36px 0;
+  animation:ruleExpand 1s var(--ease) 1.1s forwards;
+}
+@keyframes ruleExpand{from{width:0}to{width:min(480px,60vw)}}
+
+/* Sub row */
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:60px;flex-wrap:wrap;}
+.hero-sub{font-size:clamp(13px,1.3vw,16px);font-weight:300;color:rgba(255,255,255,.38);line-height:1.9;max-width:420px;opacity:0;animation:fadeUp .9s var(--ease) .95s forwards;}
+.hero-acts{display:flex;gap:16px;align-items:center;opacity:0;animation:fadeUp .9s var(--ease) 1.1s forwards;}
+
+/* Floating data pill — future signal */
+.hero-signal{
+  position:absolute;right:80px;top:50%;transform:translateY(-50%);z-index:3;
+  display:flex;flex-direction:column;gap:16px;
+  opacity:0;animation:fadeUp .9s var(--ease) 1.3s forwards;
+}
+.signal-pill{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  border-radius:999px;padding:10px 18px;
+  white-space:nowrap;
+}
+.signal-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.signal-dot.purple{background:var(--ps);box-shadow:0 0 8px rgba(123,85,224,.7);}
+.signal-dot.teal{background:var(--teal);box-shadow:0 0 8px rgba(59,158,148,.7);}
+.signal-txt{font-family:var(--fm);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);}
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--fb);font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:14px 30px;border-radius:999px;transition:all .3s;cursor:none;border:none;}
 .btn-p{background:var(--purple);color:white;}
 .btn-p:hover{background:var(--pm);box-shadow:0 8px 32px rgba(90,43,214,.5);transform:translateY(-2px);}
@@ -97,14 +168,14 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .btn-p:hover svg{transform:translateX(4px);}
 .btn-g{background:none;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.16);}
 .btn-g:hover{color:white;border-color:rgba(255,255,255,.4);}
-.hero-sc{position:absolute;bottom:40px;right:80px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeUp .9s var(--ease) 1.4s both;}
+.hero-sc{position:absolute;bottom:40px;right:80px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .9s var(--ease) 1.4s forwards;}
 .hsc-ln{width:1px;height:48px;background:linear-gradient(to bottom,rgba(123,85,224,.6),transparent);animation:scP 2s ease-in-out infinite;}
 @keyframes scP{0%,100%{opacity:1;height:48px}50%{opacity:.25;height:28px}}
 .hsc-lb{font-family:var(--fm);font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:rgba(123,85,224,.45);}
-.hero-loc{position:absolute;bottom:42px;left:80px;z-index:3;display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);animation:fadeUp .9s var(--ease) 1.3s both;}
+.hero-loc{position:absolute;bottom:42px;left:80px;z-index:3;display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);opacity:0;animation:fadeUp .9s var(--ease) 1.3s forwards;}
 .ldot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:ldot 2.5s ease-in-out infinite;}
 @keyframes ldot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.5)}}
-@keyframes slideUp{from{opacity:0;transform:translateY(90%)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(95%)}to{opacity:1;transform:none}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* TICKER — purple tint */
@@ -438,20 +509,38 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   </video>
   <div class="hero-grad"></div>
   <canvas id="hcvs"></canvas>
+
+  <!-- Category stamp -->
+  <div class="hero-stamp">
+    <span class="hero-stamp-dot"></span>
+    <span class="hero-stamp-txt">MedTech Product Strategy · Munich, 2026</span>
+  </div>
+
+  <!-- Floating future signals — right side -->
+  <div class="hero-signal">
+    <div class="signal-pill"><span class="signal-dot purple"></span><span class="signal-txt">Clinical Field Evidence</span></div>
+    <div class="signal-pill"><span class="signal-dot teal"></span><span class="signal-txt">Future Scenario Planning</span></div>
+    <div class="signal-pill"><span class="signal-dot purple"></span><span class="signal-txt">Strategic Product Direction</span></div>
+  </div>
+
   <div class="hero-in">
-    <div class="hero-ey"><span class="h-rl"></span><span class="h-et">Healthcare · Robotics · MedTech · Digital Health</span></div>
+    <div class="hero-ey"><span class="h-rl"></span><span class="h-et">Clinical Foresight · Not Market Reports</span></div>
     <h1 class="hero-h1">
-      <span class="hl"><span class="hi">Beyond</span></span>
-      <span class="hl"><span class="hi em">Technology,</span></span>
-      <span class="hl"><span class="hi">Into practice.</span></span>
+      <span class="hl"><span class="hi">The product</span></span>
+      <span class="hl"><span class="hi">direction</span></span>
+      <span class="hl"><span class="hi">your</span> <span class="hi"><span class="hero-cycle"><span class="cycle-spacer">MedTech</span><span class="cycle-word active" id="cw0">MedTech</span><span class="cycle-word" id="cw1">Health AI</span><span class="cycle-word" id="cw2">HealthTech</span><span class="cycle-word" id="cw3">Med Device</span></span></span></span>
+      <span class="hero-future"><span class="hero-future-in">needs next.</span></span>
     </h1>
-    <p class="hero-sub">We observe your product situation in clinical environment, map the futures it is moving toward, and design the innovation layer that makes your technology viable in both.</p>
-    <div class="hero-acts">
-      <a href="contact.html" class="btn btn-p">
-        <span>Start a conversation</span>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="about.html" class="btn btn-g">Our approach</a>
+    <span class="hero-rule"></span>
+    <div class="hero-bottom">
+      <p class="hero-sub">We observe your clinical environment, build the futures it is already moving toward, and show you exactly which product directions survive — before you commit the budget.</p>
+      <div class="hero-acts">
+        <a href="contact.html" class="btn btn-p">
+          <span>Start a conversation</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5L13 7l-5.5 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="about.html" class="btn btn-g">Our approach</a>
+      </div>
     </div>
   </div>
   <div class="hero-sc"><div class="hsc-ln"></div><span class="hsc-lb">Scroll</span></div>
@@ -527,21 +616,21 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 
         <!-- Act 2 pane -->
         <div class="sc-pane" id="spl1">
-          <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 2 — Most Requested</span></div>
-          <h3 class="sc-left-h">Service<br>System<br><em>Design</em></h3>
-          <p class="sc-left-sub">The complete engagement. End to end.</p>
-          <p class="sc-left-desc">If hospitals are not committing, if adoption is stalling, if nobody can explain the value — this changes that. Clinical intelligence feeds into a full architecture: value proposition, workflows, training systems, governance.</p>
-          <div class="sc-left-tags"><span class="sc-left-tag">Service Architecture</span><span class="sc-left-tag">Value Proposition</span><span class="sc-left-tag">Adoption</span></div>
+          <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 2 — The Gap Map</span></div>
+          <h3 class="sc-left-h">The<br>Gap<br><em>Map</em></h3>
+          <p class="sc-left-sub">Where the human system breaks.</p>
+          <p class="sc-left-desc">Service blueprint. Friction map. Every moment between patient, therapist, and device mapped. Every friction point categorised: product problem, service problem, or training problem — with impact attached to each.</p>
+          <div class="sc-left-tags"><span class="sc-left-tag">Service Blueprint</span><span class="sc-left-tag">Gap Analysis</span><span class="sc-left-tag">Impact Analysis</span></div>
           <a href="contact.html" class="sc-left-lnk">Tell us your situation</a>
         </div>
 
         <!-- Act 3 pane -->
         <div class="sc-pane" id="spl2">
-          <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 3 — For Teams</span></div>
-          <h3 class="sc-left-h">Innovation<br><em>Workshop</em></h3>
-          <p class="sc-left-sub">Built for your context. Not a template.</p>
-          <p class="sc-left-desc">If your team is not aligned on what the innovation actually is — a workshop is where that changes. Designed entirely around your specific challenge, your clinical context, and the real adoption barriers your technology faces.</p>
-          <div class="sc-left-tags"><span class="sc-left-tag">Team Alignment</span><span class="sc-left-tag">Design Thinking</span><span class="sc-left-tag">Facilitation</span></div>
+          <div class="sc-act-badge"><span class="sc-act-line"></span><span class="sc-act-lbl">Act 3 — Strategic Product Direction</span></div>
+          <h3 class="sc-left-h">Strategic<br>Product<br><em>Direction</em></h3>
+          <p class="sc-left-sub">Where to go next — and why it survives.</p>
+          <p class="sc-left-desc">Four to five healthcare futures built from clinical signals. Current product and next directions stress-tested against each future. The scenario cone makes the logic visible. The result: an investment sequence defensible to your board.</p>
+          <div class="sc-left-tags"><span class="sc-left-tag">Scenario Cone</span><span class="sc-left-tag">Options A/B/C</span><span class="sc-left-tag">Investment Sequence</span></div>
           <a href="contact.html" class="sc-left-lnk">Talk to us</a>
         </div>
 
@@ -585,9 +674,9 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
           <div class="sc-card-band"></div>
           <div class="sc-card-in">
             <div class="sc-card-num">02</div>
-            <span class="sc-card-act">Service System Design</span>
-            <h4 class="sc-card-title">The complete<br><em>engagement.</em></h4>
-            <p class="sc-card-desc">Value proposition, workflows, training architecture, governance — the full adoption infrastructure.</p>
+            <span class="sc-card-act">The Gap Map</span>
+            <h4 class="sc-card-title">Where the<br><em>system breaks.</em></h4>
+            <p class="sc-card-desc">Service blueprint, friction map, meso-level workflow — every friction point categorised and costed.</p>
             <div class="sc-card-visual">
               <div class="v-bp" style="transform:scale(.65)">
                 <svg viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -621,9 +710,9 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
           <div class="sc-card-band"></div>
           <div class="sc-card-in">
             <div class="sc-card-num">03</div>
-            <span class="sc-card-act">Innovation Workshop</span>
-            <h4 class="sc-card-title">Built for<br>your <em>context.</em></h4>
-            <p class="sc-card-desc">Designed entirely around your specific challenge and the real adoption barriers your technology faces.</p>
+            <span class="sc-card-act">Strategic Product Direction</span>
+            <h4 class="sc-card-title">Where to<br><em>go next.</em></h4>
+            <p class="sc-card-desc">Scenario cone + Options A/B/C — which product directions survive the futures already arriving.</p>
             <div class="sc-card-visual">
               <div class="v-conv" style="transform:scale(.72)">
                 <div class="vc-arm"><div class="vc-e"></div></div>
@@ -743,8 +832,8 @@ if(tt){tt.addEventListener('mouseenter',()=>tt.style.animationPlayState='paused'
 
 /* STATEMENT word reveal */
 (function(){
-  const raw='Bridging medtech and healthcare robotics companies with the real clinical world. Most strategies are built from desk research. Servizions builds from observed clinical reality.';
-  const em=['real','clinical','world.','observed'];
+  const raw='Most MedTech strategies are built from market reports. Ours are built from observed clinical reality — what a patient experiences, what a therapist does, and where the device fails both. That is what makes the direction defensible.';
+  const em=['observed','clinical','reality','defensible'];
   const el=q('#stxt');if(!el)return;
   raw.split(' ').forEach(w=>{
     const sp=document.createElement('span');sp.className='ww';
@@ -812,6 +901,23 @@ if(q('.nums'))cO.observe(q('.nums'));
   });
 })();
 
+
+/* CYCLING WORD — MedTech / Robotics / HealthTech */
+(function(){
+  const words=['cw0','cw1','cw2','cw3'];
+  let cur=0;
+  setInterval(()=>{
+    const prev=cur;
+    cur=(cur+1)%words.length;
+    const el=document.getElementById(words[prev]);
+    const next=document.getElementById(words[cur]);
+    if(!el||!next)return;
+    el.classList.remove('active');
+    el.classList.add('exit');
+    next.classList.add('active');
+    setTimeout(()=>el.classList.remove('exit'),500);
+  },2800);
+})();
 
 /* HERO PARTICLES — purple */
 (function(){
