@@ -147,16 +147,7 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .hud-tr{top:92px;right:80px;}
 .hud-bl{bottom:90px;left:80px;}
 .hud-br{bottom:90px;right:80px;}
-.hud-data{
-  position:absolute;z-index:3;pointer-events:none;
-  font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.18);line-height:1.6;
-  opacity:0;animation:fadeUp .5s var(--ease) 1.7s forwards;
-}
-.hud-data-tl{top:124px;left:108px;}
-.hud-data-tr{top:124px;right:108px;text-align:right;}
-.hud-data-bl{bottom:118px;left:108px;}
-.hud-timestamp{color:rgba(77,191,180,.4);}
+
 
 /* TILT CONTAINER — hero content tilts on mouse */
 .hero-tilt{
@@ -174,8 +165,8 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   animation:clipReveal 1s var(--ease) .9s forwards;
 }
 @keyframes clipReveal{to{clip-path:inset(0 0% 0 0);}}
-.h-rl{width:36px;height:1px;background:rgba(123,85,224,.7);}
-.h-et{font-family:var(--fm);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(123,85,224,.85);}
+.h-rl{width:36px;height:1px;background:rgba(255,255,255,.45);}
+.h-et{font-family:var(--fm);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.92);}
 
 /* H1 */
 .hero-h1{
@@ -724,15 +715,7 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
     <div class="hud-corner hud-tr"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 0 L22 0 L22 11" stroke="rgba(77,191,180,.55)" stroke-width="1.2"/></svg></div>
     <div class="hud-corner hud-bl"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M0 11 L0 22 L11 22" stroke="rgba(77,191,180,.55)" stroke-width="1.2"/></svg></div>
     <div class="hud-corner hud-br"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 22 L22 22 L22 11" stroke="rgba(77,191,180,.55)" stroke-width="1.2"/></svg></div>
-    <div class="hud-data hud-data-tl">
-      <div>48.1351° N · 11.5820° E</div>
-      <div class="hud-timestamp" id="hud-time">--:--:--</div>
-    </div>
-    <div class="hud-data hud-data-tr">
-      <div>Scenario Cone Method</div>
-      <div>Signal Active</div>
-    </div>
-    <div class="hud-data hud-data-bl"><div>Est. 2026 · Munich, DE</div></div>
+
   </div>
 
   <!-- Hero content — tilt container -->
@@ -1204,13 +1187,7 @@ if(q('.nums'))cO.observe(q('.nums'));
   })();
 
 
-/* LIVE TIMESTAMP only */
-(function(){
-  var ht=document.getElementById('hud-time');
-  if(!ht)return;
-  function tick(){var n=new Date();ht.textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(function(x){return String(x).padStart(2,'0');}).join(':');}
-  tick();setInterval(tick,1000);
-})();
+
 
 
 /* ── MULTI-LAYER DEPTH + SMOOTH TILT ── */
