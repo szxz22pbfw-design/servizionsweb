@@ -73,7 +73,7 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 /* HERO */
 .hero{
   position:relative;width:100vw;height:100vh;
-  display:flex;flex-direction:column;justify-content:flex-end;
+  display:flex;flex-direction:column;justify-content:center;
   padding:88px 80px 90px;
   overflow:hidden;background:var(--ink);
   perspective:1200px; /* enables 3D tilt */
@@ -262,22 +262,7 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .hero-vid{animation:glitchA 2.8s var(--ease) .1s both;}
 
 /* DATA STREAM — ambient floating fragments */
-.data-stream{
-  position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;
-}
-.ds-frag{
-  position:absolute;
-  font-family:var(--fm);font-size:8px;letter-spacing:.12em;
-  color:rgba(77,191,180,.18);
-  white-space:nowrap;
-  animation:dsFade var(--dur,6s) var(--delay,0s) ease-in-out infinite;
-}
-@keyframes dsFade{
-  0%{opacity:0;transform:translateY(8px);}
-  15%{opacity:1;}
-  85%{opacity:1;}
-  100%{opacity:0;transform:translateY(-8px);}
-}
+
 
 /* SIGNAL PILLS — right edge */
 .hero-signals{
@@ -335,20 +320,7 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .hero-future{transition:transform .12s linear;will-change:transform;}
 .hero-ey{transition:transform .08s linear;will-change:transform;}
 
-/* HORIZONTAL DATA STRIP */
-.hero-data-strip{
-  position:absolute;bottom:72px;left:0;right:0;
-  height:1px;z-index:4;overflow:hidden;
-  opacity:0;animation:fadeUp .6s var(--ease) 2.8s forwards;
-}
-.hero-data-strip::before{
-  content:'CLINICAL.OBS · SCENARIO.A · FUTURE.B · GAP.MAP · OPTION.C · OBSERVED · SIGNAL.ACTIVE · MUNICH.DE · 48.1351N · CONE.BUILT · ACT.01 · ACT.02 · ACT.03 · ';
-  display:block;white-space:nowrap;
-  font-family:var(--fm);font-size:7px;letter-spacing:.2em;
-  color:rgba(77,191,180,.2);
-  animation:dataScroll 28s linear infinite;
-}
-@keyframes dataScroll{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+
 @keyframes ncPop{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
 
 
@@ -391,9 +363,9 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .pi.in{opacity:1;transform:none;}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--fb);font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:14px 32px;border-radius:999px;transition:all .3s var(--ease);cursor:none;border:none;white-space:nowrap;text-decoration:none;}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--fb);font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:14px 32px;border-radius:999px;transition:letter-spacing .45s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease),transform .3s var(--ease),color .3s,border-color .3s;cursor:none;border:none;white-space:nowrap;text-decoration:none;}
 .btn-p{background:var(--purple);color:white;}
-.btn-p:hover{background:var(--pm);box-shadow:0 8px 32px rgba(90,43,214,.5);transform:translateY(-2px);}
+.btn-p:hover{background:var(--pm);box-shadow:0 8px 32px rgba(90,43,214,.5);transform:translateY(-2px);letter-spacing:.22em;}
 .btn-p svg{transition:transform .3s var(--ease);}
 .btn-p:hover svg{transform:translateX(4px);}
 .btn-g{background:none;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.18);}
@@ -417,10 +389,10 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
 .wi.in{transform:translateY(0);}
 .wi.em{font-style:italic;color:var(--pm);}
 .stmt-links{margin-top:60px;display:flex;gap:28px;flex-wrap:wrap;}
-.sl{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-family:var(--fb);opacity:0;transform:translateY(12px);transition:gap .3s,opacity .7s var(--ease),transform .7s var(--ease);}
+.sl{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);font-family:var(--fb);opacity:0;transform:translateY(12px);transition:gap .3s,letter-spacing .45s var(--ease),opacity .7s var(--ease),transform .7s var(--ease);}
 .sl.in{opacity:1;transform:none;}
 .sl::after{content:'→';transition:transform .3s;}
-.sl:hover{gap:18px;}
+.sl:hover{gap:18px;letter-spacing:.22em;}
 .sl:hover::after{transform:translateX(4px);}
 
 /* NUMBERS */
@@ -740,8 +712,6 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   <div class="hero-scan2"></div>
   <div class="hero-scan3"></div>
   <canvas id="hcvs"></canvas>
-  <!-- Data stream -->
-  <div class="data-stream" id="dstream"></div>
   <!-- Signal pills -->
   <div class="hero-signals">
     <div class="sig-pill"><span class="sig-dot t"></span><span class="sig-txt">Clinical Field Evidence</span></div>
@@ -769,7 +739,7 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
   <div class="hero-tilt" id="hero-tilt">
     <div class="hero-ey">
       <span class="h-rl"></span>
-      <span class="h-et">Clinical Foresight · Not Market Reports</span>
+      <span class="h-et" id="eyebrow-cycle">Medical Robotics</span>
     </div>
     <h1 class="hero-h1">
       <span class="hl"><span class="hi">Will your product</span></span>
@@ -788,7 +758,6 @@ body.hov #cr{width:50px;height:50px;border-color:rgba(90,43,214,.8);}
       </div>
     </div>
   </div>
-  <div class="hero-data-strip"></div>
   <div class="hero-sc"><div class="hsc-ln"></div><span class="hsc-lb">Scroll</span></div>
   <div class="hero-loc"><span class="ldot"></span><span>Munich, Germany</span></div>
 </section>
@@ -1235,25 +1204,12 @@ if(q('.nums'))cO.observe(q('.nums'));
   })();
 
 
-/* DATA STREAM + LIVE TIMESTAMP */
+/* LIVE TIMESTAMP only */
 (function(){
-  var ds=document.getElementById('dstream');
-  if(ds){
-    ['48N','11E','ACT.01','CLINICAL.OBS','070pct','USD.72B',
-     'SCENARIO.A','FUTURE.B','OPTION.C','GAP.MAP','CONE',
-     'SIGNAL','2026.Q2','MUNICH.DE','FIELDWORK','OBSERVED'].forEach(function(t){
-      var el=document.createElement('div');el.className='ds-frag';el.textContent=t;
-      el.style.left=(Math.random()*65+5)+'%';el.style.top=(Math.random()*80+5)+'%';
-      el.style.setProperty('--dur',(5+Math.random()*6)+'s');
-      el.style.setProperty('--delay',(Math.random()*9)+'s');
-      ds.appendChild(el);
-    });
-  }
   var ht=document.getElementById('hud-time');
-  if(ht){
-    function tick(){var n=new Date();ht.textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(function(x){return String(x).padStart(2,'0');}).join(':');}
-    tick();setInterval(tick,1000);
-  }
+  if(!ht)return;
+  function tick(){var n=new Date();ht.textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(function(x){return String(x).padStart(2,'0');}).join(':');}
+  tick();setInterval(tick,1000);
 })();
 
 
@@ -1269,7 +1225,7 @@ if(q('.nums'))cO.observe(q('.nums'));
   if(!hero||!tilt)return;
 
   let tRx=0,tRy=0,cRx=0,cRy=0; /* target / current */
-  const MAX=4.2;
+  const MAX=8;
   let active=true;
 
   /* Smooth lerp loop */
@@ -1325,27 +1281,31 @@ if(q('.nums'))cO.observe(q('.nums'));
   });
 
 
-  /* Eyebrow text decode — resolves char by char */
-  const eyeTxt=q('.h-et');
-  if(eyeTxt){
-    const final=eyeTxt.textContent;
-    const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789./·—';
-    let fr=0,tot=50;
-    setTimeout(()=>{
+  /* Eyebrow cycle: Medical Robotics → AI Healthcare → MedTech → Digital Health */
+  (function(){
+    const el=q('#eyebrow-cycle');
+    if(!el)return;
+    const terms=['Medical Robotics','AI Healthcare','MedTech','Digital Health'];
+    const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let cur=0;
+    function decode(target){
+      let fr=0,tot=36;
       const iv=setInterval(()=>{
         fr++;
         const p=fr/tot;
         let r='';
-        for(let i=0;i<final.length;i++){
-          if(final[i]===' '||final[i]==='·'){r+=final[i];continue;}
-          const cp=(p-(i/final.length)*.45)/.55;
-          r+=cp>=1?final[i]:chars[Math.floor(Math.random()*chars.length)];
+        for(let i=0;i<target.length;i++){
+          if(target[i]===' '){r+=' ';continue;}
+          const cp=(p-(i/target.length)*.4)/.6;
+          r+=cp>=1?target[i]:chars[Math.floor(Math.random()*chars.length)];
         }
-        eyeTxt.textContent=r;
-        if(fr>=tot){clearInterval(iv);eyeTxt.textContent=final;}
+        el.textContent=r;
+        if(fr>=tot){clearInterval(iv);el.textContent=target;}
       },1000/30);
-    },950);
-  }
+    }
+    decode(terms[0]);
+    setInterval(()=>{cur=(cur+1)%terms.length;decode(terms[cur]);},3200);
+  })();
 })();
 
 /* ── HERO PARALLAX ── */
