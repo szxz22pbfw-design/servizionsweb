@@ -399,75 +399,43 @@ body::after{
   color:var(--d1);
 }
 
-/* ─── FOUNDER (dark) ─── */
-.founder-block{
-  display:grid;grid-template-columns:1fr 1.4fr;gap:80px;
-  align-items:start;
+/* ─── FOUNDER (dark) — credentials block ─── */
+.founder-credentials{
+  display:flex;flex-direction:column;gap:40px;
+  padding-top:8px;
+  max-width:560px;
 }
-.founder-card{
-  border:1px solid var(--rule);
-  border-radius:14px;
-  padding:36px;
-  background:rgba(255,255,255,.02);
-  display:flex;flex-direction:column;gap:24px;
-  position:sticky;top:110px;
-}
-.founder-monogram{
-  width:72px;height:72px;border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,rgba(166,136,240,.4),rgba(122,85,232,.15));
-  border:1px solid rgba(122,85,232,.4);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--fd);font-size:30px;font-weight:300;color:var(--t1);
-  font-style:italic;
-}
-.founder-name{
-  font-family:var(--fd);
-  font-size:32px;font-weight:400;letter-spacing:-.012em;
-  line-height:1.1;color:var(--t1);
-}
-.founder-role{
+.cred-row{display:flex;flex-direction:column;gap:14px;}
+.cred-label{
   font-family:var(--fm);
   font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
   color:var(--purple-l);
-  margin-top:6px;
-  display:inline-flex;align-items:center;gap:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--rule);
 }
-.founder-role::before{content:'';width:24px;height:1px;background:var(--purple);}
-
+.cred-value{
+  font-family:var(--fd);
+  font-size:22px;font-weight:400;letter-spacing:-.005em;
+  line-height:1.4;color:var(--t1);
+}
+.cred-list{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:10px;
+}
+.cred-list li{
+  font-family:var(--fd);
+  font-size:18px;font-weight:400;line-height:1.5;
+  color:var(--t1);
+}
 .founder-link{
   display:inline-flex;align-items:center;gap:8px;
-  margin-top:18px;
   font-family:var(--fm);
-  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
   color:var(--purple-l);
   transition:color .3s var(--ease),gap .3s var(--ease);
 }
 .founder-link:hover{color:var(--t1);gap:12px;}
 
-.founder-awards{
-  list-style:none;padding:0;margin:24px 0 0;
-  display:flex;flex-direction:column;gap:12px;
-}
-.founder-awards li{
-  font-family:var(--fb);
-  font-size:15px;font-weight:400;line-height:1.5;
-  color:var(--t2);
-  padding-left:22px;position:relative;
-}
-.founder-awards li::before{
-  content:'';position:absolute;left:0;top:.65em;
-  width:12px;height:1px;background:var(--purple);
-}
-.founder-awards strong{color:var(--t1);font-weight:500;}
-
-.founder-prose p{
-  font-family:var(--fb);
-  font-size:16.5px;font-weight:400;line-height:1.75;
-  color:var(--t2);
-  margin-bottom:18px;max-width:56ch;
-}
-.founder-prose p:last-child{margin-bottom:0;}
-.founder-prose strong{color:var(--t1);font-weight:500;}
 /* ─── METHOD (cream) — three rows for systemic innovation ─── */
 .method-rows{display:flex;flex-direction:column;}
 .method-row{
@@ -624,7 +592,7 @@ body::after{
   .section{padding:96px 40px;}
   .final-cta{padding:110px 40px;}
   .footer{padding:32px 40px;}
-  .studio-block,.founder-block{gap:48px;}
+  .studio-block{gap:48px;}
 }
 @media(max-width:900px){
   .nav{padding:16px 28px;}
@@ -633,8 +601,6 @@ body::after{
   .section{padding:72px 28px;}
   .final-cta{padding:90px 28px;}
   .studio-block{grid-template-columns:1fr;gap:36px;}
-  .founder-block{grid-template-columns:1fr;gap:32px;}
-  .founder-card{position:static;}
   .method-row{grid-template-columns:1fr;gap:14px;padding:32px 0;}
   .method-num{order:0;}
   .footer{padding:28px 28px;}
@@ -705,7 +671,7 @@ body::after{
     <h1 class="hero-h1" id="heroH1" data-split>
       Strategy that begins in the clinic, not <em>the report.</em>
     </h1>
-    <p class="hero-sub">Servizions is a pre-development innovation studio for MedTech, medical robotics, and digital healthcare in Europe. Founded in Munich in March 2026. The methodology is grounded in clinical fieldwork and an academic research program on systemic innovation.</p>
+    <p class="hero-sub">Servizions is a pre-development innovation studio for MedTech, medical robotics, and digital healthcare in Europe. Founded in Munich in March 2026.</p>
     <div class="hero-actions">
       <a href="contact.html" class="btn-primary"><span>Let's talk</span><span class="arr">→</span></a>
       <a href="services.html" class="btn-secondary"><span>See services</span><span class="arr">→</span></a>
@@ -812,37 +778,29 @@ body::after{
   </div>
 </section>
 
-<!-- ─── METHOD (cream) ─── -->
+<!-- ─── FOUNDER (dark) ─── -->
 <section class="section section-tinted">
   <div class="section-inner">
     <div class="section-head">
       <span class="section-tag rv"><span class="num">03</span>The founder</span>
-      
+      <h2 class="section-h2 rv" data-split>Hanna <em>Kim.</em></h2>
     </div>
 
-    <div class="founder-block">
-      <div class="founder-credentials rv">
-        <div class="cred-row">
-          <h3 class="founder-name">Hanna Kim</h3>
-          <span class="cred-label">Experience</span>
-          <span class="cred-value">Medical robotics &amp; robotics · 6+ years</span>
-        </div>
-        <div class="cred-row">
-          <span class="cred-label">Awards</span>
-          <ul class="cred-list">
-            <li>James Dyson Award · 2nd place, Germany</li>
-            <li>iF Design Award · ×2, robotics</li>
-          </ul>
-        </div>
+    <div class="founder-credentials rv">
+      <div class="cred-row">
+        <span class="cred-label">Experience</span>
+        <span class="cred-value">Medical robotics &amp; robotics · 6+ years</span>
       </div>
-
-      <div class="founder-prose rv">
-        <p>Background in <strong>medical robotics and robotics</strong>, with clinical exposure across Europe and Asia.</p>
-
-        <ul class="founder-awards">
-          <li><strong>James Dyson Award</strong> · 2nd place, Germany</li>
-          <li><strong>iF Design Award</strong> · ×2, robotics</li>
+      <div class="cred-row">
+        <span class="cred-label">Awards</span>
+        <ul class="cred-list">
+          <li>James Dyson Award · 2nd place, Germany</li>
+          <li>iF Design Award · ×2, robotics</li>
         </ul>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Connect</span>
+        <a href="https://www.linkedin.com/in/hanna-hk" target="_blank" rel="noopener" class="founder-link">LinkedIn <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
