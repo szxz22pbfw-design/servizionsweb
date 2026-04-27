@@ -133,6 +133,29 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
 }
 .nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
 .nav.on-light .nav-logo em{color:var(--teal-d);}
+
+.nav-links{
+  display:flex;align-items:center;gap:36px;
+}
+.nav-link{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;
+  opacity:.66;
+  position:relative;
+  padding:6px 0;
+  transition:opacity .35s var(--ease);
+}
+.nav-link:hover{opacity:1;}
+.nav-link::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--purple);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.nav.on-light .nav-link::after{background:var(--purple-d);}
+.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
+
 .nav-cta{
   display:inline-flex;align-items:center;gap:12px;
   font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
@@ -338,11 +361,6 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
   padding-top:36px;border-top:1px solid var(--rule);
   max-width:600px;position:relative;
 }
-.gap-stat::before{
-  content:'';position:absolute;top:-1px;left:0;width:0;height:1px;background:var(--purple);
-  transition:width 1.2s var(--ease) .4s;
-}
-.gap-stat.in::before{width:80px;}
 .gap-stat .num-wrap{position:relative;display:flex;align-items:baseline;}
 .gap-stat .num{
   font-family:var(--fd);
@@ -434,10 +452,27 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
 .route-svg-wrap{
   position:relative;
   display:flex;align-items:center;justify-content:center;
+  perspective:2400px;
+}
+.route-svg-wrap::after{
+  content:'';
+  position:absolute;
+  left:8%;right:8%;bottom:6%;
+  height:38px;
+  background:radial-gradient(ellipse at center,rgba(10,8,20,.16),transparent 70%);
+  filter:blur(18px);
+  z-index:-1;
+  pointer-events:none;
 }
 .route-svg{
-  width:100%;max-width:480px;height:auto;
+  width:100%;max-width:520px;height:auto;
   overflow:visible;
+  transform:rotateX(10deg) rotateY(-7deg);
+  transform-origin:50% 55%;
+  transition:transform .8s var(--ease);
+}
+.route-svg-wrap:hover .route-svg{
+  transform:rotateX(7deg) rotateY(-4deg);
 }
 .s-base{
   fill:none;
@@ -680,6 +715,9 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
   .footer{padding:24px 28px;flex-direction:column;align-items:flex-start;gap:14px;}
   .marquee-item{font-size:16px;}
 }
+@media(max-width:760px){
+  .nav-links{display:none;}
+}
 @media(max-width:560px){
   .hero-h1{font-size:42px;}
   .hero-meta{display:none;}
@@ -707,12 +745,17 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
 <nav class="section-rail" id="rail">
   <a href="#top" class="rail-item active" data-i="0"><span class="dot"></span>01 / Studio</a>
   <a href="#gap" class="rail-item" data-i="1"><span class="dot"></span>02 / Gap</a>
-  <a href="#route" class="rail-item" data-i="2"><span class="dot"></span>03 / Route</a>
+  <a href="#route" class="rail-item" data-i="2"><span class="dot"></span>03 / Servizions</a>
   <a href="#contact" class="rail-item" data-i="3"><span class="dot"></span>04 / Contact</a>
 </nav>
 
 <header class="nav" id="nav">
-  <a href="#top" class="nav-logo">Serviz<em>i</em>ons</a>
+  <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+  <nav class="nav-links">
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="about.html" class="nav-link">About</a>
+  </nav>
   <a href="#contact" class="nav-cta"><span>Get in touch</span><span class="arr">→</span></a>
 </header>
 
@@ -836,7 +879,7 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
       </div>
 
       <div class="route-steps">
-        <span class="section-tag" data-rv><span class="num how-tag-num">03</span>The route</span>
+        <span class="section-tag" data-rv><span class="num how-tag-num">03</span>The Servizions</span>
         <h2 class="route-h2" data-rv>From the clinic to your <em>next product.</em></h2>
 
         <div class="step" id="step0">
@@ -860,7 +903,7 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
         <div class="step" id="step2">
           <div class="step-marker">03</div>
           <div class="step-body">
-            <span class="step-name">Decide</span>
+            <span class="step-name">Innovation</span>
             <p class="step-text">We show what to build next — <em>before the budget is committed.</em></p>
             <p class="step-sub">Strategic product direction grounded in observed evidence, not market assumptions.</p>
           </div>
