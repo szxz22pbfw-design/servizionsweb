@@ -383,10 +383,11 @@ body::after{
   font-size:15px;font-weight:400;font-style:italic;color:var(--t1);
 }
 
-/* ─── WHO + FOUNDER (combined two-column) ─── */
-.who-founder{
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+/* ─── WHO (editorial two-column) ─── */
+.who-block{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:80px;
   align-items:start;
+  max-width:980px;
 }
 .wf-col h3{
   font-size:11.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
@@ -395,13 +396,14 @@ body::after{
 }
 .wf-col h4{
   font-family:var(--fd);
-  font-size:28px;font-weight:400;letter-spacing:-.015em;
+  font-size:clamp(26px,3.2vw,40px);font-weight:400;letter-spacing:-.018em;
   color:var(--t1);
-  margin-bottom:16px;
-  line-height:1.18;
+  line-height:1.12;
+  max-width:14ch;
 }
 .wf-col p{
-  font-size:16px;line-height:1.7;color:var(--t2);
+  font-size:17px;line-height:1.7;color:var(--t2);
+  padding-top:8px;
 }
 .wf-col p strong{color:var(--t1);font-weight:500;}
 
@@ -528,7 +530,7 @@ body::after{
   .cta-section{padding:90px 0 80px;}
   .section-header{margin-bottom:40px;}
   .problem-grid,.acts-grid{grid-template-columns:1fr;gap:18px;}
-  .who-founder{grid-template-columns:1fr;gap:40px;}
+  .who-block{grid-template-columns:1fr;gap:24px;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
 }
@@ -548,11 +550,11 @@ body::after{
     <a href="index.html" class="logo">Serviz<em>i</em>ons</a>
     <div class="nav-right">
       <nav class="nav-links">
-        <a href="solutions.html" class="nav-link">Solutions</a>
         <a href="services.html" class="nav-link">Services</a>
+        <a href="solutions.html" class="nav-link">Solutions</a>
         <a href="about.html" class="nav-link">About</a>
       </nav>
-      <a href="#contact" class="nav-cta"><span>Get in touch</span><span class="arr">→</span></a>
+      <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -561,10 +563,10 @@ body::after{
 </header>
 
 <nav class="mobile-menu" id="mobileMenu">
-  <a href="solutions.html">Solutions</a>
   <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
   <a href="about.html">About</a>
-  <a href="#contact" class="cta">Get in touch →</a>
+  <a href="contact.html" class="cta">Let's talk →</a>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -665,19 +667,16 @@ body::after{
   </div>
 </section>
 
-<!-- ─── WHO + FOUNDER (combined) ─── -->
+<!-- ─── WHO ─── -->
 <section class="section">
   <div class="container">
-    <div class="who-founder">
+    <div class="who-block">
       <div class="wf-col rv">
         <h3>Who it's for</h3>
         <h4>Built for the CPO who has to decide what comes next.</h4>
-        <p>Series B to pre-IPO European MedTech, medical robotics, and digital healthcare companies. The buyer is the <strong>CPO, VP Product, or Head of Clinical</strong> who is personally on the hook for the next product decision and needs evidence their board will accept.</p>
       </div>
       <div class="wf-col rv">
-        <h3>Founder</h3>
-        <h4>Hanna Kim — Munich</h4>
-        <p>Background in medical robotics across <strong>Europe and Asia</strong>. Postgraduate degree in Innovation and Future Research, 2024. The methodology is grounded in academic research; the fieldwork is grounded in clinics — <strong>Munich, Vienna, Florence, and growing</strong>.</p>
+        <p>Series B to pre-IPO European MedTech, medical robotics, and digital healthcare companies. The buyer is the <strong>CPO, VP Product, or Head of Clinical</strong> who is personally on the hook for the next product decision and needs evidence their board will accept.</p>
       </div>
     </div>
   </div>
@@ -691,7 +690,7 @@ body::after{
       <h2>Three product directions.<br>Before the engineering <em>budget.</em></h2>
       <p class="lede">Most engagements start with a conversation. Tell us what you are building, where you are stuck, what your board is asking. We will tell you honestly whether Servizions can help.</p>
       <div class="cta-actions">
-        <a href="mailto:info@servizions.com" class="btn btn-primary"><span>Email Hanna</span><span class="arr">→</span></a>
+        <a href="mailto:info@servizions.com" class="btn btn-primary"><span>Start the conversation</span><span class="arr">→</span></a>
         <p class="cta-email"><a href="mailto:info@servizions.com">info@servizions.com</a></p>
       </div>
     </div>
