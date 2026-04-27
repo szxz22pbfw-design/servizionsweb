@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
 <title>About — Servizions</title>
-<meta name="description" content="Servizions is a pre-development innovation studio founded in Munich in March 2026. The methodology is grounded in clinical fieldwork and a 2024 master's thesis on systemic innovation in rehabilitation robotics.">
+<meta name="description" content="Servizions — pre-development innovation studio for MedTech, medical robotics, and digital healthcare companies. Munich-based, working across Europe and overseas.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -434,6 +434,32 @@ body::after{
 }
 .founder-role::before{content:'';width:24px;height:1px;background:var(--purple);}
 
+.founder-link{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:18px;
+  font-family:var(--fm);
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--purple-l);
+  transition:color .3s var(--ease),gap .3s var(--ease);
+}
+.founder-link:hover{color:var(--t1);gap:12px;}
+
+.founder-awards{
+  list-style:none;padding:0;margin:24px 0 0;
+  display:flex;flex-direction:column;gap:12px;
+}
+.founder-awards li{
+  font-family:var(--fb);
+  font-size:15px;font-weight:400;line-height:1.5;
+  color:var(--t2);
+  padding-left:22px;position:relative;
+}
+.founder-awards li::before{
+  content:'';position:absolute;left:0;top:.65em;
+  width:12px;height:1px;background:var(--purple);
+}
+.founder-awards strong{color:var(--t1);font-weight:500;}
+
 .founder-prose p{
   font-family:var(--fb);
   font-size:16.5px;font-weight:400;line-height:1.75;
@@ -442,23 +468,6 @@ body::after{
 }
 .founder-prose p:last-child{margin-bottom:0;}
 .founder-prose strong{color:var(--t1);font-weight:500;}
-.founder-thesis{
-  font-family:var(--fd);
-  font-size:18px;font-weight:400;
-  color:var(--t1);
-  padding:6px 0 6px 22px;
-  border-left:2px solid var(--purple);
-  margin:24px 0;
-  line-height:1.4;
-}
-.founder-thesis-meta{
-  display:block;
-  font-family:var(--fm);
-  font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--purple-l);
-  margin-bottom:8px;
-}
-
 /* ─── METHOD (cream) — three rows for systemic innovation ─── */
 .method-rows{display:flex;flex-direction:column;}
 .method-row{
@@ -764,44 +773,12 @@ body::after{
 </section>
 
 <!-- ─── FOUNDER (dark) ─── -->
-<section class="section section-tinted">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-tag rv"><span class="num">02</span>The founder</span>
-      <h2 class="section-h2 rv" data-split>The work begins with one <em>person.</em></h2>
-    </div>
-
-    <div class="founder-block">
-      <aside class="founder-card rv">
-        <div class="founder-monogram" aria-hidden="true">HK</div>
-        <div>
-          <h3 class="founder-name">Hanna Kim</h3>
-          <span class="founder-role">Founder · Munich</span>
-        </div>
-      </aside>
-
-      <div class="founder-prose rv">
-        <p>Background in medical robotics across <strong>Europe and Asia</strong>. Years of clinical exposure to rehabilitation robotics, surgical robotics, AI-assisted therapy, and digital health integration — not as a consultant looking in, but as someone who was inside the system.</p>
-        <p>Postgraduate degree in <strong>Innovation and Future Research (M.Sc.)</strong>, completed August 2024. The Servizions methodology is the commercial application of that research.</p>
-
-        <p class="founder-thesis">
-          <span class="founder-thesis-meta">Master's thesis · 2024</span>
-          How might Systemic Innovation facilitate the successful integration of Human-Centered Robots in Rehabilitation?
-        </p>
-
-        <p>The thesis defined the framework. Servizions operationalises it for MedTech clients. Recent fieldwork extends across <strong>Munich, Vienna, and Florence</strong>, with a clinical research network growing across European rehabilitation and surgical robotics centres.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── METHOD (cream) ─── -->
 <section class="section cream-section">
   <div class="section-inner">
     <div class="section-head">
-      <span class="section-tag rv"><span class="num">03</span>The method</span>
+      <span class="section-tag rv"><span class="num">02</span>The method</span>
       <h2 class="section-h2 rv" data-split>Systemic innovation, applied to <em>clinical reality.</em></h2>
-      <p class="section-lede rv">The Servizions method is not invented for commercial purposes. It is the operationalisation of an academic framework — three inseparable characteristics that map directly to the three acts of every Servizions engagement.</p>
+      <p class="section-lede rv">Three inseparable characteristics that map directly to the three acts of every Servizions engagement.</p>
     </div>
 
     <div class="method-rows">
@@ -832,10 +809,36 @@ body::after{
         <p class="method-desc">Collaboration and coordination across stakeholders, disciplines, and resources. <strong>Integration of capabilities across the boundary between market and hierarchy.</strong> This is what we do when we stress-test options against the futures already arriving.</p>
       </article>
     </div>
+  </div>
+</section>
 
-    <p class="method-source rv">
-      <strong>Source —</strong> Kim (2024), drawn from Midgley &amp; Lindhult (2017, 2021), Johannessen (2022), Uzunidis (2020). The framework is academically defined; Servizions is its first commercial implementation in MedTech.
-    </p>
+<!-- ─── METHOD (cream) ─── -->
+<section class="section section-tinted">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag rv"><span class="num">03</span>The founder</span>
+      <h2 class="section-h2 rv" data-split>The work begins with one <em>person.</em></h2>
+    </div>
+
+    <div class="founder-block">
+      <aside class="founder-card rv">
+        <div class="founder-monogram" aria-hidden="true">HK</div>
+        <div>
+          <h3 class="founder-name">Hanna Kim</h3>
+          <span class="founder-role">Founder · Munich</span>
+          <a href="https://www.linkedin.com/in/hanna-hk" target="_blank" rel="noopener" class="founder-link">LinkedIn <span aria-hidden="true">→</span></a>
+        </div>
+      </aside>
+
+      <div class="founder-prose rv">
+        <p>Background in <strong>medical robotics and robotics</strong>, with clinical exposure across Europe and Asia.</p>
+
+        <ul class="founder-awards">
+          <li><strong>James Dyson Award</strong> · 2nd place, Germany</li>
+          <li><strong>iF Design Award</strong> · ×2, robotics</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
