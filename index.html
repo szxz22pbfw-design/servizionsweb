@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
-<title>Servizions — Service Innovation Studio for MedTech</title>
-<meta name="description" content="Servizions is the pre-product-development strategy partner for MedTech, medical robotics, and digital healthcare companies in Europe. We help you decide what to build next — before the engineering budget is committed.">
+<title>Servizions — Pre-development Innovation Studio for MedTech</title>
+<meta name="description" content="Servizions is a pre-development innovation studio for MedTech, medical robotics, and digital healthcare companies in Europe. We help you decide what to build next — before the engineering budget is committed.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 
 <style>
 :root{
-  /* Dark surfaces */
+  /* Surfaces */
   --bg:#0A0814;
   --bg-2:#13101F;
   --bg-soft:#16121F;
@@ -25,7 +25,7 @@
   --rule:rgba(255,255,255,.08);
   --rule-strong:rgba(255,255,255,.16);
 
-  /* Brand — slightly brighter for dark bg */
+  /* Brand */
   --purple:#7A55E8;
   --purple-d:#5A2BD6;
   --purple-l:#A688F0;
@@ -45,7 +45,10 @@
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:80px;
+}
 body{
   font-family:var(--fb);
   background:var(--bg);
@@ -63,7 +66,7 @@ button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
 
 .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);}
 
-/* Subtle grain — analog warmth, very light */
+/* Subtle grain — analog warmth */
 body::after{
   content:'';position:fixed;inset:0;z-index:1000;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
@@ -73,7 +76,7 @@ body::after{
 /* ─── NAV ─── */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
-  transition:background .35s var(--ease),border-color .35s var(--ease),padding .35s var(--ease);
+  transition:background .35s var(--ease),border-color .35s var(--ease);
   border-bottom:1px solid transparent;
 }
 .nav.scrolled{
@@ -91,7 +94,6 @@ body::after{
   font-family:var(--fd);
   font-size:22px;font-weight:400;letter-spacing:.005em;
   color:var(--t1);
-  display:inline-flex;align-items:center;gap:0;
 }
 .logo em{font-style:italic;font-weight:300;color:var(--teal);}
 
@@ -130,7 +132,6 @@ body::after{
   position:relative;
   overflow:hidden;
 }
-/* Atmospheric glow */
 .hero::before{
   content:'';position:absolute;
   top:-220px;right:-200px;width:680px;height:680px;
@@ -169,7 +170,6 @@ body::after{
 .hero h1 em{font-style:italic;font-weight:400;color:var(--teal);}
 
 .hero-sub{
-  font-family:var(--fb);
   font-size:clamp(17px,1.4vw,19px);
   font-weight:400;line-height:1.6;
   color:var(--t2);
@@ -181,7 +181,6 @@ body::after{
 
 .btn{
   display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--fb);
   font-size:14.5px;font-weight:600;letter-spacing:-.005em;
   padding:14px 24px;border-radius:10px;
   transition:all .3s var(--ease);
@@ -246,10 +245,6 @@ body::after{
   color:var(--t1);
 }
 .section h2 em{font-style:italic;color:var(--teal);}
-.section-lede{
-  font-size:17px;line-height:1.65;color:var(--t2);
-  margin-top:18px;max-width:62ch;
-}
 
 /* ─── PROBLEM ─── */
 .problem-grid{
@@ -261,6 +256,7 @@ body::after{
   border-radius:14px;
   padding:38px 34px;
   transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s,background .35s;
+  display:flex;flex-direction:column;
 }
 .problem-card:hover{
   border-color:rgba(122,85,232,.4);
@@ -287,7 +283,7 @@ body::after{
   color:var(--t2);font-size:15.5px;line-height:1.65;
 }
 
-/* Counter inside problem card 1 */
+/* Counter (Card 1) */
 .counter-wrap{
   display:flex;align-items:baseline;gap:14px;
   margin-bottom:20px;
@@ -303,11 +299,23 @@ body::after{
 }
 .counter-pct{
   font-family:var(--fd);
-  font-size:24px;font-weight:300;font-style:italic;color:var(--purple-l);
+  font-size:24px;font-weight:300;color:var(--purple-l);
 }
 .counter-label{
   font-size:13px;font-weight:400;color:var(--t3);
   letter-spacing:.02em;line-height:1.4;
+}
+
+/* Pull-quote (Card 2) — visual balance to counter */
+.pull-quote{
+  font-family:var(--fd);
+  font-size:clamp(24px,2.4vw,28px);
+  font-weight:400;font-style:italic;
+  line-height:1.32;letter-spacing:-.012em;
+  color:var(--t1);
+  padding:8px 0 8px 22px;
+  border-left:2px solid var(--purple);
+  margin-bottom:28px;
 }
 
 /* ─── POSITIONING ─── */
@@ -317,7 +325,8 @@ body::after{
   font-weight:300;
   line-height:1.06;letter-spacing:-.025em;
 }
-.positioning h2 em{color:var(--purple-l);}
+.positioning h2 .zoom-in{font-style:italic;color:var(--t3);font-weight:300;}
+.positioning h2 .zoom-out{font-style:italic;color:var(--teal);font-weight:300;}
 .positioning-body{
   font-size:18px;line-height:1.7;color:var(--t2);
   max-width:62ch;
@@ -456,7 +465,7 @@ body::after{
   display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;
   margin-bottom:44px;
 }
-.footer-brand .logo{margin-bottom:14px;}
+.footer-brand .logo{margin-bottom:14px;display:inline-block;}
 .footer-tagline{
   font-size:13.5px;color:var(--t3);line-height:1.6;
   max-width:32ch;
@@ -470,11 +479,32 @@ body::after{
   display:flex;flex-direction:column;gap:10px;
   font-size:14px;
 }
-.footer-col-list a,.footer-col-list span{
+.footer-col-list a{
   color:var(--t2);
   transition:color .25s;
 }
 .footer-col-list a:hover{color:var(--purple-l);}
+
+/* Domain pill tags */
+.footer-domains{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.footer-tag{
+  display:inline-block;
+  padding:6px 13px;
+  border:1px solid var(--rule);
+  border-radius:999px;
+  font-size:12px;font-weight:400;
+  color:var(--t2);
+  background:transparent;
+  letter-spacing:.005em;
+  transition:border-color .3s var(--ease),color .3s var(--ease);
+}
+.footer-tag:hover{
+  border-color:var(--rule-strong);
+  color:var(--t1);
+}
+
 .footer-bottom{
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
   padding-top:30px;
@@ -539,6 +569,7 @@ body::after{
   .hero h1{font-size:38px;}
   .hero-actions{flex-direction:column;align-items:flex-start;gap:12px;}
   .btn{width:100%;justify-content:center;}
+  .pull-quote{font-size:22px;padding-left:18px;}
 }
 </style>
 </head>
@@ -547,14 +578,14 @@ body::after{
 <!-- ─── NAV ─── -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">Serviz<em>i</em>ons</a>
+    <a href="#hero" class="logo">Serviz<em>i</em>ons</a>
     <div class="nav-right">
       <nav class="nav-links">
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#solutions" class="nav-link">Solutions</a>
+        <a href="#about" class="nav-link">About</a>
       </nav>
-      <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
+      <a href="#contact" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -562,20 +593,22 @@ body::after{
   </div>
 </header>
 
-<nav class="mobile-menu" id="mobileMenu">
-  <a href="services.html">Services</a>
-  <a href="solutions.html">Solutions</a>
-  <a href="about.html">About</a>
-  <a href="contact.html" class="cta">Let's talk →</a>
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#services">Services</a>
+  <a href="#solutions">Solutions</a>
+  <a href="#about">About</a>
+  <a href="#contact" class="cta">Let's talk →</a>
 </nav>
 
+<main>
+
 <!-- ─── HERO ─── -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="container">
     <div class="hero-inner">
-      <span class="eyebrow rv">Service Innovation Studio · Munich</span>
+      <span class="eyebrow rv">Service Innovation Studio</span>
       <h1 class="rv">Designing innovations that healthcare will <em>actually</em> need.</h1>
-      <p class="hero-sub rv">Servizions is the pre-product-development strategy partner for MedTech, medical robotics, and digital healthcare companies in Europe. We help you decide what to build next — before the engineering budget is committed.</p>
+      <p class="hero-sub rv">Servizions is a pre-development innovation studio for MedTech, medical robotics, and digital healthcare companies in Europe. We help you decide what to build next — before the engineering budget is committed.</p>
       <div class="hero-actions rv">
         <a href="#contact" class="btn btn-primary"><span>Start a conversation</span><span class="arr">→</span></a>
         <a href="#how" class="link-secondary"><span>How we work</span><span class="arr">→</span></a>
@@ -585,7 +618,7 @@ body::after{
 </section>
 
 <!-- ─── PROBLEM ─── -->
-<section class="section section-tinted">
+<section class="section section-tinted" id="solutions">
   <div class="container">
     <div class="section-header rv">
       <span class="section-eyebrow">The problem</span>
@@ -605,8 +638,9 @@ body::after{
 
       <article class="problem-card">
         <span class="problem-card-num">02 — The wrong next product</span>
+        <p class="pull-quote">"The next eighteen months of roadmap rides on this decision."</p>
         <h3>Even with a successful product, deciding what to build next is guesswork.</h3>
-        <p>Trend reports are generic. Engineering teams need direction. Boards want evidence. The decision sits with the CPO — and the cost of being wrong is the next eighteen months of roadmap.</p>
+        <p>Trend reports are generic. Engineering teams need direction. Boards want evidence. The decision sits with the CPO — and the cost of being wrong is real.</p>
       </article>
     </div>
   </div>
@@ -617,18 +651,16 @@ body::after{
   <div class="container">
     <div class="section-header rv">
       <span class="section-eyebrow">How we're different</span>
-      <h2>Engineers <em>zoom in.</em><br>We zoom <em>out.</em></h2>
+      <h2>Engineers <em class="zoom-in">zoom in.</em><br>We zoom <em class="zoom-out">out.</em></h2>
     </div>
-    <p class="positioning-body rv">
-      Your engineering team designs the device. Servizions designs the system around it — <strong>the clinical workflow, the patient journey, the futures the product has to survive.</strong> Both disciplines are required. Most companies only have one. That's the gap we close.
-    </p>
+    <p class="positioning-body rv">Your engineering team designs the device. Servizions designs the system around it — <strong>the clinical workflow, the patient journey, the futures the product has to survive.</strong> Both disciplines are required. Most companies only have one. That's the gap we close.</p>
   </div>
 </section>
 
 <!-- ─── THREE ACTS ─── -->
-<section class="section section-tinted" id="how">
+<section class="section section-tinted" id="services">
   <div class="container">
-    <div class="section-header rv">
+    <div class="section-header rv" id="how">
       <span class="section-eyebrow">How we work</span>
       <h2>Three acts. Each one earns the next.</h2>
     </div>
@@ -646,7 +678,7 @@ body::after{
 
       <article class="act-card">
         <div class="act-num"><span class="act-num-circle">2</span><span>Act 2 · Product System Map</span></div>
-        <h3>We co-design three strategic product options with your team.</h3>
+        <h3>We work with your product and clinical leadership to develop three strategic options.</h3>
         <p>Grounded in what we observed, not in innovation theory. Each option carries the constraints of the clinic it has to live in.</p>
         <div class="act-output">
           <span class="act-output-label">Output</span>
@@ -668,7 +700,7 @@ body::after{
 </section>
 
 <!-- ─── WHO ─── -->
-<section class="section">
+<section class="section" id="about">
   <div class="container">
     <div class="who-block">
       <div class="wf-col rv">
@@ -690,42 +722,45 @@ body::after{
       <h2>Three product directions.<br>Before the engineering <em>budget.</em></h2>
       <p class="lede">Most engagements start with a conversation. Tell us what you are building, where you are stuck, what your board is asking. We will tell you honestly whether Servizions can help.</p>
       <div class="cta-actions">
-        <a href="mailto:info@servizions.com" class="btn btn-primary"><span>Start the conversation</span><span class="arr">→</span></a>
+        <a href="mailto:info@servizions.com" class="btn btn-primary"><span>Start a conversation</span><span class="arr">→</span></a>
         <p class="cta-email"><a href="mailto:info@servizions.com">info@servizions.com</a></p>
       </div>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- ─── FOOTER ─── -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">Serviz<em>i</em>ons</a>
+        <a href="#hero" class="logo">Serviz<em>i</em>ons</a>
         <p class="footer-tagline">Service Innovation Studio for MedTech.<br>Munich · Working across Europe.</p>
       </div>
       <div>
         <div class="footer-col-title">Studio</div>
         <div class="footer-col-list">
-          <a href="solutions.html">Solutions</a>
-          <a href="services.html">Services</a>
-          <a href="about.html">About</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
         </div>
       </div>
       <div>
         <div class="footer-col-title">Domains</div>
-        <div class="footer-col-list">
-          <span>Medical Robotics</span>
-          <span>Digital Health</span>
-          <span>MedTech</span>
+        <div class="footer-domains">
+          <span class="footer-tag">Medical Robotics</span>
+          <span class="footer-tag">Medical Devices</span>
+          <span class="footer-tag">Digital Health</span>
+          <span class="footer-tag">MedTech</span>
         </div>
       </div>
       <div>
         <div class="footer-col-title">Contact</div>
         <div class="footer-col-list">
           <a href="mailto:info@servizions.com">info@servizions.com</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -759,18 +794,21 @@ const menuBtn = q('#menuBtn');
 const mobileMenu = q('#mobileMenu');
 if(menuBtn && mobileMenu){
   menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    const open = !mobileMenu.classList.contains('open');
+    menuBtn.classList.toggle('open', open);
+    mobileMenu.classList.toggle('open', open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   qa('.mobile-menu a').forEach(a => a.addEventListener('click', () => {
     menuBtn.classList.remove('open');
     mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }));
 }
 
-/* Scroll reveal */
+/* Scroll reveal — stagger children at 60/160/260ms intervals via CSS */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting){
@@ -781,7 +819,7 @@ const io = new IntersectionObserver(entries => {
 }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
 qa('.rv, .rv-stagger').forEach(el => io.observe(el));
 
-/* Counter — 70% */
+/* Counter — 0 → 70 over ~1.6s, ease-out, fires on enter */
 (function(){
   const el = q('#counter');
   if(!el) return;
