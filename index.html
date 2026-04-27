@@ -88,14 +88,15 @@ body.dark.hov #cr{border-color:rgba(90,43,214,.7);}
 }
 @keyframes introOut{0%{opacity:1;}100%{opacity:0;visibility:hidden;}}
 
-/* SECTION COUNTER — left rail */
+/* SECTION COUNTER — top-left, below the logo */
 .section-rail{
-  position:fixed;top:50%;left:32px;transform:translateY(-50%);
-  z-index:90;display:flex;flex-direction:column;gap:18px;
+  position:fixed;
+  top:88px;left:56px;
+  z-index:90;display:flex;flex-direction:column;gap:10px;
   opacity:0;animation:fadeIn .8s var(--ease) 1.4s forwards;
 }
 .rail-item{
-  display:flex;align-items:center;gap:12px;
+  display:flex;align-items:center;gap:11px;
   font-family:var(--fm);
   font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
   color:rgba(255,255,255,.32);
@@ -134,8 +135,11 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
 .nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
 .nav.on-light .nav-logo em{color:var(--teal-d);}
 
-.nav-links{
+.nav-right{
   display:flex;align-items:center;gap:36px;
+}
+.nav-links{
+  display:flex;align-items:center;gap:32px;
 }
 .nav-link{
   font-family:var(--fm);
@@ -467,12 +471,12 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
 .route-svg{
   width:100%;max-width:520px;height:auto;
   overflow:visible;
-  transform:rotateX(10deg) rotateY(-7deg);
+  transform:rotateX(18deg) rotateY(-10deg);
   transform-origin:50% 55%;
   transition:transform .8s var(--ease);
 }
 .route-svg-wrap:hover .route-svg{
-  transform:rotateX(7deg) rotateY(-4deg);
+  transform:rotateX(14deg) rotateY(-7deg);
 }
 .s-base{
   fill:none;
@@ -751,12 +755,14 @@ body.dark .rail-item.active .dot{background:var(--purple-d);box-shadow:0 0 0 4px
 
 <header class="nav" id="nav">
   <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
-  <nav class="nav-links">
-    <a href="solutions.html" class="nav-link">Solutions</a>
-    <a href="services.html" class="nav-link">Services</a>
-    <a href="about.html" class="nav-link">About</a>
-  </nav>
-  <a href="#contact" class="nav-cta"><span>Get in touch</span><span class="arr">→</span></a>
+  <div class="nav-right">
+    <nav class="nav-links">
+      <a href="solutions.html" class="nav-link">Solutions</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="about.html" class="nav-link">About</a>
+    </nav>
+    <a href="#contact" class="nav-cta"><span>Get in touch</span><span class="arr">→</span></a>
+  </div>
 </header>
 
 <section class="hero" id="top">
