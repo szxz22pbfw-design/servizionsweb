@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
 <title>Solutions — Servizions</title>
-<meta name="description" content="Servizions works with medical robotics companies, healthtech ventures, and hospital innovation teams to close the gap between technology that works in the lab and technology that works in the clinic.">
+<meta name="description" content="What Servizions delivers for medical robotics companies, healthtech ventures, and hospital innovation teams — and how it differs from consultancies, design agencies, and strategy firms.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,34 +13,27 @@
 
 <style>
 :root{
-  /* Surfaces */
   --bg:#0A0814;
   --bg-2:#13101F;
   --paper:#F5F2EC;
   --paper-2:#EAE5DB;
-  /* Brand */
   --purple:#7A55E8;
   --purple-d:#5A2BD6;
   --purple-l:#A688F0;
   --teal:#5BC3B7;
   --teal-d:#3B9E94;
-  /* Text on dark */
   --t1:#FFFFFF;
   --t2:rgba(255,255,255,.66);
   --t3:rgba(255,255,255,.36);
   --rule:rgba(255,255,255,.08);
-  /* Text on light */
   --d1:#0A0814;
   --d2:rgba(10,8,20,.66);
   --d3:rgba(10,8,20,.36);
   --rule-d:rgba(10,8,20,.10);
-  /* Type */
   --fd:'Fraunces',Georgia,serif;
   --fb:'Inter Tight',system-ui,sans-serif;
   --fm:'JetBrains Mono',monospace;
-  /* Motion */
   --ease:cubic-bezier(0.16,1,0.3,1);
-  --ease-2:cubic-bezier(0.65,0,0.35,1);
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -63,14 +56,12 @@ a:focus-visible,button:focus-visible{
   outline:2px solid var(--purple);outline-offset:4px;border-radius:2px;
 }
 
-/* Grain overlay */
 body::after{
   content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
   background-size:200px;opacity:.035;mix-blend-mode:overlay;
 }
 
-/* Progress bar */
 #prg{
   position:fixed;top:0;left:0;height:1.5px;width:0;z-index:99;
   background:linear-gradient(90deg,var(--purple),var(--teal));
@@ -146,7 +137,6 @@ body::after{
 .nav-cta .arr{display:inline-block;transition:transform .4s var(--ease);position:relative;z-index:2;}
 .nav-cta:hover .arr{transform:translateX(3px);}
 
-/* ─── Mobile menu ─── */
 .menu-btn{display:none;}
 .mobile-menu{display:none;}
 
@@ -197,29 +187,28 @@ body::after{
 
 /* ─── HERO ─── */
 .hero{
-  position:relative;min-height:100vh;
+  position:relative;min-height:80vh;
   display:flex;flex-direction:column;justify-content:center;
-  padding:140px 56px 120px;
+  padding:160px 56px 120px;
   overflow:hidden;
 }
 .hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
 .orb-1{
-  width:680px;height:680px;
-  background:radial-gradient(circle,rgba(122,85,232,.18),transparent 65%);
-  top:-180px;right:-140px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(122,85,232,.16),transparent 65%);
+  top:-160px;right:-100px;
   animation:drift 32s ease-in-out infinite alternate;
 }
 .orb-2{
-  width:520px;height:520px;
-  background:radial-gradient(circle,rgba(91,195,183,.10),transparent 65%);
-  bottom:-160px;left:18%;
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(91,195,183,.08),transparent 65%);
+  bottom:-140px;left:18%;
   animation:drift 36s ease-in-out -10s infinite alternate;
 }
 @keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
 
 .hero-inner{position:relative;z-index:3;max-width:1100px;}
 
-/* ─── Canonical eyebrow ─── */
 .eyebrow{
   display:inline-flex;align-items:center;gap:14px;
   font-family:var(--fm);
@@ -233,7 +222,6 @@ body::after{
 .cream-section .eyebrow{color:var(--purple-d);}
 .cream-section .eyebrow::before{background:var(--purple-d);}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
-@keyframes fadeIn{to{opacity:1;}}
 
 .hero-h1{
   font-family:var(--fd);
@@ -242,10 +230,8 @@ body::after{
   line-height:1.04;letter-spacing:-.02em;
   max-width:18ch;color:var(--t1);
 }
-.hero-h1 .ln{display:block;overflow:hidden;padding:.04em 0;}
 .hero-h1 em{font-style:italic;font-weight:400;color:var(--teal);}
 
-/* Word-by-word split — 1s duration, 55ms stagger */
 .word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;}
 .word-inner{
   display:inline-block;transform:translateY(115%);
@@ -271,7 +257,7 @@ body::after{
   animation:fadeUp 1s var(--ease) 1.2s forwards;
 }
 
-/* ─── CTA buttons (canonical) ─── */
+/* ─── BUTTONS ─── */
 .btn-primary{
   display:inline-flex;align-items:center;gap:10px;
   font-family:var(--fb);
@@ -305,13 +291,12 @@ body::after{
   content:'';position:absolute;left:4px;right:18px;bottom:8px;height:1px;
   background:currentColor;opacity:.4;
   transform:scaleX(0);transform-origin:right;
-  transition:transform .45s var(--ease),background .3s,opacity .3s;
+  transition:transform .45s var(--ease),opacity .3s;
 }
 .btn-secondary:hover{color:var(--purple-l);}
 .cream-section .btn-secondary:hover{color:var(--purple-d);}
 .btn-secondary:hover::after{
-  transform:scaleX(1);transform-origin:left;
-  background:currentColor;opacity:1;
+  transform:scaleX(1);transform-origin:left;opacity:1;
 }
 .btn-secondary .arr{transition:transform .3s var(--ease);}
 .btn-secondary:hover .arr{transform:translateX(3px);}
@@ -349,6 +334,7 @@ body::after{
 .cream-section h1,.cream-section h2,.cream-section h3{color:var(--d1);}
 
 .section-inner{max-width:1100px;margin:0 auto;}
+.section-inner-wide{max-width:1240px;margin:0 auto;}
 
 .section-head{margin-bottom:64px;max-width:880px;}
 .section-tag{
@@ -357,7 +343,6 @@ body::after{
   font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
   color:var(--purple-l);
   margin-bottom:24px;
-  position:relative;
 }
 .section-tag::before{content:'';width:32px;height:1px;background:var(--purple);}
 .cream-section .section-tag{color:var(--purple-d);}
@@ -373,54 +358,58 @@ body::after{
 }
 .section-h2 em{font-style:italic;color:var(--teal);}
 .cream-section .section-h2 em{color:var(--purple-d);}
+.section-lede{
+  font-size:17px;line-height:1.7;color:var(--t2);
+  margin-top:28px;max-width:62ch;
+}
+.cream-section .section-lede{color:var(--d2);}
+.section-lede strong{font-weight:500;color:var(--t1);}
+.cream-section .section-lede strong{color:var(--d1);}
 
-/* ─── Editorial rows (Who We Work With + How We Work) ─── */
-.rows{display:flex;flex-direction:column;}
-.row{
-  display:grid;align-items:start;gap:48px;
+/* ─── CLIENT ROWS (Who We Work With) ─── */
+.client-rows{display:flex;flex-direction:column;}
+.client-row{
+  display:grid;grid-template-columns:80px 1fr 1.2fr;align-items:start;gap:48px;
   padding:48px 0;
   border-top:1px solid var(--rule-d);
   transition:opacity .4s var(--ease);
 }
-.row:last-child{border-bottom:1px solid var(--rule-d);}
-.rows:hover .row{opacity:.4;}
-.rows:hover .row:hover{opacity:1;}
-
-/* Client rows: Roman + name + description */
-.client-row{grid-template-columns:80px 1fr 1.2fr;}
+.client-row:last-child{border-bottom:1px solid var(--rule-d);}
+.client-rows:hover .client-row{opacity:.4;}
+.client-rows:hover .client-row:hover{opacity:1;}
 .client-roman{
   font-family:var(--fd);
   font-size:56px;font-weight:300;
   color:rgba(90,43,214,.16);
-  line-height:1;font-feature-settings:"tnum";
+  line-height:1;
 }
-.row-title{
+.client-name{
   font-family:var(--fd);
   font-size:clamp(24px,2.6vw,38px);
   font-weight:400;line-height:1.12;letter-spacing:-.012em;
   color:var(--d1);
 }
-.row-desc{
+.client-body{display:flex;flex-direction:column;gap:14px;padding-top:8px;}
+.client-desc{
   font-family:var(--fb);
   font-size:14.5px;font-weight:400;line-height:1.7;
   color:var(--d2);
-  padding-top:8px;
 }
-
-/* How rows: number + title + description */
-.how-row{grid-template-columns:64px 1fr 1.2fr;}
-.how-num{
+.client-deliverable{
   font-family:var(--fm);
-  font-size:11px;font-weight:500;letter-spacing:.18em;
+  font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
   color:var(--purple-d);
-  padding-top:14px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding-top:6px;
 }
+.client-deliverable::before{content:'';width:18px;height:1px;background:var(--purple-d);}
 
-/* ─── Problem rows (dark with hover fill) ─── */
+/* ─── PROBLEM ROWS (expanded) ─── */
 .problem-rows{display:flex;flex-direction:column;}
 .problem-row{
-  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
-  padding:40px 0;
+  display:grid;grid-template-columns:1fr 1.2fr auto;gap:40px;
+  align-items:start;
+  padding:44px 0;
   border-top:1px solid var(--rule);
   position:relative;overflow:hidden;
   transition:opacity .4s var(--ease);
@@ -436,64 +425,200 @@ body::after{
 .problem-rows:hover .problem-row:hover{opacity:1;}
 .problem-text{
   font-family:var(--fd);
-  font-size:clamp(22px,2.6vw,34px);
+  font-size:clamp(20px,2.2vw,28px);
   font-weight:400;
-  line-height:1.28;letter-spacing:-.01em;
+  line-height:1.28;letter-spacing:-.005em;
   color:var(--t1);
   transition:color .35s var(--ease);
-  max-width:36ch;
 }
 .problem-row:hover .problem-text{color:var(--purple-l);}
+.problem-move{display:flex;flex-direction:column;gap:8px;}
+.problem-move-label{
+  font-family:var(--fm);
+  font-size:9.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-l);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.problem-move-label::before{content:'';width:14px;height:1px;background:var(--purple-l);opacity:.7;}
+.problem-move-text{
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:400;line-height:1.65;
+  color:var(--t2);
+}
 .problem-tag{
   font-family:var(--fm);
-  font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
   color:var(--t3);
   white-space:nowrap;
   padding:8px 14px;border:1px solid var(--rule);border-radius:999px;
+  align-self:flex-start;
   transition:all .35s var(--ease);
 }
 .problem-row:hover .problem-tag{
   border-color:rgba(122,85,232,.45);color:var(--purple-l);
 }
 
-/* ─── Statement section (centered quote) ─── */
-.statement{
-  padding:140px 56px;
-  background:var(--bg);
-  text-align:center;
-  position:relative;overflow:hidden;
+/* ─── LIVE EXAMPLE CALLOUT ─── */
+.example-callout{
+  margin-top:80px;
+  padding:36px 40px;
+  background:rgba(122,85,232,.05);
+  border:1px solid rgba(122,85,232,.18);
+  border-left:3px solid var(--purple);
+  border-radius:6px;
+  display:grid;grid-template-columns:auto 1fr;gap:24px;
+  align-items:start;
 }
-.statement::before{
-  content:'';position:absolute;
-  top:50%;left:50%;width:900px;height:900px;
-  background:radial-gradient(circle,rgba(122,85,232,.12),transparent 60%);
-  transform:translate(-50%,-50%);
-  filter:blur(50px);pointer-events:none;
-  animation:statementOrb 10s ease-in-out infinite alternate;
+.example-label{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-l);
+  white-space:nowrap;padding-top:4px;
 }
-@keyframes statementOrb{
-  from{transform:translate(-50%,-50%) scale(1);opacity:.7;}
-  to{transform:translate(-50%,-50%) scale(1.08);opacity:1;}
-}
-.statement-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
-.statement .section-tag{margin-bottom:48px;}
-.statement-quote{
-  font-family:var(--fd);
-  font-size:clamp(34px,5vw,68px);
-  font-weight:400;
-  line-height:1.1;letter-spacing:-.018em;
-  color:var(--t1);
-  margin-bottom:36px;
-}
-.statement-sub{
+.example-text{
   font-family:var(--fb);
-  font-size:16px;font-weight:400;line-height:1.7;
+  font-size:15px;font-weight:400;line-height:1.65;
   color:var(--t2);
-  max-width:60ch;margin:0 auto 56px;
 }
-.statement .btn-primary{margin:0 auto;}
+.example-text strong{color:var(--t1);font-weight:500;}
 
-/* ─── Final CTA ─── */
+/* ─── COMPARISON TABLE ─── */
+.compare-wrap{
+  margin-top:24px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.compare-table{
+  width:100%;
+  border-collapse:collapse;
+  font-family:var(--fb);
+  min-width:760px;
+}
+.compare-table thead th{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--d3);
+  text-align:left;
+  padding:0 14px 16px;
+  border-bottom:1px solid rgba(10,8,20,.18);
+  white-space:nowrap;
+  vertical-align:bottom;
+}
+.compare-table thead th.col-self{
+  color:var(--purple-d);
+}
+.compare-table thead th:first-child{padding-left:0;width:36%;}
+.compare-table tbody td{
+  padding:18px 14px;
+  border-bottom:1px solid var(--rule-d);
+  font-size:14px;font-weight:400;line-height:1.5;color:var(--d2);
+  vertical-align:top;
+}
+.compare-table tbody td:first-child{
+  padding-left:0;
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:500;
+  color:var(--d1);
+}
+.compare-table tbody td.cell-yes,
+.compare-table tbody td.cell-no,
+.compare-table tbody td.cell-partial{
+  text-align:center;
+  font-family:var(--fm);
+  font-size:11px;letter-spacing:.1em;
+  color:var(--d3);
+}
+.compare-table tbody td.cell-yes{color:var(--purple-d);}
+.compare-table tbody td.cell-no{color:rgba(10,8,20,.22);}
+.compare-table tbody td.cell-partial{color:var(--d3);font-style:italic;}
+.compare-table tbody tr.row-self td{
+  background:rgba(122,85,232,.05);
+}
+.compare-table tbody tr.row-self td.cell-yes{
+  color:var(--purple-d);font-weight:600;
+}
+.compare-footnote{
+  margin-top:24px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--d3);
+}
+
+/* ─── DIFFERENCE: side-by-side ─── */
+.difference-block{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;
+  align-items:stretch;
+  margin-top:24px;
+}
+.diff-card{
+  display:flex;flex-direction:column;gap:18px;
+  padding:36px 32px;
+  border-radius:10px;
+  border:1px solid var(--rule);
+  background:rgba(255,255,255,.015);
+}
+.diff-card.diff-them{
+  opacity:.74;
+}
+.diff-card.diff-us{
+  border-color:rgba(122,85,232,.4);
+  background:rgba(122,85,232,.06);
+  box-shadow:0 0 0 1px rgba(122,85,232,.15),0 8px 28px rgba(122,85,232,.08);
+}
+.diff-label{
+  font-family:var(--fm);
+  font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--t3);
+  display:inline-flex;align-items:center;gap:12px;
+}
+.diff-label::before{content:'';width:18px;height:1px;background:currentColor;}
+.diff-card.diff-us .diff-label{color:var(--purple-l);}
+.diff-quote{
+  font-family:var(--fd);
+  font-size:18px;font-weight:400;font-style:italic;
+  line-height:1.55;letter-spacing:-.005em;
+  color:var(--t2);
+}
+.diff-card.diff-us .diff-quote{color:var(--t1);font-style:normal;}
+.diff-tag{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+  margin-top:auto;padding-top:14px;border-top:1px solid var(--rule);
+}
+.diff-card.diff-us .diff-tag{color:var(--purple-l);border-color:rgba(122,85,232,.25);}
+
+/* ─── HOW WE WORK ROWS ─── */
+.how-rows{display:flex;flex-direction:column;}
+.how-row{
+  display:grid;grid-template-columns:64px 1fr 1.2fr;gap:48px;align-items:start;
+  padding:48px 0;
+  border-top:1px solid var(--rule-d);
+  transition:opacity .4s var(--ease);
+}
+.how-row:last-child{border-bottom:1px solid var(--rule-d);}
+.how-rows:hover .how-row{opacity:.4;}
+.how-rows:hover .how-row:hover{opacity:1;}
+.how-num{
+  font-family:var(--fm);
+  font-size:11px;font-weight:500;letter-spacing:.18em;
+  color:var(--purple-d);
+  padding-top:14px;
+}
+.how-title{
+  font-family:var(--fd);
+  font-size:clamp(22px,2.4vw,30px);
+  font-weight:400;line-height:1.18;letter-spacing:-.012em;
+  color:var(--d1);
+}
+.how-desc{
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:400;line-height:1.7;
+  color:var(--d2);
+  padding-top:8px;
+}
+
+/* ─── FINAL CTA ─── */
 .final-cta{
   position:relative;
   padding:140px 56px 120px;
@@ -507,7 +632,11 @@ body::after{
   background:radial-gradient(circle,rgba(122,85,232,.13),transparent 60%);
   transform:translate(-50%,-50%);
   filter:blur(50px);pointer-events:none;
-  animation:statementOrb 10s ease-in-out -3s infinite alternate;
+  animation:ctaOrb 10s ease-in-out infinite alternate;
+}
+@keyframes ctaOrb{
+  from{transform:translate(-50%,-50%) scale(1);opacity:.7;}
+  to{transform:translate(-50%,-50%) scale(1.1);opacity:1;}
 }
 .final-cta-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
 .final-cta .section-tag{margin-bottom:24px;}
@@ -536,7 +665,6 @@ body::after{
   border-bottom:1px solid var(--rule);
 }
 .footer-brand{display:flex;flex-direction:column;gap:10px;}
-.footer-brand .nav-logo{display:inline-block;}
 .footer-tagline{
   font-family:var(--fm);
   font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
@@ -579,53 +707,46 @@ body::after{
 /* ─── REVEAL ─── */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
 .rv.in{opacity:1;transform:none;}
-.rv-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
-.rv-stagger.in > *:nth-child(1){opacity:1;transform:none;transition-delay:.06s;}
-.rv-stagger.in > *:nth-child(2){opacity:1;transform:none;transition-delay:.16s;}
-.rv-stagger.in > *:nth-child(3){opacity:1;transform:none;transition-delay:.26s;}
-.rv-stagger.in > *:nth-child(4){opacity:1;transform:none;transition-delay:.36s;}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1024px){
   .nav{padding:20px 40px;}
   .nav.shrink{padding:12px 40px;}
   .hero{padding:130px 40px 100px;}
-  .marquee{padding:18px 0;}
   .marquee-item{font-size:16px;}
   .section{padding:96px 40px;}
-  .statement,.final-cta{padding:110px 40px;}
+  .final-cta{padding:110px 40px;}
   .footer{padding:32px 40px;}
 }
 @media(max-width:900px){
   .nav{padding:16px 28px;}
-  .nav.shrink{padding:12px 28px;}
   .hero{padding:120px 28px 90px;}
   .section{padding:72px 28px;}
-  .statement,.final-cta{padding:90px 28px;}
+  .final-cta{padding:90px 28px;}
   .client-row{grid-template-columns:1fr;gap:14px;padding:36px 0;}
   .client-roman{font-size:42px;}
-  .how-row{grid-template-columns:1fr;gap:10px;padding:36px 0;}
-  .how-num{padding-top:0;font-size:10px;}
-  .problem-row{grid-template-columns:1fr;gap:14px;padding:32px 0;}
+  .problem-row{grid-template-columns:1fr;gap:18px;padding:32px 0;}
   .problem-tag{align-self:flex-start;}
+  .difference-block{grid-template-columns:1fr;gap:24px;}
+  .how-row{grid-template-columns:1fr;gap:10px;padding:36px 0;}
+  .how-num{padding-top:0;}
   .footer{padding:28px 28px;}
   .footer-top{grid-template-columns:1fr;gap:24px;}
   .footer-center,.footer-nav{justify-self:start;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
   .mobile-menu{padding:0 28px;}
+  .example-callout{grid-template-columns:1fr;gap:14px;padding:28px;}
 }
 @media(max-width:560px){
   .hero-h1{font-size:42px;}
-  .section-h2{font-size:34px;}
-  .row-title{font-size:24px;}
-  .problem-text{font-size:22px;}
-  .statement-quote{font-size:34px;}
-  .final-cta-h{font-size:38px;}
+  .section-h2{font-size:32px;}
+  .problem-text{font-size:20px;}
+  .final-cta-h{font-size:36px;}
   .btn-primary,.btn-secondary{width:100%;justify-content:center;}
   .hero-actions{flex-direction:column;align-items:stretch;gap:14px;}
+  .compare-table{font-size:13px;}
 }
 
-/* ─── PREFERS-REDUCED-MOTION ─── */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:.01ms!important;
@@ -634,10 +755,10 @@ body::after{
     scroll-behavior:auto!important;
   }
   .word-inner{transform:translateY(0)!important;}
-  .rv,.rv-stagger > *{transform:none!important;opacity:1!important;}
+  .rv{transform:none!important;opacity:1!important;}
   .marquee-track{animation:none!important;}
   .orb-1,.orb-2{animation:none!important;}
-  .statement::before,.final-cta::before{animation:none!important;}
+  .final-cta::before{animation:none!important;}
 }
 </style>
 </head>
@@ -677,7 +798,7 @@ body::after{
     <h1 class="hero-h1" id="heroH1" data-split>
       We recognise <em>your problem.</em>
     </h1>
-    <p class="hero-sub">MedTech companies building in healthcare face the same gap. Not the technology. What makes the technology work in the real clinical world. That is the layer we work on.</p>
+    <p class="hero-sub">MedTech companies building in healthcare face the same gap. Not the technology. What makes the technology work in the real clinical world. That is the layer we work on — and the layer no consultancy, design agency, or strategy firm reaches today.</p>
     <div class="hero-actions">
       <a href="contact.html" class="btn-primary"><span>Let's talk</span><span class="arr">→</span></a>
       <a href="services.html" class="btn-secondary"><span>How we work</span><span class="arr">→</span></a>
@@ -691,110 +812,253 @@ body::after{
     <span class="marquee-item">Medical Robotics</span>
     <span class="marquee-item">HealthTech Ventures</span>
     <span class="marquee-item">Hospital Innovation</span>
-    <span class="marquee-item">Value Proposition</span>
     <span class="marquee-item">Clinical Adoption</span>
     <span class="marquee-item">Service Design</span>
     <span class="marquee-item">Pre-Product Strategy</span>
     <span class="marquee-item">Medical Robotics</span>
     <span class="marquee-item">HealthTech Ventures</span>
     <span class="marquee-item">Hospital Innovation</span>
-    <span class="marquee-item">Value Proposition</span>
     <span class="marquee-item">Clinical Adoption</span>
     <span class="marquee-item">Service Design</span>
     <span class="marquee-item">Pre-Product Strategy</span>
   </div>
 </div>
 
-<!-- ─── WHO WE WORK WITH (cream) ─── -->
+<!-- ─── 01 WHO WE WORK WITH (cream) ─── -->
 <section class="section cream-section">
   <div class="section-inner">
     <div class="section-head">
       <span class="section-tag rv"><span class="num">01</span>Who we work with</span>
       <h2 class="section-h2 rv" data-split>Three types of client. <em>One shared challenge.</em></h2>
+      <p class="section-lede rv">Servizions works with companies and teams who have built something with real clinical potential — and who now face the layer that decides whether that potential becomes adoption.</p>
     </div>
 
-    <div class="rows">
-      <article class="row client-row rv">
+    <div class="client-rows">
+      <article class="client-row rv">
         <div class="client-roman">I</div>
-        <h3 class="row-title">Medical Robotics Companies</h3>
-        <p class="row-desc">You have built something with real clinical potential. The technology is not the problem. Getting hospitals to understand the value and commit to adoption — that is the layer we work on.</p>
+        <h3 class="client-name">Medical Robotics Companies</h3>
+        <div class="client-body">
+          <p class="client-desc">You have built a robotic system with strong clinical validation. The technology is not the problem. Getting hospitals to understand the value, integrate it into workflow, and commit to adoption — that is the layer where most of the budget gets lost. We work with rehabilitation robotics, surgical robotics, and assistive systems at Series B to pre-IPO stage.</p>
+          <span class="client-deliverable">Typical entry · Clinical Intelligence Brief</span>
+        </div>
       </article>
-      <article class="row client-row rv">
+
+      <article class="client-row rv">
         <div class="client-roman">II</div>
-        <h3 class="row-title">HealthTech Ventures</h3>
-        <p class="row-desc">You are building a digital health product and need it to work inside a real clinical environment. The service layer between your product and clinical adoption is what is missing.</p>
+        <h3 class="client-name">HealthTech Ventures</h3>
+        <div class="client-body">
+          <p class="client-desc">You are building a digital health product — patient-facing, clinician-facing, or both — and need it to work inside a real clinical environment. The service layer between your product and clinical adoption is what is missing. We map where your product meets the workflow, where it breaks, and what the next product direction needs to look like.</p>
+          <span class="client-deliverable">Typical entry · Product System Map</span>
+        </div>
       </article>
-      <article class="row client-row rv">
+
+      <article class="client-row rv">
         <div class="client-roman">III</div>
-        <h3 class="row-title">Hospital Innovation Teams</h3>
-        <p class="row-desc">You have clinical ambition and internal energy. What is missing is the structured approach that turns that ambition into something that actually reaches implementation.</p>
+        <h3 class="client-name">Hospital Innovation Teams</h3>
+        <div class="client-body">
+          <p class="client-desc">You have clinical ambition and internal energy. What is missing is the structured approach that turns that ambition into something that actually reaches implementation. We bring the methodology, the workflow analysis, and the strategic frame your team has not had time to formalise.</p>
+          <span class="client-deliverable">Typical entry · Service Blueprint</span>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ─── PROBLEMS (dark) ─── -->
+<!-- ─── 02 THE PROBLEMS (dark) ─── -->
 <section class="section section-tinted">
   <div class="section-inner">
     <div class="section-head">
-      <span class="section-tag rv"><span class="num">02</span>Do you recognise this?</span>
-      <h2 class="section-h2 rv">The situations we are built for.</h2>
+      <span class="section-tag rv"><span class="num">02</span>The situations we recognise</span>
+      <h2 class="section-h2 rv" data-split>Four patterns. <em>Same root cause.</em></h2>
+      <p class="section-lede rv">Each of these is a service-system failure dressed up as a different problem. Each one has a specific Servizions move.</p>
     </div>
 
     <div class="problem-rows">
       <article class="problem-row rv">
         <p class="problem-text">Our technology works. Nobody can explain why it matters to the people who need to say yes.</p>
+        <div class="problem-move">
+          <span class="problem-move-label">The move</span>
+          <p class="problem-move-text">Field interviews with the people who actually buy and use the device. Translate technical performance into clinical reality. Rebuild the value proposition around what we observed — not what was assumed at the engineering stage.</p>
+        </div>
         <span class="problem-tag">Value Proposition</span>
       </article>
+
       <article class="problem-row rv">
         <p class="problem-text">Pilots succeed. Rollout stalls. The adoption we expected never comes.</p>
+        <div class="problem-move">
+          <span class="problem-move-label">The move</span>
+          <p class="problem-move-text">Map the full pilot-to-rollout path at the meso level — one patient, one clinician, every moment. Pilots succeed in optimised conditions. Rollout fails where the service system was never designed. We find that gap.</p>
+        </div>
         <span class="problem-tag">Adoption</span>
       </article>
+
       <article class="problem-row rv">
         <p class="problem-text">We are building the product — but nobody has designed how it will actually be used in a hospital.</p>
+        <div class="problem-move">
+          <span class="problem-move-label">The move</span>
+          <p class="problem-move-text">Service blueprint and workflow mapping before development is locked. The product team designs the device. Servizions designs the service system around it. Done in parallel, the product ships into a workflow that already accepts it.</p>
+        </div>
         <span class="problem-tag">Service Design</span>
       </article>
+
       <article class="problem-row rv">
         <p class="problem-text">We have clinical evidence. It does not translate into conversations that lead anywhere.</p>
+        <div class="problem-move">
+          <span class="problem-move-label">The move</span>
+          <p class="problem-move-text">Reframe the evidence around what clinicians and procurement actually decide on. Therapists evaluate every technology through two filters: does it improve patient outcomes, and does it reduce burden. If your evidence does not address both, the conversation closes.</p>
+        </div>
         <span class="problem-tag">Clinical Communication</span>
       </article>
     </div>
+
+    <aside class="example-callout rv">
+      <span class="example-label">Live example</span>
+      <p class="example-text">In July 2025, <strong>Reha Technology AG</strong> — a Swiss gait rehabilitation robotics company — filed bankruptcy after nearly two decades of operation. The technology worked. The CEO cited reluctance to invest further in robotic rehab. The pattern Servizions exists to solve is not hypothetical. It ended a company last summer.</p>
+    </aside>
   </div>
 </section>
 
-<!-- ─── STATEMENT ─── -->
-<section class="statement">
-  <div class="statement-inner">
-    <span class="section-tag rv"><span class="num">03</span>Our position</span>
-    <p class="statement-quote rv" data-split>We work on these problems. We do not publish how.</p>
-    <p class="statement-sub rv">The specific methods Servizions uses are shared with clients as part of the engagement — not on a website. Every organisation we work with leaves with something structured, concrete, and genuinely usable.</p>
-    <a href="contact.html" class="btn-primary rv"><span>Tell us your situation</span><span class="arr">→</span></a>
+<!-- ─── 03 HOW WE DIFFER (cream — comparison table) ─── -->
+<section class="section cream-section">
+  <div class="section-inner-wide">
+    <div class="section-head">
+      <span class="section-tag rv"><span class="num">03</span>How we differ</span>
+      <h2 class="section-h2 rv" data-split>Five firms in the room. <em>One stands at the intersection.</em></h2>
+      <p class="section-lede rv">There are firms who deliver reports. Firms who deliver interfaces. Firms who arrive after launch. And firms who write future scenarios from desk research. None of them stand where Servizions stands — at the intersection of clinical fieldwork, service design, and grounded foresight.</p>
+    </div>
+
+    <div class="compare-wrap rv">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Consultancy</th>
+            <th>Design Agency</th>
+            <th>Implementation Partner</th>
+            <th>Strategy / Foresight</th>
+            <th class="col-self">Servizions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-self-marker">
+            <td>Clinical fieldwork (ethnography)</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+          <tr>
+            <td>Service blueprint &amp; workflow mapping</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-yes">✓</td>
+            <td class="cell-no">—</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+          <tr>
+            <td>Connects clinical, service &amp; future layers</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+          <tr>
+            <td>Future scenarios for product strategy</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-yes">✓</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+          <tr>
+            <td>Scenarios grounded in clinical observation</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+          <tr>
+            <td>Strategic options grounded in observed need</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-partial">generic</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+          <tr>
+            <td>Arrives before development is committed</td>
+            <td class="cell-yes">✓</td>
+            <td class="cell-yes">✓</td>
+            <td class="cell-no">—</td>
+            <td class="cell-yes">✓</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+          <tr>
+            <td>Grounded in academic methodology</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-no">—</td>
+            <td class="cell-partial">partial</td>
+            <td class="cell-yes">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-footnote rv">Servizions methodology is grounded in a 2024 master's thesis on systemic innovation in rehabilitation robotics — see <a href="about.html" style="color:var(--purple-d);text-decoration:underline;text-decoration-color:rgba(90,43,214,.4);text-underline-offset:3px;">About</a>.</p>
   </div>
 </section>
 
-<!-- ─── HOW WE WORK (cream) ─── -->
+<!-- ─── 04 WHY THIS WORKS — side-by-side (dark) ─── -->
+<section class="section section-tinted">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag rv"><span class="num">04</span>The difference, in one example</span>
+      <h2 class="section-h2 rv" data-split>The same future. <em>Two different conclusions.</em></h2>
+      <p class="section-lede rv">Both statements describe the same trend. One was built from desk research and reads like every other strategy report. The other was built from observed clinical reality and points to a specific hardware decision. The shape of the page hides the difference; the substance reveals it.</p>
+    </div>
+
+    <div class="difference-block">
+      <article class="diff-card diff-them rv">
+        <span class="diff-label">Standard foresight says</span>
+        <p class="diff-quote">In a future of aging demographics and AI adoption, rehabilitation technology will shift toward home-based care.</p>
+        <span class="diff-tag">Built from desk research · same input every competitor receives</span>
+      </article>
+
+      <article class="diff-card diff-us rv">
+        <span class="diff-label">Servizions says</span>
+        <p class="diff-quote">In a future where therapists have 30% less session time per patient — already observed in Munich and Vienna — your device takes 18 minutes to set up. That is not viable. Product directions that survive this future reduce setup to under 4 minutes. Here is what that means for your hardware.</p>
+        <span class="diff-tag">Built from observed clinical reality · specific, defensible, actionable</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 05 HOW WE WORK (cream) ─── -->
 <section class="section cream-section">
   <div class="section-inner">
     <div class="section-head">
-      <span class="section-tag rv"><span class="num">04</span>How we work</span>
+      <span class="section-tag rv"><span class="num">05</span>How we work</span>
       <h2 class="section-h2 rv" data-split>Direct. Specific. <em>No templates.</em></h2>
     </div>
 
-    <div class="rows">
-      <article class="row how-row rv">
+    <div class="how-rows">
+      <article class="how-row rv">
         <span class="how-num">01</span>
-        <h3 class="row-title">We start with your situation.</h3>
-        <p class="row-desc">Before anything is proposed, we understand exactly where your innovation stands — the technology, the clinical environment, and what is actually blocking progress.</p>
+        <h3 class="how-title">We start with your situation.</h3>
+        <p class="how-desc">Before anything is proposed, we understand exactly where your innovation stands — the technology, the clinical environment, the team, and what is actually blocking progress. The first conversation is diagnostic, not promotional.</p>
       </article>
-      <article class="row how-row rv">
+      <article class="how-row rv">
         <span class="how-num">02</span>
-        <h3 class="row-title">You work with the Servizions core.</h3>
-        <p class="row-desc">Every engagement is a direct collaboration with the Servizions core team — no intermediaries, no junior team members delivering on a senior promise.</p>
+        <h3 class="how-title">You work with the Servizions core.</h3>
+        <p class="how-desc">Every engagement is a direct collaboration with the Servizions core team — no intermediaries, no junior team members delivering on a senior promise. The clinical fieldwork, the workflow mapping, and the strategic synthesis happen in the same hands.</p>
       </article>
-      <article class="row how-row rv">
+      <article class="how-row rv">
         <span class="how-num">03</span>
-        <h3 class="row-title">You receive something concrete.</h3>
-        <p class="row-desc">Every engagement ends with a structured, actionable output — not a process document. A scenario cone, a service blueprint, a strategic product direction. Something your team can use the day it is received.</p>
+        <h3 class="how-title">You receive something concrete.</h3>
+        <p class="how-desc">Every engagement ends with a structured, actionable output — not a process document. A Clinical Intelligence Brief. A Service Blueprint. A Scenario Cone with three strategic options. Something your team can read on Monday and act on by Friday.</p>
       </article>
     </div>
   </div>
@@ -845,14 +1109,12 @@ const q  = s => document.querySelector(s);
 const qa = s => [...document.querySelectorAll(s)];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Progress + nav shrink + theme switch */
 const prg = q('#prg'), nav = q('#nav');
 const cream = qa('.cream-section');
 window.addEventListener('scroll',()=>{
   const max = document.body.scrollHeight - window.innerHeight;
   prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
   nav.classList.toggle('shrink', window.scrollY > 60);
-
   let onLight = false;
   cream.forEach(s=>{
     const r = s.getBoundingClientRect();
@@ -861,7 +1123,6 @@ window.addEventListener('scroll',()=>{
   nav.classList.toggle('on-light', onLight);
 },{passive:true});
 
-/* Mobile menu */
 const menuBtn = q('#menuBtn');
 const mobileMenu = q('#mobileMenu');
 if(menuBtn && mobileMenu){
@@ -880,7 +1141,6 @@ if(menuBtn && mobileMenu){
   });
 }
 
-/* Word-by-word split — preserves <em> and <br> */
 function initSplit(){
   qa('[data-split]').forEach(el=>{
     if(el.dataset.split === 'done') return;
@@ -924,19 +1184,15 @@ function initSplit(){
 }
 initSplit();
 
-/* Reveal observers */
 if(reduceMotion){
-  qa('.rv, .rv-stagger, [data-split]').forEach(el => {
+  qa('.rv, [data-split]').forEach(el => {
     el.classList.add('in');
     qa('.word-inner', el).forEach(w => w.classList.add('vis'));
   });
 } else {
-  /* Hero h1 — reveal immediately on load */
   setTimeout(()=>{
     qa('.word-inner', q('#heroH1')).forEach(w => w.classList.add('vis'));
   }, 350);
-
-  /* Other split elements — observe */
   const splitObs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -946,8 +1202,6 @@ if(reduceMotion){
     });
   }, {threshold:.2});
   qa('[data-split]').forEach(el => { if(el.id !== 'heroH1') splitObs.observe(el); });
-
-  /* Generic .rv */
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -956,7 +1210,7 @@ if(reduceMotion){
       }
     });
   }, {threshold:0.18, rootMargin:'0px 0px -60px 0px'});
-  qa('.rv, .rv-stagger').forEach(el => io.observe(el));
+  qa('.rv').forEach(el => io.observe(el));
 }
 
 })();

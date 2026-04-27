@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
 <title>Services — Servizions</title>
-<meta name="description" content="Servizions delivers strategic product direction in three acts — Clinical Intelligence, Product System Map, and Strategic Direction — each one earning the right to the next.">
+<meta name="description" content="The Servizions methodology: three acts, the Scenario Cone deliverable, a five-phase process for pre-product-development MedTech engagements.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,6 @@
   --fb:'Inter Tight',system-ui,sans-serif;
   --fm:'JetBrains Mono',monospace;
   --ease:cubic-bezier(0.16,1,0.3,1);
-  --ease-2:cubic-bezier(0.65,0,0.35,1);
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -188,22 +187,22 @@ body::after{
 
 /* ─── HERO ─── */
 .hero{
-  position:relative;min-height:100vh;
+  position:relative;min-height:80vh;
   display:flex;flex-direction:column;justify-content:center;
-  padding:140px 56px 120px;
+  padding:160px 56px 120px;
   overflow:hidden;
 }
 .hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
 .orb-1{
-  width:680px;height:680px;
-  background:radial-gradient(circle,rgba(122,85,232,.18),transparent 65%);
-  top:-180px;right:-140px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(122,85,232,.16),transparent 65%);
+  top:-160px;right:-100px;
   animation:drift 32s ease-in-out infinite alternate;
 }
 .orb-2{
-  width:520px;height:520px;
-  background:radial-gradient(circle,rgba(91,195,183,.10),transparent 65%);
-  bottom:-160px;left:18%;
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(91,195,183,.08),transparent 65%);
+  bottom:-140px;left:18%;
   animation:drift 36s ease-in-out -10s infinite alternate;
 }
 @keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
@@ -231,7 +230,6 @@ body::after{
   line-height:1.04;letter-spacing:-.02em;
   max-width:18ch;color:var(--t1);
 }
-.hero-h1 .ln{display:block;}
 .hero-h1 em{font-style:italic;font-weight:400;color:var(--teal);}
 
 .word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;}
@@ -259,7 +257,7 @@ body::after{
   animation:fadeUp 1s var(--ease) 1.2s forwards;
 }
 
-/* ─── BUTTONS (canonical) ─── */
+/* ─── BUTTONS ─── */
 .btn-primary{
   display:inline-flex;align-items:center;gap:10px;
   font-family:var(--fb);
@@ -293,7 +291,7 @@ body::after{
   content:'';position:absolute;left:4px;right:18px;bottom:8px;height:1px;
   background:currentColor;opacity:.4;
   transform:scaleX(0);transform-origin:right;
-  transition:transform .45s var(--ease),background .3s,opacity .3s;
+  transition:transform .45s var(--ease),opacity .3s;
 }
 .btn-secondary:hover{color:var(--purple-l);}
 .cream-section .btn-secondary:hover{color:var(--purple-d);}
@@ -361,14 +359,16 @@ body::after{
 .cream-section .section-h2 em{color:var(--purple-d);}
 .section-lede{
   font-size:17px;line-height:1.7;color:var(--t2);
-  margin-top:24px;max-width:62ch;
+  margin-top:28px;max-width:62ch;
 }
 .cream-section .section-lede{color:var(--d2);}
+.section-lede strong{font-weight:500;color:var(--t1);}
+.cream-section .section-lede strong{color:var(--d1);}
 
-/* ─── ACT CARDS (large editorial rows) ─── */
-.acts{display:flex;flex-direction:column;gap:0;}
+/* ─── ACT ROWS (expanded) ─── */
+.acts{display:flex;flex-direction:column;}
 .act{
-  display:grid;grid-template-columns:auto 1fr;gap:64px;
+  display:grid;grid-template-columns:240px 1fr;gap:64px;
   padding:64px 0;
   border-top:1px solid var(--rule-d);
   align-items:start;
@@ -379,15 +379,15 @@ body::after{
 .acts:hover .act:hover{opacity:1;}
 
 .act-marker{
-  display:flex;flex-direction:column;align-items:flex-start;gap:16px;
-  width:200px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:18px;
+  position:sticky;top:110px;
 }
-.act-num-circle{
-  width:48px;height:48px;border-radius:50%;
+.act-num{
+  width:54px;height:54px;border-radius:50%;
   background:rgba(90,43,214,.10);
   border:1px solid rgba(90,43,214,.4);
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--fd);font-size:20px;font-weight:400;
+  font-family:var(--fd);font-size:22px;font-weight:400;
   color:var(--purple-d);
 }
 .act-name{
@@ -395,26 +395,52 @@ body::after{
   font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
   color:var(--purple-d);
 }
-.act-body{display:flex;flex-direction:column;gap:18px;}
 .act-headline{
   font-family:var(--fd);
-  font-size:clamp(24px,2.8vw,38px);
-  font-weight:400;
-  line-height:1.18;letter-spacing:-.012em;
+  font-size:clamp(24px,2.6vw,34px);
+  font-weight:400;letter-spacing:-.012em;line-height:1.18;
   color:var(--d1);
   max-width:22ch;
-  margin-bottom:8px;
+  margin-bottom:18px;
 }
 .act-text{
   font-family:var(--fb);
   font-size:15.5px;font-weight:400;line-height:1.7;
   color:var(--d2);
-  max-width:56ch;
+  max-width:60ch;
+  margin-bottom:26px;
 }
+.act-text strong{color:var(--d1);font-weight:500;}
+
+.act-inside-label{
+  font-family:var(--fm);
+  font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-d);
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:14px;
+}
+.act-inside-label::before{content:'';width:18px;height:1px;background:var(--purple-d);}
+.act-bullets{
+  list-style:none;
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:28px;
+}
+.act-bullets li{
+  display:grid;grid-template-columns:18px 1fr;gap:10px;
+  align-items:start;
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:400;line-height:1.6;
+  color:var(--d2);
+}
+.act-bullets li::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:rgba(90,43,214,.5);
+  margin-top:8px;
+}
+
 .act-meta{
-  display:flex;flex-wrap:wrap;gap:32px;
-  margin-top:14px;
-  padding-top:18px;
+  display:flex;flex-wrap:wrap;gap:36px;
+  padding-top:24px;
   border-top:1px solid var(--rule-d);
 }
 .act-meta-item{display:flex;flex-direction:column;gap:4px;}
@@ -429,14 +455,109 @@ body::after{
   color:var(--d1);
 }
 
-/* ─── HOW IT FITS (dark text section) ─── */
+/* ─── SCENARIO CONE ─── */
+.cone-wrap{
+  display:flex;justify-content:center;
+  margin:48px 0 64px;
+}
+.cone-svg{
+  width:100%;
+  max-width:780px;
+  height:auto;
+}
+.cone-parts{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:48px;
+  margin-top:24px;
+}
+.cone-part{
+  display:flex;flex-direction:column;gap:12px;
+  position:relative;padding-top:24px;
+}
+.cone-part::before{
+  content:'';position:absolute;top:0;left:0;width:36px;height:1px;
+  background:var(--purple);
+}
+.cone-part-label{
+  font-family:var(--fm);
+  font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-l);
+}
+.cone-part-title{
+  font-family:var(--fd);
+  font-size:22px;font-weight:400;letter-spacing:-.01em;
+  color:var(--t1);
+  line-height:1.2;
+}
+.cone-part-desc{
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:400;line-height:1.7;
+  color:var(--t2);
+}
+
+/* ─── PHASES TIMELINE ─── */
+.phases{
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.phase-row{
+  display:grid;grid-template-columns:120px 1fr 1fr;gap:48px;
+  padding:36px 0;
+  border-top:1px solid var(--rule-d);
+  align-items:start;
+  transition:opacity .4s var(--ease);
+}
+.phase-row:last-child{border-bottom:1px solid var(--rule-d);}
+.phases:hover .phase-row{opacity:.4;}
+.phases:hover .phase-row:hover{opacity:1;}
+
+.phase-num-block{display:flex;flex-direction:column;gap:6px;}
+.phase-num{
+  font-family:var(--fd);
+  font-size:42px;font-weight:300;letter-spacing:-.02em;
+  color:rgba(90,43,214,.35);
+  line-height:1;
+  font-feature-settings:"tnum";
+}
+.phase-num-label{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-d);
+}
+.phase-content{display:flex;flex-direction:column;gap:8px;}
+.phase-name{
+  font-family:var(--fd);
+  font-size:22px;font-weight:400;letter-spacing:-.01em;line-height:1.25;
+  color:var(--d1);
+}
+.phase-desc{
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:400;line-height:1.7;
+  color:var(--d2);
+}
+.phase-output{
+  display:flex;flex-direction:column;gap:6px;
+  padding-top:6px;
+}
+.phase-output-label{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--d3);
+}
+.phase-output-text{
+  font-family:var(--fb);
+  font-size:14px;font-weight:500;
+  color:var(--d1);
+  line-height:1.5;
+}
+
+/* ─── FIT BLOCK (existing) ─── */
 .fit-block{
   display:grid;grid-template-columns:1fr 1fr;gap:80px;
   align-items:start;
 }
 .fit-block-text p{
   font-family:var(--fb);
-  font-size:17px;font-weight:400;line-height:1.7;
+  font-size:16.5px;font-weight:400;line-height:1.75;
   color:var(--t2);
   max-width:54ch;
   margin-bottom:18px;
@@ -491,7 +612,6 @@ body::after{
   border-bottom:1px solid var(--rule);
 }
 .footer-brand{display:flex;flex-direction:column;gap:10px;}
-.footer-brand .nav-logo{display:inline-block;}
 .footer-tagline{
   font-family:var(--fm);
   font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
@@ -540,20 +660,23 @@ body::after{
   .nav{padding:20px 40px;}
   .nav.shrink{padding:12px 40px;}
   .hero{padding:130px 40px 100px;}
-  .marquee{padding:18px 0;}
   .marquee-item{font-size:16px;}
   .section{padding:96px 40px;}
   .final-cta{padding:110px 40px;}
   .footer{padding:32px 40px;}
+  .act{grid-template-columns:200px 1fr;gap:48px;}
 }
 @media(max-width:900px){
   .nav{padding:16px 28px;}
-  .nav.shrink{padding:12px 28px;}
   .hero{padding:120px 28px 90px;}
   .section{padding:72px 28px;}
   .final-cta{padding:90px 28px;}
   .act{grid-template-columns:1fr;gap:24px;padding:48px 0;}
-  .act-marker{flex-direction:row;align-items:center;width:auto;gap:18px;}
+  .act-marker{position:static;flex-direction:row;align-items:center;gap:18px;}
+  .cone-parts{grid-template-columns:1fr;gap:28px;}
+  .phase-row{grid-template-columns:1fr;gap:14px;padding:28px 0;}
+  .phase-num{font-size:32px;}
+  .phase-num-block{flex-direction:row;align-items:baseline;gap:14px;}
   .fit-block{grid-template-columns:1fr;gap:36px;}
   .footer{padding:28px 28px;}
   .footer-top{grid-template-columns:1fr;gap:24px;}
@@ -563,14 +686,13 @@ body::after{
 }
 @media(max-width:560px){
   .hero-h1{font-size:42px;}
-  .section-h2{font-size:34px;}
+  .section-h2{font-size:32px;}
   .act-headline{font-size:24px;}
-  .final-cta-h{font-size:38px;}
+  .final-cta-h{font-size:36px;}
   .btn-primary,.btn-secondary{width:100%;justify-content:center;}
   .hero-actions{flex-direction:column;align-items:stretch;gap:14px;}
 }
 
-/* ─── PREFERS-REDUCED-MOTION ─── */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:.01ms!important;
@@ -622,7 +744,7 @@ body::after{
     <h1 class="hero-h1" id="heroH1" data-split>
       Three acts. Each one earns <em>the next.</em>
     </h1>
-    <p class="hero-sub">Servizions delivers strategic product direction in three structured engagements. Each act is a complete deliverable on its own. Each one earns the right to the next.</p>
+    <p class="hero-sub">Servizions delivers strategic product direction in three structured engagements. Each act is a complete deliverable on its own. Each one earns the right to the next. Below: what each act contains, the deliverable that anchors them, and the five-phase methodology underneath.</p>
     <div class="hero-actions">
       <a href="contact.html" class="btn-primary"><span>Let's talk</span><span class="arr">→</span></a>
       <a href="solutions.html" class="btn-secondary"><span>See solutions</span><span class="arr">→</span></a>
@@ -650,24 +772,34 @@ body::after{
   </div>
 </div>
 
-<!-- ─── THE THREE ACTS (cream) ─── -->
+<!-- ─── 01 THE THREE ACTS (cream) ─── -->
 <section class="section cream-section">
   <div class="section-inner">
     <div class="section-head">
       <span class="section-tag rv"><span class="num">01</span>The three acts</span>
       <h2 class="section-h2 rv" data-split>From clinical reality to <em>strategic direction.</em></h2>
-      <p class="section-lede rv">Each act is a complete engagement with its own deliverable. You can stop after Act 1. You can stop after Act 2. Most clients move through all three, in sequence, because each one builds the trust and evidence the next one requires.</p>
+      <p class="section-lede rv">Each act is a complete engagement with its own deliverable. You can stop after Act 1. You can stop after Act 2. Most clients move through all three because each one builds the trust and evidence the next one requires.</p>
     </div>
 
     <div class="acts">
       <article class="act rv">
         <div class="act-marker">
-          <div class="act-num-circle">1</div>
+          <div class="act-num">1</div>
           <span class="act-name">Act 1 · Clinical Intelligence</span>
         </div>
-        <div class="act-body">
+        <div>
           <h3 class="act-headline">We go into the clinical environment you are building for.</h3>
-          <p class="act-text">Direct observation of clinical sessions. Interviews with clinicians and patients. Moment-by-moment mapping of the interaction between patient, clinician, and device. Structuring what your team has seen but never formalised — or has never seen at all.</p>
+          <p class="act-text">Direct observation of clinical sessions. Interviews with clinicians and patients. Moment-by-moment mapping of the interaction between patient, clinician, and device. <strong>We structure what your team has seen but never formalised — or has never seen at all.</strong></p>
+
+          <span class="act-inside-label">What's inside</span>
+          <ul class="act-bullets">
+            <li>Direct, structured observation in your target clinical environment</li>
+            <li>Semi-structured interviews with clinicians and, where possible, patients</li>
+            <li>Stakeholder mapping across clinical, administrative, and technical actors</li>
+            <li>Workflow context analysis at the micro level (single moments, single contact points)</li>
+            <li>Clinical signal coding into structured findings ready to power Act 2</li>
+          </ul>
+
           <div class="act-meta">
             <div class="act-meta-item">
               <span class="act-meta-label">Output</span>
@@ -683,12 +815,22 @@ body::after{
 
       <article class="act rv">
         <div class="act-marker">
-          <div class="act-num-circle">2</div>
+          <div class="act-num">2</div>
           <span class="act-name">Act 2 · Product System Map</span>
         </div>
-        <div class="act-body">
+        <div>
           <h3 class="act-headline">We work with your product and clinical leadership to develop three strategic options.</h3>
-          <p class="act-text">Service blueprint. Friction map. Meso-level workflow — one patient, one therapist, every moment mapped. Friction categorised as product, service, or training. Three strategic options grounded in observed clinical need, not innovation theory.</p>
+          <p class="act-text">Service blueprint. Friction map. Meso-level workflow — one patient, one clinician, every moment mapped. Friction categorised as product, service, or training. <strong>Three strategic options, co-designed with your team, grounded in observed clinical need — not innovation theory.</strong></p>
+
+          <span class="act-inside-label">What's inside</span>
+          <ul class="act-bullets">
+            <li>Service blueprint with frontstage and backstage actor mapping</li>
+            <li>Meso-level session workflow — one patient and one clinician, end to end</li>
+            <li>Friction categorisation: product problem, service problem, or training problem</li>
+            <li>Adoption barrier analysis with specific implications per category</li>
+            <li>Co-design of three strategic product options with your product and clinical leads</li>
+          </ul>
+
           <div class="act-meta">
             <div class="act-meta-item">
               <span class="act-meta-label">Output</span>
@@ -704,12 +846,22 @@ body::after{
 
       <article class="act rv">
         <div class="act-marker">
-          <div class="act-num-circle">3</div>
+          <div class="act-num">3</div>
           <span class="act-name">Act 3 · Strategic Direction</span>
         </div>
-        <div class="act-body">
+        <div>
           <h3 class="act-headline">We stress-test the three options against the futures already in motion.</h3>
-          <p class="act-text">Four to five healthcare futures built from clinical data. Each option scored against each future. The Scenario Cone — a decision-support tool defensible to your board, your investors, and your engineering team. Clear answer on each option: invest here, wait on this, abandon that.</p>
+          <p class="act-text">Four to five healthcare futures built from clinical signals — not trend reports. Each option scored against each future. <strong>The Scenario Cone — a decision-support tool defensible to your board, your investors, and your engineering team.</strong> Clear answer on each option: invest here, wait on this, abandon that.</p>
+
+          <span class="act-inside-label">What's inside</span>
+          <ul class="act-bullets">
+            <li>Four to five healthcare futures built directly from observed clinical signals</li>
+            <li>Stress-test matrix — every option scored against every future</li>
+            <li>Build-readiness filter applied (cost, complexity, time-to-market)</li>
+            <li>Build sequence: which option first, which in parallel, which to deprioritise</li>
+            <li>The Scenario Cone deliverable — visual, defensible, ready for the board</li>
+          </ul>
+
           <div class="act-meta">
             <div class="act-meta-item">
               <span class="act-meta-label">Output</span>
@@ -726,22 +878,185 @@ body::after{
   </div>
 </section>
 
-<!-- ─── HOW THE ACTS FIT (dark) ─── -->
+<!-- ─── 02 THE SCENARIO CONE (dark) ─── -->
 <section class="section section-tinted">
   <div class="section-inner">
     <div class="section-head">
-      <span class="section-tag rv"><span class="num">02</span>How they fit</span>
-      <h2 class="section-h2 rv" data-split>Each act earns <em>the next.</em></h2>
+      <span class="section-tag rv"><span class="num">02</span>The core deliverable</span>
+      <h2 class="section-h2 rv" data-split>The deliverable is a <em>cone.</em></h2>
+      <p class="section-lede rv">Every other foresight firm draws a scenario cone. Servizions is the only one whose narrow end contains <strong>observed clinical reality</strong> — not market data. That is the entire differentiator. It makes every option, every scenario, and every recommendation grounded in what actually happens between a patient and a clinician with a device.</p>
+    </div>
+
+    <div class="cone-wrap rv">
+      <svg class="cone-svg" viewBox="0 0 780 280" aria-hidden="true">
+        <defs>
+          <linearGradient id="coneFill" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="rgba(122,85,232,0.35)"/>
+            <stop offset="100%" stop-color="rgba(122,85,232,0.05)"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Cone body -->
+        <path d="M 80,140 L 700,40 L 700,240 Z"
+              fill="url(#coneFill)"
+              stroke="rgba(122,85,232,0.5)"
+              stroke-width="1"
+              stroke-linejoin="round"/>
+
+        <!-- Future trajectories (5 dotted lines from origin to right edge) -->
+        <line x1="80" y1="140" x2="700" y2="50"  stroke="rgba(166,136,240,0.45)" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="80" y1="140" x2="700" y2="100" stroke="rgba(166,136,240,0.45)" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="80" y1="140" x2="700" y2="140" stroke="rgba(166,136,240,0.45)" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="80" y1="140" x2="700" y2="180" stroke="rgba(166,136,240,0.45)" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="80" y1="140" x2="700" y2="230" stroke="rgba(166,136,240,0.45)" stroke-width="1" stroke-dasharray="3 4"/>
+
+        <!-- Origin point + halo -->
+        <circle cx="80" cy="140" r="14" fill="rgba(122,85,232,0.18)"/>
+        <circle cx="80" cy="140" r="6" fill="#A688F0"/>
+
+        <!-- Three options at wide end -->
+        <g>
+          <rect x="630" y="62"  width="120" height="36" rx="18" fill="rgba(122,85,232,0.18)" stroke="rgba(122,85,232,0.5)" stroke-width="1"/>
+          <text x="690" y="85" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#A688F0" letter-spacing="2">OPTION 1</text>
+
+          <rect x="630" y="122" width="120" height="36" rx="18" fill="rgba(91,195,183,0.16)" stroke="rgba(91,195,183,0.5)" stroke-width="1"/>
+          <text x="690" y="145" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#5BC3B7" letter-spacing="2">OPTION 2</text>
+
+          <rect x="630" y="182" width="120" height="36" rx="18" fill="rgba(122,85,232,0.18)" stroke="rgba(122,85,232,0.5)" stroke-width="1"/>
+          <text x="690" y="205" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#A688F0" letter-spacing="2">OPTION 3</text>
+        </g>
+
+        <!-- Labels -->
+        <text x="80" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.45)" letter-spacing="2">NARROW END</text>
+        <text x="370" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.45)" letter-spacing="2">FIVE HEALTHCARE FUTURES</text>
+        <text x="690" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.45)" letter-spacing="2">WIDE END</text>
+      </svg>
+    </div>
+
+    <div class="cone-parts">
+      <div class="cone-part rv">
+        <span class="cone-part-label">Narrow end</span>
+        <h3 class="cone-part-title">Clinical ground truth</h3>
+        <p class="cone-part-desc">What we observed. The meso-level workflow, the friction map, the field research from your specific clinical environment. This is what makes the cone different from any other foresight firm's output. Without this, the cone is built on assumptions.</p>
+      </div>
+      <div class="cone-part rv">
+        <span class="cone-part-label">The cone</span>
+        <h3 class="cone-part-title">Healthcare futures</h3>
+        <p class="cone-part-desc">Four to five credible futures for your specific domain. Not built from trend reports — built from the clinical signals we observed. Each future is already in motion. These are not predictions; they are trajectories.</p>
+      </div>
+      <div class="cone-part rv">
+        <span class="cone-part-label">Wide end</span>
+        <h3 class="cone-part-title">Three strategic options</h3>
+        <p class="cone-part-desc">The product directions you can choose from. Each option is positioned inside the cone based on which futures it survives, which it thrives in, and which ones make it obsolete. Decision-support tool — not a report.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 03 FIVE-PHASE PROCESS (cream) ─── -->
+<section class="section cream-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag rv"><span class="num">03</span>The methodology</span>
+      <h2 class="section-h2 rv" data-split>Five phases. <em>Sequential, not parallel.</em></h2>
+      <p class="section-lede rv">The three acts sit on a five-phase process. Each phase feeds the next. The clinical reality of Phase 1 becomes the raw material for the Scenario Cone in Phase 4 — that's why the cone cannot be faked with desk research, and that's the entire commercial advantage.</p>
+    </div>
+
+    <div class="phases">
+      <article class="phase-row rv">
+        <div class="phase-num-block">
+          <span class="phase-num">00</span>
+          <span class="phase-num-label">Phase 0</span>
+        </div>
+        <div class="phase-content">
+          <h3 class="phase-name">Engagement &amp; Scope</h3>
+          <p class="phase-desc">Kickoff. Align expectations. Define scope, stakeholders, objectives, and success metrics. The shape of every later deliverable is decided here.</p>
+        </div>
+        <div class="phase-output">
+          <span class="phase-output-label">Output</span>
+          <span class="phase-output-text">Engagement brief</span>
+        </div>
+      </article>
+
+      <article class="phase-row rv">
+        <div class="phase-num-block">
+          <span class="phase-num">01</span>
+          <span class="phase-num-label">Phase 1</span>
+        </div>
+        <div class="phase-content">
+          <h3 class="phase-name">Clinical Reality Exploration</h3>
+          <p class="phase-desc">Clinical environment observation. Therapist, surgeon, and patient interviews. Stakeholder mapping. Context analysis at the micro level — one moment, one contact point at a time.</p>
+        </div>
+        <div class="phase-output">
+          <span class="phase-output-label">Output</span>
+          <span class="phase-output-text">Clinical Intelligence Brief — the narrow end of the cone</span>
+        </div>
+      </article>
+
+      <article class="phase-row rv">
+        <div class="phase-num-block">
+          <span class="phase-num">02</span>
+          <span class="phase-num-label">Phase 2</span>
+        </div>
+        <div class="phase-content">
+          <h3 class="phase-name">Experience &amp; Workflow Mapping</h3>
+          <p class="phase-desc">Patient journey map. Clinician workflow map. Meso-level session mapping — one patient, one clinician, every moment. Friction categorised: product, service, or training.</p>
+        </div>
+        <div class="phase-output">
+          <span class="phase-output-label">Output</span>
+          <span class="phase-output-text">Product System Map &amp; Service Blueprint</span>
+        </div>
+      </article>
+
+      <article class="phase-row rv">
+        <div class="phase-num-block">
+          <span class="phase-num">03</span>
+          <span class="phase-num-label">Phase 3</span>
+        </div>
+        <div class="phase-content">
+          <h3 class="phase-name">Option Co-Design &amp; Service Innovation</h3>
+          <p class="phase-desc">Service blueprint refinement. Adoption barrier analysis. Co-design of three strategic options with your product and clinical leadership. Options are grounded in observed need, ready for stress-testing.</p>
+        </div>
+        <div class="phase-output">
+          <span class="phase-output-label">Output</span>
+          <span class="phase-output-text">Three options ready for Phase 4</span>
+        </div>
+      </article>
+
+      <article class="phase-row rv">
+        <div class="phase-num-block">
+          <span class="phase-num">04</span>
+          <span class="phase-num-label">Phase 4</span>
+        </div>
+        <div class="phase-content">
+          <h3 class="phase-name">Future Scenario Planning &amp; Strategic Direction</h3>
+          <p class="phase-desc">Four to five healthcare futures built from clinical data. Options stress-tested against each future. Build-readiness filter applied. The Scenario Cone constructed — defensible to board and engineering.</p>
+        </div>
+        <div class="phase-output">
+          <span class="phase-output-label">Output</span>
+          <span class="phase-output-text">Scenario Cone + Strategic Product Roadmap</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 04 HOW THEY FIT (dark) ─── -->
+<section class="section section-tinted">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag rv"><span class="num">04</span>How they fit</span>
+      <h2 class="section-h2 rv" data-split>Why Act 3 is never sold <em>cold.</em></h2>
     </div>
 
     <div class="fit-block rv">
       <div class="fit-block-text">
-        <p><strong>Act 3 is never sold cold.</strong> Strategic product direction is the highest-stakes deliverable Servizions produces. Nobody buys it from someone they have never worked with.</p>
-        <p>Act 1 builds trust by showing things your team missed in the clinic. Act 2 creates urgency by mapping where your product fails to fit. Act 3 is the conversation you ask for, after Acts 1 and 2 have made the case.</p>
+        <p><strong>Strategic product direction is the highest-stakes deliverable Servizions produces.</strong> Nobody buys it from someone they have never worked with — and they shouldn't. The Scenario Cone in Act 3 is a decision instrument that survives board scrutiny only because it is backed by what we observed in your clinic, with your clinicians, in your patients' day.</p>
+        <p>Act 1 builds trust by showing things your team missed in the clinic. Act 2 creates urgency by mapping where the product fails to fit. Act 3 is the conversation you ask for, after Acts 1 and 2 have made the case.</p>
       </div>
       <div class="fit-block-text">
-        <p>You can engage Servizions for Act 1 alone — and many clients do. The Clinical Intelligence Brief is a complete deliverable on its own.</p>
-        <p>But the work compounds. Each act sharpens the next. By the time you reach Act 3, the futures are not built from desk research — they are built from what we observed in your clinical environment, in your clinicians' workflow, in your patients' day. <strong>That is the entire commercial advantage.</strong></p>
+        <p>You can engage Servizions for Act 1 alone — and many clients do. The Clinical Intelligence Brief is a complete deliverable on its own. It earns the right to Act 2. It rarely ends there.</p>
+        <p>The work compounds. Each act sharpens the next. By the time you reach Act 3, the futures are not built from desk research — they are built from what we observed in your clinical environment. <strong>That is the entire commercial advantage.</strong></p>
       </div>
     </div>
   </div>
@@ -798,7 +1113,6 @@ window.addEventListener('scroll',()=>{
   const max = document.body.scrollHeight - window.innerHeight;
   prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
   nav.classList.toggle('shrink', window.scrollY > 60);
-
   let onLight = false;
   cream.forEach(s=>{
     const r = s.getBoundingClientRect();
@@ -825,7 +1139,6 @@ if(menuBtn && mobileMenu){
   });
 }
 
-/* Word-by-word split */
 function initSplit(){
   qa('[data-split]').forEach(el=>{
     if(el.dataset.split === 'done') return;
@@ -878,7 +1191,6 @@ if(reduceMotion){
   setTimeout(()=>{
     qa('.word-inner', q('#heroH1')).forEach(w => w.classList.add('vis'));
   }, 350);
-
   const splitObs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -888,7 +1200,6 @@ if(reduceMotion){
     });
   }, {threshold:.2});
   qa('[data-split]').forEach(el => { if(el.id !== 'heroH1') splitObs.observe(el); });
-
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
