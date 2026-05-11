@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
-<title>Essays — Servizions</title>
-<meta name="description" content="§22 — Twelve cases, one pattern. Field notes, case studies, and structural diagnostics on MedTech adoption failure. Essays by Servizions.">
+<title>News & Articles — Servizions</title>
+<meta name="description" content="§22 — Twelve cases, one pattern. Field notes, case studies, and structural diagnostics on MedTech adoption failure. News & Articles by Servizions.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -710,7 +710,7 @@ body::after{
   <nav class="nav-links">
     <a href="services.html" class="nav-link">Services</a>
     <a href="solutions.html" class="nav-link">Solutions</a>
-    <a href="news.html" class="nav-link active">News & Articles</a>
+    <a href="news.html" class="nav-link active">News &amp; Articles</a>
     <a href="about.html" class="nav-link">About</a>
   </nav>
   <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
@@ -722,7 +722,7 @@ body::after{
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a href="services.html">Services</a>
   <a href="solutions.html">Solutions</a>
-  <a href="news.html">News & Articles</a>
+  <a href="news.html">News &amp; Articles</a>
   <a href="about.html">About</a>
   <a href="contact.html" class="cta">Let's talk →</a>
 </nav>
@@ -739,22 +739,10 @@ body::after{
     <h1 class="hero-h1">
       Field notes from the layer where MedTech <em>actually fails.</em>
     </h1>
-    <p class="hero-sub">
-      Twelve case studies. Field observations from clinics in Munich, Vienna, and Florence. Structural diagnostics of the pattern across all of them. Two essays a week.
-    </p>
-
-    <div class="hero-meta">
+<div class="hero-meta">
       <div class="hero-meta-item">
         <span class="hero-meta-label">Series</span>
         <span class="hero-meta-value">§22 — Twelve cases, one pattern</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="hero-meta-label">Cadence</span>
-        <span class="hero-meta-value">Two essays per week</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="hero-meta-label">Author</span>
-        <span class="hero-meta-value">Hanna Kim</span>
       </div>
     </div>
   </div>
@@ -773,226 +761,20 @@ body::after{
         <button class="filter-pill" data-filter="field" role="tab" aria-selected="false">Field notes</button>
         <button class="filter-pill" data-filter="pattern" role="tab" aria-selected="false">Patterns</button>
       </div>
-      <span class="filter-count"><span id="visibleCount">0</span> / <span id="totalCount">0</span> essays</span>
+      <span class="filter-count"><span id="visibleCount">0</span> / <span id="totalCount">0</span> articles</span>
     </div>
 
     <!-- ── Grid ──
-         To add a new essay: copy one <a class="essay-card"> block, change:
+         To add a new article: copy one <a class="essay-card"> block, change:
          href, data-cat (case|field|pattern), data-date (YYYY-MM-DD for sorting),
          tag label, case number, slug, title, dek, date display, read time.  -->
     <div class="essay-grid" id="essayGrid">
 
-      <a class="essay-card" data-cat="case" data-date="2026-05-11" href="essay-01.html">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">§22 Essay</span>
-              <span class="card-cover-num">01 / 12</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Essay <em>01</em></div>
-              <div class="card-cover-slug">§22 · The framework</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
+      <a class="essay-card" data-cat="case" data-date="2026-05-11" href="article-01.html">
+<div class="card-body">
           <h3 class="card-title">Why MedTech products fail <em>after FDA clearance.</em></h3>
-          <p class="card-dek">The seven structural patterns behind the 70 percent adoption gap. The diagnostic framework for the eleven case essays that follow.</p>
-          <div class="card-foot">
+<div class="card-foot">
             <span class="card-meta">11 May 2026 <span class="sep">·</span> 12 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="field" data-date="2026-05-08" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Field note</span>
-              <span class="card-cover-num">Munich</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Note <em>04</em></div>
-              <div class="card-cover-slug">From the clinic floor</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">What I saw between the device and the <em>patient.</em></h3>
-          <p class="card-dek">Direct observation note from a recent clinical visit. The layer nobody writes about, because nobody is looking at it.</p>
-          <div class="card-foot">
-            <span class="card-meta">08 May 2026 <span class="sep">·</span> 4 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="pattern" data-date="2026-05-04" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Pattern</span>
-              <span class="card-cover-num">P · 01</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Pattern <em>α</em></div>
-              <div class="card-cover-slug">The two-filter logic</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Therapists evaluate every device through <em>two filters.</em> Only one is in the pitch.</h3>
-          <p class="card-dek">The first structural pattern in the §22 series. Why patient-outcome claims are necessary but never sufficient for clinical adoption.</p>
-          <div class="card-foot">
-            <span class="card-meta">04 May 2026 <span class="sep">·</span> 6 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="case" data-date="2026-04-28" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Case study</span>
-              <span class="card-cover-num">02 / 12</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Case <em>02</em></div>
-              <div class="card-cover-slug">§22 · [Pattern name]</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">[Case 02 title] — the second case in the <em>§22 series.</em></h3>
-          <p class="card-dek">A different category, a different geography, the same structural failure underneath. The pattern beneath the surface.</p>
-          <div class="card-foot">
-            <span class="card-meta">28 Apr 2026 <span class="sep">·</span> 9 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="field" data-date="2026-04-24" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Field note</span>
-              <span class="card-cover-num">Vienna</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Note <em>03</em></div>
-              <div class="card-cover-slug">From the clinic floor</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">The friction nobody is <em>measuring.</em></h3>
-          <p class="card-dek">A short observation note from a recent clinical visit in Vienna. What therapists do between sessions, when nobody is watching.</p>
-          <div class="card-foot">
-            <span class="card-meta">24 Apr 2026 <span class="sep">·</span> 3 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="case" data-date="2026-04-20" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Case study</span>
-              <span class="card-cover-num">03 / 12</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Case <em>03</em></div>
-              <div class="card-cover-slug">§22 · [Pattern name]</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">[Case 03 title] — when the technology worked and the <em>system failed.</em></h3>
-          <p class="card-dek">Third case in the §22 series. A working device, a competent team, sufficient capital — and adoption that never came.</p>
-          <div class="card-foot">
-            <span class="card-meta">20 Apr 2026 <span class="sep">·</span> 7 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="pattern" data-date="2026-04-15" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Pattern</span>
-              <span class="card-cover-num">P · 02</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Pattern <em>β</em></div>
-              <div class="card-cover-slug">The pilot gap</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Why pilots succeed and rollouts <em>collapse.</em></h3>
-          <p class="card-dek">The structural reason MedTech rollouts stall even after successful pilot studies. The difference between optimised conditions and the rest of the hospital.</p>
-          <div class="card-foot">
-            <span class="card-meta">15 Apr 2026 <span class="sep">·</span> 6 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="field" data-date="2026-04-10" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Field note</span>
-              <span class="card-cover-num">Florence</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Note <em>02</em></div>
-              <div class="card-cover-slug">From the clinic floor</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">The four minutes that decide whether a device gets <em>used again.</em></h3>
-          <p class="card-dek">A short observation note from Florence. The recalibration moment between patients, and what it reveals about device design.</p>
-          <div class="card-foot">
-            <span class="card-meta">10 Apr 2026 <span class="sep">·</span> 3 min</span>
-            <span class="card-arr" aria-hidden="true">→</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="essay-card" data-cat="case" data-date="2026-04-06" href="#">
-        <div class="card-cover">
-          <div class="card-cover-bg"></div>
-          <div class="card-cover-content">
-            <div class="card-cover-top">
-              <span class="card-tag">Case study</span>
-              <span class="card-cover-num">04 / 12</span>
-            </div>
-            <div>
-              <div class="card-cover-id">Case <em>04</em></div>
-              <div class="card-cover-slug">§22 · [Pattern name]</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">[Case 04 title] — the device, the company, and the layer <em>nobody designed.</em></h3>
-          <p class="card-dek">Fourth case in the §22 series. The structural failure that crossed three geographies and one workflow that was never specified.</p>
-          <div class="card-foot">
-            <span class="card-meta">06 Apr 2026 <span class="sep">·</span> 9 min</span>
             <span class="card-arr" aria-hidden="true">→</span>
           </div>
         </div>
@@ -1000,17 +782,9 @@ body::after{
 
     </div><!-- /.essay-grid -->
 
-    <p class="empty-state" id="emptyState">No essays in this category yet — check back soon.</p>
+    <p class="empty-state" id="emptyState">No articles in this category yet — check back soon.</p>
 
-    <!-- ── Subscribe strip ── -->
-    <div class="subscribe-strip">
-      <p class="subscribe-text"><strong>Two essays a week.</strong> Sent to your inbox the morning they publish.</p>
-      <a href="mailto:info@servizions.com?subject=Subscribe%20to%20Servizions%20Essays" class="subscribe-link">
-        Subscribe <span class="arr">→</span>
-      </a>
-    </div>
-
-  </div>
+</div>
 </section>
 
 <!-- ─── FINAL CTA ─── -->
@@ -1035,7 +809,7 @@ body::after{
     <nav class="footer-nav">
       <a href="services.html">Services</a>
       <a href="solutions.html">Solutions</a>
-      <a href="essays.html">Essays</a>
+      <a href="news.html">News &amp; Articles</a>
       <a href="about.html">About</a>
       <a href="mailto:info@servizions.com">Email</a>
       <a href="#" rel="noopener">LinkedIn</a>

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+<title>Why MedTech Products Fail After FDA Clearance — §22 · 001 — Servizions</title>
+<meta name="description" content="The seven structural patterns behind the 70 percent adoption gap. Article 001 of the §22 sequence by Hanna Kim, founder of Servizions.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0A0814; --bg-2:#13101F;
+  --purple:#7A55E8; --purple-d:#5A2BD6; --purple-l:#A688F0;
+  --teal:#5BC3B7; --teal-d:#3B9E94;
+  --t1:#FFFFFF; --t2:rgba(255,255,255,.66); --t3:rgba(255,255,255,.36);
+  --rule:rgba(255,255,255,.08);
+  --d1:#0A0814; --d2:rgba(10,8,20,.66); --d3:rgba(10,8,20,.36);
+  --rule-d:rgba(10,8,20,.10);
+  --fd:'Fraunces',Georgia,serif;
+  --fb:'Inter Tight',system-ui,sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:110px;}
+body{
+  font-family:var(--fb);background:var(--bg);color:var(--t1);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+:focus{outline:none;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--purple);outline-offset:4px;border-radius:2px;}
+
+body::after{
+  content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size:200px;opacity:.035;mix-blend-mode:overlay;
+}
+#prg{position:fixed;top:0;left:0;height:1.5px;width:0;z-index:99;background:linear-gradient(90deg,var(--purple),var(--teal));pointer-events:none;transition:width .12s linear;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:26px 56px;transition:padding .4s var(--ease),background .4s var(--ease),color .4s var(--ease);}
+.nav.shrink{padding:14px 56px;background:rgba(10,8,20,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);}
+.nav.on-light{color:var(--d1);}
+.nav.on-light.shrink{background:rgba(255,255,255,.85);border-color:var(--rule-d);}
+.nav-logo{font-family:var(--fd);font-size:22px;font-weight:400;letter-spacing:.005em;color:inherit;}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
+.nav.on-light .nav-logo em{color:var(--teal-d);}
+.nav-links{display:flex;align-items:center;gap:36px;margin-left:auto;margin-right:28px;}
+.nav-link{font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:inherit;opacity:.66;position:relative;padding:6px 0;transition:opacity .35s var(--ease);}
+.nav-link:hover,.nav-link.active{opacity:1;}
+.nav-link::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--purple);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease);}
+.nav.on-light .nav-link::after{background:var(--purple-d);}
+.nav-link.active::after,.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
+.nav-cta{display:inline-flex;align-items:center;gap:12px;font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:inherit;padding:11px 20px;border:1px solid currentColor;border-radius:999px;position:relative;overflow:hidden;opacity:.7;transition:opacity .4s var(--ease),color .35s var(--ease),border-color .35s var(--ease);}
+.nav-cta:hover{opacity:1;}
+.nav-cta span{position:relative;z-index:2;}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--purple);transform:translateY(101%);transition:transform .45s var(--ease);z-index:1;}
+.nav-cta:hover::before{transform:translateY(0);}
+.nav-cta:hover{color:var(--t1)!important;border-color:var(--purple);}
+.nav-cta .arr{display:inline-block;transition:transform .4s var(--ease);position:relative;z-index:2;}
+.nav-cta:hover .arr{transform:translateX(3px);}
+.menu-btn{display:none;}
+.mobile-menu{display:none;}
+
+@media(max-width:1100px){
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .menu-btn{display:flex;flex-direction:column;gap:5px;padding:10px;background:none;border:none;cursor:pointer;z-index:102;position:relative;color:inherit;}
+  .menu-btn span{display:block;width:24px;height:1.5px;background:currentColor;transition:transform .3s var(--ease),opacity .3s;}
+  .menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .mobile-menu{display:flex;position:fixed;inset:0;z-index:101;background:var(--bg);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 56px;gap:8px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);}
+  .mobile-menu.open{opacity:1;pointer-events:auto;}
+  .mobile-menu a{font-family:var(--fd);font-size:clamp(28px,5vw,42px);font-weight:400;letter-spacing:-.012em;color:var(--t1);padding:14px 0;transition:color .3s var(--ease);}
+  .mobile-menu a:hover{color:var(--purple-l);}
+  .mobile-menu a.cta{margin-top:32px;font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:14px 26px;background:var(--purple);border-radius:999px;transition:background .3s var(--ease);}
+  .mobile-menu a.cta:hover{color:var(--t1);background:var(--purple-l);}
+}
+
+/* HERO */
+.essay-hero{position:relative;padding:180px 56px 100px;overflow:hidden;}
+.essay-hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
+.orb-1{width:560px;height:560px;background:radial-gradient(circle,rgba(122,85,232,.16),transparent 65%);top:-160px;right:-100px;animation:drift 32s ease-in-out infinite alternate;}
+.orb-2{width:420px;height:420px;background:radial-gradient(circle,rgba(91,195,183,.08),transparent 65%);bottom:-160px;left:18%;animation:drift 36s ease-in-out -10s infinite alternate;}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
+.essay-hero-inner{position:relative;z-index:3;max-width:840px;margin:0 auto;}
+.essay-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-l);margin-bottom:36px;opacity:0;transform:translateY(8px);animation:fadeUp .9s var(--ease) .25s forwards;}
+.essay-eyebrow::before{content:'';width:32px;height:1px;background:var(--purple);}
+.essay-eyebrow .sep{color:var(--t3);}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.essay-title{font-family:var(--fd);font-size:clamp(36px,4.8vw,64px);font-weight:400;line-height:1.06;letter-spacing:-.018em;color:var(--t1);max-width:22ch;opacity:0;transform:translateY(12px);animation:fadeUp .9s var(--ease) .45s forwards;}
+.essay-title em{font-style:italic;color:var(--teal);}
+.essay-dek{font-family:var(--fd);font-size:clamp(18px,1.6vw,22px);font-weight:300;font-style:italic;line-height:1.55;letter-spacing:-.005em;color:var(--t2);max-width:58ch;margin-top:28px;opacity:0;transform:translateY(12px);animation:fadeUp .9s var(--ease) .65s forwards;}
+.essay-meta{display:flex;flex-wrap:wrap;gap:36px;margin-top:56px;padding-top:28px;border-top:1px solid var(--rule);opacity:0;transform:translateY(12px);animation:fadeUp .9s var(--ease) .85s forwards;}
+.essay-meta-item{display:flex;flex-direction:column;gap:6px;}
+.essay-meta-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--t3);}
+.essay-meta-value{font-family:var(--fb);font-size:14.5px;font-weight:400;color:var(--t1);}
+
+/* READER */
+.essay-reader{background:#FFFFFF;color:var(--d1);padding:96px 56px 120px;position:relative;}
+.essay-grid{display:grid;grid-template-columns:240px minmax(0,720px);gap:80px;max-width:1140px;margin:0 auto;align-items:start;}
+
+/* TOC */
+.essay-toc{position:sticky;top:120px;display:flex;flex-direction:column;gap:2px;align-self:start;}
+.essay-toc-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-d);display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;}
+.essay-toc-label::before{content:'';width:24px;height:1px;background:var(--purple-d);}
+.toc-link{display:flex;align-items:flex-start;gap:14px;padding:11px 0 11px 16px;position:relative;font-family:var(--fb);font-size:13px;font-weight:400;line-height:1.45;color:var(--d3);border-left:1px solid var(--rule-d);transition:color .4s var(--ease),border-color .4s var(--ease),padding-left .4s var(--ease);cursor:pointer;}
+.toc-link .toc-num{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.06em;color:var(--d3);flex-shrink:0;padding-top:1px;transition:color .4s var(--ease);}
+.toc-link .toc-text{flex:1;}
+.toc-link:hover{color:var(--d1);border-left-color:rgba(90,43,214,.3);}
+.toc-link:hover .toc-num{color:var(--purple-d);}
+.toc-link.active{color:var(--d1);border-left:1px solid var(--purple-d);padding-left:20px;font-weight:500;}
+.toc-link.active .toc-num{color:var(--purple-d);font-weight:500;}
+.toc-link.active::before{content:'';position:absolute;left:-4px;top:50%;width:7px;height:7px;border-radius:50%;background:var(--purple-d);transform:translateY(-50%);box-shadow:0 0 0 4px rgba(90,43,214,.12);animation:tocPulse 2s var(--ease) infinite;}
+@keyframes tocPulse{0%,100%{box-shadow:0 0 0 4px rgba(90,43,214,.12);}50%{box-shadow:0 0 0 7px rgba(90,43,214,.04);}}
+.essay-toc-meta{margin-top:32px;padding-top:24px;border-top:1px solid var(--rule-d);display:flex;flex-direction:column;gap:10px;font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--d3);}
+.essay-toc-meta a{color:var(--purple-d);transition:color .3s var(--ease);display:inline-flex;align-items:center;gap:8px;}
+.essay-toc-meta a:hover{color:var(--d1);}
+
+/* BODY */
+.essay-body{font-family:var(--fb);font-size:17px;font-weight:400;line-height:1.78;color:var(--d2);max-width:720px;}
+.essay-body section{margin-bottom:64px;scroll-margin-top:110px;}
+.essay-body section:last-child{margin-bottom:0;}
+.essay-lede{font-family:var(--fd);font-size:clamp(20px,1.7vw,23px);font-weight:300;font-style:italic;line-height:1.55;letter-spacing:-.005em;color:var(--d1);margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--rule-d);}
+.essay-intro p{margin-bottom:20px;}
+.essay-intro p:last-child{margin-bottom:0;}
+.essay-body h2{font-family:var(--fd);font-size:clamp(28px,2.8vw,36px);font-weight:400;line-height:1.18;letter-spacing:-.012em;color:var(--d1);margin-bottom:28px;display:flex;align-items:baseline;gap:18px;}
+.essay-body h2 em{font-style:italic;color:var(--purple-d);}
+.essay-body h2 .h2-num{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.2em;color:var(--purple-d);opacity:.7;flex-shrink:0;}
+.essay-body h3{font-family:var(--fd);font-size:22px;font-weight:500;line-height:1.3;letter-spacing:-.005em;color:var(--d1);margin:36px 0 14px;}
+.essay-body h3 .h3-num{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);display:block;margin-bottom:4px;}
+.essay-body p{margin-bottom:20px;}
+.essay-body p:last-child{margin-bottom:0;}
+.essay-body p strong{color:var(--d1);font-weight:500;}
+.essay-body p em{font-style:italic;}
+.essay-body a{color:var(--purple-d);border-bottom:1px solid rgba(90,43,214,.3);transition:border-color .3s var(--ease),color .3s var(--ease);}
+.essay-body a:hover{color:var(--d1);border-bottom-color:var(--purple-d);}
+
+/* PULL-QUOTE */
+.essay-body blockquote{margin:36px 0;padding:30px 36px;background:rgba(122,85,232,.05);border-left:3px solid var(--purple);border-radius:0 8px 8px 0;font-family:var(--fd);font-size:20px;font-style:italic;font-weight:400;line-height:1.5;letter-spacing:-.005em;color:var(--d1);}
+
+/* PATTERN REFERENCE TABLE */
+.pattern-table-wrap{margin:32px 0 28px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--rule-d);border-radius:6px;}
+.pattern-table{width:100%;min-width:640px;border-collapse:collapse;font-family:var(--fb);}
+.pattern-table thead th{font-family:var(--fm);font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);text-align:left;padding:14px 16px;background:rgba(122,85,232,.04);border-bottom:1px solid var(--rule-d);white-space:nowrap;vertical-align:bottom;}
+.pattern-table thead th:first-child{width:36px;text-align:center;}
+.pattern-table tbody td{padding:14px 16px;border-bottom:1px solid var(--rule-d);font-size:13.5px;font-weight:400;line-height:1.55;color:var(--d2);vertical-align:top;}
+.pattern-table tbody tr:last-child td{border-bottom:none;}
+.pattern-table td.col-num{font-family:var(--fm);font-size:11px;font-weight:500;color:var(--purple-d);text-align:center;width:36px;}
+.pattern-table td.col-name{font-family:var(--fb);font-weight:500;color:var(--d1);white-space:nowrap;}
+.pattern-table td.col-signal{font-style:italic;color:var(--d2);}
+.essay-body .note{font-style:italic;font-size:14.5px;color:var(--d2);padding:18px 20px;background:rgba(10,8,20,.025);border-radius:6px;margin:0 0 32px;}
+
+/* PATTERN BLOCKS */
+.essay-body .pattern-block{margin:32px 0;padding:28px 32px;border:1px solid var(--rule-d);border-left:3px solid var(--purple-d);border-radius:0 6px 6px 0;background:#FAFAF9;}
+.essay-body .pattern-block h3{margin-top:0;margin-bottom:14px;}
+.essay-body .pattern-block p:last-child{margin-bottom:0;}
+.essay-body .pattern-block p{margin-bottom:14px;}
+
+.essay-body hr{border:none;height:1px;background:var(--rule-d);margin:48px 0;}
+
+/* END BLOCK */
+.essay-end{max-width:720px;margin:80px auto 0;padding-top:48px;border-top:1px solid var(--rule-d);}
+.essay-end-tag{font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-d);display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;}
+.essay-end-tag::before{content:'';width:24px;height:1px;background:var(--purple-d);}
+.author-bio{display:grid;grid-template-columns:auto 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d);}
+.author-portrait{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple-d),var(--teal-d));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:22px;font-weight:400;color:#FFFFFF;flex-shrink:0;}
+.author-info{display:flex;flex-direction:column;gap:8px;}
+.author-name{font-family:var(--fd);font-size:19px;font-weight:500;letter-spacing:-.005em;color:var(--d1);}
+.author-name span{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);margin-left:12px;}
+.author-blurb{font-family:var(--fb);font-size:14px;font-weight:400;line-height:1.65;color:var(--d2);}
+.author-blurb a{color:var(--purple-d);border-bottom:1px solid rgba(90,43,214,.3);transition:border-color .3s var(--ease);}
+.author-blurb a:hover{border-bottom-color:var(--purple-d);}
+
+.next-teaser{margin-top:32px;padding:24px 28px;background:rgba(122,85,232,.04);border:1px solid rgba(122,85,232,.15);border-radius:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;transition:border-color .3s var(--ease),background .3s var(--ease);}
+.next-teaser:hover{border-color:rgba(122,85,232,.35);background:rgba(122,85,232,.06);}
+.next-teaser-text{flex:1;min-width:240px;}
+.next-teaser-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-d);display:block;margin-bottom:6px;}
+.next-teaser-title{font-family:var(--fd);font-size:17px;font-style:italic;font-weight:400;line-height:1.4;color:var(--d1);}
+.next-teaser-arr{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--purple-d);color:var(--purple-d);font-family:var(--fb);font-size:14px;transition:all .3s var(--ease);}
+.next-teaser:hover .next-teaser-arr{background:var(--purple-d);color:#FFFFFF;transform:translateX(3px);}
+
+/* SERIES NAV */
+.series-nav{background:#FFFFFF;padding:0 56px 100px;}
+.series-nav-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;padding-top:48px;border-top:1px solid var(--rule-d);}
+.series-link{display:flex;flex-direction:column;gap:12px;padding:28px 32px;border:1px solid var(--rule-d);border-radius:8px;background:#FAFAF9;transition:border-color .4s var(--ease),transform .25s var(--ease),background .35s var(--ease);}
+.series-link:hover{border-color:rgba(90,43,214,.35);background:rgba(122,85,232,.04);transform:translateY(-2px);}
+.series-link.prev{text-align:left;}
+.series-link.next{text-align:right;align-items:flex-end;}
+.series-link-tag{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-d);display:inline-flex;align-items:center;gap:8px;}
+.series-link.next .series-link-tag{flex-direction:row-reverse;}
+.series-link-title{font-family:var(--fd);font-size:18px;font-weight:400;letter-spacing:-.005em;line-height:1.35;color:var(--d1);}
+.series-link-sub{font-family:var(--fb);font-size:13px;font-weight:300;line-height:1.55;color:var(--d2);}
+
+/* FINAL CTA */
+.final-cta{position:relative;padding:140px 56px 120px;text-align:center;background:var(--bg);overflow:hidden;}
+.final-cta::before{content:'';position:absolute;top:50%;left:50%;width:900px;height:900px;background:radial-gradient(circle,rgba(122,85,232,.13),transparent 60%);transform:translate(-50%,-50%);filter:blur(50px);pointer-events:none;animation:ctaOrb 10s ease-in-out infinite alternate;}
+@keyframes ctaOrb{from{transform:translate(-50%,-50%) scale(1);opacity:.7;}to{transform:translate(-50%,-50%) scale(1.1);opacity:1;}}
+.final-cta-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
+.final-cta-tag{font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-l);display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;}
+.final-cta-tag::before{content:'';width:32px;height:1px;background:var(--purple);}
+.final-cta-h{font-family:var(--fd);font-size:clamp(36px,4.6vw,62px);font-weight:400;line-height:1.06;letter-spacing:-.02em;color:var(--t1);margin-bottom:40px;}
+.final-cta-h em{font-style:italic;color:var(--teal);}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:var(--fb);font-size:14.5px;font-weight:600;letter-spacing:-.005em;color:var(--t1);background:var(--purple);padding:14px 24px;border-radius:10px;box-shadow:0 1px 2px rgba(122,85,232,.2),0 8px 28px rgba(122,85,232,.25);transition:all .3s var(--ease);}
+.btn-primary:hover{background:var(--purple-l);box-shadow:0 1px 2px rgba(122,85,232,.25),0 12px 32px rgba(122,85,232,.4);transform:translateY(-2px);}
+.btn-primary .arr{transition:transform .3s var(--ease);}
+.btn-primary:hover .arr{transform:translateX(3px);}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--rule);padding:32px 56px;}
+.footer-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:48px;padding-bottom:28px;margin-bottom:24px;border-bottom:1px solid var(--rule);}
+.footer-brand{display:flex;flex-direction:column;gap:10px;}
+.footer-tagline{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-center{justify-self:center;font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-nav{justify-self:end;display:flex;flex-wrap:wrap;gap:24px;}
+.footer-nav a{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);position:relative;transition:color .35s var(--ease);}
+.footer-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--purple);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease);}
+.footer-nav a:hover{color:var(--t1);}
+.footer-nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-domains{display:flex;flex-wrap:wrap;gap:14px;}
+.footer-domains .dot{color:var(--rule);}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .nav{padding:20px 40px;}
+  .nav.shrink{padding:12px 40px;}
+  .essay-hero{padding:150px 40px 80px;}
+  .essay-reader{padding:72px 40px 80px;}
+  .essay-grid{grid-template-columns:200px minmax(0,1fr);gap:48px;}
+  .series-nav{padding:0 40px 80px;}
+  .final-cta{padding:110px 40px;}
+  .footer{padding:32px 40px;}
+}
+@media(max-width:900px){
+  .nav{padding:16px 28px;}
+  .essay-hero{padding:130px 28px 64px;}
+  .essay-reader{padding:48px 28px 64px;}
+  .essay-grid{grid-template-columns:1fr;gap:0;}
+  .essay-toc{position:relative;top:0;margin-bottom:48px;padding:24px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d);}
+  .essay-toc-meta{display:none;}
+  .essay-body{font-size:16px;}
+  .essay-body .pattern-block{padding:22px 24px;}
+  .essay-lede{font-size:18px;}
+  .essay-end,.series-nav-inner{max-width:none;}
+  .author-bio{grid-template-columns:1fr;gap:18px;}
+  .series-nav{padding:0 28px 64px;}
+  .series-nav-inner{grid-template-columns:1fr;gap:14px;}
+  .series-link.next{text-align:left;align-items:flex-start;}
+  .series-link.next .series-link-tag{flex-direction:row;}
+  .final-cta{padding:90px 28px;}
+  .footer{padding:28px 28px;}
+  .footer-top{grid-template-columns:1fr;gap:24px;}
+  .footer-center,.footer-nav{justify-self:start;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .mobile-menu{padding:0 28px;}
+}
+@media(max-width:560px){
+  .essay-title{font-size:34px;}
+  .essay-meta{gap:24px;}
+  .final-cta-h{font-size:34px;}
+  .essay-body blockquote{padding:24px 26px;font-size:18px;}
+  .next-teaser{padding:20px 22px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+  .essay-eyebrow,.essay-title,.essay-dek,.essay-meta{opacity:1!important;transform:none!important;}
+  .orb-1,.orb-2,.final-cta::before{animation:none!important;}
+  .toc-link.active::before{animation:none!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="prg" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="articles.html" class="nav-link active">Articles</a>
+    <a href="about.html" class="nav-link">About</a>
+  </nav>
+  <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="articles.html">Articles</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="cta">Let's talk →</a>
+</nav>
+
+<main>
+
+<section class="essay-hero">
+  <div class="essay-hero-orb orb-1" aria-hidden="true"></div>
+  <div class="essay-hero-orb orb-2" aria-hidden="true"></div>
+  <div class="essay-hero-inner">
+    <span class="essay-eyebrow">
+      §22 · Article 001
+      <span class="sep">·</span>
+      Twelve essays, one diagnosis
+    </span>
+    <h1 class="essay-title">
+      Why MedTech products fail <em>after FDA clearance.</em>
+    </h1>
+    <p class="essay-dek">
+      The seven structural patterns behind the 70 percent adoption gap.
+    </p>
+    <div class="essay-meta">
+      <div class="essay-meta-item"><span class="essay-meta-label">Published</span><span class="essay-meta-value">11 May 2026</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Reading time</span><span class="essay-meta-value">~12 minutes</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Series</span><span class="essay-meta-value">§22 · 001 of 12</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Author</span><span class="essay-meta-value">Hanna Kim</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="essay-reader">
+  <div class="essay-grid">
+
+    <aside class="essay-toc" aria-label="Table of contents">
+      <span class="essay-toc-label">In this essay</span>
+      <a href="#seventy" class="toc-link active" data-i="0"><span class="toc-num">01</span><span class="toc-text">What seventy percent actually means</span></a>
+      <a href="#environment" class="toc-link" data-i="1"><span class="toc-num">02</span><span class="toc-text">The environment, not the device</span></a>
+      <a href="#patterns" class="toc-link" data-i="2"><span class="toc-num">03</span><span class="toc-text">The seven structural failure patterns</span></a>
+      <a href="#self-diagnose" class="toc-link" data-i="3"><span class="toc-num">04</span><span class="toc-text">Why companies can't self-diagnose</span></a>
+      <a href="#implies" class="toc-link" data-i="4"><span class="toc-num">05</span><span class="toc-text">What this implies</span></a>
+      <a href="#closing" class="toc-link" data-i="5"><span class="toc-num">06</span><span class="toc-text">Closing</span></a>
+      <div class="essay-toc-meta">
+        <a href="articles.html">← All articles</a>
+        <span>§22 · 2026</span>
+      </div>
+    </aside>
+
+    <article class="essay-body">
+
+      <section id="opening" class="essay-intro">
+        <p class="essay-lede">
+          The most expensive moment in a medical technology company is not the trial. It is not the clearance. It is the eighteen months between first deployment and the slow, then sudden, realisation that the product is not adopting the way the plan said it would.
+        </p>
+        <p>Industry studies converge on a number that is itself the headline: roughly seventy percent of MedTech products that achieve regulatory clearance fail at clinical adoption. They pass FDA or CE clearance. They deploy at lead sites. They generate initial procedures. They plateau. The sales pipeline thins. Engineering blames training. Sales blames procurement. Product blames sales execution. Each diagnosis is partial. The structural diagnosis is missing.</p>
+        <p>What follows is the diagnosis.</p>
+      </section>
+
+      <section id="seventy">
+        <h2><span class="h2-num">01</span> What seventy percent actually means</h2>
+        <p>The number is not invented. It surfaces consistently in industry analysis. McKinsey, BCG, and Deloitte 2026 healthcare outlooks all reference adoption failure as a central MedTech problem, with quantification in the range of sixty to eighty percent of cleared products underperforming initial commercial projections by significant margins. The exact number varies by study, by segment, by year. The order of magnitude does not.</p>
+        <p>But the number itself is less interesting than its persistence. The pattern has been consistent for two decades. The products change. The clinical domains change. The failure rate does not.</p>
+        <p>Three explanations commonly get offered for this stability. None of them survive close examination.</p>
+
+        <h3><span class="h3-num">Explanation 1</span>The technology maturity explanation</h3>
+        <p>Products fail because the technology is not ready. But cleared products are technologically validated by definition; clearance requires evidence that the technology works to a defined standard. If the technology were the bottleneck, clearance would be the bottleneck, and it is not.</p>
+
+        <h3><span class="h3-num">Explanation 2</span>The market timing explanation</h3>
+        <p>Products fail because the market is not ready. But the market for medical innovation has been generally favourable across the period the failure rate has held. Reimbursement frameworks have expanded. Health systems have made repeated commitments to technology adoption. If timing were the issue, the failure rate would oscillate with cycles. It does not.</p>
+
+        <h3><span class="h3-num">Explanation 3</span>The sales execution explanation</h3>
+        <p>Products fail because of commercial errors. But the same companies repeat the same patterns across multiple product launches. If sales execution were the primary cause, learning would compound and the failure rate would decline. It has not.</p>
+
+        <p style="margin-top:28px;"><strong>The remaining explanation, the one MedTech companies are structurally least equipped to investigate themselves, is environmental.</strong></p>
+      </section>
+
+      <section id="environment">
+        <h2><span class="h2-num">02</span> The environment, not <em>the device</em></h2>
+        <p>A medical device exists inside an environment. An operating room. A clinic. A ward. A patient pathway. The environment has its own cognitive load, its own communication patterns, its own adjacent technologies, its own procurement rhythms, its own reimbursement realities.</p>
+        <p>When MedTech companies design a product, they design it for a clinical problem. The clinical problem is well-defined, well-studied, well-documented. The clinical environment surrounding the problem is none of those things. It is observed only in fragments. By vendor representatives in their cases. By sales teams in commercial conversations. By clinical affairs in regulatory contexts. By Key Opinion Leaders in their own enthusiast hands.</p>
+        <p>No function inside a typical MedTech company is structured to see the environment as a system.</p>
+        <p>So the product gets built for the clinical problem and deployed into the clinical environment. The clinical problem is solved. The clinical environment rejects, modifies, or works around the solution. Adoption flatlines.</p>
+        <blockquote>
+          Everything the device lives inside — the workflow, the people, the data, the decisions — nobody is looking at that. That is where adoption succeeds or fails.
+        </blockquote>
+        <p>What follows are seven specific patterns by which the environment rejects products that the clinical problem said should succeed. These are not theoretical patterns. They are derived from twelve confirmed MedTech product failures examined in detail — companies that achieved clearance and failed at clinical adoption, drawn from rehabilitation robotics, surgical robotics, digital therapeutics, diagnostics, and adjacent categories. Each failure carried two to four of these patterns simultaneously.</p>
+      </section>
+
+      <section id="patterns">
+        <h2><span class="h2-num">03</span> The seven structural failure patterns</h2>
+        <p>Each pattern has a mechanism (the way the environment rejects the product) and a diagnostic signal (the way the failure surfaces in the data). The patterns are presented below as a framework; each is then examined in detail.</p>
+
+        <div class="pattern-table-wrap">
+          <table class="pattern-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Pattern</th>
+                <th>Mechanism</th>
+                <th>Diagnostic signal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-num">1</td><td class="col-name">Demo-Day Product</td><td>Optimised for trade-show and KOL conditions; degrades in median use.</td><td class="col-signal">Strong lead-site outcomes; weak unselected deployment.</td></tr>
+              <tr><td class="col-num">2</td><td class="col-name">Vendor-Rep Dependency</td><td>Successful use requires vendor presence; cannot scale.</td><td class="col-signal">Rep-hours per case do not decline meaningfully over time.</td></tr>
+              <tr><td class="col-num">3</td><td class="col-name">Workflow Disruption</td><td>Requires the clinical workflow to bend around the device.</td><td class="col-signal">Strong published study results; weak field metrics.</td></tr>
+              <tr><td class="col-num">4</td><td class="col-name">Cognitive Overload</td><td>Adds cognitive load when clinician is already at capacity.</td><td class="col-signal">Procedure longer with device than without, post-plateau.</td></tr>
+              <tr><td class="col-num">5</td><td class="col-name">Outcome Data Invisibility</td><td>Captures data but does not surface it usably to decision-makers.</td><td class="col-signal">Cannot produce per-site value evidence over 12+ months.</td></tr>
+              <tr><td class="col-num">6</td><td class="col-name">Adjacency Mismatch</td><td>Does not integrate with adjacent clinical technologies.</td><td class="col-signal">Requires own login, own dashboard, own training.</td></tr>
+              <tr><td class="col-num">7</td><td class="col-name">Procurement Misfit</td><td>Price and structure misaligned with the institution's purchase model.</td><td class="col-signal">Sales cycle extends 2–3× beyond projection; deals stall in finance.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="note">Most failed products carry two to four active patterns simultaneously. Identifying which patterns are active is half the strategic work. Once located, each pattern has characteristic remediation paths — some service-design fixes (low cost), some product changes (moderate cost), some commercial-model changes (high cost). The structural diagnostic, which patterns are active, is the work most MedTech companies do not do.</p>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Pattern 1</span>The Demo-Day Product</h3>
+          <p>The product is optimised — consciously or unconsciously — for the conditions under which it gets shown. Trade-show demos. KOL site visits. Lead-site procedures with the founder and lead engineer present. The product reads back as "it works."</p>
+          <p>These conditions are not the conditions under which the product will eventually live. Lead sites have champion surgeons, optimal patient selection, vendor representatives present, and dedicated training time. The procedure is set up around the device. The clinical case notes accumulate. The investment thesis confirms.</p>
+          <p>Adoption stalls when the product encounters median conditions. Median surgeons. Median patients. No vendor present. Standard workflow constraints. The product behaves differently in median conditions, and the outcome distribution widens. The plateau begins between the thirtieth and fiftieth deploying site, with characteristic case-volume decay at sites past the optimistic-launch phase.</p>
+          <p>The pattern is invisible to the company during the lead-site phase. It is mistaken for adoption.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Pattern 2</span>Vendor-Rep Dependency</h3>
+          <p>The product is successful in use only when a vendor representative is present to manage setup, troubleshoot edge cases, or guide the clinician through complex decisions. This pattern looks like adoption at first; reps are present for the first fifty to one hundred cases per surgeon by design, so outcomes accumulate and confidence grows.</p>
+          <p>Then commercial scale demands rep withdrawal. There are not enough representatives in the company to maintain presence at scale. And the product, in the absence of the rep, exposes its actual usability profile.</p>
+          <p>Vendor-rep dependency is a structural problem because it is invisible during the rep-present phase. The commercial unit economics of the company assume rep hours decline as surgeons become competent. When the decline does not happen, the math breaks. Each new adopting surgeon requires materially more rep-hours than the financial model assumed. The path to commercial sustainability disappears.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Pattern 3</span>Workflow Disruption</h3>
+          <p>The product, to be used as designed, requires the clinical workflow to bend around it. The operating room setup changes. The patient positioning changes. The instrument table layout changes. The pre-operative planning routine changes. The post-procedure debrief structure changes.</p>
+          <p>Clinicians at lead sites accept these changes because they have professional investment in the technology. Clinicians at downstream adopting sites do not. They evaluate the change cost against the perceived patient benefit and conclude, often correctly within their decision frame, that the change cost is not worth the marginal benefit.</p>
+          <p>The product is technically capable but workflow-incompatible. Adoption stalls outside greenfield sites where workflow can be set up around the device from scratch. This is the pattern that killed multiple early surgical robotics platforms in the 2010s and contributed to the slow market penetration of several digital health platforms more recently. The product was not wrong. The workflow ask was.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Pattern 4</span>Cognitive Overload</h3>
+          <p>The product introduces additional cognitive load on the clinician during phases of the procedure when cognitive load is already at capacity. A new screen to monitor. A new alert sequence to interpret. A new decision tree to execute. A new instrument to manage in the sterile field.</p>
+          <p>Surgeons describe this experience as "fighting the device." Procedure time extends. Error rates rise. The product gets used in simpler cases where the surgeon has spare cognitive capacity and avoided in the complex cases that were supposed to justify the device. The complex cases were the value thesis. The avoidance erodes it.</p>
+          <p>The procedure time after learning-curve plateau is the unambiguous diagnostic. If a product that should make the procedure faster makes it longer, even after the learning curve flattens, cognitive overload is active and structural.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Pattern 5</span>Outcome Data Invisibility</h3>
+          <p>The product captures outcome data but does not return it to the clinician, the buyer, or the payer in a structurally useful form. The data exists in the device. The dashboards exist on the company servers. But the dashboards live somewhere no decision-maker visits in their daily workflow.</p>
+          <p>This pattern is particularly common in digital health and connected device categories. The data is technically present. The reporting feature exists. But the reporting does not surface in the venue where the question "is this product delivering value at our site?" actually gets asked.</p>
+          <p>The consequence: nobody at the deploying site can demonstrate that the product is delivering value over time. Reimbursement scrutiny intensifies. The product's value story is asserted, not evidenced. In the 2026 reimbursement environment, asserted value loses to evidenced value, and the product enters a slow procurement-renewal failure.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Pattern 6</span>Adjacency Mismatch</h3>
+          <p>The product does not integrate with the adjacent technologies that share the clinical environment. The electronic health record. The imaging stack. The navigation system. The scheduling system. The procurement system. The training infrastructure.</p>
+          <p>Each adjacency mismatch becomes a parallel-system burden. A thing the clinical site has to manage in addition to existing systems rather than instead of them. IT teams resist parallel systems on principle and in practice. Integration debt accumulates. The product becomes the system everyone wishes had not been purchased, regardless of its clinical merit.</p>
+          <p>This pattern contributed to the failure of several high-profile digital health and AI-radiology ventures in the period 2020 through 2024 — products that tried to replace adjacent workflows rather than embed within them, or that depended on integration commitments their commercial structure could not sustain.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Pattern 7</span>Procurement Misfit</h3>
+          <p>The product is priced and positioned in a way that does not fit the buying institution's actual purchase model. Capital equipment priced as if it were operational. Operational technology priced as if it were capital. Pricing that depends on a specific reimbursement code that does not exist. Pricing that depends on volume assumptions the buying institution cannot guarantee or refuses to commit to.</p>
+          <p>This pattern intensifies in 2026. Provider margins are projected to compress by roughly fifteen percent through 2027, per BCG analysis. Capital equipment scrutiny is at historic intensity. Devices that do not fit the buying institution's purchase model do not get bought, regardless of clinical value.</p>
+          <p>Several rehabilitation robotics platforms and capital-equipment ventures in the period 2023 through 2025 carried this pattern as a primary driver of underperformance. The clinical case was strong. The purchase case was structurally misaligned. The deals stalled in finance review rather than in clinical review, which is the unambiguous diagnostic signal.</p>
+        </div>
+      </section>
+
+      <section id="self-diagnose">
+        <h2><span class="h2-num">04</span> Why MedTech companies cannot <em>self-diagnose</em> these patterns</h2>
+        <p>A natural question follows. If the patterns are this clear, why do MedTech companies not see them in their own products? The answer has five parts, and the parts are structural rather than failures of intelligence or effort.</p>
+
+        <h3><span class="h3-num">Reason 1</span>Functional fragmentation</h3>
+        <p>Vendor representatives see fragments of the environment — their own cases at their own sites. Sales sees commercial conversations with procurement officers, surgeon champions, and administrators. Engineering sees specifications and bug reports. Clinical affairs sees regulatory contexts and KOL feedback. No function inside a typical MedTech company is structured to see the environment as a system. The synthesis layer does not exist organisationally.</p>
+
+        <h3><span class="h3-num">Reason 2</span>The KOL bias</h3>
+        <p>MedTech companies talk to Key Opinion Leader surgeons. KOLs are enthusiastic early adopters who tolerate workflow disruption because they are personally invested in the technology, often as paid consultants or advisors. KOLs are the worst possible signal for median-user adoption. They give expert opinions on an environment they themselves do not represent.</p>
+
+        <h3><span class="h3-num">Reason 3</span>Trade-show distortion</h3>
+        <p>Demos at conferences, KOL site visits, and lead-site tours all optimise the product for the most favourable possible environment. The system reads back to the company as "it works." The environment-mismatch failures show up later, at the thirtieth and fiftieth deploying site, when the operating reality of median environments asserts itself — by which point engineering decisions have been locked in.</p>
+
+        <h3><span class="h3-num">Reason 4</span>The sales-commerce filter</h3>
+        <p>Sales teams are present in hospitals, but in commercial conversations — not in operating rooms during median-user procedures. The clinical reality of median use is filtered through the commercial pipeline before reaching product or engineering. By the time information arrives upstream, the texture has been removed.</p>
+
+        <h3><span class="h3-num">Reason 5</span>Documentation asymmetry</h3>
+        <p>MedTech companies produce comprehensive technical documentation: design history files, hazard analyses, user-needs documents, design verification protocols. They typically do not produce environment documentation: service blueprints, meso-level session maps, friction inventories, clinician workflow maps. These artefacts — the ones that would expose adoption barriers at the level of cause and consequence — do not exist or exist only as undocumented vendor-rep knowledge that walks out the door when reps leave.</p>
+      </section>
+
+      <section id="implies">
+        <h2><span class="h2-num">05</span> What this implies</h2>
+        <p>The seven patterns are not solved by better engineering. The product, once cleared, has fixed its core technology decisions. Most of those decisions are correct for the clinical problem they were designed to solve.</p>
+        <p>The seven patterns are solved by analysing the environment the product enters as a structured system. Locating the specific patterns active for the specific product in the specific environment. Building the artefacts — service blueprints, friction inventories, clinician workflow maps, meso-level session maps — that make the patterns visible at the level of cause and consequence.</p>
+        <p>Once visible, each pattern has characteristic remediation paths. Some are service-design fixes (cheap, fast, often sufficient on their own). Some are product changes (moderate cost, longer cycle, requires next product version). Some are commercial-model changes (expensive but sometimes the only honest answer when the procurement model is structurally misaligned).</p>
+        <p>The structural diagnostic — which patterns are active — is the work most MedTech companies do not do, and the work that converts cleared technology into adopted technology.</p>
+        <blockquote>
+          The product is what the company has built. The environment is what determines whether the product succeeds. The first is engineered. The second is rarely studied.
+        </blockquote>
+      </section>
+
+      <section id="closing">
+        <h2><span class="h2-num">06</span> Closing</h2>
+        <p>Seventy percent is not a small number. It is the most expensive number in medical technology. Each percentage point represents tens of billions of dollars of capital deployed against clinical problems and absorbed by environments that rejected the proposed solution.</p>
+        <p>The diagnosis is not new. McKinsey, BCG, and Deloitte have all named the workflow-integration problem at the centre of their 2026 outlooks. What has been missing is the structured operational work that follows from the diagnosis — the work of making the clinical environment visible as a system, locating the specific failure patterns, building the artefacts that survive board scrutiny under conditions of strategic uncertainty.</p>
+        <p>The next eleven essays in this sequence take twelve confirmed MedTech failures and examine each in detail through the seven-pattern framework. What was active. What was missed. What could have been done. <strong>The pattern is structural. The diagnosis is methodical. The work is available.</strong></p>
+      </section>
+
+      <div class="essay-end">
+        <span class="essay-end-tag">End of essay 001</span>
+
+        <div class="author-bio">
+          <div class="author-portrait" aria-hidden="true">HK</div>
+          <div class="author-info">
+            <div class="author-name">Hanna Kim <span>Founder · Servizions</span></div>
+            <p class="author-blurb">
+              Hanna Kim is the founder of Servizions, a Munich-based MedTech strategy studio that blueprints the clinical environment medical technology lives inside. Servizions works with medical robotics and rehabilitation technology companies on strategic direction at the intersection of product, environment, and adoption.
+              <br><br>
+              Contact: <a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a> · <a href="index.html">servizions.com</a>
+            </p>
+          </div>
+        </div>
+
+        <a href="article-02.html" class="next-teaser">
+          <div class="next-teaser-text">
+            <span class="next-teaser-label">Next in this sequence · Case 1</span>
+            <span class="next-teaser-title">The vendor-rep ceiling — how surgical-robotics platforms hit the structural limit no investor warned them about.</span>
+          </div>
+          <span class="next-teaser-arr" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<nav class="series-nav" aria-label="Series navigation">
+  <div class="series-nav-inner">
+    <a href="articles.html" class="series-link prev">
+      <span class="series-link-tag"><span>←</span> All articles</span>
+      <span class="series-link-title">§22 — Twelve articles, one diagnosis</span>
+      <span class="series-link-sub">Return to the series index.</span>
+    </a>
+    <a href="article-02.html" class="series-link next">
+      <span class="series-link-tag">§22 · 002 <span>→</span></span>
+      <span class="series-link-title">The vendor-rep ceiling</span>
+      <span class="series-link-sub">How surgical-robotics platforms hit the structural limit no investor warned them about.</span>
+    </a>
+  </div>
+</nav>
+
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <span class="final-cta-tag">Recognise this in your product?</span>
+    <h2 class="final-cta-h">Strategy that begins in the clinic, not <em>the report.</em></h2>
+    <a href="contact.html" class="btn-primary"><span>Start the conversation</span><span class="arr">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+      <span class="footer-tagline">Service Innovation Studio · Munich</span>
+    </div>
+    <span class="footer-center">Working across Europe</span>
+    <nav class="footer-nav">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="articles.html">Articles</a>
+      <a href="about.html">About</a>
+      <a href="mailto:info@servizions.com">Email</a>
+      <a href="#" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Servizions</span>
+    <div class="footer-domains">
+      <span>Healthcare</span><span class="dot">·</span>
+      <span>Medical Robotics</span><span class="dot">·</span>
+      <span>MedTech</span><span class="dot">·</span>
+      <span>Digital Health</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q  = s => document.querySelector(s);
+const qa = s => [...document.querySelectorAll(s)];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const prg = q('#prg'), nav = q('#nav');
+const reader = q('.essay-reader');
+const seriesNav = q('.series-nav');
+window.addEventListener('scroll',()=>{
+  const max = document.body.scrollHeight - window.innerHeight;
+  prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
+  nav.classList.toggle('shrink', window.scrollY > 60);
+  let onLight = false;
+  [reader, seriesNav].forEach(sec=>{
+    if(!sec) return;
+    const r = sec.getBoundingClientRect();
+    if(r.top < window.innerHeight*.5 && r.bottom > window.innerHeight*.5) onLight = true;
+  });
+  nav.classList.toggle('on-light', onLight);
+},{passive:true});
+
+const menuBtn = q('#menuBtn');
+const mobileMenu = q('#mobileMenu');
+if(menuBtn && mobileMenu){
+  const toggle = (open) => {
+    const isOpen = open ?? !mobileMenu.classList.contains('open');
+    menuBtn.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  menuBtn.addEventListener('click', () => toggle());
+  qa('#mobileMenu a').forEach(a => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) toggle(false);
+  });
+}
+
+(function(){
+  const sections = qa('.essay-body section');
+  const links = qa('.toc-link');
+  if(!sections.length || !links.length) return;
+
+  const setActive = (id) => {
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+    });
+  };
+
+  const io = new IntersectionObserver(entries => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if(visible.length){
+      const id = visible[0].target.id;
+      if(id === 'opening'){ setActive('seventy'); }
+      else { setActive(id); }
+    }
+  }, {
+    rootMargin: '-120px 0px -60% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => io.observe(s));
+
+  links.forEach(l => {
+    l.addEventListener('click', () => {
+      const id = l.getAttribute('href').slice(1);
+      setActive(id);
+    });
+  });
+})();
+
+})();
+</script>
+</body>
+</html>
