@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+<title>Essays — Servizions</title>
+<meta name="description" content="§22 — Twelve cases, one pattern. Field notes, case studies, and structural diagnostics on MedTech adoption failure. Essays by Servizions.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0A0814;
+  --bg-2:#13101F;
+  --paper:#F5F2EC;
+  --paper-2:#EAE5DB;
+  --purple:#7A55E8;
+  --purple-d:#5A2BD6;
+  --purple-l:#A688F0;
+  --teal:#5BC3B7;
+  --teal-d:#3B9E94;
+  --t1:#FFFFFF;
+  --t2:rgba(255,255,255,.66);
+  --t3:rgba(255,255,255,.36);
+  --rule:rgba(255,255,255,.08);
+  --d1:#0A0814;
+  --d2:rgba(10,8,20,.66);
+  --d3:rgba(10,8,20,.36);
+  --rule-d:rgba(10,8,20,.10);
+  --fd:'Fraunces',Georgia,serif;
+  --fb:'Inter Tight',system-ui,sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{
+  font-family:var(--fb);
+  background:var(--bg);
+  color:var(--t1);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+
+:focus{outline:none;}
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--purple);outline-offset:4px;border-radius:2px;
+}
+
+body::after{
+  content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size:200px;opacity:.035;mix-blend-mode:overlay;
+}
+
+#prg{
+  position:fixed;top:0;left:0;height:1.5px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--purple),var(--teal));
+  pointer-events:none;transition:width .12s linear;
+}
+
+/* ─── NAV (identical to your other pages) ─── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:26px 56px;
+  transition:padding .4s var(--ease),background .4s var(--ease),color .4s var(--ease);
+}
+.nav.shrink{
+  padding:14px 56px;
+  background:rgba(10,8,20,.78);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);
+}
+.nav.on-light{color:var(--d1);}
+.nav.on-light.shrink{background:rgba(255,255,255,.85);border-color:var(--rule-d);}
+
+.nav-logo{
+  font-family:var(--fd);
+  font-size:22px;font-weight:400;letter-spacing:.005em;
+  color:inherit;
+}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
+.nav.on-light .nav-logo em{color:var(--teal-d);}
+
+.nav-links{
+  display:flex;align-items:center;gap:36px;
+  margin-left:auto;margin-right:28px;
+}
+.nav-link{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;opacity:.66;
+  position:relative;padding:6px 0;
+  transition:opacity .35s var(--ease);
+}
+.nav-link:hover,.nav-link.active{opacity:1;}
+.nav-link::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--purple);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.nav.on-light .nav-link::after{background:var(--purple-d);}
+.nav-link.active::after,.nav-link:hover::after{
+  transform:scaleX(1);transform-origin:left;
+}
+
+.nav-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;
+  padding:11px 20px;border:1px solid currentColor;border-radius:999px;
+  position:relative;overflow:hidden;
+  opacity:.7;
+  transition:opacity .4s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+}
+.nav-cta:hover{opacity:1;}
+.nav-cta span{position:relative;z-index:2;}
+.nav-cta::before{
+  content:'';position:absolute;inset:0;
+  background:var(--purple);
+  transform:translateY(101%);transition:transform .45s var(--ease);
+  z-index:1;
+}
+.nav-cta:hover::before{transform:translateY(0);}
+.nav-cta:hover{color:var(--t1)!important;border-color:var(--purple);}
+.nav-cta .arr{display:inline-block;transition:transform .4s var(--ease);position:relative;z-index:2;}
+.nav-cta:hover .arr{transform:translateX(3px);}
+
+.menu-btn{display:none;}
+.mobile-menu{display:none;}
+
+@media(max-width:1100px){
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .menu-btn{
+    display:flex;flex-direction:column;gap:5px;
+    padding:10px;background:none;border:none;cursor:pointer;
+    z-index:102;position:relative;color:inherit;
+  }
+  .menu-btn span{
+    display:block;width:24px;height:1.5px;background:currentColor;
+    transition:transform .3s var(--ease),opacity .3s;
+  }
+  .menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+  .mobile-menu{
+    display:flex;
+    position:fixed;inset:0;z-index:101;
+    background:var(--bg);
+    flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:0 56px;gap:8px;
+    opacity:0;pointer-events:none;
+    transition:opacity .35s var(--ease);
+  }
+  .mobile-menu.open{opacity:1;pointer-events:auto;}
+  .mobile-menu a{
+    font-family:var(--fd);
+    font-size:clamp(28px,5vw,42px);font-weight:400;letter-spacing:-.012em;
+    color:var(--t1);
+    padding:14px 0;
+    transition:color .3s var(--ease);
+  }
+  .mobile-menu a:hover{color:var(--purple-l);}
+  .mobile-menu a.cta{
+    margin-top:32px;
+    font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 26px;
+    background:var(--purple);
+    border-radius:999px;
+    transition:background .3s var(--ease);
+  }
+  .mobile-menu a.cta:hover{color:var(--t1);background:var(--purple-l);}
+}
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════ */
+.hero{
+  position:relative;
+  padding:170px 56px 100px;
+  overflow:hidden;
+}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
+.orb-1{
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(122,85,232,.16),transparent 65%);
+  top:-160px;right:-100px;
+  animation:drift 32s ease-in-out infinite alternate;
+}
+.orb-2{
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(91,195,183,.08),transparent 65%);
+  bottom:-140px;left:18%;
+  animation:drift 36s ease-in-out -10s infinite alternate;
+}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
+
+.hero-inner{position:relative;z-index:3;max-width:1100px;margin:0 auto;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--purple-l);
+  margin-bottom:36px;
+  opacity:0;transform:translateY(8px);
+  animation:fadeUp .9s var(--ease) .25s forwards;
+}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--purple);}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+.hero-h1{
+  font-family:var(--fd);
+  font-size:clamp(44px,5.6vw,84px);
+  font-weight:400;
+  line-height:1.04;letter-spacing:-.022em;
+  color:var(--t1);
+  max-width:18ch;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .45s forwards;
+}
+.hero-h1 em{font-style:italic;color:var(--teal);}
+
+.hero-sub{
+  font-family:var(--fb);
+  font-size:clamp(17px,1.4vw,19px);
+  font-weight:400;line-height:1.7;
+  color:var(--t2);
+  max-width:62ch;
+  margin-top:36px;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .65s forwards;
+}
+
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:36px;
+  margin-top:48px;
+  padding-top:28px;
+  border-top:1px solid var(--rule);
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .85s forwards;
+}
+.hero-meta-item{display:flex;flex-direction:column;gap:6px;}
+.hero-meta-label{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--t3);
+}
+.hero-meta-value{
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:400;
+  color:var(--t1);
+}
+
+/* ═══════════════════════════════════════════════════════
+   FILTER + GRID (cream — long reading surface)
+   ═══════════════════════════════════════════════════════ */
+.essays-section{
+  background:#FFFFFF;
+  color:var(--d1);
+  padding:80px 56px 120px;
+}
+.essays-inner{max-width:1100px;margin:0 auto;}
+
+/* ─── Filter bar ─── */
+.filter-bar{
+  display:flex;align-items:center;flex-wrap:wrap;gap:24px;
+  padding-bottom:40px;
+  margin-bottom:48px;
+  border-bottom:1px solid var(--rule-d);
+}
+.filter-label{
+  font-family:var(--fm);
+  font-size:10.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--purple-d);
+  display:inline-flex;align-items:center;gap:12px;
+  margin-right:12px;
+}
+.filter-label::before{
+  content:'';width:24px;height:1px;background:var(--purple-d);
+}
+.filter-pills{
+  display:flex;flex-wrap:wrap;gap:10px;flex:1;
+}
+.filter-pill{
+  font-family:var(--fm);
+  font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--d2);
+  padding:9px 18px;
+  border:1px solid var(--rule-d);
+  border-radius:999px;
+  background:transparent;
+  cursor:pointer;
+  transition:all .3s var(--ease);
+}
+.filter-pill:hover{
+  color:var(--d1);
+  border-color:rgba(90,43,214,.35);
+}
+.filter-pill.active{
+  color:#FFFFFF;
+  background:var(--purple-d);
+  border-color:var(--purple-d);
+}
+.filter-count{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--d3);
+  margin-left:auto;
+}
+.filter-count span{color:var(--purple-d);font-weight:500;}
+
+/* ─── Grid ─── */
+.essay-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+/* ─── Card ─── */
+.essay-card{
+  display:flex;flex-direction:column;
+  background:#FFFFFF;
+  border:1px solid var(--rule-d);
+  border-radius:10px;
+  overflow:hidden;
+  transition:border-color .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease);
+  position:relative;
+}
+.essay-card:hover{
+  border-color:rgba(90,43,214,.35);
+  transform:translateY(-4px);
+  box-shadow:0 18px 40px rgba(10,8,20,.06),0 4px 12px rgba(122,85,232,.06);
+}
+
+/* Card cover — typographic, not photographic */
+.card-cover{
+  position:relative;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.card-cover-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--bg-2),var(--bg));
+}
+.card-cover-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right,rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.card-cover-bg::after{
+  content:'';position:absolute;
+  width:280px;height:280px;border-radius:50%;
+  filter:blur(40px);
+  transition:transform .8s var(--ease);
+}
+
+/* Variant: Case (purple) */
+.essay-card[data-cat="case"] .card-cover-bg::after{
+  background:radial-gradient(circle,rgba(122,85,232,.45),transparent 65%);
+  top:-40px;right:-40px;
+}
+/* Variant: Field note (teal) */
+.essay-card[data-cat="field"] .card-cover-bg::after{
+  background:radial-gradient(circle,rgba(91,195,183,.40),transparent 65%);
+  bottom:-40px;left:-40px;
+}
+/* Variant: Pattern (deep purple + teal) */
+.essay-card[data-cat="pattern"] .card-cover-bg::after{
+  background:radial-gradient(circle,rgba(166,136,240,.40),transparent 65%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.essay-card:hover .card-cover-bg::after{transform:scale(1.15);}
+.essay-card[data-cat="pattern"]:hover .card-cover-bg::after{transform:translate(-50%,-50%) scale(1.15);}
+
+/* Cover content: case number + slug as typography */
+.card-cover-content{
+  position:relative;z-index:2;
+  padding:24px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  width:100%;height:100%;
+  color:#FFFFFF;
+}
+.card-cover-top{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+}
+.card-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--fm);
+  font-size:9.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:#FFFFFF;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(122,85,232,.22);
+  border:1px solid rgba(166,136,240,.4);
+  backdrop-filter:blur(8px);
+}
+.essay-card[data-cat="field"] .card-tag{
+  background:rgba(91,195,183,.18);
+  border-color:rgba(91,195,183,.4);
+}
+.essay-card[data-cat="pattern"] .card-tag{
+  background:rgba(166,136,240,.18);
+  border-color:rgba(166,136,240,.4);
+}
+
+.card-cover-num{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.2em;
+  color:rgba(255,255,255,.5);
+}
+
+.card-cover-id{
+  font-family:var(--fd);
+  font-size:64px;font-weight:300;letter-spacing:-.03em;line-height:.95;
+  color:#FFFFFF;
+  font-feature-settings:"tnum";
+}
+.card-cover-id em{
+  font-style:italic;font-weight:400;color:var(--teal);
+}
+.essay-card[data-cat="field"] .card-cover-id em{color:var(--teal);}
+.essay-card[data-cat="pattern"] .card-cover-id em{color:var(--purple-l);}
+
+.card-cover-slug{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+  align-self:flex-end;
+  text-align:right;
+}
+
+/* Card body */
+.card-body{
+  padding:28px 28px 24px;
+  display:flex;flex-direction:column;flex:1;
+}
+.card-title{
+  font-family:var(--fd);
+  font-size:21px;font-weight:400;letter-spacing:-.005em;line-height:1.28;
+  color:var(--d1);
+  margin-bottom:12px;
+  flex:1;
+}
+.card-title em{font-style:italic;color:var(--purple-d);}
+.card-dek{
+  font-family:var(--fb);
+  font-size:13.5px;font-weight:300;line-height:1.6;
+  color:var(--d2);
+  margin-bottom:24px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.card-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding-top:18px;
+  border-top:1px solid var(--rule-d);
+}
+.card-meta{
+  font-family:var(--fm);
+  font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--d3);
+}
+.card-meta .sep{padding:0 8px;opacity:.5;}
+.card-arr{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid var(--rule-d);
+  color:var(--purple-d);
+  font-family:var(--fb);font-size:13px;font-weight:500;
+  transition:all .35s var(--ease);
+}
+.essay-card:hover .card-arr{
+  background:var(--purple-d);color:#FFFFFF;
+  border-color:var(--purple-d);
+  transform:translate(3px,-3px);
+}
+
+/* ─── Hidden state (filter) ─── */
+.essay-card.hidden{display:none;}
+
+/* ─── Empty state ─── */
+.empty-state{
+  display:none;
+  padding:80px 0;
+  text-align:center;
+  font-family:var(--fd);
+  font-size:21px;font-style:italic;
+  color:var(--d3);
+}
+.empty-state.show{display:block;}
+
+/* ─── Subscribe strip (between hero and grid) ─── */
+.subscribe-strip{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  margin-top:48px;
+  padding:24px 28px;
+  border:1px solid var(--rule-d);
+  border-radius:8px;
+  background:rgba(122,85,232,.04);
+}
+.subscribe-text{
+  font-family:var(--fd);
+  font-size:17px;font-style:italic;font-weight:400;
+  color:var(--d1);
+}
+.subscribe-text strong{font-style:normal;font-weight:500;color:var(--purple-d);}
+.subscribe-link{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fm);
+  font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-d);
+  padding:11px 20px;
+  border:1px solid var(--purple-d);
+  border-radius:999px;
+  transition:all .3s var(--ease);
+}
+.subscribe-link:hover{
+  background:var(--purple-d);
+  color:#FFFFFF;
+}
+.subscribe-link .arr{transition:transform .3s var(--ease);}
+.subscribe-link:hover .arr{transform:translateX(3px);}
+
+/* ═══════════════════════════════════════════════════════
+   FINAL CTA + FOOTER (your standard)
+   ═══════════════════════════════════════════════════════ */
+.final-cta{
+  position:relative;
+  padding:140px 56px 120px;
+  text-align:center;
+  background:var(--bg);
+  overflow:hidden;
+}
+.final-cta::before{
+  content:'';position:absolute;
+  top:50%;left:50%;width:900px;height:900px;
+  background:radial-gradient(circle,rgba(122,85,232,.13),transparent 60%);
+  transform:translate(-50%,-50%);
+  filter:blur(50px);pointer-events:none;
+  animation:ctaOrb 10s ease-in-out infinite alternate;
+}
+@keyframes ctaOrb{
+  from{transform:translate(-50%,-50%) scale(1);opacity:.7;}
+  to{transform:translate(-50%,-50%) scale(1.1);opacity:1;}
+}
+.final-cta-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
+.final-cta-tag{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--purple-l);
+  display:inline-flex;align-items:center;gap:12px;
+  margin-bottom:24px;
+}
+.final-cta-tag::before{content:'';width:32px;height:1px;background:var(--purple);}
+.final-cta-h{
+  font-family:var(--fd);
+  font-size:clamp(36px,4.6vw,62px);
+  font-weight:400;
+  line-height:1.06;letter-spacing:-.02em;
+  color:var(--t1);
+  margin-bottom:40px;
+}
+.final-cta-h em{font-style:italic;color:var(--teal);}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:600;letter-spacing:-.005em;
+  color:var(--t1);
+  background:var(--purple);
+  padding:14px 24px;border-radius:10px;
+  box-shadow:0 1px 2px rgba(122,85,232,.2),0 8px 28px rgba(122,85,232,.25);
+  transition:all .3s var(--ease);
+}
+.btn-primary:hover{
+  background:var(--purple-l);
+  box-shadow:0 1px 2px rgba(122,85,232,.25),0 12px 32px rgba(122,85,232,.4);
+  transform:translateY(-2px);
+}
+.btn-primary .arr{transition:transform .3s var(--ease);}
+.btn-primary:hover .arr{transform:translateX(3px);}
+
+.footer{
+  background:var(--bg);
+  border-top:1px solid var(--rule);
+  padding:32px 56px;
+}
+.footer-top{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:start;gap:48px;
+  padding-bottom:28px;
+  margin-bottom:24px;
+  border-bottom:1px solid var(--rule);
+}
+.footer-brand{display:flex;flex-direction:column;gap:10px;}
+.footer-tagline{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-center{
+  justify-self:center;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-nav{
+  justify-self:end;
+  display:flex;flex-wrap:wrap;gap:24px;
+}
+.footer-nav a{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+  position:relative;
+  transition:color .35s var(--ease);
+}
+.footer-nav a::after{
+  content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;
+  background:var(--purple);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.footer-nav a:hover{color:var(--t1);}
+.footer-nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-domains{display:flex;flex-wrap:wrap;gap:14px;}
+.footer-domains .dot{color:var(--rule);}
+
+/* ─── Reveal ─── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .nav{padding:20px 40px;}
+  .nav.shrink{padding:12px 40px;}
+  .hero{padding:140px 40px 80px;}
+  .essays-section{padding:64px 40px 96px;}
+  .essay-grid{grid-template-columns:repeat(2,1fr);gap:22px;}
+  .final-cta{padding:110px 40px;}
+  .footer{padding:32px 40px;}
+}
+@media(max-width:760px){
+  .nav{padding:16px 28px;}
+  .hero{padding:120px 28px 56px;}
+  .essays-section{padding:48px 28px 80px;}
+  .essay-grid{grid-template-columns:1fr;gap:18px;}
+  .filter-bar{gap:18px;}
+  .filter-count{margin-left:0;width:100%;}
+  .card-cover-id{font-size:48px;}
+  .final-cta{padding:90px 28px;}
+  .footer{padding:28px 28px;}
+  .footer-top{grid-template-columns:1fr;gap:24px;}
+  .footer-center,.footer-nav{justify-self:start;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .mobile-menu{padding:0 28px;}
+}
+@media(max-width:560px){
+  .hero-h1{font-size:42px;}
+  .final-cta-h{font-size:34px;}
+  .subscribe-strip{padding:20px 22px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .eyebrow,.hero-h1,.hero-sub,.hero-meta{
+    opacity:1!important;transform:none!important;
+  }
+  .rv{opacity:1!important;transform:none!important;}
+  .orb-1,.orb-2,.final-cta::before{animation:none!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="prg" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="essays.html" class="nav-link active">Essays</a>
+    <a href="about.html" class="nav-link">About</a>
+  </nav>
+  <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="essays.html">Essays</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="cta">Let's talk →</a>
+</nav>
+
+<main>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-orb orb-1" aria-hidden="true"></div>
+  <div class="hero-orb orb-2" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <span class="eyebrow">§22 · Twelve cases, one pattern</span>
+    <h1 class="hero-h1">
+      Field notes from the layer where MedTech <em>actually fails.</em>
+    </h1>
+    <p class="hero-sub">
+      Twelve case studies. Field observations from clinics in Munich, Vienna, and Florence. Structural diagnostics of the pattern across all of them. Two essays a week.
+    </p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Series</span>
+        <span class="hero-meta-value">§22 — Twelve cases, one pattern</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Cadence</span>
+        <span class="hero-meta-value">Two essays per week</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Author</span>
+        <span class="hero-meta-value">Hanna Kim</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESSAYS GRID ─── -->
+<section class="essays-section">
+  <div class="essays-inner">
+
+    <!-- ── Filter bar ── -->
+    <div class="filter-bar">
+      <span class="filter-label">Filter</span>
+      <div class="filter-pills" role="tablist">
+        <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-pill" data-filter="case" role="tab" aria-selected="false">Cases</button>
+        <button class="filter-pill" data-filter="field" role="tab" aria-selected="false">Field notes</button>
+        <button class="filter-pill" data-filter="pattern" role="tab" aria-selected="false">Patterns</button>
+      </div>
+      <span class="filter-count"><span id="visibleCount">0</span> / <span id="totalCount">0</span> essays</span>
+    </div>
+
+    <!-- ── Grid ──
+         To add a new essay: copy one <a class="essay-card"> block, change:
+         href, data-cat (case|field|pattern), data-date (YYYY-MM-DD for sorting),
+         tag label, case number, slug, title, dek, date display, read time.  -->
+    <div class="essay-grid" id="essayGrid">
+
+      <a class="essay-card" data-cat="case" data-date="2026-05-11" href="essay-01.html">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">§22 Essay</span>
+              <span class="card-cover-num">01 / 12</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Essay <em>01</em></div>
+              <div class="card-cover-slug">§22 · The framework</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Why MedTech products fail <em>after FDA clearance.</em></h3>
+          <p class="card-dek">The seven structural patterns behind the 70 percent adoption gap. The diagnostic framework for the eleven case essays that follow.</p>
+          <div class="card-foot">
+            <span class="card-meta">11 May 2026 <span class="sep">·</span> 12 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="field" data-date="2026-05-08" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Field note</span>
+              <span class="card-cover-num">Munich</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Note <em>04</em></div>
+              <div class="card-cover-slug">From the clinic floor</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">What I saw between the device and the <em>patient.</em></h3>
+          <p class="card-dek">Direct observation note from a recent clinical visit. The layer nobody writes about, because nobody is looking at it.</p>
+          <div class="card-foot">
+            <span class="card-meta">08 May 2026 <span class="sep">·</span> 4 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="pattern" data-date="2026-05-04" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Pattern</span>
+              <span class="card-cover-num">P · 01</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Pattern <em>α</em></div>
+              <div class="card-cover-slug">The two-filter logic</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Therapists evaluate every device through <em>two filters.</em> Only one is in the pitch.</h3>
+          <p class="card-dek">The first structural pattern in the §22 series. Why patient-outcome claims are necessary but never sufficient for clinical adoption.</p>
+          <div class="card-foot">
+            <span class="card-meta">04 May 2026 <span class="sep">·</span> 6 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="case" data-date="2026-04-28" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Case study</span>
+              <span class="card-cover-num">02 / 12</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Case <em>02</em></div>
+              <div class="card-cover-slug">§22 · [Pattern name]</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">[Case 02 title] — the second case in the <em>§22 series.</em></h3>
+          <p class="card-dek">A different category, a different geography, the same structural failure underneath. The pattern beneath the surface.</p>
+          <div class="card-foot">
+            <span class="card-meta">28 Apr 2026 <span class="sep">·</span> 9 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="field" data-date="2026-04-24" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Field note</span>
+              <span class="card-cover-num">Vienna</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Note <em>03</em></div>
+              <div class="card-cover-slug">From the clinic floor</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">The friction nobody is <em>measuring.</em></h3>
+          <p class="card-dek">A short observation note from a recent clinical visit in Vienna. What therapists do between sessions, when nobody is watching.</p>
+          <div class="card-foot">
+            <span class="card-meta">24 Apr 2026 <span class="sep">·</span> 3 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="case" data-date="2026-04-20" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Case study</span>
+              <span class="card-cover-num">03 / 12</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Case <em>03</em></div>
+              <div class="card-cover-slug">§22 · [Pattern name]</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">[Case 03 title] — when the technology worked and the <em>system failed.</em></h3>
+          <p class="card-dek">Third case in the §22 series. A working device, a competent team, sufficient capital — and adoption that never came.</p>
+          <div class="card-foot">
+            <span class="card-meta">20 Apr 2026 <span class="sep">·</span> 7 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="pattern" data-date="2026-04-15" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Pattern</span>
+              <span class="card-cover-num">P · 02</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Pattern <em>β</em></div>
+              <div class="card-cover-slug">The pilot gap</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Why pilots succeed and rollouts <em>collapse.</em></h3>
+          <p class="card-dek">The structural reason MedTech rollouts stall even after successful pilot studies. The difference between optimised conditions and the rest of the hospital.</p>
+          <div class="card-foot">
+            <span class="card-meta">15 Apr 2026 <span class="sep">·</span> 6 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="field" data-date="2026-04-10" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Field note</span>
+              <span class="card-cover-num">Florence</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Note <em>02</em></div>
+              <div class="card-cover-slug">From the clinic floor</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">The four minutes that decide whether a device gets <em>used again.</em></h3>
+          <p class="card-dek">A short observation note from Florence. The recalibration moment between patients, and what it reveals about device design.</p>
+          <div class="card-foot">
+            <span class="card-meta">10 Apr 2026 <span class="sep">·</span> 3 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="essay-card" data-cat="case" data-date="2026-04-06" href="#">
+        <div class="card-cover">
+          <div class="card-cover-bg"></div>
+          <div class="card-cover-content">
+            <div class="card-cover-top">
+              <span class="card-tag">Case study</span>
+              <span class="card-cover-num">04 / 12</span>
+            </div>
+            <div>
+              <div class="card-cover-id">Case <em>04</em></div>
+              <div class="card-cover-slug">§22 · [Pattern name]</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">[Case 04 title] — the device, the company, and the layer <em>nobody designed.</em></h3>
+          <p class="card-dek">Fourth case in the §22 series. The structural failure that crossed three geographies and one workflow that was never specified.</p>
+          <div class="card-foot">
+            <span class="card-meta">06 Apr 2026 <span class="sep">·</span> 9 min</span>
+            <span class="card-arr" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /.essay-grid -->
+
+    <p class="empty-state" id="emptyState">No essays in this category yet — check back soon.</p>
+
+    <!-- ── Subscribe strip ── -->
+    <div class="subscribe-strip">
+      <p class="subscribe-text"><strong>Two essays a week.</strong> Sent to your inbox the morning they publish.</p>
+      <a href="mailto:info@servizions.com?subject=Subscribe%20to%20Servizions%20Essays" class="subscribe-link">
+        Subscribe <span class="arr">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <span class="final-cta-tag">Working in MedTech?</span>
+    <h2 class="final-cta-h">Strategy that begins in the clinic, not <em>the report.</em></h2>
+    <a href="contact.html" class="btn-primary"><span>Start the conversation</span><span class="arr">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+      <span class="footer-tagline">Service Innovation Studio · Munich</span>
+    </div>
+    <span class="footer-center">Working across Europe</span>
+    <nav class="footer-nav">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="essays.html">Essays</a>
+      <a href="about.html">About</a>
+      <a href="mailto:info@servizions.com">Email</a>
+      <a href="#" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Servizions</span>
+    <div class="footer-domains">
+      <span>Healthcare</span><span class="dot">·</span>
+      <span>Medical Robotics</span><span class="dot">·</span>
+      <span>MedTech</span><span class="dot">·</span>
+      <span>Digital Health</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q  = s => document.querySelector(s);
+const qa = s => [...document.querySelectorAll(s)];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ─── Progress bar + nav shrink + theme switch ─── */
+const prg = q('#prg'), nav = q('#nav');
+const lightSection = q('.essays-section');
+window.addEventListener('scroll',()=>{
+  const max = document.body.scrollHeight - window.innerHeight;
+  prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
+  nav.classList.toggle('shrink', window.scrollY > 60);
+
+  if(lightSection){
+    const r = lightSection.getBoundingClientRect();
+    const onLight = r.top < window.innerHeight*.5 && r.bottom > window.innerHeight*.5;
+    nav.classList.toggle('on-light', onLight);
+  }
+},{passive:true});
+
+/* ─── Mobile menu ─── */
+const menuBtn = q('#menuBtn');
+const mobileMenu = q('#mobileMenu');
+if(menuBtn && mobileMenu){
+  const toggle = (open) => {
+    const isOpen = open ?? !mobileMenu.classList.contains('open');
+    menuBtn.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  menuBtn.addEventListener('click', () => toggle());
+  qa('#mobileMenu a').forEach(a => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) toggle(false);
+  });
+}
+
+/* ─── Sort by date (newest first) on load ─── */
+(function(){
+  const grid = q('#essayGrid');
+  if(!grid) return;
+  const cards = qa('.essay-card', grid);
+  cards.sort((a,b) => {
+    const da = a.dataset.date || '';
+    const db = b.dataset.date || '';
+    return db.localeCompare(da); // descending
+  });
+  cards.forEach(c => grid.appendChild(c));
+})();
+
+/* ─── Filter ─── */
+(function(){
+  const pills = qa('.filter-pill');
+  const cards = qa('.essay-card');
+  const empty = q('#emptyState');
+  const visibleCount = q('#visibleCount');
+  const totalCount = q('#totalCount');
+
+  totalCount.textContent = cards.length;
+
+  function applyFilter(f){
+    let visible = 0;
+    cards.forEach(c => {
+      const match = (f === 'all') || (c.dataset.cat === f);
+      c.classList.toggle('hidden', !match);
+      if(match) visible++;
+    });
+    visibleCount.textContent = visible;
+    empty.classList.toggle('show', visible === 0);
+  }
+
+  pills.forEach(p => {
+    p.addEventListener('click', () => {
+      pills.forEach(x => {
+        x.classList.remove('active');
+        x.setAttribute('aria-selected','false');
+      });
+      p.classList.add('active');
+      p.setAttribute('aria-selected','true');
+      applyFilter(p.dataset.filter);
+    });
+  });
+
+  // initial
+  applyFilter('all');
+})();
+
+})();
+</script>
+</body>
+</html>
