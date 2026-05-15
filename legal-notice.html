@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+<title>Impressum / Legal Notice — Servizions</title>
+<meta name="description" content="Impressum / Legal Notice — Servizions, Pre-Development Innovation Studio for MedTech, Munich.">
+<meta name="robots" content="noindex,follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0A0814;--bg-2:#13101F;
+  --purple:#7A55E8;--purple-d:#5A2BD6;--purple-l:#A688F0;
+  --teal:#5BC3B7;--teal-d:#3B9E94;
+  --t1:#FFFFFF;--t2:rgba(255,255,255,.66);--t3:rgba(255,255,255,.36);
+  --rule:rgba(255,255,255,.08);
+  --d1:#0A0814;--d2:rgba(10,8,20,.66);--d3:rgba(10,8,20,.36);
+  --rule-d:rgba(10,8,20,.10);
+  --fd:'Fraunces',Georgia,serif;
+  --fb:'Inter Tight',system-ui,sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{font-family:var(--fb);background:var(--bg);color:var(--t1);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"ss01","cv11";overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+:focus{outline:none;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--purple);outline-offset:4px;border-radius:2px;}
+
+body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");background-size:200px;opacity:.035;mix-blend-mode:overlay;}
+
+#prg{position:fixed;top:0;left:0;height:1.5px;width:0;z-index:99;background:linear-gradient(90deg,var(--purple),var(--teal));pointer-events:none;transition:width .12s linear;}
+
+/* ─── LANGUAGE SWITCH MECHANICS ─── */
+body.lang-de [data-lang="en"]{display:none!important;}
+body.lang-en [data-lang="de"]{display:none!important;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:26px 56px;transition:padding .4s var(--ease),background .4s var(--ease),color .4s var(--ease);}
+.nav.shrink{padding:14px 56px;background:rgba(10,8,20,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);}
+.nav.on-light{color:var(--d1);}
+.nav.on-light.shrink{background:rgba(255,255,255,.85);border-color:var(--rule-d);}
+.nav-logo{font-family:var(--fd);font-size:22px;font-weight:400;letter-spacing:.005em;color:inherit;}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
+.nav.on-light .nav-logo em{color:var(--teal-d);}
+.nav-links{display:flex;align-items:center;gap:36px;margin-left:auto;margin-right:28px;}
+.nav-link{font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:inherit;opacity:.66;position:relative;padding:6px 0;transition:opacity .35s var(--ease);}
+.nav-link:hover{opacity:1;}
+.nav-link::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--purple);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease);}
+.nav.on-light .nav-link::after{background:var(--purple-d);}
+.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
+.nav-cta{display:inline-flex;align-items:center;gap:12px;font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:inherit;padding:11px 20px;border:1px solid currentColor;border-radius:999px;position:relative;overflow:hidden;opacity:.7;transition:opacity .4s var(--ease),color .35s var(--ease),border-color .35s var(--ease);}
+.nav-cta:hover{opacity:1;}
+.nav-cta span{position:relative;z-index:2;}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--purple);transform:translateY(101%);transition:transform .45s var(--ease);z-index:1;}
+.nav-cta:hover::before{transform:translateY(0);}
+.nav-cta:hover{color:var(--t1)!important;border-color:var(--purple);}
+.nav-cta .arr{display:inline-block;transition:transform .4s var(--ease);position:relative;z-index:2;}
+.nav-cta:hover .arr{transform:translateX(3px);}
+.menu-btn{display:none;}
+.mobile-menu{display:none;}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .menu-btn{display:flex;flex-direction:column;gap:5px;padding:10px;background:none;border:none;cursor:pointer;z-index:102;position:relative;color:inherit;}
+  .menu-btn span{display:block;width:24px;height:1.5px;background:currentColor;transition:transform .3s var(--ease),opacity .3s;}
+  .menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .mobile-menu{display:flex;position:fixed;inset:0;z-index:101;background:var(--bg);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 56px;gap:8px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);}
+  .mobile-menu.open{opacity:1;pointer-events:auto;}
+  .mobile-menu a{font-family:var(--fd);font-size:clamp(28px,5vw,42px);font-weight:400;letter-spacing:-.012em;color:var(--t1);padding:14px 0;transition:color .3s var(--ease);}
+  .mobile-menu a:hover{color:var(--purple-l);}
+  .mobile-menu a.cta{margin-top:32px;font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:14px 26px;background:var(--purple);border-radius:999px;transition:background .3s var(--ease);}
+  .mobile-menu a.cta:hover{color:var(--t1);background:var(--purple-l);}
+}
+
+/* HERO */
+.legal-hero{position:relative;padding:170px 56px 80px;overflow:hidden;}
+.legal-hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
+.orb-1{width:520px;height:520px;background:radial-gradient(circle,rgba(122,85,232,.14),transparent 65%);top:-140px;right:-100px;animation:drift 32s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
+.legal-hero-inner{position:relative;z-index:3;max-width:840px;margin:0 auto;}
+
+.hero-top-row{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap;}
+
+.legal-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-l);}
+.legal-eyebrow::before{content:'';width:32px;height:1px;background:var(--purple);}
+.legal-eyebrow .sep{color:var(--t3);}
+
+/* LANG SWITCH */
+.lang-switch{display:inline-flex;align-items:center;border:1px solid var(--rule);border-radius:999px;padding:3px;background:rgba(255,255,255,.02);backdrop-filter:blur(8px);}
+.lang-switch button{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.18em;color:var(--t3);padding:8px 14px;border-radius:999px;transition:color .3s var(--ease),background .3s var(--ease);cursor:pointer;}
+.lang-switch button:hover{color:var(--t1);}
+.lang-switch button.active{background:var(--purple);color:var(--t1);}
+
+.legal-title{font-family:var(--fd);font-size:clamp(36px,4.8vw,64px);font-weight:400;line-height:1.06;letter-spacing:-.018em;color:var(--t1);}
+
+.binding-notice{
+  margin-top:24px;padding:14px 18px;
+  background:rgba(91,195,183,.06);
+  border:1px solid rgba(91,195,183,.2);
+  border-left:2px solid var(--teal);
+  border-radius:0 6px 6px 0;
+  font-family:var(--fb);font-size:13px;font-weight:300;line-height:1.6;
+  color:var(--t2);
+  max-width:680px;
+}
+.binding-notice strong{color:var(--t1);font-weight:500;}
+
+.legal-meta{display:flex;flex-wrap:wrap;gap:36px;margin-top:48px;padding-top:28px;border-top:1px solid var(--rule);}
+.legal-meta-item{display:flex;flex-direction:column;gap:6px;}
+.legal-meta-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--t3);}
+.legal-meta-value{font-family:var(--fb);font-size:14.5px;font-weight:400;color:var(--t1);}
+
+/* READER */
+.legal-reader{background:#FFFFFF;color:var(--d1);padding:96px 56px 120px;position:relative;}
+.legal-grid{display:grid;grid-template-columns:240px minmax(0,720px);gap:64px;max-width:1140px;margin:0 auto;align-items:start;}
+
+.legal-toc{position:sticky;top:120px;display:flex;flex-direction:column;align-self:start;}
+.legal-toc > div{display:flex;flex-direction:column;gap:2px;}
+.legal-toc-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-d);display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;}
+.legal-toc-label::before{content:'';width:24px;height:1px;background:var(--purple-d);}
+.toc-link{display:block;padding:9px 0 9px 16px;font-family:var(--fb);font-size:12.5px;font-weight:400;line-height:1.4;color:var(--d3);border-left:1px solid var(--rule-d);transition:color .4s var(--ease),border-color .4s var(--ease),padding-left .4s var(--ease);}
+.toc-link:hover{color:var(--d1);border-left-color:rgba(90,43,214,.3);}
+.toc-link.active{color:var(--d1);font-weight:500;border-left:1px solid var(--purple-d);padding-left:20px;}
+
+.legal-body{font-family:var(--fb);font-size:16px;font-weight:400;line-height:1.78;color:var(--d2);max-width:720px;}
+.legal-body section{margin-bottom:56px;scroll-margin-top:110px;}
+.legal-body section:last-child{margin-bottom:0;}
+.legal-body h2{font-family:var(--fd);font-size:clamp(24px,2.6vw,30px);font-weight:400;line-height:1.18;letter-spacing:-.012em;color:var(--d1);margin-bottom:20px;display:flex;align-items:baseline;gap:16px;}
+.legal-body h2 .h2-num{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.2em;color:var(--purple-d);opacity:.7;flex-shrink:0;}
+.legal-body p{margin-bottom:16px;}
+.legal-body p:last-child{margin-bottom:0;}
+.legal-body p strong{color:var(--d1);font-weight:500;}
+.legal-body a{color:var(--purple-d);border-bottom:1px solid rgba(90,43,214,.3);transition:border-color .3s var(--ease),color .3s var(--ease);}
+.legal-body a:hover{color:var(--d1);border-bottom-color:var(--purple-d);}
+
+.legal-body dl{margin:8px 0 24px;display:grid;grid-template-columns:160px 1fr;gap:8px 24px;}
+.legal-body dl dt{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);padding-top:5px;}
+.legal-body dl dd{font-size:15.5px;line-height:1.6;color:var(--d1);}
+
+.legal-body .placeholder{background:rgba(122,85,232,.08);border:1px dashed rgba(90,43,214,.4);border-radius:4px;padding:2px 8px;font-family:var(--fm);font-size:12px;font-weight:500;color:var(--purple-d);letter-spacing:.04em;}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--rule);padding:32px 56px;}
+.footer-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:48px;padding-bottom:28px;margin-bottom:24px;border-bottom:1px solid var(--rule);}
+.footer-brand{display:flex;flex-direction:column;gap:10px;}
+.footer-tagline{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-center{justify-self:center;font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-nav{justify-self:end;display:flex;flex-wrap:wrap;gap:24px;}
+.footer-nav a{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);position:relative;transition:color .35s var(--ease);}
+.footer-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--purple);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease);}
+.footer-nav a:hover{color:var(--t1);}
+.footer-nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-legal{display:flex;flex-wrap:wrap;gap:20px;}
+.footer-legal a{color:var(--t3);transition:color .35s var(--ease);}
+.footer-legal a:hover{color:var(--t1);}
+
+@media(max-width:1024px){
+  .nav{padding:20px 40px;}
+  .nav.shrink{padding:12px 40px;}
+  .legal-hero{padding:140px 40px 64px;}
+  .legal-reader{padding:72px 40px 80px;}
+  .legal-grid{grid-template-columns:200px minmax(0,1fr);gap:48px;}
+  .footer{padding:32px 40px;}
+}
+@media(max-width:900px){
+  .nav{padding:16px 28px;}
+  .legal-hero{padding:130px 28px 56px;}
+  .legal-reader{padding:48px 28px 64px;}
+  .legal-grid{grid-template-columns:1fr;gap:0;}
+  .legal-toc{position:relative;top:0;margin-bottom:40px;padding:24px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d);}
+  .legal-body dl{grid-template-columns:1fr;gap:2px;}
+  .legal-body dl dt{padding-top:14px;}
+  .legal-body dl dt:first-child{padding-top:0;}
+  .footer{padding:28px;}
+  .footer-top{grid-template-columns:1fr;gap:24px;}
+  .footer-center,.footer-nav{justify-self:start;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .mobile-menu{padding:0 28px;}
+}
+@media(max-width:560px){
+  .legal-title{font-size:34px;}
+  .legal-meta{gap:24px;}
+  .hero-top-row{flex-direction:column;align-items:flex-start;gap:20px;}
+}
+</style>
+</head>
+<body class="lang-de">
+
+<div id="prg" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="news.html" class="nav-link">News &amp; Articles</a>
+    <a href="about.html" class="nav-link">About</a>
+  </nav>
+  <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="news.html">News &amp; Articles</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="cta">Let's talk →</a>
+</nav>
+
+<main>
+
+<section class="legal-hero">
+  <div class="legal-hero-orb orb-1" aria-hidden="true"></div>
+  <div class="legal-hero-inner">
+
+    <div class="hero-top-row">
+      <span class="legal-eyebrow">
+        <span data-lang="de">Legal <span class="sep">·</span> Angaben gemäß §5 DDG</span>
+        <span data-lang="en">Legal <span class="sep">·</span> Disclosure pursuant to §5 DDG</span>
+      </span>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button data-lang-btn="de" class="active" aria-pressed="true">DE</button>
+        <button data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <h1 class="legal-title">
+      <span data-lang="de">Impressum</span>
+      <span data-lang="en">Legal Notice</span>
+    </h1>
+
+    <div class="binding-notice">
+      <span data-lang="de"><strong>Die deutsche Fassung ist rechtsverbindlich.</strong> In case of discrepancy between the German and English versions, the German version shall prevail.</span>
+      <span data-lang="en"><strong>The German version is legally binding.</strong> In case of discrepancy between the German and English versions, the German version shall prevail. Die deutsche Fassung ist rechtsverbindlich.</span>
+    </div>
+
+    <div class="legal-meta">
+      <div class="legal-meta-item">
+        <span class="legal-meta-label" data-lang="de">Stand</span>
+        <span class="legal-meta-label" data-lang="en">Last updated</span>
+        <span class="legal-meta-value">15. Mai 2026 / 15 May 2026</span>
+      </div>
+      <div class="legal-meta-item">
+        <span class="legal-meta-label" data-lang="de">Rechtsgrundlage</span>
+        <span class="legal-meta-label" data-lang="en">Legal basis</span>
+        <span class="legal-meta-value">§5 DDG · §18 Abs. 2 MStV</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="legal-reader">
+  <div class="legal-grid">
+
+    <aside class="legal-toc" aria-label="Inhaltsverzeichnis / Contents">
+      <div data-lang="de">
+        <span class="legal-toc-label">Übersicht</span>
+        <a href="#provider" class="toc-link active">Anbieter</a>
+        <a href="#contact" class="toc-link">Kontakt</a>
+        <a href="#registration" class="toc-link">Gewerbeanmeldung</a>
+        <a href="#vat" class="toc-link">Umsatzsteuer</a>
+        <a href="#editorial" class="toc-link">Redaktion</a>
+        <a href="#eu-odr" class="toc-link">EU-Streitschlichtung</a>
+        <a href="#consumer" class="toc-link">Verbraucherstreit</a>
+        <a href="#liability" class="toc-link">Haftung</a>
+        <a href="#copyright" class="toc-link">Urheberrecht</a>
+      </div>
+      <div data-lang="en">
+        <span class="legal-toc-label">Contents</span>
+        <a href="#provider" class="toc-link active">Provider</a>
+        <a href="#contact" class="toc-link">Contact</a>
+        <a href="#registration" class="toc-link">Trade registration</a>
+        <a href="#vat" class="toc-link">VAT</a>
+        <a href="#editorial" class="toc-link">Editorial responsibility</a>
+        <a href="#eu-odr" class="toc-link">EU dispute resolution</a>
+        <a href="#consumer" class="toc-link">Consumer disputes</a>
+        <a href="#liability" class="toc-link">Liability</a>
+        <a href="#copyright" class="toc-link">Copyright</a>
+      </div>
+    </aside>
+
+    <article class="legal-body">
+
+      <section id="provider">
+        <div data-lang="de">
+          <h2><span class="h2-num">§1</span>Anbieter</h2>
+          <p>Angaben gemäß §5 Digitale-Dienste-Gesetz (DDG):</p>
+          <dl>
+            <dt>Inhaberin</dt>
+            <dd>Hanna Kim</dd>
+            <dt>Firma</dt>
+            <dd>Servizions (Einzelunternehmen)</dd>
+            <dt>Anschrift</dt>
+<dd>Pfeuferstraße 4-6<br>81373 München<br>Deutschland</dd>
+          </dl>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§1</span>Provider</h2>
+          <p>Information pursuant to §5 of the German Digital Services Act (DDG):</p>
+          <dl>
+            <dt>Owner</dt>
+            <dd>Hanna Kim</dd>
+            <dt>Business</dt>
+            <dd>Servizions (sole proprietorship)</dd>
+            <dt>Address</dt>
+<dd>Pfeuferstraße 4-6<br>81373 Munich<br>Germany</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div data-lang="de">
+          <h2><span class="h2-num">§2</span>Kontakt</h2>
+          <dl>
+            <dt>Telefon</dt>
+            <dd><span class="placeholder">[+49 ...]</span></dd>
+            <dt>E-Mail</dt>
+            <dd><a href="mailto:info@servizions.com">info@servizions.com</a></dd>
+            <dt>Web</dt>
+            <dd><a href="https://servizions.com">servizions.com</a></dd>
+          </dl>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§2</span>Contact</h2>
+          <dl>
+            <dt>Phone</dt>
+            <dd><span class="placeholder">[+49 ...]</span></dd>
+            <dt>Email</dt>
+            <dd><a href="mailto:info@servizions.com">info@servizions.com</a></dd>
+            <dt>Web</dt>
+            <dd><a href="https://servizions.com">servizions.com</a></dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="registration">
+        <div data-lang="de">
+          <h2><span class="h2-num">§3</span>Gewerbeanmeldung</h2>
+          <p>Das Unternehmen ist gemäß §14 Gewerbeordnung (GewO) als Gewerbe angemeldet.</p>
+          <dl>
+            <dt>Behörde</dt>
+            <dd>Kreisverwaltungsreferat München — Gewerbeamt</dd>
+            <dt>Rechtsform</dt>
+            <dd>Einzelunternehmen</dd>
+          </dl>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§3</span>Trade Registration</h2>
+          <p>The business is registered as a trade business pursuant to §14 of the German Trade Regulation Act (Gewerbeordnung, GewO).</p>
+          <dl>
+            <dt>Authority</dt>
+            <dd>Kreisverwaltungsreferat München — Trade Office</dd>
+            <dt>Legal form</dt>
+            <dd>Sole proprietorship (Einzelunternehmen)</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="vat">
+        <div data-lang="de">
+          <h2><span class="h2-num">§4</span>Umsatzsteuer</h2>
+          <p>Hinweis nach §19 UStG: Als Kleinunternehmerin im Sinne von §19 Abs. 1 Umsatzsteuergesetz wird keine Umsatzsteuer berechnet und entsprechend nicht in Rechnung gestellt.</p>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§4</span>VAT / Sales Tax</h2>
+          <p>Notice pursuant to §19 of the German VAT Act (UStG): As a small business within the meaning of §19 (1) of the German VAT Act, no VAT is charged or invoiced.</p>
+        </div>
+      </section>
+
+      <section id="editorial">
+        <div data-lang="de">
+          <h2><span class="h2-num">§5</span>Redaktionell verantwortlich</h2>
+          <p>Verantwortlich für den Inhalt nach §18 Abs. 2 Medienstaatsvertrag (MStV):</p>
+          <dl>
+            <dt>Name</dt>
+            <dd>Hanna Kim</dd>
+            <dt>Anschrift</dt>
+            <dd>siehe §1</dd>
+          </dl>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§5</span>Editorially Responsible</h2>
+          <p>Person responsible for content pursuant to §18 (2) of the German Media State Treaty (MStV):</p>
+          <dl>
+            <dt>Name</dt>
+            <dd>Hanna Kim</dd>
+            <dt>Address</dt>
+            <dd>see §1</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="eu-odr">
+        <div data-lang="de">
+          <h2><span class="h2-num">§6</span>EU-Streitschlichtung</h2>
+          <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
+          <p>Die E-Mail-Adresse zur Kontaktaufnahme ist in §2 angegeben.</p>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§6</span>EU Online Dispute Resolution</h2>
+          <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a></p>
+          <p>The email address for contact is provided in §2.</p>
+        </div>
+      </section>
+
+      <section id="consumer">
+        <div data-lang="de">
+          <h2><span class="h2-num">§7</span>Verbraucherstreitbeilegung</h2>
+          <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§7</span>Consumer Dispute Resolution</h2>
+          <p>We are neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+        </div>
+      </section>
+
+      <section id="liability">
+        <div data-lang="de">
+          <h2><span class="h2-num">§8</span>Haftung für Inhalte und Links</h2>
+          <p>Als Diensteanbieterin bin ich gemäß §7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG bin ich als Diensteanbieterin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+          <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werde ich diese Inhalte umgehend entfernen.</p>
+          <p>Das Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann für diese fremden Inhalte keine Gewähr übernommen werden. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.</p>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§8</span>Liability for Content and Links</h2>
+          <p>As a service provider, I am responsible for my own content on these pages in accordance with §7 (1) DDG and general laws. However, pursuant to §§ 8 to 10 DDG, I am not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
+          <p>Obligations to remove or block the use of information under general laws remain unaffected. Liability in this regard is only possible from the point in time at which a concrete legal violation becomes known. Upon becoming aware of corresponding legal violations, I will remove this content immediately.</p>
+          <p>This website contains links to external third-party websites whose content I have no influence over. Therefore, no liability can be assumed for these external contents. The respective provider or operator of the linked pages is always responsible for their content.</p>
+        </div>
+      </section>
+
+      <section id="copyright">
+        <div data-lang="de">
+          <h2><span class="h2-num">§9</span>Urheberrecht</h2>
+          <p>Die durch die Seitenbetreiberin erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung der jeweiligen Autorin bzw. Erstellerin.</p>
+          <p>Soweit die Inhalte auf dieser Seite nicht von der Betreiberin erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitte ich um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werde ich derartige Inhalte umgehend entfernen.</p>
+        </div>
+        <div data-lang="en">
+          <h2><span class="h2-num">§9</span>Copyright</h2>
+          <p>The content and works created by the site operator on these pages are subject to German copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator.</p>
+          <p>Insofar as the content on this site was not created by the operator, the copyrights of third parties are observed. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please notify me. Upon becoming aware of legal violations, I will remove such content immediately.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+      <span class="footer-tagline">Service Innovation Studio · Munich</span>
+    </div>
+    <span class="footer-center">Working across Europe</span>
+    <nav class="footer-nav">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="news.html">News &amp; Articles</a>
+      <a href="about.html">About</a>
+      <a href="mailto:info@servizions.com">Email</a>
+      <a href="#" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Servizions</span>
+    <div class="footer-legal">
+      <a href="legal-notice.html">Legal Notice</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q  = s => document.querySelector(s);
+const qa = s => [...document.querySelectorAll(s)];
+
+/* Progress bar + nav shrink + theme switch */
+const prg = q('#prg'), nav = q('#nav');
+const reader = q('.legal-reader');
+window.addEventListener('scroll',()=>{
+  const max = document.body.scrollHeight - window.innerHeight;
+  prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
+  nav.classList.toggle('shrink', window.scrollY > 60);
+  if(reader){
+    const r = reader.getBoundingClientRect();
+    const onLight = r.top < window.innerHeight*.5 && r.bottom > window.innerHeight*.5;
+    nav.classList.toggle('on-light', onLight);
+  }
+},{passive:true});
+
+/* Mobile menu */
+const menuBtn = q('#menuBtn');
+const mobileMenu = q('#mobileMenu');
+if(menuBtn && mobileMenu){
+  const toggle = (open) => {
+    const isOpen = open ?? !mobileMenu.classList.contains('open');
+    menuBtn.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  menuBtn.addEventListener('click', () => toggle());
+  qa('#mobileMenu a').forEach(a => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) toggle(false);
+  });
+}
+
+/* Language switcher */
+(function(){
+  const STORAGE_KEY = 'servizions-lang';
+  const switchLang = (lang) => {
+    if(lang !== 'de' && lang !== 'en') lang = 'de';
+    document.body.classList.remove('lang-de','lang-en');
+    document.body.classList.add('lang-'+lang);
+    document.documentElement.lang = lang;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+    qa('[data-lang-btn]').forEach(b => {
+      const isActive = b.dataset.langBtn === lang;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+  let saved = 'de';
+  try { saved = localStorage.getItem(STORAGE_KEY) || 'de'; } catch(e){}
+  switchLang(saved);
+  qa('[data-lang-btn]').forEach(b => {
+    b.addEventListener('click', () => switchLang(b.dataset.langBtn));
+  });
+})();
+
+/* TOC active link on scroll */
+(function(){
+  const sections = qa('.legal-body section');
+  const links = qa('.toc-link');
+  if(!sections.length || !links.length) return;
+  const setActive = (id) => {
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+  const io = new IntersectionObserver(entries => {
+    const visible = entries.filter(e => e.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if(visible.length) setActive(visible[0].target.id);
+  }, { rootMargin: '-120px 0px -60% 0px', threshold: 0 });
+  sections.forEach(s => io.observe(s));
+})();
+
+})();
+</script>
+</body>
+</html>

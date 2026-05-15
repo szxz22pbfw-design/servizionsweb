@@ -535,6 +535,8 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(138,127,170,0.5); }
 .form-group textarea { min-height: 130px; resize: vertical; }
 .form-consent { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; color: var(--text-mid); margin: 28px 0; line-height: 1.6; font-weight: 300; }
+.form-consent span a { color: var(--purple); text-decoration: underline; text-underline-offset: 2px; }
+.form-consent span a:hover { color: var(--purple-mid); }
 .form-consent input[type="checkbox"] { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--purple); flex-shrink: 0; }
 .hidden-field { display: none; }
 .contact-submit { width: 100%; justify-content: center; padding: 18px 40px; font-size: 13px; }
