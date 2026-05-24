@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
 <title>Solutions — Servizions</title>
-<meta name="description" content="What Servizions delivers for medical robotics companies, healthtech ventures, and hospital innovation teams — and how it differs from consultancies, design agencies, and strategy firms.">
+<meta name="description" content="What Servizions delivers for medical robotics companies, healthtech ventures, and hospital innovation teams.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -482,63 +482,54 @@ body::after{
 }
 .example-text strong{color:var(--t1);font-weight:500;}
 
-/* ─── COMPARISON TABLE ─── */
-.compare-wrap{
+/* ─── CAPABILITY LIST (replaces comparison table) ─── */
+.capability-list{
+  list-style:none;
+  display:flex;flex-direction:column;
   margin-top:24px;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
 }
-.compare-table{
-  width:100%;
-  border-collapse:collapse;
-  font-family:var(--fb);
-  min-width:760px;
+.capability-item{
+  display:grid;grid-template-columns:auto 1fr;align-items:center;gap:32px;
+  padding:34px 0;
+  border-top:1px solid var(--rule-d);
+  transition:opacity .4s var(--ease),padding-left .4s var(--ease);
 }
-.compare-table thead th{
+.capability-item:last-child{border-bottom:1px solid var(--rule-d);}
+.capability-list:hover .capability-item{opacity:.38;}
+.capability-list:hover .capability-item:hover{opacity:1;padding-left:8px;}
+.capability-mark{
   font-family:var(--fm);
-  font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--d3);
-  text-align:left;
-  padding:0 14px 16px;
-  border-bottom:1px solid rgba(10,8,20,.18);
-  white-space:nowrap;
-  vertical-align:bottom;
-}
-.compare-table thead th.col-self{
+  font-size:13px;font-weight:500;
   color:var(--purple-d);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;
+  border:1px solid rgba(90,43,214,.28);
+  border-radius:50%;
+  background:transparent;
+  transition:all .4s var(--ease);
+  flex-shrink:0;
 }
-.compare-table thead th:first-child{padding-left:0;width:36%;}
-.compare-table tbody td{
-  padding:18px 14px;
-  border-bottom:1px solid var(--rule-d);
-  font-size:14px;font-weight:400;line-height:1.5;color:var(--d2);
-  vertical-align:top;
+.capability-item:hover .capability-mark{
+  background:var(--purple-d);color:#fff;border-color:var(--purple-d);
+  transform:scale(1.05);
 }
-.compare-table tbody td:first-child{
-  padding-left:0;
-  font-family:var(--fb);
-  font-size:14.5px;font-weight:500;
+.capability-name{
+  font-family:var(--fd);
+  font-size:clamp(22px,2.4vw,32px);
+  font-weight:400;line-height:1.2;letter-spacing:-.012em;
   color:var(--d1);
 }
-.compare-table tbody td.cell-yes,
-.compare-table tbody td.cell-no,
-.compare-table tbody td.cell-partial{
-  text-align:center;
-  font-family:var(--fm);
-  font-size:11px;letter-spacing:.1em;
-  color:var(--d3);
+.capability-item-synthesis{
+  background:linear-gradient(to right,rgba(122,85,232,.04),transparent 70%);
 }
-.compare-table tbody td.cell-yes{color:var(--purple-d);}
-.compare-table tbody td.cell-no{color:rgba(10,8,20,.22);}
-.compare-table tbody td.cell-partial{color:var(--d3);font-style:italic;}
-.compare-table tbody tr.row-self td{
-  background:rgba(122,85,232,.05);
+.capability-item-synthesis .capability-name{
+  font-style:italic;color:var(--purple-d);
 }
-.compare-table tbody tr.row-self td.cell-yes{
-  color:var(--purple-d);font-weight:600;
+.capability-item-synthesis .capability-mark{
+  background:var(--purple-d);color:#fff;border-color:var(--purple-d);
 }
-.compare-footnote{
-  margin-top:24px;
+.capability-footnote{
+  margin-top:32px;
   font-family:var(--fm);
   font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--d3);
@@ -736,6 +727,9 @@ body::after{
   .footer-bottom{flex-direction:column;align-items:flex-start;}
   .mobile-menu{padding:0 28px;}
   .example-callout{grid-template-columns:1fr;gap:14px;padding:28px;}
+  .capability-item{grid-template-columns:auto 1fr;gap:22px;padding:26px 0;}
+  .capability-mark{width:32px;height:32px;font-size:12px;}
+  .capability-list:hover .capability-item:hover{padding-left:0;}
 }
 @media(max-width:560px){
   .hero-h1{font-size:42px;}
@@ -744,7 +738,6 @@ body::after{
   .final-cta-h{font-size:36px;}
   .btn-primary,.btn-secondary{width:100%;justify-content:center;}
   .hero-actions{flex-direction:column;align-items:stretch;gap:14px;}
-  .compare-table{font-size:13px;}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -914,108 +907,43 @@ body::after{
   </div>
 </section>
 
-<!-- ─── 03 HOW WE DIFFER (cream — comparison table) ─── -->
+<!-- ─── 03 WHAT WE DO (cream — capabilities, no comparison) ─── -->
 <section class="section cream-section">
-  <div class="section-inner-wide">
+  <div class="section-inner">
     <div class="section-head">
-      <span class="section-tag rv"><span class="num">01</span>How we differ</span>
-      <h2 class="section-h2 rv" data-split>From Blueprint to Product Future scenario. <em>One stands at the intersection.</em></h2>
+      <span class="section-tag rv"><span class="num">03</span>What we do</span>
+      <h2 class="section-h2 rv" data-split>Five capabilities. <em>One integrated practice.</em></h2>
       <p class="section-lede rv">Servizions sits at the intersection of clinical fieldwork, service design, and grounded foresight innovation.</p>
     </div>
 
-    <div class="compare-wrap rv">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Capability</th>
-            
-            <th class="col-self">Servizions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="row-self-marker">
-            <td>Clinical fieldwork </td>
-            
-            <td class="cell-yes">✓</td>
-          </tr>
-          <tr>
-            <td>Service blueprint &amp; workflow mapping</td>
-           
-            <td class="cell-yes">✓</td>
-          </tr>
-          <tr>
-            <td>Future scenarios for product strategy</td>
-            
-            <td class="cell-yes">✓</td>
-          </tr>
-          <tr>
-            <td>Scenarios grounded in clinical observation</td>
-            
-            <td class="cell-yes">✓</td>
-          </tr>
-          <tr>
-            <td>Connects clinical, service &amp; future layers</td>
-          
-            <td class="cell-yes">✓</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="compare-footnote rv">Methodology grounded in a 2024 master's thesis on systemic innovation — see <a href="about.html" style="color:var(--purple-d);text-decoration:underline;text-decoration-color:rgba(90,43,214,.4);text-underline-offset:3px;">About</a>.</p>
+    <ul class="capability-list">
+      <li class="capability-item rv">
+        <span class="capability-mark" aria-hidden="true">✓</span>
+        <span class="capability-name">Clinical fieldwork</span>
+      </li>
+      <li class="capability-item rv">
+        <span class="capability-mark" aria-hidden="true">✓</span>
+        <span class="capability-name">Service blueprint &amp; workflow mapping</span>
+      </li>
+      <li class="capability-item rv">
+        <span class="capability-mark" aria-hidden="true">✓</span>
+        <span class="capability-name">Future scenarios for product strategy</span>
+      </li>
+      <li class="capability-item rv">
+        <span class="capability-mark" aria-hidden="true">✓</span>
+        <span class="capability-name">Scenarios grounded in clinical observation</span>
+      </li>
+      <li class="capability-item capability-item-synthesis rv">
+        <span class="capability-mark" aria-hidden="true">✓</span>
+        <span class="capability-name">Connects clinical, service &amp; future layers</span>
+      </li>
+    </ul>
+
+    <p class="capability-footnote rv">Methodology grounded in a 2024 master's thesis on systemic innovation — see <a href="about.html" style="color:var(--purple-d);text-decoration:underline;text-decoration-color:rgba(90,43,214,.4);text-underline-offset:3px;">About</a>.</p>
   </div>
 </section>
 
-<!-- ─── 04 WHY THIS WORKS — side-by-side (dark) ─── -->
-<section class="section section-tinted">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-tag rv"><span class="num">04</span>The difference, in one example</span>
-      <h2 class="section-h2 rv" data-split>The same future.<br><em>Two different conclusions.</em></h2>
-    </div>
 
-    <div class="difference-block">
-      <article class="diff-card diff-them rv">
-        <span class="diff-label">Standard foresight says</span>
-        <p class="diff-quote">In a future of aging demographics and AI adoption, rehabilitation technology will shift toward home-based care.</p>
-        <span class="diff-tag">Desk research · same input every competitor receives</span>
-      </article>
-
-      <article class="diff-card diff-us rv">
-        <span class="diff-label">Servizions says</span>
-        <p class="diff-quote">In a future where therapists have 30% less session time per patient — already observed in rehabilitation center— your device takes 18 minutes to set up. The directions that survive reduce that to under four.</p>
-        <span class="diff-tag">Observed clinical reality · specific, defensible, actionable</span>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ─── 05 HOW WE WORK (cream) ─── -->
-<section class="section cream-section">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-tag rv"><span class="num">05</span>How we work</span>
-      <h2 class="section-h2 rv" data-split>Direct. Specific. <em>No templates.</em></h2>
-    </div>
-
-    <div class="how-rows">
-      <article class="how-row rv">
-        <span class="how-num">01</span>
-        <h3 class="how-title">We start with your situation.</h3>
-        <p class="how-desc">The first conversation is diagnostic, not promotional.</p>
-      </article>
-      <article class="how-row rv">
-        <span class="how-num">02</span>
-        <h3 class="how-title">You work with the Servizions core.</h3>
-        <p class="how-desc">Direct collaboration with the core team. No intermediaries.</p>
-      </article>
-      <article class="how-row rv">
-        <span class="how-num">03</span>
-        <h3 class="how-title">You receive something concrete.</h3>
-        <p class="how-desc">A structured, actionable output your team can read on Monday and act on by Friday.</p>
-      </article>
-    </div>
-  </div>
-</section>
 
 <!-- ─── FINAL CTA ─── -->
 <section class="final-cta">
