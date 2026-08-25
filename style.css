@@ -1,11 +1,11 @@
 /* =============================================
-   SERVIZIONS — Design System
+   SERVIZIONS â€” Design System
    Inspired by Lusion.co visual language
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
-/* ── Tokens ── */
+/* â”€â”€ Tokens â”€â”€ */
 :root {
   --ink:           #0E0A1F;
   --purple:        #3B0FA0;
@@ -26,7 +26,7 @@
   --border:        rgba(59,15,160,0.10);
   --border-strong: rgba(59,15,160,0.22);
   --font-display:  'Inter', system-ui, sans-serif;
-  --font-body:     'Outfit', system-ui, sans-serif;
+  --font-body:     'Inter', system-ui, sans-serif;
   --font-mono:     'Space Mono', 'Space Grotesk', monospace;
   --radius-xs: 4px; --radius-sm: 8px; --radius-md: 14px; --radius-lg: 22px; --radius-xl: 32px;
   --shadow-sm: 0 1px 4px rgba(14,10,31,0.06);
@@ -38,7 +38,7 @@
   --transition: 0.35s var(--ease-in-out);
 }
 
-/* ── Reset ── */
+/* â”€â”€ Reset â”€â”€ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 body { font-family: var(--font-body); background: var(--white); color: var(--text-dark); line-height: 1.6; cursor: none; overflow-x: hidden; }
@@ -47,7 +47,7 @@ img { max-width: 100%; height: auto; display: block; }
 button { cursor: none; font-family: var(--font-body); }
 .container { width: 100%; max-width: 1280px; margin: 0 auto; padding-left: 64px; padding-right: 64px; }
 
-/* ── Custom Cursor ── */
+/* â”€â”€ Custom Cursor â”€â”€ */
 #cursor-dot {
   position: fixed; width: 8px; height: 8px; background: var(--purple);
   border-radius: 50%; pointer-events: none; z-index: 9999;
@@ -59,7 +59,7 @@ button { cursor: none; font-family: var(--font-body); }
 body.cur-link #cursor-dot { width: 12px; height: 12px; background: var(--purple-mid); }
 body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 
-/* ── Navbar ── */
+/* â”€â”€ Navbar â”€â”€ */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   padding: 0 64px;
@@ -119,7 +119,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .mobile-nav.open { opacity: 1; pointer-events: all; transform: translateY(0); }
 .mobile-nav a { font-family: var(--font-display); font-size: 48px; font-weight: 400; color: white; }
 
-/* ── Buttons ── */
+/* â”€â”€ Buttons â”€â”€ */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
   background: var(--purple); color: white;
@@ -167,14 +167,14 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .btn-white svg { transition: transform 0.3s var(--ease-out); }
 .btn-white:hover svg { transform: translate(3px, 0); }
 
-/* ── Eyebrow label ── */
+/* â”€â”€ Eyebrow label â”€â”€ */
 .eyebrow-label {
   display: block; font-family: var(--font-mono); font-size: 10px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--purple-soft);
   margin-bottom: 16px;
 }
 
-/* ── Hero ── */
+/* â”€â”€ Hero â”€â”€ */
 .hero-section {
   position: relative; width: 100%; height: 100vh; min-height: 640px;
   background: var(--ink); overflow: hidden;
@@ -267,7 +267,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 }
 @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.6); } }
 
-/* ── Ticker ── */
+/* â”€â”€ Ticker â”€â”€ */
 .ticker-wrap {
   overflow: hidden; background: var(--purple-dark);
   padding: 18px 0; border-top: none;
@@ -286,7 +286,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .ticker-dot { color: var(--purple-soft) !important; padding: 0 4px !important; }
 @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ── Statement Section ── */
+/* â”€â”€ Statement Section â”€â”€ */
 .statement-section { background: var(--white); padding: 160px 0; border-top: none; }
 .statement-grid { display: grid; grid-template-columns: 1fr 2.2fr; gap: 80px; align-items: start; }
 .statement-left { padding-top: 6px; position: sticky; top: 100px; }
@@ -303,7 +303,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 }
 .statement-body p:last-child { margin-bottom: 0; }
 
-/* ── Globe Section ── */
+/* â”€â”€ Globe Section â”€â”€ */
 .globe-section {
   position: relative; height: 92vh; min-height: 600px;
   background: var(--stone); overflow: hidden;
@@ -348,7 +348,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .globe-panel-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 10px; font-family: var(--font-body); }
 .globe-panel-desc { font-size: 12.5px; color: var(--text-mid); line-height: 1.72; font-weight: 300; }
 
-/* ── Expertise Section ── */
+/* â”€â”€ Expertise Section â”€â”€ */
 .expertise-section { background: var(--white); padding: 160px 0; border-top: 1px solid var(--border); }
 .expertise-header { margin-bottom: 40px; }
 .expertise-title {
@@ -382,7 +382,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 }
 .exp-panel-text { font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--text-mid); }
 
-/* ── Process Section ── */
+/* â”€â”€ Process Section â”€â”€ */
 .process-section { background: var(--purple-deeper); padding: 160px 0 0; overflow: hidden; }
 .process-section .eyebrow-label { color: rgba(255,255,255,0.35); }
 .process-header { margin-bottom: 72px; padding-left: 0; }
@@ -433,7 +433,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
   border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 999px;
 }
 
-/* ── Insights Section ── */
+/* â”€â”€ Insights Section â”€â”€ */
 .insights-section { background: var(--stone); padding: 160px 0 180px; border-top: none; }
 .insights-header { margin-bottom: 72px; }
 .insights-title {
@@ -482,7 +482,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 }
 .insight-card:hover .insight-arrow { background: var(--purple); color: white; border-color: var(--purple); transform: translate(3px, -3px); }
 
-/* ── CTA Section ── */
+/* â”€â”€ CTA Section â”€â”€ */
 .cta-section {
   position: relative; padding: 180px 0;
   overflow: hidden; text-align: center;
@@ -504,7 +504,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .cta-title em { font-style: italic; color: rgba(180,155,255,1); }
 .cta-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.6); margin-bottom: 44px; }
 
-/* ── Contact Section ── */
+/* â”€â”€ Contact Section â”€â”€ */
 .contact-section { background: var(--white); padding: 160px 0; border-top: 1px solid var(--border); }
 .contact-header { max-width: 680px; margin: 0 auto 60px; text-align: center; }
 .contact-title {
@@ -541,7 +541,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .hidden-field { display: none; }
 .contact-submit { width: 100%; justify-content: center; padding: 18px 40px; font-size: 13px; }
 
-/* ── Footer ── */
+/* â”€â”€ Footer â”€â”€ */
 .footer {
   background: var(--purple-deeper); border-top: 1px solid rgba(255,255,255,0.05);
 }
@@ -570,7 +570,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .footer-links a { color: rgba(255,255,255,0.42); transition: color var(--transition); }
 .footer-links a:hover { color: rgba(255,255,255,0.85); }
 
-/* ── Showcase Cards (why.de-style split cards) ── */
+/* â”€â”€ Showcase Cards (why.de-style split cards) â”€â”€ */
 .showcase-section { background: var(--stone); padding: 160px 0; }
 .showcase-header { margin-bottom: 80px; }
 .showcase-title {
@@ -622,7 +622,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .showcase-card:hover .showcase-card-media video,
 .showcase-card:hover .showcase-card-media img { transform: scale(1.04); }
 
-/* ── Reveal animations ── */
+/* â”€â”€ Reveal animations â”€â”€ */
 .reveal-section { position: relative;}
 .reveal-child {
   opacity: 0; transform: translateY(28px);
@@ -630,7 +630,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 }
 .reveal-child.revealed { opacity: 1; transform: none; }
 
-/* ── Other pages — kept for compatibility ── */
+/* â”€â”€ Other pages â€” kept for compatibility â”€â”€ */
 .navbar-compat { background: var(--purple-dark); padding: 0; position: sticky; top: 0; z-index: 999; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .nav-inner-compat { display: flex; align-items: center; justify-content: space-between; height: 70px; max-width: 1200px; margin: 0 auto; padding: 0 64px; }
 
@@ -707,7 +707,7 @@ body.cur-drag #cursor-dot { width: 6px; height: 6px; opacity: 0.5; }
 .package-desc { font-size: 14px; font-weight: 300; color: var(--text-mid); line-height: 1.8; margin-bottom: 24px; }
 .package-deliverables { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .package-deliverables li { font-size: 13.5px; font-weight: 300; color: var(--text-mid); padding-left: 18px; position: relative; line-height: 1.6; }
-.package-deliverables li::before { content: '—'; position: absolute; left: 0; color: var(--purple-soft); font-size: 12px; }
+.package-deliverables li::before { content: 'â€”'; position: absolute; left: 0; color: var(--purple-soft); font-size: 12px; }
 
 /* values */
 .values-section { background: var(--white); padding: 110px 0; }
@@ -803,7 +803,7 @@ a.contact-info-value { color: var(--purple); transition: color var(--transition)
 a.contact-info-value:hover { color: var(--purple-mid); }
 .contact-info-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
 .contact-info-list li { font-size: 14px; color: var(--text-mid); padding-left: 16px; position: relative; font-weight: 300; line-height: 1.6; }
-.contact-info-list li::before { content: '–'; position: absolute; left: 0; color: var(--purple-soft); }
+.contact-info-list li::before { content: 'â€“'; position: absolute; left: 0; color: var(--purple-soft); }
 .contact-form-wrap { background: white; border-radius: var(--radius-xl); padding: 52px 56px; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
 
 /* booking */
@@ -919,7 +919,7 @@ a.contact-info-value:hover { color: var(--purple-mid); }
 /* animation */
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 1200px) {
   .container { padding-left: 48px; padding-right: 48px; }
   .navbar { padding: 0 48px; }
