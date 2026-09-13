@@ -234,7 +234,7 @@ body::after{
 
 .word-wrap{display:inline-block;overflow:hidden;vertical-align:bottom;}
 .word-inner{
-  display:inline-block;transform:translateY(115%);
+  display:inline-block;transform:translateY(0);
   transition:transform 1s var(--ease);
 }
 .word-inner.vis{transform:translateY(0);}
@@ -340,7 +340,7 @@ body::after{
   display:inline-flex;align-items:center;gap:14px;
   font-family:var(--fm);
   font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--purple-l);
+  color:var(--t1);
   margin-bottom:24px;
 }
 .section-tag::before{content:'';width:32px;height:1px;background:var(--purple);}
@@ -596,7 +596,7 @@ body::after{
 .footer-domains .dot{color:var(--rule);}
 
 /* ─── REVEAL ─── */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv{opacity:1;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
 .rv.in{opacity:1;transform:none;}
 
 /* ─── RESPONSIVE ─── */
