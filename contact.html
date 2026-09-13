@@ -1,160 +1,625 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact | Servizions</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>body{padding-top:70px;cursor:auto}</style>
-  <meta name="description" content="Contact Servizions — service innovation studio in Munich, Germany. Discuss your medical technology adoption challenge with us.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+<title>Contact — Servizions</title>
+<meta name="description" content="Contact Servizions — service innovation studio in Munich, Germany. Discuss your medical technology adoption challenge with us.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0A0814;
+  --bg-2:#13101F;
+  --paper:#F5F2EC;
+  --paper-2:#EAE5DB;
+  --purple:#7A55E8;
+  --purple-d:#5A2BD6;
+  --purple-l:#A688F0;
+  --teal:#5BC3B7;
+  --teal-d:#3B9E94;
+  --t1:#FFFFFF;
+  --t2:rgba(255,255,255,.66);
+  --t3:rgba(255,255,255,.36);
+  --rule:rgba(255,255,255,.08);
+  --d1:#0A0814;
+  --d2:rgba(10,8,20,.66);
+  --d3:rgba(10,8,20,.36);
+  --rule-d:rgba(10,8,20,.10);
+  --fd:'Inter',system-ui,sans-serif;
+  --fb:'Inter',system-ui,sans-serif;
+  --fm:'Inter',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{
+  font-family:var(--fb);
+  background:var(--bg);
+  color:var(--t1);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+
+:focus{outline:none;}
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--purple);outline-offset:4px;border-radius:2px;
+}
+
+body::after{
+  content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size:200px;opacity:.035;mix-blend-mode:overlay;
+}
+
+#prg{
+  position:fixed;top:0;left:0;height:1.5px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--purple),var(--teal));
+  pointer-events:none;transition:width .12s linear;
+}
+
+/* ─── NAV ─── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:26px 56px;
+  transition:padding .4s var(--ease),background .4s var(--ease),color .4s var(--ease);
+}
+.nav.shrink{
+  padding:14px 56px;
+  background:rgba(10,8,20,.78);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);
+}
+.nav.on-light{color:var(--d1);}
+.nav.on-light.shrink{background:rgba(255,255,255,.85);border-color:var(--rule-d);}
+
+.nav-logo{
+  font-family:var(--fd);
+  font-size:22px;font-weight:400;letter-spacing:.005em;
+  color:inherit;
+}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
+.nav.on-light .nav-logo em{color:var(--teal-d);}
+
+.nav-links{
+  display:flex;align-items:center;gap:36px;
+  margin-left:auto;margin-right:28px;
+}
+.nav-link{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;opacity:.66;
+  position:relative;padding:6px 0;
+  transition:opacity .35s var(--ease);
+}
+.nav-link:hover,.nav-link.active{opacity:1;}
+.nav-link::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--purple);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.nav.on-light .nav-link::after{background:var(--purple-d);}
+.nav-link.active::after,.nav-link:hover::after{
+  transform:scaleX(1);transform-origin:left;
+}
+
+.nav-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;
+  padding:11px 20px;border:1px solid currentColor;border-radius:999px;
+  position:relative;overflow:hidden;
+  opacity:.7;
+  transition:opacity .4s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+}
+.nav-cta:hover{opacity:1;}
+.nav-cta span{position:relative;z-index:2;}
+.nav-cta::before{
+  content:'';position:absolute;inset:0;
+  background:var(--purple);
+  transform:translateY(101%);transition:transform .45s var(--ease);
+  z-index:1;
+}
+.nav-cta:hover::before{transform:translateY(0);}
+.nav-cta:hover{color:var(--t1)!important;border-color:var(--purple);}
+.nav-cta .arr{display:inline-block;transition:transform .4s var(--ease);position:relative;z-index:2;}
+.nav-cta:hover .arr{transform:translateX(3px);}
+
+.menu-btn{display:none;}
+.mobile-menu{display:none;}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .menu-btn{
+    display:flex;flex-direction:column;gap:5px;
+    padding:10px;background:none;border:none;cursor:pointer;
+    z-index:102;position:relative;color:inherit;
+  }
+  .menu-btn span{
+    display:block;width:24px;height:1.5px;background:currentColor;
+    transition:transform .3s var(--ease),opacity .3s;
+  }
+  .menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+  .mobile-menu{
+    display:flex;
+    position:fixed;inset:0;z-index:101;
+    background:var(--bg);
+    flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:0 56px;gap:8px;
+    opacity:0;pointer-events:none;
+    transition:opacity .35s var(--ease);
+  }
+  .mobile-menu.open{opacity:1;pointer-events:auto;}
+  .mobile-menu a{
+    font-family:var(--fd);
+    font-size:clamp(28px,5vw,42px);font-weight:400;letter-spacing:-.012em;
+    color:var(--t1);
+    padding:14px 0;
+    transition:color .3s var(--ease);
+  }
+  .mobile-menu a:hover{color:var(--purple-l);}
+  .mobile-menu a.cta{
+    margin-top:32px;
+    font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 26px;
+    background:var(--purple);
+    border-radius:999px;
+    transition:background .3s var(--ease);
+  }
+  .mobile-menu a.cta:hover{color:var(--t1);background:var(--purple-l);}
+}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  padding:170px 56px 100px;
+  overflow:hidden;
+}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
+.orb-1{
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(122,85,232,.16),transparent 65%);
+  top:-160px;right:-100px;
+  animation:drift 32s ease-in-out infinite alternate;
+}
+.orb-2{
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(91,195,183,.08),transparent 65%);
+  bottom:-140px;left:18%;
+  animation:drift 36s ease-in-out -10s infinite alternate;
+}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
+
+.hero-inner{position:relative;z-index:3;max-width:1100px;margin:0 auto;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--purple-l);
+  margin-bottom:36px;
+  opacity:0;transform:translateY(8px);
+  animation:fadeUp .9s var(--ease) .25s forwards;
+}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--purple);}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+.hero-h1{
+  font-family:var(--fd);
+  font-size:clamp(44px,5.6vw,84px);
+  font-weight:400;
+  line-height:1.04;letter-spacing:-.022em;
+  color:var(--t1);
+  max-width:20ch;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .45s forwards;
+}
+.hero-h1 em{font-style:italic;color:var(--teal);}
+
+.hero-sub{
+  font-family:var(--fb);
+  font-size:clamp(17px,1.4vw,19px);
+  font-weight:400;line-height:1.7;
+  color:var(--t2);
+  max-width:62ch;
+  margin-top:36px;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .65s forwards;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CONTACT SECTION (cream — light form surface)
+   ═══════════════════════════════════════════════════════ */
+.contact-section{
+  background:#FFFFFF;
+  color:var(--d1);
+  padding:96px 56px 130px;
+}
+.contact-section-inner{max-width:1140px;margin:0 auto;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;}
+
+.contact-info{display:flex;flex-direction:column;gap:40px;padding-top:4px;}
+.contact-info-block{border-left:1px solid rgba(90,43,214,.22);padding-left:22px;}
+.contact-info-label{
+  font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--purple-d);margin-bottom:9px;display:block;
+}
+.contact-info-value{font-size:15.5px;font-weight:400;color:var(--d1);line-height:1.7;font-family:var(--fb);}
+a.contact-info-value{color:var(--purple-d);transition:color .3s var(--ease);}
+a.contact-info-value:hover{color:var(--d1);}
+.contact-info-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;}
+.contact-info-list li{
+  font-family:var(--fb);font-size:14px;color:var(--d2);padding-left:16px;
+  position:relative;font-weight:400;line-height:1.6;
+}
+.contact-info-list li::before{content:'–';position:absolute;left:0;color:var(--purple-d);}
+
+.contact-form-wrap{
+  background:#FAFAF9;border:1px solid var(--rule-d);border-radius:12px;padding:52px 56px;
+}
+.contact-form-row{display:flex;gap:20px;margin-bottom:20px;}
+.contact-form-group{flex:1;display:flex;flex-direction:column;}
+.contact-form-group label{
+  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;margin-bottom:8px;color:var(--d1);
+}
+.contact-form-group input,.contact-form-group select,.contact-form-group textarea{
+  padding:13px 16px;border-radius:8px;border:1px solid var(--rule-d);
+  font-family:var(--fb);font-size:14px;font-weight:400;color:var(--d1);
+  background:#FFFFFF;transition:border-color .3s var(--ease),box-shadow .3s var(--ease);
+}
+.contact-form-group input:focus,.contact-form-group textarea:focus,.contact-form-group select:focus{
+  outline:none;border-color:var(--purple-d);box-shadow:0 0 0 3px rgba(90,43,214,.08);
+}
+.contact-form-group textarea{min-height:130px;resize:vertical;}
+.contact-hidden-field{display:none;}
+.contact-consent{
+  display:flex;align-items:flex-start;gap:12px;font-family:var(--fb);font-size:13px;
+  color:var(--d2);margin:26px 0;line-height:1.6;font-weight:400;
+}
+.contact-consent a{color:var(--purple-d);text-decoration:underline;text-underline-offset:2px;}
+.contact-consent input[type="checkbox"]{margin-top:2px;width:16px;height:16px;accent-color:var(--purple-d);flex-shrink:0;}
+.contact-submit{width:100%;justify-content:center;padding:16px 32px;border:none;cursor:pointer;}
+
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:600;letter-spacing:-.005em;
+  color:var(--t1);
+  background:var(--purple);
+  padding:14px 24px;border-radius:10px;
+  box-shadow:0 1px 2px rgba(122,85,232,.2),0 8px 28px rgba(122,85,232,.25);
+  transition:all .3s var(--ease);
+}
+.btn-primary:hover{
+  background:var(--purple-l);
+  box-shadow:0 1px 2px rgba(122,85,232,.25),0 12px 32px rgba(122,85,232,.4);
+  transform:translateY(-2px);
+}
+.btn-primary .arr{transition:transform .3s var(--ease);}
+.btn-primary:hover .arr{transform:translateX(3px);}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════ */
+.footer{
+  background:var(--bg);
+  border-top:1px solid var(--rule);
+  padding:32px 56px;
+}
+.footer-top{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:start;gap:48px;
+  padding-bottom:28px;
+  margin-bottom:24px;
+  border-bottom:1px solid var(--rule);
+}
+.footer-brand{display:flex;flex-direction:column;gap:10px;}
+.footer-tagline{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-center{
+  justify-self:center;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-nav{
+  justify-self:end;
+  display:flex;flex-wrap:wrap;gap:24px;
+}
+.footer-nav a{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+  position:relative;
+  transition:color .35s var(--ease);
+}
+.footer-nav a::after{
+  content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;
+  background:var(--purple);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.footer-nav a:hover{color:var(--t1);}
+.footer-nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-domains{display:flex;flex-wrap:wrap;gap:14px;}
+.footer-domains .dot{color:var(--rule);}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .nav{padding:20px 40px;}
+  .nav.shrink{padding:12px 40px;}
+  .hero{padding:140px 40px 80px;}
+  .contact-section{padding:72px 40px 100px;}
+  .contact-grid{gap:56px;}
+  .footer{padding:32px 40px;}
+}
+@media(max-width:900px){
+  .nav{padding:16px 28px;}
+  .hero{padding:120px 28px 56px;}
+  .contact-section{padding:64px 28px 90px;}
+  .contact-grid{grid-template-columns:1fr;gap:48px;}
+  .contact-form-wrap{padding:36px 28px;}
+  .contact-form-row{flex-direction:column;gap:20px;}
+  .footer{padding:28px 28px;}
+  .footer-top{grid-template-columns:1fr;gap:24px;}
+  .footer-center,.footer-nav{justify-self:start;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .mobile-menu{padding:0 28px;}
+}
+@media(max-width:560px){
+  .hero-h1{font-size:38px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .eyebrow,.hero-h1,.hero-sub{opacity:1!important;transform:none!important;}
+  .orb-1,.orb-2{animation:none!important;}
+}
+</style>
 </head>
 <body>
 
-  <header class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-text">Servizions</span></a>
-      <nav class="nav-links">
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link nav-cta">Let's talk</a>
-      </nav>
-    </div>
-  </header>
+<div id="prg" aria-hidden="true"></div>
 
-  <section class="page-header">
-    <div class="container">
-      <div class="page-header-inner">
-        <h1>Contact</h1>
-        <p>
-          Discuss your healthcare innovation challenge with us.
-          We work with medical technology companies, hospitals, and healthcare innovators
-          across Europe and beyond.
-        </p>
-      </div>
-    </div>
-  </section>
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="news.html" class="nav-link">News &amp; Articles</a>
+    <a href="about.html" class="nav-link">About</a>
+  </nav>
+  <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-  <section class="contact-page-section">
-    <div class="container">
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="news.html">News &amp; Articles</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" class="cta">Let's talk →</a>
+</nav>
 
-      <div class="contact-page-grid">
+<main>
 
-        <!-- LEFT: Info -->
-        <div class="contact-info">
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-orb orb-1" aria-hidden="true"></div>
+  <div class="hero-orb orb-2" aria-hidden="true"></div>
 
-          <div class="contact-info-block">
-            <p class="contact-info-label">Email</p>
-            <a href="mailto:info@servizions.com" class="contact-info-value">info@servizions.com</a>
-          </div>
+  <div class="hero-inner">
+    <span class="eyebrow">Contact · Munich</span>
+    <h1 class="hero-h1">
+      Discuss your healthcare <em>innovation challenge.</em>
+    </h1>
+    <p class="hero-sub">We work with medical technology companies, hospitals, and healthcare innovators across Europe and beyond.</p>
+  </div>
+</section>
 
-          <div class="contact-info-block">
-            <p class="contact-info-label">Location</p>
-            <p class="contact-info-value">Munich, Germany</p>
-          </div>
+<!-- ─── CONTACT FORM ─── -->
+<section class="contact-section">
+  <div class="contact-section-inner">
+    <div class="contact-grid">
 
+      <!-- LEFT: Info -->
+      <div class="contact-info">
 
-
-          <div class="contact-info-block">
-            <p class="contact-info-label">Typical engagements</p>
-            <ul class="contact-info-list">
-              <li>System diagnosis & adoption mapping</li>
-              <li>Service architecture design</li>
-              <li>Value proposition creation</li>
-              <li>Innovation & design thinking workshops</li>
-              <li>Implementation coordination</li>
-            </ul>
-          </div>
-
+        <div class="contact-info-block">
+          <span class="contact-info-label">Email</span>
+          <a href="mailto:info@servizions.com" class="contact-info-value">info@servizions.com</a>
         </div>
 
-        <!-- RIGHT: Form -->
-        <div class="contact-form-wrap">
-          <form action="https://formspree.io/f/mjgakblb" method="POST">
+        <div class="contact-info-block">
+          <span class="contact-info-label">Location</span>
+          <span class="contact-info-value">Munich, Germany</span>
+        </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label>First Name *</label>
-                <input type="text" name="first-name" required>
-              </div>
-              <div class="form-group">
-                <label>Last Name *</label>
-                <input type="text" name="last-name" required>
-              </div>
-            </div>
-
-            <div class="form-group" style="margin-bottom:20px;">
-              <label>Business Email *</label>
-              <input type="email" name="email" required>
-            </div>
-
-            <div class="form-group hidden-field">
-              <label>Leave blank</label>
-              <input type="text" name="company">
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>Job Title</label>
-                <input type="text" name="job-title">
-              </div>
-              <div class="form-group">
-                <label>Country</label>
-                <input type="text" name="country">
-              </div>
-            </div>
-
-            <div class="form-group" style="margin-bottom:20px;">
-              <label>What type of support are you looking for?</label>
-              <select name="support-type">
-                <option>Start-up Innovation Services</option>
-                <option>Innovation & Design Thinking Workshop</option>
-                <option>Service Architecture Design</option>
-                <option>Value Proposition Creation</option>
-                <option>General Inquiry</option>
-              </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom:20px;">
-              <label>Please tell us how we can help</label>
-              <textarea name="message" maxlength="500" placeholder="Describe your challenge or project..."></textarea>
-            </div>
-
-            <div class="form-consent">
-  <input type="checkbox" required>
-  <span>I have read and agreed to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to my data being processed for the purpose of handling this inquiry. *</span>
-</div>
-
-            <button type="submit" class="contact-button">Submit Request</button>
-
-          </form>
+        <div class="contact-info-block">
+          <span class="contact-info-label">Typical engagements</span>
+          <ul class="contact-info-list">
+            <li>System diagnosis &amp; adoption mapping</li>
+            <li>Service architecture design</li>
+            <li>Value proposition creation</li>
+            <li>Innovation &amp; design thinking workshops</li>
+            <li>Implementation coordination</li>
+          </ul>
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-logo">Servizions</div>
-      <div class="footer-tagline">Healthcare Service Innovation Studio<br>Munich, Germany</div>
-      <nav class="footer-nav">
-        <a href="services.html">Services</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-<div class="footer-bottom">
-      <div>© 2026 Servizions. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="mailto:info@servizions.com">info@servizions.com</a>
-        <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="legal-notice.html">Legal Notice</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
+      <!-- RIGHT: Form -->
+      <div class="contact-form-wrap">
+        <form action="https://formspree.io/f/mjgakblb" method="POST">
+
+          <div class="contact-form-row">
+            <div class="contact-form-group">
+              <label>First Name *</label>
+              <input type="text" name="first-name" required>
+            </div>
+            <div class="contact-form-group">
+              <label>Last Name *</label>
+              <input type="text" name="last-name" required>
+            </div>
+          </div>
+
+          <div class="contact-form-group" style="margin-bottom:20px;">
+            <label>Business Email *</label>
+            <input type="email" name="email" required>
+          </div>
+
+          <div class="contact-form-group contact-hidden-field">
+            <label>Leave blank</label>
+            <input type="text" name="company">
+          </div>
+
+          <div class="contact-form-row">
+            <div class="contact-form-group">
+              <label>Job Title</label>
+              <input type="text" name="job-title">
+            </div>
+            <div class="contact-form-group">
+              <label>Country</label>
+              <input type="text" name="country">
+            </div>
+          </div>
+
+          <div class="contact-form-group" style="margin-bottom:20px;">
+            <label>What type of support are you looking for?</label>
+            <select name="support-type">
+              <option>Start-up Innovation Services</option>
+              <option>Innovation &amp; Design Thinking Workshop</option>
+              <option>Service Architecture Design</option>
+              <option>Value Proposition Creation</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="contact-form-group" style="margin-bottom:20px;">
+            <label>Please tell us how we can help</label>
+            <textarea name="message" maxlength="500" placeholder="Describe your challenge or project..."></textarea>
+          </div>
+
+          <div class="contact-consent">
+            <input type="checkbox" required>
+            <span>I have read and agreed to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to my data being processed for the purpose of handling this inquiry. *</span>
+          </div>
+
+          <button type="submit" class="btn-primary contact-submit"><span>Submit Request</span><span class="arr" aria-hidden="true">→</span></button>
+
+        </form>
       </div>
-    </div>
-  </footer>
 
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+      <span class="footer-tagline">Service Innovation Studio · Munich</span>
+    </div>
+    <span class="footer-center">Working across Europe</span>
+    <nav class="footer-nav">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="news.html">News &amp; Articles</a>
+      <a href="about.html">About</a>
+      <a href="mailto:info@servizions.com">Email</a>
+      <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Servizions</span>
+    <div class="footer-legal">
+      <a href="legal-notice.html">Legal Notice</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-domains">
+      <span>Healthcare</span><span class="dot">·</span>
+      <span>Medical Robotics</span><span class="dot">·</span>
+      <span>MedTech</span><span class="dot">·</span>
+      <span>Digital Health</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q  = s => document.querySelector(s);
+const qa = s => [...document.querySelectorAll(s)];
+
+const prg = q('#prg'), nav = q('#nav');
+const lightSection = q('.contact-section');
+window.addEventListener('scroll',()=>{
+  const max = document.body.scrollHeight - window.innerHeight;
+  prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
+  nav.classList.toggle('shrink', window.scrollY > 60);
+  if(lightSection){
+    const r = lightSection.getBoundingClientRect();
+    const onLight = r.top < window.innerHeight*.5 && r.bottom > window.innerHeight*.5;
+    nav.classList.toggle('on-light', onLight);
+  }
+},{passive:true});
+
+const menuBtn = q('#menuBtn');
+const mobileMenu = q('#mobileMenu');
+if(menuBtn && mobileMenu){
+  const toggle = (open) => {
+    const isOpen = open ?? !mobileMenu.classList.contains('open');
+    menuBtn.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  menuBtn.addEventListener('click', () => toggle());
+  qa('#mobileMenu a').forEach(a => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) toggle(false);
+  });
+}
+})();
+</script>
 </body>
 </html>
