@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -846,6 +845,88 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
 .footer-r a:hover::after{transform:scaleX(1);transform-origin:left;}
 
 /* ═══════════════════════════════════════════════════════
+   SUBSCRIBE — id="subscribe"
+   ═══════════════════════════════════════════════════════ */
+.subscribe{
+  position:relative;
+  background:var(--bg-2);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:140px 56px;
+  overflow:hidden;
+}
+.subscribe-orb{
+  position:absolute;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(122,85,232,.14),transparent 65%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  filter:blur(60px);pointer-events:none;
+}
+.subscribe-inner{
+  position:relative;z-index:1;
+  max-width:680px;margin:0 auto;text-align:center;
+}
+.subscribe-h2{
+  font-family:var(--fd);
+  font-size:clamp(30px,3.8vw,48px);
+  font-weight:400;line-height:1.14;letter-spacing:-.015em;
+  color:var(--t1);
+  margin:24px 0 18px;
+}
+.subscribe-h2 em{font-style:italic;color:var(--teal);}
+.subscribe-sub{
+  font-family:var(--fb);
+  font-size:15.5px;font-weight:400;line-height:1.7;
+  color:var(--t2);
+  max-width:52ch;margin:0 auto 40px;
+}
+.subscribe-form{
+  display:flex;gap:12px;flex-wrap:wrap;
+  justify-content:center;
+  max-width:480px;margin:0 auto;
+}
+.subscribe-form input[type="email"]{
+  flex:1;min-width:220px;
+  padding:15px 20px;border-radius:999px;
+  border:1px solid var(--rule);
+  background:rgba(255,255,255,.04);
+  font-family:var(--fb);font-size:14.5px;color:var(--t1);
+  transition:border-color .3s var(--ease),background .3s var(--ease);
+}
+.subscribe-form input[type="email"]::placeholder{color:var(--t3);}
+.subscribe-form input[type="email"]:focus{
+  outline:none;border-color:var(--purple);background:rgba(255,255,255,.07);
+}
+.subscribe-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:600;letter-spacing:-.005em;
+  color:var(--t1);
+  background:var(--purple);
+  padding:15px 26px;border-radius:999px;border:none;
+  box-shadow:0 1px 2px rgba(122,85,232,.2),0 8px 28px rgba(122,85,232,.25);
+  transition:all .3s var(--ease);
+  cursor:pointer;white-space:nowrap;
+}
+.subscribe-btn:hover{
+  background:var(--purple-l);
+  box-shadow:0 1px 2px rgba(122,85,232,.25),0 12px 32px rgba(122,85,232,.4);
+  transform:translateY(-2px);
+}
+.subscribe-btn .arr{transition:transform .3s var(--ease);}
+.subscribe-btn:hover .arr{transform:translateX(3px);}
+.subscribe-note{
+  margin-top:18px;
+  font-family:var(--fm);
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--t3);
+}
+.subscribe-success{
+  display:none;
+  font-family:var(--fb);font-size:15px;color:var(--teal);
+  margin-top:8px;
+}
+.subscribe-success.show{display:block;}
+
+/* ═══════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════ */
 @media(max-width:1024px){
@@ -863,6 +944,9 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
   .hero-meta{top:90px;right:28px;}
   .hero-foot{left:28px;right:28px;bottom:28px;flex-wrap:wrap;}
   .hero-actions{gap:24px;}
+  .subscribe{padding:90px 28px;}
+  .subscribe-form{flex-direction:column;}
+  .subscribe-btn{width:100%;justify-content:center;}
   .domains{padding:28px;}
   .gap{padding:110px 28px 130px;}
   .gap-inner{grid-template-columns:1fr;gap:32px;}
@@ -958,12 +1042,12 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
   <div class="hero-inner">
     <div class="eyebrow">Service Innovation Studio · Munich</div>
     <h1 class="hero-h1" id="hero-h1">
-      <span class="ln"><span class="word">We</span> <span class="word">blueprint</span> 
-      <span class="ln"><span class="word">what matters</span> <span class="word">-</span></span>
-      <span class="ln"><span class="word">then</span> <span class="word">turn it</span> <span class="word">into</span></span>
-      <span class="ln"><em><span class="word">product</span> <span class="word">and</span> <span class="word">direction</span>
+      <span class="ln"><span class="word">We</span> <span class="word">blueprint</span> <span class="word">healthcare</span></span>
+      <span class="ln"><span class="word">technology</span> <span class="word">companies</span></span>
+      <span class="ln"><span class="word">build</span> <span class="word">products</span> <span class="word">that</span></span>
+      <span class="ln"><em><span class="word">clinicians</span> <span class="word">and</span> <span class="word">patients</span></em> <span class="word">actually</span> <span class="word">use.</span></span>
     </h1>
-    <p class="hero-sub">Servizions is a service innovation studio for Medical robotics, MedTech and digital healthcare companies. 
+    <p class="hero-sub">Servizions is a service innovation studio for MedTech, medical robotics, and digital healthcare companies. 
 </p>
     <div class="hero-actions">
       <a href="#contact" class="hero-cta hero-cta-primary magnetic">
@@ -995,7 +1079,7 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
           <span class="num" id="counter">0</span>
           <span class="num-pct">%</span>
         </div>
-        <span class="num-label">of Medical technologies never reach the clinicians and patients they were built for.</span>
+        <span class="num-label">of healthcare technologies never reach the clinicians and patients they were built for.</span>
       </div>
     </div>
   </div>
@@ -1007,7 +1091,7 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
     <span class="domains-label">Working across</span>
     <div class="domains-list">
       <span>Medical Robotics</span>
-      <span>Medical Technologies</span>
+      <span>Surgical Systems</span>
       <span>Digital Health</span>
       <span>Rehabilitation Technology</span>
     </div>
@@ -1128,6 +1212,23 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
       <span class="close-meta-item">Munich, Germany</span>
       <span class="close-meta-item">Working across Europe</span>
     </div>
+  </div>
+</section>
+
+<!-- ─── SUBSCRIBE — id="subscribe" ─── -->
+<section class="subscribe" id="subscribe">
+  <div class="subscribe-orb" aria-hidden="true"></div>
+  <div class="subscribe-inner">
+    <span class="section-tag"><span class="num">05</span>Stay informed</span>
+    <h2 class="subscribe-h2">Get our <em>insights</em>, straight to your inbox.</h2>
+    <p class="subscribe-sub">Field notes, case studies, and studio news on MedTech adoption — occasional emails, no spam, unsubscribe anytime.</p>
+
+    <form class="subscribe-form" id="subscribeForm" action="https://formspree.io/f/mjgakblb" method="POST">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button type="submit" class="subscribe-btn"><span>Subscribe</span><span class="arr" aria-hidden="true">→</span></button>
+    </form>
+    <p class="subscribe-success" id="subscribeSuccess">Thanks — you're on the list.</p>
+    <p class="subscribe-note">No spam. Unsubscribe anytime.</p>
   </div>
 </section>
 
@@ -1336,6 +1437,37 @@ if(!reduceMotion){
     });
   },{threshold:.3});
   lIO.observe(el);
+})();
+
+/* ─── Subscribe form ─── */
+(function(){
+  const form = q('#subscribeForm');
+  const success = q('#subscribeSuccess');
+  if(!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.subscribe-btn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span>Sending…</span>';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if(res.ok){
+        form.reset();
+        form.style.display = 'none';
+        if(success) success.classList.add('show');
+      } else {
+        btn.innerHTML = originalText;
+        alert('Something went wrong — please try again.');
+      }
+    } catch(err){
+      btn.innerHTML = originalText;
+      alert('Something went wrong — please try again.');
+    }
+  });
 })();
 
 })();
