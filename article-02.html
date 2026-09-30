@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
-<title>Seven patterns of MedTech failure — §22 · 001 — Servizions</title>
-<meta name="description" content="Seven structural patterns of MedTech adoption failure. Article 001 of the §22 sequence by Hanna Kim, founder of Servizions.">
+<title>Human-centered, or just human-tested? — §22 · 002 — Servizions</title>
+<meta name="description" content="Article 002 of the §22 sequence. 'Human-centered' and 'human factors' get used as if they were the same thing — but one shapes the product around the human and the other tests the finished device against one. By Hanna Kim, founder of Servizions.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +20,9 @@
   --rule:rgba(255,255,255,.08);
   --d1:#0A0814; --d2:rgba(10,8,20,.66); --d3:rgba(10,8,20,.36);
   --rule-d:rgba(10,8,20,.10);
---fd:'Inter',system-ui,sans-serif;
---fb:'Inter',system-ui,sans-serif;
---fm:'Inter',monospace;
+  --fd:'Inter',system-ui,sans-serif;
+  --fb:'Inter',system-ui,sans-serif;
+  --fm:'Inter',monospace;
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
 
@@ -151,12 +151,10 @@ body::after{
 
 /* PATTERN REFERENCE TABLE */
 .pattern-table-wrap{margin:32px 0 28px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--rule-d);border-radius:6px;}
-.pattern-table{width:100%;min-width:640px;border-collapse:collapse;font-family:var(--fb);}
+.pattern-table{width:100%;min-width:560px;border-collapse:collapse;font-family:var(--fb);}
 .pattern-table thead th{font-family:var(--fm);font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);text-align:left;padding:14px 16px;background:rgba(122,85,232,.04);border-bottom:1px solid var(--rule-d);white-space:nowrap;vertical-align:bottom;}
-.pattern-table thead th:first-child{width:36px;text-align:center;}
 .pattern-table tbody td{padding:14px 16px;border-bottom:1px solid var(--rule-d);font-size:13.5px;font-weight:400;line-height:1.55;color:var(--d2);vertical-align:top;}
 .pattern-table tbody tr:last-child td{border-bottom:none;}
-.pattern-table td.col-num{font-family:var(--fm);font-size:11px;font-weight:500;color:var(--purple-d);text-align:center;width:36px;}
 .pattern-table td.col-name{font-family:var(--fb);font-weight:500;color:var(--d1);white-space:nowrap;}
 .pattern-table td.col-signal{font-style:italic;color:var(--d2);}
 .essay-body .note{font-style:italic;font-size:14.5px;color:var(--d2);padding:18px 20px;background:rgba(10,8,20,.025);border-radius:6px;margin:0 0 32px;}
@@ -166,6 +164,10 @@ body::after{
 .essay-body .pattern-block h3{margin-top:0;margin-bottom:14px;}
 .essay-body .pattern-block p:last-child{margin-bottom:0;}
 .essay-body .pattern-block p{margin-bottom:14px;}
+.essay-body .pattern-block ol{margin:0;padding-left:22px;}
+.essay-body .pattern-block ol li{margin-bottom:12px;padding-left:6px;font-size:16px;line-height:1.6;color:var(--d2);}
+.essay-body .pattern-block ol li:last-child{margin-bottom:0;}
+.essay-body .pattern-block ol li strong{color:var(--d1);font-weight:500;}
 
 .essay-body hr{border:none;height:1px;background:var(--rule-d);margin:48px 0;}
 
@@ -313,20 +315,20 @@ body::after{
   <div class="essay-hero-orb orb-2" aria-hidden="true"></div>
   <div class="essay-hero-inner">
     <span class="essay-eyebrow">
-      §22 · Article 001
+      §22 · Article 002 · Human-centered
       <span class="sep">·</span>
       Twelve articles, one diagnosis
     </span>
     <h1 class="essay-title">
-      Seven patterns of <em>MedTech failure.</em>
+      Human-centered, or just <em>human-tested?</em>
     </h1>
     <p class="essay-dek">
-      The structural patterns behind why MedTech products that ship rarely adopt.
+      "Human-centered" and "human factors" get used as if they were the same thing. One shapes the product around the human; the other tests the finished device against one, once, in a lab. The gap between them is where adoption quietly dies.
     </p>
     <div class="essay-meta">
-      <div class="essay-meta-item"><span class="essay-meta-label">Published</span><span class="essay-meta-value">11 May 2026</span></div>
-      <div class="essay-meta-item"><span class="essay-meta-label">Reading time</span><span class="essay-meta-value">~7 minutes</span></div>
-      <div class="essay-meta-item"><span class="essay-meta-label">Series</span><span class="essay-meta-value">§22 · 001 of 12</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Published</span><span class="essay-meta-value">30 September 2026</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Reading time</span><span class="essay-meta-value">~9 minutes</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Series</span><span class="essay-meta-value">§22 · 002 of 12</span></div>
       <div class="essay-meta-item"><span class="essay-meta-label">Author</span><span class="essay-meta-value">Hanna Kim</span></div>
     </div>
   </div>
@@ -336,14 +338,13 @@ body::after{
   <div class="essay-grid">
 
     <aside class="essay-toc" aria-label="Table of contents">
-      <span class="essay-toc-label">The seven patterns</span>
-      <a href="#pattern-1" class="toc-link active" data-i="0"><span class="toc-num">01</span><span class="toc-text">Demo-Day Product</span></a>
-      <a href="#pattern-2" class="toc-link" data-i="1"><span class="toc-num">02</span><span class="toc-text">Vendor-Rep Dependency</span></a>
-      <a href="#pattern-3" class="toc-link" data-i="2"><span class="toc-num">03</span><span class="toc-text">Workflow Disruption</span></a>
-      <a href="#pattern-4" class="toc-link" data-i="3"><span class="toc-num">04</span><span class="toc-text">Cognitive Overload</span></a>
-      <a href="#pattern-5" class="toc-link" data-i="4"><span class="toc-num">05</span><span class="toc-text">Outcome Data Invisibility</span></a>
-      <a href="#pattern-6" class="toc-link" data-i="5"><span class="toc-num">06</span><span class="toc-text">Adjacency Mismatch</span></a>
-      <a href="#pattern-7" class="toc-link" data-i="6"><span class="toc-num">07</span><span class="toc-text">Procurement Misfit</span></a>
+      <span class="essay-toc-label">The argument</span>
+      <a href="#claim" class="toc-link active" data-i="0"><span class="toc-num">01</span><span class="toc-text">The claim behind it</span></a>
+      <a href="#tested" class="toc-link" data-i="1"><span class="toc-num">02</span><span class="toc-text">Tested is not centered</span></a>
+      <a href="#rooms" class="toc-link" data-i="2"><span class="toc-num">03</span><span class="toc-text">Two humans, two rooms</span></a>
+      <a href="#breaks" class="toc-link" data-i="3"><span class="toc-num">04</span><span class="toc-text">Where the real human breaks</span></a>
+      <a href="#design" class="toc-link" data-i="4"><span class="toc-num">05</span><span class="toc-text">Design from the clinic</span></a>
+      <a href="#diagnostic" class="toc-link" data-i="5"><span class="toc-num">06</span><span class="toc-text">Is your product centered?</span></a>
       <div class="essay-toc-meta">
         <a href="news.html">← All articles</a>
         <span>§22 · 2026</span>
@@ -354,112 +355,104 @@ body::after{
 
       <section id="opening" class="essay-intro">
         <p class="essay-lede">
-          The most expensive moment in a medical technology company is not the trial. It is not the clearance. It is the eighteen months between first deployment and the slow, then sudden, realisation that the product is not adopting the way the plan said it would.
+          "Human-centered" is one of the most-used phrases in medical technology — and one of the easiest to confuse with something much narrower. A device can pass a human-factors test and still have been centred on no one, because a test is not a centre.
         </p>
         <blockquote>
-          Everything the device lives inside — the workflow, the people, the data, the decisions — nobody is looking at that. That is where adoption succeeds or fails.
+          To test a device against a human is to ask whether the human can survive the device. To centre a device on a human is to build the device around the human in the first place. One is a checkpoint. The other is a starting point. The two are easy to confuse, and the confusion is costly.
         </blockquote>
-        <p>What follows are seven specific patterns by which the clinical environment rejects products that the clinical problem said should succeed. These are not theoretical patterns. They are derived from twelve confirmed MedTech product failures examined in detail — companies that achieved clearance and failed at clinical adoption, drawn from rehabilitation robotics, surgical robotics, digital therapeutics, diagnostics, and adjacent categories. Each failure carried two to four of these patterns simultaneously.</p>
+        <p>Article 001 named seven structural patterns by which the clinical environment rejects products the clinical problem said should succeed. This essay is about the discipline that is supposed to prevent all seven — and why, as most MedTech companies practise it, it does not.</p>
+        <p>The discipline has two names, and the distance between them is the whole point. <em>Human factors</em> is the study that gets run before launch to show a representative user can complete the task safely. <em>Human-centered design</em> is the practice of shaping the product around the actual human who will live with it. The first is often treated as if it satisfies the second. It does not, and the difference is not academic. It is the difference between a product that clears and a product that adopts.</p>
       </section>
 
-      <section id="patterns">
-        <h2>The seven structural patterns</h2>
-        <p>Each pattern has a mechanism (the way the environment rejects the product) and a diagnostic signal (the way the failure surfaces in the data). The patterns are presented below as a framework; each is then examined in detail.</p>
+      <section id="claim">
+        <h2><span class="h2-num">01</span>The claim, and what backs it</h2>
+        <p>Open the marketing of a medical device and the language is familiar: patient-centred, clinician-centred, designed around the user. The intent behind it is usually real — the team means it. But the evidence that backs it is often a single artefact: a human-factors validation study, run once, before launch, to satisfy a regulatory requirement.</p>
+        <p>That study is real work and often rigorous. But notice what it is: a test of whether a representative user, under controlled conditions, can complete the critical tasks without dangerous error. It answers <em>can the human use it safely.</em> It says nothing about whether the product was built around the human, whether the median clinician will choose to use it on a busy day, or whether it earns its place in the work eighteen months in. It is possible to pass that study with a device that was never centred on anyone — and, in good faith, to call it human-centered.</p>
+        <p>This is not dishonesty. It is a category error, and it is expensive, because it lets a company believe the human question is answered when it has barely been asked.</p>
+      </section>
 
-        <div class="pattern-table-wrap">
-          <table class="pattern-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Pattern</th>
-                <th>Mechanism</th>
-                <th>Diagnostic signal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="col-num">1</td><td class="col-name">Demo-Day Product</td><td>Optimised for trade-show and KOL conditions; degrades in median use.</td><td class="col-signal">Strong lead-site outcomes; weak unselected deployment.</td></tr>
-              <tr><td class="col-num">2</td><td class="col-name">Vendor-Rep Dependency</td><td>Successful use requires vendor presence; cannot scale.</td><td class="col-signal">Rep-hours per case do not decline meaningfully over time.</td></tr>
-              <tr><td class="col-num">3</td><td class="col-name">Workflow Disruption</td><td>Requires the clinical workflow to bend around the device.</td><td class="col-signal">Strong published study results; weak field metrics.</td></tr>
-              <tr><td class="col-num">4</td><td class="col-name">Cognitive Overload</td><td>Adds cognitive load when clinician is already at capacity.</td><td class="col-signal">Procedure longer with device than without, post-plateau.</td></tr>
-              <tr><td class="col-num">5</td><td class="col-name">Outcome Data Invisibility</td><td>Captures data but does not surface it usably to decision-makers.</td><td class="col-signal">Cannot produce per-site value evidence over 12+ months.</td></tr>
-              <tr><td class="col-num">6</td><td class="col-name">Adjacency Mismatch</td><td>Does not integrate with adjacent clinical technologies.</td><td class="col-signal">Requires own login, own dashboard, own training.</td></tr>
-              <tr><td class="col-num">7</td><td class="col-name">Procurement Misfit</td><td>Price and structure misaligned with the institution's purchase model.</td><td class="col-signal">Sales cycle extends 2–3× beyond projection; deals stall in finance.</td></tr>
-            </tbody>
-          </table>
+      <section id="tested">
+        <h2><span class="h2-num">02</span>Tested is not centered</h2>
+        <p>The gap between testing a human and centring on one comes down to two questions that sound similar and are not.</p>
+        <p>The test asks: <em>can</em> a representative user complete the task safely, under controlled conditions, before launch? Human-centered design asks a larger question that runs the whole life of the product: <em>will</em> the median clinician, at capacity, unaccompanied, keep choosing to use this the way it was intended — in the four-hundredth session as in the first — and does the product make their work better, not merely survivable?</p>
+        <p>The first is a gate. The second is a life. Measuring the gate and inferring the life is where products quietly die. Human-centered design is not a bigger validation study and it is not a compliance step done more thoroughly. It is a different act, performed at a different time: it happens <em>before</em> the device is finished, and it is drawn from the field, not the lab.</p>
+        <blockquote>
+          A human-factors test is done to the device. Human-centered design is done to the whole idea of the device — before there is a device to test.
+        </blockquote>
+        <p>The tell is timing. If the first serious contact with the real human happens in a validation room near launch, the company is human-testing. If it happens in the clinic before the concept is locked, the company is human-centring. Same word on the website. Opposite practice.</p>
+      </section>
+
+      <section id="rooms">
+        <h2><span class="h2-num">03</span>Two humans, two rooms</h2>
+        <p>The reason a passed test does not guarantee a centred product is that the human in the test is not the human in the field. They pass through two different rooms.</p>
+        <p>In the first room — validation, demonstration, the lead site — the device is the only thing happening. Attention is undivided. A trainer is present. The device is fresh, the user was selected, the clock is generous, and someone is watching to make sure it goes well. Under these conditions the device performs as designed, because the engineering is sound for this room.</p>
+        <p>In the second room — the median clinic on an ordinary day — the device is one demand among forty. Attention is fragmented. The user is at the end of a shift, no representative is present, the clock is real, and so is the patient. Nothing about the engineering has changed. Everything about the human has. A rested operator doing one thing and an overloaded operator doing forty are not the same user with a small correction between them; they are two different people, and the device meets both.</p>
+        <p>Human-centered design is the discipline of designing for the human in the second room. A human-factors study that observed only the first room studied the wrong human — carefully, expensively, and to the wrong end. This is why "we did our usability testing" and "our product isn't adopting" are not a contradiction. They are the ordinary result of centring on the first-room human and shipping to the second.</p>
+      </section>
+
+      <section id="breaks">
+        <h2><span class="h2-num">04</span>Where the real human breaks</h2>
+        <p>When a device meets the second-room human, it is not rejected dramatically. It is rejected through a series of small, rational decisions, each invisible on its own. Three of them account for most of the loss — and all three are decisions a human-centered process would have seen coming.</p>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Break one · the load</span>The capacity runs out</h3>
+          <p>The device adds cognitive load — a screen to watch, an alert to read, a decision to make — at the exact phase when the human's load is already at its ceiling. The first-room human had spare capacity to absorb it. The second-room human does not, and so sheds load the only way available: using the device in the easy cases where there is room for it, and avoiding it in the hard ones it was built to justify. The value thesis does not fail loudly. It inverts, quietly, one rational choice at a time.</p>
         </div>
 
-        <p class="note">Most failed products carry two to four active patterns simultaneously. Identifying which patterns are active is half the strategic work. Once located, each pattern has characteristic remediation paths — some service-design fixes (low cost), some product changes (moderate cost), some commercial-model changes (high cost). The structural diagnostic, which patterns are active, is the work most MedTech companies do not do.</p>
-
-        <div class="pattern-block" id="pattern-1">
-          <h3><span class="h3-num">Pattern 1</span>The Demo-Day Product</h3>
-          <p>The product is optimised — consciously or unconsciously — for the conditions under which it gets shown. Trade-show demos. KOL site visits. Lead-site procedures with the founder and lead engineer present. The product reads back as "it works."</p>
-          <p>These conditions are not the conditions under which the product will eventually live. Lead sites have champion surgeons, optimal patient selection, vendor representatives present, and dedicated training time. The procedure is set up around the device. The clinical case notes accumulate. The investment thesis confirms.</p>
-          <p>Adoption stalls when the product encounters median conditions. Median surgeons. Median patients. No vendor present. Standard workflow constraints. The product behaves differently in median conditions, and the outcome distribution widens. The plateau begins between the thirtieth and fiftieth deploying site, with characteristic case-volume decay at sites past the optimistic-launch phase.</p>
-          <p>The pattern is invisible to the company during the lead-site phase. It is mistaken for adoption.</p>
+        <div class="pattern-block">
+          <h3><span class="h3-num">Break two · the bend</span>The work won't reorganise</h3>
+          <p>To be used as designed, the device asks the human to reorganise the work around it. The first-room human accepted the ask; they were invested and had time. The second-room human runs the same trade in real time and declines — correctly, within their own frame. The device is entirely capable. The ask is simply larger than the benefit they can perceive from where they stand. Capable and declined are not a contradiction; they are what happens when the work was never centred in the design.</p>
         </div>
 
-        <div class="pattern-block" id="pattern-2">
-          <h3><span class="h3-num">Pattern 2</span>Vendor-Rep Dependency</h3>
-          <p>The product is successful in use only when a vendor representative is present to manage setup, troubleshoot edge cases, or guide the clinician through complex decisions. This pattern looks like adoption at first; reps are present for the first fifty to one hundred cases per surgeon by design, so outcomes accumulate and confidence grows.</p>
-          <p>Then commercial scale demands rep withdrawal. There are not enough representatives in the company to maintain presence at scale. And the product, in the absence of the rep, exposes its actual usability profile.</p>
-          <p>Vendor-rep dependency is a structural problem because it is invisible during the rep-present phase. The commercial unit economics of the company assume rep hours decline as surgeons become competent. When the decline does not happen, the math breaks. Each new adopting surgeon requires materially more rep-hours than the financial model assumed. The path to commercial sustainability disappears.</p>
+        <div class="pattern-block">
+          <h3><span class="h3-num">Break three · the stranger</span>The human who was never in the room</h3>
+          <p>The human who was shown the device — the champion, trained and accompanied — is not the human who inherits it. The product was optimised, consciously or not, for the person the company kept meeting. The median human downstream was never in that room. Adoption reads as strong while the device is still meeting people like the champion, and plateaus the moment it reaches the humans it was never designed for — by which point the early enthusiasm has already been booked as proof.</p>
+        </div>
+      </section>
+
+      <section id="design">
+        <h2><span class="h2-num">05</span>Design from the clinic</h2>
+        <p>Human-centered design, taken at its word, is not a study you run and file. It is a map of the actual humans the device will meet — their load, their workflow, their incentives, their ordinary day — drawn from the clinic before the concept is locked. It does not replace the human-factors study; it precedes it and gives it something true to test against.</p>
+        <p>Done before the build, that map changes what gets built. The load that runs the user out of capacity is designed out. The ask the work will refuse is made smaller. The device is aimed at the median human, not the champion. Done before launch, it changes how the product is deployed and to whom. Done only after the plateau, it becomes triage — still worth doing, far more expensive, and working against a product that has already spent its early credibility.</p>
+        <blockquote>
+          The clinic is not where you test the design. The clinic is the design brief. A device centred anywhere else was centred on the wrong thing.
+        </blockquote>
+        <p>This is the reframe the sequence turns on. The seven patterns of Article 001 are not seven independent risks to manage after the fact. They are what a first-room design produces when it meets a second-room world. Centring the design on the real human, in the real clinic, before the concept is fixed, is the one intervention that acts on all seven at once — because it removes the gap they all grow in.</p>
+      </section>
+
+      <section id="diagnostic">
+        <h2><span class="h2-num">06</span>Is your product human-centered?</h2>
+        <p>The distinction is easy to claim and hard to pass — and the honest way to find out is to answer for your own product, specifically, not in the abstract. That is not a checklist you can skim. It is a short, structured self-test.</p>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">The self-test</span>Ten questions, sent on request</h3>
+          <p>I've written ten questions that separate a human-centered product from a human-tested one — covering when the real human first shaped the design, whether the median user was ever watched at capacity, where the product runs the clinician out of capacity, and whether the human who was shown the device is the human who now lives with it. They work as a private self-assessment, or as the starting point for a conversation.</p>
+          <p><a href="contact.html">Contact me</a>, and I'll send you the ten questions.</p>
         </div>
 
-        <div class="pattern-block" id="pattern-3">
-          <h3><span class="h3-num">Pattern 3</span>Workflow Disruption</h3>
-          <p>The product, to be used as designed, requires the clinical workflow to bend around it. The operating room setup changes. The patient positioning changes. The instrument table layout changes. The pre-operative planning routine changes. The post-procedure debrief structure changes.</p>
-          <p>Clinicians at lead sites accept these changes because they have professional investment in the technology. Clinicians at downstream adopting sites do not. They evaluate the change cost against the perceived patient benefit and conclude, often correctly within their decision frame, that the change cost is not worth the marginal benefit.</p>
-          <p>The product is technically capable but workflow-incompatible. Adoption stalls outside greenfield sites where workflow can be set up around the device from scratch. This is the pattern that killed multiple early surgical robotics platforms in the 2010s and contributed to the slow market penetration of several digital health platforms more recently. The product was not wrong. The workflow ask was.</p>
-        </div>
-
-        <div class="pattern-block" id="pattern-4">
-          <h3><span class="h3-num">Pattern 4</span>Cognitive Overload</h3>
-          <p>The product introduces additional cognitive load on the clinician during phases of the procedure when cognitive load is already at capacity. A new screen to monitor. A new alert sequence to interpret. A new decision tree to execute. A new instrument to manage in the sterile field.</p>
-          <p>Surgeons describe this experience as "fighting the device." Procedure time extends. Error rates rise. The product gets used in simpler cases where the surgeon has spare cognitive capacity and avoided in the complex cases that were supposed to justify the device. The complex cases were the value thesis. The avoidance erodes it.</p>
-          <p>The procedure time after learning-curve plateau is the unambiguous diagnostic. If a product that should make the procedure faster makes it longer, even after the learning curve flattens, cognitive overload is active and structural.</p>
-        </div>
-
-        <div class="pattern-block" id="pattern-5">
-          <h3><span class="h3-num">Pattern 5</span>Outcome Data Invisibility</h3>
-          <p>The product captures outcome data but does not return it to the clinician, the buyer, or the payer in a structurally useful form. The data exists in the device. The dashboards exist on the company servers. But the dashboards live somewhere no decision-maker visits in their daily workflow.</p>
-          <p>This pattern is particularly common in digital health and connected device categories. The data is technically present. The reporting feature exists. But the reporting does not surface in the venue where the question "is this product delivering value at our site?" actually gets asked.</p>
-          <p>The consequence: nobody at the deploying site can demonstrate that the product is delivering value over time. Reimbursement scrutiny intensifies. The product's value story is asserted, not evidenced. In the 2026 reimbursement environment, asserted value loses to evidenced value, and the product enters a slow procurement-renewal failure.</p>
-        </div>
-
-        <div class="pattern-block" id="pattern-6">
-          <h3><span class="h3-num">Pattern 6</span>Adjacency Mismatch</h3>
-          <p>The product does not integrate with the adjacent technologies that share the clinical environment. The electronic health record. The imaging stack. The navigation system. The scheduling system. The procurement system. The training infrastructure.</p>
-          <p>Each adjacency mismatch becomes a parallel-system burden. A thing the clinical site has to manage in addition to existing systems rather than instead of them. IT teams resist parallel systems on principle and in practice. Integration debt accumulates. The product becomes the system everyone wishes had not been purchased, regardless of its clinical merit.</p>
-          <p>This pattern contributed to the failure of several high-profile digital health and AI-radiology ventures in the period 2020 through 2024 — products that tried to replace adjacent workflows rather than embed within them, or that depended on integration commitments their commercial structure could not sustain.</p>
-        </div>
-
-        <div class="pattern-block" id="pattern-7">
-          <h3><span class="h3-num">Pattern 7</span>Procurement Misfit</h3>
-          <p>The product is priced and positioned in a way that does not fit the buying institution's actual purchase model. Capital equipment priced as if it were operational. Operational technology priced as if it were capital. Pricing that depends on a specific reimbursement code that does not exist. Pricing that depends on volume assumptions the buying institution cannot guarantee or refuses to commit to.</p>
-          <p>This pattern intensifies in 2026. Provider margins are projected to compress by roughly fifteen percent through 2027, per BCG analysis. Capital equipment scrutiny is at historic intensity. Devices that do not fit the buying institution's purchase model do not get bought, regardless of clinical value.</p>
-          <p>Several rehabilitation robotics platforms and capital-equipment ventures in the period 2023 through 2025 carried this pattern as a primary driver of underperformance. The clinical case was strong. The purchase case was structurally misaligned. The deals stalled in finance review rather than in clinical review, which is the unambiguous diagnostic signal.</p>
-        </div>
+        <p>Whatever the answers turn out to be, the fix has the same shape: not more testing or a lower price, but going to the clinic and letting the real human shape the product before the next one is built.</p>
+        <p>That is what human-centered actually means. It begins in the clinic, not the report.</p>
       </section>
 
       <div class="essay-end">
-        <span class="essay-end-tag">End of article 001</span>
+        <span class="essay-end-tag">End of article 002</span>
 
         <div class="author-bio">
           <div class="author-portrait" aria-hidden="true">HK</div>
           <div class="author-info">
             <div class="author-name">Hanna Kim <span>Founder · Servizions</span></div>
             <p class="author-blurb">
-              Hanna Kim is the founder of Servizions, a Munich-based Servie Innovation Studio that blueprints the environment medical technology lives inside. Servizions works with medical robotics and rehabilitation technology companies on future scenarios at the intersection of product, environment, and adoption.
+              Hanna Kim is the founder of Servizions, a Munich-based Service Innovation Studio that blueprints the environment medical technology lives inside. Servizions works with medical robotics and rehabilitation technology companies on future scenarios at the intersection of product, environment, and adoption.
               <br><br>
               Contact: <a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a> · <a href="index.html">servizions.com</a>
             </p>
           </div>
         </div>
 
-        <a href="article-02.html" class="next-teaser">
+        <a href="article-03.html" class="next-teaser">
           <div class="next-teaser-text">
             <span class="next-teaser-label">Next in this sequence · Case 1</span>
-            <span class="next-teaser-title">The vendor-rep ceiling — how surgical-robotics platforms hit the structural limit no investor warned them about.</span>
+            <span class="next-teaser-title">Why rehabilitation robotics stalls after clearance — the deal that looks like it died in finance was lost months earlier, on the therapy floor.</span>
           </div>
           <span class="next-teaser-arr" aria-hidden="true">→</span>
         </a>
@@ -471,15 +464,15 @@ body::after{
 
 <nav class="series-nav" aria-label="Series navigation">
   <div class="series-nav-inner">
-    <a href="news.html" class="series-link prev">
-      <span class="series-link-tag"><span>←</span> All articles</span>
-      <span class="series-link-title">§22 — Twelve articles, one diagnosis</span>
-      <span class="series-link-sub">Return to the series index.</span>
+    <a href="article-01.html" class="series-link prev">
+      <span class="series-link-tag"><span>←</span> §22 · 001</span>
+      <span class="series-link-title">Seven patterns of MedTech failure</span>
+      <span class="series-link-sub">The framing essay — the structural patterns behind why products that ship rarely adopt.</span>
     </a>
-    <a href="article-02.html" class="series-link next">
-      <span class="series-link-tag">§22 · 002 <span>→</span></span>
-      <span class="series-link-title">The vendor-rep ceiling</span>
-      <span class="series-link-sub">How surgical-robotics platforms hit the structural limit no investor warned them about.</span>
+    <a href="article-03.html" class="series-link next">
+      <span class="series-link-tag">§22 · 003 <span>→</span></span>
+      <span class="series-link-title">The stall after clearance</span>
+      <span class="series-link-sub">Why rehabilitation-robotics deals die in finance — after being lost, unseen, on the therapy floor.</span>
     </a>
   </div>
 </nav>
@@ -530,7 +523,6 @@ body::after{
 'use strict';
 const q  = s => document.querySelector(s);
 const qa = s => [...document.querySelectorAll(s)];
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const prg = q('#prg'), nav = q('#nav');
 const reader = q('.essay-reader');
@@ -583,7 +575,7 @@ if(menuBtn && mobileMenu){
       .sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
     if(visible.length){
       const id = visible[0].target.id;
-      if(id === 'opening'){ setActive('seventy'); }
+      if(id === 'opening'){ setActive('claim'); }
       else { setActive(id); }
     }
   }, {
