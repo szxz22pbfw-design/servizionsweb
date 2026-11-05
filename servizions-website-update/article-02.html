@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+<title>Human-centered, or just human-tested? — §22 · 002 — Servizions</title>
+<meta name="description" content="Article 002 of the §22 sequence. 'Human-centered' and 'human factors' get used as if they were the same thing — but one shapes the product around the human and the other tests the finished device against one. By Hanna Kim, founder of Servizions.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0A0814; --bg-2:#13101F;
+  --purple:#7A55E8; --purple-d:#5A2BD6; --purple-l:#A688F0;
+  --teal:#5BC3B7; --teal-d:#3B9E94;
+  --t1:#FFFFFF; --t2:rgba(255,255,255,.66); --t3:rgba(255,255,255,.36);
+  --rule:rgba(255,255,255,.08);
+  --d1:#0A0814; --d2:rgba(10,8,20,.66); --d3:rgba(10,8,20,.36);
+  --rule-d:rgba(10,8,20,.10);
+  --fd:'Inter',system-ui,sans-serif;
+  --fb:'Inter',system-ui,sans-serif;
+  --fm:'Inter',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:110px;}
+body{
+  font-family:var(--fb);background:var(--bg);color:var(--t1);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+:focus{outline:none;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--purple);outline-offset:4px;border-radius:2px;}
+
+body::after{
+  content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size:200px;opacity:.035;mix-blend-mode:overlay;
+}
+#prg{position:fixed;top:0;left:0;height:1.5px;width:0;z-index:99;background:linear-gradient(90deg,var(--purple),var(--teal));pointer-events:none;transition:width .12s linear;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:26px 56px;transition:padding .4s var(--ease),background .4s var(--ease),color .4s var(--ease);}
+.nav.shrink{padding:14px 56px;background:rgba(10,8,20,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);}
+.nav.on-light{color:var(--d1);}
+.nav.on-light.shrink{background:rgba(255,255,255,.85);border-color:var(--rule-d);}
+.nav-logo{font-family:var(--fd);font-size:22px;font-weight:400;letter-spacing:.005em;color:inherit;}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
+.nav.on-light .nav-logo em{color:var(--teal-d);}
+.nav-links{display:flex;align-items:center;gap:36px;margin-left:auto;margin-right:28px;}
+.nav-link{font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:inherit;opacity:.66;position:relative;padding:6px 0;transition:opacity .35s var(--ease);}
+.nav-link:hover,.nav-link.active{opacity:1;}
+.nav-link::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--purple);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease);}
+.nav.on-light .nav-link::after{background:var(--purple-d);}
+.nav-link.active::after,.nav-link:hover::after{transform:scaleX(1);transform-origin:left;}
+.nav-cta{display:inline-flex;align-items:center;gap:12px;font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:inherit;padding:11px 20px;border:1px solid currentColor;border-radius:999px;position:relative;overflow:hidden;opacity:.7;transition:opacity .4s var(--ease),color .35s var(--ease),border-color .35s var(--ease);}
+.nav-cta:hover{opacity:1;}
+.nav-cta span{position:relative;z-index:2;}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--purple);transform:translateY(101%);transition:transform .45s var(--ease);z-index:1;}
+.nav-cta:hover::before{transform:translateY(0);}
+.nav-cta:hover{color:var(--t1)!important;border-color:var(--purple);}
+.nav-cta .arr{display:inline-block;transition:transform .4s var(--ease);position:relative;z-index:2;}
+.nav-cta:hover .arr{transform:translateX(3px);}
+.menu-btn{display:none;}
+.mobile-menu{display:none;}
+
+@media(max-width:1100px){
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .menu-btn{display:flex;flex-direction:column;gap:5px;padding:10px;background:none;border:none;cursor:pointer;z-index:102;position:relative;color:inherit;}
+  .menu-btn span{display:block;width:24px;height:1.5px;background:currentColor;transition:transform .3s var(--ease),opacity .3s;}
+  .menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .mobile-menu{display:flex;position:fixed;inset:0;z-index:101;background:var(--bg);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 56px;gap:8px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);}
+  .mobile-menu.open{opacity:1;pointer-events:auto;}
+  .mobile-menu a{font-family:var(--fd);font-size:clamp(28px,5vw,42px);font-weight:400;letter-spacing:-.012em;color:var(--t1);padding:14px 0;transition:color .3s var(--ease);}
+  .mobile-menu a:hover{color:var(--purple-l);}
+  .mobile-menu a.cta{margin-top:32px;font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:14px 26px;background:var(--purple);border-radius:999px;transition:background .3s var(--ease);}
+  .mobile-menu a.cta:hover{color:var(--t1);background:var(--purple-l);}
+}
+
+/* HERO */
+.essay-hero{position:relative;padding:180px 56px 100px;overflow:hidden;}
+.essay-hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
+.orb-1{width:560px;height:560px;background:radial-gradient(circle,rgba(122,85,232,.16),transparent 65%);top:-160px;right:-100px;animation:drift 32s ease-in-out infinite alternate;}
+.orb-2{width:420px;height:420px;background:radial-gradient(circle,rgba(91,195,183,.08),transparent 65%);bottom:-160px;left:18%;animation:drift 36s ease-in-out -10s infinite alternate;}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
+.essay-hero-inner{position:relative;z-index:3;max-width:840px;margin:0 auto;}
+.essay-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-l);margin-bottom:36px;opacity:0;transform:translateY(8px);animation:fadeUp .9s var(--ease) .25s forwards;}
+.essay-eyebrow::before{content:'';width:32px;height:1px;background:var(--purple);}
+.essay-eyebrow .sep{color:var(--t3);}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.essay-title{font-family:var(--fd);font-size:clamp(36px,4.8vw,64px);font-weight:400;line-height:1.06;letter-spacing:-.018em;color:var(--t1);max-width:22ch;opacity:0;transform:translateY(12px);animation:fadeUp .9s var(--ease) .45s forwards;}
+.essay-title em{font-style:italic;color:var(--teal);}
+.essay-dek{font-family:var(--fd);font-size:clamp(18px,1.6vw,22px);font-weight:300;font-style:italic;line-height:1.55;letter-spacing:-.005em;color:var(--t2);max-width:58ch;margin-top:28px;opacity:0;transform:translateY(12px);animation:fadeUp .9s var(--ease) .65s forwards;}
+.essay-meta{display:flex;flex-wrap:wrap;gap:36px;margin-top:56px;padding-top:28px;border-top:1px solid var(--rule);opacity:0;transform:translateY(12px);animation:fadeUp .9s var(--ease) .85s forwards;}
+.essay-meta-item{display:flex;flex-direction:column;gap:6px;}
+.essay-meta-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--t3);}
+.essay-meta-value{font-family:var(--fb);font-size:14.5px;font-weight:400;color:var(--t1);}
+
+/* READER */
+.essay-reader{background:#FFFFFF;color:var(--d1);padding:96px 56px 120px;position:relative;}
+.essay-grid{display:grid;grid-template-columns:240px minmax(0,720px);gap:80px;max-width:1140px;margin:0 auto;align-items:start;}
+
+/* TOC */
+.essay-toc{position:sticky;top:120px;display:flex;flex-direction:column;gap:2px;align-self:start;}
+.essay-toc-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-d);display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;}
+.essay-toc-label::before{content:'';width:24px;height:1px;background:var(--purple-d);}
+.toc-link{display:flex;align-items:flex-start;gap:14px;padding:11px 0 11px 16px;position:relative;font-family:var(--fb);font-size:13px;font-weight:400;line-height:1.45;color:var(--d3);border-left:1px solid var(--rule-d);transition:color .4s var(--ease),border-color .4s var(--ease),padding-left .4s var(--ease);cursor:pointer;}
+.toc-link .toc-num{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.06em;color:var(--d3);flex-shrink:0;padding-top:1px;transition:color .4s var(--ease);}
+.toc-link .toc-text{flex:1;}
+.toc-link:hover{color:var(--d1);border-left-color:rgba(90,43,214,.3);}
+.toc-link:hover .toc-num{color:var(--purple-d);}
+.toc-link.active{color:var(--d1);border-left:1px solid var(--purple-d);padding-left:20px;font-weight:500;}
+.toc-link.active .toc-num{color:var(--purple-d);font-weight:500;}
+.toc-link.active::before{content:'';position:absolute;left:-4px;top:50%;width:7px;height:7px;border-radius:50%;background:var(--purple-d);transform:translateY(-50%);box-shadow:0 0 0 4px rgba(90,43,214,.12);animation:tocPulse 2s var(--ease) infinite;}
+@keyframes tocPulse{0%,100%{box-shadow:0 0 0 4px rgba(90,43,214,.12);}50%{box-shadow:0 0 0 7px rgba(90,43,214,.04);}}
+.essay-toc-meta{margin-top:32px;padding-top:24px;border-top:1px solid var(--rule-d);display:flex;flex-direction:column;gap:10px;font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--d3);}
+.essay-toc-meta a{color:var(--purple-d);transition:color .3s var(--ease);display:inline-flex;align-items:center;gap:8px;}
+.essay-toc-meta a:hover{color:var(--d1);}
+
+/* BODY */
+.essay-body{font-family:var(--fb);font-size:17px;font-weight:400;line-height:1.78;color:var(--d2);max-width:720px;}
+.essay-body section{margin-bottom:64px;scroll-margin-top:110px;}
+.essay-body section:last-child{margin-bottom:0;}
+.essay-lede{font-family:var(--fd);font-size:clamp(20px,1.7vw,23px);font-weight:300;font-style:italic;line-height:1.55;letter-spacing:-.005em;color:var(--d1);margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--rule-d);}
+.essay-intro p{margin-bottom:20px;}
+.essay-intro p:last-child{margin-bottom:0;}
+.essay-body h2{font-family:var(--fd);font-size:clamp(28px,2.8vw,36px);font-weight:400;line-height:1.18;letter-spacing:-.012em;color:var(--d1);margin-bottom:28px;display:flex;align-items:baseline;gap:18px;}
+.essay-body h2 em{font-style:italic;color:var(--purple-d);}
+.essay-body h2 .h2-num{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.2em;color:var(--purple-d);opacity:.7;flex-shrink:0;}
+.essay-body h3{font-family:var(--fd);font-size:22px;font-weight:500;line-height:1.3;letter-spacing:-.005em;color:var(--d1);margin:36px 0 14px;}
+.essay-body h3 .h3-num{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);display:block;margin-bottom:4px;}
+.essay-body p{margin-bottom:20px;}
+.essay-body p:last-child{margin-bottom:0;}
+.essay-body p strong{color:var(--d1);font-weight:500;}
+.essay-body p em{font-style:italic;}
+.essay-body a{color:var(--purple-d);border-bottom:1px solid rgba(90,43,214,.3);transition:border-color .3s var(--ease),color .3s var(--ease);}
+.essay-body a:hover{color:var(--d1);border-bottom-color:var(--purple-d);}
+
+/* PULL-QUOTE */
+.essay-body blockquote{margin:36px 0;padding:30px 36px;background:rgba(122,85,232,.05);border-left:3px solid var(--purple);border-radius:0 8px 8px 0;font-family:var(--fd);font-size:20px;font-style:italic;font-weight:400;line-height:1.5;letter-spacing:-.005em;color:var(--d1);}
+
+/* PATTERN REFERENCE TABLE */
+.pattern-table-wrap{margin:32px 0 28px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--rule-d);border-radius:6px;}
+.pattern-table{width:100%;min-width:560px;border-collapse:collapse;font-family:var(--fb);}
+.pattern-table thead th{font-family:var(--fm);font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);text-align:left;padding:14px 16px;background:rgba(122,85,232,.04);border-bottom:1px solid var(--rule-d);white-space:nowrap;vertical-align:bottom;}
+.pattern-table tbody td{padding:14px 16px;border-bottom:1px solid var(--rule-d);font-size:13.5px;font-weight:400;line-height:1.55;color:var(--d2);vertical-align:top;}
+.pattern-table tbody tr:last-child td{border-bottom:none;}
+.pattern-table td.col-name{font-family:var(--fb);font-weight:500;color:var(--d1);white-space:nowrap;}
+.pattern-table td.col-signal{font-style:italic;color:var(--d2);}
+.essay-body .note{font-style:italic;font-size:14.5px;color:var(--d2);padding:18px 20px;background:rgba(10,8,20,.025);border-radius:6px;margin:0 0 32px;}
+
+/* PATTERN BLOCKS */
+.essay-body .pattern-block{margin:32px 0;padding:28px 32px;border:1px solid var(--rule-d);border-left:3px solid var(--purple-d);border-radius:0 6px 6px 0;background:#FAFAF9;}
+.essay-body .pattern-block h3{margin-top:0;margin-bottom:14px;}
+.essay-body .pattern-block p:last-child{margin-bottom:0;}
+.essay-body .pattern-block p{margin-bottom:14px;}
+.essay-body .pattern-block ol{margin:0;padding-left:22px;}
+.essay-body .pattern-block ol li{margin-bottom:12px;padding-left:6px;font-size:16px;line-height:1.6;color:var(--d2);}
+.essay-body .pattern-block ol li:last-child{margin-bottom:0;}
+.essay-body .pattern-block ol li strong{color:var(--d1);font-weight:500;}
+
+.essay-body hr{border:none;height:1px;background:var(--rule-d);margin:48px 0;}
+
+/* END BLOCK */
+.essay-end{max-width:720px;margin:80px auto 0;padding-top:48px;border-top:1px solid var(--rule-d);}
+.essay-end-tag{font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-d);display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;}
+.essay-end-tag::before{content:'';width:24px;height:1px;background:var(--purple-d);}
+.author-bio{display:grid;grid-template-columns:auto 1fr;gap:32px;padding:32px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d);}
+.author-portrait{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple-d),var(--teal-d));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:22px;font-weight:400;color:#FFFFFF;flex-shrink:0;}
+.author-info{display:flex;flex-direction:column;gap:8px;}
+.author-name{font-family:var(--fd);font-size:19px;font-weight:500;letter-spacing:-.005em;color:var(--d1);}
+.author-name span{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--purple-d);margin-left:12px;}
+.author-blurb{font-family:var(--fb);font-size:14px;font-weight:400;line-height:1.65;color:var(--d2);}
+.author-blurb a{color:var(--purple-d);border-bottom:1px solid rgba(90,43,214,.3);transition:border-color .3s var(--ease);}
+.author-blurb a:hover{border-bottom-color:var(--purple-d);}
+
+.next-teaser{margin-top:32px;padding:24px 28px;background:rgba(122,85,232,.04);border:1px solid rgba(122,85,232,.15);border-radius:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;transition:border-color .3s var(--ease),background .3s var(--ease);}
+.next-teaser:hover{border-color:rgba(122,85,232,.35);background:rgba(122,85,232,.06);}
+.next-teaser-text{flex:1;min-width:240px;}
+.next-teaser-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-d);display:block;margin-bottom:6px;}
+.next-teaser-title{font-family:var(--fd);font-size:17px;font-style:italic;font-weight:400;line-height:1.4;color:var(--d1);}
+.next-teaser-arr{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--purple-d);color:var(--purple-d);font-family:var(--fb);font-size:14px;transition:all .3s var(--ease);}
+.next-teaser:hover .next-teaser-arr{background:var(--purple-d);color:#FFFFFF;transform:translateX(3px);}
+
+/* SERIES NAV */
+.series-nav{background:#FFFFFF;padding:0 56px 100px;}
+.series-nav-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;padding-top:48px;border-top:1px solid var(--rule-d);}
+.series-link{display:flex;flex-direction:column;gap:12px;padding:28px 32px;border:1px solid var(--rule-d);border-radius:8px;background:#FAFAF9;transition:border-color .4s var(--ease),transform .25s var(--ease),background .35s var(--ease);}
+.series-link:hover{border-color:rgba(90,43,214,.35);background:rgba(122,85,232,.04);transform:translateY(-2px);}
+.series-link.prev{text-align:left;}
+.series-link.next{text-align:right;align-items:flex-end;}
+.series-link-tag{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-d);display:inline-flex;align-items:center;gap:8px;}
+.series-link.next .series-link-tag{flex-direction:row-reverse;}
+.series-link-title{font-family:var(--fd);font-size:18px;font-weight:400;letter-spacing:-.005em;line-height:1.35;color:var(--d1);}
+.series-link-sub{font-family:var(--fb);font-size:13px;font-weight:300;line-height:1.55;color:var(--d2);}
+
+/* FINAL CTA */
+.final-cta{position:relative;padding:140px 56px 120px;text-align:center;background:var(--bg);overflow:hidden;}
+.final-cta::before{content:'';position:absolute;top:50%;left:50%;width:900px;height:900px;background:radial-gradient(circle,rgba(122,85,232,.13),transparent 60%);transform:translate(-50%,-50%);filter:blur(50px);pointer-events:none;animation:ctaOrb 10s ease-in-out infinite alternate;}
+@keyframes ctaOrb{from{transform:translate(-50%,-50%) scale(1);opacity:.7;}to{transform:translate(-50%,-50%) scale(1.1);opacity:1;}}
+.final-cta-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
+.final-cta-tag{font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--purple-l);display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;}
+.final-cta-tag::before{content:'';width:32px;height:1px;background:var(--purple);}
+.final-cta-h{font-family:var(--fd);font-size:clamp(36px,4.6vw,62px);font-weight:400;line-height:1.06;letter-spacing:-.02em;color:var(--t1);margin-bottom:40px;}
+.final-cta-h em{font-style:italic;color:var(--teal);}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;font-family:var(--fb);font-size:14.5px;font-weight:600;letter-spacing:-.005em;color:var(--t1);background:var(--purple);padding:14px 24px;border-radius:10px;box-shadow:0 1px 2px rgba(122,85,232,.2),0 8px 28px rgba(122,85,232,.25);transition:all .3s var(--ease);}
+.btn-primary:hover{background:var(--purple-l);box-shadow:0 1px 2px rgba(122,85,232,.25),0 12px 32px rgba(122,85,232,.4);transform:translateY(-2px);}
+.btn-primary .arr{transition:transform .3s var(--ease);}
+.btn-primary:hover .arr{transform:translateX(3px);}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--rule);padding:32px 56px;}
+.footer-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:48px;padding-bottom:28px;margin-bottom:24px;border-bottom:1px solid var(--rule);}
+.footer-brand{display:flex;flex-direction:column;gap:10px;}
+.footer-tagline{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-center{justify-self:center;font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-nav{justify-self:end;display:flex;flex-wrap:wrap;gap:24px;}
+.footer-nav a{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);position:relative;transition:color .35s var(--ease);}
+.footer-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--purple);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease);}
+.footer-nav a:hover{color:var(--t1);}
+.footer-nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);}
+.footer-domains{display:flex;flex-wrap:wrap;gap:14px;}
+.footer-domains .dot{color:var(--rule);}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .nav{padding:20px 40px;}
+  .nav.shrink{padding:12px 40px;}
+  .essay-hero{padding:150px 40px 80px;}
+  .essay-reader{padding:72px 40px 80px;}
+  .essay-grid{grid-template-columns:200px minmax(0,1fr);gap:48px;}
+  .series-nav{padding:0 40px 80px;}
+  .final-cta{padding:110px 40px;}
+  .footer{padding:32px 40px;}
+}
+@media(max-width:900px){
+  .nav{padding:16px 28px;}
+  .essay-hero{padding:130px 28px 64px;}
+  .essay-reader{padding:48px 28px 64px;}
+  .essay-grid{grid-template-columns:1fr;gap:0;}
+  .essay-toc{position:relative;top:0;margin-bottom:48px;padding:24px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d);}
+  .essay-toc-meta{display:none;}
+  .essay-body{font-size:16px;}
+  .essay-body .pattern-block{padding:22px 24px;}
+  .essay-lede{font-size:18px;}
+  .essay-end,.series-nav-inner{max-width:none;}
+  .author-bio{grid-template-columns:1fr;gap:18px;}
+  .series-nav{padding:0 28px 64px;}
+  .series-nav-inner{grid-template-columns:1fr;gap:14px;}
+  .series-link.next{text-align:left;align-items:flex-start;}
+  .series-link.next .series-link-tag{flex-direction:row;}
+  .final-cta{padding:90px 28px;}
+  .footer{padding:28px 28px;}
+  .footer-top{grid-template-columns:1fr;gap:24px;}
+  .footer-center,.footer-nav{justify-self:start;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .mobile-menu{padding:0 28px;}
+}
+@media(max-width:560px){
+  .essay-title{font-size:34px;}
+  .essay-meta{gap:24px;}
+  .final-cta-h{font-size:34px;}
+  .essay-body blockquote{padding:24px 26px;font-size:18px;}
+  .next-teaser{padding:20px 22px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+  .essay-eyebrow,.essay-title,.essay-dek,.essay-meta{opacity:1!important;transform:none!important;}
+  .orb-1,.orb-2,.final-cta::before{animation:none!important;}
+  .toc-link.active::before{animation:none!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="prg" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="news.html" class="nav-link active">News &amp; Articles</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="free-tool.html" class="nav-link">Free Tool</a>
+  </nav>
+  <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="news.html">News &amp; Articles</a>
+  <a href="about.html">About</a>
+  <a href="free-tool.html">Free Tool</a>
+  <a href="contact.html" class="cta">Let's talk →</a>
+</nav>
+
+<main>
+
+<section class="essay-hero">
+  <div class="essay-hero-orb orb-1" aria-hidden="true"></div>
+  <div class="essay-hero-orb orb-2" aria-hidden="true"></div>
+  <div class="essay-hero-inner">
+    <span class="essay-eyebrow">
+      §22 · Article 002 · Human-centered
+      <span class="sep">·</span>
+      Twelve articles, one diagnosis
+    </span>
+    <h1 class="essay-title">
+      Human-centered, or just <em>human-tested?</em>
+    </h1>
+    <p class="essay-dek">
+      "Human-centered" and "human factors" get used as if they were the same thing. One shapes the product around the human; the other tests the finished device against one, once, in a lab. The gap between them is where adoption quietly dies.
+    </p>
+    <div class="essay-meta">
+      <div class="essay-meta-item"><span class="essay-meta-label">Published</span><span class="essay-meta-value">30 September 2026</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Reading time</span><span class="essay-meta-value">~9 minutes</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Series</span><span class="essay-meta-value">§22 · 002 of 12</span></div>
+      <div class="essay-meta-item"><span class="essay-meta-label">Author</span><span class="essay-meta-value">Hanna Kim</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="essay-reader">
+  <div class="essay-grid">
+
+    <aside class="essay-toc" aria-label="Table of contents">
+      <span class="essay-toc-label">The argument</span>
+      <a href="#claim" class="toc-link active" data-i="0"><span class="toc-num">01</span><span class="toc-text">The claim behind it</span></a>
+      <a href="#tested" class="toc-link" data-i="1"><span class="toc-num">02</span><span class="toc-text">Tested is not centered</span></a>
+      <a href="#rooms" class="toc-link" data-i="2"><span class="toc-num">03</span><span class="toc-text">Two humans, two rooms</span></a>
+      <a href="#breaks" class="toc-link" data-i="3"><span class="toc-num">04</span><span class="toc-text">Where the real human breaks</span></a>
+      <a href="#design" class="toc-link" data-i="4"><span class="toc-num">05</span><span class="toc-text">Design from the clinic</span></a>
+      <a href="#diagnostic" class="toc-link" data-i="5"><span class="toc-num">06</span><span class="toc-text">Is your product centered?</span></a>
+      <div class="essay-toc-meta">
+        <a href="news.html">← All articles</a>
+        <span>§22 · 2026</span>
+      </div>
+    </aside>
+
+    <article class="essay-body">
+
+      <section id="opening" class="essay-intro">
+        <p class="essay-lede">
+          "Human-centered" is one of the most-used phrases in medical technology — and one of the easiest to confuse with something much narrower. A device can pass a human-factors test and still have been centred on no one, because a test is not a centre.
+        </p>
+        <blockquote>
+          To test a device against a human is to ask whether the human can survive the device. To centre a device on a human is to build the device around the human in the first place. One is a checkpoint. The other is a starting point. The two are easy to confuse, and the confusion is costly.
+        </blockquote>
+        <p>Article 001 named seven structural patterns by which the clinical environment rejects products the clinical problem said should succeed. This essay is about the discipline that is supposed to prevent all seven — and why, as most MedTech companies practise it, it does not.</p>
+        <p>The discipline has two names, and the distance between them is the whole point. <em>Human factors</em> is the study that gets run before launch to show a representative user can complete the task safely. <em>Human-centered design</em> is the practice of shaping the product around the actual human who will live with it. The first is often treated as if it satisfies the second. It does not, and the difference is not academic. It is the difference between a product that clears and a product that adopts.</p>
+      </section>
+
+      <section id="claim">
+        <h2><span class="h2-num">01</span>The claim, and what backs it</h2>
+        <p>Open the marketing of a medical device and the language is familiar: patient-centred, clinician-centred, designed around the user. The intent behind it is usually real — the team means it. But the evidence that backs it is often a single artefact: a human-factors validation study, run once, before launch, to satisfy a regulatory requirement.</p>
+        <p>That study is real work and often rigorous. But notice what it is: a test of whether a representative user, under controlled conditions, can complete the critical tasks without dangerous error. It answers <em>can the human use it safely.</em> It says nothing about whether the product was built around the human, whether the median clinician will choose to use it on a busy day, or whether it earns its place in the work eighteen months in. It is possible to pass that study with a device that was never centred on anyone — and, in good faith, to call it human-centered.</p>
+        <p>This is not dishonesty. It is a category error, and it is expensive, because it lets a company believe the human question is answered when it has barely been asked.</p>
+      </section>
+
+      <section id="tested">
+        <h2><span class="h2-num">02</span>Tested is not centered</h2>
+        <p>The gap between testing a human and centring on one comes down to two questions that sound similar and are not.</p>
+        <p>The test asks: <em>can</em> a representative user complete the task safely, under controlled conditions, before launch? Human-centered design asks a larger question that runs the whole life of the product: <em>will</em> the median clinician, at capacity, unaccompanied, keep choosing to use this the way it was intended — in the four-hundredth session as in the first — and does the product make their work better, not merely survivable?</p>
+        <p>The first is a gate. The second is a life. Measuring the gate and inferring the life is where products quietly die. Human-centered design is not a bigger validation study and it is not a compliance step done more thoroughly. It is a different act, performed at a different time: it happens <em>before</em> the device is finished, and it is drawn from the field, not the lab.</p>
+        <blockquote>
+          A human-factors test is done to the device. Human-centered design is done to the whole idea of the device — before there is a device to test.
+        </blockquote>
+        <p>The tell is timing. If the first serious contact with the real human happens in a validation room near launch, the company is human-testing. If it happens in the clinic before the concept is locked, the company is human-centring. Same word on the website. Opposite practice.</p>
+      </section>
+
+      <section id="rooms">
+        <h2><span class="h2-num">03</span>Two humans, two rooms</h2>
+        <p>The reason a passed test does not guarantee a centred product is that the human in the test is not the human in the field. They pass through two different rooms.</p>
+        <p>In the first room — validation, demonstration, the lead site — the device is the only thing happening. Attention is undivided. A trainer is present. The device is fresh, the user was selected, the clock is generous, and someone is watching to make sure it goes well. Under these conditions the device performs as designed, because the engineering is sound for this room.</p>
+        <p>In the second room — the median clinic on an ordinary day — the device is one demand among forty. Attention is fragmented. The user is at the end of a shift, no representative is present, the clock is real, and so is the patient. Nothing about the engineering has changed. Everything about the human has. A rested operator doing one thing and an overloaded operator doing forty are not the same user with a small correction between them; they are two different people, and the device meets both.</p>
+        <p>Human-centered design is the discipline of designing for the human in the second room. A human-factors study that observed only the first room studied the wrong human — carefully, expensively, and to the wrong end. This is why "we did our usability testing" and "our product isn't adopting" are not a contradiction. They are the ordinary result of centring on the first-room human and shipping to the second.</p>
+      </section>
+
+      <section id="breaks">
+        <h2><span class="h2-num">04</span>Where the real human breaks</h2>
+        <p>When a device meets the second-room human, it is not rejected dramatically. It is rejected through a series of small, rational decisions, each invisible on its own. Three of them account for most of the loss — and all three are decisions a human-centered process would have seen coming.</p>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Break one · the load</span>The capacity runs out</h3>
+          <p>The device adds cognitive load — a screen to watch, an alert to read, a decision to make — at the exact phase when the human's load is already at its ceiling. The first-room human had spare capacity to absorb it. The second-room human does not, and so sheds load the only way available: using the device in the easy cases where there is room for it, and avoiding it in the hard ones it was built to justify. The value thesis does not fail loudly. It inverts, quietly, one rational choice at a time.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Break two · the bend</span>The work won't reorganise</h3>
+          <p>To be used as designed, the device asks the human to reorganise the work around it. The first-room human accepted the ask; they were invested and had time. The second-room human runs the same trade in real time and declines — correctly, within their own frame. The device is entirely capable. The ask is simply larger than the benefit they can perceive from where they stand. Capable and declined are not a contradiction; they are what happens when the work was never centred in the design.</p>
+        </div>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">Break three · the stranger</span>The human who was never in the room</h3>
+          <p>The human who was shown the device — the champion, trained and accompanied — is not the human who inherits it. The product was optimised, consciously or not, for the person the company kept meeting. The median human downstream was never in that room. Adoption reads as strong while the device is still meeting people like the champion, and plateaus the moment it reaches the humans it was never designed for — by which point the early enthusiasm has already been booked as proof.</p>
+        </div>
+      </section>
+
+      <section id="design">
+        <h2><span class="h2-num">05</span>Design from the clinic</h2>
+        <p>Human-centered design, taken at its word, is not a study you run and file. It is a map of the actual humans the device will meet — their load, their workflow, their incentives, their ordinary day — drawn from the clinic before the concept is locked. It does not replace the human-factors study; it precedes it and gives it something true to test against.</p>
+        <p>Done before the build, that map changes what gets built. The load that runs the user out of capacity is designed out. The ask the work will refuse is made smaller. The device is aimed at the median human, not the champion. Done before launch, it changes how the product is deployed and to whom. Done only after the plateau, it becomes triage — still worth doing, far more expensive, and working against a product that has already spent its early credibility.</p>
+        <blockquote>
+          The clinic is not where you test the design. The clinic is the design brief. A device centred anywhere else was centred on the wrong thing.
+        </blockquote>
+        <p>This is the reframe the sequence turns on. The seven patterns of Article 001 are not seven independent risks to manage after the fact. They are what a first-room design produces when it meets a second-room world. Centring the design on the real human, in the real clinic, before the concept is fixed, is the one intervention that acts on all seven at once — because it removes the gap they all grow in.</p>
+      </section>
+
+      <section id="diagnostic">
+        <h2><span class="h2-num">06</span>Is your product human-centered?</h2>
+        <p>The distinction is easy to claim and hard to pass — and the honest way to find out is to answer for your own product, specifically, not in the abstract. That is not a checklist you can skim. It is a short, structured self-test.</p>
+
+        <div class="pattern-block">
+          <h3><span class="h3-num">The self-test</span>Ten questions, sent on request</h3>
+          <p>I've written ten questions that separate a human-centered product from a human-tested one — covering when the real human first shaped the design, whether the median user was ever watched at capacity, where the product runs the clinician out of capacity, and whether the human who was shown the device is the human who now lives with it. They work as a private self-assessment, or as the starting point for a conversation.</p>
+          <p><a href="contact.html">Contact me</a>, and I'll send you the ten questions.</p>
+        </div>
+
+        <p>Whatever the answers turn out to be, the fix has the same shape: not more testing or a lower price, but going to the clinic and letting the real human shape the product before the next one is built.</p>
+        <p>That is what human-centered actually means. It begins in the clinic, not the report.</p>
+      </section>
+
+      <div class="essay-end">
+        <span class="essay-end-tag">End of article 002</span>
+
+        <div class="author-bio">
+          <div class="author-portrait" aria-hidden="true">HK</div>
+          <div class="author-info">
+            <div class="author-name">Hanna Kim <span>Founder · Servizions</span></div>
+            <p class="author-blurb">
+              Hanna Kim is the founder of Servizions, a Munich-based Service Innovation Studio that blueprints the environment medical technology lives inside. Servizions works with medical robotics and rehabilitation technology companies on future scenarios at the intersection of product, environment, and adoption.
+              <br><br>
+              Contact: <a href="mailto:hanna.kim@servizions.com">hanna.kim@servizions.com</a> · <a href="index.html">servizions.com</a>
+            </p>
+          </div>
+        </div>
+
+        <a href="article-03.html" class="next-teaser">
+          <div class="next-teaser-text">
+            <span class="next-teaser-label">Next in this sequence · Case 1</span>
+            <span class="next-teaser-title">Why rehabilitation robotics stalls after clearance — the deal that looks like it died in finance was lost months earlier, on the therapy floor.</span>
+          </div>
+          <span class="next-teaser-arr" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<nav class="series-nav" aria-label="Series navigation">
+  <div class="series-nav-inner">
+    <a href="article-01.html" class="series-link prev">
+      <span class="series-link-tag"><span>←</span> §22 · 001</span>
+      <span class="series-link-title">Seven patterns of MedTech failure</span>
+      <span class="series-link-sub">The framing essay — the structural patterns behind why products that ship rarely adopt.</span>
+    </a>
+    <a href="article-03.html" class="series-link next">
+      <span class="series-link-tag">§22 · 003 <span>→</span></span>
+      <span class="series-link-title">The stall after clearance</span>
+      <span class="series-link-sub">Why rehabilitation-robotics deals die in finance — after being lost, unseen, on the therapy floor.</span>
+    </a>
+  </div>
+</nav>
+
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <span class="final-cta-tag">Recognise this in your product?</span>
+    <h2 class="final-cta-h">Innovation that begins in the environment, not <em>the report.</em></h2>
+    <a href="contact.html" class="btn-primary"><span>Start the conversation</span><span class="arr">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+      <span class="footer-tagline">Service Innovation Studio · Munich</span>
+    </div>
+    <span class="footer-center">Working across Europe</span>
+    <nav class="footer-nav">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="news.html">News &amp; Articles</a>
+      <a href="about.html">About</a>
+      <a href="free-tool.html">Free Tool</a>
+      <a href="mailto:info@servizions.com">Email</a>
+      <a href="#" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+<div class="footer-bottom">
+    <span>© 2026 Servizions</span>
+    <div class="footer-legal">
+      <a href="legal-notice.html">Legal Notice</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-domains">
+      <span>Healthcare</span><span class="dot">·</span>
+      <span>Medical Robotics</span><span class="dot">·</span>
+      <span>MedTech</span><span class="dot">·</span>
+      <span>Digital Health</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q  = s => document.querySelector(s);
+const qa = s => [...document.querySelectorAll(s)];
+
+const prg = q('#prg'), nav = q('#nav');
+const reader = q('.essay-reader');
+const seriesNav = q('.series-nav');
+window.addEventListener('scroll',()=>{
+  const max = document.body.scrollHeight - window.innerHeight;
+  prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
+  nav.classList.toggle('shrink', window.scrollY > 60);
+  let onLight = false;
+  [reader, seriesNav].forEach(sec=>{
+    if(!sec) return;
+    const r = sec.getBoundingClientRect();
+    if(r.top < window.innerHeight*.5 && r.bottom > window.innerHeight*.5) onLight = true;
+  });
+  nav.classList.toggle('on-light', onLight);
+},{passive:true});
+
+const menuBtn = q('#menuBtn');
+const mobileMenu = q('#mobileMenu');
+if(menuBtn && mobileMenu){
+  const toggle = (open) => {
+    const isOpen = open ?? !mobileMenu.classList.contains('open');
+    menuBtn.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  menuBtn.addEventListener('click', () => toggle());
+  qa('#mobileMenu a').forEach(a => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) toggle(false);
+  });
+}
+
+(function(){
+  const sections = qa('.essay-body section');
+  const links = qa('.toc-link');
+  if(!sections.length || !links.length) return;
+
+  const setActive = (id) => {
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+    });
+  };
+
+  const io = new IntersectionObserver(entries => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if(visible.length){
+      const id = visible[0].target.id;
+      if(id === 'opening'){ setActive('claim'); }
+      else { setActive(id); }
+    }
+  }, {
+    rootMargin: '-120px 0px -60% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => io.observe(s));
+
+  links.forEach(l => {
+    l.addEventListener('click', () => {
+      const id = l.getAttribute('href').slice(1);
+      setActive(id);
+    });
+  });
+})();
+
+})();
+</script>
+</body>
+</html>
