@@ -926,6 +926,44 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
 }
 .subscribe-success.show{display:block;}
 
+
+/* ═══════════════════════════════════════════════════════
+   FREE TOOL TEASER — id="free-tool"
+   ═══════════════════════════════════════════════════════ */
+.tool-teaser{
+  position:relative;background:var(--bg-2);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:140px 56px;overflow:hidden;
+}
+.tool-teaser-orb{
+  position:absolute;width:640px;height:640px;border-radius:50%;
+  background:radial-gradient(circle,rgba(91,195,183,.10),transparent 65%);
+  top:-200px;right:-160px;filter:blur(60px);pointer-events:none;
+}
+.tool-teaser-inner{
+  position:relative;z-index:1;max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1.25fr 1fr;gap:80px;align-items:end;
+}
+.tool-teaser-h2{
+  font-family:var(--fd);font-size:clamp(32px,4vw,56px);font-weight:400;
+  line-height:1.08;letter-spacing:-.02em;color:var(--t1);margin-top:28px;
+}
+.tool-teaser-h2 em{font-style:italic;color:var(--teal);}
+.tool-teaser-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:40px;}
+.tool-teaser-list li{
+  font-family:var(--fb);font-size:15.5px;line-height:1.6;color:var(--t2);
+  padding-left:22px;position:relative;
+}
+.tool-teaser-list li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--teal);}
+.tool-teaser-note{
+  margin-top:18px;font-family:var(--fm);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--t3);
+}
+@media(max-width:900px){
+  .tool-teaser{padding:90px 28px;}
+  .tool-teaser-inner{grid-template-columns:1fr;gap:32px;}
+}
+
 /* ═══════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════ */
@@ -1009,6 +1047,7 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
   <a href="solutions.html" class="nav-link">Solutions</a>
   <a href="news.html" class="nav-link">News & Articles</a>
   <a href="about.html" class="nav-link">About</a>
+  <a href="free-tool.html" class="nav-link">Free Tool</a>
 </nav>
   <a href="#contact" class="nav-cta"><span>Let's talk</span><span class="arr" aria-hidden="true">→</span></a>
   <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1022,6 +1061,7 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
   <a href="solutions.html">Solutions</a>
   <a href="news.html">News & Articles</a>
   <a href="about.html">About</a>
+  <a href="free-tool.html">Free Tool</a>
   <a href="#contact" class="cta">Let's talk →</a>
 </nav>
 
@@ -1056,6 +1096,10 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
       </a>
       <a href="services.html" class="hero-cta hero-cta-secondary magnetic">
         How we work
+        <span class="arr" aria-hidden="true">→</span>
+      </a>
+      <a href="free-tool.html" class="hero-cta hero-cta-secondary magnetic">
+        Try the free tool
         <span class="arr" aria-hidden="true">→</span>
       </a>
     </div>
@@ -1188,12 +1232,35 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
   </div>
 </section>
 
+<!-- ─── FREE TOOL TEASER — id="free-tool" ─── -->
+<section class="tool-teaser" id="free-tool">
+  <div class="tool-teaser-orb" aria-hidden="true"></div>
+  <div class="tool-teaser-inner">
+    <div>
+      <span class="section-tag" data-rv><span class="num">04</span>Free tool</span>
+      <h2 class="tool-teaser-h2">Find what will break in the real ward — <em>before your pilot does.</em></h2>
+    </div>
+    <div>
+      <ul class="tool-teaser-list">
+        <li>Map users, spaces, workflow and infrastructure, step by step</li>
+        <li>Spot critical moments and adoption risks</li>
+        <li>Get a readiness score and next steps</li>
+      </ul>
+      <a href="free-tool.html" class="hero-cta hero-cta-primary magnetic">
+        Try the Use-Environment Map
+        <span class="arr" aria-hidden="true">→</span>
+      </a>
+      <p class="tool-teaser-note">Free · No sign-up to start · About 30 minutes</p>
+    </div>
+  </div>
+</section>
+
 <!-- ─── CLOSE — id="contact" ─── -->
 <section class="close" id="contact">
   <div class="close-orb" aria-hidden="true"></div>
   <div class="close-orb-2" aria-hidden="true"></div>
   <div class="close-inner">
-    <span class="close-tag"><span class="num">04</span>Contact</span>
+    <span class="close-tag"><span class="num">05</span>Contact</span>
 
     <p class="close-line" id="closeLine">
       <span class="ln"><span class="word">You</span> <span class="word">'re</span> <span class="word">building</span></span>
@@ -1219,7 +1286,7 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
 <section class="subscribe" id="subscribe">
   <div class="subscribe-orb" aria-hidden="true"></div>
   <div class="subscribe-inner">
-    <span class="section-tag"><span class="num">05</span>Stay informed</span>
+    <span class="section-tag"><span class="num">06</span>Stay informed</span>
     <h2 class="subscribe-h2">Get our <em>insights</em>, straight to your inbox.</h2>
     <p class="subscribe-sub">Field notes, case studies, and studio news on MedTech adoption — occasional emails, no spam, unsubscribe anytime.</p>
 
@@ -1243,6 +1310,7 @@ body.dark .rail-item.active .dot::after{border-color:var(--purple-d);}
     <a href="solutions.html">Solutions</a>
     <a href="news.html">News & Articles</a>
     <a href="about.html">About</a>
+    <a href="free-tool.html">Free Tool</a>
     <a href="mailto:info@servizions.com">Email</a>
     <a href="#" rel="noopener">LinkedIn</a>
     <a href="legal-notice.html">Legal Notice</a>
