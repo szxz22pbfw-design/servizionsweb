@@ -440,9 +440,9 @@ body.uem-full{overflow:hidden}
 #uem *{box-sizing:border-box}
 #uem{margin:0;background:var(--u-paper);color:var(--u-ink);font-family:var(--u-font);-webkit-font-smoothing:antialiased}
 #uem button{font:inherit}
-#uem .app{max-width:1180px;margin:0 auto;padding:24px 20px 40px}
+#uem .app{max-width:1320px;margin:0 auto;padding:16px 20px 32px}
 #uem .label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--u-muted)}
-#uem .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+#uem .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:10px}
 #uem .brand{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
 #uem .brand b{font-weight:700}
 #uem .brand span{color:var(--u-muted)}
@@ -463,52 +463,52 @@ body.uem-full{overflow:hidden}
 #uem .sdot.cur{color:var(--u-ink)}
 #uem .sdot.cur .t{font-weight:700}
 #uem .sdot.res .bar{background:repeating-linear-gradient(90deg,var(--u-purple) 0 6px,transparent 6px 10px)}
-#uem .stage{display:grid;grid-template-columns:56px minmax(0,1fr) 56px;gap:16px;align-items:center;margin-top:14px}
-#uem .arrow{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--u-ink);background:#fff;color:var(--u-ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+#uem .stage{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;gap:12px;align-items:center;margin-top:8px}
+#uem .arrow{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--u-ink);background:#fff;color:var(--u-ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
 #uem .arrow:hover{background:var(--u-ink);color:#fff}
 #uem .arrow:disabled{opacity:.25;cursor:default;background:#fff;color:var(--u-ink)}
 #uem .arrow svg{width:22px;height:22px}
-#uem .card{background:#fff;border:1px solid var(--u-border);border-radius:16px;padding:36px 40px;min-height:560px;display:flex;flex-direction:column}
-#uem .step{display:none;flex-direction:column;gap:18px;flex:1}
+#uem .card{background:#fff;border:1px solid var(--u-border);border-radius:16px;padding:22px 28px;min-height:0;display:flex;flex-direction:column}
+#uem .step{display:none;flex-direction:column;gap:12px;flex:1}
 #uem .step.on{display:flex;animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 #uem .kick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--u-teal);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 #uem .kick.crit{color:var(--u-purple)}
 #uem .lens{font-size:12px;letter-spacing:.02em;text-transform:none;font-weight:400;color:var(--u-muted);border:1px solid var(--u-rule);border-radius:999px;padding:3px 10px}
-#uem h2{margin:0;font-size:clamp(28px,3.2vw,40px);line-height:1.08;letter-spacing:-.025em}
-#uem .q{margin:0;font-size:17px;line-height:1.55;color:var(--u-ink-2);max-width:780px}
-#uem .cols{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;flex:1}
-#uem .leftcol{display:flex;flex-direction:column;gap:18px;min-width:0}
-#uem textarea{font:inherit;font-size:16px;line-height:1.55;color:var(--u-ink);width:100%;min-height:220px;resize:vertical;border:1px solid var(--u-border);border-radius:10px;padding:14px 16px;background:#fff}
+#uem h2{margin:0;font-size:clamp(24px,2.3vw,30px);line-height:1.1;letter-spacing:-.02em}
+#uem .q{margin:0;font-size:15.5px;line-height:1.5;color:var(--u-ink-2);max-width:980px}
+#uem .cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,.95fr);gap:18px;align-items:stretch}
+#uem .leftcol{display:contents}
+#uem textarea{font:inherit;font-size:16px;line-height:1.55;color:var(--u-ink);width:100%;min-height:260px;resize:vertical;border:1px solid var(--u-border);border-radius:10px;padding:14px 16px;background:#fff}
 #uem textarea:focus,#uem input:focus,#uem select:focus{outline:3px solid rgba(31,99,199,.25);border-color:var(--u-teal)}
-#uem .side{display:flex;flex-direction:column;gap:18px}
-#uem .look{background:var(--u-soft);border-radius:12px;padding:18px 20px}
+#uem .side{display:flex;flex-direction:column;gap:12px;min-width:0}
+#uem .look{background:var(--u-soft);border-radius:12px;padding:12px 14px}
 #uem .look h3,#uem .onsite h3,#uem .rate h3{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--u-muted);font-weight:700}
 #uem .chips{display:flex;flex-wrap:wrap;gap:8px}
 #uem .chip-add{font-size:13px;border:1px solid var(--u-border);background:#fff;border-radius:999px;padding:7px 12px;cursor:pointer;color:var(--u-ink)}
 #uem .chip-add:hover{border-color:var(--u-teal);color:var(--u-teal-d)}
 #uem .chip-add:before{content:"+ ";color:var(--u-teal);font-weight:700}
-#uem .onsite{border:1px solid var(--u-rule);border-radius:12px;padding:18px 20px}
-#uem .onsite label{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:14.5px;line-height:1.45;padding:5px 0;cursor:pointer}
+#uem .onsite{border:1px solid var(--u-rule);border-radius:12px;padding:12px 14px}
+#uem .onsite label{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;font-size:13.5px;line-height:1.4;padding:3px 0;cursor:pointer}
 #uem .onsite input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--u-teal)}
 #uem .hint{font-size:13px;color:var(--u-muted);margin:0}
-#uem .rate{border:1px solid var(--u-rule);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:14px}
+#uem .rate{border:1px solid var(--u-rule);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
 #uem .rq{border:0;margin:0;padding:0;min-width:0}
-#uem .rq legend{font-size:15px;font-weight:700;padding:0;margin-bottom:8px;line-height:1.4}
+#uem .rq legend{font-size:14px;font-weight:700;padding:0;margin-bottom:6px;line-height:1.35}
 #uem .seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
 #uem .seg label{position:relative;cursor:pointer}
 #uem .seg input{position:absolute;opacity:0;width:1px;height:1px}
-#uem .seg span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;font-size:13.5px;line-height:1.3;border:1px solid var(--u-border);border-radius:8px;padding:8px 8px;background:#fff;color:var(--u-ink-2)}
+#uem .seg span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;font-size:12.5px;line-height:1.25;border:1px solid var(--u-border);border-radius:8px;padding:6px 6px;background:#fff;color:var(--u-ink-2)}
 #uem .seg label:hover span{border-color:var(--u-ink)}
 #uem .seg input:focus-visible + span{outline:3px solid rgba(31,99,199,.35)}
 #uem .seg input:checked + span{border-color:var(--u-teal);background:var(--u-teal-tint);color:var(--u-teal-d);font-weight:700}
 #uem .seg.ev input:checked + span{border-color:var(--u-purple);background:var(--u-purple-tint);color:#3F1DA6}
 #uem .tnote{margin:-6px 0 0;font-size:14.5px;line-height:1.5;color:var(--u-teal-d);background:var(--u-teal-tint);border-radius:8px;padding:10px 14px;max-width:780px}
 #uem .tnote:empty{display:none}
-#uem .ptypes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:880px}
+#uem .ptypes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 #uem .ptypes label{position:relative;cursor:pointer}
 #uem .ptypes input{position:absolute;opacity:0;width:1px;height:1px}
-#uem .ptypes span{display:flex;flex-direction:column;gap:4px;border:1px solid var(--u-border);border-radius:12px;padding:14px 16px;min-height:96px;background:#fff}
+#uem .ptypes span{display:flex;flex-direction:column;gap:3px;border:1px solid var(--u-border);border-radius:12px;padding:10px 14px;min-height:72px;background:#fff}
 #uem .ptypes span b{font-size:15px;color:var(--u-ink)}
 #uem .ptypes span small{font-size:12.5px;line-height:1.4;color:var(--u-muted)}
 #uem .ptypes label:hover span{border-color:var(--u-ink)}
@@ -531,13 +531,13 @@ body.uem-full{overflow:hidden}
 #uem .hst.na{background:#fff;color:var(--u-muted);border:1px dashed var(--u-border)}
 #uem .hcd-score{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;font-size:14px;color:var(--u-ink-2)}
 #uem .hcd-score b{font-size:22px;color:var(--u-ink)}
-#uem .meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:780px}
+#uem .meta{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 14px}
 #uem .meta label{display:flex;flex-direction:column;gap:6px}
-#uem .meta input,#uem .meta select{font:inherit;font-size:17px;color:var(--u-ink);border:1px solid var(--u-border);border-radius:10px;padding:12px 14px;min-height:48px;background:#fff}
-#uem .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:4px}
+#uem .meta input,#uem .meta select{font:inherit;font-size:15px;color:var(--u-ink);border:1px solid var(--u-border);border-radius:10px;padding:9px 12px;min-height:44px;background:#fff}
+#uem .how{display:none}
 #uem .how div{border-top:2px solid var(--u-teal);padding-top:10px;font-size:14px;line-height:1.5;color:var(--u-ink-2)}
 #uem .how b{display:block;color:var(--u-ink);font-size:15px;margin-bottom:2px}
-#uem .basis{background:var(--u-soft);border-radius:12px;padding:16px 20px;font-size:14px;line-height:1.55;color:var(--u-ink-2)}
+#uem .basis{background:var(--u-soft);border-radius:12px;padding:10px 14px;font-size:13px;line-height:1.5;color:var(--u-ink-2)}
 #uem .basis b{color:var(--u-ink)}
 #uem .risk-head,#uem .risk{display:grid;grid-template-columns:26px minmax(0,1fr) 120px minmax(0,1.2fr);gap:12px;align-items:start}
 #uem .risk-head{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--u-muted);border-bottom:1px solid var(--u-ink);padding-bottom:8px}
@@ -555,7 +555,14 @@ body.uem-full{overflow:hidden}
 #uem .cgroup h3{margin:0 0 6px;font-size:15px}
 #uem .cgroup label{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:13.5px;line-height:1.45;padding:4px 0;cursor:pointer}
 #uem .cgroup input{width:17px;height:17px;margin:1px 0 0;accent-color:var(--u-teal)}
-#uem .wnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--u-rule)}
+#uem .vmsg{display:none;margin-top:12px;border:1.5px solid #B42318;background:#FEF3F2;color:#7A1A12;border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.5}
+#uem .vmsg.on{display:block}
+#uem .vmsg b{display:block;margin-bottom:2px}
+#uem .vmsg ul{margin:0;padding-left:18px}
+#uem textarea.invalid,#uem input.invalid{border-color:#B42318!important;box-shadow:0 0 0 3px rgba(180,35,24,.12)}
+#uem .seg.invalid span,#uem .ptypes.invalid span{border-color:#B42318}
+#uem .req{color:#B42318;font-weight:700}
+#uem .wnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--u-rule)}
 #uem .nbtn{font-size:16px;font-weight:700;border-radius:10px;padding:13px 22px;min-height:48px;cursor:pointer;border:1.5px solid var(--u-ink);background:#fff;color:var(--u-ink)}
 #uem .nbtn.primary{background:var(--u-teal);border-color:var(--u-teal);color:#fff}
 #uem .nbtn.primary:hover{background:var(--u-teal-d)}
@@ -693,13 +700,19 @@ body.uem-full{overflow:hidden}
 #uem .a-lock .hp{position:absolute;left:-9999px}
 #uem .a-lock .err{display:none;color:#B42318;font-size:14px}
 #uem .wfoot{margin-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--u-muted)}
+@media (max-width:1180px){#uem .cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+#uem .cols .side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+#uem .meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 @media (max-width:1000px){#uem .r-top{grid-template-columns:1fr 1fr}
 #uem .r-top .summary{grid-column:1/-1}
 }
 @media (max-width:900px){#uem .stage{grid-template-columns:1fr}
 #uem .stage .arrow{display:none}
 #uem .card{padding:24px 20px;min-height:0}
-#uem .cols,#uem .how{grid-template-columns:1fr}
+#uem .cols,#uem .how,#uem .cols .side{grid-template-columns:1fr}
+#uem .ptypes{grid-template-columns:1fr 1fr}
+#uem .meta{grid-template-columns:1fr 1fr}
 #uem .r-areas,#uem .r-plan,#uem .cgrid{grid-template-columns:1fr 1fr}
 #uem .r-two{grid-template-columns:1fr}
 #uem .r-cta{flex-direction:column;align-items:flex-start}
@@ -726,6 +739,8 @@ body.uem-full{overflow:hidden}
 #uem *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
+<!-- Umami analytics (cookieless). Replace PASTE-YOUR-WEBSITE-ID with the ID from your Umami dashboard. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="PASTE-YOUR-WEBSITE-ID"></script>
 </head>
 <body>
 
@@ -738,7 +753,7 @@ body.uem-full{overflow:hidden}
     <a href="solutions.html" class="nav-link">Solutions</a>
     <a href="news.html" class="nav-link">News &amp; Articles</a>
     <a href="about.html" class="nav-link">About</a>
-    <a href="free-tool.html" class="nav-link active">Free Tool</a>
+    <a href="free-tool.html" data-umami-event="go-to-free-tool" data-umami-event-from="free-tool.html" class="nav-link active">Free Tool</a>
   </nav>
   <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
   <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -751,7 +766,7 @@ body.uem-full{overflow:hidden}
   <a href="solutions.html">Solutions</a>
   <a href="news.html">News &amp; Articles</a>
   <a href="about.html">About</a>
-  <a href="free-tool.html">Free Tool</a>
+  <a href="free-tool.html" data-umami-event="go-to-free-tool" data-umami-event-from="free-tool.html">Free Tool</a>
   <a href="contact.html" class="cta">Let's talk →</a>
 </nav>
 
@@ -800,7 +815,7 @@ body.uem-full{overflow:hidden}
         <div class="kick">Step 1 · Start</div>
         <h2>Blueprint the real environment your product will live in</h2>
         <p class="q">Most MedTech, robotics and digital health products that struggle in practice don't fail technically — they fail because the people, needs, places, routines and organisation around them were different from what the team assumed. Work through eight areas, rate each one, then get your blueprint.</p>
-        <div class="fgroup"><span class="label">What are you building?</span>
+        <div class="fgroup"><span class="label">What are you building? <span class="req">*</span></span>
           <div class="ptypes" role="radiogroup" aria-label="Product type">
             <label><input type="radio" name="ptype" value="med"><span><b>MedTech device</b><small>Bedside, diagnostic, monitoring or therapeutic devices</small></span></label>
             <label><input type="radio" name="ptype" value="rob"><span><b>Medical robotics</b><small>Surgical, hospital logistics or service robots</small></span></label>
@@ -809,8 +824,8 @@ body.uem-full{overflow:hidden}
           </div>
         </div>
         <div class="meta">
-          <label><span class="label">Product</span><input id="product" type="text" autocomplete="off" placeholder="e.g. gait-training robot"></label>
-          <label><span class="label">Setting (one per blueprint)</span><input id="setting" type="text" autocomplete="off" placeholder="e.g. neuro-rehab ward"></label>
+          <label><span class="label">Product <span class="req">*</span></span><input id="product" type="text" autocomplete="off" placeholder="e.g. gait-training robot"></label>
+          <label><span class="label">Setting <span class="req">*</span></span><input id="setting" type="text" autocomplete="off" placeholder="e.g. neuro-rehab ward"></label>
           <label><span class="label">Development stage</span><select id="stage"><option value="">Choose…</option><option>Concept</option><option>Prototype</option><option>Preparing a pilot</option><option>In a pilot</option><option>Scaling to more sites</option></select></label>
           <label><span class="label">Mapped by</span><input id="mappedby" type="text" autocomplete="off"></label>
           <label><span class="label">Design iterations tested with users</span><select id="iter"><option value="">Choose…</option><option value="0">None yet</option><option value="1">One</option><option value="2">Two or more</option></select></label>
@@ -909,7 +924,7 @@ body.uem-full{overflow:hidden}
 
             <div class="r-cta">
               <div><b>Want a second pair of eyes on this blueprint?</b> Servizions turns real clinical environments into clear product decisions — through embedded fieldwork and environment blueprinting.</div>
-              <a href="contact.html">Let's talk →</a>
+              <a href="contact.html" data-umami-event="tool-cta-lets-talk">Let's talk →</a>
             </div>
 
             <div class="method">
@@ -960,6 +975,7 @@ body.uem-full{overflow:hidden}
         </div>
       </section>
 
+      <div class="vmsg" id="vmsg" role="alert" aria-live="assertive"></div>
       <div class="wnav">
         <button class="nbtn" type="button" id="prevBtn">← Back</button>
         <span class="pos" id="pos"></span>
@@ -1006,7 +1022,7 @@ body.uem-full{overflow:hidden}
       <a href="solutions.html">Solutions</a>
       <a href="news.html">News &amp; Articles</a>
       <a href="about.html">About</a>
-      <a href="free-tool.html">Free Tool</a>
+      <a href="free-tool.html" data-umami-event="go-to-free-tool" data-umami-event-from="free-tool.html">Free Tool</a>
       <a href="mailto:info@servizions.com">Email</a>
       <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
     </nav>
@@ -1068,6 +1084,9 @@ if(menuBtn && mobileMenu){
 
 (function(){
   var $ = function(id){ return document.getElementById(id); };
+  // Analytics (Umami, cookieless). Sends only event names and the product type — never what users type.
+  function track(name, data){ try { if (window.umami && typeof window.umami.track === 'function') window.umami.track(name, data); } catch(e){} }
+  var startedSent = false;
   var KEY = 'servizions-ueb-v2', ACCESS = 'servizions-uem-access';
   var uem = $('uem') || document.body;
 
@@ -1135,14 +1154,14 @@ if(menuBtn && mobileMenu){
     var s = document.createElement('section');
     s.className = 'step'; s.setAttribute('data-key', a.id); s.setAttribute('data-title', a.short);
     var seg = function(name, opts, ev){ return '<div class="seg' + (ev ? ' ev' : '') + '">' + opts.map(function(o, v){ return '<label><input type="radio" name="' + name + '" value="' + v + '"><span></span></label>'; }).join('') + '</div>'; };
-    var rate = '<div class="rate"><h3>Rate this area</h3>' +
+    var rate = '<div class="rate"><h3>Rate this area <span class="req">*</span></h3>' +
       a.rq.map(function(r, qi){ return '<fieldset class="rq"><legend></legend>' + seg('rt-' + a.id + '-' + qi, r[1]) + '</fieldset>'; }).join('') +
       '<fieldset class="rq"><legend>How do you know?</legend>' + seg('ev-' + a.id, ['x','x','x'], true) + '</fieldset></div>';
     var checks = a.checks.map(function(){ n++; return '<label><input type="checkbox" id="c' + n + '"><span></span></label>'; }).join('');
     s.innerHTML =
       '<div class="kick' + (a.crit ? ' crit' : '') + '">Step ' + (idx + 2) + ' · Area 0' + (idx + 1) + ' <span class="lens"></span></div>' +
       '<h2></h2><p class="q"></p><p class="tnote"></p>' +
-      '<div class="cols"><div class="leftcol"><label class="sr" for="' + a.id + '"></label><textarea id="' + a.id + '" placeholder="One observation per line…"></textarea>' + rate + '</div>' +
+      '<div class="cols"><div class="leftcol"><label class="sr" for="' + a.id + '"></label><textarea id="' + a.id + '" placeholder="One observation per line — at least one is needed to continue…"></textarea>' + rate + '</div>' +
       '<div class="side"><div class="look"><h3>Quick start — click to add</h3><div class="chips"></div></div>' +
       '<div class="onsite"><h3>On site, check</h3>' + checks + '</div></div></div>';
     s.querySelector('.lens').textContent = a.lens;
@@ -1174,7 +1193,7 @@ if(menuBtn && mobileMenu){
     });
     var lp = $('l-ptype'); if (lp && t) lp.value = t;
   }
-  document.addEventListener('change', function(e){ if (e.target.name === 'ptype') renderTypeBits(); });
+  document.addEventListener('change', function(e){ if (e.target.name === 'ptype'){ renderTypeBits(); track('product-type', {type: TYPES[e.target.value] || e.target.value}); } });
   $('chkCount').textContent = NCHK;
   $('chkNum').textContent = 'Step ' + (AREAS.length + 3);
   $('resNum').textContent = 'Step ' + (AREAS.length + 4);
@@ -1207,7 +1226,7 @@ if(menuBtn && mobileMenu){
     var b = document.createElement('button'); b.type = 'button'; b.className = 'sdot' + (s.getAttribute('data-key') === 'results' ? ' res' : '');
     b.innerHTML = '<span class="bar"></span><span class="t"><b>' + (i + 1) + '</b></span>';
     b.querySelector('.t').appendChild(document.createTextNode(s.getAttribute('data-title')));
-    b.addEventListener('click', function(){ show(i, true); });
+    b.addEventListener('click', function(){ go(i); });
     stepper.appendChild(b);
   });
   function show(i, focus){
@@ -1221,16 +1240,65 @@ if(menuBtn && mobileMenu){
     $('nextBtn').textContent = cur === steps.length - 2 ? 'See my blueprint →' : 'Next →';
     $('pos').textContent = 'Step ' + (cur + 1) + ' of ' + steps.length;
     var key = steps[cur].getAttribute('data-key');
+    if (focus) track('step-view', {step: (cur + 1) + ' ' + steps[cur].getAttribute('data-title')});
+    if (key === 'results' && focus) track(hasAccess() ? 'results-viewed' : 'results-locked-view');
     if (key === 'check') syncMirrors();
     if (key === 'results') analyse();
     try { localStorage.setItem(KEY + '-step', String(cur)); } catch(e){}
-    if (focus){ var h = steps[cur].querySelector('h2'); if (h){ h.setAttribute('tabindex', '-1'); h.focus({preventScroll:true}); } try { stepper.scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){} }
+    if (focus){ var h = steps[cur].querySelector('h2'); if (h){ h.setAttribute('tabindex', '-1'); h.focus({preventScroll:true}); } try { (uem.querySelector('.top') || stepper).scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){} }
     allTextareas().forEach(autosize);
   }
   $('prevBtn').addEventListener('click', function(){ show(cur - 1, true); });
   $('prevArrow').addEventListener('click', function(){ show(cur - 1, true); });
-  $('nextBtn').addEventListener('click', function(){ show(cur + 1, true); });
-  $('nextArrow').addEventListener('click', function(){ show(cur + 1, true); });
+  $('nextBtn').addEventListener('click', function(){ go(cur + 1); });
+  $('nextArrow').addEventListener('click', function(){ go(cur + 1); });
+
+  // ---------- Validation ----------
+  function missing(i){
+    var key = steps[i].getAttribute('data-key'), m = [];
+    if (key === 'start'){
+      if (!curType()) m.push({t:'Choose what you are building', el:document.querySelector('.ptypes')});
+      if (!$('product').value.trim()) m.push({t:'Name your product', el:$('product')});
+      if (!$('setting').value.trim()) m.push({t:'Name the setting (for example a ward, clinic or home)', el:$('setting')});
+    }
+    AREAS.forEach(function(a){
+      if (a.id !== key) return;
+      if (!entries($(a.id).value).length) m.push({t:'Add at least one observation', el:$(a.id)});
+      a.rq.forEach(function(r, qi){ if (radio('rt-' + a.id + '-' + qi) === null) m.push({t:'Answer: ' + r[0], el:document.querySelector('input[name="rt-' + a.id + '-' + qi + '"]').closest('.seg')}); });
+      if (radio('ev-' + a.id) === null) m.push({t:'Answer: How do you know?', el:document.querySelector('input[name="ev-' + a.id + '"]').closest('.seg')});
+    });
+    if (key === 'risks'){
+      var named = 0;
+      for (var k = 1; k <= 5; k++){
+        if ($('r' + k).value.trim()){ named++; if (!$('i' + k).value) m.push({t:'Rate the impact of risk ' + k, el:$('i' + k)}); }
+      }
+      if (!named) m.push({t:'Name at least one top risk', el:$('r1')});
+    }
+    return m;
+  }
+  function clearMarks(){ $('vmsg').style.borderColor = ''; $('vmsg').style.background = ''; $('vmsg').style.color = ''; Array.prototype.forEach.call(document.querySelectorAll('#card .invalid'), function(el){ el.classList.remove('invalid'); }); $('vmsg').classList.remove('on'); $('vmsg').innerHTML = ''; }
+  function showMissing(m){
+    clearMarks();
+    m.forEach(function(x){ if (x.el) x.el.classList.add('invalid'); });
+    $('vmsg').innerHTML = '<b>Please complete this step to continue:</b><ul>' + m.map(function(x){ return '<li>' + esc(x.t) + '</li>'; }).join('') + '</ul>';
+    $('vmsg').classList.add('on');
+    var f = m[0] && m[0].el; if (f){ var t = f.matches && f.matches('input,textarea,select') ? f : f.querySelector('input,textarea,select'); if (t) try { t.focus({preventScroll:false}); } catch(e){} }
+    track('step-blocked', {step: (cur + 1) + ' ' + steps[cur].getAttribute('data-title')});
+  }
+  function go(target){
+    if (target <= cur){ clearMarks(); show(target, true); return; }
+    for (var j = cur; j < target; j++){
+      var m = missing(j);
+      if (m.length){ if (j !== cur) show(j, true); showMissing(m); return; }
+    }
+    clearMarks(); show(target, true);
+  }
+  // clear a mark as soon as the field is fixed
+  document.addEventListener('input', function(e){ if (e.target.classList && e.target.classList.contains('invalid')) e.target.classList.remove('invalid'); });
+  document.addEventListener('change', function(e){ var sg = e.target.closest && e.target.closest('.seg,.ptypes'); if (sg) sg.classList.remove('invalid'); if (e.target.classList) e.target.classList.remove('invalid'); refreshMsg(); });
+  document.addEventListener('input', function(){ refreshMsg(); });
+  var rTimer;
+  function refreshMsg(){ if (!$('vmsg').classList.contains('on')) return; clearTimeout(rTimer); rTimer = setTimeout(function(){ var m = missing(cur); if (!m.length){ $('vmsg').innerHTML = '<b>All set — continue with Next.</b>'; $('vmsg').style.borderColor = '#1F63C7'; $('vmsg').style.background = '#E9F1FC'; $('vmsg').style.color = '#164C9E'; } else { $('vmsg').innerHTML = '<b>Please complete this step to continue:</b><ul>' + m.map(function(x){ return '<li>' + esc(x.t) + '</li>'; }).join('') + '</ul>'; } }, 350); }
 
   // ---------- Data ----------
   function autosize(el){ if (el.tagName === 'TEXTAREA' && el.offsetParent !== null){ var min = parseInt(getComputedStyle(el).minHeight) || 0; el.style.height = 'auto'; el.style.height = Math.max(min, el.scrollHeight + 2) + 'px'; } }
@@ -1259,7 +1327,7 @@ if(menuBtn && mobileMenu){
   var timer;
   function save(){ try { localStorage.setItem(KEY, JSON.stringify(collect())); $('saved').textContent = 'Saved'; } catch(e){ $('saved').textContent = ''; } }
   function queueSave(){ clearTimeout(timer); timer = setTimeout(save, 400); }
-  document.addEventListener('input', function(e){ autosize(e.target); queueSave(); });
+  document.addEventListener('input', function(e){ autosize(e.target); queueSave(); if (!startedSent){ startedSent = true; track('tool-started'); } });
   document.addEventListener('change', function(){ queueSave(); });
 
   var EXAMPLE = {
@@ -1292,12 +1360,12 @@ if(menuBtn && mobileMenu){
   function hasAccess(){ try { return localStorage.getItem(ACCESS) === '1'; } catch(e){ return false; } }
   function setLock(){ uem.classList.toggle('locked', !hasAccess()); ['printBtn','downloadBtn'].forEach(function(id){ $(id).classList.toggle('lockd', !hasAccess()); }); }
   setLock();
-  function requireAccess(){ if (hasAccess()) return true; show(steps.length - 1, true); setTimeout(function(){ var e = $('l-email'); if (e) e.focus({preventScroll:true}); }, 400); return false; }
+  function requireAccess(){ if (hasAccess()) return true; go(steps.length - 1); if (cur !== steps.length - 1) return false; setTimeout(function(){ var e = $('l-email'); if (e) e.focus({preventScroll:true}); }, 400); return false; }
   $('lockForm').addEventListener('submit', function(e){
     e.preventDefault();
     var f = e.target, b = $('lockBtn'); $('lockErr').style.display = 'none'; b.disabled = true; b.style.opacity = '.6';
     fetch(f.action, {method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}})
-      .then(function(r){ if (!r.ok) throw new Error('fail'); try { localStorage.setItem(ACCESS, '1'); } catch(x){} setLock(); analyse(); })
+      .then(function(r){ if (!r.ok) throw new Error('fail'); try { localStorage.setItem(ACCESS, '1'); } catch(x){} setLock(); analyse(); track('email-submitted', {type: TYPES[curType()] || 'not set'}); })
       .catch(function(){ $('lockErr').style.display = 'block'; })
       .then(function(){ b.disabled = false; b.style.opacity = ''; });
   });
@@ -1306,17 +1374,18 @@ if(menuBtn && mobileMenu){
   $('exampleBtn').addEventListener('click', function(){
     var c0 = collect(), has = FIELDS.some(function(f){ return c0[f]; });
     if (has && !confirm('Replace your entries with the example?')) return;
-    apply(EXAMPLE); save(); show(1, true);
+    apply(EXAMPLE); save(); track('example-loaded'); clearMarks(); show(1, true);
   });
   $('clearBtn').addEventListener('click', function(){
     if (!confirm('Clear all entries?')) return;
-    apply({}); try { localStorage.removeItem(KEY); } catch(e){} $('saved').textContent = 'Cleared'; show(0, true);
+    apply({}); clearMarks(); try { localStorage.removeItem(KEY); } catch(e){} $('saved').textContent = 'Cleared'; show(0, true);
   });
-  $('printBtn').addEventListener('click', function(){ if (!requireAccess()) return; analyse(); window.print(); });
+  $('printBtn').addEventListener('click', function(){ if (!requireAccess()) return; track('print-pdf'); analyse(); window.print(); });
   window.addEventListener('beforeprint', function(){ analyse(); steps.forEach(function(s){ s.classList.add('on'); }); setTimeout(function(){ allTextareas().forEach(autosize); }, 0); });
   window.addEventListener('afterprint', function(){ show(cur, false); });
   $('downloadBtn').addEventListener('click', function(){
     if (!requireAccess()) return;
+    track('download-text');
     var d = collect(), L = [], A = analyse();
     L.push('USE-ENVIRONMENT BLUEPRINT — Servizions', '', 'Type: ' + (TYPES[d.ptype] || '-'), 'Product: ' + d.product, 'Setting: ' + d.setting, 'Stage: ' + d.stage, 'Mapped by: ' + d.mappedby, '');
     L.push.apply(L, ['Blueprint readiness: ' + A.score + '/100 (' + A.level + ')', 'Environment complexity: ' + A.cx + ' — position: ' + A.quad, 'Human-centred design: ' + A.hcd + '/12', '', 'HUMAN-CENTRED DESIGN CHECK (ISO 9241-210 principles)'].concat(A.hcdRows, ['', A.summary, '']));
@@ -1449,7 +1518,7 @@ if(menuBtn && mobileMenu){
     $('infoSvg').innerHTML = o.join('');
   }
   $('infoPng').addEventListener('click', function(){
-    var svg = $('infoSvg').querySelector('svg'); if (!svg) return;
+    var svg = $('infoSvg').querySelector('svg'); if (!svg) return; track('download-infographic');
     var data = new XMLSerializer().serializeToString(svg);
     var img = new Image(), url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
     img.onload = function(){
@@ -1695,7 +1764,7 @@ if(menuBtn && mobileMenu){
     fsBtn.textContent = on ? '✕ Exit full screen' : '⤢ Full screen'; fsBtn.setAttribute('aria-pressed', String(on));
     if (!on && uem.scrollIntoView) uem.scrollIntoView({block:'start'});
   }
-  fsBtn.addEventListener('click', function(){ setFull(!uem.classList.contains('full')); });
+  fsBtn.addEventListener('click', function(){ var on = !uem.classList.contains('full'); setFull(on); if (on) track('fullscreen'); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && uem.classList.contains('full')) setFull(false); });
 })();
 
