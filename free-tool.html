@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
-<title>Free Use-Environment Map — Servizions</title>
-<meta name="description" content="Free online Use-Environment Map for medical, rehabilitation and care robots. Find what will break in the real ward, clinic or home before your pilot does.">
+<title>Free Use-Environment Blueprint — Servizions</title>
+<meta name="description" content="Free online Use-Environment Blueprint for medical, rehabilitation and care robots, for MedTech, medical robotics, rehabilitation robotics and digital health. Human-centred (ISO 9241-210 principles) and built on the SEIPS and NASSS frameworks.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -410,13 +410,35 @@ a.contact-info-value:hover{color:var(--d1);}
 }
 
 /* ─── FREE TOOL PAGE ─── */
+.hero{padding:150px 56px 72px;}
+.contact-section#tool{padding-top:56px;}
+.tool-wrap{max-width:1440px;margin:0 auto;}
+.tool-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-family:var(--fb);font-size:14px;color:var(--d2);}
+.next-band{background:var(--bg);padding:96px 56px;}
+.next-band-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:end;}
+.next-band h2{font-family:var(--fd);font-size:clamp(30px,3.4vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.02em;}
+.next-band h2 em{font-style:italic;color:var(--teal);}
+.next-band p{font-family:var(--fb);font-size:17px;line-height:1.7;color:var(--t2);margin-bottom:28px;}
+@media(max-width:900px){.hero{padding:120px 28px 48px;}.contact-section#tool{padding:32px 16px 72px;}.next-band{padding:64px 28px;}.next-band-inner{grid-template-columns:1fr;gap:24px;}}
+#uem{font-family:var(--u-font);color:var(--u-ink);background:#fff;border-radius:16px}
+#uem.full{position:fixed;inset:0;z-index:9500;overflow:auto;border-radius:0;padding:8px 0 24px}
+#uem.full .app{max-width:1320px}
+body.uem-full{overflow:hidden}
+@media print{
+  .nav,.mobile-menu,#prg,.hero,.next-band,.footer,.tool-bar{display:none!important}
+  body{background:#fff!important}
+  body::after{display:none!important}
+  .contact-section{padding:0!important}
+  #uem.full{position:static}
+}
 #uem{
-  --u-teal:#13837A; --u-teal-d:#0D5F58; --u-teal-tint:#E8F4F2; --u-purple:#5B4FC4; --u-purple-tint:#F1EFFB;
-  --u-ink:#1A1A2E; --u-ink-2:#3A3F52; --u-muted:#5B6070; --u-rule:#E1E3E8; --u-border:#C3C7D0; --u-paper:#FFFFFF; --u-soft:#F7F7F9;
+  --u-teal:#1F63C7; --u-teal-d:#164C9E; --u-teal-tint:#E9F1FC; --u-purple:#5A2BD6; --u-purple-tint:#F0EBFC;
+  --u-ink:#141B3A; --u-ink-2:#33395A; --u-muted:#5B6070; --u-rule:#E1E3E8; --u-border:#C3C7D0; --u-paper:#FFFFFF; --u-soft:#F7F7F9;
+  --u-amber:#33395A; --u-amber-tint:#EEF0F7;
   --u-font:Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 #uem *{box-sizing:border-box}
-#uem,#uem{margin:0;background:var(--u-paper);color:var(--u-ink);font-family:var(--u-font);-webkit-font-smoothing:antialiased}
+#uem{margin:0;background:var(--u-paper);color:var(--u-ink);font-family:var(--u-font);-webkit-font-smoothing:antialiased}
 #uem button{font:inherit}
 #uem .app{max-width:1180px;margin:0 auto;padding:24px 20px 40px}
 #uem .label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--u-muted)}
@@ -429,8 +451,9 @@ a.contact-info-value:hover{color:var(--d1);}
 #uem .tbtn{font-size:13px;font-weight:700;border:1px solid var(--u-border);background:#fff;color:var(--u-ink);border-radius:999px;padding:9px 14px;min-height:40px;cursor:pointer}
 #uem .tbtn:hover{border-color:var(--u-ink)}
 #uem .tbtn.lockd:after{content:" 🔒";font-size:11px}
+#uem .tbtn.fs{border-color:var(--u-ink)}
 #uem .stepper{display:flex;gap:4px;overflow-x:auto;padding-bottom:6px;margin-bottom:6px;scrollbar-width:thin}
-#uem .sdot{flex:1 0 auto;min-width:88px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;background:none;border:0;padding:6px 4px;cursor:pointer;text-align:left;color:var(--u-muted)}
+#uem .sdot{flex:1 0 auto;min-width:78px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;background:none;border:0;padding:6px 4px;cursor:pointer;text-align:left;color:var(--u-muted)}
 #uem .sdot .bar{height:4px;border-radius:2px;background:var(--u-rule);width:100%}
 #uem .sdot .t{font-size:12px;line-height:1.3;white-space:nowrap}
 #uem .sdot .t b{font-weight:700;margin-right:4px}
@@ -445,22 +468,22 @@ a.contact-info-value:hover{color:var(--d1);}
 #uem .arrow:hover{background:var(--u-ink);color:#fff}
 #uem .arrow:disabled{opacity:.25;cursor:default;background:#fff;color:var(--u-ink)}
 #uem .arrow svg{width:22px;height:22px}
-#uem .card{background:#fff;border:1px solid var(--u-border);border-radius:16px;padding:36px 40px;min-height:560px;display:flex;flex-direction:column;box-shadow:0 10px 40px rgba(26,26,46,.06)}
+#uem .card{background:#fff;border:1px solid var(--u-border);border-radius:16px;padding:36px 40px;min-height:560px;display:flex;flex-direction:column}
 #uem .step{display:none;flex-direction:column;gap:18px;flex:1}
 #uem .step.on{display:flex;animation:fade .35s ease}
-
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-#uem .kick{display:flex;align-items:center;gap:10px;color:var(--u-teal);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+#uem .kick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--u-teal);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 #uem .kick.crit{color:var(--u-purple)}
-#uem .kick .num{font-size:13px}
+#uem .lens{font-size:12px;letter-spacing:.02em;text-transform:none;font-weight:400;color:var(--u-muted);border:1px solid var(--u-rule);border-radius:999px;padding:3px 10px}
 #uem h2{margin:0;font-size:clamp(28px,3.2vw,40px);line-height:1.08;letter-spacing:-.025em}
-#uem .q{margin:0;font-size:17px;line-height:1.55;color:var(--u-ink-2);max-width:760px}
+#uem .q{margin:0;font-size:17px;line-height:1.55;color:var(--u-ink-2);max-width:780px}
 #uem .cols{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;flex:1}
-#uem textarea{font:inherit;font-size:16px;line-height:1.55;color:var(--u-ink);width:100%;min-height:280px;resize:vertical;border:1px solid var(--u-border);border-radius:10px;padding:14px 16px;background:#fff}
-#uem textarea:focus,#uem input:focus,#uem select:focus{outline:3px solid rgba(19,131,122,.25);border-color:var(--u-teal)}
+#uem .leftcol{display:flex;flex-direction:column;gap:18px;min-width:0}
+#uem textarea{font:inherit;font-size:16px;line-height:1.55;color:var(--u-ink);width:100%;min-height:220px;resize:vertical;border:1px solid var(--u-border);border-radius:10px;padding:14px 16px;background:#fff}
+#uem textarea:focus,#uem input:focus,#uem select:focus{outline:3px solid rgba(31,99,199,.25);border-color:var(--u-teal)}
 #uem .side{display:flex;flex-direction:column;gap:18px}
 #uem .look{background:var(--u-soft);border-radius:12px;padding:18px 20px}
-#uem .look h3,#uem .onsite h3{margin:0 0 10px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--u-muted);font-weight:700}
+#uem .look h3,#uem .onsite h3,#uem .rate h3{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--u-muted);font-weight:700}
 #uem .chips{display:flex;flex-wrap:wrap;gap:8px}
 #uem .chip-add{font-size:13px;border:1px solid var(--u-border);background:#fff;border-radius:999px;padding:7px 12px;cursor:pointer;color:var(--u-ink)}
 #uem .chip-add:hover{border-color:var(--u-teal);color:var(--u-teal-d)}
@@ -468,13 +491,54 @@ a.contact-info-value:hover{color:var(--d1);}
 #uem .onsite{border:1px solid var(--u-rule);border-radius:12px;padding:18px 20px}
 #uem .onsite label{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:14.5px;line-height:1.45;padding:5px 0;cursor:pointer}
 #uem .onsite input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--u-teal)}
-#uem .hint{font-size:13px;color:var(--u-muted)}
-#uem .meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:760px}
+#uem .hint{font-size:13px;color:var(--u-muted);margin:0}
+#uem .rate{border:1px solid var(--u-rule);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:14px}
+#uem .rq{border:0;margin:0;padding:0;min-width:0}
+#uem .rq legend{font-size:15px;font-weight:700;padding:0;margin-bottom:8px;line-height:1.4}
+#uem .seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+#uem .seg label{position:relative;cursor:pointer}
+#uem .seg input{position:absolute;opacity:0;width:1px;height:1px}
+#uem .seg span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;font-size:13.5px;line-height:1.3;border:1px solid var(--u-border);border-radius:8px;padding:8px 8px;background:#fff;color:var(--u-ink-2)}
+#uem .seg label:hover span{border-color:var(--u-ink)}
+#uem .seg input:focus-visible + span{outline:3px solid rgba(31,99,199,.35)}
+#uem .seg input:checked + span{border-color:var(--u-teal);background:var(--u-teal-tint);color:var(--u-teal-d);font-weight:700}
+#uem .seg.ev input:checked + span{border-color:var(--u-purple);background:var(--u-purple-tint);color:#3F1DA6}
+#uem .tnote{margin:-6px 0 0;font-size:14.5px;line-height:1.5;color:var(--u-teal-d);background:var(--u-teal-tint);border-radius:8px;padding:10px 14px;max-width:780px}
+#uem .tnote:empty{display:none}
+#uem .ptypes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:880px}
+#uem .ptypes label{position:relative;cursor:pointer}
+#uem .ptypes input{position:absolute;opacity:0;width:1px;height:1px}
+#uem .ptypes span{display:flex;flex-direction:column;gap:4px;border:1px solid var(--u-border);border-radius:12px;padding:14px 16px;min-height:96px;background:#fff}
+#uem .ptypes span b{font-size:15px;color:var(--u-ink)}
+#uem .ptypes span small{font-size:12.5px;line-height:1.4;color:var(--u-muted)}
+#uem .ptypes label:hover span{border-color:var(--u-ink)}
+#uem .ptypes input:focus-visible + span{outline:3px solid rgba(31,99,199,.35)}
+#uem .ptypes input:checked + span{border-color:var(--u-teal);background:var(--u-teal-tint)}
+#uem .team{display:flex;flex-wrap:wrap;gap:8px}
+#uem .team label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--u-border);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+#uem .team input{width:16px;height:16px;margin:0;accent-color:var(--u-teal)}
+#uem .fgroup{display:flex;flex-direction:column;gap:8px}
+#uem .fgroup > .label{display:block}
+#uem .hcd{border:1px solid var(--u-border);border-radius:12px;padding:6px 20px}
+#uem .hrow{display:grid;grid-template-columns:28px minmax(0,1fr) 110px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--u-rule);font-size:14px;line-height:1.45}
+#uem .hrow:last-child{border-bottom:0}
+#uem .hrow .n{color:var(--u-teal);font-weight:700}
+#uem .hrow small{display:block;color:var(--u-muted);font-size:12.5px;margin-top:2px}
+#uem .hst{font-size:12px;font-weight:700;border-radius:999px;padding:5px 10px;text-align:center}
+#uem .hst.met{background:var(--u-teal-tint);color:var(--u-teal-d)}
+#uem .hst.part{background:var(--u-amber-tint);color:var(--u-amber)}
+#uem .hst.no{background:var(--u-purple-tint);color:#3F1DA6}
+#uem .hst.na{background:#fff;color:var(--u-muted);border:1px dashed var(--u-border)}
+#uem .hcd-score{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;font-size:14px;color:var(--u-ink-2)}
+#uem .hcd-score b{font-size:22px;color:var(--u-ink)}
+#uem .meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:780px}
 #uem .meta label{display:flex;flex-direction:column;gap:6px}
-#uem .meta input{font:inherit;font-size:17px;color:var(--u-ink);border:1px solid var(--u-border);border-radius:10px;padding:12px 14px;min-height:48px}
-#uem .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
+#uem .meta input,#uem .meta select{font:inherit;font-size:17px;color:var(--u-ink);border:1px solid var(--u-border);border-radius:10px;padding:12px 14px;min-height:48px;background:#fff}
+#uem .how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:4px}
 #uem .how div{border-top:2px solid var(--u-teal);padding-top:10px;font-size:14px;line-height:1.5;color:var(--u-ink-2)}
 #uem .how b{display:block;color:var(--u-ink);font-size:15px;margin-bottom:2px}
+#uem .basis{background:var(--u-soft);border-radius:12px;padding:16px 20px;font-size:14px;line-height:1.55;color:var(--u-ink-2)}
+#uem .basis b{color:var(--u-ink)}
 #uem .risk-head,#uem .risk{display:grid;grid-template-columns:26px minmax(0,1fr) 120px minmax(0,1.2fr);gap:12px;align-items:start}
 #uem .risk-head{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--u-muted);border-bottom:1px solid var(--u-ink);padding-bottom:8px}
 #uem .risk{border-bottom:1px solid var(--u-rule);padding:10px 0}
@@ -485,11 +549,11 @@ a.contact-info-value:hover{color:var(--d1);}
 #uem .assume label{font-weight:700;font-size:15px;display:block;margin-bottom:8px}
 #uem .assume textarea{min-height:80px}
 #uem .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-#uem .cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 26px}
+#uem .cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 22px}
 #uem .cgroup{border-top:2px solid var(--u-teal);padding-top:10px}
 #uem .cgroup.crit{border-top-color:var(--u-purple)}
-#uem .cgroup h3{margin:0 0 6px;font-size:16px}
-#uem .cgroup label{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:14px;line-height:1.45;padding:4px 0;cursor:pointer}
+#uem .cgroup h3{margin:0 0 6px;font-size:15px}
+#uem .cgroup label{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:13.5px;line-height:1.45;padding:4px 0;cursor:pointer}
 #uem .cgroup input{width:17px;height:17px;margin:1px 0 0;accent-color:var(--u-teal)}
 #uem .wnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--u-rule)}
 #uem .nbtn{font-size:16px;font-weight:700;border-radius:10px;padding:13px 22px;min-height:48px;cursor:pointer;border:1.5px solid var(--u-ink);background:#fff;color:var(--u-ink)}
@@ -497,54 +561,129 @@ a.contact-info-value:hover{color:var(--d1);}
 #uem .nbtn.primary:hover{background:var(--u-teal-d)}
 #uem .nbtn:disabled{opacity:.3;cursor:default}
 #uem .pos{font-size:13px;color:var(--u-muted)}
-#uem .a-lockwrap{position:relative}
-#uem .a-top{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;margin-bottom:20px}
-#uem .score{background:var(--u-ink);color:#fff;border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:8px}
-#uem .score .label{color:#8FD8CF}
-#uem .score .num{font-size:76px;line-height:1;font-weight:700;letter-spacing:-.04em}
-#uem .score .num small{font-size:22px;color:#B9BCC8;font-weight:400;letter-spacing:0}
-#uem .score .lvl{font-size:17px;font-weight:700}
-#uem .score .meter{height:8px;border-radius:4px;background:#3A3F52;overflow:hidden;margin-top:4px}
-#uem .score .meter i{display:block;height:100%;background:#8FD8CF;width:0}
-#uem .score .note{font-size:12px;color:#B9BCC8;line-height:1.45}
-#uem .summary{border:1px solid var(--u-border);border-radius:12px;padding:20px 24px;font-size:16px;line-height:1.6;color:var(--u-ink-2)}
+#uem .ads{display:flex;flex-direction:column;gap:16px}
+#uem .ad{border:1px solid var(--u-border);border-radius:14px;overflow:hidden;background:#fff}
+#uem .ad-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;background:#2B1673;color:#fff}
+#uem .ad-h .t{display:flex;align-items:baseline;gap:10px}
+#uem .ad-h .n{font-size:13px;font-weight:700;color:#C9B8FF;letter-spacing:.06em}
+#uem .ad-h b{font-size:18px}
+#uem .ad-h small{display:block;font-size:12px;color:#CFC6F2;margin-top:2px}
+#uem .ad-h .tags{display:flex;gap:6px;flex-wrap:wrap}
+#uem .ad-h .tag{font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;background:rgba(255,255,255,.14);color:#fff}
+#uem .ad-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+#uem .ad-c{padding:16px 20px;min-width:0}
+#uem .ad-c + .ad-c{border-left:1px solid var(--u-rule)}
+#uem .ad h6{margin:0 0 8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5A2BD6}
+#uem .ad h6:not(:first-child){margin-top:16px}
+#uem .ad ul,#uem .ad ol{margin:0;padding-left:18px;font-size:14px;line-height:1.5;color:var(--u-ink-2);display:flex;flex-direction:column;gap:4px}
+#uem .ad .mean{font-size:14.5px;line-height:1.55;color:var(--u-ink);margin:0}
+#uem .ad .evs{font-size:13.5px;line-height:1.5;color:var(--u-ink-2);margin:8px 0 0;padding:8px 12px;border-radius:8px;background:var(--u-purple-tint)}
+#uem .ad .tn{font-size:13.5px;line-height:1.5;color:var(--u-teal-d);margin:8px 0 0}
+#uem .ad .rt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;font-size:13.5px;padding:5px 0;border-bottom:1px solid var(--u-rule)}
+#uem .ad .rt:last-child{border-bottom:0}
+#uem .ad .rt b{font-weight:700;color:var(--u-ink)}
+#uem .ad .ck{list-style:none;padding:0}
+#uem .ad .ck li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px}
+#uem .ad .ck .y{color:var(--u-teal);font-weight:700}
+#uem .ad .ck .o{color:#8A8F9C}
+#uem .ad .empty{font-size:13.5px;color:var(--u-muted);font-style:italic;margin:0}
+@media (max-width:800px){#uem .ad-b{grid-template-columns:1fr}
+#uem .ad-c + .ad-c{border-left:0;border-top:1px solid var(--u-rule)}
+}
+#uem .info{border:1px solid var(--u-border);border-radius:14px;padding:12px;background:#fff;margin-top:12px}
+#uem .info svg{display:block;width:100%;height:auto}
+#uem .info-bar{display:flex;justify-content:flex-end;gap:8px;padding:4px 4px 0}
+#uem .r-head{margin-bottom:6px}
+#uem .r-title{margin:4px 0 2px;font-size:26px;letter-spacing:-.015em}
+#uem .r-meta{font-size:14px;color:var(--u-muted)}
+#uem .r-top{display:grid;grid-template-columns:260px 260px minmax(0,1fr);gap:16px;margin-top:10px}
+#uem .score{background:var(--u-ink);color:#fff;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+#uem .score .label{color:#A9C8F5}
+#uem .score .num{font-size:64px;line-height:1;font-weight:700;letter-spacing:-.04em}
+#uem .score .num small{font-size:20px;color:#B9BCC8;font-weight:400;letter-spacing:0}
+#uem .score .lvl{font-size:16px;font-weight:700}
+#uem .subs{display:flex;flex-direction:column;gap:7px;margin-top:8px}
+#uem .sub{display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:3px 8px;font-size:12px;color:#D8DAE2}
+#uem .sub .sb{grid-column:1/-1;height:5px;border-radius:3px;background:#2E3763;overflow:hidden}
+#uem .sub .sb i{display:block;height:100%;background:#A9C8F5}
+#uem .sub span:nth-child(2){text-align:right;color:#fff;font-weight:700}
+#uem .cx{border:1px solid var(--u-border);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:8px}
+#uem .cx .big{font-size:30px;font-weight:700;letter-spacing:-.02em}
+#uem .cx .big.Low{color:var(--u-teal-d)}
+#uem .cx .big.Moderate{color:var(--u-amber)}
+#uem .cx .big.High{color:#3F1DA6}
+#uem .cx p{margin:0;font-size:13.5px;line-height:1.5;color:var(--u-ink-2)}
+#uem .quad{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:150px;margin-top:4px}
+#uem .quad div{background:var(--u-soft);border-radius:6px;padding:6px 8px;font-size:11px;line-height:1.3;color:var(--u-muted)}
+#uem .quad div.on{background:var(--u-teal-tint);color:var(--u-teal-d);font-weight:700}
+#uem .quad .dot{position:absolute;width:16px;height:16px;border-radius:50%;background:var(--u-purple);border:3px solid #fff;box-shadow:0 0 0 1.5px var(--u-purple);transform:translate(-50%,50%);padding:0}
+#uem .qax{display:flex;justify-content:space-between;font-size:11px;color:var(--u-muted)}
+#uem .summary{border:1px solid var(--u-border);border-radius:12px;padding:20px 22px;font-size:15.5px;line-height:1.6;color:var(--u-ink-2)}
 #uem .summary b{color:var(--u-ink)}
-#uem .a-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:18px}
-#uem .panel{border:1px solid var(--u-border);border-radius:12px;padding:18px 20px;min-width:0}
-#uem .panel h3{margin:0 0 12px;font-size:16px}
-#uem .cov{display:grid;grid-template-columns:120px minmax(0,1fr) 50px 62px;gap:8px;align-items:center;font-size:13px;padding:6px 0;border-bottom:1px solid var(--u-rule)}
-#uem .cov:last-child{border-bottom:0}
-#uem .barx{height:9px;border-radius:5px;background:#ECEDF1;overflow:hidden}
-#uem .barx i{display:block;height:100%;background:var(--u-teal)}
+#uem .r-h{margin:28px 0 12px;font-size:18px;letter-spacing:-.01em}
+#uem .prof{border:1px solid var(--u-border);border-radius:12px;padding:6px 20px}
+#uem .prow{display:grid;grid-template-columns:200px minmax(0,1fr) 130px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--u-rule);font-size:14px}
+#uem .prow:last-child{border-bottom:0}
+#uem .prow .nm{font-weight:700}
+#uem .prow .nm small{display:block;font-weight:400;color:var(--u-muted);font-size:12px;margin-top:2px}
+#uem .lv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+#uem .lv span{font-size:12px;text-align:center;padding:6px 4px;border-radius:6px;background:#F1F2F5;color:#8A8F9C}
+#uem .lv span.on.s0{background:var(--u-teal-tint);color:var(--u-teal-d);font-weight:700}
+#uem .lv span.on.s1{background:var(--u-amber-tint);color:var(--u-amber);font-weight:700}
+#uem .lv span.on.s2{background:var(--u-purple-tint);color:#3F1DA6;font-weight:700}
+#uem .evb{font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;text-align:center}
+#uem .evb.e2{background:var(--u-teal-tint);color:var(--u-teal-d)}
+#uem .evb.e1{background:#F1F2F5;color:var(--u-ink)}
+#uem .evb.e0{background:var(--u-amber-tint);color:var(--u-amber)}
+#uem .evb.en{background:#fff;color:var(--u-muted);border:1px dashed var(--u-border)}
+#uem .r-areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#uem .r-area{border:1px solid var(--u-border);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+#uem .r-area.crit{border-color:var(--u-purple)}
+#uem .r-area .tp{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#uem .r-area .nm{font-weight:700;font-size:15px}
+#uem .r-area .ct{font-size:12px;color:var(--u-muted)}
+#uem .r-area ul{margin:0;padding:0 0 0 16px;font-size:13.5px;line-height:1.45;color:var(--u-ink-2);display:flex;flex-direction:column;gap:4px}
+#uem .r-area .empty{font-size:13.5px;color:var(--u-muted);font-style:italic}
 #uem .chip{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 8px;text-align:center}
 #uem .chip.good{background:var(--u-teal-tint);color:var(--u-teal-d)}
-#uem .chip.thin{background:#FFF4DB;color:#7A5200}
-#uem .chip.missing{background:var(--u-purple-tint);color:#4338A8}
+#uem .chip.thin{background:var(--u-amber-tint);color:var(--u-amber)}
+#uem .chip.missing{background:var(--u-purple-tint);color:#3F1DA6}
 #uem .muted{color:var(--u-muted)}
-#uem .rp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
-#uem .rp div{border-radius:8px;padding:10px;text-align:center}
-#uem .rp b{display:block;font-size:26px;line-height:1.1}
-#uem .rp span{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
-#uem .rp .h{background:var(--u-purple-tint);color:#3A2F9E}
-#uem .rp .m{background:#F3F4F6}
-#uem .rp .l{background:var(--u-teal-tint);color:var(--u-teal-d)}
-#uem .flags{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:13.5px;line-height:1.45}
-#uem .flags li{padding-left:16px;position:relative}
-#uem .flags li:before{content:"";position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--u-purple)}
-#uem .flags li.ok:before{background:var(--u-teal)}
-#uem .theme{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-size:13.5px;padding:6px 0;border-bottom:1px solid var(--u-rule)}
-#uem .theme:last-child{border-bottom:0}
-#uem .theme small{display:block;color:var(--u-muted);font-size:11.5px;margin-top:2px}
-#uem .next{margin-top:18px;border:1.5px solid var(--u-teal);border-radius:12px;padding:18px 22px}
-#uem .next h3{margin:0 0 10px;font-size:16px}
-#uem .next ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px;font-size:15px;line-height:1.5}
-#uem .disclaim{font-size:12px;color:var(--u-muted);margin:12px 0 0}
-#uem.locked .a-body{display:none}
+#uem .r-two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;margin-top:16px}
+#uem .panel{border:1px solid var(--u-border);border-radius:12px;padding:18px 20px;min-width:0}
+#uem .panel h3{margin:0 0 10px;font-size:16px}
+#uem .rk{display:grid;grid-template-columns:78px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--u-rule);font-size:14px;line-height:1.45}
+#uem .rk:last-child{border-bottom:0}
+#uem .rk .t{display:block;font-size:13px;color:var(--u-muted);margin-top:2px}
+#uem .rk .t.miss{color:#B42318;font-weight:700}
+#uem .imp{display:inline-block;text-align:center;font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 8px;align-self:start}
+#uem .imp.High{background:var(--u-purple-tint);color:#3F1DA6}
+#uem .imp.Medium{background:#F1F2F5;color:var(--u-ink)}
+#uem .imp.Low{background:var(--u-teal-tint);color:var(--u-teal-d)}
+#uem .imp.None{background:var(--u-amber-tint);color:var(--u-amber)}
+#uem .bl{font-size:14px;line-height:1.45;padding:8px 0;border-bottom:1px solid var(--u-rule)}
+#uem .bl:last-child{border-bottom:0}
+#uem .bl small{display:block;color:var(--u-muted);font-size:12.5px;margin-top:2px}
+#uem .bl.hot b{color:#3F1DA6}
+#uem .r-plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#uem .ph{border-radius:12px;padding:16px 18px;background:var(--u-soft)}
+#uem .ph.now{background:var(--u-teal-tint)}
+#uem .ph h5{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--u-teal-d)}
+#uem .ph ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.45}
+#uem .r-cta{margin-top:20px;background:#2B1673;color:#E4E6EC;border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:15px;line-height:1.5}
+#uem .r-cta b{color:#fff}
+#uem .r-cta a{color:#fff;font-weight:700;white-space:nowrap;border:1.5px solid #fff;border-radius:999px;padding:10px 18px;text-decoration:none}
+#uem .method{margin-top:18px;border-top:1px solid var(--u-rule);padding-top:14px;font-size:12.5px;line-height:1.55;color:var(--u-muted)}
+#uem .method b{color:var(--u-ink-2)}
+#uem .method ol{margin:6px 0 0;padding-left:18px}
+#uem .method a{color:var(--u-teal-d)}
 #uem .a-lock{display:none;justify-content:center;padding:8px 0 0}
+#uem.locked .a-body{display:none}
 #uem.locked .a-lock{display:flex}
-#uem .a-lock form{background:#fff;border:1.5px solid var(--u-teal);border-radius:14px;padding:26px 28px;max-width:540px;width:100%;display:flex;flex-direction:column;gap:13px}
+#uem .a-lock form{background:#fff;border:1.5px solid var(--u-teal);border-radius:14px;padding:26px 28px;max-width:560px;width:100%;display:flex;flex-direction:column;gap:13px}
 #uem .a-lock h3{margin:0;font-size:24px;letter-spacing:-.01em}
 #uem .a-lock p{margin:0;font-size:15px;line-height:1.5;color:var(--u-ink-2)}
+#uem .a-lock ul{margin:0;padding-left:18px;font-size:14.5px;line-height:1.55;color:var(--u-ink-2)}
 #uem .a-lock .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 #uem .a-lock label.f{display:flex;flex-direction:column;gap:5px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--u-muted)}
 #uem .a-lock input[type=text],#uem .a-lock input[type=email],#uem .a-lock select{font:inherit;font-size:15px;text-transform:none;letter-spacing:0;color:var(--u-ink);border:1px solid var(--u-border);border-radius:8px;padding:11px 12px;background:#fff;min-height:44px}
@@ -554,80 +693,37 @@ a.contact-info-value:hover{color:var(--d1);}
 #uem .a-lock .hp{position:absolute;left:-9999px}
 #uem .a-lock .err{display:none;color:#B42318;font-size:14px}
 #uem .wfoot{margin-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--u-muted)}
+@media (max-width:1000px){#uem .r-top{grid-template-columns:1fr 1fr}
+#uem .r-top .summary{grid-column:1/-1}
+}
 @media (max-width:900px){#uem .stage{grid-template-columns:1fr}
 #uem .stage .arrow{display:none}
 #uem .card{padding:24px 20px;min-height:0}
-#uem .cols,#uem .a-top,#uem .how{grid-template-columns:1fr}
-#uem .a-grid,#uem .cgrid{grid-template-columns:1fr 1fr}
-#uem .a-grid .panel:first-child{grid-column:1/-1}
-
+#uem .cols,#uem .how{grid-template-columns:1fr}
+#uem .r-areas,#uem .r-plan,#uem .cgrid{grid-template-columns:1fr 1fr}
+#uem .r-two{grid-template-columns:1fr}
+#uem .r-cta{flex-direction:column;align-items:flex-start}
+#uem .prow{grid-template-columns:150px minmax(0,1fr)}
+#uem .prow .evb{grid-column:2;justify-self:start}
 }
-@media (max-width:600px){#uem .meta,#uem .a-grid,#uem .cgrid,#uem .a-lock .row{grid-template-columns:1fr}
+@media (max-width:600px){#uem .ptypes{grid-template-columns:1fr 1fr}
+#uem .meta,#uem .r-areas,#uem .r-plan,#uem .cgrid,#uem .a-lock .row,#uem .r-top{grid-template-columns:1fr}
+#uem .seg{grid-template-columns:1fr}
 #uem .risk-head{display:none}
 #uem .risk{grid-template-columns:22px minmax(0,1fr)}
 #uem .risk select,#uem .risk .t2{grid-column:2}
-#uem .cov{grid-template-columns:100px minmax(0,1fr) 44px}
-#uem .cov .chip{display:none}
-
+#uem .prow{grid-template-columns:1fr}
+#uem .prow .evb{grid-column:1}
 }
-@media print{#uem .top .tools,#uem .stepper,#uem .arrow,#uem .nav,#uem .chips,#uem .look,#uem .a-lock{display:none!important}
+@media print{#uem .top .tools,#uem .stepper,#uem .arrow,#uem .wnav,#uem .chips,#uem .look,#uem .a-lock{display:none!important}
 #uem .stage{display:block;margin:0}
-#uem .card{border:0;box-shadow:none;padding:0;min-height:0}
+#uem .card{border:0;padding:0;min-height:0}
 #uem .step{display:flex!important;break-inside:avoid;margin-bottom:22px;animation:none}
 #uem .step[data-print="no"]{display:none!important}
 #uem h2{font-size:22px}
 #uem textarea,#uem select,#uem input{border-color:var(--u-rule)!important;resize:none}
-#uem .cols{grid-template-columns:1.6fr 1fr}
 #uem.locked .step[data-key="results"]{display:none!important}
 #uem *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-
-}
-
-
-#uem{font-family:var(--u-font);color:var(--u-ink);background:#fff;border-radius:16px}
-#uem .tbtn.fs{border-color:var(--u-ink)}
-#uem.full{position:fixed;inset:0;z-index:9500;overflow:auto;border-radius:0;padding:8px 0 24px}
-#uem.full .app{max-width:1320px}
-#uem.full .card{min-height:calc(100vh - 220px)}
-body.uem-full{overflow:hidden}
-@media print{
-  .nav,.mobile-menu,#prg,.hero,.next-band,.footer,.tool-bar{display:none!important}
-  body{background:#fff!important}
-  body::after{display:none!important}
-  .contact-section{padding:0!important}
-  #uem.full{position:static}
-}
-
-
-.tool-intro{max-width:1140px;margin:0 auto;}
-.tool-points{list-style:none;display:flex;flex-direction:column;gap:14px;}
-.tool-points li{font-family:var(--fb);font-size:15px;line-height:1.6;color:var(--d2);padding-left:28px;position:relative;}
-.tool-points li b{color:var(--d1);font-weight:600;}
-.tool-points li::before{content:'';position:absolute;left:0;top:8px;width:10px;height:10px;border-radius:50%;background:var(--teal-d);}
-.form-note{font-family:var(--fb);font-size:13px;color:var(--d2);line-height:1.6;margin-top:16px;}
-.form-msg{font-family:var(--fb);font-size:14px;line-height:1.6;margin-top:16px;color:#B42318;display:none;}
-.form-msg a{color:var(--purple-d);text-decoration:underline;}
-.form-title{font-family:var(--fd);font-size:24px;font-weight:500;letter-spacing:-.01em;color:var(--d1);margin-bottom:6px;}
-.form-sub{font-family:var(--fb);font-size:14.5px;color:var(--d2);line-height:1.6;margin-bottom:28px;}
-.tool-wrap{display:none;max-width:1440px;margin:0 auto;}
-.tool-wrap.open{display:block;}
-.hero{padding:150px 56px 72px;}
-.contact-section#tool{padding-top:56px;}
-@media(max-width:900px){.hero{padding:120px 28px 48px;}.contact-section#tool{padding:32px 16px 72px;}}
-.tool-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-family:var(--fb);font-size:14px;color:var(--d2);}
-.tool-bar a{color:var(--purple-d);text-decoration:underline;text-underline-offset:2px;}
-.next-band{background:var(--bg);padding:96px 56px;}
-.next-band-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:end;}
-.next-band h2{font-family:var(--fd);font-size:clamp(30px,3.4vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.02em;}
-.next-band h2 em{font-style:italic;color:var(--teal);}
-.next-band p{font-family:var(--fb);font-size:17px;line-height:1.7;color:var(--t2);margin-bottom:28px;}
-@media(max-width:900px){.next-band{padding:64px 28px;}.next-band-inner{grid-template-columns:1fr;gap:24px;}}
-
-@media print{
-  .nav,.mobile-menu,#prg,.hero,.next-band,.footer,.gate,.tool-bar{display:none!important;}
-  body{background:#fff;}
-  body::after{display:none;}
-  .contact-section{padding:0;}
 }
 </style>
 </head>
@@ -666,23 +762,23 @@ body.uem-full{overflow:hidden}
   <div class="hero-orb orb-1" aria-hidden="true"></div>
   <div class="hero-orb orb-2" aria-hidden="true"></div>
   <div class="hero-inner">
-    <span class="eyebrow">Free tool · Use-Environment Map</span>
+    <span class="eyebrow">Free tool · Use-Environment Blueprint</span>
     <h1 class="hero-h1">Find what will break in the real ward — <em>before your pilot does.</em></h1>
-    <p class="hero-sub">Most robots that struggle in clinical use don't fail technically. They fail because the real environment — people, spaces, routines and infrastructure — is different from what the team assumed. Map it, analyse it, and know your top risks before you commit.</p>
+    <p class="hero-sub">For MedTech, medical robotics, rehabilitation robotics and digital health. Most products that struggle in practice don't fail technically — they fail because the people, needs, places, routines and organisation around them were different from what the team assumed. Blueprint your use environment in eight human-centred, research-based areas and get a readiness score, a human-centred design check, a complexity profile and an action plan.</p>
   </div>
 </section>
 
 <!-- ─── TOOL ─── -->
 <section class="contact-section" id="tool">
-  <div class="tool-wrap open" id="toolWrap">
+  <div class="tool-wrap">
     <div class="tool-bar">
-      <span><b style="color:#0A0814">Free to use, no sign-up.</b> Your entries save in this browser. Enter your email only when you want to see your results.</span>
+      <span><b style="color:#0A0814">Free to use, no sign-up.</b> Your entries save in this browser. Enter your email only when you want to see your blueprint.</span>
     </div>
     <div id="uem">
 <div class="app">
 
   <div class="top">
-    <div class="brand"><b>Use-Environment Map</b> <span>· free tool</span></div>
+    <div class="brand"><b>Use-Environment Blueprint</b> <span>· free tool</span></div>
     <div class="tools">
       <span class="saved" id="saved" aria-live="polite"></span>
       <button class="tbtn" type="button" id="exampleBtn">Load example</button>
@@ -700,79 +796,152 @@ body.uem-full{overflow:hidden}
 
     <div class="card" id="card">
 
-      <!-- START -->
       <section class="step" data-key="start" data-title="Start" data-print="no">
-        <div class="kick"><span class="num">Step 1</span> · Start</div>
-        <h2>Map the real environment your product will live in</h2>
-        <p class="q">Most robots that struggle in clinical use don't fail technically — the real ward, clinic or home is different from what the team assumed. Work through each area, then see your results.</p>
+        <div class="kick">Step 1 · Start</div>
+        <h2>Blueprint the real environment your product will live in</h2>
+        <p class="q">Most MedTech, robotics and digital health products that struggle in practice don't fail technically — they fail because the people, needs, places, routines and organisation around them were different from what the team assumed. Work through eight areas, rate each one, then get your blueprint.</p>
+        <div class="fgroup"><span class="label">What are you building?</span>
+          <div class="ptypes" role="radiogroup" aria-label="Product type">
+            <label><input type="radio" name="ptype" value="med"><span><b>MedTech device</b><small>Bedside, diagnostic, monitoring or therapeutic devices</small></span></label>
+            <label><input type="radio" name="ptype" value="rob"><span><b>Medical robotics</b><small>Surgical, hospital logistics or service robots</small></span></label>
+            <label><input type="radio" name="ptype" value="rehab"><span><b>Rehabilitation robotics</b><small>Gait, upper-limb, exoskeleton or assistive robots</small></span></label>
+            <label><input type="radio" name="ptype" value="dig"><span><b>Digital health</b><small>Software, apps, remote monitoring or AI tools</small></span></label>
+          </div>
+        </div>
         <div class="meta">
           <label><span class="label">Product</span><input id="product" type="text" autocomplete="off" placeholder="e.g. gait-training robot"></label>
-          <label><span class="label">Setting (one per map)</span><input id="setting" type="text" autocomplete="off" placeholder="e.g. neuro-rehab ward"></label>
-          <label><span class="label">Date</span><input id="date" type="text" autocomplete="off"></label>
+          <label><span class="label">Setting (one per blueprint)</span><input id="setting" type="text" autocomplete="off" placeholder="e.g. neuro-rehab ward"></label>
+          <label><span class="label">Development stage</span><select id="stage"><option value="">Choose…</option><option>Concept</option><option>Prototype</option><option>Preparing a pilot</option><option>In a pilot</option><option>Scaling to more sites</option></select></label>
           <label><span class="label">Mapped by</span><input id="mappedby" type="text" autocomplete="off"></label>
+          <label><span class="label">Design iterations tested with users</span><select id="iter"><option value="">Choose…</option><option value="0">None yet</option><option value="1">One</option><option value="2">Two or more</option></select></label>
+        </div>
+        <div class="fgroup"><span class="label">Who is in the team mapping this?</span>
+          <div class="team">
+            <label><input type="checkbox" id="team-design"> Design</label>
+            <label><input type="checkbox" id="team-eng"> Engineering</label>
+            <label><input type="checkbox" id="team-clin"> Clinical</label>
+            <label><input type="checkbox" id="team-users"> Patients or end users</label>
+            <label><input type="checkbox" id="team-ops"> Operations or IT</label>
+            <label><input type="checkbox" id="team-biz"> Business</label>
+          </div>
         </div>
         <div class="how">
           <div><b>Go and look</b>Spend at least one shift on site. Observe before you ask.</div>
-          <div><b>Write what you saw</b>Facts, not beliefs. Mark assumptions with "?".</div>
-          <div><b>Involve the forgotten</b>Night-shift nurses, cleaners, porters, technicians, relatives.</div>
+          <div><b>Rate honestly</b>Say how you know: observed, told, or assumed.</div>
+          <div><b>Involve the forgotten</b>Night staff, cleaners, porters, technicians, relatives.</div>
         </div>
-        <p class="hint">Not sure how it looks? Use <b>Load example</b> at the top to see a filled map. Your entries save in this browser.</p>
+        <div class="basis"><b>Human-centred and research-based.</b> The blueprint follows the six principles of human-centred design (ISO 9241-210), the work-system model used in patient-safety research (SEIPS: people, tasks, technology, environment, organisation) and the NASSS framework, which explains why health technologies are not adopted, abandoned or fail to scale. Sources are listed with your results.</div>
+        <p class="hint">Want to see how it works first? Use <b>Load example</b> at the top. Your entries save in this browser.</p>
       </section>
 
       <div id="areaSteps"></div>
 
-      <!-- RISKS -->
       <section class="step" data-key="risks" data-title="Top 5 risks">
-        <div class="kick"><span class="num">Step 8</span> · Prioritise</div>
+        <div class="kick"><span id="riskNum">Step 9</span> · Prioritise</div>
         <h2>Your top 5 risks and what to test next</h2>
-        <p class="q">Pick the five risks from your map that matter most. Rate the impact and name one concrete test for each — before the pilot.</p>
+        <p class="q">Pick the five risks from your blueprint that matter most. Rate the impact and name one concrete test for each — before the pilot.</p>
         <div class="risk-head"><span>#</span><span>Risk</span><span>Impact</span><span>Test next</span></div>
         <div id="risks"></div>
         <div class="assume"><label for="assumptions">Assumptions to check on site</label><textarea id="assumptions" placeholder="What are you assuming about the site that you haven't seen yet?"></textarea></div>
       </section>
 
-      <!-- CHECKLIST -->
       <section class="step" data-key="check" data-title="Checklist">
-        <div class="kick"><span class="num">Step 9</span> · Site visit</div>
+        <div class="kick"><span id="chkNum">Step 10</span> · Site visit</div>
         <h2>Site visit checklist</h2>
-        <p class="q">All 24 field checks in one place. Tick what you have done — it feeds your readiness score.</p>
+        <p class="q">All <span id="chkCount">32</span> field checks in one place. Tick what you have done — it counts as field evidence in your blueprint.</p>
         <div class="cgrid" id="checklist"></div>
       </section>
 
-      <!-- RESULTS -->
       <section class="step" data-key="results" data-title="Results">
-        <div class="kick"><span class="num">Step 10</span> · Results</div>
-        <h2>Your analysis</h2>
-        <p class="q">An automatic reading of your map and checklist: how complete it is, where the risks cluster, and what to do next.</p>
+        <div class="kick"><span id="resNum">Step 11</span> · Results</div>
+        <h2>Your blueprint</h2>
+        <p class="q">An automatic reading of your answers: how well you know the environment, how human-centred your process is, how complex the environment is, and what to do next.</p>
         <div class="a-lockwrap">
           <div class="a-body">
-            <div class="a-top">
+            <div class="r-head">
+              <div class="label">Use-Environment Blueprint</div>
+              <h3 class="r-title" id="rTitle">Your product</h3>
+              <div class="r-meta" id="rMeta"></div>
+            </div>
+
+            <div class="info" id="infoWrap">
+              <div id="infoSvg" role="img" aria-label="Infographic of your blueprint"></div>
+              <div class="info-bar"><button class="tbtn" type="button" id="infoPng">Download infographic (PNG)</button></div>
+            </div>
+
+            <h4 class="r-h">Details</h4>
+            <div class="r-top">
               <div class="score">
-                <div class="label">Readiness score</div>
+                <div class="label">Blueprint readiness</div>
                 <div class="num"><span id="aScore">0</span><small> / 100</small></div>
                 <div class="lvl" id="aLevel">Not started</div>
-                <div class="meter" aria-hidden="true"><i id="aMeter"></i></div>
-                <div class="note">Coverage of the six areas (40), site checklist (25), risks with a test (25), assumptions named (10).</div>
+                <div class="subs" id="aSubs"></div>
               </div>
-              <div class="summary" id="aSummary">Start filling in the map — your summary appears here.</div>
-            </div>
-            <div class="a-grid">
-              <div class="panel"><h3>Coverage by area</h3><div id="aCoverage"></div></div>
-              <div class="panel"><h3>Risk profile</h3>
-                <div class="rp"><div class="h"><b id="aHigh">0</b><span>High</span></div><div class="m"><b id="aMed">0</b><span>Medium</span></div><div class="l"><b id="aLow">0</b><span>Low</span></div></div>
-                <ul class="flags" id="aFlags"></ul>
+              <div class="cx">
+                <div class="label">Environment complexity</div>
+                <div class="big" id="cxLevel">–</div>
+                <div class="quad" id="quad" aria-label="Your position">
+                  <div data-q="tl">Ready to test</div><div data-q="tr">Test step by step</div>
+                  <div data-q="bl">Do more fieldwork</div><div data-q="br">Research before you pilot</div>
+                  <span class="dot" id="qDot" aria-hidden="true"></span>
+                </div>
+                <div class="qax"><span>Lower complexity</span><span>Higher complexity</span></div>
               </div>
-              <div class="panel"><h3>Recurring themes</h3><div id="aThemes"></div></div>
+              <div class="summary"><div class="label" style="margin-bottom:8px">Summary</div><div id="aSummary">Start filling in the blueprint — your summary appears here.</div></div>
             </div>
-            <div class="next"><h3>Recommended next steps</h3><ol id="aNext"></ol></div>
-            <p class="disclaim">The analysis is rule-based: it counts entries and looks for common themes in your words. It is a prompt for discussion, not an expert judgement.</p>
+
+            <h4 class="r-h">Complexity profile</h4>
+            <div class="prof" id="rProfile"></div>
+
+            <h4 class="r-h">Human-centred design check</h4>
+            <div class="hcd"><div class="hcd-score" id="hcdScore"></div><div id="rHcd"></div></div>
+
+            <h4 class="r-h">Your eight areas in detail</h4>
+            <div class="ads" id="rAreas"></div>
+
+            <div class="r-two">
+              <div class="panel"><h3>Top risks and tests</h3><div id="rRisks"></div></div>
+              <div class="panel"><h3>Blind spots and uncertainty</h3><div id="rBlind"></div></div>
+            </div>
+
+            <h4 class="r-h">Your action plan</h4>
+            <div class="r-plan" id="rPlan"></div>
+
+            <div class="r-cta">
+              <div><b>Want a second pair of eyes on this blueprint?</b> Servizions turns real clinical environments into clear product decisions — through embedded fieldwork and environment blueprinting.</div>
+              <a href="contact.html">Let's talk →</a>
+            </div>
+
+            <div class="method">
+              <b>How this blueprint works.</b> The process follows the six principles of human-centred design in ISO 9241-210 [8]. The eight areas follow the SEIPS work-system model (people, tasks, tools and technology, physical environment, organisation) [1, 2]. Complexity is rated per area as simple, complicated or complex, following the NASSS framework and its complexity-assessment tools [3, 4]; NASSS proposes that the more domains are complex, the lower the chance of sustained adoption. The adoption questions reflect widely used technology-acceptance factors — usefulness, effort, social influence and supporting conditions [5] — and the field checks draw on reviews of robots in nursing care and hospitals [6, 7]. The scoring itself is a Servizions heuristic: a prompt for discussion, not an expert judgement.
+              <ol>
+                <li>Holden RJ, Carayon P, Gurses AP, et al. SEIPS 2.0: a human factors framework for studying and improving the work of healthcare professionals and patients. <i>Ergonomics</i>. 2013;56(11):1669–1686. <a href="https://psnet.ahrq.gov/issue/seips-20-human-factors-framework-studying-and-improving-work-healthcare-professionals-and" target="_blank" rel="noopener">Link</a></li>
+                <li>Carayon P, Wetterneck TB, Rivera-Rodriguez AJ, et al. Human factors systems approach to healthcare quality and patient safety. <i>Applied Ergonomics</i>. 2014;45(1):14–25. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3795965" target="_blank" rel="noopener">Link</a></li>
+                <li>Greenhalgh T, Wherton J, Papoutsi C, et al. Beyond adoption: a new framework for theorizing and evaluating nonadoption, abandonment, and challenges to the scale-up, spread, and sustainability of health and care technologies. <i>J Med Internet Res</i>. 2017;19(11):e367. <a href="https://www.jmir.org/2017/11/e367" target="_blank" rel="noopener">Link</a></li>
+                <li>Greenhalgh T, Maylor H, Shaw S, et al. The NASSS-CAT tools for understanding, guiding, monitoring, and researching technology implementation projects in health and social care. <i>JMIR Res Protoc</i>. 2020;9(5):e16861. <a href="https://doaj.org/article/940b89ed62b74f16b58fe30ba22b164f" target="_blank" rel="noopener">Link</a></li>
+                <li>Venkatesh V, Morris MG, Davis GB, Davis FD. User acceptance of information technology: toward a unified view. <i>MIS Quarterly</i>. 2003;27(3):425–478. <a href="https://open.ncl.ac.uk/theories/2/unified-theory-of-acceptance-and-use-of-technology" target="_blank" rel="noopener">Link</a></li>
+                <li>Servaty R, Kersten A, Brukamp K, et al. Implementation of robotic devices in nursing care. Barriers and facilitators: an integrative review. <i>BMJ Open</i>. 2020;10:e038650. <a href="https://bmjopen.bmj.com/content/10/9/e038650" target="_blank" rel="noopener">Link</a></li>
+                <li>Rasmussen MK, Schneider-Kamp A, Hyrup T, Godono A. New colleague or gimmick hurdle? A user-centric scoping review of the barriers and facilitators of robots in hospitals. <i>PLOS Digital Health</i>. 2024;3(11):e0000660. <a href="https://doaj.org/article/196b6ae070f0425a83816f2088363ca9" target="_blank" rel="noopener">Link</a></li>
+                <li>ISO 9241-210:2019. Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems. Principles summarised in: Travis D. ISO 13407 is dead. Long live ISO 9241-210! Userfocus. <a href="https://userfocus.co.uk/articles/iso-13407-is-dead.html" target="_blank" rel="noopener">Link</a></li>
+              </ol>
+            </div>
           </div>
           <div class="a-lock" id="aLock">
             <form id="lockForm" action="https://formspree.io/f/mjgakblb" method="POST">
-              <h3>See your results</h3>
-              <p>Your readiness score, risk profile, recurring themes and next steps are ready. Enter your email to unlock them, plus print and download.</p>
-              <input type="hidden" name="_subject" value="Free tool: Use-Environment Map results">
-              <input type="hidden" name="source" value="use-environment-map / results">
+              <h3>Get your blueprint</h3>
+              <p>Your results are ready. Enter your email to unlock:</p>
+              <ul>
+                <li>Blueprint readiness score with breakdown</li>
+                <li>Environment complexity and your position</li>
+                <li>Infographic of your blueprint (PNG download)</li>
+                <li>Detailed analysis of all eight areas: findings, what they mean and next steps</li>
+                <li>Complexity profile across eight areas</li>
+                <li>Human-centred design check against six principles</li>
+                <li>Top risks, blind spots and a three-stage action plan</li>
+                <li>Print and download</li>
+              </ul>
+              <input type="hidden" name="_subject" value="Free tool: Use-Environment Blueprint results">
+              <input type="hidden" name="source" value="use-environment-blueprint / results">
               <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="row">
                 <label class="f">First name *<input type="text" name="first-name" required autocomplete="given-name"></label>
@@ -781,10 +950,10 @@ body.uem-full{overflow:hidden}
               <label class="f">Business email *<input type="email" id="l-email" name="email" required autocomplete="email"></label>
               <div class="row">
                 <label class="f">Organisation<input type="text" name="organisation" autocomplete="organization"></label>
-                <label class="f">Product type<select name="product-type"><option>Rehabilitation robotics</option><option>Surgical robotics</option><option>Hospital logistics or service robot</option><option>Care or assistive robot</option><option>Connected or AI medical device</option><option>Other</option></select></label>
+                <label class="f">Product type<select name="product-type" id="l-ptype"><option value="med">MedTech device</option><option value="rob">Medical robotics</option><option value="rehab">Rehabilitation robotics</option><option value="dig">Digital health</option><option value="other">Other</option></select></label>
               </div>
-              <label class="consent"><input type="checkbox" required><span>I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to Servizions processing my details to provide this tool and to follow up on it. Your map entries are not sent. *</span></label>
-              <button class="nbtn primary" type="submit" id="lockBtn">Show my results</button>
+              <label class="consent"><input type="checkbox" required><span>I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to Servizions processing my details to provide this tool and to follow up on it. Your blueprint entries are not sent. *</span></label>
+              <button class="nbtn primary" type="submit" id="lockBtn">Show my blueprint</button>
               <p class="err" id="lockErr" role="alert">Something went wrong. Please try again, or email info@servizions.com.</p>
             </form>
           </div>
@@ -802,7 +971,7 @@ body.uem-full{overflow:hidden}
   </div>
 
   <div class="wfoot">
-    <span>A design research tool. It supports, but does not replace, professional advice for your specific product. Your map entries stay in your browser.</span>
+    <span>A design research tool. It supports, but does not replace, professional advice for your specific product. Your blueprint entries stay in your browser.</span>
     <span>© Servizions · servizions.com</span>
   </div>
 </div>
@@ -895,64 +1064,122 @@ if(menuBtn && mobileMenu){
 }
 })();
 
-// ─── Use-Environment Map tool ───
+// ─── Use-Environment Blueprint tool ───
 
 (function(){
   var $ = function(id){ return document.getElementById(id); };
-  var KEY = 'servizions-uem-v1', ACCESS = 'servizions-uem-access';
+  var KEY = 'servizions-ueb-v2', ACCESS = 'servizions-uem-access';
+  var uem = $('uem') || document.body;
 
+  var LEVELS = ['Simple', 'Complicated', 'Complex'];
+  var EVID = ['Mostly assumed', 'Told by staff or users', 'Observed on site'];
+  var TYPES = {med:'MedTech device', rob:'Medical robotics', rehab:'Rehabilitation robotics', dig:'Digital health', other:'Other'};
   var AREAS = [
-    {id:'users', name:'Users', g:0, q:'Who uses, touches, moves, cleans or is affected by the product? Note their goals, skills and limits — physical, cognitive, language, stress.',
-      chips:['Patients:','Therapists:','Nurses:','Cleaners:','Porters:','Technicians:','Relatives:'],
-      checks:['List everyone who touches the device in a full day, night shift included','Watch care being given: note fatigue, pain, confusion','Ask cleaners and porters what they would need','Note languages, glasses, gloves, hearing']},
-    {id:'spaces', name:'Spaces', g:1, q:'Where does it work, move and wait? Think rooms, doorways, corridors, lifts and floors; light, noise, crowding and hygiene zones; storage and charging.',
-      chips:['Doorways:','Corridors:','Lifts:','Storage:','Charging:','Light and glare:','Noise:','Hygiene zones:'],
-      checks:['Measure doorways, corridors, lifts and turning space','Find where it will be stored and charged','Note light, glare and noise at different times','Check hygiene zones and the cleaning routine']},
-    {id:'workflow', name:'Workflow and time', g:2, q:'How does care really run here? Shifts, peaks, nights and weekends; handovers and who owns the device; emergencies; how much time staff really have.',
-      chips:['Peak times:','Nights and weekends:','Handover:','Owner of the device:','Emergency:','Staff time per patient:'],
-      checks:['Shadow one full session from start to end','Note peaks, handovers and who owns the device','Ask what happens in an emergency','Time how long staff really have per patient']},
-    {id:'infra', name:'Infrastructure', g:3, q:'What does the product depend on? Wi-Fi, power and network rules; doors, lifts, IT systems and data; maintenance and spare parts. Who fixes it at 3 a.m.?',
-      chips:['Wi-Fi:','Power sockets:','Hospital IT:','Data:','Spare parts:','Out-of-hours support:'],
-      checks:['Test Wi-Fi exactly where the device will be used','Count free power sockets','Ask IT about network, security and data rules','Find out who fixes faults out of hours']},
-    {id:'critical', name:'Critical moments', g:4, crit:true, q:'Where could things go wrong? Tasks that must be right every time, use errors, delays and interruptions — and what happens if it stops mid-task.',
-      chips:['Must be right every time:','Possible use error:','Interruption:','If it stops mid-task:','Workaround seen:'],
-      checks:['List tasks that must be right every time','Watch for workarounds and shortcuts','Ask: "What went wrong the last time something new arrived?"','Note what happens if the device stops mid-task']},
-    {id:'adoption', name:'Adoption risks', g:5, q:'Why might people not use it? Training — who, how long, refreshed when? Trust and fears, extra workload, and who champions it.',
-      chips:['Training:','Trust and fears:','Extra workload:','Champion:','New staff and rotations:'],
-      checks:['Ask staff what worries them about new technology','Find a possible clinical champion','Check how new staff and rotations are trained','Ask what would make them stop using it']}
+    {id:'users', name:'People', short:'People', lens:'HCD: users and context of use · SEIPS: person · NASSS: adopters',
+      q:'Who uses, touches, moves, cleans, monitors or is affected by the product? Note their goals, skills and limits — physical, cognitive, sensory, language, stress.',
+      rq:[['How many different groups interact with it?', ['One main group','2–3 groups','4 or more groups']], ['How varied are their abilities and needs?', ['Similar','Some differences','Very varied']]],
+      chips:{base:['Patients:','Clinicians:','Nurses:','Carers:','Technicians:','Relatives:'], med:['Patients:','Nurses:','Physicians:','Biomedical engineers:','Cleaners:','Relatives:'], rob:['Surgeons:','Theatre nurses:','Anaesthetists:','Porters:','Sterile services:','Technicians:'], rehab:['Patients:','Therapists:','Nurses:','Carers:','Relatives:','Technicians:'], dig:['Patients at home:','Clinicians:','Carers:','IT team:','Admin staff:','Relatives:']},
+      notes:{dig:'For digital health, include people who never open the app but act on its data — clinicians reviewing alerts, admin staff, IT support.', rob:'For robotics, include everyone around the system: the operator, the assisting team, porters, cleaning and sterile services.'},
+      checks:['List everyone who touches or relies on the product in a full day, night shift included','Watch care being given: note fatigue, pain, confusion, stress','Ask the least visible groups (cleaners, porters, admin) what they would need','Note languages, glasses, gloves, hearing and digital skills']},
+    {id:'needs', name:'Needs and experience', short:'Needs', lens:'HCD: whole user experience · users involved', crit:false,
+      q:'What does each group need, value and fear? Think dignity, privacy, independence, comfort, motivation and how it feels to use — and how far users have shaped the product so far.',
+      rq:[['How well do you know what each group needs?', ['Well understood','Partly understood','Not yet understood']], ['How involved have users been in shaping it?', ['Co-designed with users','Consulted','Not yet involved']]],
+      chips:{base:['Patient need:','Staff need:','Dignity and privacy:','Independence:','Motivation:','What users said:'], dig:['Patient need:','Staff need:','Privacy:','Digital confidence:','Accessibility:','What users said:'], rehab:['Patient goal:','Therapist need:','Motivation:','Dignity:','Independence at home:','What users said:']},
+      notes:{rehab:'For rehabilitation, look at motivation and progress over weeks, not only a single session — and at life after discharge.', dig:'For digital health, check accessibility, digital confidence and what happens when someone cannot or will not use it.'},
+      checks:['Interview at least one person from each user group','Observe one real session from the patient’s point of view','Show a prototype or mock-up and record reactions','Ask what would make them feel unsafe, embarrassed or ignored']},
+    {id:'workflow', name:'Tasks and workflow', short:'Tasks', lens:'HCD: tasks · SEIPS: tasks and processes',
+      q:'How does care really run here? Schedules, peaks, nights and weekends; handovers and who owns the product; emergencies; how much time staff really have.',
+      rq:[['How much does it change existing routines?', ['Fits today’s routine','Small changes','New routine needed']], ['How predictable is the work?', ['Predictable','Partly predictable','Unpredictable']]],
+      chips:{base:['Peak times:','Nights and weekends:','Handover:','Owner:','Emergency:','Time per patient:'], rob:['Theatre schedule:','Set-up and docking:','Turnover between cases:','Emergency conversion:','Team roles:','Sterile workflow:'], rehab:['Session schedule:','Set-up time:','Weekend gaps:','Device owner:','Emergency release:','Therapy goals:'], dig:['When it is used:','Who reviews data:','Alerts and follow-up:','Handover:','Time per patient:','Out of hours:']},
+      notes:{dig:'For digital health, follow the data: who looks at it, when, and what they are expected to do next.', rob:'For surgical robotics, include set-up, docking, turnover between cases and what happens if the team must switch to a manual procedure.'},
+      checks:['Shadow one full session or shift from start to end','Note peaks, handovers and who owns the product','Ask what happens in an emergency','Time how long staff really have per patient']},
+    {id:'spaces', name:'Physical environment', short:'Environment', lens:'HCD: environment · SEIPS: physical environment',
+      q:'Where does it work, move and wait? Rooms, doorways, corridors, lifts and floors; light, noise, crowding and hygiene; storage and charging — or the home.',
+      rq:[['How much do the spaces vary?', ['One known space','A few spaces','Many or changing spaces']], ['How constrained are space, access and hygiene?', ['Few constraints','Some constraints','Strong constraints']]],
+      chips:{base:['Rooms:','Doorways:','Storage:','Charging:','Light and noise:','Hygiene zones:'], rob:['Operating room size:','Cables and floor space:','Sterile field:','Storage:','Moving between rooms:','Lifts:'], rehab:['Therapy gym:','Corridors:','Doorways:','Home setting:','Storage and charging:','Floor surfaces:'], dig:['Ward computers:','Shared tablets:','Phones at home:','Home environment:','Noise and privacy:','Screen size:']},
+      notes:{dig:'For digital health, the “environment” is also the screen and the place of use — a ward PC, a shared tablet or a patient’s phone at home.', rob:'For robotics, measure the room with the full team and equipment in place, not empty.'},
+      checks:['Measure doorways, corridors, lifts and working space','Find where it will be stored and charged','Note light, glare and noise at different times','Check hygiene zones and the cleaning routine']},
+    {id:'infra', name:'Technology and infrastructure', short:'Technology', lens:'SEIPS: tools and technology · NASSS: technology',
+      q:'What does the product depend on? Power, Wi-Fi and networks; IT systems and data; consumables, maintenance and spare parts. Who fixes it at 3 a.m.?',
+      rq:[['How many systems must it work with?', ['Works standalone','One or two systems','Several systems']], ['Who supports it on site?', ['Clear support','Partly clear','No one yet']]],
+      chips:{base:['Power:','Wi-Fi:','IT systems:','Data:','Maintenance:','Out-of-hours support:'], rob:['Power:','Imaging and OR systems:','Data and video:','Instruments:','Service contract:','Out-of-hours support:'], rehab:['Power and charging:','Wi-Fi:','Data:','Spare parts:','Maintenance:','Out-of-hours support:'], dig:['Hospital records system:','Login and access:','Home internet:','Devices and OS:','Data flows:','Helpdesk:']},
+      notes:{dig:'For digital health, think records systems, logins, home internet, device types and who answers the helpdesk.'},
+      checks:['Test connectivity exactly where the product will be used','Check power, charging and consumables','Ask IT about network, security and data rules','Find out who fixes faults out of hours']},
+    {id:'critical', name:'Critical moments', short:'Critical', crit:true, lens:'HCD: user-centred evaluation · SEIPS: processes and outcomes',
+      q:'Where could things go wrong? Tasks that must be right every time, use errors, delays and interruptions — and what happens if it stops or goes offline mid-task.',
+      rq:[['What happens if a task goes wrong?', ['Minor inconvenience','Delay or discomfort','Possible harm']], ['How many tasks must be right every time?', ['Few','Some','Many']]],
+      chips:{base:['Must be right every time:','Possible use error:','Interruption:','If it stops mid-task:','Workaround seen:'], rob:['Must be right every time:','Possible use error:','Emergency conversion:','If it stops mid-task:','Workaround seen:'], dig:['Missed alert:','Wrong patient or data:','Interruption:','If it goes offline:','Workaround seen:']},
+      notes:{dig:'For digital health, the critical moments are often missed or misread information: an alert nobody sees, data on the wrong patient.'},
+      checks:['List tasks that must be right every time','Watch for workarounds and shortcuts','Ask: “What went wrong the last time something new arrived?”','Note what happens if the product stops mid-task']},
+    {id:'adoption', name:'Adoption and acceptance', short:'Adoption', lens:'NASSS: adopters · acceptance factors',
+      q:'Will people want to use it? Usefulness and effort for each group, extra workload, trust and fears, training, and who champions it.',
+      rq:[['How does it change staff workload?', ['Saves work','About the same','Adds work']], ['How do staff feel about it?', ['Mostly positive','Mixed','Sceptical or unknown']]],
+      chips:{base:['Usefulness:','Effort:','Extra workload:','Trust and fears:','Training:','Champion:']},
+      notes:{},
+      checks:['Ask staff what worries them about new technology','Find a possible clinical champion','Check how new staff and rotations are trained','Ask what would make them stop using it']},
+    {id:'org', name:'Organisation and value', short:'Organisation', lens:'SEIPS: organisation · NASSS: value, organisation, wider system',
+      q:'Who decides, pays and owns it — and who gains? Decision makers, budget, IT and procurement approval, the benefit for each group, and how success will be measured.',
+      rq:[['Is it clear who decides, pays and owns it?', ['Clear','Partly clear','Unclear']], ['Is the benefit clear to users and buyers?', ['Clear for both','Clear for some','Unclear']]],
+      chips:{base:['Decision maker:','Budget:','IT and procurement:','Benefit for patients:','Benefit for staff:','Success measure:'], dig:['Decision maker:','Budget:','Data and IT approval:','Benefit for patients:','Benefit for staff:','Success measure:']},
+      notes:{},
+      checks:['Identify who decides to buy, who pays and who owns it','Ask what IT and procurement approval involve','Ask each user group what they gain — and what they lose','Agree how success will be measured']}
   ];
-  var FIELDS = ['product','setting','date','mappedby','users','spaces','workflow','infra','critical','adoption','assumptions'];
+  var NCHK = AREAS.length * 4;
+  var TEAM = ['design','eng','clin','users','ops','biz'];
+  var FIELDS = ['product','setting','stage','mappedby','iter','assumptions'].concat(AREAS.map(function(a){ return a.id; }));
 
-  // Build area steps
-  var host = $('areaSteps'), n = 0;
+  // ---------- Build area steps ----------
+  var card = $('card'), risksStep = card.querySelector('[data-key="risks"]'), n = 0;
   AREAS.forEach(function(a, idx){
+    a.g = idx;
     var s = document.createElement('section');
-    s.className = 'step'; s.setAttribute('data-key', a.id); s.setAttribute('data-title', a.name);
-    var checks = a.checks.map(function(c){ n++; return '<label><input type="checkbox" id="c' + n + '"><span></span></label>'; }).join('');
+    s.className = 'step'; s.setAttribute('data-key', a.id); s.setAttribute('data-title', a.short);
+    var seg = function(name, opts, ev){ return '<div class="seg' + (ev ? ' ev' : '') + '">' + opts.map(function(o, v){ return '<label><input type="radio" name="' + name + '" value="' + v + '"><span></span></label>'; }).join('') + '</div>'; };
+    var rate = '<div class="rate"><h3>Rate this area</h3>' +
+      a.rq.map(function(r, qi){ return '<fieldset class="rq"><legend></legend>' + seg('rt-' + a.id + '-' + qi, r[1]) + '</fieldset>'; }).join('') +
+      '<fieldset class="rq"><legend>How do you know?</legend>' + seg('ev-' + a.id, ['x','x','x'], true) + '</fieldset></div>';
+    var checks = a.checks.map(function(){ n++; return '<label><input type="checkbox" id="c' + n + '"><span></span></label>'; }).join('');
     s.innerHTML =
-      '<div class="kick' + (a.crit ? ' crit' : '') + '"><span class="num">Step ' + (idx + 2) + '</span> · Area 0' + (idx + 1) + '</div>' +
-      '<h2></h2><p class="q"></p>' +
-      '<div class="cols"><div><label class="sr" for="' + a.id + '"></label><textarea id="' + a.id + '" placeholder="One observation per line…"></textarea></div>' +
+      '<div class="kick' + (a.crit ? ' crit' : '') + '">Step ' + (idx + 2) + ' · Area 0' + (idx + 1) + ' <span class="lens"></span></div>' +
+      '<h2></h2><p class="q"></p><p class="tnote"></p>' +
+      '<div class="cols"><div class="leftcol"><label class="sr" for="' + a.id + '"></label><textarea id="' + a.id + '" placeholder="One observation per line…"></textarea>' + rate + '</div>' +
       '<div class="side"><div class="look"><h3>Quick start — click to add</h3><div class="chips"></div></div>' +
       '<div class="onsite"><h3>On site, check</h3>' + checks + '</div></div></div>';
+    s.querySelector('.lens').textContent = a.lens;
     s.querySelector('h2').textContent = a.name;
     s.querySelector('.q').textContent = a.q;
     s.querySelector('label.sr').textContent = a.name;
+    var legends = s.querySelectorAll('.rq legend'); a.rq.forEach(function(r, qi){ legends[qi].textContent = r[0]; });
+    var segs = s.querySelectorAll('.seg');
+    a.rq.forEach(function(r, qi){ var sp = segs[qi].querySelectorAll('span'); r[1].forEach(function(o, v){ sp[v].textContent = o; }); });
+    var evs = segs[segs.length - 1].querySelectorAll('span'); [EVID[2], EVID[1], EVID[0]].forEach(function(o, i){ evs[i].textContent = o; });
+    // evidence radios: order observed, told, assumed -> values 2,1,0
+    var evIn = segs[segs.length - 1].querySelectorAll('input'); evIn[0].value = '2'; evIn[1].value = '1'; evIn[2].value = '0';
     var spans = s.querySelectorAll('.onsite span'); a.checks.forEach(function(c, i){ spans[i].textContent = c; });
-    var chips = s.querySelector('.chips');
-    a.chips.forEach(function(c){
-      var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-add'; b.textContent = c.replace(':','');
-      b.addEventListener('click', function(){ var t = $(a.id); t.value = (t.value && !/\n$/.test(t.value) ? t.value + '\n' : t.value) + '• ' + c + ' '; t.focus(); t.setSelectionRange(t.value.length, t.value.length); queueSave(); });
-      chips.appendChild(b);
-    });
-    host.appendChild(s);
+    a.el = s;
+    card.insertBefore(s, risksStep);
   });
-  // move area steps into card order (before risks)
-  var card = $('card'), risksStep = card.querySelector('[data-key="risks"]');
-  Array.prototype.slice.call(host.children).forEach(function(s){ card.insertBefore(s, risksStep); });
-  host.remove();
+  $('areaSteps').remove();
+  function curType(){ var r = document.querySelector('input[name="ptype"]:checked'); return r ? r.value : ''; }
+  function renderTypeBits(){
+    var t = curType();
+    AREAS.forEach(function(a){
+      a.el.querySelector('.tnote').textContent = (a.notes && a.notes[t]) || '';
+      var box = a.el.querySelector('.chips'); box.innerHTML = '';
+      ((a.chips && a.chips[t]) || a.chips.base).forEach(function(c){
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'chip-add'; b.textContent = c.replace(':','');
+        b.addEventListener('click', function(){ var x = $(a.id); x.value = (x.value && !/\n$/.test(x.value) ? x.value + '\n' : x.value) + '• ' + c + ' '; x.focus(); x.setSelectionRange(x.value.length, x.value.length); queueSave(); });
+        box.appendChild(b);
+      });
+    });
+    var lp = $('l-ptype'); if (lp && t) lp.value = t;
+  }
+  document.addEventListener('change', function(e){ if (e.target.name === 'ptype') renderTypeBits(); });
+  $('chkCount').textContent = NCHK;
+  $('chkNum').textContent = 'Step ' + (AREAS.length + 3);
+  $('resNum').textContent = 'Step ' + (AREAS.length + 4);
+  $('riskNum').textContent = 'Step ' + (AREAS.length + 2);
 
-  // Risks
   for (var k = 1; k <= 5; k++){
     var row = document.createElement('div'); row.className = 'risk';
     row.innerHTML = '<span class="i">' + k + '</span>' +
@@ -961,7 +1188,6 @@ if(menuBtn && mobileMenu){
       '<label class="sr" for="t' + k + '">Test for risk ' + k + '</label><textarea class="t2" id="t' + k + '" placeholder="Test next"></textarea>';
     $('risks').appendChild(row);
   }
-  // Checklist review (mirrors the area checkboxes)
   var cl = $('checklist'); n = 0;
   AREAS.forEach(function(a, gi){
     var d = document.createElement('div'); d.className = 'cgroup' + (a.crit ? ' crit' : '');
@@ -973,11 +1199,10 @@ if(menuBtn && mobileMenu){
     cl.appendChild(d);
   });
   function syncMirrors(){ Array.prototype.forEach.call(document.querySelectorAll('[data-mirror]'), function(m){ m.checked = $(m.getAttribute('data-mirror')).checked; }); }
-  document.addEventListener('change', function(e){ var m = e.target.getAttribute && e.target.getAttribute('data-mirror'); if (m){ $(m).checked = e.target.checked; } });
+  document.addEventListener('change', function(e){ var m = e.target.getAttribute && e.target.getAttribute('data-mirror'); if (m) $(m).checked = e.target.checked; });
 
-  // Steps & navigation
-  var steps = Array.prototype.slice.call(card.querySelectorAll('.step'));
-  var stepper = $('stepper'), cur = 0;
+  // ---------- Steps ----------
+  var steps = Array.prototype.slice.call(card.querySelectorAll('.step')), stepper = $('stepper'), cur = 0;
   steps.forEach(function(s, i){
     var b = document.createElement('button'); b.type = 'button'; b.className = 'sdot' + (s.getAttribute('data-key') === 'results' ? ' res' : '');
     b.innerHTML = '<span class="bar"></span><span class="t"><b>' + (i + 1) + '</b></span>';
@@ -993,12 +1218,13 @@ if(menuBtn && mobileMenu){
     $('prevBtn').disabled = $('prevArrow').disabled = cur === 0;
     $('nextArrow').disabled = last;
     $('nextBtn').style.visibility = last ? 'hidden' : 'visible';
-    $('nextBtn').textContent = cur === steps.length - 2 ? 'See my results →' : 'Next →';
+    $('nextBtn').textContent = cur === steps.length - 2 ? 'See my blueprint →' : 'Next →';
     $('pos').textContent = 'Step ' + (cur + 1) + ' of ' + steps.length;
-    if (steps[cur].getAttribute('data-key') === 'check') syncMirrors();
-    if (steps[cur].getAttribute('data-key') === 'results') analyse();
+    var key = steps[cur].getAttribute('data-key');
+    if (key === 'check') syncMirrors();
+    if (key === 'results') analyse();
     try { localStorage.setItem(KEY + '-step', String(cur)); } catch(e){}
-    if (focus){ var h = steps[cur].querySelector('h2'); if (h){ h.setAttribute('tabindex', '-1'); h.focus({preventScroll:true}); } try { (document.getElementById('uem').classList.contains('full') ? stepper : stepper).scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){} }
+    if (focus){ var h = steps[cur].querySelector('h2'); if (h){ h.setAttribute('tabindex', '-1'); h.focus({preventScroll:true}); } try { stepper.scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){} }
     allTextareas().forEach(autosize);
   }
   $('prevBtn').addEventListener('click', function(){ show(cur - 1, true); });
@@ -1006,19 +1232,28 @@ if(menuBtn && mobileMenu){
   $('nextBtn').addEventListener('click', function(){ show(cur + 1, true); });
   $('nextArrow').addEventListener('click', function(){ show(cur + 1, true); });
 
-  // Data
+  // ---------- Data ----------
   function autosize(el){ if (el.tagName === 'TEXTAREA' && el.offsetParent !== null){ var min = parseInt(getComputedStyle(el).minHeight) || 0; el.style.height = 'auto'; el.style.height = Math.max(min, el.scrollHeight + 2) + 'px'; } }
   function allTextareas(){ return Array.prototype.slice.call(document.querySelectorAll('textarea')); }
+  function radio(name){ var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? parseInt(r.value, 10) : null; }
+  function setRadio(name, v){ Array.prototype.forEach.call(document.querySelectorAll('input[name="' + name + '"]'), function(r){ r.checked = (v !== null && v !== undefined && parseInt(r.value, 10) === v); }); }
   function collect(){
     var d = {}; FIELDS.forEach(function(f){ d[f] = $(f).value; });
+    d.ptype = curType(); d.team = TEAM.filter(function(t){ return $('team-' + t).checked; });
+    d.ratings = {}; d.evidence = {};
+    AREAS.forEach(function(a){ d.ratings[a.id] = a.rq.map(function(r, qi){ return radio('rt-' + a.id + '-' + qi); }); d.evidence[a.id] = radio('ev-' + a.id); });
     d.risks = []; for (var k = 1; k <= 5; k++) d.risks.push({r:$('r'+k).value, i:$('i'+k).value, t:$('t'+k).value});
-    d.checks = []; for (var c = 1; c <= 24; c++) if ($('c'+c).checked) d.checks.push(c);
+    d.checks = []; for (var c = 1; c <= NCHK; c++) if ($('c'+c).checked) d.checks.push(c);
     return d;
   }
   function apply(d){
     FIELDS.forEach(function(f){ $(f).value = d[f] || ''; });
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="ptype"]'), function(r){ r.checked = r.value === d.ptype; });
+    TEAM.forEach(function(t){ $('team-' + t).checked = !!(d.team && d.team.indexOf(t) > -1); });
+    renderTypeBits();
+    AREAS.forEach(function(a){ var rr = (d.ratings && d.ratings[a.id]) || []; a.rq.forEach(function(r, qi){ setRadio('rt-' + a.id + '-' + qi, rr[qi]); }); setRadio('ev-' + a.id, d.evidence ? d.evidence[a.id] : null); });
     for (var k = 1; k <= 5; k++){ var r = (d.risks && d.risks[k-1]) || {}; $('r'+k).value = r.r || ''; $('i'+k).value = r.i || ''; $('t'+k).value = r.t || ''; }
-    for (var c = 1; c <= 24; c++) $('c'+c).checked = !!(d.checks && d.checks.indexOf(c) > -1);
+    for (var c = 1; c <= NCHK; c++) $('c'+c).checked = !!(d.checks && d.checks.indexOf(c) > -1);
     syncMirrors(); allTextareas().forEach(autosize);
   }
   var timer;
@@ -1028,14 +1263,19 @@ if(menuBtn && mobileMenu){
   document.addEventListener('change', function(){ queueSave(); });
 
   var EXAMPLE = {
-    product:'StrideAssist (fictional) — gait-training robot', setting:'Inpatient neuro-rehab ward', date:'Example', mappedby:'Servizions',
+    product:'StrideAssist (fictional) — gait-training robot', setting:'Inpatient neuro-rehab ward', stage:'Preparing a pilot', mappedby:'Servizions', iter:'1',
+    ptype:'rehab', team:['design','eng','clin'],
     users:'• Patients after stroke: fatigue, one-sided weakness, some with aphasia\n• Physiotherapists: run sessions in tight slots, set up and fit the device\n• Nurses: move patients to the gym, not trained on the device\n• Cleaners: disinfect between patients\n• Technicians: maintenance and faults\n• Relatives: watch sessions, ask questions',
-    spaces:'• Therapy gym shared with other activities at the same time\n• Ward corridor used for longer walks; beds and trolleys pass through\n• Doorways to patient rooms narrower than the device\n• No storage near the gym; charging in the corridor blocks the route\n• Afternoon sun causes screen glare',
+    needs:'• Patients want to walk without fear of falling — and without feeling watched\n• Motivation drops after week two when progress slows\n• Therapists need set-up to be fast so the session is therapy, not fitting\n• Relatives want to understand progress in plain words\n• Patients were shown a prototype once; no co-design session yet',
     workflow:'• Sessions cluster in the morning: everyone wants the device at once\n• Fitting the harness takes a large part of a short session\n• No therapy at weekends: device idle, battery drains\n• Between shifts, nobody owns the device\n• If a patient feels unwell mid-session, staff must release the harness fast',
+    spaces:'• Therapy gym shared with other activities at the same time\n• Ward corridor used for longer walks; beds and trolleys pass through\n• Doorways to patient rooms narrower than the device\n• No storage near the gym; charging in the corridor blocks the route\n• Afternoon sun causes screen glare',
     infra:'• Weak Wi-Fi in one corner of the gym: session data fails to upload\n• Hospital IT blocks cloud connections without a security review\n• Few power sockets in the gym, already in use\n• Spare harness sizes not stocked on the ward\n• No technician on site in the evening',
     critical:'• Harness fitting: wrong size or loose strap → fall risk\n• Emergency stop: must be reachable from both sides\n• Aphasia: patient can\'t report pain; therapist must watch for signs\n• Low battery: device stops mid-walk\n• Cleaning: disinfectant may damage sensors or screen',
     adoption:'• Only one physio is trained; others avoid the device\n• Set-up feels slower than manual therapy\n• Staff fear blame if a patient gets hurt\n• Training isn\'t repeated for new staff and rotations\n• No clinical champion once the pilot lead leaves',
+    org:'• Decision: head of therapy together with hospital procurement\n• Budget: innovation fund covers the pilot, nothing agreed after it\n• IT approval needed before any data leaves the ward\n• Benefit for patients: more walking practice; benefit for staff still unclear\n• Success measure not agreed yet',
     assumptions:'Is the corridor wide enough at shift change? Do night nurses ever move the device? Which disinfectant is used?',
+    ratings:{users:[2,2], needs:[1,1], workflow:[1,2], spaces:[1,2], infra:[1,2], critical:[2,1], adoption:[2,1], org:[1,2]},
+    evidence:{users:2, needs:1, workflow:1, spaces:2, infra:1, critical:2, adoption:1, org:0},
     risks:[
       {r:'Harness fitted wrongly or loosely', i:'High', t:'Formative test: several physios fit patients of different sizes'},
       {r:'Emergency release too slow', i:'High', t:'Simulated emergency on the ward, timed, with nurses'},
@@ -1043,12 +1283,14 @@ if(menuBtn && mobileMenu){
       {r:'Hospital Wi-Fi and IT block data', i:'Medium', t:'IT and network check with the site before the pilot contract'},
       {r:'Know-how stuck with one person', i:'Medium', t:'Train-the-trainer plan and a quick guide on the device'}
     ],
-    checks:[1,2,5,6,9,11,13,14,17,18,21,22]
+    checksBy:{users:[1,2], needs:[1,3], workflow:[1,2], spaces:[1,2], infra:[1,3], critical:[1,2], adoption:[1,2], org:[1]}
   };
+  EXAMPLE.checks = [];
+  AREAS.forEach(function(a, gi){ (EXAMPLE.checksBy[a.id] || []).forEach(function(k){ EXAMPLE.checks.push(gi * 4 + k); }); });
 
-  // Gate
+  // ---------- Gate ----------
   function hasAccess(){ try { return localStorage.getItem(ACCESS) === '1'; } catch(e){ return false; } }
-  function setLock(){ $('uem').classList.toggle('locked', !hasAccess()); ['printBtn','downloadBtn'].forEach(function(id){ $(id).classList.toggle('lockd', !hasAccess()); }); }
+  function setLock(){ uem.classList.toggle('locked', !hasAccess()); ['printBtn','downloadBtn'].forEach(function(id){ $(id).classList.toggle('lockd', !hasAccess()); }); }
   setLock();
   function requireAccess(){ if (hasAccess()) return true; show(steps.length - 1, true); setTimeout(function(){ var e = $('l-email'); if (e) e.focus({preventScroll:true}); }, 400); return false; }
   $('lockForm').addEventListener('submit', function(e){
@@ -1060,9 +1302,9 @@ if(menuBtn && mobileMenu){
       .then(function(){ b.disabled = false; b.style.opacity = ''; });
   });
 
-  // Toolbar
+  // ---------- Toolbar ----------
   $('exampleBtn').addEventListener('click', function(){
-    var cur0 = collect(), has = FIELDS.some(function(f){ return cur0[f]; });
+    var c0 = collect(), has = FIELDS.some(function(f){ return c0[f]; });
     if (has && !confirm('Replace your entries with the example?')) return;
     apply(EXAMPLE); save(); show(1, true);
   });
@@ -1070,31 +1312,31 @@ if(menuBtn && mobileMenu){
     if (!confirm('Clear all entries?')) return;
     apply({}); try { localStorage.removeItem(KEY); } catch(e){} $('saved').textContent = 'Cleared'; show(0, true);
   });
-  $('printBtn').addEventListener('click', function(){
-    if (!requireAccess()) return;
-    analyse(); window.print();
-  });
+  $('printBtn').addEventListener('click', function(){ if (!requireAccess()) return; analyse(); window.print(); });
   window.addEventListener('beforeprint', function(){ analyse(); steps.forEach(function(s){ s.classList.add('on'); }); setTimeout(function(){ allTextareas().forEach(autosize); }, 0); });
   window.addEventListener('afterprint', function(){ show(cur, false); });
   $('downloadBtn').addEventListener('click', function(){
     if (!requireAccess()) return;
     var d = collect(), L = [], A = analyse();
-    L.push('USE-ENVIRONMENT MAP — Servizions', '', 'Product: ' + d.product, 'Setting: ' + d.setting, 'Date: ' + d.date, 'Mapped by: ' + d.mappedby, '');
-    AREAS.forEach(function(a, i){ L.push('0' + (i+1) + ' ' + a.name.toUpperCase(), d[a.id] || '-', ''); });
+    L.push('USE-ENVIRONMENT BLUEPRINT — Servizions', '', 'Type: ' + (TYPES[d.ptype] || '-'), 'Product: ' + d.product, 'Setting: ' + d.setting, 'Stage: ' + d.stage, 'Mapped by: ' + d.mappedby, '');
+    L.push.apply(L, ['Blueprint readiness: ' + A.score + '/100 (' + A.level + ')', 'Environment complexity: ' + A.cx + ' — position: ' + A.quad, 'Human-centred design: ' + A.hcd + '/12', '', 'HUMAN-CENTRED DESIGN CHECK (ISO 9241-210 principles)'].concat(A.hcdRows, ['', A.summary, '']));
+    AREAS.forEach(function(a, i){
+      var p = A.profile[i];
+      L.push('0' + (i+1) + ' ' + a.name.toUpperCase() + ' — ' + p.level + ', evidence: ' + p.ev, 'What you found:', d[a.id] || '-', 'What this means: ' + (p.lvlN === null ? 'Not rated.' : INS[a.id][p.lvlN]) + (p.evN !== null ? ' ' + EVTXT[p.evN] : ''), 'Next steps: ' + (p.lvlN === null ? 'Rate this area.' : REC[a.id][p.lvlN].join(' ')), '');
+    });
     L.push('TOP 5 RISKS AND WHAT TO TEST NEXT');
     d.risks.forEach(function(r, i){ if (r.r || r.t) L.push((i+1) + '. ' + r.r + (r.i ? ' [' + r.i + ']' : '') + ' — Test: ' + r.t); });
-    L.push('', 'Assumptions to check: ' + (d.assumptions || '-'), '', 'Site checklist: ' + d.checks.length + ' of 24 done', '');
-    L.push('ANALYSIS', 'Readiness score: ' + A.score + '/100 (' + A.level + ')', A.summary, '', 'Recommended next steps:');
+    L.push('', 'Assumptions to check: ' + (d.assumptions || '-'), '', 'Site checklist: ' + d.checks.length + ' of ' + NCHK + ' done', '', 'ACTION PLAN');
     A.next.forEach(function(x, i){ L.push((i+1) + '. ' + x.replace(/<[^>]+>/g, '')); });
-    L.push('', 'servizions.com');
+    L.push('', 'Method: human-centred design principles (ISO 9241-210), SEIPS work-system model (Holden et al. 2013) and NASSS framework (Greenhalgh et al. 2017). Scoring is a Servizions heuristic.', 'servizions.com');
     var blob = new Blob([L.join('\n')], {type:'text/plain'});
-    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'use-environment-map.txt';
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'use-environment-blueprint.txt';
     document.body.appendChild(a); a.click(); a.remove();
   });
 
-  // Analysis
+  // ---------- Analysis ----------
   var THEMES = [
-    {n:'Connectivity and IT', k:['wi-fi','wifi','network','cloud','upload','server','hospital it','it department','it team','security','data']},
+    {n:'Connectivity and IT', k:['wi-fi','wifi','network','cloud','upload','server','hospital it','it approval','it department','security','data']},
     {n:'Power and charging', k:['battery','charg','socket','power']},
     {n:'Space and access', k:['door','corridor','lift','elevator','storage','narrow','space','room','floor','turning']},
     {n:'Hygiene and cleaning', k:['clean','disinfect','hygien','infection']},
@@ -1102,85 +1344,360 @@ if(menuBtn && mobileMenu){
     {n:'Training and ownership', k:['train','owner','owns','champion','rotation','know-how','knowledge']},
     {n:'Safety and emergencies', k:['emergency','fall','stop','harm','pain','injur','release','unwell']},
     {n:'Trust and acceptance', k:['fear','trust','blame','avoid','worry','worries','reluct','resist']},
+    {n:'Budget and decision-making', k:['budget','procure','decision','decide','fund','cost','pays','reimburs']},
     {n:'Patient abilities', k:['fatigue','weakness','aphasia','cognitive','confus','hearing','vision','language','mobility']}
   ];
-  function entries(txt){ return (txt || '').split(/\n|;|•/).map(function(s){ return s.trim(); }).filter(function(s){ return s.length > 2 && !/^[^:]{1,30}:$/.test(s); }); }
+  function entries(txt){ return (txt || '').split(/\n|•/).map(function(s){ return s.trim(); }).filter(function(s){ return s.length > 2 && !/^[^:]{1,30}:$/.test(s); }); }
   function countIn(txt, words){ var t = ' ' + (txt || '').toLowerCase() + ' ', c = 0; words.forEach(function(w){ var i = 0; while ((i = t.indexOf(w, i)) > -1){ c++; i += w.length; } }); return c; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function analyse(){
-    var d = collect(), covPts = 0, covRows = '', weak = [], missing = [];
-    AREAS.forEach(function(a){
-      var n = entries(d[a.id]).length, ticks = 0;
-      for (var c = a.g*4+1; c <= a.g*4+4; c++) if (d.checks.indexOf(c) > -1) ticks++;
-      var pct = Math.min(1, n / 4); covPts += pct;
-      var st = n >= 3 ? 'good' : (n >= 1 ? 'thin' : 'missing');
-      if (st === 'thin') weak.push(a.name); if (st === 'missing') missing.push(a.name);
-      covRows += '<div class="cov"><span>' + a.name + '</span><span class="barx"><i style="width:' + Math.round(pct*100) + '%"></i></span><span class="muted">' + n + ' · ' + ticks + '/4</span><span class="chip ' + st + '">' + (st === 'good' ? 'Good' : st === 'thin' ? 'Thin' : 'Missing') + '</span></div>';
+  function trim(x, n){ x = String(x); return x.length > n ? x.slice(0, n - 1) + '…' : x; }
+
+
+  // ---------- Infographic ----------
+  var C = {met:'#1F63C7', part:'#9EC5F7', no:'#2B1673', na:'#D3D6E0', ink:'#141B3A', ink2:'#33395A', mute:'#5B6070', rule:'#E1E3E8', soft:'#F1F3F8', tint:'#E9F1FC', dot:'#5A2BD6'};
+  var LVC = ['#9EC5F7', '#1F63C7', '#2B1673'];
+  function xe(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function pol(cx, cy, r, a){ var t = a * Math.PI / 180; return [cx + r * Math.sin(t), cy - r * Math.cos(t)]; }
+  function arcPath(cx, cy, r, a0, a1){ var p0 = pol(cx, cy, r, a0), p1 = pol(cx, cy, r, a1); return 'M' + p0[0].toFixed(1) + ' ' + p0[1].toFixed(1) + ' A' + r + ' ' + r + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1); }
+  function seg(cx, cy, r0, r1, a0, a1){ var a = pol(cx, cy, r1, a0), b = pol(cx, cy, r1, a1), c = pol(cx, cy, r0, a1), e = pol(cx, cy, r0, a0), L = a1 - a0 > 180 ? 1 : 0;
+    return 'M' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' A' + r1 + ' ' + r1 + ' 0 ' + L + ' 1 ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1) + ' L' + c[0].toFixed(1) + ' ' + c[1].toFixed(1) + ' A' + r0 + ' ' + r0 + ' 0 ' + L + ' 0 ' + e[0].toFixed(1) + ' ' + e[1].toFixed(1) + ' Z'; }
+  function wrap(t, n){ var w = t.split(' '), out = [], line = ''; w.forEach(function(x){ if ((line + ' ' + x).trim().length > n && line){ out.push(line); line = x; } else line = (line + ' ' + x).trim(); }); if (line) out.push(line); return out; }
+  function txt(x, y, t, o){ o = o || {}; return '<text x="' + x + '" y="' + y + '" font-size="' + (o.s || 14) + '" font-weight="' + (o.w || 400) + '" fill="' + (o.c || C.ink) + '"' + (o.a ? ' text-anchor="' + o.a + '"' : '') + (o.ls ? ' letter-spacing="' + o.ls + '"' : '') + '>' + xe(t) + '</text>'; }
+
+  function drawInfo(I){
+    var W = 1200, H = 730, o = [];
+    o.push('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" font-family="Helvetica, Arial, sans-serif">');
+    o.push('<rect width="' + W + '" height="' + H + '" fill="#FFFFFF"/>');
+    // header
+    o.push(txt(40, 44, 'USE-ENVIRONMENT BLUEPRINT', {s:13, c:C.mute, ls:1.5, w:700}));
+    o.push(txt(40, 80, I.title, {s:28, w:700}));
+    o.push(txt(40, 106, I.meta, {s:15, c:C.mute}));
+    o.push('<line x1="40" y1="124" x2="1160" y2="124" stroke="' + C.rule + '"/>');
+
+    // panel 1: readiness ring
+    o.push(txt(40, 156, 'Blueprint readiness', {s:15, w:700}));
+    var rcx = 170, rcy = 280, rr = 92;
+    o.push('<circle cx="' + rcx + '" cy="' + rcy + '" r="' + rr + '" fill="none" stroke="' + C.soft + '" stroke-width="22"/>');
+    if (I.score > 0) o.push('<path d="' + arcPath(rcx, rcy, rr, 0, Math.min(359.9, I.score * 3.6)) + '" fill="none" stroke="' + C.met + '" stroke-width="22" stroke-linecap="round"><title>Blueprint readiness: ' + I.score + ' of 100</title></path>');
+    o.push(txt(rcx, rcy + 14, String(I.score), {s:54, w:700, a:'middle'}));
+    o.push(txt(rcx, rcy + 40, 'of 100', {s:14, c:C.mute, a:'middle'}));
+    o.push(txt(rcx, rcy + 132, I.level, {s:16, w:700, a:'middle'}));
+
+    // panel 2: complexity + position
+    var qx = 380, qy = 176, qw = 340, qh = 200, gp = 4;
+    o.push(txt(qx, 156, 'Environment complexity: ' + I.cx, {s:15, w:700}));
+    var Q = [['tl', 'Ready to test', 0, 0], ['tr', 'Test step by step', 1, 0], ['bl', 'Do more fieldwork', 0, 1], ['br', 'Research before you pilot', 1, 1]];
+    Q.forEach(function(q){
+      var x = qx + q[2] * (qw / 2 + gp / 2), y = qy + q[3] * (qh / 2 + gp / 2), on = q[0] === I.qk;
+      o.push('<rect x="' + x + '" y="' + y + '" width="' + (qw / 2 - gp / 2) + '" height="' + (qh / 2 - gp / 2) + '" rx="8" fill="' + (on ? C.tint : C.soft) + '"' + (on ? ' stroke="' + C.met + '" stroke-width="1.5"' : '') + '/>');
+      o.push(txt(x + 12, y + 24, q[1], {s:13, w:on ? 700 : 400, c:on ? C.ink : C.mute}));
     });
-    $('aCoverage').innerHTML = covRows + '<div class="muted" style="font-size:11.5px;margin-top:6px">Entries · checklist items ticked</div>';
-    var risks = d.risks.filter(function(r){ return r.r.trim(); }), hi = 0, me = 0, lo = 0, untested = [], unrated = [];
-    risks.forEach(function(r){ if (r.i === 'High') hi++; else if (r.i === 'Medium') me++; else if (r.i === 'Low') lo++; else unrated.push(r.r.trim()); if (!r.t.trim()) untested.push(r.r.trim()); });
-    $('aHigh').textContent = hi; $('aMed').textContent = me; $('aLow').textContent = lo;
-    var flags = [];
-    if (!risks.length) flags.push('No top risks named yet.');
-    if (risks.length && risks.length < 5) flags.push(risks.length + ' of 5 risk slots used.');
-    untested.forEach(function(r){ flags.push('No test planned: “' + esc(r) + '”'); });
-    unrated.forEach(function(r){ flags.push('Impact not rated: “' + esc(r) + '”'); });
-    if (risks.length && !untested.length && !unrated.length) flags.push({ok:true, t:'Every named risk has an impact rating and a test.'});
-    $('aFlags').innerHTML = flags.map(function(f){ return typeof f === 'string' ? '<li>' + f + '</li>' : '<li class="ok">' + f.t + '</li>'; }).join('');
+    if (I.cxAvg !== null){
+      var dx = qx + 10 + (I.cxAvg / 2) * (qw - 20), dy = qy + qh - 10 - Math.min(I.score, 100) / 100 * (qh - 20);
+      o.push('<circle cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="10" fill="' + C.dot + '" stroke="#FFFFFF" stroke-width="3"><title>Your position: ' + xe(I.qname) + '</title></circle>');
+    }
+    o.push(txt(qx, qy + qh + 22, 'Lower complexity', {s:12, c:C.mute}));
+    o.push(txt(qx + qw, qy + qh + 22, 'Higher complexity', {s:12, c:C.mute, a:'end'}));
+    o.push('<text x="' + (qx - 10) + '" y="' + (qy + qh / 2) + '" font-size="12" fill="' + C.mute + '" text-anchor="middle" transform="rotate(-90 ' + (qx - 10) + ' ' + (qy + qh / 2) + ')">Readiness →</text>');
+
+    // panel 3: HCD wheel
+    var hx = 860, hy = 280, r0 = 64, r1 = 100;
+    o.push(txt(770, 156, 'Human-centred design', {s:15, w:700}));
+    var SHORT = ['Understand context', 'Involve users', 'Evaluate with users', 'Iterate', 'Whole experience', 'Multidisciplinary team'];
+    var SL = {met:'Met', part:'Partly', no:'Not yet', na:'Not rated'};
+    I.hcd.forEach(function(stt, i){
+      var a0 = i * 60 + 1.5, a1 = (i + 1) * 60 - 1.5;
+      o.push('<path d="' + seg(hx, hy, r0, r1, a0, a1) + '" fill="' + C[stt] + '"><title>' + (i + 1) + '. ' + SHORT[i] + ': ' + SL[stt] + '</title></path>');
+      var m = pol(hx, hy, (r0 + r1) / 2, (a0 + a1) / 2);
+      o.push(txt(m[0].toFixed(1), (m[1] + 5).toFixed(1), String(i + 1), {s:14, w:700, c:(stt === 'na' || stt === 'part') ? C.ink : '#FFFFFF', a:'middle'}));
+    });
+    o.push(txt(hx, hy + 6, I.hcdPts + '/12', {s:26, w:700, a:'middle'}));
+    o.push(txt(hx, hy + 26, 'principles score', {s:11, c:C.mute, a:'middle'}));
+    SHORT.forEach(function(n, i){
+      var y = 194 + i * 34, stt = I.hcd[i];
+      o.push('<rect x="984" y="' + (y - 11) + '" width="12" height="12" rx="3" fill="' + C[stt] + '"/>');
+      o.push(txt(1004, y, (i + 1) + '  ' + n, {s:13}));
+      o.push(txt(1004, y + 15, SL[stt], {s:11.5, c:C.mute}));
+    });
+
+    // row 2: eight areas
+    o.push('<line x1="40" y1="430" x2="1160" y2="430" stroke="' + C.rule + '"/>');
+    o.push('<rect x="40" y="447" width="4" height="20" rx="2" fill="#5A2BD6"/>'); o.push(txt(52, 462, 'Eight areas — complexity (bars) and strength of evidence (purple dots)', {s:15, w:700}));
+    var n = I.areas.length, gap = 12, tw = (1120 - gap * (n - 1)) / n, ty = 480, th = 196;
+    var EVS = ['Assumed', 'Told', 'Observed'];
+    I.areas.forEach(function(a, i){
+      var x = 40 + i * (tw + gap);
+      o.push('<g><title>' + xe(a.name) + ': ' + (a.lvl === null ? 'not rated' : LEVELS[a.lvl]) + ', evidence ' + (a.ev === null ? 'not rated' : EVID[a.ev].toLowerCase()) + '</title>');
+      o.push('<rect x="' + x.toFixed(1) + '" y="' + ty + '" width="' + tw.toFixed(1) + '" height="' + th + '" rx="10" fill="#FFFFFF" stroke="' + (a.crit ? C.dot : C.rule) + '" stroke-width="' + (a.crit ? 1.5 : 1) + '"/>');
+      wrap(a.name, 14).slice(0, 2).forEach(function(l, li){ o.push(txt((x + 12).toFixed(1), ty + 26 + li * 17, l, {s:13, w:700})); });
+      // signal bars
+      for (var b = 0; b < 3; b++){
+        var bh = 16 + b * 12, bx = x + 12 + b * 18, by = ty + 110 - bh, fill = (a.lvl !== null && b <= a.lvl) ? LVC[a.lvl] : C.soft;
+        o.push('<rect x="' + bx.toFixed(1) + '" y="' + by + '" width="12" height="' + bh + '" rx="3" fill="' + fill + '"/>');
+      }
+      o.push(txt((x + 12).toFixed(1), ty + 132, a.lvl === null ? 'Not rated' : LEVELS[a.lvl], {s:12.5, w:700, c:C.ink2}));
+      o.push('<line x1="' + (x + 12).toFixed(1) + '" y1="' + (ty + 146) + '" x2="' + (x + tw - 12).toFixed(1) + '" y2="' + (ty + 146) + '" stroke="' + C.rule + '"/>');
+      for (var q = 0; q < 3; q++){ var on2 = a.ev !== null && q <= a.ev; o.push('<circle cx="' + (x + 18 + q * 16).toFixed(1) + '" cy="' + (ty + 163) + '" r="5.5" fill="' + (on2 ? '#5A2BD6' : '#FFFFFF') + '" stroke="#5A2BD6" stroke-width="1.5"/>'); }
+      o.push(txt((x + 12).toFixed(1), ty + 182, 'Evidence: ' + (a.ev === null ? '–' : EVS[a.ev]), {s:11.5, c:C.mute}));
+      o.push('</g>');
+    });
+    // legend + footer
+    var ly = 700;
+    [['Simple', LVC[0]], ['Complicated', LVC[1]], ['Complex', LVC[2]]].forEach(function(L, i){ var x = 40 + i * 130; o.push('<rect x="' + x + '" y="' + (ly - 11) + '" width="12" height="12" rx="3" fill="' + L[1] + '"/>'); o.push(txt(x + 18, ly, L[0], {s:12, c:C.ink2})); });
+    o.push(txt(1160, ly, 'servizions.com · Human-centred design (ISO 9241-210 principles), SEIPS and NASSS', {s:12, c:C.mute, a:'end'}));
+    o.push('</svg>');
+    $('infoSvg').innerHTML = o.join('');
+  }
+  $('infoPng').addEventListener('click', function(){
+    var svg = $('infoSvg').querySelector('svg'); if (!svg) return;
+    var data = new XMLSerializer().serializeToString(svg);
+    var img = new Image(), url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+    img.onload = function(){
+      var cv = document.createElement('canvas'); cv.width = 2400; cv.height = 1460;
+      var cx = cv.getContext('2d'); cx.drawImage(img, 0, 0, 2400, 1460);
+      cv.toBlob(function(b){ var a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'use-environment-blueprint.png'; document.body.appendChild(a); a.click(); a.remove(); }, 'image/png');
+    };
+    img.src = url;
+  });
+
+
+  var INS = {
+    users:['A small, consistent user group. You can design closely around their skills and limits — but check that no secondary group (cleaners, porters, relatives) has been overlooked.',
+      'Several groups with some differences in ability. Design for the most constrained user in each critical task, and make roles clear: who sets up, who operates, who monitors.',
+      'Many groups with very varied abilities and needs — a major source of use errors and non-adoption. Prioritise the groups involved in critical tasks and design for the widest range of ability, not the average user.'],
+    needs:['Needs are well understood and users have shaped the product. Keep this up: revisit needs whenever the product moves into a new setting.',
+      'Needs are partly understood or users have mainly been consulted. The risk is a product that works but is not wanted: confirm what each group values and fears before the design is fixed.',
+      'Needs are not yet understood and users have not shaped the product — the strongest early warning sign for non-adoption. Observe and talk to users before investing further in features.'],
+    workflow:['The product fits today’s routine and the work is predictable. Integration risk is low — protect it by keeping set-up and handover simple.',
+      'The product changes routines or the work is only partly predictable. Expect friction at peaks, handovers and nights. Design for the busiest moment, not the quiet one.',
+      'A new routine is needed in unpredictable work, so workflow fit is likely to decide adoption. Map the real workflow step by step and shape the product around it — not the other way round.'],
+    spaces:['One known space with few constraints. Physical fit is unlikely to block you — confirm storage, charging and cleaning.',
+      'Some variety or constraints in space, access or hygiene. Measure everywhere the product goes, including corridors, lifts and storage, with people and equipment in place.',
+      'Many or changing spaces with strong constraints — the environment itself may block use. Design for the most constrained space and test in it early.'],
+    infra:['The product is largely standalone with clear support. Keep dependencies low as features grow.',
+      'The product depends on one or two systems, or support is only partly clear. Check connectivity, IT rules and out-of-hours support before the pilot is agreed.',
+      'Several system dependencies and no clear support — integration and support are likely to stall the pilot. Agree responsibilities with IT and the service team early.'],
+    critical:['Few critical tasks and limited consequences. Still list the tasks that must be right every time and check them with users.',
+      'Some critical tasks with moderate consequences. Focus user testing on these tasks and on realistic interruptions.',
+      'Many critical tasks or possible harm. These moments need the most careful design and testing: name each critical task, the possible use errors, and how the design prevents or catches them.'],
+    adoption:['The product saves work and staff are positive — a strong basis. Find a champion who can carry this into the pilot.',
+      'Workload or attitudes are mixed. Adoption will depend on a visible benefit for staff, good training and a champion.',
+      'The product adds work or staff are sceptical, so people may stop using it after the pilot. Reduce effort, make the benefit visible to staff, and address fears openly.'],
+    org:['Decision-making, ownership and value are clear. Keep the success measure visible to buyers and users.',
+      'Ownership or value is only partly clear, so a good pilot can still end without a purchase. Clarify who decides, who pays and how success will be measured.',
+      'Ownership and value are unclear — a common reason why successful pilots never scale. Agree the decision maker, the budget after the pilot and the success measures before you start.']
+  };
+  var REC = {
+    users:[['Confirm the user list with a night-shift visit.','Write one short profile per group: goals, limits, environment.'],
+      ['Map who does what with the product, step by step, per group.','Test the critical tasks with the least experienced group.'],
+      ['Write a profile for each group, including limits and stress points.','Run formative tests with at least the two most different groups.','Design training and interfaces per role, not one for all.']],
+    needs:[['Re-check needs in each new setting.','Keep a log of what users told you and what you changed.'],
+      ['Run a co-design session on the riskiest tasks.','Ask each group what would make them feel unsafe, embarrassed or ignored.'],
+      ['Interview and observe at least one person from every user group.','Show a rough prototype early and record reactions.','Pause feature work until the core needs are clear.']],
+    workflow:[['Time set-up and handover once more on a busy day.'],
+      ['Shadow a peak period and a night shift.','Define who owns the product at each handover.'],
+      ['Draw the current and the future workflow together with staff.','Introduce one workflow change at a time.','Plan the emergency procedure step by step.']],
+    spaces:[['Confirm storage, charging and the cleaning routine.'],
+      ['Measure doorways, corridors and working space with equipment in place.','Check light, noise and hygiene at different times of day.'],
+      ['List every space the product enters and rank them by constraint.','Test in the most constrained space first.','Agree with cleaning and infection-control staff how the product is cleaned.']],
+    infra:[['Write down who supports the product, day and night.'],
+      ['Test connectivity exactly where the product is used.','Ask IT what approval involves and how long it takes.'],
+      ['Map every system the product touches and who owns it.','Agree a support and escalation plan with IT and the service team.','Plan an offline or fallback mode.']],
+    critical:[['List the tasks that must be right every time.'],
+      ['Test the critical tasks with real users under realistic interruptions.','Check what happens when the product is paused or restarted.'],
+      ['List every critical task and its possible use errors.','Run formative tests on each critical task with representative users.','Design a safe response for “it stops mid-task”.']],
+    adoption:[['Name a clinical champion.','Plan refresher training for new staff.'],
+      ['Ask each group what they gain and what it costs them.','Name a champion and plan training for rotations.'],
+      ['Remove one source of extra work before the pilot.','Discuss fears — blame, replacement, safety — openly with staff.','Measure workload before and during the pilot.']],
+    org:[['Share early results with the decision maker.'],
+      ['Identify the decision maker and the budget owner.','Agree one or two success measures.'],
+      ['Map who decides, who pays, who owns and who gains.','Agree budget and success measures for after the pilot — before it starts.','Clarify IT and procurement steps and timelines.']]
+  };
+  var EVTXT = ['Mostly assumed — treat this reading as a hypothesis and observe on site before you rely on it.',
+    'Based on what staff or users told you — confirm the most important points by observing on site.',
+    'Based on direct observation — a strong basis for decisions.'];
+
+  function analyse(){
+    var d = collect();
+    var prod = d.product.trim(), set = d.setting.trim();
+    $('rTitle').textContent = prod || 'Your product';
+    $('rMeta').textContent = [TYPES[d.ptype] || '', set, d.stage, d.mappedby.trim() ? 'Mapped by ' + d.mappedby.trim() : ''].filter(Boolean).join(' · ');
+
+    // per area
+    var covPts = 0, evSum = 0, evN = 0, weak = [], missing = [], tiles = '', prof = '', profile = [], cxVals = [], unknownComplex = [];
+    AREAS.forEach(function(a){
+      var ents = entries(d[a.id]), nE = ents.length, ticks = 0;
+      for (var c = a.g*4+1; c <= a.g*4+4; c++) if (d.checks.indexOf(c) > -1) ticks++;
+      covPts += Math.min(1, nE / 4);
+      var st = nE >= 3 ? 'good' : (nE >= 1 ? 'thin' : 'missing');
+      if (st === 'thin') weak.push(a.name); if (st === 'missing') missing.push(a.name);
+      var rr = d.ratings[a.id].filter(function(v){ return v !== null; });
+      var cxv = rr.length ? rr.reduce(function(x, y){ return x + y; }, 0) / rr.length : null;
+      var lvl = cxv === null ? null : (cxv < 0.75 ? 0 : cxv < 1.75 ? 1 : 2);
+      if (cxv !== null) cxVals.push(cxv);
+      var ev = d.evidence[a.id];
+      if (ev !== null){ evSum += ev; evN++; }
+      if (lvl === 2 && (ev === null || ev === 0)) unknownComplex.push(a.name);
+      profile.push({name:a.name, level: lvl === null ? 'Not rated' : LEVELS[lvl], ev: ev === null ? 'Not rated' : EVID[ev], lvlN:lvl, evN:ev});
+      prof += '<div class="prow"><span class="nm">' + a.name + '<small>' + a.lens + '</small></span><span class="lv">' +
+        LEVELS.map(function(L, li){ return '<span class="s' + li + (lvl === li ? ' on' : '') + '">' + L + '</span>'; }).join('') + '</span>' +
+        '<span class="evb ' + (ev === null ? 'en' : 'e' + ev) + '">' + (ev === null ? 'Evidence not rated' : EVID[ev]) + '</span></div>';
+      var ansHtml = a.rq.map(function(r, qi){ var v = d.ratings[a.id][qi]; return '<div class="rt"><span>' + esc(r[0]) + '</span><b>' + (v === null ? '–' : esc(r[1][v])) + '</b></div>'; }).join('');
+      var ckHtml = a.checks.map(function(c, ci2){ var done = d.checks.indexOf(a.g * 4 + ci2 + 1) > -1; return '<li><span class="' + (done ? 'y' : 'o') + '">' + (done ? '✓' : '○') + '</span><span>' + esc(c) + '</span></li>'; }).join('');
+      var tnote = (a.notes && a.notes[d.ptype]) || '';
+      tiles += '<article class="ad">' +
+        '<div class="ad-h"><div><div class="t"><span class="n">AREA 0' + (a.g + 1) + '</span><b>' + a.name + '</b></div><small>' + a.lens + '</small></div>' +
+        '<div class="tags"><span class="tag">' + (lvl === null ? 'Not rated' : LEVELS[lvl]) + '</span><span class="tag">' + (ev === null ? 'Evidence not rated' : EVID[ev]) + '</span><span class="tag">' + nE + ' observation' + (nE === 1 ? '' : 's') + ' · ' + ticks + '/4 checks</span></div></div>' +
+        '<div class="ad-b"><div class="ad-c"><h6>What you found</h6>' +
+          (nE ? '<ul>' + ents.map(function(e){ return '<li>' + esc(e) + '</li>'; }).join('') + '</ul>' : '<p class="empty">Nothing mapped yet — this area is a blind spot.</p>') +
+          '<h6>Your ratings</h6>' + ansHtml +
+          '<h6>Site checks</h6><ul class="ck">' + ckHtml + '</ul></div>' +
+        '<div class="ad-c"><h6>What this means</h6><p class="mean">' + (lvl === null ? 'Not rated yet — rate this area to get a reading.' : INS[a.id][lvl]) + '</p>' +
+          (ev !== null ? '<p class="evs">' + EVTXT[ev] + '</p>' : '') +
+          (tnote ? '<p class="tn">' + esc(tnote) + '</p>' : '') +
+          '<h6>Recommended next steps</h6><ol>' + (lvl === null ? '<li>Rate the two questions for this area.</li>' : REC[a.id][lvl].map(function(r){ return '<li>' + esc(r) + '</li>'; }).join('')) +
+          (ev === 0 ? '<li>Observe this area on site to replace assumptions with evidence.</li>' : '') +
+          (nE < 3 ? '<li>Add at least ' + (3 - nE) + ' more observed fact' + (3 - nE === 1 ? '' : 's') + '.</li>' : '') + '</ol></div></div>' +
+        '</article>';
+    });
+    $('rProfile').innerHTML = prof; $('rAreas').innerHTML = tiles;
+
+    // complexity
+    var complexN = profile.filter(function(p){ return p.lvlN === 2; }).length;
+    var cxAvg = cxVals.length ? cxVals.reduce(function(x, y){ return x + y; }, 0) / cxVals.length : null;
+    var cx = cxAvg === null ? 'Not rated' : (complexN >= 3 ? 'High' : (complexN === 0 && cxAvg < 0.8 ? 'Low' : 'Moderate'));
+    $('cxLevel').textContent = cx; $('cxLevel').className = 'big ' + cx.replace(' ', '');
+
+    // risks
+    var risks = d.risks.filter(function(r){ return r.r.trim(); }), hi = 0, untested = [];
+    var order = {High:0, Medium:1, Low:2, '':3};
+    var sorted = risks.slice().sort(function(x, y){ return order[x.i] - order[y.i]; });
+    sorted.forEach(function(r){ if (r.i === 'High') hi++; if (!r.t.trim()) untested.push(r.r.trim()); });
+    $('rRisks').innerHTML = sorted.length ? sorted.map(function(r){
+      return '<div class="rk"><span class="imp ' + (r.i || 'None') + '">' + (r.i || 'Not rated') + '</span><span>' + esc(r.r.trim()) +
+        (r.t.trim() ? '<span class="t">Test: ' + esc(r.t.trim()) + '</span>' : '<span class="t miss">No test planned yet</span>') + '</span></div>';
+    }).join('') : '<div class="bl">No top risks named yet. Go back and pick the five that matter most.</div>';
+
+    // themes, blind spots
     var mapText = AREAS.map(function(a){ return d[a.id]; }).join('\n') + '\n' + d.assumptions;
     var riskText = d.risks.map(function(r){ return r.r + ' ' + r.t; }).join('\n');
-    var found = THEMES.map(function(t){ return {n:t.n, m:countIn(mapText, t.k), r:countIn(riskText, t.k), areas:AREAS.filter(function(a){ return countIn(d[a.id], t.k) > 0; }).map(function(a){ return a.name; })}; })
-      .filter(function(t){ return t.m > 0; }).sort(function(a, b){ return b.m - a.m; });
+    var found = THEMES.map(function(t){ return {n:t.n, m:countIn(mapText, t.k), r:countIn(riskText, t.k)}; }).filter(function(t){ return t.m > 0; }).sort(function(a, b){ return b.m - a.m; });
     var blind = found.filter(function(t){ return t.m >= 2 && t.r === 0; }).slice(0, 2);
-    $('aThemes').innerHTML = found.length ? found.slice(0, 6).map(function(t){
-      var tag = t.r > 0 ? '<span class="chip good">In top risks</span>' : (t.m >= 2 ? '<span class="chip missing">Not prioritised</span>' : '<span class="chip thin">Mentioned</span>');
-      return '<div class="theme"><span>' + t.n + '<small>' + t.m + ' mention' + (t.m === 1 ? '' : 's') + ' · ' + t.areas.join(', ') + '</small></span>' + tag + '</div>';
-    }).join('') : '<div class="muted" style="font-size:13.5px">Themes appear when you add entries.</div>';
-    var checks = d.checks.length, tested = risks.filter(function(r){ return r.t.trim(); }).length;
-    var score = Math.round(covPts / 6 * 40 + checks / 24 * 25 + Math.min(tested, 5) / 5 * 25 + (entries(d.assumptions).length ? 10 : 0));
-    var level = score === 0 ? 'Not started' : score < 35 ? 'Early picture' : score < 65 ? 'Developing' : score < 85 ? 'Ready to test' : 'Pilot-ready picture';
-    $('aScore').textContent = score; $('aLevel').textContent = level; $('aMeter').style.width = score + '%';
-    var s = [], prod = d.product.trim() ? esc(d.product.trim()) : 'your product', set = d.setting.trim() ? ' in <b>' + esc(d.setting.trim()) + '</b>' : '';
-    if (score === 0) $('aSummary').innerHTML = 'Start filling in the map — your summary appears here.';
+    var open = [], ci = 0;
+    AREAS.forEach(function(a){ a.checks.forEach(function(c){ ci++; if (d.checks.indexOf(ci) < 0) open.push({a:a.name, c:c}); }); });
+    var bl = [];
+    unknownComplex.forEach(function(nm){ bl.push('<div class="bl hot"><b>' + nm + '</b> is rated complex but rests mainly on assumptions.<small>High uncertainty: observe this on site before you rely on it.</small></div>'); });
+    blind.forEach(function(t){ bl.push('<div class="bl"><b>' + t.n + '</b> comes up ' + t.m + ' times in your blueprint but is not in your top risks.<small>Check whether it belongs in your top 5.</small></div>'); });
+    missing.concat(weak).slice(0, 2).forEach(function(nm){ bl.push('<div class="bl"><b>' + nm + '</b> is ' + (missing.indexOf(nm) > -1 ? 'still empty' : 'thinly mapped') + '.<small>Aim for at least three observed facts.</small></div>'); });
+    var unrated = profile.filter(function(p){ return p.lvlN === null; }).map(function(p){ return p.name; });
+    if (unrated.length) bl.push('<div class="bl"><b>' + unrated.length + ' area' + (unrated.length === 1 ? '' : 's') + ' not rated</b><small>' + unrated.join(', ') + '</small></div>');
+    if (open.length) bl.push('<div class="bl"><b>' + open.length + ' site checks still open</b>, for example:<small>' + open.slice(0, 3).map(function(o){ return esc(o.c) + ' (' + o.a + ')'; }).join('<br>') + '</small></div>');
+    $('rBlind').innerHTML = bl.length ? bl.join('') : '<div class="bl">No obvious blind spots. Keep re-mapping after each pilot week.</div>';
+
+    var tested = risks.filter(function(r){ return r.t.trim(); }).length;
+    // human-centred design check (ISO 9241-210 principles)
+    var P = function(id){ return profile[AREAS.map(function(a){ return a.id; }).indexOf(id)]; };
+    var cnt = function(id){ return entries(d[id]).length; };
+    var st = function(x){ return x === 2 ? 'met' : x === 1 ? 'part' : x === 0 ? 'no' : 'na'; };
+    var lab = {met:'Met', part:'Partly', no:'Not yet', na:'Not rated'};
+    var ctx = ['users','workflow','spaces'];
+    var ctxGood = ctx.every(function(id){ return cnt(id) >= 3 && P(id).evN !== null && P(id).evN >= 1; });
+    var ctxAny = ctx.some(function(id){ return cnt(id) > 0; });
+    var inv = d.ratings.needs[1];
+    var needU = d.ratings.needs[0];
+    var it = d.iter === '' ? null : parseInt(d.iter, 10);
+    var hasClin = d.team.indexOf('clin') > -1, hasUsers = d.team.indexOf('users') > -1;
+    var H = [
+      ['Based on an explicit understanding of users, tasks and environments', 'People, tasks and environment mapped from evidence', ctxGood ? 2 : ctxAny ? 1 : 0],
+      ['Users are involved throughout design and development', 'From your rating of user involvement', inv === null ? null : 2 - inv],
+      ['Driven and refined by user-centred evaluation', 'Top risks with a planned test', tested >= 3 ? 2 : tested >= 1 ? 1 : 0],
+      ['The process is iterative', 'Design iterations tested with users', it],
+      ['Addresses the whole user experience', 'Needs and experience mapped and understood', (cnt('needs') >= 3 && needU !== null && needU <= 1) ? 2 : cnt('needs') > 0 ? 1 : 0],
+      ['Multidisciplinary skills and perspectives', 'Team: ' + (d.team.length ? d.team.length + ' disciplines' : 'not stated'), (d.team.length >= 4 && hasClin && hasUsers) ? 2 : d.team.length >= 2 ? 1 : (d.team.length ? 0 : null)]
+    ];
+    var hPts = 0, hMet = 0, hPart = 0, hNo = [];
+    $('rHcd').innerHTML = H.map(function(h, i){ var c = st(h[2]); if (c === 'met'){ hPts += 2; hMet++; } else if (c === 'part'){ hPts += 1; hPart++; hNo.push(i); } else hNo.push(i);
+      return '<div class="hrow"><span class="n">' + (i + 1) + '</span><span>' + h[0] + '<small>' + esc(h[1]) + '</small></span><span class="hst ' + c + '">' + lab[c] + '</span></div>'; }).join('');
+    $('hcdScore').innerHTML = '<b>' + hPts + ' / 12</b> human-centred design · ' + hMet + ' principle' + (hMet === 1 ? '' : 's') + ' met, ' + hPart + ' partly';
+
+    // readiness
+    var checks = d.checks.length;
+    var sc = {cov:Math.round(covPts / AREAS.length * 25), ev:Math.round((evSum / (2 * AREAS.length)) * 25), fld:Math.round(checks / NCHK * 15), rsk:Math.round(Math.min(tested, 5) / 5 * 25), ass:(entries(d.assumptions).length ? 10 : 0)};
+    var score = sc.cov + sc.ev + sc.fld + sc.rsk + sc.ass;
+    var level = score === 0 ? 'Not started' : score < 40 ? 'Early picture' : score < 65 ? 'Developing picture' : score < 85 ? 'Solid picture' : 'Strong picture';
+    $('aScore').textContent = score; $('aLevel').textContent = level;
+    $('aSubs').innerHTML = [['Areas mapped', sc.cov, 25], ['Strength of evidence', sc.ev, 25], ['Site checks done', sc.fld, 15], ['Risks with a test', sc.rsk, 25], ['Assumptions named', sc.ass, 10]].map(function(x){
+      return '<div class="sub"><span>' + x[0] + '</span><span>' + x[1] + '/' + x[2] + '</span><span class="sb"><i style="width:' + Math.round(x[1] / x[2] * 100) + '%"></i></span></div>';
+    }).join('');
+
+    // quadrant
+    var hiKnow = score >= 60, hiCx = cxAvg !== null && cxAvg >= 1;
+    var qk = (hiKnow ? 't' : 'b') + (hiCx ? 'r' : 'l');
+    var qNames = {tl:'Ready to test', tr:'Test step by step', bl:'Do more fieldwork', br:'Research before you pilot'};
+    Array.prototype.forEach.call($('quad').querySelectorAll('[data-q]'), function(el){ el.classList.toggle('on', cxAvg !== null && el.getAttribute('data-q') === qk); });
+    var dot = $('qDot');
+    if (cxAvg === null){ dot.style.display = 'none'; }
+    else { dot.style.display = 'block'; dot.style.left = (8 + cxAvg / 2 * 84) + '%'; dot.style.bottom = (8 + Math.min(score, 100) / 100 * 84) + '%'; }
+
+    // summary
+    var s = [];
+    if (score === 0) $('aSummary').innerHTML = 'Start filling in the blueprint — your summary appears here.';
     else {
-      var good = 6 - weak.length - missing.length;
-      s.push('This map of <b>' + prod + '</b>' + set + ' covers <b>' + good + ' of 6 areas</b> well' + (missing.length ? '; <b>' + missing.join(', ') + '</b> ' + (missing.length === 1 ? 'is' : 'are') + ' still empty' : '') + (weak.length ? ' and ' + weak.join(', ') + ' ' + (weak.length === 1 ? 'is' : 'are') + ' thin' : '') + '.');
-      if (risks.length) s.push('You named <b>' + risks.length + ' top risk' + (risks.length === 1 ? '' : 's') + '</b>' + (hi ? ', ' + hi + ' rated high' : '') + (untested.length ? ', and ' + untested.length + ' still need' + (untested.length === 1 ? 's' : '') + ' a test' : ', each with a test') + '.');
-      if (found.length) s.push('The strongest recurring theme is <b>' + found[0].n.toLowerCase() + '</b>' + (found[1] ? ', followed by ' + found[1].n.toLowerCase() : '') + '.');
-      if (blind.length) s.push('<b>' + blind.map(function(t){ return t.n; }).join(' and ') + '</b> come' + (blind.length === 1 ? 's' : '') + ' up repeatedly but ' + (blind.length === 1 ? 'is' : 'are') + ' not in your top risks — check whether ' + (blind.length === 1 ? 'it belongs' : 'they belong') + ' there.');
-      s.push('Site checklist: <b>' + checks + ' of 24</b> done.');
+      var good = AREAS.length - weak.length - missing.length;
+      s.push('Your blueprint of <b>' + (prod ? esc(prod) : 'your product') + '</b>' + (set ? ' in <b>' + esc(set) + '</b>' : '') + ' covers <b>' + good + ' of ' + AREAS.length + ' areas</b> well' + (missing.length ? '; ' + missing.join(', ') + ' ' + (missing.length === 1 ? 'is' : 'are') + ' still empty' : '') + '.');
+      if (cxAvg !== null) s.push('The environment looks <b>' + cx.toLowerCase() + ' in complexity</b>' + (complexN ? ', with ' + complexN + ' area' + (complexN === 1 ? '' : 's') + ' rated complex (' + profile.filter(function(p){ return p.lvlN === 2; }).map(function(p){ return p.name.toLowerCase(); }).join(', ') + ')' : '') + '.');
+      if (evN) { var weakEv = profile.filter(function(p){ return p.evN === 0; }).map(function(p){ return p.name.toLowerCase(); }); if (weakEv.length) s.push('Your picture of ' + weakEv.join(', ') + ' rests mainly on assumptions.'); }
+      if (risks.length) s.push('You named ' + risks.length + ' top risk' + (risks.length === 1 ? '' : 's') + (hi ? ', <b>' + hi + ' high-impact</b>' : '') + (untested.length ? ' — ' + untested.length + ' still without a test' : ', each with a test') + '.');
+      s.push('Against the six principles of human-centred design, <b>' + hMet + ' ' + (hMet === 1 ? 'is' : 'are') + ' met</b> and ' + hPart + ' partly met.');
+      if (cxAvg !== null) s.push('Recommended approach: <b>' + qNames[qk].toLowerCase() + '</b>.');
       $('aSummary').innerHTML = s.join(' ');
     }
-    var nx = [];
-    if (missing.length) nx.push('Fill in <b>' + missing.join(', ') + '</b> — plan a site visit or an interview with someone who works there.');
-    if (weak.length) nx.push('Add detail to <b>' + weak.join(', ') + '</b>: aim for at least three observed facts per area.');
-    if (checks < 12) nx.push('Complete the site visit checklist — ' + (24 - checks) + ' items are still open.');
-    if (untested.length) nx.push('Plan a concrete test for: ' + untested.map(function(r){ return '“' + esc(r) + '”'; }).join(', ') + '.');
-    if (blind.length) nx.push('Review whether <b>' + blind[0].n.toLowerCase() + '</b> should be one of your top 5 risks.');
-    if (hi >= 2) nx.push('With ' + hi + ' high-impact risks, run small formative tests with real staff before committing to the pilot.');
-    if (!entries(d.assumptions).length) nx.push('Write down your assumptions about the site and check each one on your next visit.');
-    nx.push('Share the map with product, engineering and clinical leads, and re-map after the first pilot week.');
-    $('aNext').innerHTML = nx.slice(0, 6).map(function(x){ return '<li>' + x + '</li>'; }).join('');
-    return {score:score, level:level, summary:$('aSummary').textContent, next:nx.slice(0, 6)};
+
+    // action plan
+    var now = [], pre = [], dur = [];
+    unknownComplex.slice(0, 2).forEach(function(nm){ now.push('Observe <b>' + nm.toLowerCase() + '</b> on site — it is complex and mostly assumed.'); });
+    missing.concat(weak).slice(0, 2).forEach(function(nm){ now.push('Add observed facts to <b>' + nm.toLowerCase() + '</b>.'); });
+    if (open.length) now.push('Complete the ' + open.length + ' open site checks.');
+    if (entries(d.assumptions).length) now.push('Check your assumptions on site: ' + trim(esc(d.assumptions.trim()), 100));
+    else now.push('Write down what you are assuming about the site, then check each point.');
+    sorted.filter(function(r){ return r.i === 'High'; }).forEach(function(r){ pre.push((r.t.trim() ? '<b>' + esc(r.t.trim()) + '</b>' : 'Plan a test') + ' — for “' + esc(r.r.trim()) + '”.'); });
+    untested.forEach(function(r){ if (!sorted.some(function(x){ return x.r.trim() === r && x.i === 'High'; })) pre.push('Plan a test for “' + esc(r) + '”.'); });
+    var orgP = profile[AREAS.length - 1];
+    if (orgP && (orgP.lvlN === 2 || orgP.evN === 0)) pre.push('Agree who decides, pays and owns the product after the pilot — and how success will be measured.');
+    if (inv === null || inv >= 1) pre.push('Run a co-design session with patients and staff on the riskiest tasks — not only a demo.');
+    if (it === null || it === 0) pre.push('Test at least one more design iteration with real users before the pilot.');
+    if (!(hasClin && hasUsers)) now.push('Bring ' + (!hasClin && !hasUsers ? 'a clinician and a patient or end user' : !hasClin ? 'a clinician' : 'a patient or end user') + ' into your next blueprint review.');
+    if (blind.length) pre.push('Decide whether <b>' + blind[0].n.toLowerCase() + '</b> should be one of your top 5 risks.');
+    if (!pre.length) pre.push('Run one small test with real staff in the real setting.');
+    dur.push('Re-run this blueprint after the first pilot week and compare.');
+    if (complexN) dur.push('Track the complex areas closely — complexity tends to grow, not shrink, as you scale.');
+    if (hi) dur.push('Review the ' + hi + ' high-impact risk' + (hi === 1 ? '' : 's') + ' with the people who use the device daily.');
+    dur.push('Share the blueprint with product, engineering and clinical leads.');
+    var col = function(t, list, cls){ return '<div class="ph' + (cls ? ' ' + cls : '') + '"><h5>' + t + '</h5><ol>' + list.slice(0, 4).map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ol></div>'; };
+    $('rPlan').innerHTML = col('This week', now, 'now') + col('Before the pilot', pre) + col('During the pilot', dur);
+
+    drawInfo({title: prod || 'Your product', meta: $('rMeta').textContent, score:score, level:level, cx:cx, cxAvg:cxAvg, qk:qk, qname:(cxAvg === null ? '' : qNames[qk]),
+      hcd: H.map(function(h){ return st(h[2]); }), hcdPts:hPts,
+      areas: AREAS.map(function(a, i){ return {name:a.name, crit:!!a.crit, lvl:profile[i].lvlN, ev:profile[i].evN}; })});
+    var next = now.slice(0, 4).map(function(x){ return 'This week: ' + x; }).concat(pre.slice(0, 4).map(function(x){ return 'Before the pilot: ' + x; }), dur.slice(0, 4).map(function(x){ return 'During the pilot: ' + x; }));
+    return {hcd:hPts, hcdMet:hMet, hcdRows:H.map(function(h){ return h[0] + ': ' + lab[st(h[2])]; }), score:score, level:level, cx:cx, quad:(cxAvg === null ? 'not rated' : qNames[qk]), profile:profile, summary:$('aSummary').textContent, next:next};
   }
 
-  // Load saved
+  // ---------- Load ----------
   try { var sv = localStorage.getItem(KEY); if (sv) apply(JSON.parse(sv)); } catch(e){}
   var startAt = 0; try { startAt = parseInt(localStorage.getItem(KEY + '-step') || '0', 10) || 0; } catch(e){}
   show(startAt, false);
 
-  // Full screen (optional)
-  var uem = $('uem'), fsBtn = $('fsBtn');
+  // ---------- Full screen (optional) ----------
+  var fsBtn = $('fsBtn');
   function setFull(on){
     uem.classList.toggle('full', on); document.body.classList.toggle('uem-full', on);
     fsBtn.textContent = on ? '✕ Exit full screen' : '⤢ Full screen'; fsBtn.setAttribute('aria-pressed', String(on));
-    if (!on) uem.scrollIntoView({block:'start'});
+    if (!on && uem.scrollIntoView) uem.scrollIntoView({block:'start'});
   }
   fsBtn.addEventListener('click', function(){ setFull(!uem.classList.contains('full')); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && uem.classList.contains('full')) setFull(false); });
 })();
-
 
 </script>
 </body>
