@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image/Servizions-favicon-small.png">
+<title>Design Thinking Sprint for UK Product Teams — Servizions</title>
+<meta name="description" content="A focused 6-hour Design Thinking Sprint for UK product companies. Online (2 × 3 hours) or in person (1 day). Early Bird £695 for bookings by 31 December 2026.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN SYSTEM — identical to contact.html / services.html
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --bg:#0A0814;
+  --bg-2:#13101F;
+  --paper:#F5F2EC;
+  --paper-2:#EAE5DB;
+  --purple:#7A55E8;
+  --purple-d:#5A2BD6;
+  --purple-l:#A688F0;
+  --teal:#5BC3B7;
+  --teal-d:#3B9E94;
+  --t1:#FFFFFF;
+  --t2:rgba(255,255,255,.66);
+  --t3:rgba(255,255,255,.36);
+  --rule:rgba(255,255,255,.08);
+  --d1:#0A0814;
+  --d2:rgba(10,8,20,.66);
+  --d3:rgba(10,8,20,.36);
+  --rule-d:rgba(10,8,20,.10);
+  --fd:'Inter',system-ui,sans-serif;
+  --fb:'Inter',system-ui,sans-serif;
+  --fm:'Inter',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{
+  font-family:var(--fb);
+  background:var(--bg);
+  color:var(--t1);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+[hidden]{display:none!important;}
+
+:focus{outline:none;}
+a:focus-visible,button:focus-visible,summary:focus-visible{
+  outline:2px solid var(--purple);outline-offset:4px;border-radius:2px;
+}
+
+body::after{
+  content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size:200px;opacity:.035;mix-blend-mode:overlay;
+}
+
+#prg{
+  position:fixed;top:0;left:0;height:1.5px;width:0;z-index:99;
+  background:linear-gradient(90deg,var(--purple),var(--teal));
+  pointer-events:none;transition:width .12s linear;
+}
+
+/* ─── NAV ─── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:26px 56px;
+  transition:padding .4s var(--ease),background .4s var(--ease),color .4s var(--ease);
+}
+.nav.shrink{
+  padding:14px 56px;
+  background:rgba(10,8,20,.78);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);
+}
+.nav.on-light{color:var(--d1);}
+.nav.on-light.shrink{background:rgba(255,255,255,.85);border-color:var(--rule-d);}
+
+.nav-logo{
+  font-family:var(--fd);
+  font-size:22px;font-weight:400;letter-spacing:.005em;
+  color:inherit;
+}
+.nav-logo em{font-style:italic;font-weight:300;color:var(--teal);}
+.nav.on-light .nav-logo em{color:var(--teal-d);}
+
+.nav-links{
+  display:flex;align-items:center;gap:36px;
+  margin-left:auto;margin-right:28px;
+}
+.nav-link{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;opacity:.66;
+  position:relative;padding:6px 0;
+  transition:opacity .35s var(--ease);
+}
+.nav-link:hover,.nav-link.active{opacity:1;}
+.nav-link::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--purple);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.nav.on-light .nav-link::after{background:var(--purple-d);}
+.nav-link.active::after,.nav-link:hover::after{
+  transform:scaleX(1);transform-origin:left;
+}
+
+.nav-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:inherit;
+  padding:11px 20px;border:1px solid currentColor;border-radius:999px;
+  position:relative;overflow:hidden;
+  opacity:.7;
+  transition:opacity .4s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+}
+.nav-cta:hover{opacity:1;}
+.nav-cta span{position:relative;z-index:2;}
+.nav-cta::before{
+  content:'';position:absolute;inset:0;
+  background:var(--purple);
+  transform:translateY(101%);transition:transform .45s var(--ease);
+  z-index:1;
+}
+.nav-cta:hover::before{transform:translateY(0);}
+.nav-cta:hover{color:var(--t1)!important;border-color:var(--purple);}
+.nav-cta .arr{display:inline-block;transition:transform .4s var(--ease);position:relative;z-index:2;}
+.nav-cta:hover .arr{transform:translateX(3px);}
+
+.menu-btn{display:none;}
+.mobile-menu{display:none;}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .menu-btn{
+    display:flex;flex-direction:column;gap:5px;
+    padding:10px;background:none;border:none;cursor:pointer;
+    z-index:102;position:relative;color:inherit;
+  }
+  .menu-btn span{
+    display:block;width:24px;height:1.5px;background:currentColor;
+    transition:transform .3s var(--ease),opacity .3s;
+  }
+  .menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .menu-btn.open span:nth-child(2){opacity:0;}
+  .menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+  .mobile-menu{
+    display:flex;
+    position:fixed;inset:0;z-index:101;
+    background:var(--bg);
+    flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:0 56px;gap:8px;
+    opacity:0;pointer-events:none;
+    transition:opacity .35s var(--ease);
+  }
+  .mobile-menu.open{opacity:1;pointer-events:auto;}
+  .mobile-menu a{
+    font-family:var(--fd);
+    font-size:clamp(28px,5vw,42px);font-weight:400;letter-spacing:-.012em;
+    color:var(--t1);
+    padding:14px 0;
+    transition:color .3s var(--ease);
+  }
+  .mobile-menu a:hover{color:var(--purple-l);}
+  .mobile-menu a.cta{
+    margin-top:32px;
+    font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 26px;
+    background:var(--purple);
+    border-radius:999px;
+    transition:background .3s var(--ease);
+  }
+  .mobile-menu a.cta:hover{color:var(--t1);background:var(--purple-l);}
+}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  padding:170px 56px 110px;
+  overflow:hidden;
+}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(50px);z-index:1;}
+.orb-1{
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(122,85,232,.16),transparent 65%);
+  top:-160px;right:-100px;
+  animation:drift 32s ease-in-out infinite alternate;
+}
+.orb-2{
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(91,195,183,.08),transparent 65%);
+  bottom:-140px;left:18%;
+  animation:drift 36s ease-in-out -10s infinite alternate;
+}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,30px) scale(1.1);}}
+
+.hero-inner{
+  position:relative;z-index:3;max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1.45fr 1fr;gap:72px;align-items:end;
+}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--purple-l);
+  margin-bottom:36px;
+  opacity:0;transform:translateY(8px);
+  animation:fadeUp .9s var(--ease) .25s forwards;
+}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--purple);}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+.hero-h1{
+  font-family:var(--fd);
+  font-size:clamp(42px,5vw,76px);
+  font-weight:400;
+  line-height:1.04;letter-spacing:-.022em;
+  color:var(--t1);
+  max-width:18ch;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .45s forwards;
+}
+.hero-h1 em{font-style:italic;color:var(--teal);}
+
+.hero-sub{
+  font-family:var(--fb);
+  font-size:clamp(17px,1.4vw,19px);
+  font-weight:400;line-height:1.7;
+  color:var(--t2);
+  max-width:58ch;
+  margin-top:36px;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .65s forwards;
+}
+
+.hero-actions{
+  display:flex;flex-wrap:wrap;align-items:center;gap:32px;
+  margin-top:44px;
+  opacity:0;transform:translateY(8px);
+  animation:fadeUp 1s var(--ease) .85s forwards;
+}
+
+/* Early Bird callout (hero) */
+.price-card{
+  position:relative;
+  border:1px solid rgba(166,136,240,.28);
+  background:linear-gradient(160deg,rgba(122,85,232,.14),rgba(19,16,31,.6) 60%);
+  border-radius:12px;
+  padding:34px 34px 30px;
+  opacity:0;transform:translateY(12px);
+  animation:fadeUp .9s var(--ease) .75s forwards;
+}
+.price-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--t1);background:var(--purple);
+  padding:7px 12px;border-radius:999px;
+}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:22px;flex-wrap:wrap;}
+.price-now{
+  font-family:var(--fd);font-size:clamp(48px,5vw,64px);font-weight:400;letter-spacing:-.025em;line-height:1;
+  color:var(--t1);
+}
+.price-was{font-size:17px;color:var(--t3);text-decoration:line-through;text-decoration-thickness:1px;}
+.price-save{
+  margin-top:10px;
+  font-size:14.5px;font-weight:500;color:var(--teal);
+}
+.price-terms{
+  list-style:none;margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:10px;
+}
+.price-terms li{
+  font-size:14px;line-height:1.55;color:var(--t2);
+  padding-left:16px;position:relative;
+}
+.price-terms li::before{content:'–';position:absolute;left:0;color:var(--purple-l);}
+.price-terms strong{color:var(--t1);font-weight:500;}
+
+/* ─── BUTTONS ─── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:600;letter-spacing:-.005em;
+  color:var(--t1);
+  background:var(--purple);
+  padding:14px 24px;border-radius:10px;
+  box-shadow:0 1px 2px rgba(122,85,232,.2),0 8px 28px rgba(122,85,232,.25);
+  transition:all .3s var(--ease);
+  white-space:nowrap;will-change:transform;
+}
+.btn-primary:hover{
+  background:var(--purple-l);
+  box-shadow:0 1px 2px rgba(122,85,232,.25),0 12px 32px rgba(122,85,232,.4);
+  transform:translateY(-2px);
+}
+.btn-primary .arr{transition:transform .3s var(--ease);}
+.btn-primary:hover .arr{transform:translateX(3px);}
+.btn-primary[disabled]{opacity:.6;cursor:progress;transform:none;}
+
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--fb);
+  font-size:14.5px;font-weight:500;
+  color:var(--t2);
+  padding:14px 4px;
+  position:relative;
+  transition:color .3s var(--ease);
+}
+.cream-section .btn-secondary{color:var(--d2);}
+.btn-secondary::after{
+  content:'';position:absolute;left:4px;right:18px;bottom:8px;height:1px;
+  background:currentColor;opacity:.4;
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease),opacity .3s;
+}
+.btn-secondary:hover{color:var(--purple-l);}
+.cream-section .btn-secondary:hover{color:var(--purple-d);}
+.btn-secondary:hover::after{transform:scaleX(1);transform-origin:left;opacity:1;}
+.btn-secondary .arr{transition:transform .3s var(--ease);}
+.btn-secondary:hover .arr{transform:translateX(3px);}
+
+/* ─── MARQUEE (who it's for) ─── */
+.marquee{
+  overflow:hidden;
+  padding:22px 0;
+  background:var(--bg-2);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  position:relative;
+}
+.marquee::before,.marquee::after{
+  content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none;
+}
+.marquee::before{left:0;background:linear-gradient(to right,var(--bg-2),transparent);}
+.marquee::after{right:0;background:linear-gradient(to left,var(--bg-2),transparent);}
+.marquee-track{display:flex;white-space:nowrap;animation:mar 60s linear infinite;}
+.marquee:hover .marquee-track{animation-play-state:paused;}
+.marquee-item{
+  font-family:var(--fd);
+  font-size:18px;font-weight:400;font-style:italic;
+  color:var(--t2);
+  display:flex;align-items:center;gap:42px;padding-right:42px;
+}
+.marquee-item::after{
+  content:'';width:4px;height:4px;border-radius:50%;background:var(--purple);opacity:.7;
+}
+@keyframes mar{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ─── SECTION SHELL ─── */
+.section{padding:112px 56px;position:relative;}
+.section-tinted{background:var(--bg-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.cream-section{background:#FFFFFF;color:var(--d1);}
+.cream-section h1,.cream-section h2,.cream-section h3{color:var(--d1);}
+
+.section-inner{max-width:1100px;margin:0 auto;}
+
+.section-head{margin-bottom:64px;max-width:880px;}
+.section-tag{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--t1);
+  margin-bottom:24px;
+}
+.section-tag::before{content:'';width:32px;height:1px;background:var(--purple);}
+.cream-section .section-tag{color:var(--purple-d);}
+.cream-section .section-tag::before{background:var(--purple-d);}
+.section-tag .num{font-weight:500;color:var(--t3);}
+.cream-section .section-tag .num{color:var(--d3);}
+
+.section-h2{
+  font-family:var(--fd);
+  font-size:clamp(36px,4.6vw,62px);
+  font-weight:400;
+  line-height:1.05;letter-spacing:-.02em;
+}
+.section-h2 em{font-style:italic;color:var(--teal);}
+.cream-section .section-h2 em{color:var(--purple-d);}
+.section-lede{
+  font-size:17px;line-height:1.7;color:var(--t2);
+  margin-top:28px;max-width:62ch;
+}
+.cream-section .section-lede{color:var(--d2);}
+.section-lede strong{font-weight:500;color:var(--t1);}
+.cream-section .section-lede strong{color:var(--d1);}
+
+.sub-h{
+  font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--purple-d);margin:88px 0 28px;
+}
+
+/* ─── HOW IT WORKS — steps ─── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule-d);}
+.step{padding:36px 32px 8px 0;}
+.step + .step{padding-left:32px;border-left:1px solid var(--rule-d);}
+.step-num{
+  font-family:var(--fd);font-size:40px;font-weight:300;font-style:italic;line-height:1;
+  color:var(--purple-d);
+}
+.step-name{
+  display:block;margin-top:18px;
+  font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--d3);
+}
+.step-h{font-family:var(--fd);font-size:22px;font-weight:500;letter-spacing:-.01em;line-height:1.3;margin-top:10px;color:var(--d1);}
+.step-text{font-size:15px;line-height:1.7;color:var(--d2);margin-top:12px;}
+
+/* ─── FORMAT COMPARISON ─── */
+.formats{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.format{
+  border:1px solid var(--rule-d);border-radius:12px;background:#FAFAF9;
+  padding:40px 40px 34px;display:flex;flex-direction:column;
+}
+.format.is-default{border-color:rgba(90,43,214,.35);box-shadow:0 0 0 3px rgba(90,43,214,.05);}
+.format-tag{
+  align-self:flex-start;
+  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--purple-d);background:rgba(90,43,214,.08);
+  padding:6px 11px;border-radius:999px;margin-bottom:22px;
+}
+.format-tag.muted{color:var(--d2);background:rgba(10,8,20,.05);}
+.format-h{font-family:var(--fd);font-size:28px;font-weight:400;letter-spacing:-.015em;line-height:1.15;color:var(--d1);}
+.format-h em{font-style:italic;color:var(--purple-d);}
+.format-text{font-size:15px;line-height:1.7;color:var(--d2);margin-top:14px;}
+.format-meta{
+  display:flex;flex-wrap:wrap;gap:28px;
+  margin-top:auto;padding-top:24px;border-top:1px solid var(--rule-d);
+}
+.format-text + .format-meta{margin-top:28px;}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--d3);}
+.meta-value{font-size:14.5px;font-weight:500;color:var(--d1);}
+
+/* ─── OUTCOMES + WHY ─── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.tick-list{list-style:none;display:flex;flex-direction:column;}
+.tick-list li{
+  font-size:16px;line-height:1.65;color:var(--d2);
+  padding:18px 0 18px 30px;position:relative;
+  border-bottom:1px solid var(--rule-d);
+}
+.tick-list li:first-child{border-top:1px solid var(--rule-d);}
+.tick-list li::before{
+  content:'';position:absolute;left:2px;top:26px;width:12px;height:6px;
+  border-left:1.5px solid var(--purple-d);border-bottom:1.5px solid var(--purple-d);
+  transform:rotate(-45deg);
+}
+.tick-list strong{color:var(--d1);font-weight:500;}
+
+.compare{width:100%;border-collapse:collapse;font-size:14.5px;}
+.compare th,.compare td{text-align:left;padding:16px 14px;border-bottom:1px solid var(--rule-d);vertical-align:top;line-height:1.55;}
+.compare thead th{
+  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d3);
+  border-bottom:1px solid var(--d3);
+}
+.compare thead th.us{color:var(--purple-d);}
+.compare tbody th{font-weight:500;color:var(--d1);width:30%;}
+.compare td{color:var(--d2);}
+.compare td.us{color:var(--d1);font-weight:500;background:rgba(90,43,214,.04);}
+
+/* ─── BOOKING ─── */
+.contact-section{
+  background:#FFFFFF;
+  color:var(--d1);
+  padding:112px 56px 130px;
+  border-top:1px solid var(--rule-d);
+}
+.contact-section-inner{max-width:1140px;margin:0 auto;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;}
+
+.contact-info{display:flex;flex-direction:column;gap:40px;padding-top:4px;}
+.contact-info-block{border-left:1px solid rgba(90,43,214,.22);padding-left:22px;}
+.contact-info-label{
+  font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--purple-d);margin-bottom:9px;display:block;
+}
+.contact-info-value{font-size:15.5px;font-weight:400;color:var(--d1);line-height:1.7;font-family:var(--fb);}
+a.contact-info-value{color:var(--purple-d);transition:color .3s var(--ease);}
+a.contact-info-value:hover{color:var(--d1);}
+.contact-info-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;}
+.contact-info-list li{
+  font-family:var(--fb);font-size:14px;color:var(--d2);padding-left:16px;
+  position:relative;font-weight:400;line-height:1.6;
+}
+.contact-info-list li::before{content:'–';position:absolute;left:0;color:var(--purple-d);}
+
+/* Calendar embed slot */
+.cal-embed{
+  border:1px solid var(--rule-d);border-radius:12px;background:#FAFAF9;
+  margin-bottom:56px;overflow:hidden;
+}
+.cal-embed-head{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  padding:28px 36px;border-bottom:1px solid var(--rule-d);
+}
+.cal-embed-title{font-family:var(--fd);font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--d1);}
+.cal-embed-note{font-size:14px;color:var(--d2);margin-top:4px;}
+.cal-embed-frame{display:none;width:100%;height:720px;border:0;background:#FFFFFF;}
+.cal-embed.has-calendar .cal-embed-frame{display:block;}
+.cal-embed.has-calendar .cal-embed-fallback{display:none;}
+.cal-embed-fallback{
+  padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  font-size:15px;line-height:1.65;color:var(--d2);
+}
+.cal-embed-fallback p{max-width:58ch;}
+
+.contact-form-wrap{
+  background:#FAFAF9;border:1px solid var(--rule-d);border-radius:12px;padding:52px 56px;
+}
+.form-title{font-family:var(--fd);font-size:24px;font-weight:500;letter-spacing:-.01em;color:var(--d1);}
+.form-intro{font-size:14.5px;color:var(--d2);line-height:1.65;margin:8px 0 32px;}
+.contact-form-row{display:flex;gap:20px;margin-bottom:20px;}
+.contact-form-group{flex:1;display:flex;flex-direction:column;min-width:0;}
+.contact-form-group.full{margin-bottom:20px;}
+.contact-form-group label,.fieldset-legend{
+  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;margin-bottom:8px;color:var(--d1);
+}
+.contact-form-group input,.contact-form-group select,.contact-form-group textarea{
+  padding:13px 16px;border-radius:8px;border:1px solid var(--rule-d);
+  font-family:var(--fb);font-size:14px;font-weight:400;color:var(--d1);
+  background:#FFFFFF;transition:border-color .3s var(--ease),box-shadow .3s var(--ease);
+  width:100%;
+}
+.contact-form-group input:focus,.contact-form-group textarea:focus,.contact-form-group select:focus{
+  outline:none;border-color:var(--purple-d);box-shadow:0 0 0 3px rgba(90,43,214,.08);
+}
+.contact-form-group textarea{min-height:130px;resize:vertical;}
+.contact-hidden-field{display:none;}
+.field-hint{font-size:12.5px;color:var(--d3);margin-top:6px;}
+.field-error{font-size:12.5px;color:#B3261E;margin-top:6px;display:none;}
+.is-invalid input,.is-invalid select,.is-invalid textarea{border-color:#B3261E;}
+.is-invalid .field-error{display:block;}
+
+/* Preference toggle */
+fieldset{border:0;padding:0;margin:0 0 20px;min-width:0;}
+.fieldset-legend{display:block;padding:0;}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.choice{position:relative;display:block;cursor:pointer;}
+.choice input{position:absolute;opacity:0;pointer-events:none;}
+.choice-body{
+  display:block;height:100%;
+  border:1px solid var(--rule-d);border-radius:8px;background:#FFFFFF;
+  padding:16px 18px;
+  transition:border-color .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);
+}
+.choice-title{display:block;font-size:14.5px;font-weight:600;color:var(--d1);}
+.choice-text{display:block;font-size:13px;line-height:1.55;color:var(--d2);margin-top:4px;}
+.choice input:checked + .choice-body{
+  border-color:var(--purple-d);background:rgba(90,43,214,.04);box-shadow:0 0 0 3px rgba(90,43,214,.08);
+}
+.choice input:focus-visible + .choice-body{outline:2px solid var(--purple);outline-offset:2px;}
+
+.contact-consent{
+  display:flex;align-items:flex-start;gap:12px;font-family:var(--fb);font-size:13px;
+  color:var(--d2);margin:26px 0 8px;line-height:1.6;font-weight:400;
+}
+.contact-consent a{color:var(--purple-d);text-decoration:underline;text-underline-offset:2px;}
+.contact-consent input[type="checkbox"]{margin-top:2px;width:16px;height:16px;accent-color:var(--purple-d);flex-shrink:0;}
+.consent-wrap{margin-bottom:26px;}
+.contact-submit{width:100%;justify-content:center;padding:16px 32px;border:none;cursor:pointer;}
+.form-status{font-size:13.5px;line-height:1.6;color:#B3261E;margin-top:16px;display:none;}
+.form-status.show{display:block;}
+
+/* Confirmation state */
+.form-success{display:none;text-align:left;}
+.contact-form-wrap.is-sent form{display:none;}
+.contact-form-wrap.is-sent .form-success{display:block;}
+.success-mark{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(91,195,183,.14);color:var(--teal-d);margin-bottom:24px;
+}
+.success-h{font-family:var(--fd);font-size:30px;font-weight:400;letter-spacing:-.015em;line-height:1.15;color:var(--d1);}
+.success-h em{font-style:italic;color:var(--purple-d);}
+.success-text{font-size:15px;line-height:1.7;color:var(--d2);margin-top:14px;max-width:52ch;}
+.success-summary{
+  list-style:none;margin-top:28px;padding-top:22px;border-top:1px solid var(--rule-d);
+  display:grid;grid-template-columns:auto 1fr;gap:10px 24px;font-size:14px;
+}
+.success-summary dt{font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--d3);padding-top:3px;}
+.success-summary dd{color:var(--d1);}
+
+/* ─── FAQ (dark tinted) ─── */
+.faq{border-top:1px solid var(--rule);}
+.faq details{border-bottom:1px solid var(--rule);}
+.faq summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:26px 0;
+  font-family:var(--fd);font-size:clamp(18px,1.6vw,21px);font-weight:400;letter-spacing:-.01em;color:var(--t1);
+  transition:color .3s var(--ease);
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary:hover{color:var(--purple-l);}
+.faq summary .pm{
+  flex-shrink:0;width:28px;height:28px;border:1px solid var(--rule);border-radius:50%;
+  position:relative;transition:transform .4s var(--ease),border-color .3s var(--ease);
+}
+.faq summary .pm::before,.faq summary .pm::after{
+  content:'';position:absolute;left:50%;top:50%;width:10px;height:1px;background:currentColor;
+  transform:translate(-50%,-50%);
+}
+.faq summary .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:opacity .3s;}
+.faq details[open] summary .pm{border-color:var(--purple);}
+.faq details[open] summary .pm::after{opacity:0;}
+.faq-a{padding:0 64px 28px 0;font-size:16px;line-height:1.75;color:var(--t2);max-width:72ch;}
+.faq-a strong{color:var(--t1);font-weight:500;}
+
+/* ─── FINAL CTA ─── */
+.final-cta{
+  position:relative;
+  padding:140px 56px 120px;
+  text-align:center;
+  background:var(--bg);
+  overflow:hidden;
+}
+.final-cta::before{
+  content:'';position:absolute;
+  top:50%;left:50%;width:900px;height:900px;
+  background:radial-gradient(circle,rgba(122,85,232,.13),transparent 60%);
+  transform:translate(-50%,-50%);
+  filter:blur(50px);pointer-events:none;
+  animation:ctaOrb 10s ease-in-out infinite alternate;
+}
+@keyframes ctaOrb{
+  from{transform:translate(-50%,-50%) scale(1);opacity:.7;}
+  to{transform:translate(-50%,-50%) scale(1.1);opacity:1;}
+}
+.final-cta-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;}
+.final-cta .section-tag{margin-bottom:24px;}
+.final-cta-h{
+  font-family:var(--fd);
+  font-size:clamp(40px,5.6vw,72px);
+  font-weight:400;
+  line-height:1.04;letter-spacing:-.022em;
+  color:var(--t1);
+  margin-bottom:20px;
+}
+.final-cta-h em{font-style:italic;color:var(--teal);}
+.final-cta-sub{font-size:16px;color:var(--t2);line-height:1.7;margin-bottom:40px;}
+.final-cta .btn-primary{margin:0 auto;}
+
+/* ─── FOOTER ─── */
+.footer{
+  background:var(--bg);
+  border-top:1px solid var(--rule);
+  padding:32px 56px;
+}
+.footer-top{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:start;gap:48px;
+  padding-bottom:28px;
+  margin-bottom:24px;
+  border-bottom:1px solid var(--rule);
+}
+.footer-brand{display:flex;flex-direction:column;gap:10px;}
+.footer-tagline{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-center{
+  justify-self:center;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-nav{
+  justify-self:end;
+  display:flex;flex-wrap:wrap;gap:24px;
+}
+.footer-nav a{
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+  position:relative;
+  transition:color .35s var(--ease);
+}
+.footer-nav a::after{
+  content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;
+  background:var(--purple);
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .45s var(--ease);
+}
+.footer-nav a:hover{color:var(--t1);}
+.footer-nav a:hover::after{transform:scaleX(1);transform-origin:left;}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
+  font-family:var(--fm);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--t3);
+}
+.footer-legal{display:flex;gap:18px;}
+.footer-domains{display:flex;flex-wrap:wrap;gap:14px;}
+.footer-domains .dot{color:var(--rule);}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .nav{padding:20px 40px;}
+  .nav.shrink{padding:12px 40px;}
+  .hero{padding:140px 40px 90px;}
+  .hero-inner{gap:48px;}
+  .section{padding:96px 40px;}
+  .contact-section{padding:96px 40px 110px;}
+  .contact-grid{gap:56px;}
+  .split{gap:56px;}
+  .final-cta{padding:110px 40px;}
+  .footer{padding:32px 40px;}
+}
+@media(max-width:900px){
+  .nav{padding:16px 28px;}
+  .hero{padding:120px 28px 72px;}
+  .hero-inner{grid-template-columns:1fr;gap:44px;}
+  .section{padding:72px 28px;}
+  .steps{grid-template-columns:1fr;}
+  .step,.step + .step{padding:28px 0;border-left:0;border-bottom:1px solid var(--rule-d);}
+  .formats{grid-template-columns:1fr;}
+  .format{padding:32px 28px 28px;}
+  .split{grid-template-columns:1fr;gap:48px;}
+  .contact-section{padding:72px 28px 90px;}
+  .contact-grid{grid-template-columns:1fr;gap:48px;}
+  .contact-form-wrap{padding:36px 28px;}
+  .contact-form-row{flex-direction:column;gap:20px;}
+  .choice-grid{grid-template-columns:1fr;}
+  .cal-embed-head,.cal-embed-fallback{padding:24px 28px;}
+  .faq-a{padding-right:0;}
+  .final-cta{padding:90px 28px;}
+  .footer{padding:28px 28px;}
+  .footer-top{grid-template-columns:1fr;gap:24px;}
+  .footer-center,.footer-nav{justify-self:start;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .mobile-menu{padding:0 28px;}
+}
+@media(max-width:560px){
+  .hero-h1{font-size:38px;}
+  .section-h2{font-size:32px;}
+  .final-cta-h{font-size:36px;}
+  .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:14px;}
+  .price-card{padding:28px 24px 24px;}
+  .compare th,.compare td{padding:14px 8px;font-size:13.5px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .eyebrow,.hero-h1,.hero-sub,.hero-actions,.price-card{opacity:1!important;transform:none!important;}
+  .orb-1,.orb-2{animation:none!important;}
+  .marquee-track{animation:none!important;}
+  .final-cta::before{animation:none!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="prg" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+  <nav class="nav-links">
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="news.html" class="nav-link">News &amp; Articles</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="free-tool.html" class="nav-link">Free Tool</a>
+  </nav>
+  <a href="contact.html" class="nav-cta"><span>Let's talk</span><span class="arr">→</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="news.html">News &amp; Articles</a>
+  <a href="about.html">About</a>
+  <a href="free-tool.html">Free Tool</a>
+  <a href="contact.html" class="cta">Let's talk →</a>
+</nav>
+
+<main>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-orb orb-1" aria-hidden="true"></div>
+  <div class="hero-orb orb-2" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">Design Thinking Sprint · UK</span>
+      <h1 class="hero-h1">One focused sprint for your product team's <em>hardest bottleneck.</em></h1>
+      <p class="hero-sub">Six hours with your product, R&amp;D and engineering people in the same room — or on the same call. We frame one real problem, look at it through the eyes of the people who use your product, and leave with a prioritised way forward the whole team agrees on.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn-primary"><span>Book a 15-minute Sprint Fit Call</span><span class="arr" aria-hidden="true">→</span></a>
+        <a href="#formats" class="btn-secondary"><span>Compare formats</span><span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <aside class="price-card" aria-label="Early Bird pricing">
+      <span class="price-badge">Early Bird</span>
+      <div class="price-row">
+        <span class="price-now">£695</span>
+        <span class="price-was">£850 standard</span>
+      </div>
+      <p class="price-save">Save £155 (18.2%) · flat fee per sprint</p>
+      <ul class="price-terms">
+        <li>Book by <strong>31 December 2026</strong></li>
+        <li>Run your sprint in <strong>December 2026 or January 2027</strong></li>
+        <li>Online by default · in person anywhere in the UK</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- ─── WHO IT'S FOR ─── -->
+<div class="marquee" aria-label="Built for UK product companies in B2B SaaS, MedTech, consumer hardware and IoT, CleanTech and manufacturing">
+  <div class="marquee-track" aria-hidden="true">
+    <span class="marquee-item">B2B SaaS</span>
+    <span class="marquee-item">MedTech &amp; health devices</span>
+    <span class="marquee-item">Consumer hardware &amp; IoT</span>
+    <span class="marquee-item">CleanTech</span>
+    <span class="marquee-item">Manufactured products</span>
+    <span class="marquee-item">B2B SaaS</span>
+    <span class="marquee-item">MedTech &amp; health devices</span>
+    <span class="marquee-item">Consumer hardware &amp; IoT</span>
+    <span class="marquee-item">CleanTech</span>
+    <span class="marquee-item">Manufactured products</span>
+  </div>
+</div>
+
+<!-- ─── 01 HOW IT WORKS (cream) ─── -->
+<section class="section cream-section" id="formats">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag"><span class="num">01</span>How it works</span>
+      <h2 class="section-h2">Six hours. One bottleneck. <em>A decision you can act on.</em></h2>
+      <p class="section-lede">The sprint is built around a single question your team is stuck on — usability, roadmap alignment, prototyping risk or customer adoption. <strong>We agree that question on the fit call, so the six hours go on the work, not the set-up.</strong></p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">1</span>
+        <span class="step-name">Frame</span>
+        <h3 class="step-h">Pin down the real problem</h3>
+        <p class="step-text">Bring what you already know — feedback, data, assumptions. Together we turn it into one sharp, shared problem statement.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <span class="step-name">Explore</span>
+        <h3 class="step-h">See it from the user's side</h3>
+        <p class="step-text">Map the people and the workflow around your product, then generate and stress-test options as a cross-functional team.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <span class="step-name">Decide</span>
+        <h3 class="step-h">Prioritise and plan the test</h3>
+        <p class="step-text">Choose the direction worth pursuing, sketch or prototype it, and agree how you will test it — and who owns the next step.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Choose your format</h3>
+    <div class="formats">
+      <article class="format is-default">
+        <span class="format-tag">Default · lowest friction</span>
+        <h3 class="format-h">Online — <em>2 days × 3 hours</em></h3>
+        <p class="format-text">Two focused half-day sessions on video, built for busy product, R&amp;D and engineering teams. Short enough to protect delivery work; the gap between sessions gives ideas time to settle.</p>
+        <div class="format-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">2 × 3 hours</span></div>
+          <div class="meta-item"><span class="meta-label">Where</span><span class="meta-value">Online, UK time (GMT)</span></div>
+          <div class="meta-item"><span class="meta-label">Early Bird</span><span class="meta-value">£695</span></div>
+        </div>
+      </article>
+
+      <article class="format">
+        <span class="format-tag muted">In person</span>
+        <h3 class="format-h">In-person — <em>1 day × 6 hours</em></h3>
+        <p class="format-text">One full day on-site anywhere in the UK — ideal when the team works around physical products, prototypes or a shared workspace. Dates are scheduled flexibly around your team.</p>
+        <div class="format-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-value">1 × 6 hours</span></div>
+          <div class="meta-item"><span class="meta-label">Where</span><span class="meta-value">Your site, UK-wide</span></div>
+          <div class="meta-item"><span class="meta-label">Early Bird</span><span class="meta-value">£695 + travel if applicable</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="split" style="margin-top:88px;">
+      <div>
+        <h3 class="sub-h" style="margin-top:0;">What your team walks away with</h3>
+        <ul class="tick-list">
+          <li><strong>One clearly framed problem</strong> that product, R&amp;D and engineering all describe the same way.</li>
+          <li><strong>A prioritised set of options</strong>, grounded in how your users and their workflow actually work.</li>
+          <li><strong>A chosen direction with a test plan</strong> — what to prototype or check next, and how you will know.</li>
+          <li><strong>Agreed next steps and owners</strong>, captured in a written summary for the wider team.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub-h" style="margin-top:0;">Why a focused sprint</h3>
+        <table class="compare">
+          <thead>
+            <tr><th scope="col"></th><th scope="col" class="us">Servizions sprint</th><th scope="col">Multi-week agency sprint</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Team time</th><td class="us">6 hours</td><td>Several full days, over weeks</td></tr>
+            <tr><th scope="row">Scope</th><td class="us">One bottleneck, decided together</td><td>Broad discovery and delivery</td></tr>
+            <tr><th scope="row">Start</th><td class="us">December or January</td><td>Procurement and kick-off cycle</td></tr>
+            <tr><th scope="row">Investment</th><td class="us">£695 flat (Early Bird)</td><td>Typically a multiple of this</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 02 BOOK (cream form surface) ─── -->
+<section class="contact-section cream-section" id="book">
+  <div class="contact-section-inner">
+    <div class="section-head" style="margin-bottom:56px;">
+      <span class="section-tag"><span class="num">02</span>Book</span>
+      <h2 class="section-h2">Start with a <em>15-minute fit call.</em></h2>
+      <p class="section-lede">Pick a time below, or send the short intake form. Either way, we check whether a sprint is the right tool for your bottleneck before anything is booked.</p>
+    </div>
+
+    <!--
+      ═══ CALENDAR EMBED ═══
+      Paste your Calendly / Cal.com booking link into data-calendar-url below, e.g.
+        data-calendar-url="https://calendly.com/YOUR-LINK/15min"
+        data-calendar-url="https://cal.com/YOUR-LINK/15min"
+      The page then shows the calendar automatically and hides the fallback button.
+      Leave it empty and visitors see the fallback button + the intake form instead.
+    -->
+    <div class="cal-embed" id="calEmbed"
+         data-calendar-url=""><!-- REPLACE WITH CALENDLY/CAL.COM EMBED URL -->
+      <div class="cal-embed-head">
+        <div>
+          <p class="cal-embed-title">15-minute Sprint Fit Call</p>
+          <p class="cal-embed-note">Online · UK time (GMT) · no preparation needed</p>
+        </div>
+      </div>
+      <iframe class="cal-embed-frame" id="calFrame" title="Book a 15-minute Sprint Fit Call" loading="lazy"></iframe>
+      <div class="cal-embed-fallback">
+        <p>Online booking opens shortly. Until then, send the intake form below or email a request — you will get suggested times by reply.</p>
+        <!-- REPLACE href WITH YOUR CALENDLY/CAL.COM LINK once you have one (fallback button) -->
+        <a class="btn-primary" id="calFallbackBtn"
+           href="mailto:info@servizions.com?subject=Sprint%20Fit%20Call%20request&amp;body=Hi%20Hanna%2C%0A%0AI%27d%20like%20to%20book%20a%2015-minute%20Sprint%20Fit%20Call.%0A%0ACompany%3A%0AProduct%20type%3A%0AMain%20bottleneck%3A%0A">
+          <span>Request a fit call</span><span class="arr" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- LEFT: what happens next -->
+      <div class="contact-info">
+        <div class="contact-info-block">
+          <span class="contact-info-label">What happens next</span>
+          <ul class="contact-info-list">
+            <li>You send the form or pick a call slot</li>
+            <li>15-minute call: we test the bottleneck against the sprint format</li>
+            <li>If it fits, you choose online or in person and lock in a date</li>
+            <li>Invoice issued to confirm the booking</li>
+          </ul>
+        </div>
+
+        <div class="contact-info-block">
+          <span class="contact-info-label">Early Bird</span>
+          <span class="contact-info-value">£695 instead of £850 for bookings confirmed by 31 December 2026, with sessions in December 2026 or January 2027.</span>
+        </div>
+
+        <div class="contact-info-block">
+          <span class="contact-info-label">Prefer email?</span>
+          <a href="mailto:info@servizions.com" class="contact-info-value">info@servizions.com</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: intake form -->
+      <div class="contact-form-wrap" id="formWrap">
+        <!--
+          FORM ENDPOINT: this posts to the same Formspree form your contact page already uses.
+          To send sprint enquiries somewhere else, REPLACE the action URL with your new form endpoint.
+        -->
+        <form id="sprintForm" action="https://formspree.io/f/mjgakblb" method="POST" novalidate>
+          <p class="form-title">Sprint intake</p>
+          <p class="form-intro">Two minutes. It means the fit call can go straight to your actual problem.</p>
+
+          <input type="hidden" name="_subject" value="Design Thinking Sprint — new UK enquiry">
+          <input type="hidden" name="enquiry-type" value="Design Thinking Sprint (UK)">
+
+          <div class="contact-form-row">
+            <div class="contact-form-group" data-field>
+              <label for="f-name">Full name *</label>
+              <input id="f-name" type="text" name="full-name" autocomplete="name" required>
+              <span class="field-error">Please enter your name.</span>
+            </div>
+            <div class="contact-form-group" data-field>
+              <label for="f-email">Work email *</label>
+              <input id="f-email" type="email" name="email" autocomplete="email" required>
+              <span class="field-error">Please enter a valid work email.</span>
+            </div>
+          </div>
+
+          <!-- honeypot (spam trap) — keep hidden -->
+          <div class="contact-form-group contact-hidden-field" aria-hidden="true">
+            <label for="f-gotcha">Leave blank</label>
+            <input id="f-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="contact-form-row">
+            <div class="contact-form-group" data-field>
+              <label for="f-company">Company name *</label>
+              <input id="f-company" type="text" name="company-name" autocomplete="organization" required>
+              <span class="field-error">Please enter your company name.</span>
+            </div>
+            <div class="contact-form-group" data-field>
+              <label for="f-type">Product type *</label>
+              <select id="f-type" name="product-type" required>
+                <option value="" selected disabled>Select…</option>
+                <option>B2B SaaS</option>
+                <option>MedTech</option>
+                <option>Consumer Hardware / IoT</option>
+                <option>CleanTech / Manufacturing</option>
+                <option>Other</option>
+              </select>
+              <span class="field-error">Please choose a product type.</span>
+            </div>
+          </div>
+
+          <div class="contact-form-row">
+            <div class="contact-form-group" data-field>
+              <label for="f-format">Preferred format *</label>
+              <select id="f-format" name="preferred-format" required>
+                <option>Online — 2 days × 3 hours</option>
+                <option>In-Person — 1 day × 6 hours</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="contact-form-group" data-field>
+              <label for="f-month">Preferred session month *</label>
+              <select id="f-month" name="preferred-month" required>
+                <option>December 2026</option>
+                <option>January 2027</option>
+                <option selected>Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="contact-form-group full" data-field>
+            <label for="f-goal">Main bottleneck / goal *</label>
+            <textarea id="f-goal" name="main-bottleneck" maxlength="600" required
+              placeholder="e.g. Onboarding drop-off, feature prioritisation, prototype direction, R&amp;D and commercial alignment…"></textarea>
+            <span class="field-hint"><span id="goalCount">0</span> / 600 characters</span>
+            <span class="field-error">A sentence or two is enough.</span>
+          </div>
+
+          <fieldset data-field>
+            <legend class="fieldset-legend">What would you like to do next?</legend>
+            <div class="choice-grid">
+              <label class="choice">
+                <input type="radio" name="next-step" value="15-Minute Fit Call" checked>
+                <span class="choice-body">
+                  <span class="choice-title">Book a 15-minute fit call</span>
+                  <span class="choice-text">Talk it through first, no commitment.</span>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="next-step" value="Lock in £695 Early Bird — send invoice">
+                <span class="choice-body">
+                  <span class="choice-title">Lock in £695 Early Bird</span>
+                  <span class="choice-text">Send me an invoice to confirm by 31 Dec 2026.</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="contact-form-group full" id="invoiceFields" hidden>
+            <label for="f-invoice">Invoice details (billing name, address, PO number if needed)</label>
+            <textarea id="f-invoice" name="invoice-details" maxlength="400" style="min-height:90px;"></textarea>
+          </div>
+
+          <div class="consent-wrap" data-field>
+            <div class="contact-consent">
+              <input id="f-consent" type="checkbox" name="privacy-consent" value="yes" required>
+              <label for="f-consent">I have read and agreed to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to my data being processed for the purpose of handling this inquiry. *</label>
+            </div>
+            <span class="field-error" style="margin-top:0;">Please confirm the privacy consent.</span>
+          </div>
+
+          <button type="submit" class="btn-primary contact-submit" id="submitBtn"><span>Send sprint request</span><span class="arr" aria-hidden="true">→</span></button>
+          <p class="form-status" id="formStatus" role="alert"></p>
+        </form>
+
+        <!-- Confirmation state (shown after a successful submit) -->
+        <div class="form-success" id="formSuccess" tabindex="-1" aria-live="polite">
+          <div class="success-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3 class="success-h">Thank you — <em>request received.</em></h3>
+          <p class="success-text" id="successText">You will get a reply by email with suggested times for your 15-minute fit call.</p>
+          <dl class="success-summary" id="successSummary"></dl>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── 03 FAQ (dark tinted) ─── -->
+<section class="section section-tinted" id="faq">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag"><span class="num">03</span>FAQ &amp; terms</span>
+      <h2 class="section-h2">Short answers, <em>before you ask.</em></h2>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>Which time zone do sessions run in?<span class="pm" aria-hidden="true"></span></summary>
+        <p class="faq-a">All sessions are scheduled in <strong>UK time (GMT)</strong>. Online sessions are set within your normal working day, so nobody on your team has to join early or late.</p>
+      </details>
+      <details>
+        <summary>Can we schedule around our sprints and the holidays?<span class="pm" aria-hidden="true"></span></summary>
+        <p class="faq-a">Yes. Dates are agreed with your team, not fixed in advance. The online format splits into <strong>two 3-hour sessions</strong> on separate days, so it fits between release cycles. Sessions can run in <strong>December 2026 or January 2027</strong>, which keeps the holiday period clear.</p>
+      </details>
+      <details>
+        <summary>How does payment work — invoice or card?<span class="pm" aria-hidden="true"></span></summary>
+        <!-- CONFIRM: payment methods and any VAT wording before publishing -->
+        <p class="faq-a">The booking is confirmed by <strong>invoice</strong>, payable by bank transfer — choose "Lock in £695 Early Bird" in the form and add your billing details. If your finance team prefers to pay by card, mention it in the form and we will arrange it.</p>
+      </details>
+      <details>
+        <summary>When does the Early Bird rate end?<span class="pm" aria-hidden="true"></span></summary>
+        <p class="faq-a">The <strong>£695</strong> rate (standard <strong>£850</strong>) applies to bookings confirmed by <strong>31 December 2026</strong>. The sprint itself can then take place in December 2026 or January 2027.</p>
+      </details>
+      <details>
+        <summary>What does in-person cost on top?<span class="pm" aria-hidden="true"></span></summary>
+        <p class="faq-a">The sprint fee is the same in both formats. For in-person sprints, <strong>travel expenses are billed separately where applicable</strong> and agreed with you before the booking is confirmed.</p>
+      </details>
+      <details>
+        <summary>Who should join from our side?<span class="pm" aria-hidden="true"></span></summary>
+        <p class="faq-a">The people who own the decision and the people who build the product — typically product, R&amp;D or engineering, and someone close to customers. We agree the exact group on the fit call.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="section final-cta">
+  <div class="final-cta-inner">
+    <span class="section-tag"><span class="num">04</span>Early Bird until 31 Dec 2026</span>
+    <h2 class="final-cta-h">Six hours to <em>unstick your roadmap.</em></h2>
+    <p class="final-cta-sub">£695 instead of £850 · online or in person · sessions in December or January.</p>
+    <a href="#book" class="btn-primary"><span>Book a 15-minute Sprint Fit Call</span><span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Serviz<em>i</em>ons</a>
+      <span class="footer-tagline">Service Innovation Studio · Munich</span>
+    </div>
+    <span class="footer-center">Working across Europe</span>
+    <nav class="footer-nav">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="news.html">News &amp; Articles</a>
+      <a href="about.html">About</a>
+      <a href="free-tool.html">Free Tool</a>
+      <a href="mailto:info@servizions.com">Email</a>
+      <a href="https://www.linkedin.com/company/servizions" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Servizions</span>
+    <div class="footer-legal">
+      <a href="legal-notice.html">Legal Notice</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+    <div class="footer-domains">
+      <span>Healthcare</span><span class="dot">·</span>
+      <span>Medical Robotics</span><span class="dot">·</span>
+      <span>MedTech</span><span class="dot">·</span>
+      <span>Digital Health</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const q  = s => document.querySelector(s);
+const qa = s => [...document.querySelectorAll(s)];
+
+/* ─── Scroll progress + nav colour (same behaviour as other pages) ─── */
+const prg = q('#prg'), nav = q('#nav');
+const lightSections = qa('.cream-section');
+const onScroll = () => {
+  const max = document.body.scrollHeight - window.innerHeight;
+  prg.style.width = Math.min(100, window.scrollY / max * 100) + '%';
+  nav.classList.toggle('shrink', window.scrollY > 60);
+  const mid = 40; // nav sits at the top of the viewport
+  const onLight = lightSections.some(s => {
+    const r = s.getBoundingClientRect();
+    return r.top < mid && r.bottom > mid;
+  });
+  nav.classList.toggle('on-light', onLight);
+};
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ─── Mobile menu ─── */
+const menuBtn = q('#menuBtn');
+const mobileMenu = q('#mobileMenu');
+if(menuBtn && mobileMenu){
+  const toggle = (open) => {
+    const isOpen = open ?? !mobileMenu.classList.contains('open');
+    menuBtn.classList.toggle('open', isOpen);
+    mobileMenu.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  menuBtn.addEventListener('click', () => toggle());
+  qa('#mobileMenu a').forEach(a => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) toggle(false);
+  });
+}
+
+/* ─── Calendar embed: shows automatically once data-calendar-url is filled in ─── */
+const cal = q('#calEmbed'), calFrame = q('#calFrame');
+const calUrl = (cal && cal.dataset.calendarUrl || '').trim();
+if(calUrl){
+  calFrame.src = calUrl;
+  cal.classList.add('has-calendar');
+  const fb = q('#calFallbackBtn'); if(fb) fb.href = calUrl;
+}
+
+/* ─── Intake form: validation, invoice toggle, AJAX submit, confirmation ─── */
+const form = q('#sprintForm');
+if(!form) return;
+const wrap = q('#formWrap'), status = q('#formStatus'), btn = q('#submitBtn');
+const goal = q('#f-goal'), goalCount = q('#goalCount');
+const invoiceFields = q('#invoiceFields');
+
+goal.addEventListener('input', () => { goalCount.textContent = goal.value.length; });
+
+qa('input[name="next-step"]').forEach(r => r.addEventListener('change', () => {
+  const lockIn = q('input[name="next-step"]:checked').value.startsWith('Lock in');
+  invoiceFields.hidden = !lockIn;
+}));
+
+const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+const validateField = group => {
+  const el = group.querySelector('input:not([type=radio]):not([type=hidden]), select, textarea');
+  if(!el || !el.required) return true;
+  let ok;
+  if(el.type === 'checkbox') ok = el.checked;
+  else if(el.type === 'email') ok = emailOk(el.value);
+  else ok = el.value.trim() !== '';
+  group.classList.toggle('is-invalid', !ok);
+  return ok;
+};
+qa('#sprintForm [data-field]').forEach(g => {
+  g.addEventListener('change', () => { if(g.classList.contains('is-invalid')) validateField(g); });
+  g.addEventListener('input',  () => { if(g.classList.contains('is-invalid')) validateField(g); });
+});
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const showSuccess = data => {
+  const lockIn = (data.get('next-step') || '').startsWith('Lock in');
+  q('#successText').textContent = lockIn
+    ? 'You will receive your invoice for the £695 Early Bird rate by email, together with suggested dates for your sprint.'
+    : 'You will get a reply by email with suggested times for your 15-minute fit call.';
+  const rows = [
+    ['Company', data.get('company-name')],
+    ['Format', data.get('preferred-format')],
+    ['Month', data.get('preferred-month')],
+    ['Next step', data.get('next-step')]
+  ];
+  q('#successSummary').innerHTML = rows.map(([k,v]) => `<dt>${esc(k)}</dt><dd>${esc(v || '—')}</dd>`).join('');
+  wrap.classList.add('is-sent');
+  q('#formSuccess').focus({preventScroll:true});
+  wrap.scrollIntoView({behavior:'smooth', block:'start'});
+};
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  status.classList.remove('show');
+  const groups = qa('#sprintForm [data-field]');
+  const results = groups.map(validateField);
+  if(results.includes(false)){
+    const first = groups[results.indexOf(false)].querySelector('input, select, textarea');
+    if(first) first.focus();
+    return;
+  }
+  if(q('#f-gotcha').value) return; // spam trap
+
+  const data = new FormData(form);
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Sending…';
+  try{
+    const res = await fetch(form.action, {method:'POST', body:data, headers:{'Accept':'application/json'}});
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    showSuccess(data);
+  }catch(err){
+    status.innerHTML = 'Sorry — that did not go through. Please try again, or email <a href="mailto:info@servizions.com" style="color:var(--purple-d);text-decoration:underline;">info@servizions.com</a>.';
+    status.classList.add('show');
+  }finally{
+    btn.disabled = false;
+    btn.querySelector('span').textContent = 'Send sprint request';
+  }
+});
+})();
+</script>
+</body>
+</html>
